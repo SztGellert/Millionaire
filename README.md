@@ -49,3 +49,15 @@
 
 		 Please enjoy!
 		 Best wishes from the Gooses!
+		 
+Quick notes:
+	1. Under PyCharm Clear Screen commant does not work 
+	    Select 'Edit Configurations' from the 'Run' menu.
+	    Under the 'Execution' section, select 'Emulate terminal in output console'
+	
+	   Or run from separate windows command line.
+	   
+	   Current version is for windows.
+	   
+To run pip install sty && pip install pygame then py millionaire.py
+
