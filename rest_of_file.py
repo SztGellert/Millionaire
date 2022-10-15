@@ -60,7 +60,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
                 c_percent = random.randrange(0, (100-d_percent-b_percent))
                 a_percent = 100-(d_percent+b_percent+c_percent)
             time.sleep(4)
-            os.system('clear')
+            os.system('cls')
             for choise_ in [answers]:
                 if choise == current_line[0]:
                     if choise_ == a:
@@ -87,7 +87,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
                         print("Sheibe")
                 print("A:"+bg.blue+fake_a_percent*" "+" "+str(fake_a_percent)+"%"+"\n"+bg.rs+"B:"+bg.blue+fake_b_percent*" "+" "+str(fake_b_percent)+"%"+"\n"+bg.rs+"C:"+bg.blue+fake_c_percent*" "+" "+str(fake_c_percent)+"%"+"\n"+bg.rs+"D:"+bg.blue+fake_d_percent*" "+" "+str(fake_d_percent)+"%"+"\n"+bg.rs)
                 time.sleep(4)
-                os.system('clear')
+                os.system('cls')
                 sys.stdout.write("\033[F")
             elems = [a_percent, b_percent, c_percent, d_percent]
             max_element = max(elems[0], elems[1], elems[2], elems[3])
@@ -109,7 +109,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
     fg.green = Style(RgbFg(0, 255, 0))
     print(fg.green + "Well done!" + fg.rs)
     time.sleep(2)
-    os.system('clear')
+    os.system('cls')
     else:
         print(answer)
         print()
@@ -153,13 +153,13 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
                 if pos == answers[3]:
                     choises[3] = bg.green + choises[3] + "  " + bg.black
     time.sleep(1)
-    os.system('clear')
+    os.system('cls')
     if answer == current_line[0]:
         play_sound("./msc/jo valasz.mp3", 0)
         fg.green = Style(RgbFg(0, 255, 0))
         print(fg.green + "Well done!" + fg.rs)
         time.sleep(2)
-        os.system('clear')
+        os.system('cls')
     else:
         play_sound("./msc/rossz valasz.mp3", 0)
         time.sleep(2)
@@ -170,7 +170,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
 
                 print("A:"+bg.blue+fake_a_percent*" "+" "+str(fake_a_percent)+"%"+"\n"+bg.rs+"B:"+bg.blue+fake_b_percent*" "+" "+str(fake_b_percent)+"%"+"\n"+bg.rs+"C:"+bg.blue+fake_c_percent*" "+" "+str(fake_c_percent)+"%"+"\n"+bg.rs+"D:"+bg.blue+fake_d_percent*" "+" "+str(fake_d_percent)+"%"+"\n"+bg.rs)
                 time.sleep(4)
-                os.system('clear')
+                os.system('cls')
                 sys.stdout.write("\033[F")
             elems = [a_percent, b_percent, c_percent, d_percent]
             max_element = max(elems[0], elems[1], elems[2], elems[3])

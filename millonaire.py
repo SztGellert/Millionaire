@@ -11,7 +11,7 @@ import circle
 def game_start():
     fg.purple = Style(RgbFg(148, 0, 211))
     pygame.mixer.init()
-    os.system('clear')
+    os.system('cls')
     play_sound("./msc/loim_intro.wav", 0)
     time.sleep(2)
     print("This is the game of games..\nIn the arena..\nMr Steven Vágó is awaiting You!\n"+fg.purple+"Become the next Millionaire!\n"+fg.rs)
@@ -37,10 +37,13 @@ def open_file(filename, mode):
 
 
 def open_drawing(filename, mode):
-   
+    print("debug")
     with open(filename, mode) as file:
+        print("debug2")
         list_of_file = []
+        print(file.errors.join(' '))
         for line in file:
+            print(line)
             line = line.split(',')
             list_of_file.append(line)
     return list_of_file
@@ -67,7 +70,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
         if i < 4:
             quiz_table(table_line_length, choises, question, shuffled_line, addition=2)
             time.sleep(1)
-            os.system('clear')
+            os.system('cls')
     time.sleep(1)
 
 
@@ -180,6 +183,7 @@ def quiz_table(table_line_length, choises, question, shuffled_line, addition=0):
     print(bg.rs)
 
 def print_lists(Help_available, table_line_length, head='vago2.txt', file='./Database/prices.txt'):
+    print("here")
     vago_feje_sorai = open_drawing(head, 'r')
     prices_table=open_file(file,'r')
     price_number=0
@@ -216,7 +220,7 @@ def help_modules(answers, current_line, question, table_line_length, shuffled_li
     help_ = safe_input(": ", ["a","t","h"])
     if help_.lower() == "a":
         if Help_available[0]:
-            os.system('clear')
+            os.system('cls')
             audience_help(answers, current_line, question, table_line_length, choises, shuffled_line, Help_available)
             Help_available[0] = False
             quiz_table(table_line_length, choises, question, shuffled_line, addition=2)
@@ -299,7 +303,7 @@ def telephone_help(question, current_line):
 
 
 def halving(table_line_length, question, shuffled_line, choises, current_line, answers):
-    os.system('clear')
+    os.system('cls')
     time.sleep(2)
     play_sound("./msc/felezo.mp3", 0)
     possibilities = []
@@ -353,7 +357,7 @@ def check_answer(answer, Choise, current_line, answers, choises, table_line_leng
         choises[index] = Choise(betuk[index], shuffled_line[index], '\x1b[42m', '\x1b[39m', '\x1b[49m', '\x1b[30m',choise_lengths)
         fg.green = Style(RgbFg(0, 255, 0))
         time.sleep(2)
-        os.system('clear')
+        os.system('cls')
         play_sound("./msc/jo valasz.mp3", 0)
         print(fg.green + "Well done!" + fg.rs)
     else:
@@ -392,13 +396,13 @@ def calculate_quiz_table_size(question_lines, list_of_answers):
 
 def stop_game_and_guess_out_of_game(answer, Help_available, table_line_length, prices, prices1, prices2, counter, current_line, answers, choises, shuffled_line, question):
     if answer.lower() == "s":
-        os.system('clear')
+        os.system('cls')
         play_sound("./msc/zene_le.mp3", 0)
         print_lists(Help_available, table_line_length)
         quiz_table(table_line_length, choises, question, shuffled_line)
         answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d"])
         marking(Choise, answer, current_line, answers, choises, table_line_length, shuffled_line, question, Help_available)
-        os.system('clear')
+        os.system('cls')
         print_lists(Help_available, table_line_length)
         print("  "+bg.black+"/"+"‾"*(table_line_length-6)+"\\"+bg.rs)
         width = table_line_length
@@ -416,7 +420,7 @@ def stop_game_and_guess_out_of_game(answer, Help_available, table_line_length, p
 
 def pressed_h_key(answer, answers, current_line, question, table_line_length, shuffled_line, choises, Help_available, prices, prices1, prices2, counter):
     if answer.lower() == 'h':
-            os.system('clear')
+            os.system('cls')
             print_lists(Help_available, table_line_length, head='vago_helping.txt')
             quiz_table(table_line_length, choises, question, shuffled_line)
             Help_available = help_modules(answers, current_line, question, table_line_length, shuffled_line, choises, Help_available, prices, prices1, prices2, counter)
@@ -461,7 +465,7 @@ def quiz():
         random_question = random.choice(list_of_answers[starting_range:ending_range])
         question = random_question[0]
         time.sleep(2)
-        os.system('clear')
+        os.system('cls')
         current_line = random_question[1:5]
         copy_of_list_of_answers = copy.deepcopy(random_question)
         shuffled_line = copy_of_list_of_answers[1:5]
@@ -491,7 +495,7 @@ def quiz():
         answer = safe_input("Are you sure? ", ["a", "b", "c", "d", "s"])
         stop_game_and_guess_out_of_game(answer, Help_available, table_line_length, prices, prices1, prices2, counter,current_line, answers, choises, shuffled_line, question)
         answer=marking(Choise, answer, current_line, answers, choises, table_line_length, shuffled_line, question, Help_available)[1]
-        os.system('clear')
+        os.system('cls')
         print_lists(Help_available, table_line_length)
         quiz_table(table_line_length, choises, question, shuffled_line)
         play_sound("./msc/marked.mp3", 0)
@@ -501,7 +505,7 @@ def quiz():
         print_lists(Help_available, table_line_length)
         quiz_table(table_line_length, choises, question, shuffled_line)
         time.sleep(2)
-        os.system('clear')
+        os.system('cls')
         won_prize = prices[i]
         if i == 4:
             won_prize = "You have guaranteed 100.000 Ft"
