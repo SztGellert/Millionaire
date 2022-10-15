@@ -33,7 +33,7 @@
         print(''.join(vago_feje_sorai[head_lines]).strip('\n')+bg.black+"|"+fg.rs+bg.rs+prices2[head_lines]+spaces_+fg.white+bg.black+"|"+bg.rs+fg.rs)
     print(''.join(vago_feje_sorai[15]).rstrip()+31*" "+bg.black+(len(prices[:-1])+1)*"-"+bg.rs)
     for art in range(16, 20):
-        print(''.join(vago_feje_sorai[art]).rstrip())"""
+        print(''.join(vago_feje_sorai[art]).rstrip())
 def audience_help(answers, current_line, question, table_line_length, choises, shuffled_line):
     
     play_sound("./msc/kozonseg.mp3", 0)
@@ -272,7 +272,7 @@ def print_quizmaster_with_audinence_help(Help_available, table_line_length,shuff
 
     for head_lines in range(4,len(vago_feje_sorai)):
         if head_lines < (len(vago_feje_sorai)-2):
-            """ price_length=len("40.000.000 Ft") """
+             price_length=len("40.000.000 Ft") 
             if head_lines==4:
                 print(bg.black+(vago_feje_sorai[head_lines][0]).rstrip().center((table_line_length), ' ')+"▏"+''.join(audience[audience_number])+"▕")
             else:
@@ -281,4 +281,4 @@ def print_quizmaster_with_audinence_help(Help_available, table_line_length,shuff
         else:
             print(bg.black+(vago_feje_sorai[head_lines][0]).rstrip().center((table_line_length), ' ')+prices_line_sec)
             print(bg.black+(vago_feje_sorai[head_lines][0]).rstrip().center((table_line_length), ' ')+len(prices_line)*" ")
-            break
+            break                                            """      
