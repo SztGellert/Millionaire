@@ -37,13 +37,9 @@ def open_file(filename, mode):
 
 
 def open_drawing(filename, mode):
-    print("debug")
     with open(filename, mode) as file:
-        print("debug2")
         list_of_file = []
-        print(file.errors.join(' '))
         for line in file:
-            print(line)
             line = line.split(',')
             list_of_file.append(line)
     return list_of_file
@@ -183,7 +179,6 @@ def quiz_table(table_line_length, choises, question, shuffled_line, addition=0):
     print(bg.rs)
 
 def print_lists(Help_available, table_line_length, head='vago2.txt', file='./Database/prices.txt'):
-    print("here")
     vago_feje_sorai = open_drawing(head, 'r')
     prices_table=open_file(file,'r')
     price_number=0
