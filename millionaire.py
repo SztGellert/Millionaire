@@ -430,16 +430,22 @@ def quiz():
         print("c: " + question_lines[i][3])
         print("d: " + question_lines[i][4])
 
-        answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d", "h", "s"])
+        answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d"])
         if answer == "a":
             print("Well Done!")
             if i == 14:
                 print("Congratulations! You have won 40 000 000 Ft!")
                 time.sleep(2)
-                break
+                sys.exit(0)
+
         else:
             print("Bad answer! Better luck next time!")
-            break
+            if safe_input("Would you like to play again? ('y'/'n')", ['y']) == 'y':
+                os.system('cls')
+                main()
+            else:
+                sys.exit(0)
+
         time.sleep(2)
         os.system('cls')
 
