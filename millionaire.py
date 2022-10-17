@@ -10,7 +10,7 @@ def game_start():
     fg.purple = Style(RgbFg(148, 0, 211))
     pygame.mixer.init()
     os.system('cls')
-    play_sound("./msc/loim_intro.wav", 0)
+    play_sound("data/sound_files/loim_intro.wav", 0)
     time.sleep(2)
     print("This is the game of games..\nIn the arena..\nMr Steven Vágó is awaiting You!\n"+fg.purple+"Become the next Millionaire!\n"+fg.rs)
     time.sleep(5)
@@ -57,7 +57,7 @@ def choose_random_from_list(list_):
 
 
 def audience_help(answers, current_line, question, table_line_length, choises, shuffled_line, Help_available):
-    play_sound("./msc/kozonseg.mp3", 0)
+    play_sound("data/sound_files/kozonseg.mp3", 0)
     for i in range(5):
         print_quizmaster_with_audinence_help(Help_available, table_line_length, shuffled_line,current_line)
         if i < 4:
@@ -175,7 +175,7 @@ def quiz_table(table_line_length, choises, question, shuffled_line, addition=0):
     print(bg.black+"    "+choice_length[2]*"‾"+(spaces__+2)*" "+choice_length[3]*"‾"+bg.black+(15+addition)*" "+bg.rs)
     print(bg.rs)
 
-def print_lists(Help_available, table_line_length, head='vago2.txt', file='./Database/prices.txt'):
+def print_lists(Help_available, table_line_length, head='vago2.txt', file='./data/prices.txt'):
     vago_feje_sorai = open_drawing(head, 'r')
     prices_table=open_file(file,'r')
     price_number=0
@@ -251,9 +251,9 @@ def give_audience_choises():
 
 def print_phone_conversation(text, question, good_answer):
     
-    play_sound("./msc/telhiv.mp3", 0)
+    play_sound("data/sound_files/telhiv.mp3", 0)
     time.sleep(2)
-    play_sound("./msc/telefon.mp3", 0)
+    play_sound("data/sound_files/telefon.mp3", 0)
     then = time.time() 
     print(fg.orange+str(30-int(time.time()-then))+fg.rs)
     time.sleep(2)
@@ -285,7 +285,7 @@ def print_phone_conversation(text, question, good_answer):
 def telephone_help(question, current_line):
     phone = safe_input("Who'd you like to call?\nfor mum, press 'm'\nfor dad press 'd'\nfor old teacher from high school press 't'\nfor Maester Yoda press 'y': ", ["m", "d", "t", "y"])
     call_list = ['m', 'd', 't', 'y']
-    call_files_directory = "./Database/Telephone_conversations/"
+    call_files_directory = "./data/phone_help_scenarios/"
     call_text_files = ["mum.txt", "dad.txt", "teacher.txt", "yoda_master.txt"]
     for letter in range(len(call_list)):
         if phone.lower() == call_list[letter]:
@@ -297,7 +297,7 @@ def telephone_help(question, current_line):
 def halving(table_line_length, question, shuffled_line, choises, current_line, answers):
     os.system('cls')
     time.sleep(2)
-    play_sound("./msc/felezo.mp3", 0)
+    play_sound("data/sound_files/felezo.mp3", 0)
     possibilities = []
     for shuffled_element in shuffled_line:
         if shuffled_element == current_line[0]:
@@ -350,10 +350,10 @@ def check_answer(answer, current_line, answers, choises, table_line_length, shuf
         fg.green = Style(RgbFg(0, 255, 0))
         time.sleep(2)
         os.system('cls')
-        play_sound("./msc/jo valasz.mp3", 0)
+        play_sound("data/sound_files/jo valasz.mp3", 0)
         print(fg.green + "Well done!" + fg.rs)
     else:
-        play_sound("./msc/rossz valasz.mp3", 0)
+        play_sound("data/sound_files/rossz valasz.mp3", 0)
         time.sleep(2)
         fg.red = Style(RgbFg(255, 0, 0))
         print(fg.red+answer+"\nBetter luck next time!"+fg.rs)
@@ -389,7 +389,7 @@ def calculate_quiz_table_size(question_lines, list_of_answers):
 def stop_game_and_guess_out_of_game(answer, Help_available, table_line_length, prices, prices1, prices2, counter, current_line, answers, choises, shuffled_line, question):
     if answer.lower() == "s":
         os.system('cls')
-        play_sound("./msc/zene_le.mp3", 0)
+        play_sound("data/sound_files/zene_le.mp3", 0)
         print_lists(Help_available, table_line_length)
         quiz_table(table_line_length, choises, question, shuffled_line)
         answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d"])
@@ -428,6 +428,39 @@ def getDictionaryKeyByValue(dictionary: {}, value: str):
 
 
 def quiz():
+    os.system('cls')
+    for i in range(15):
+        question_lines = open_file('questions.txt', "r")
+        print(question_lines[i][0])
+        answers = {'a': question_lines[i][1], 'b': question_lines[i][2], 'c': question_lines[i][3], 'd': question_lines[i][4]}
+        answer_list = list(answers.values())
+        random.shuffle(answer_list)
+        shuffled_answers = dict(zip(answers, answer_list))
+        for k in range(4):
+            print(list(answers.keys())[k] + ": " + answer_list[k])
+        answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d"])
+        if answer == getDictionaryKeyByValue(shuffled_answers, question_lines[i][1]):
+            print("Well Done!")
+            if i == 14:
+                print("Congratulations! You have won 40 000 000 Ft!")
+                time.sleep(2)
+                sys.exit(0)
+        else:
+            print("Bad answer! Better luck next time!")
+            if safe_input("Would you like to play again? ('y'/'n')", ['y']) == 'y':
+                os.system('cls')
+                main()
+            else:
+                sys.exit(0)
+
+        time.sleep(2)
+        os.system('cls')
+
+
+
+
+    """"
+    os.system('cls')
     for i in range(15):
         question_lines = open_file('questions.txt', "r")
         print(question_lines[i][0])
@@ -497,7 +530,7 @@ def quiz():
         quiz_table(table_line_length, choises, question, shuffled_line)
         answer = safe_input("\nSelect the correct answer (a,b,c,d) or 'h' for help! ", ["a", "b", "c", "d", "h", "s"])
         pressed_h_key(answer,answers, current_line, question, table_line_length, shuffled_line, choises, Help_available, prices, prices1, prices2, counter)
-        list_of_are_you_sure_sound_files = ["./msc/vegleges.mp3", "./msc/vegleges2.mp3", "./msc/vegleges3.mp3", "./msc/vegleges4.mp3", "./msc/vegyem_veglegesnek.mp3"]
+        list_of_are_you_sure_sound_files = ["./sound_files/vegleges.mp3", "./sound_files/vegleges2.mp3", "./sound_files/vegleges3.mp3", "./sound_files/vegleges4.mp3", "./sound_files/vegyem_veglegesnek.mp3"]
         are_you_sure_sound = choose_random_from_list(list_of_are_you_sure_sound_files)
         play_sound(are_you_sure_sound, 0)
         time.sleep(1)
@@ -507,7 +540,7 @@ def quiz():
         os.system('cls')
         print_lists(Help_available, table_line_length)
         quiz_table(table_line_length, choises, question, shuffled_line)
-        play_sound("./msc/marked.mp3", 0)
+        play_sound("./sound_files/marked.mp3", 0)
         time.sleep(4)
         #check_answer(answer, Choise, current_line, answers, choises, table_line_length, shuffled_line, question)
         choises=check_answer(answer, current_line, answers, choises, table_line_length, shuffled_line, question)
@@ -542,7 +575,8 @@ def quiz():
         """
 
 def main():
-    #game_start()
+    os.system('cls')
+    game_start()
     quiz()
 
 
