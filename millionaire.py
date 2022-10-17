@@ -428,6 +428,7 @@ def getDictionaryKeyByValue(dictionary: {}, value: str):
 
 
 def quiz():
+    os.system('cls')
     for i in range(15):
         question_lines = open_file('questions.txt', "r")
         print(question_lines[i][0])
@@ -542,8 +543,10 @@ def quiz():
         """
 
 def main():
-    #game_start()
+    os.system('cls')
+    game_start()
     quiz()
+    os.system('pause')
 
 
 if __name__ == "__main__":
