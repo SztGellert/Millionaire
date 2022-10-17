@@ -42,7 +42,7 @@ What children's show features characters named Big Bird and Elmo?,Sesame Street,
 Which biblical figure built an ark?,Noah,Jesus Christ,Moses,Eve
 What is the smallest unit of American currency?,Penny,Dime,Quarter,Dollar
 What is the first name of McDonald's mascot?,Ronald,Susan,George,Karl
-Who is the current host of "The Tonight Show?",Jimmy Fallon,Oprah Winfrey,Anne CurryBob Barker
+Who is the current host of "The Tonight Show?",Jimmy Fallon,Oprah Winfrey,Anne Curry,Bob Barker
 What is the first letter of the Greek alphabet?,Alpha,Omega,Zed,E
 Which mode of transportation traditionally has two wheels?,Bicycle,Tricycle,Car,Bus
 What is the term length for the president of the United States?,4 years,1 year,10 years,20 years

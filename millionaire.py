@@ -454,6 +454,7 @@ def quiz():
     clear_screen(operatingSystem)
     for i in range(15):
         question_lines = open_file('questions.txt', "r")
+        random.shuffle(question_lines)
         print(question_lines[i][0])
         answers = {'a': question_lines[i][1], 'b': question_lines[i][2], 'c': question_lines[i][3],
                    'd': question_lines[i][4]}
