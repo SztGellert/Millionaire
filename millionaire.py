@@ -432,12 +432,15 @@ def quiz():
         question_lines = open_file('questions.txt', "r")
         print(question_lines[i][0])
         answers = {'a': question_lines[i][1], 'b': question_lines[i][2], 'c': question_lines[i][3], 'd': question_lines[i][4]}
-        print("a: " + question_lines[i][1])
-        print("b: " + question_lines[i][2])
-        print("c: " + question_lines[i][3])
-        print("d: " + question_lines[i][4])
+        shuffled_answers = list(answers.values())
+        random.shuffle(shuffled_answers)
+        shuffled_answers = dict(zip(answers, shuffled_answers))
+        choices = list(answers.values())
+        random.shuffle(choices)
+        for k in range(4):
+            print(list(answers.keys())[k] + ": " + shuffled_answers[k])
         answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d"])
-        if answer == getDictionaryKeyByValue(answers, question_lines[i][1]):
+        if answer == getDictionaryKeyByValue(shuffled_answers, question_lines[i][1]):
             print("Well Done!")
             if i == 14:
                 print("Congratulations! You have won 40 000 000 Ft!")
