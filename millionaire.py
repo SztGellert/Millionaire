@@ -479,9 +479,11 @@ def quiz():
                     print(bg.orange + show_price(i) + bg.rs)
                     time.sleep(2)
             else:
+                play_sound("great_logic.mp3", 0)
                 clear_screen(operatingSystem)
                 print(fg.purple + "Congratulations! You have won 40 000 000 Ft!" + fg.rs)
-                time.sleep(2)
+                play_sound("winning_theme.mp3", 0)
+                time.sleep(35)
                 sys.exit(0)
         else:
             print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
