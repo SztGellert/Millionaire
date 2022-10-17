@@ -59,7 +59,7 @@ PREQUISITES:
 		millionaire/install_python_x64.
 			Right click/run with PowerShell
 
-To install game dependencies: double click on "install" file
+To install game & download dependencies: double-click on "install" file
 this will auto-install required python dependencies
 
 To run: use "millionaire".exe
@@ -75,7 +75,7 @@ credits: https://towardsdatascience.com/how-to-easily-convert-a-python-script-to
 
 pip3 install pillow (convert the icon for the executable file)
 
-generated command: pyinstaller --noconfirm --onefile --console --icon "C:/Users/Gellért/PycharmProjects/Millionaire/loim.ico"  "C:/Users/Gellért/PycharmProjects/Millionaire/millionaire.py"
+generated command: pyinstaller --noconfirm --onefile --console --icon "C:/Users/Yourname/PycharmProjects/Millionaire/loim.ico"  "C:/Users/Yourname/PycharmProjects/Millionaire/millionaire.py"
 
 How to Automatically Install Required Packages From a Python Script?	
 
