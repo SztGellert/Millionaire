@@ -432,13 +432,11 @@ def quiz():
         question_lines = open_file('questions.txt', "r")
         print(question_lines[i][0])
         answers = {'a': question_lines[i][1], 'b': question_lines[i][2], 'c': question_lines[i][3], 'd': question_lines[i][4]}
-        shuffled = list(answers.values())
-        random.shuffle(shuffled)
-        shuffled_answers = dict(zip(answers, shuffled))
-        choices = list(answers.values())
-        random.shuffle(choices)
+        answer_list = list(answers.values())
+        random.shuffle(answer_list)
+        shuffled_answers = dict(zip(answers, answer_list))
         for k in range(4):
-            print(list(answers.keys())[k] + ": " + choices[k])
+            print(list(answers.keys())[k] + ": " + answer_list[k])
         answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d"])
         if answer == getDictionaryKeyByValue(shuffled_answers, question_lines[i][1]):
             print("Well Done!")
