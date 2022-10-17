@@ -36,7 +36,7 @@
         print(''.join(vago_feje_sorai[art]).rstrip())
 def audience_help(answers, current_line, question, table_line_length, choises, shuffled_line):
     
-    play_sound("./msc/kozonseg.mp3", 0)
+    play_sound("./sound_files/kozonseg.mp3", 0)
     for choise in [answers]:
         if choise == current_line[0]:
             if choise == a:
@@ -105,7 +105,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
             print(d__+(((max_element)-d_percent)+3)*" "+"|"+bg.rs)
             print((table_line_length+1)*" "+bg.black+(max_element+11)*"-" + bg.rs)
 """     """ print(answers)
-    play_sound("./msc/jo valasz.mp3", 0)
+    play_sound("./sound_files/jo valasz.mp3", 0)
     fg.green = Style(RgbFg(0, 255, 0))
     print(fg.green + "Well done!" + fg.rs)
     time.sleep(2)
@@ -115,7 +115,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
         print()
         print(current_line[0])
         print(answers)
-        play_sound("./msc/rossz valasz.mp3", 0)
+        play_sound("./sound_files/rossz valasz.mp3", 0)
         time.sleep(2)
         fg.red = Style(RgbFg(255, 0, 0))
         print(fg.red+answer+"\nBetter luck next time!"+fg.rs)
@@ -155,13 +155,13 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
     time.sleep(1)
     os.system('cls')
     if answer == current_line[0]:
-        play_sound("./msc/jo valasz.mp3", 0)
+        play_sound("./sound_files/jo valasz.mp3", 0)
         fg.green = Style(RgbFg(0, 255, 0))
         print(fg.green + "Well done!" + fg.rs)
         time.sleep(2)
         os.system('cls')
     else:
-        play_sound("./msc/rossz valasz.mp3", 0)
+        play_sound("./sound_files/rossz valasz.mp3", 0)
         time.sleep(2)
         fg.red = Style(RgbFg(255, 0, 0))
         print(fg.red+answer+"\nBetter luck next time!"+fg.rs)
