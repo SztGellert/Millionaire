@@ -6,10 +6,11 @@ import time
 import pygame
 
 operatingSystem = os.name
+fg.purple = Style(RgbFg(148, 0, 211))
+bg.orange = bg(255, 150, 50)
 
 
 def game_start():
-    fg.purple = Style(RgbFg(148, 0, 211))
     pygame.mixer.init()
     clear_screen(operatingSystem)
     play_sound("data/sound_files/loim_intro.wav", 0)
@@ -475,11 +476,11 @@ def quiz():
                 else:
                     print(fg.green + "Well Done!" + fg.rs)
                     clear_screen(operatingSystem)
-                    bg.orange = bg(255, 150, 50)
                     print(bg.orange + show_price(i) + bg.rs)
                     time.sleep(2)
             else:
                 play_sound("great_logic.mp3", 0)
+                time.sleep(1)
                 clear_screen(operatingSystem)
                 print(fg.purple + "Congratulations! You have won 40 000 000 Ft!" + fg.rs)
                 play_sound("winning_theme.mp3", 0)
