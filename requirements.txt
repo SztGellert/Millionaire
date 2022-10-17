@@ -1,2 +1,4 @@
 pygame==2.1.2
 sty==1.0.4
+pillow==9.2.0
+auto-py-to-exe==2.23.1
