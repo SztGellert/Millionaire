@@ -31,7 +31,7 @@ def open_file(filename, mode):
             line = line.strip().split(',')
             list_of_file.append(line)
     return list_of_file
-
+"""
 
 def open_drawing(filename, mode):
     with open(filename, mode) as file:
@@ -40,7 +40,7 @@ def open_drawing(filename, mode):
             line = line.split(',')
             list_of_file.append(line)
     return list_of_file
-
+"""
 
 def safe_input(input_text, allowed_list_of_letters):
     
@@ -50,7 +50,7 @@ def safe_input(input_text, allowed_list_of_letters):
         answer = input("Select the correct answer!")
     return answer
 
-
+"""
 def choose_random_from_list(list_):
 
     return random.choice(list_)
@@ -139,7 +139,7 @@ def print_quizmaster_with_audinence_help(Help_available, table_line_length,shuff
 
     for head_lines in range(4,len(vago_feje_sorai)):
         if head_lines < (len(vago_feje_sorai)-2):
-            """ price_length=len("40.000.000 Ft") """
+            price_length=len("40.000.000 Ft") 
             if head_lines==4:
                 print(bg.black+(vago_feje_sorai[head_lines][0]).rstrip().center((table_line_length), ' ')+"▏"+''.join(audience[audience_number])+"▕")
             else:
@@ -420,6 +420,7 @@ def pressed_h_key(answer, answers, current_line, question, table_line_length, sh
             Telephone = Help_available[1]
             Halving = Help_available[2]
 
+"""
 
 def getDictionaryKeyByValue(dictionary: {}, value: str):
     for choice, answerValue in dict.items(dictionary):
@@ -440,13 +441,13 @@ def quiz():
             print(list(answers.keys())[k] + ": " + answer_list[k])
         answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d"])
         if answer == getDictionaryKeyByValue(shuffled_answers, question_lines[i][1]):
-            print("Well Done!")
+            print(fg.green + "Well Done!" + fg.rs)
             if i == 14:
-                print("Congratulations! You have won 40 000 000 Ft!")
+                print(fg.purple + "Congratulations! You have won 40 000 000 Ft!" + fg.rs)
                 time.sleep(2)
                 sys.exit(0)
         else:
-            print("Bad answer! Better luck next time!")
+            print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
             if safe_input("Would you like to play again? ('y'/'n')", ['y']) == 'y':
                 os.system('cls')
                 main()
@@ -459,39 +460,7 @@ def quiz():
 
 
 
-    """"
-    os.system('cls')
-    for i in range(15):
-        question_lines = open_file('questions.txt', "r")
-        print(question_lines[i][0])
-        answers = {'a': question_lines[i][1], 'b': question_lines[i][2], 'c': question_lines[i][3], 'd': question_lines[i][4]}
-        answer_list = list(answers.values())
-        random.shuffle(answer_list)
-        shuffled_answers = dict(zip(answers, answer_list))
-        for k in range(4):
-            print(list(answers.keys())[k] + ": " + answer_list[k])
-        answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d"])
-        if answer == getDictionaryKeyByValue(shuffled_answers, question_lines[i][1]):
-            print("Well Done!")
-            if i == 14:
-                print("Congratulations! You have won 40 000 000 Ft!")
-                time.sleep(2)
-                sys.exit(0)
-        else:
-            print("Bad answer! Better luck next time!")
-            if safe_input("Would you like to play again? ('y'/'n')", ['y']) == 'y':
-                os.system('cls')
-                main()
-            else:
-                sys.exit(0)
-
-        time.sleep(2)
-        os.system('cls')
-
-
-
-
-    """"
+    """
     Help_available = [True, True, True]
     prices = ["5.000 Ft", "10.000 Ft", "25.000 Ft", "50.000 Ft", "100.000 Ft", "200.000 Ft", "300.000 Ft", "500.000 Ft", "800.000 Ft", "1.500.000 Ft", "3.000.000 Ft", "5.000.000 Ft", "10.000.000 Ft", "20.000.000 Ft", "40.000.000 Ft"]
     prices1 = ['40.000.000 Ft', '20.000.000 Ft', '10.000.000 Ft', '5.000.000 Ft', '3.000.000 Ft', '1.500.000 Ft', '800.000 Ft', '500.000 Ft', '300.000 Ft', '200.000 Ft', '100.000 Ft', '50.000 Ft', '25.000 Ft', '10.000 Ft', '5.000 Ft']
@@ -536,7 +505,7 @@ def quiz():
         time.sleep(1)
         answer = safe_input("Are you sure? ", ["a", "b", "c", "d", "s"])
         stop_game_and_guess_out_of_game(answer, Help_available, table_line_length, prices, prices1, prices2, counter,current_line, answers, choises, shuffled_line, question)
-        answer=marking(Choise, answer, current_line, answers, choises, table_line_length, shuffled_line, question, Help_available)[1]
+        answer=marking(answer, current_line, answers, choises, table_line_length, shuffled_line, question, Help_available)[1]
         os.system('cls')
         print_lists(Help_available, table_line_length)
         quiz_table(table_line_length, choises, question, shuffled_line)
