@@ -13,7 +13,7 @@ bg.orange = bg(255, 150, 50)
 def game_start():
     pygame.mixer.init()
     clear_screen(operatingSystem)
-    play_sound("data/sound_files/loim_intro.wav", 0)
+    play_sound("loim_intro.wav", 0)
     time.sleep(2)
     print("This is the game of games..\nIn the arena..\nMr Steven Vágó is awaiting You!\n" + fg.purple + "Become the next Millionaire!\n" + fg.rs)
     time.sleep(5)
@@ -489,7 +489,7 @@ def quiz():
                 sys.exit(0)
         else:
             print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
-            if safe_input("Would you like to play again? ('y'/'n')", ['y']) == 'y':
+            if safe_input("Would you like to play again? ('y'/'n')", ['y', 'n']) == 'y':
                 clear_screen(operatingSystem)
                 main()
             else:
@@ -577,7 +577,7 @@ def quiz():
 
 def main():
     clear_screen(operatingSystem)
-    #game_start()
+    game_start()
     quiz()
 
 
