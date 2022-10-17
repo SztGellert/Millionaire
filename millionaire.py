@@ -421,23 +421,28 @@ def pressed_h_key(answer, answers, current_line, question, table_line_length, sh
             Halving = Help_available[2]
 
 
+def getDictionaryKeyByValue(dictionary: {}, value: str):
+    for choice, answerValue in dict.items(dictionary):
+        if answerValue == value:
+            return choice
+
+
 def quiz():
     for i in range(15):
         question_lines = open_file('questions.txt', "r")
         print(question_lines[i][0])
+        answers = {'a': question_lines[i][1], 'b': question_lines[i][2], 'c': question_lines[i][3], 'd': question_lines[i][4]}
         print("a: " + question_lines[i][1])
         print("b: " + question_lines[i][2])
         print("c: " + question_lines[i][3])
         print("d: " + question_lines[i][4])
-
         answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d"])
-        if answer == "a":
+        if answer == getDictionaryKeyByValue(answers, question_lines[i][1]):
             print("Well Done!")
             if i == 14:
                 print("Congratulations! You have won 40 000 000 Ft!")
                 time.sleep(2)
                 sys.exit(0)
-
         else:
             print("Bad answer! Better luck next time!")
             if safe_input("Would you like to play again? ('y'/'n')", ['y']) == 'y':
