@@ -1,28 +1,25 @@
 import random
-import copy
 import sys
 import os
 from sty import Style, RgbFg, fg, bg
 import time
 import pygame
-import circle
 
 
 def game_start():
     fg.purple = Style(RgbFg(148, 0, 211))
     pygame.mixer.init()
-    os.system('clear')
+    os.system('cls')
     play_sound("./msc/loim_intro.wav", 0)
     time.sleep(2)
     print("This is the game of games..\nIn the arena..\nMr Steven Vágó is awaiting You!\n"+fg.purple+"Become the next Millionaire!\n"+fg.rs)
-    circle.who_wants_to_be_a_millionaire_circle()
     time.sleep(5)
 
 
 def play_sound(filename, starting_time):
     pygame.mixer.init()
     pygame.mixer.music.load(filename)
-    # pygame.mixer.music.set_volume(0.07)
+    pygame.mixer.music.set_volume(0.07)
     pygame.mixer.music.play(0, starting_time)
 
 
@@ -37,7 +34,6 @@ def open_file(filename, mode):
 
 
 def open_drawing(filename, mode):
-   
     with open(filename, mode) as file:
         list_of_file = []
         for line in file:
@@ -67,7 +63,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
         if i < 4:
             quiz_table(table_line_length, choises, question, shuffled_line, addition=2)
             time.sleep(1)
-            os.system('clear')
+            os.system('cls')
     time.sleep(1)
 
 
@@ -216,7 +212,7 @@ def help_modules(answers, current_line, question, table_line_length, shuffled_li
     help_ = safe_input(": ", ["a","t","h"])
     if help_.lower() == "a":
         if Help_available[0]:
-            os.system('clear')
+            os.system('cls')
             audience_help(answers, current_line, question, table_line_length, choises, shuffled_line, Help_available)
             Help_available[0] = False
             quiz_table(table_line_length, choises, question, shuffled_line, addition=2)
@@ -299,7 +295,7 @@ def telephone_help(question, current_line):
 
 
 def halving(table_line_length, question, shuffled_line, choises, current_line, answers):
-    os.system('clear')
+    os.system('cls')
     time.sleep(2)
     play_sound("./msc/felezo.mp3", 0)
     possibilities = []
@@ -340,7 +336,7 @@ def marking(Choise, answer, current_line, answers, choises, table_line_length, s
     return choises, answer
 
 
-def check_answer(answer, Choise, current_line, answers, choises, table_line_length, shuffled_line, question):
+def check_answer(answer, current_line, answers, choises, table_line_length, shuffled_line, question):
     betuk = [' A: ', ' B: ', ' C: ', ' D: ']
     choise_lengths=[]
     for n in range(4):
@@ -350,10 +346,10 @@ def check_answer(answer, Choise, current_line, answers, choises, table_line_leng
         if shuffled_line[pos] == current_line[0]:
             index = shuffled_line.index(shuffled_line[pos])
     if answer == current_line[0]:
-        choises[index] = Choise(betuk[index], shuffled_line[index], '\x1b[42m', '\x1b[39m', '\x1b[49m', '\x1b[30m',choise_lengths)
+        choises[index] = betuk[index], shuffled_line[index], '\x1b[42m', '\x1b[39m', '\x1b[49m', '\x1b[30m',choise_lengths
         fg.green = Style(RgbFg(0, 255, 0))
         time.sleep(2)
-        os.system('clear')
+        os.system('cls')
         play_sound("./msc/jo valasz.mp3", 0)
         print(fg.green + "Well done!" + fg.rs)
     else:
@@ -392,13 +388,13 @@ def calculate_quiz_table_size(question_lines, list_of_answers):
 
 def stop_game_and_guess_out_of_game(answer, Help_available, table_line_length, prices, prices1, prices2, counter, current_line, answers, choises, shuffled_line, question):
     if answer.lower() == "s":
-        os.system('clear')
+        os.system('cls')
         play_sound("./msc/zene_le.mp3", 0)
         print_lists(Help_available, table_line_length)
         quiz_table(table_line_length, choises, question, shuffled_line)
         answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d"])
-        marking(Choise, answer, current_line, answers, choises, table_line_length, shuffled_line, question, Help_available)
-        os.system('clear')
+        marking(answer, current_line, answers, choises, table_line_length, shuffled_line, question, Help_available)
+        os.system('cls')
         print_lists(Help_available, table_line_length)
         print("  "+bg.black+"/"+"‾"*(table_line_length-6)+"\\"+bg.rs)
         width = table_line_length
@@ -416,7 +412,7 @@ def stop_game_and_guess_out_of_game(answer, Help_available, table_line_length, p
 
 def pressed_h_key(answer, answers, current_line, question, table_line_length, shuffled_line, choises, Help_available, prices, prices1, prices2, counter):
     if answer.lower() == 'h':
-            os.system('clear')
+            os.system('cls')
             print_lists(Help_available, table_line_length, head='vago_helping.txt')
             quiz_table(table_line_length, choises, question, shuffled_line)
             Help_available = help_modules(answers, current_line, question, table_line_length, shuffled_line, choises, Help_available, prices, prices1, prices2, counter)
@@ -425,7 +421,44 @@ def pressed_h_key(answer, answers, current_line, question, table_line_length, sh
             Halving = Help_available[2]
 
 
+def getDictionaryKeyByValue(dictionary: {}, value: str):
+    for choice, answerValue in dict.items(dictionary):
+        if answerValue == value:
+            return choice
+
+
 def quiz():
+    for i in range(15):
+        question_lines = open_file('questions.txt', "r")
+        print(question_lines[i][0])
+        answers = {'a': question_lines[i][1], 'b': question_lines[i][2], 'c': question_lines[i][3], 'd': question_lines[i][4]}
+        answer_list = list(answers.values())
+        random.shuffle(answer_list)
+        shuffled_answers = dict(zip(answers, answer_list))
+        for k in range(4):
+            print(list(answers.keys())[k] + ": " + answer_list[k])
+        answer = safe_input("\nSelect the correct answer (a,b,c,d)! ", ["a", "b", "c", "d"])
+        if answer == getDictionaryKeyByValue(shuffled_answers, question_lines[i][1]):
+            print("Well Done!")
+            if i == 14:
+                print("Congratulations! You have won 40 000 000 Ft!")
+                time.sleep(2)
+                sys.exit(0)
+        else:
+            print("Bad answer! Better luck next time!")
+            if safe_input("Would you like to play again? ('y'/'n')", ['y']) == 'y':
+                os.system('cls')
+                main()
+            else:
+                sys.exit(0)
+
+        time.sleep(2)
+        os.system('cls')
+
+
+
+
+    """"
     Help_available = [True, True, True]
     prices = ["5.000 Ft", "10.000 Ft", "25.000 Ft", "50.000 Ft", "100.000 Ft", "200.000 Ft", "300.000 Ft", "500.000 Ft", "800.000 Ft", "1.500.000 Ft", "3.000.000 Ft", "5.000.000 Ft", "10.000.000 Ft", "20.000.000 Ft", "40.000.000 Ft"]
     prices1 = ['40.000.000 Ft', '20.000.000 Ft', '10.000.000 Ft', '5.000.000 Ft', '3.000.000 Ft', '1.500.000 Ft', '800.000 Ft', '500.000 Ft', '300.000 Ft', '200.000 Ft', '100.000 Ft', '50.000 Ft', '25.000 Ft', '10.000 Ft', '5.000 Ft']
@@ -434,26 +467,6 @@ def quiz():
     list_of_answers = open_file('questions.txt', "r")
     starting_range = 0
     ending_range = 4
-    max_choise=[]
-    
-    class Choise():
-        def __init__(self, letter, answer, firstpart, secondpart, thirdpart, additional, lengths=''):
-            self.lengths=lengths
-            self.additional = additional
-            self.mark = "▏"
-            self.quote = "◆"
-            self.letter = letter
-            self.answer = answer 
-            self.spaces = (self.lengths-(len(self.answer)))*" " +5*" "+"▕"
-            self.firstpart = firstpart
-            self.secondpart = secondpart
-            self.thirdpart = thirdpart
-            self.f_end = "◀"
-            self.s_end = "▶"
-            self.line = "-"
-            self.slash = "▕"
-            self.slash_ = "▏"
-
     letters_ = [" A: ", " B: ", " C: ", " D: "]
     for i in range(15):
         counter = i
@@ -461,7 +474,7 @@ def quiz():
         random_question = random.choice(list_of_answers[starting_range:ending_range])
         question = random_question[0]
         time.sleep(2)
-        os.system('clear')
+        os.system('cls')
         current_line = random_question[1:5]
         copy_of_list_of_answers = copy.deepcopy(random_question)
         shuffled_line = copy_of_list_of_answers[1:5]
@@ -477,7 +490,7 @@ def quiz():
             choise_lengths.append(len(shuffled_line[n]))
         choise_lengths=max(choise_lengths)
         for letter_ in range(len(letters_)):
-            choises[letter_] = Choise(letters_[letter_],shuffled_line[letter_],'\x1b[40m','\x1b[39m','\x1b[49m','\x1b[38;2;255;150;50m',choise_lengths)
+            choises[letter_] = letters_[letter_],shuffled_line[letter_],'\x1b[40m','\x1b[39m','\x1b[49m','\x1b[38;2;255;150;50m',choise_lengths
         fg.orange = Style(RgbFg(255, 150, 50))
         table_line_length = calculate_quiz_table_size(question_lines,list_of_answers)
         print_lists(Help_available, table_line_length)
@@ -491,17 +504,17 @@ def quiz():
         answer = safe_input("Are you sure? ", ["a", "b", "c", "d", "s"])
         stop_game_and_guess_out_of_game(answer, Help_available, table_line_length, prices, prices1, prices2, counter,current_line, answers, choises, shuffled_line, question)
         answer=marking(Choise, answer, current_line, answers, choises, table_line_length, shuffled_line, question, Help_available)[1]
-        os.system('clear')
+        os.system('cls')
         print_lists(Help_available, table_line_length)
         quiz_table(table_line_length, choises, question, shuffled_line)
         play_sound("./msc/marked.mp3", 0)
         time.sleep(4)
         #check_answer(answer, Choise, current_line, answers, choises, table_line_length, shuffled_line, question)
-        choises=check_answer(answer, Choise, current_line, answers, choises, table_line_length, shuffled_line, question)
+        choises=check_answer(answer, current_line, answers, choises, table_line_length, shuffled_line, question)
         print_lists(Help_available, table_line_length)
         quiz_table(table_line_length, choises, question, shuffled_line)
         time.sleep(2)
-        os.system('clear')
+        os.system('cls')
         won_prize = prices[i]
         if i == 4:
             won_prize = "You have guaranteed 100.000 Ft"
@@ -526,10 +539,10 @@ def quiz():
         starting_range = ending_range + 1
         ending_range = starting_range + 4
         time.sleep(1)
-
+        """
 
 def main():
-    game_start()
+    #game_start()
     quiz()
 
 

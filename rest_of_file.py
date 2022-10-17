@@ -33,7 +33,7 @@
         print(''.join(vago_feje_sorai[head_lines]).strip('\n')+bg.black+"|"+fg.rs+bg.rs+prices2[head_lines]+spaces_+fg.white+bg.black+"|"+bg.rs+fg.rs)
     print(''.join(vago_feje_sorai[15]).rstrip()+31*" "+bg.black+(len(prices[:-1])+1)*"-"+bg.rs)
     for art in range(16, 20):
-        print(''.join(vago_feje_sorai[art]).rstrip())"""
+        print(''.join(vago_feje_sorai[art]).rstrip())
 def audience_help(answers, current_line, question, table_line_length, choises, shuffled_line):
     
     play_sound("./msc/kozonseg.mp3", 0)
@@ -60,7 +60,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
                 c_percent = random.randrange(0, (100-d_percent-b_percent))
                 a_percent = 100-(d_percent+b_percent+c_percent)
             time.sleep(4)
-            os.system('clear')
+            os.system('cls')
             for choise_ in [answers]:
                 if choise == current_line[0]:
                     if choise_ == a:
@@ -87,7 +87,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
                         print("Sheibe")
                 print("A:"+bg.blue+fake_a_percent*" "+" "+str(fake_a_percent)+"%"+"\n"+bg.rs+"B:"+bg.blue+fake_b_percent*" "+" "+str(fake_b_percent)+"%"+"\n"+bg.rs+"C:"+bg.blue+fake_c_percent*" "+" "+str(fake_c_percent)+"%"+"\n"+bg.rs+"D:"+bg.blue+fake_d_percent*" "+" "+str(fake_d_percent)+"%"+"\n"+bg.rs)
                 time.sleep(4)
-                os.system('clear')
+                os.system('cls')
                 sys.stdout.write("\033[F")
             elems = [a_percent, b_percent, c_percent, d_percent]
             max_element = max(elems[0], elems[1], elems[2], elems[3])
@@ -109,7 +109,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
     fg.green = Style(RgbFg(0, 255, 0))
     print(fg.green + "Well done!" + fg.rs)
     time.sleep(2)
-    os.system('clear')
+    os.system('cls')
     else:
         print(answer)
         print()
@@ -153,13 +153,13 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
                 if pos == answers[3]:
                     choises[3] = bg.green + choises[3] + "  " + bg.black
     time.sleep(1)
-    os.system('clear')
+    os.system('cls')
     if answer == current_line[0]:
         play_sound("./msc/jo valasz.mp3", 0)
         fg.green = Style(RgbFg(0, 255, 0))
         print(fg.green + "Well done!" + fg.rs)
         time.sleep(2)
-        os.system('clear')
+        os.system('cls')
     else:
         play_sound("./msc/rossz valasz.mp3", 0)
         time.sleep(2)
@@ -170,7 +170,7 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
 
                 print("A:"+bg.blue+fake_a_percent*" "+" "+str(fake_a_percent)+"%"+"\n"+bg.rs+"B:"+bg.blue+fake_b_percent*" "+" "+str(fake_b_percent)+"%"+"\n"+bg.rs+"C:"+bg.blue+fake_c_percent*" "+" "+str(fake_c_percent)+"%"+"\n"+bg.rs+"D:"+bg.blue+fake_d_percent*" "+" "+str(fake_d_percent)+"%"+"\n"+bg.rs)
                 time.sleep(4)
-                os.system('clear')
+                os.system('cls')
                 sys.stdout.write("\033[F")
             elems = [a_percent, b_percent, c_percent, d_percent]
             max_element = max(elems[0], elems[1], elems[2], elems[3])
@@ -189,20 +189,20 @@ def audience_help(answers, current_line, question, table_line_length, choises, s
             print((table_line_length+1)*" "+bg.black+(max_element+11)*"-" + bg.rs)
 
                                                                                                      ▏40.000.000 Ft▕
-                                  ▓▓░░▒▒▒▒▒▒░▒░░░▒▒▒▒▒▒░░▓▓                                  ▏20.000.000 Ft▕
-                                  ▒▒▒▒▒ 👁  ▒▒▒▒▒▒▒ 👁  ▒▒▒▒▒                                ▏10.000.000 Ft▕
-                                  ▓░░░▒▒▒▒▒▒░▒▒░░▒▒▒▒▒▒░░░▓                                  ▏5.000.000 Ft ▕
-                                  ░░░░░░░░░░░▒▒▒▒░░░░░░░░░░                                  ▏3.000.000 Ft ▕
-                                  ░░░░░░░░░░░░░░░░░░░░░░░░░                                  ▏1.500.000 Ft ▕
-                                    ░░░░░░▓▓▓▓▓▓▓▓▓▓░░░░░                                    ▏800.000 Ft   ▕
-                                      ░░░▓▓        ▓▓░░░                                     ▏500.000 Ft   ▕
-                                       ░░░░▓▓▓▓▓▓▓▓░░░░                                      ▏300.000 Ft   ▕
-                                        ░░░░░▓▓▓▓░░░░                                        ▏             ▕
-                                          ░░░░░░░░░░                                         ▏             ▕
-                                           ░░░░░░░                                           ▏             ▕
-                                         ██▒▒▒▒▒▒▒███                                        ▏             ▕
-                                      ██▓▓▓  ▒   ▓▓▓▓▓██                                     ▏             ▕
-                                   ██▓▓▓▓    ▒▒    ▓▓▓▓▓▓██                                  ▏             ▕
+                                  ##||łłłłłł|ł|||łłłłłł||##                                  ▏20.000.000 Ft▕
+                                  łłłłł o   łłłłłłł o   łłłłł                                ▏10.000.000 Ft▕
+                                  #|||łłłłłł|łł||łłłłłł|||#                                  ▏5.000.000 Ft ▕
+                                  |||||||||||łłłł||||||||||                                  ▏3.000.000 Ft ▕
+                                  |||||||||||||||||||||||||                                  ▏1.500.000 Ft ▕
+                                    ||||||##########|||||                                    ▏800.000 Ft   ▕
+                                      |||##        ##|||                                     ▏500.000 Ft   ▕
+                                       ||||########||||                                      ▏300.000 Ft   ▕
+                                        |||||####||||                                        ▏             ▕
+                                          ||||||||||                                         ▏             ▕
+                                           |||||||                                           ▏             ▕
+                                         XXłłłłłłłXXX                                        ▏             ▕
+                                      XX###  ł   #####XX                                     ▏             ▕
+                                   XX####    łł    ######XX                                  ▏             ▕
                                                                                              ▏A ◆ B ◆ C ◆ D▕
 
 def print_quizmaster_with_audinence_help(Help_available, table_line_length,shuffled_line,current_line, head='vago2.txt'):
@@ -272,7 +272,7 @@ def print_quizmaster_with_audinence_help(Help_available, table_line_length,shuff
 
     for head_lines in range(4,len(vago_feje_sorai)):
         if head_lines < (len(vago_feje_sorai)-2):
-            """ price_length=len("40.000.000 Ft") """
+             price_length=len("40.000.000 Ft") 
             if head_lines==4:
                 print(bg.black+(vago_feje_sorai[head_lines][0]).rstrip().center((table_line_length), ' ')+"▏"+''.join(audience[audience_number])+"▕")
             else:
@@ -281,4 +281,4 @@ def print_quizmaster_with_audinence_help(Help_available, table_line_length,shuff
         else:
             print(bg.black+(vago_feje_sorai[head_lines][0]).rstrip().center((table_line_length), ' ')+prices_line_sec)
             print(bg.black+(vago_feje_sorai[head_lines][0]).rstrip().center((table_line_length), ' ')+len(prices_line)*" ")
-            break
+            break                                            """      
