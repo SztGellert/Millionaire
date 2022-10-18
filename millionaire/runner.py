@@ -1,9 +1,8 @@
 from millionaire.quiz import quiz
 
 
-
 def main():
-    # quiz.intro()
+    quiz.intro()
     quiz.quiz()
 
 
