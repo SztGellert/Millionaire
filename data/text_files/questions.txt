@@ -11,7 +11,7 @@ Which musician was born in 1756?,Wolfgang Amadeus Mozart,Ludwig van Beethoven,Wi
 Who has invented the zeppelin?,Ferdinand von Zeppelin,Karl Maybach,Stefan Sommer,Henri Giffard
 Which is the correct highest point of the Mount Everest?,8848,8840,8830,8838
 When did Henry VIII die?,1435,1978,1523,1547
-Which is the longest bridge in the world?,Danyang-Kunshan  Grand  Bridge,Cangde  Grand  Bridge,Bang  Na  Expressway,Runyang Bridge
+Which is the longest bridge in the world?,Danyang-Kunshan Grand Bridge,Cangde Grand Bridge,Bang Na Expressway,Runyang Bridge
 What makeup product makes eyelashes appear longer?,Mascara,Blush,Foundation,Lipstick
 What city contains the Eiffel Tower?,Paris,Sydney,Los Angeles,New York City
 Which sport is also known as football?,Soccer,Basketball,Baseball,Cricket
@@ -31,13 +31,13 @@ What is someone who collects coins called?,Numismatist,Professor,Chef,Psychiatri
 Which video game system does Sony produce?,PlayStation,Xbox,Atari,Game Boy
 What are the names of the Super Mario Bros.?,Mario and Luigi,Tim and Eric,Batman and Robin,Sonic and Tails
 Which princess lost a glass slipper?,Cinderella,Snow White,Mulan,Belle
-Which American car company makes the Mustang, the F-150 and Escape?,Ford,Toyota,Volkswagen,Nissan
+Which American car company makes the Mustang the F-150 and Escape?,Ford,Toyota,Volkswagen,Nissan
 Who was the first woman to fly solo across the Atlantic?,Amelia Earhart,Geraldine Ferraro,Martha Stewart,Sally Ride
 Which U.S. city is home to the Liberty Bell and Independence Hall?,Philadelphia,Vancouver,Mexico City,Beijing
 Which pop culture franchise has characters named Luke Skywalker and Han Solo and Darth Vader?,Star Wars,Harry Potter,Star Trek,James Bond
 How many days are in a leap year?,366,28,30,400
 Which website is the most popular search engine?,Google,DuckDuckGo,Myspace,Bing
-Who is the current British monarch?,Queen Elizabeth II,King Philippe,Queen Victoria,King George
+Who is the current British monarch?,King Charles III,King Philippe,Queen Elizabeth II,King George
 What children's show features characters named Big Bird and Elmo?,Sesame Street,Barney & Friends,Spongebob Squarepants,The Wiggles
 Which biblical figure built an ark?,Noah,Jesus Christ,Moses,Eve
 What is the smallest unit of American currency?,Penny,Dime,Quarter,Dollar
@@ -46,17 +46,17 @@ Who is the current host of "The Tonight Show?",Jimmy Fallon,Oprah Winfrey,Anne C
 What is the first letter of the Greek alphabet?,Alpha,Omega,Zed,E
 Which mode of transportation traditionally has two wheels?,Bicycle,Tricycle,Car,Bus
 What is the term length for the president of the United States?,4 years,1 year,10 years,20 years
-What is the largest external organ on the human body?Skin,Eyes,Ears,Nose
+What is the largest external organ on the human body?,Skin,Eyes,Ears,Nose
 What is the capital of Iceland?,Reykjavik,Tegucigalpa,Kingston,Astana
 Who invented sliced bread?,Otto Frederick Rohwedder,Samuel Morse,Alfred Nobel,Wright brothers
 Which of these famous figures was a physicist?,Enrico Fermi,Berenice Abbott,Gertrude Abercrombie,Carla Accardi
 Which of these is NOT one of the Great Lakes in the Midwestern part of the United States?,Lake Toronto,Lake Huron,Lake Michigan,Lake Ontario
 What is the largest country in the world?,Russia,Canada,China,North America
-Which of the following is the correct formula of the Pythagorean Theorem?,a²+b²=c²,y=mx+b,A= πr²,S=4πr²
+Which of the following is the correct formula of the Pythagorean Theorem?,a^2+b^2=c^2,y=mx+b,A= πr^2,S=4πr^2
 Which of these painters is known for his work in abstract expressionism?,Jackson Pollock,Max Ernst,René Magritte,Keith Haring
 Which of these flowers are poisonous?,Lily of the valley,Frilly Edible Chrysanthemum,Bergamot,Chervil
 Which of these states was NOT one of the original 13 colonies?,Florida,New York,Pennsylvania,Georgia
-A caffè macchiato has ________ origins.,Italian,Spanish,American,French
+A caffé macchiato has ________ origins.,Italian,Spanish,American,French
 The "hryvnia" is the currency of which of these countries?,Ukraine,Turkey,Iran,India
 Who wrote the pamphlet "Common Sense" in 1776?,Thomas Paine,George Read,George Clymer,John Hart
 "The Scream" is a famous painting that was created by...?,Edvard Munch,Pablo Picasso,Claude Monet,Henri Matisse
@@ -67,7 +67,7 @@ Which of these is NOT on the periodic table of elements?,Polypodium,Cadmium,Acti
 Which of these games was featured in the classic film "WarGames?",Tic-Tac-Toe,Checkers,Tower of Hanoi,Nim
 Where is a shrimp's heart located?,In its head,In its tail,In its legs,On its back
 What is the capital of South Dakota?,Pierre,Bismarck,Raleigh,Columbia
-Which of these is considered to be a French "mother sauce?",Hollandaise,Beurre blanc,Bordelaise,Charcutière
+Which of these is considered to be a French "mother sauce?",Hollandaise,Beurre blanc,Bordelaise,Charcutiere
 Who was the 15th president of the United States?,James Buchanan,Franklin Pierce,James K. Polk,Zachary Taylor
 Which of these is NOT one of the seven wonders of the 'Ancient World?',Capuchin Monastery Catacombs,Temple of Artemis at Ephesus,Lighthouse of Alexandria,Colossus of Rhodes
 Which of these is NOT a fruit?,Rutabaga,Banana,Apples,Peppers
