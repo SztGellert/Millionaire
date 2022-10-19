@@ -101,14 +101,14 @@ def quiz():
             help_functions = {"audience": audience_help, "telephone": telephone_help, "halving": halving}
             chosen_help_type = safe_input("Choose help: 'a' for audience, 't' for telephone, 'h' for halving! ",
                                           ["a", "t", "h"])
-            for l in range(len(help_types)):
-                if chosen_help_type.lower() == list(help_types)[l][0]:
-                    if help_types[list(help_types)[l]]:
-                        list(help_functions.values())[l](question, answers, correct_answer)
-                        help_types[l] = False
+            for x in range(len(help_types)):
+                if chosen_help_type.lower() == list(help_types)[x][0]:
+                    if help_types[list(help_types)[x]]:
+                        list(help_functions.values())[x](question, answers, correct_answer)
+                        help_types[x] = False
                         break
                     else:
-                        print("You have already used the " + help_types[l] + " help!")
+                        print("You have already used the " + help_types[x] + " help!")
             answer = safe_input("\nSelect the correct answer ('a','b','c','d') ! ",
                                 ["a", "b", "c", "d"])
             time.sleep(2)
@@ -182,36 +182,25 @@ def show_prize(round_number: int):
     return prizes[round_number]
 
 
-def print_phone_conversation(text, question, good_answer):
+def print_phone_conversation(text, question, answers, good_answer):
     play_sound("phone_ring.mp3", 0)
     time.sleep(2)
     play_sound("phone_call.mp3", 0)
     then = time.time()
-    print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
-    time.sleep(2)
-    print(''.join(text[0]))
-    print("\n" + ''.join(question))
-    print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
-    time.sleep(2)
-    print(''.join(text[1]))
-    print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
-    time.sleep(2)
-    print(fg.red + ''.join(text[2]) + fg.rs)
-    print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
-    time.sleep(2)
-    print(''.join(text[3]))
-    if text[2][0] == 'I call the Force for help!':
-        print(''.join(text[4]))
-        print(good_answer + "\n")
-        print(''.join(text[5]))
-    else:
-        print(''.join(text[4]))
-        print(good_answer + "\n")
+    for i in range(len(text)):
+        print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
+        time.sleep(2)
+        if i == 0:
+            print(text[i][0] + " " + question + " " + ",".join(list(answers.values())))
+        elif i == len(text)-1:
+            print(text[i][0] + " " + good_answer.upper())
+        else:
+            print(text[i][0])
     print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
     now = time.time()
     play_sound('phone_call.mp3', 30.0)
     time.sleep(3)
-    print("Call Duration: ", int(now - then), " seconds\\ 30 a")
+    print("Call Duration: ", int(now - then), " seconds\\ 30s")
     pygame.mixer.music.stop()
 
 
@@ -224,10 +213,10 @@ def telephone_help(question, answers, correct_answer):
         "for Maester Yoda press 'y': ",
         ["m", "d", "t", "y"])
     call_text_files = ["mum_phone.txt", "dad_phone.txt", "teacher_phone.txt", "yoda_master_phone.txt"]
-    for i in range(len(call_list)):
+    for i in range(len(call_text_files)):
         if phone.lower() == call_text_files[i][0]:
             text = (open_file(call_text_files[i], 'r'))
-            print_phone_conversation(text, question, correct_answer)
+            print_phone_conversation(text, question, answers, correct_answer)
 
 
 def halving(question, answers, correct_answer):
@@ -237,13 +226,13 @@ def halving(question, answers, correct_answer):
     play_sound("halving.mp3", 0)
     possibilities = ["a", "b", "c", "d"]
     possibilities.pop(list(answers).index(correct_answer))
-    second = random.choice(possibilities)
-
+    second_answer = random.choice(possibilities)
+    print(question)
     for i in answers:
         if i == correct_answer:
             print(i + ": " + answers[correct_answer])
-        elif i == second:
-            print(i + ": " + answers[second])
+        elif i == second_answer:
+            print(i + ": " + answers[second_answer])
         else:
             print(i + ": ")
 
