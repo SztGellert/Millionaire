@@ -1,7 +1,9 @@
-		🅦̲🅗̲🅞̲ 🅦̲🅐̲🅝̲🅣̲🅢̲ 🅣̲🅞̲ 🅑̲🅔̲ 🅐̲ 🅜̲🅘̲🅛̲🅛̲🅘̲🅞̲🅝̲🅐̲🅘̲🅡̲🅔̲ ❔̲ 
+			🅦̲🅗̲🅞̲ 🅦̲🅐̲🅝̲🅣̲🅢̲ 🅣̲🅞̲ 🅑̲🅔̲ 🅐̲ 🅜̲🅘̲🅛̲🅛̲🅘̲🅞̲🅝̲🅐̲🅘̲🅡̲🅔̲ ❔̲ 
 		ⒷⓎ
 		ⒼⒺⓁⓁⒺ́ⓇⓉ ⓈⓏⓉⒶⓃⓀⓄⓋⓈⓏⓀⓎ
- 
+
+   ![loim](https://user-images.githubusercontent.com/55703557/196563057-562d0512-bc30-4332-8827-0af03fb63aeb.png)
+
 
 
 		This is the README file of The Helpless Gooses' Millionare game.
@@ -37,6 +39,29 @@
 
 		MODULES USED:
 
+		third party: pygame, sty, pillow, auto-py-to-exe
+		built in: random, copy, sys, os, time
+
+
+		requires.txt 
+		
+		pygame==2.1.2
+		sty==1.0.4
+		pillow==9.2.0
+		auto-py-to-exe==2.23.1
+		
+		Future goals:
+
+		A game script, that can be executed instantly from a file in a separate window.
+		Hungarian and English language selection.
+
+
+		 Please enjoy!
+		 Best wishes from the Gooses!
+
+
+		MODULES USED:
+
 		third party: pygame, sty
 		built in: random, copy, sys, os, time
 		(+ circle is an own module) 
@@ -50,42 +75,46 @@
 		 Please enjoy!
 		 Best wishes from the Gooses!
 
-PREQUISITES:
-	WRITTEN IN PYTHON 3.10
-	INSTALL PYTHON
-	https://www.python.org/downloads/
+		PREQUISITES:
+			WRITTEN IN PYTHON 3.10
+			INSTALL PYTHON
+			https://www.python.org/downloads/
 
-	ALTERNATIVELY PYTHON 3.10 x64 can be installed via
-		millionaire/install_python_x64.
-			Right click/run with PowerShell
+			ALTERNATIVELY PYTHON 3.10 x64 can be installed via
+				millionaire/install_python_x64.
+					Right click/run with PowerShell
 
-To install game & download dependencies: double-click on "install" file
-this will auto-install required python dependencies
+		INSTALLATION:
+		To install game & download dependencies: double-click on "install" file
+		this will auto-install required python dependencies
 
-To run: use "millionaire".exe
-
-
-
-Steps to reproduce auto-run for python programme:
-	pip3 install auto-py-to-exe
-	auto-py-to-exe
+		To run: use "millionaire".exe
 
 
-credits: https://towardsdatascience.com/how-to-easily-convert-a-python-script-to-an-executable-file-exe-4966e253c7e9
 
-pip3 install pillow (convert the icon for the executable file)
+		Steps to reproduce auto-run for python programme:
+			pip3 install auto-py-to-exe
+			auto-py-to-exe
 
-generated command: pyinstaller --noconfirm --onefile --console --icon "C:/Users/Yourname/PycharmProjects/Millionaire/loim.ico"  "C:/Users/Yourname/PycharmProjects/Millionaire/millionaire.py"
 
-How to Automatically Install Required Packages From a Python Script?	
+		credits: https://towardsdatascience.com/how-to-easily-convert-a-python-script-to-an-executable-file-exe-4966e253c7e9
 
-credits: https://www.geeksforgeeks.org/how-to-automatically-install-required-packages-from-a-python-script/
+		pip3 install pillow (convert the icon for the executable file)
 
-Quick notes:
-	1. Under PyCharm Clear Screen command does not work 
-	    Select 'Edit Configurations' from the 'Run' menu.
-	    Under the 'Execution' section, select 'Emulate terminal in output console'
-	
-	   Or run from separate windows command line.
-	   
-	   Current supported os platform is windows.
+		generated command: pyinstaller --noconfirm --onefile --console --icon "C:/Users/Yourname/PycharmProjects/Millionaire/loim.ico"  "C:/Users/Yourname/PycharmProjects/Millionaire/millionaire.py"
+
+		How to Automatically Install Required Packages From a Python Script?	
+
+		credits: https://www.geeksforgeeks.org/how-to-automatically-install-required-packages-from-a-python-script/
+
+		Quick notes:
+			1. Under PyCharm Clear Screen command does not work 
+			    Select 'Edit Configurations' from the 'Run' menu.
+			    Under the 'Execution' section, select 'Emulate terminal in output console'
+
+			   Or run from separate windows command line.
+
+			   Current supported os platform is windows.
+
+		run python scripts in batch and wait for return from their executions
+		https://stackoverflow.com/questions/24935107/run-python-scripts-in-batch-and-wait-for-return-from-their-executions
