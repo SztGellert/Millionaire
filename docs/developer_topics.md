@@ -25,6 +25,22 @@ How to run python scripts in batch and wait for return from their executions?
 -------------
 credits: https://stackoverflow.com/questions/24935107/run-python-scripts-in-batch-and-wait-for-return-from-their-executions
 
+Linux Topics
+-------------
+Virtualenv Environment - venv Python Interpreter
+sudo apt update && sudo apt upgrade -y
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.10
+sudo apt install python3-pip
+sudo apt install pythonpy
+
+**pygame.init() tries to initialize all the pygame module and sometimes get: "ALSA lib pcm.c:8526:(snd_pcm_recover) underrun occurred" when I run a pygame program**
+sudo apt-get install libasound2
+credits:https://stackoverflow.com/questions/31847497/pygame-tries-to-use-alsa
+
+Increase buffer size in pygame.mixer.init(buffer=)
+
 **PyCharm Notes:**
 ###
 1. Under PyCharm Clear Screen command does not work 
@@ -34,3 +50,5 @@ credits: https://stackoverflow.com/questions/24935107/run-python-scripts-in-batc
    Or run from separate windows command line.
 
    Current supported os platform is windows.
+
+
