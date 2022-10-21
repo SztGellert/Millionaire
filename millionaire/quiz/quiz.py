@@ -66,53 +66,55 @@ def quiz():
             "\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help! ",
             ["a", "b", "c", "d", "h", "t"])
         correct_answer = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
-        if answer == "t":
-            play_sound("music_off.mp3", 0)
-            answer = safe_input("\nSelect the correct answer ('a','b','c','d') ! ",
-                                ["a", "b", "c", "d"])
-            time.sleep(2)
-            clear_screen()
-            play_sound("marked.mp3", 0)
-            time.sleep(2)
-            is_correct = check_answer(answer, correct_answer)
-            if is_correct:
+        while answer not in list(answers.keys()):
+            if answer == "t":
+                play_sound("music_off.mp3", 0)
+                answer = safe_input("\nSelect the correct answer ('a','b','c','d') ! ",
+                                    ["a", "b", "c", "d"])
+                time.sleep(2)
                 clear_screen()
-                if i > 9:
-                    print(bg.orange + show_prize(9) + bg.rs)
-                    time.sleep(1)
-                elif i > 4:
-                    print(bg.orange + show_prize(4) + bg.rs)
-                    play_sound("won_hundred_bucks.mp3", 0)
-                    time.sleep(1)
-                else:
-                    print(fg.blue + "Correct answer! Better luck next time!" + fg.rs)
-                    play_sound("show_stop.mp3", 0)
-                    time.sleep(1)
-            else:
-                print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
-                play_sound("so_sorry.mp3", 0)
-                time.sleep(1)
-            if safe_input("Would you like to play again? ('y'/'n')", ['y', 'n']) == 'y':
-                clear_screen()
-                quiz()
-            else:
-                sys.exit(0)
-        if answer == "h":
-            help_functions = {"audience": audience_help, "telephone": telephone_help, "halving": halving}
-            chosen_help_type = safe_input("Choose help: 'a' for audience, 't' for telephone, 'h' for halving! ",
-                                          ["a", "t", "h"])
-            for x in range(len(help_types)):
-                if chosen_help_type.lower() == list(help_types)[x][0]:
-                    if help_types[list(help_types)[x]]:
-                        list(help_functions.values())[x](question, answers, correct_answer)
-                        help_types[x] = False
-                        break
+                play_sound("marked.mp3", 0)
+                time.sleep(2)
+                is_correct = check_answer(answer, correct_answer)
+                if is_correct:
+                    clear_screen()
+                    if i > 9:
+                        print(bg.orange + show_prize(9) + bg.rs)
+                        time.sleep(1)
+                    elif i > 4:
+                        print(bg.orange + show_prize(4) + bg.rs)
+                        play_sound("won_hundred_bucks.mp3", 0)
+                        time.sleep(1)
                     else:
-                        print("You have already used the " + help_types[x] + " help!")
-            answer = safe_input("\nSelect the correct answer ('a','b','c','d') ! ",
-                                ["a", "b", "c", "d"])
-            time.sleep(2)
-            clear_screen()
+                        print(fg.blue + "Correct answer! Better luck next time!" + fg.rs)
+                        play_sound("show_stop.mp3", 0)
+                        time.sleep(1)
+                else:
+                    print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
+                    play_sound("so_sorry.mp3", 0)
+                    time.sleep(1)
+                if safe_input("Would you like to play again? ('y'/'n')", ['y', 'n']) == 'y':
+                    clear_screen()
+                    quiz()
+                else:
+                    sys.exit(0)
+            if answer == "h":
+                help_functions = {"audience": audience_help, "telephone": telephone_help, "halving": halving}
+                chosen_help_type = safe_input("Choose help: 'a' for audience, 't' for telephone, 'h' for halving! ",
+                                              ["a", "t", "h"])
+                for x in range(len(help_types)):
+                    if chosen_help_type.lower() == list(help_types)[x][0]:
+                        if help_types[list(help_types)[x]]:
+                            list(help_functions.values())[x](question, answers, correct_answer)
+                            help_types[x] = False
+                            break
+                        else:
+                            print("You have already used the " + help_types[x] + " help!")
+                answer = safe_input(
+                    "\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help! ",
+                    ["a", "b", "c", "d", "h", "t"])
+                time.sleep(2)
+                clear_screen()
         play_sound("marked.mp3", 0)
         time.sleep(2)
         is_correct = check_answer(answer, correct_answer)
