@@ -1,4 +1,4 @@
-from millionaire.quiz import quiz
+from quiz import quiz
 
 
 def main():
