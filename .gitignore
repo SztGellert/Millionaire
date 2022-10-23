@@ -4,7 +4,8 @@
 
 /.idea
 
-/bin/
+/bin/millionaire.exe
+
 ../millionaire.exe
 
 # Byte-compiled / optimized / DLL files
@@ -15,7 +16,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-bin/
+#bin/
 build/
 develop-eggs/
 dist/
