@@ -79,7 +79,17 @@
 					Right click/run with PowerShell
 
 		INSTALLATION:
-		To install game & download dependencies: double-click on "install" file
+        **WINDOWS:**
+		To install game & download dependencies: double-click on "install_win.bat" file
 		this will auto-install required python dependencies
 
-		To run: use "millionaire".exe
+		To run: use "millionaire.exe"
+
+        **LINUX:**
+        To install game & download dependencies: double-click on "install_linux.sh" file
+        this will auto-install required python dependencies
+        
+        To run: use "bin/millionaire.sh"
+
+        Desktop shortcut can be created by "create_dekstop_launcher.sh" (it need run as a program rights)
+
