@@ -75,7 +75,7 @@
 			https://www.python.org/downloads/
 
 			ALTERNATIVELY PYTHON 3.10 x64 can be installed via
-				millionaire/install_python_x64.
+				millionaire/install_python_win_x64.
 					Right click/run with PowerShell
 
 		INSTALLATION:
@@ -89,7 +89,8 @@
         To install game & download dependencies: double-click on "install_linux.sh" file
         this will auto-install required python dependencies
         
-        To run: use "bin/millionaire.sh"
+        To run: use "bin/millionaire.sh" (Right click/Run as a Program)
 
-        Desktop shortcut can be created by "create_dekstop_launcher.sh" (it need run as a program rights)
+        Desktop launcher can be created by "create_dekstop_launcher.sh" 
+        (Right click/Run as a Program)
 

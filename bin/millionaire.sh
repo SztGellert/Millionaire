@@ -1,2 +1,3 @@
 #!/bin/bash
-python3 ./millionaire/runner.py
+path_to_millionaire=$(readlink -f ../millionaire/runner.py)
+python3 "$path_to_millionaire"
