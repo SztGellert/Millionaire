@@ -2,17 +2,17 @@ import os
 import pathlib
 import sys
 import time
-
+import keyboard
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
 import pygame
 from sty import Style, RgbFg, fg, bg
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
 
 operating_system = os.name
 options = ["Play", "Help", "Credit", "Exit"]
 fg.purple = Style(RgbFg(148, 0, 211))
 select_msg = "Select Menu Option: "
 return_msg = "Press ENTER to return to main menu..."
+bg.orange = bg(255, 150, 50)
 
 
 def intro():
@@ -44,31 +44,22 @@ def show_title():
     print("=" * line_length + "\n\n")
 
 
-def show_options():
-    i = 1
+def show_options(chosen_option=0):
+    show_title()
     fore_string = "| "
     after_string = " |"
-    line_length = len(select_msg) + 3
+    line_length = len(select_msg)
     option_length = len(select_msg)
-    for option in options:
-        number_of_spaces = int((option_length - len(option) - len(fore_string) - len(after_string)) / 2)
-        print("-" * line_length)
-        string_to_print = fore_string + "[" + option[
-            0] + "]" + number_of_spaces * " " + option + number_of_spaces * " " + after_string
+    for i in range(len(options)):
+        option = options[i]
+        number_of_spaces = int((option_length - len(options[i]) - len(fore_string) - len(after_string)) / 2)
+        print("  " + "-" * line_length)
+        if i == chosen_option:
+            string_to_print = "  " + fore_string + bg.orange + number_of_spaces * " " + fg.black + option + fg.rs + number_of_spaces * " " + bg.rs + after_string
+        else:
+            string_to_print = "  " + fore_string + number_of_spaces * " " + option + number_of_spaces * " " + after_string
         print(string_to_print)
-        i += 1
-    print("-" * line_length + "\n")
-
-
-def get_user_input():
-    input_text = "\n" + select_msg
-    allowed_characters = ["p", "h", "c", "e"]
-    choise = input(input_text)
-    while choise not in allowed_characters:
-        print("Error! Only options: " + ' '.join(allowed_characters) + " allowed!")
-        choise = input("Select an option from the list above!")
-
-    return choise
+    print("  " + "-" * line_length + "\n")
 
 
 def exit():
@@ -127,6 +118,32 @@ def open_file(filename, mode):
 
 
 def return_prompt():
-    input_text = fg.red + "\n" + return_msg + fg.rs
-    input(input_text)
-    clear_screen()
+    print(fg.red + "\n" + return_msg + fg.rs)
+    if keyboard.read_key() == "enter":
+        return
+
+
+def get_user_input() -> str:
+    i = 0
+    while True:
+        if keyboard.read_key() == "enter":
+            return options[i][0].lower()
+        if keyboard.read_key() == 'down':
+            if i == 3:
+                i = 0
+                show_options()
+            else:
+                i += 1
+                show_options(i)
+            if keyboard.read_key() == "enter":
+                return options[i][0].lower()
+        if keyboard.read_key() == 'up':
+            if i == 0:
+                i = 3
+                show_options(3)
+            else:
+                i -= 1
+                show_options(i)
+            if keyboard.read_key() == "enter":
+                return options[i][0].lower()
+
