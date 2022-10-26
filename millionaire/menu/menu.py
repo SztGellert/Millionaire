@@ -44,6 +44,7 @@ def show_title():
     print("=" * line_length + "\n\n")
 
 
+
 def show_options(chosen_option=0):
     show_title()
     fore_string = "| "
@@ -146,4 +147,3 @@ def get_user_input() -> str:
                 show_options(i)
             if keyboard.read_key() == "enter":
                 return options[i][0].lower()
-
