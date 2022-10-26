@@ -5,6 +5,7 @@ import sys
 import os
 from sty import Style, RgbFg, fg, bg
 import time
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
 import pygame
 
 operating_system = os.name
@@ -26,16 +27,6 @@ def get_data_path() -> str:
         data_path = "../data"
 
     return data_path
-
-
-def intro():
-    pygame.mixer.init()
-    clear_screen()
-    play_sound("loim_intro.wav", 0)
-    time.sleep(2)
-    print(
-        "This is the game of games..\nIn the arena..\nMr Steven Vágó is awaiting You!\n" + fg.purple + "Become the next Millionaire!\n" + fg.rs)
-    time.sleep(12)
 
 
 def clear_screen():
@@ -154,11 +145,9 @@ def quiz():
                 sys.exit(0)
         else:
             print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
-            if safe_input("Would you like to play again? ('y'/'n')", ['y', 'n']) == 'y':
-                clear_screen()
-                quiz()
-            else:
-                sys.exit(0)
+            input("press ENTER for main menu..")
+            clear_screen()
+            return
         clear_screen()
 
 
