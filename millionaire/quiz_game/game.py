@@ -166,7 +166,7 @@ def print_phone_conversation(text, question, answers, good_answer):
     util.play_sound('phone_call.mp3', 30.0)
     time.sleep(3)
     print("Call Duration: ", int(now - then), " seconds\\ 30s")
-    util.stop_music()
+    util.stop_sound()
 
 
 def telephone_help(question, answers, correct_answer):

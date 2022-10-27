@@ -2,9 +2,11 @@
 
 from quiz_game import game
 from menu import menu
+from util import util
 
 
 def main():
+    util.init()
     menu.intro()
     menu.show_options()
     while True:
