@@ -3,7 +3,7 @@ import random
 import sys
 import os
 from sty import Style, RgbFg, fg, bg
-from utils import utils
+from util import util
 import time
 
 
@@ -18,14 +18,14 @@ prizes = ["5.000 Ft", "10.000 Ft", "25.000 Ft", "50.000 Ft", "100.000 Ft", "200.
           "40.000.000 Ft"]
 
 
-def quiz():
+def play():
     help_types["audience"] = True
     help_types["telephone"] = True
     help_types["halving"] = True
-    utils.clear_screen()
-    utils.play_sound("lom.mp3", 0)
+    util.clear_screen()
+    util.play_sound("lom.mp3", 0)
     time.sleep(2)
-    question_lines = utils.open_file('questions.txt', "r")
+    question_lines = util.open_file('questions.txt', "r")
     random.shuffle(question_lines)
     for i in range(15):
         question = question_lines[i][0]
@@ -43,34 +43,34 @@ def quiz():
         correct_answer = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
         while answer not in list(answers.keys()):
             if answer == "t":
-                utils.play_sound("music_off.mp3", 0)
+                util.play_sound("music_off.mp3", 0)
                 answer = safe_input("\nSelect the correct answer ('a','b','c','d') ! ",
                                     ["a", "b", "c", "d"])
                 time.sleep(2)
-                utils.clear_screen()
-                utils.play_sound("marked.mp3", 0)
+                util.clear_screen()
+                util.play_sound("marked.mp3", 0)
                 time.sleep(2)
                 is_correct = check_answer(answer, correct_answer)
                 if is_correct:
-                    utils.clear_screen()
+                    util.clear_screen()
                     if i > 9:
                         print(bg.orange + show_prize(9) + bg.rs)
                         time.sleep(1)
                     elif i > 4:
                         print(bg.orange + show_prize(4) + bg.rs)
-                        utils.play_sound("won_hundred_bucks.mp3", 0)
+                        util.play_sound("won_hundred_bucks.mp3", 0)
                         time.sleep(1)
                     else:
                         print(fg.blue + "Correct answer! Better luck next time!" + fg.rs)
-                        utils.play_sound("show_stop.mp3", 0)
+                        util.play_sound("show_stop.mp3", 0)
                         time.sleep(1)
                 else:
                     print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
-                    utils.play_sound("so_sorry.mp3", 0)
+                    util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
                 if safe_input("Would you like to play again? ('y'/'n')", ['y', 'n']) == 'y':
-                    utils.clear_screen()
-                    quiz()
+                    util.clear_screen()
+                    play()
                 else:
                     sys.exit(0)
             if answer == "h":
@@ -89,40 +89,40 @@ def quiz():
                     "\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help! ",
                     ["a", "b", "c", "d", "h", "t"])
                 time.sleep(2)
-                utils.clear_screen()
-        utils.play_sound("marked.mp3", 0)
+                util.clear_screen()
+        util.play_sound("marked.mp3", 0)
         time.sleep(2)
         is_correct = check_answer(answer, correct_answer)
         if is_correct:
             if i < 14:
-                utils.play_sound("correct_answer.mp3", 0)
+                util.play_sound("correct_answer.mp3", 0)
                 if i == 4:
                     print(fg.yellow + "You have guaranteed 100.000 Ft" + fg.rs)
-                    utils.play_sound("won_hundred_bucks.mp3", 0)
+                    util.play_sound("won_hundred_bucks.mp3", 0)
                     time.sleep(1)
                 elif i == 9:
                     print(fg.yellow + "You have guaranteed 1.500.000 Ft" + fg.rs)
-                    utils.play_sound("now_comes_hard_part.mp3", 0)
+                    util.play_sound("now_comes_hard_part.mp3", 0)
                     time.sleep(1)
                 else:
                     print(fg.green + "Well Done!" + fg.rs)
-                    utils.clear_screen()
+                    util.clear_screen()
                     print(bg.orange + show_prize(i) + bg.rs)
                     time.sleep(2)
             else:
-                utils.play_sound("great_logic.mp3", 0)
+                util.play_sound("great_logic.mp3", 0)
                 time.sleep(1)
-                utils.clear_screen()
+                util.clear_screen()
                 print(fg.purple + "Congratulations! You have won 40 000 000 Ft!" + fg.rs)
-                utils.play_sound("winning_theme.mp3", 0)
+                util.play_sound("winning_theme.mp3", 0)
                 time.sleep(35)
                 sys.exit(0)
         else:
             print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
             input("press ENTER for main menu..")
-            utils.clear_screen()
+            util.clear_screen()
             return
-        utils.clear_screen()
+        util.clear_screen()
 
 
 def safe_input(input_text, allowed_list_of_letters):
@@ -148,9 +148,9 @@ def show_prize(round_number: int):
 
 
 def print_phone_conversation(text, question, answers, good_answer):
-    utils.play_sound("phone_ring.mp3", 0)
+    util.play_sound("phone_ring.mp3", 0)
     time.sleep(2)
-    utils.play_sound("phone_call.mp3", 0)
+    util.play_sound("phone_call.mp3", 0)
     then = time.time()
     for i in range(len(text)):
         print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
@@ -163,10 +163,10 @@ def print_phone_conversation(text, question, answers, good_answer):
             print(text[i][0])
     print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
     now = time.time()
-    utils.play_sound('phone_call.mp3', 30.0)
+    util.play_sound('phone_call.mp3', 30.0)
     time.sleep(3)
     print("Call Duration: ", int(now - then), " seconds\\ 30s")
-    utils.stop_music()
+    util.stop_music()
 
 
 def telephone_help(question, answers, correct_answer):
@@ -180,15 +180,15 @@ def telephone_help(question, answers, correct_answer):
     call_text_files = ["mum_phone.txt", "dad_phone.txt", "teacher_phone.txt", "yoda_master_phone.txt"]
     for i in range(len(call_text_files)):
         if phone.lower() == call_text_files[i][0]:
-            text = (utils.open_file(call_text_files[i], 'r'))
+            text = (util.open_file(call_text_files[i], 'r'))
             print_phone_conversation(text, question, answers, correct_answer)
 
 
 def halving(question, answers, correct_answer):
-    utils.play_sound("lets_take_two.mp3", 0)
-    utils.clear_screen()
+    util.play_sound("lets_take_two.mp3", 0)
+    util.clear_screen()
     time.sleep(2)
-    utils.play_sound("halving.mp3", 0)
+    util.play_sound("halving.mp3", 0)
     possibilities = ["a", "b", "c", "d"]
     possibilities.pop(list(answers).index(correct_answer))
     second_answer = random.choice(possibilities)
@@ -203,10 +203,10 @@ def halving(question, answers, correct_answer):
 
 
 def audience_help(question, answers, correct_answer):
-    utils.play_sound("push_your_buttons.mp3", 0)
+    util.play_sound("push_your_buttons.mp3", 0)
     time.sleep(3)
     chance_of_answers = {}
-    utils.clear_screen()
+    util.clear_screen()
     for i in range(4):
         answers_list = ["a", "b", "c", "d"]
         chances = sorted(get_chances())
@@ -218,7 +218,7 @@ def audience_help(question, answers, correct_answer):
         for k in sorted(chance_of_answers):
             print(k + " : " + str(chance_of_answers[k]) + "%")
         time.sleep(1)
-        utils.clear_screen()
+        util.clear_screen()
     print(question)
     for i in range(len(answers)):
         print(list(answers.keys())[i] + " : " + list(sorted(answers.values()))[i] + " " +

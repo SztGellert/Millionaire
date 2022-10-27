@@ -1,7 +1,7 @@
 import sys
 import time
 import keyboard
-from utils import utils
+from util import util
 from sty import Style, RgbFg, fg, bg
 
 options = ["Play", "Help", "Credit", "Exit"]
@@ -12,10 +12,10 @@ bg.orange = bg(255, 150, 50)
 
 
 def intro():
-    utils.clear_screen()
-    utils.play_sound("loim_intro.wav", 0)
+    util.clear_screen()
+    util.play_sound("loim_intro.wav", 0)
     time.sleep(2)
-    file = (utils.open_file("intro.txt", 'r'))
+    file = (util.open_file("intro.txt", 'r'))
     for line_index in range(len(file)):
         if line_index == 3:
             print(fg.purple + file[line_index][0] + fg.rs)
@@ -27,7 +27,7 @@ def intro():
 
 def show_title():
     line_length = len(select_msg) + 3
-    utils.clear_screen()
+    util.clear_screen()
     print("=" * line_length)
     print(fg.purple + " ♦ WHO WANTS TO BE A ♦" + fg.rs)
     print("=" * line_length)
@@ -37,7 +37,6 @@ def show_title():
     print("=" * line_length)
     print(fg.purple + " ♦ WHO WANTS TO BE A ♦" + fg.rs)
     print("=" * line_length + "\n\n")
-
 
 
 def show_options(chosen_option=0):
@@ -58,21 +57,21 @@ def show_options(chosen_option=0):
     print("  " + "-" * line_length + "\n")
 
 
-def exit():
+def select_exit():
     sys.exit(0)
 
 
-def help():
-    utils.clear_screen()
-    file = (utils.open_file("tutorial.txt", 'r'))
+def select_help():
+    util.clear_screen()
+    file = (util.open_file("tutorial.txt", 'r'))
     for line in file:
         print(line[0])
     return_prompt()
 
 
-def credits():
-    utils.clear_screen()
-    file = (utils.open_file("credits.txt", 'r'))
+def select_credits():
+    util.clear_screen()
+    file = (util.open_file("credits.txt", 'r'))
     for line in file:
         print(line[0])
     return_prompt()
