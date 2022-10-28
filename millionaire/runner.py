@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from quiz_game import game
+from quiz_game import quiz_game
 from menu import menu
 from util import util
 
@@ -12,7 +12,7 @@ def main():
     while True:
         chosen_option = menu.get_user_input()
         if chosen_option == "p":
-            game.play()
+            quiz_game.play()
             menu.show_options()
         if chosen_option == "h":
             menu.select_help()

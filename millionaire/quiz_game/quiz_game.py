@@ -40,7 +40,8 @@ def play():
         answer = safe_input(
             "\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help! ",
             ["a", "b", "c", "d", "h", "t"])
-        correct_answer = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
+        correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
+        correct_answer_value = question_lines[i][1]
         while answer not in list(answers.keys()):
             if answer == "t":
                 util.play_sound("music_off.mp3", 0)
@@ -50,7 +51,7 @@ def play():
                 util.clear_screen()
                 util.play_sound("marked.mp3", 0)
                 time.sleep(2)
-                is_correct = check_answer(answer, correct_answer)
+                is_correct = check_answer(answer, correct_answer_key)
                 if is_correct:
                     util.clear_screen()
                     if i > 9:
@@ -80,7 +81,7 @@ def play():
                 for x in range(len(help_types)):
                     if chosen_help_type.lower() == list(help_types)[x][0]:
                         if help_types[list(help_types)[x]]:
-                            list(help_functions.values())[x](question, answers, correct_answer)
+                            list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
                             help_types[x] = False
                             break
                         else:
@@ -92,7 +93,8 @@ def play():
                 util.clear_screen()
         util.play_sound("marked.mp3", 0)
         time.sleep(2)
-        is_correct = check_answer(answer, correct_answer)
+        is_correct = check_answer(answer, correct_answer_key)
+        time.sleep(2)
         if is_correct:
             if i < 14:
                 util.play_sound("correct_answer.mp3", 0)
@@ -184,51 +186,45 @@ def telephone_help(question, answers, correct_answer):
             print_phone_conversation(text, question, answers, correct_answer)
 
 
-def halving(question, answers, correct_answer):
+def halving(question: str, answers: {}, correct_answer: str):
     util.play_sound("lets_take_two.mp3", 0)
     util.clear_screen()
     time.sleep(2)
     util.play_sound("halving.mp3", 0)
-    possibilities = ["a", "b", "c", "d"]
-    possibilities.pop(list(answers).index(correct_answer))
-    second_answer = random.choice(possibilities)
+    correct_value = get_dictionary_key_by_value(answers, correct_answer)
+    second_answer = random.choice([x for x in answers if x != correct_value])
     print(question)
     for i in answers:
-        if i == correct_answer:
-            print(i + ": " + answers[correct_answer])
+        if answers[i] == correct_answer:
+            print(i + ": " + answers[i])
         elif i == second_answer:
             print(i + ": " + answers[second_answer])
         else:
             print(i + ": ")
 
 
-def audience_help(question, answers, correct_answer):
+def audience_help(question, answers, correct_value):
     util.play_sound("push_your_buttons.mp3", 0)
     time.sleep(3)
-    chance_of_answers = {}
     util.clear_screen()
-    for i in range(4):
-        answers_list = ["a", "b", "c", "d"]
-        chances = sorted(get_chances())
-        answers_list.remove(correct_answer)
-        chance_of_answers[correct_answer] = copy.deepcopy(chances[3])
-        chances.remove(chances[3])
-        for j in range(3):
-            chance_of_answers[answers_list[j]] = chances[j]
-        for k in sorted(chance_of_answers):
-            print(k + " : " + str(chance_of_answers[k]) + "%")
+    answers_list = list(answers.keys())
+    for i in range(len(answers_list)):
+        print(question)
+        chances = sorted(get_chances(), reverse=True)
+        for k in range(len(answers_list)):
+            if answers[answers_list[k]] == correct_value:
+                print(str(answers_list[k]) + " : " + str(answers[answers_list[k]]) + " || " + str(chances[0]) + "%")
+            else:
+                print(str(answers_list[k]) + " : " + str(answers[answers_list[k]]) + " || " + str(chances[0]) + "%")
+            chances.pop(0)
         time.sleep(1)
-        util.clear_screen()
-    print(question)
-    for i in range(len(answers)):
-        print(list(answers.keys())[i] + " : " + list(sorted(answers.values()))[i] + " " +
-              str(chance_of_answers[list(sorted(answers.keys()))[i]]) + " %")
+        if i != len(answers_list)-1:
+            util.clear_screen()
 
 
 def get_chances() -> list:
-    percents = []
-    percents.append(random.randrange(40, 89))
-    percents.append(random.randrange(0, 100 - percents[0]))
-    percents.append(random.randrange(0, 100 - sum(percents[0:2])))
-    percents.append(100 - sum(percents[0:3]))
+    percents = [random.randrange(40, 89)]
+    for i in range(3):
+        percents.append(random.randrange(0, 100 - sum(percents)))
+
     return percents
