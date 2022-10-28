@@ -6,7 +6,6 @@ from sty import Style, RgbFg, fg, bg
 from util import util
 import time
 
-
 operating_system = os.name
 fg.purple = Style(RgbFg(148, 0, 211))
 fg.orange = Style(RgbFg(255, 150, 50))
@@ -127,7 +126,7 @@ def play():
         util.clear_screen()
 
 
-def safe_input(input_text, allowed_list_of_letters):
+def safe_input(input_text: str, allowed_list_of_letters: list) -> str:
     print(input_text)
     answer = keyboard.read_key()
     if answer not in allowed_list_of_letters:
@@ -140,21 +139,21 @@ def safe_input(input_text, allowed_list_of_letters):
     return answer
 
 
-def get_dictionary_key_by_value(dictionary: {}, value: str):
+def get_dictionary_key_by_value(dictionary: {}, value: str) -> str:
     for choice, answerValue in dict.items(dictionary):
         if answerValue == value:
             return choice
 
 
-def check_answer(answer: str, correct_answer: str):
+def check_answer(answer: str, correct_answer: str) -> bool:
     return answer == correct_answer
 
 
-def show_prize(round_number: int):
+def show_prize(round_number: int) -> str:
     return prizes[round_number]
 
 
-def print_phone_conversation(text, question, answers, good_answer):
+def print_phone_conversation(text: list, question: str, answers: {}, good_answer: str):
     util.play_sound("phone_ring.mp3", 0)
     time.sleep(2)
     util.play_sound("phone_call.mp3", 0)
@@ -176,7 +175,7 @@ def print_phone_conversation(text, question, answers, good_answer):
     util.stop_sound()
 
 
-def telephone_help(question, answers, correct_answer):
+def telephone_help(question: str, answers: {}, correct_answer: str):
     phone = safe_input(
         "Who'd you like to call?\n"
         "for mum, press 'm'\n"
@@ -196,40 +195,53 @@ def halving(question: str, answers: {}, correct_answer: str):
     util.clear_screen()
     time.sleep(2)
     util.play_sound("halving.mp3", 0)
+    print(question)
+    halved_answers = calculate_halved_answers(answers, correct_answer)
+    for i in halved_answers:
+        print(i + ": " + halved_answers[i])
+
+
+def calculate_halved_answers(answers: {}, correct_answer: str) -> {}:
+    halved_answers = {}
     correct_value = get_dictionary_key_by_value(answers, correct_answer)
     second_answer = random.choice([x for x in answers if x != correct_value])
-    print(question)
     for i in answers:
         if answers[i] == correct_answer:
-            print(i + ": " + answers[i])
+            halved_answers[i] = answers[i]
         elif i == second_answer:
-            print(i + ": " + answers[second_answer])
+            halved_answers[i] = answers[second_answer]
         else:
-            print(i + ": ")
+            halved_answers[i] = ""
+
+    return halved_answers
 
 
-def audience_help(question, answers, correct_value):
+def audience_help(question: str, answers: {}, correct_value: str):
     util.play_sound("push_your_buttons.mp3", 0)
     time.sleep(3)
     util.clear_screen()
     answers_list = list(answers.keys())
     for i in range(len(answers_list)):
         print(question)
-        chances = sorted(get_chances(), reverse=True)
-        for k in range(len(answers_list)):
-            if answers[answers_list[k]] == correct_value:
-                print(str(answers_list[k]) + " : " + str(answers[answers_list[k]]) + " || " + str(chances[0]) + "%")
-            else:
-                print(str(answers_list[k]) + " : " + str(answers[answers_list[k]]) + " || " + str(chances[0]) + "%")
-            chances.pop(0)
+        chances = get_chances(answers, correct_value)
+        for k in range(len(chances)):
+            print(str(answers_list[k]) + " : " + str(answers[answers_list[k]]) + " || " + str(chances[k]) + "%")
         time.sleep(1)
-        if i != len(answers_list)-1:
+        if i != len(answers_list) - 1:
             util.clear_screen()
 
 
-def get_chances() -> list:
-    percents = [random.randrange(40, 89)]
-    for i in range(3):
-        percents.append(random.randrange(0, 100 - sum(percents)))
+def get_chances(answers: {}, correct_value: str) -> list:
+    answers_list = list(answers.keys())
+    chances_dict = {}
+    correct_answer = get_dictionary_key_by_value(answers, correct_value)
+    chances_dict[correct_answer] = random.randrange(40, 89)
+    answers_list.pop(answers_list.index(correct_answer))
+    for k in range(len(answers_list)):
+        if k == len(answers_list)-1:
+            chances_dict[answers_list[k]] = 100 - sum(chances_dict.values())
+        else:
+            chances_dict[answers_list[k]] = random.randrange(0, 100 - sum(chances_dict.values()))
+    chances = sorted(chances_dict.values(), reverse=True)
 
-    return percents
+    return chances

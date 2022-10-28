@@ -35,7 +35,7 @@ def get_data_path() -> str:
     return data_path
 
 
-def open_file(filename, mode):
+def open_file(filename: str, mode: str) -> list:
     file_path = get_data_path() + "/text_files/" + filename
     with open(file_path, mode) as file:
         list_of_file = []
