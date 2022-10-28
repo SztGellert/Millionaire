@@ -1,4 +1,4 @@
-import copy
+import keyboard
 import random
 import sys
 import os
@@ -128,10 +128,15 @@ def play():
 
 
 def safe_input(input_text, allowed_list_of_letters):
-    answer = input(input_text)
-    while answer not in allowed_list_of_letters:
+    print(input_text)
+    answer = keyboard.read_key()
+    if answer not in allowed_list_of_letters:
         print("Error! Only letters: " + ' '.join(allowed_list_of_letters) + " allowed!")
-        answer = input("Select the correct answer!")
+    while answer not in allowed_list_of_letters:
+        answer = keyboard.read_key()
+    print(answer)
+    time.sleep(1)
+
     return answer
 
 
