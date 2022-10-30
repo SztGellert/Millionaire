@@ -11,16 +11,13 @@ fg.purple = Style(RgbFg(148, 0, 211))
 fg.orange = Style(RgbFg(255, 150, 50))
 fg.green = Style(RgbFg(0, 255, 0))
 bg.orange = bg(255, 150, 50)
-help_types = {"audience": False, "telephone": False, "halving": False}
 prizes = ["5.000 Ft", "10.000 Ft", "25.000 Ft", "50.000 Ft", "100.000 Ft", "200.000 Ft", "300.000 Ft", "500.000 Ft",
           "800.000 Ft", "1.500.000 Ft", "3.000.000 Ft", "5.000.000 Ft", "10.000.000 Ft", "20.000.000 Ft",
           "40.000.000 Ft"]
 
 
 def play():
-    help_types["audience"] = True
-    help_types["telephone"] = True
-    help_types["halving"] = True
+    help_types = {"audience": True, "telephone": True, "halving": True}
     util.clear_screen()
     util.play_sound("lom.mp3", 0)
     time.sleep(2)
@@ -81,10 +78,10 @@ def play():
                     if chosen_help_type.lower() == list(help_types)[x][0]:
                         if help_types[list(help_types)[x]]:
                             list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
-                            help_types[x] = False
+                            help_types[list(help_types)[x]] = False
                             break
                         else:
-                            print("You have already used the " + help_types[x] + " help!")
+                            print("You have already used the " + list(help_types)[x] + " help!")
                 answer = safe_input(
                     "\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help! ",
                     ["a", "b", "c", "d", "h", "t"])

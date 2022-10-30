@@ -11,16 +11,13 @@ fg.purple = Style(RgbFg(148, 0, 211))
 fg.orange = Style(RgbFg(255, 150, 50))
 fg.green = Style(RgbFg(0, 255, 0))
 bg.orange = bg(255, 150, 50)
-help_types = {"audience": False, "telephone": False, "halving": False}
 prizes = ["5.000 Ft", "10.000 Ft", "25.000 Ft", "50.000 Ft", "100.000 Ft", "200.000 Ft", "300.000 Ft", "500.000 Ft",
           "800.000 Ft", "1.500.000 Ft", "3.000.000 Ft", "5.000.000 Ft", "10.000.000 Ft", "20.000.000 Ft",
           "40.000.000 Ft"]
 
 
 def play(inputs: list):
-    help_types["audience"] = True
-    help_types["telephone"] = True
-    help_types["halving"] = True
+    help_types = {"audience": True, "telephone": True, "halving": True}
     util.clear_screen()
     util.play_sound("lom.mp3", 0)
     time.sleep(2)
@@ -38,7 +35,6 @@ def play(inputs: list):
             print(list(answers.keys())[k] + ": " + answer_list[k])
         correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
         correct_answer_value = question_lines[i][1]
-
         if inputs[i] == "OK":
             answer = safe_input(
                 "\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help! ",
@@ -50,8 +46,12 @@ def play(inputs: list):
         while answer not in list(answers.keys()):
             if answer == "t":
                 util.play_sound("music_off.mp3", 0)
-                answer = safe_input("\nSelect the correct answer ('a','b','c','d') ! ",
-                                    ["a", "b", "c", "d"])
+                if inputs[i] == "OK":
+                    answer = safe_input("\nSelect the correct answer ('a','b','c','d') ! ",
+                                        ["a", "b", "c", "d"], correct_answer_key)
+                else:
+                    answer = safe_input("\nSelect the correct answer ('a','b','c','d') ! ",
+                                        ["a", "b", "c", "d"], inputs[i])
                 time.sleep(2)
                 util.clear_screen()
                 util.play_sound("marked.mp3", 0)
@@ -74,26 +74,29 @@ def play(inputs: list):
                     print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
-                if safe_input("Would you like to play again? ('y'/'n')", ['y', 'n']) == 'y':
+                if safe_input("Would you like to play again? ('y'/'n')", ['y', 'n'], inputs[i]) == 'y':
                     util.clear_screen()
-                    play()
+                    play(inputs)
                 else:
                     sys.exit(0)
             if answer == "h":
                 help_functions = {"audience": audience_help, "telephone": telephone_help, "halving": halving}
                 chosen_help_type = safe_input("Choose help: 'a' for audience, 't' for telephone, 'h' for halving! ",
-                                              ["a", "t", "h"])
+                                              ["a", "t", "h"], inputs[i])
                 for x in range(len(help_types)):
                     if chosen_help_type.lower() == list(help_types)[x][0]:
                         if help_types[list(help_types)[x]]:
                             list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
-                            help_types[x] = False
+                            help_types[list(help_types)[x]] = False
                             break
                         else:
-                            print("You have already used the " + help_types[x] + " help!")
-                answer = safe_input(
-                    "\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help! ",
-                    ["a", "b", "c", "d", "h", "t"])
+                            print("You have already used the " + list(help_types)[x] + " help!")
+                            if inputs[i] == "OK":
+                                answer = safe_input("\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help! ",
+                                                    ["a", "b", "c", "d", "h", "t"], correct_answer_key)
+                            else:
+                                answer = safe_input("\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help! ",
+                                                    ["a", "b", "c", "d", "h", "t"], inputs[i])
                 time.sleep(2)
                 util.clear_screen()
         util.play_sound("marked.mp3", 0)

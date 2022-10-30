@@ -5,11 +5,15 @@ from mock.millionaire import runner
 
 
 def main():
-    select_correct_answers()
+    use_help()
 
 
 def select_correct_answers():
     runner.main(["p"], ["OK", "OK", "OK", "OK", "OK", "OK", "OK", "OK", "OK", "OK", "OK", "OK", "OK", "OK", "OK"])
+
+
+def use_help():
+    runner.main(["p"], ["OK", "h", "h", "OK"])
 
 
 def mock_test_scenario_one():
@@ -18,4 +22,3 @@ def mock_test_scenario_one():
 
 if __name__ == "__main__":
     main()
-b
