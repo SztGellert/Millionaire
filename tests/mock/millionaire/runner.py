@@ -7,7 +7,7 @@ from menu import menu
 from util import util
 
 
-def main(menu_inputs: list, game_inputs: list):
+def main(menu_inputs: list, game_inputs: dict):
     util.init()
     menu.intro()
     menu.show_options()
