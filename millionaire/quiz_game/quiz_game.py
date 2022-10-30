@@ -220,6 +220,7 @@ def audience_help(question: str, answers: {}, correct_value: str):
     answers_list = list(answers.keys())
     for i in range(len(answers_list)):
         print(question)
+
         chances = get_chances(answers, correct_value)
         for k in range(len(chances)):
             print(str(answers_list[k]) + " : " + str(answers[answers_list[k]]) + " || " + str(chances[k]) + "%")
@@ -242,3 +243,4 @@ def get_chances(answers: {}, correct_value: str) -> list:
     chances = sorted(chances_dict.values(), reverse=True)
 
     return chances
+
