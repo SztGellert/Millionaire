@@ -9,7 +9,7 @@ operating_system = os.name
 
 
 def init():
-    pygame.mixer.init()
+    return
 
 
 def clear_screen():
@@ -20,10 +20,11 @@ def clear_screen():
 
 
 def play_sound(filename, starting_time):
-    file_path = get_data_path() + "/sound_files/" + filename
-    pygame.mixer.music.load(file_path)
-    pygame.mixer.music.set_volume(0.07)
-    pygame.mixer.music.play(0, starting_time)
+    #file_path = get_data_path() + "/sound_files/" + filename
+    #pygame.mixer.music.load(file_path)
+    #pygame.mixer.music.set_volume(0.07)
+    #pygame.mixer.music.play(0, starting_time)
+    return
 
 
 def get_data_path() -> str:
