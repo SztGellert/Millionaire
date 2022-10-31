@@ -4,7 +4,7 @@ import keyboard
 from util import util
 from sty import Style, RgbFg, fg, bg
 
-options = ["Play", "Help", "Credit", "Exit"]
+options = ["Play", "Help", "Settings", "Credit", "Exit"]
 fg.purple = Style(RgbFg(148, 0, 211))
 select_msg = "Select Menu Option: "
 return_msg = "Press ENTER to return to main menu..."
@@ -77,6 +77,19 @@ def select_credits():
     return_prompt()
 
 
+def select_settings():
+    util.clear_screen()
+    settings = ["Language selection",
+                "Sound Volume selection",
+                "Default color theme selection",
+                "Display size",
+                "Question Categories"
+                ]
+    for setting in settings:
+        print(setting)
+    return_prompt()
+
+
 def return_prompt():
     print(fg.red + "\n" + return_msg + fg.rs)
     if keyboard.read_key() == "enter":
@@ -89,7 +102,7 @@ def get_user_input() -> str:
         if keyboard.read_key() == "enter":
             return options[i][0].lower()
         if keyboard.read_key() == 'down':
-            if i == 3:
+            if i == len(options)-1:
                 i = 0
                 show_options()
             else:
@@ -99,8 +112,8 @@ def get_user_input() -> str:
                 return options[i][0].lower()
         if keyboard.read_key() == 'up':
             if i == 0:
-                i = 3
-                show_options(3)
+                i = len(options)-1
+                show_options(len(options)-1)
             else:
                 i -= 1
                 show_options(i)

@@ -17,9 +17,12 @@ def main():
         if chosen_option == "h":
             menu.select_help()
             menu.show_options(1)
+        if chosen_option == "s":
+            menu.select_settings()
+            menu.show_options(2)
         if chosen_option == "c":
             menu.select_credits()
-            menu.show_options(2)
+            menu.show_options(3)
         if chosen_option == "e":
             menu.select_exit()
 
