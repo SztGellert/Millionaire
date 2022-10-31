@@ -1,0 +1,12 @@
+		This is the Credits file of The Helpless Gooses' Millionare game.
+
+This game is developed by Gellert Sztankovszky based on a team work week of the Helpless Gooses Team.
+The aim of this development is self-entertainment and learning python/programming.
+
+Feel free to share the game and leave review!
+
+Big thanks for reading!
+
+https://github.com/SztGellert
+
+Enjoy!
