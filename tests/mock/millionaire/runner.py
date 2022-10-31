@@ -11,8 +11,8 @@ def main(menu_inputs: list, game_inputs: dict):
     util.init()
     menu.intro()
     menu.show_options()
-    while menu_inputs:
-        chosen_option = menu_inputs[0]
+    for i in range(len(menu_inputs)):
+        chosen_option = menu_inputs[i]
         if chosen_option == "p":
             quiz_game.play(game_inputs)
             menu.show_options()

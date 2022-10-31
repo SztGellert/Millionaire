@@ -48,7 +48,6 @@ def play():
                 answer = safe_input("\nSelect the correct answer ('a','b','c','d') ! ",
                                     ["a", "b", "c", "d"])
                 time.sleep(2)
-                util.clear_screen()
                 util.play_sound("marked.mp3", 0)
                 time.sleep(2)
                 is_correct = check_answer(answer, correct_answer_key)
@@ -69,11 +68,9 @@ def play():
                     print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
-                if safe_input("Would you like to play again? ('y'/'n')", ['y', 'n']) == 'y':
-                    util.clear_screen()
-                    play()
-                else:
-                    sys.exit(0)
+                safe_input("press ENTER for main menu..", ["enter"])
+                util.clear_screen()
+                return
             if answer == "h":
                 util.clear_screen()
                 print(question)
@@ -127,13 +124,15 @@ def play():
                 print(fg.purple + "Congratulations! You have won 40 000 000 Ft!" + fg.rs)
                 util.play_sound("winning_theme.mp3", 0)
                 time.sleep(35)
-                sys.exit(0)
+                safe_input("press ENTER for main menu..", ["enter"])
         else:
             print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
-            input("press ENTER for main menu..")
+            safe_input("press ENTER for main menu..", ["enter"])
             util.clear_screen()
             return
         util.clear_screen()
+
+    return
 
 
 def safe_input(input_text: str, allowed_list_of_letters: list) -> str:
@@ -143,7 +142,8 @@ def safe_input(input_text: str, allowed_list_of_letters: list) -> str:
         print("Error! Only letters: " + ' '.join(allowed_list_of_letters) + " allowed!")
     while answer not in allowed_list_of_letters:
         answer = keyboard.read_key()
-    print(answer)
+    if answer != "enter":
+        print(answer)
     time.sleep(1)
 
     return answer

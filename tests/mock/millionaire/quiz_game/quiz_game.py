@@ -22,6 +22,7 @@ def play(inputs: dict):
     audience_inputs = inputs["audience_answers"]
     halving_inputs = inputs["halving_answers"]
     phone_inputs = inputs["phone_answers"]
+    return_inputs = inputs["return_prompt_answers"]
     help_types = {"audience": True, "halving": True, "phone": True}
     util.clear_screen()
     util.play_sound("lom.mp3", 0)
@@ -50,6 +51,10 @@ def play(inputs: dict):
                 ["a", "b", "c", "d", "h", "t"], game_inputs[i])
         while answer not in list(answers.keys()):
             if answer == "t":
+                util.clear_screen()
+                print(question)
+                for k in range(len(answer_list)):
+                    print(list(answers.keys())[k] + ": " + answer_list[k])
                 util.play_sound("music_off.mp3", 0)
                 if out_of_game_inputs[0] == "OK":
                     answer = safe_input("\nSelect the correct answer ('a','b','c','d') ! ",
@@ -79,11 +84,9 @@ def play(inputs: dict):
                     print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
-                if safe_input("Would you like to play again? ('y'/'n')", ['y', 'n'], out_of_game_inputs[1]) == 'y':
-                    util.clear_screen()
-                    play(inputs)
-                else:
-                    sys.exit(0)
+                safe_input("press ENTER for main menu..", ["enter"], return_inputs[0])
+                util.clear_screen()
+                return
             if answer == "h":
                 help_functions = {"audience": audience_help, "halving": halving, "telephone": telephone_help}
                 help_inputs = [audience_inputs, halving_inputs, phone_inputs]
@@ -109,9 +112,14 @@ def play(inputs: dict):
                 for x in range(len(help_types)):
                     if chosen_help_type.lower() == list(help_types)[x][0]:
                         if help_types[list(help_types)[x]]:
-                            if chosen_help != "phone":
+                            if chosen_help == "halving":
+                                shuffled_answers = list(help_functions.values())[x](question, shuffled_answers,
+                                                                                    correct_answer_value)
+                                for a in range(len(answer_list)):
+                                    answer_list[a] = list(shuffled_answers.values())[a]
+                            if chosen_help == "audience":
                                 list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
-                            else:
+                            if chosen_help == "phone":
                                 list(help_functions.values())[x](question, shuffled_answers, correct_answer_value, chosen_help_values[1])
                             help_types[list(help_types)[x]] = False
                             break
@@ -165,13 +173,15 @@ def play(inputs: dict):
                 print(fg.purple + "Congratulations! You have won 40 000 000 Ft!" + fg.rs)
                 util.play_sound("winning_theme.mp3", 0)
                 time.sleep(35)
-                sys.exit(0)
+                safe_input("press ENTER for main menu..", ["enter"], return_inputs[0])
         else:
             print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
-            input("press ENTER for main menu..")
+            safe_input("press ENTER for main menu..", ["enter"], return_inputs[0])
             util.clear_screen()
             return
         util.clear_screen()
+
+    return
 
 
 def safe_input(input_text: str, allowed_list_of_letters: list, hotkey: str) -> str:
@@ -182,7 +192,8 @@ def safe_input(input_text: str, allowed_list_of_letters: list, hotkey: str) -> s
         print("Error! Only letters: " + ' '.join(allowed_list_of_letters) + " allowed!")
     while answer not in allowed_list_of_letters:
         answer = keyboard.read_key()
-    print(answer)
+    if answer != "enter":
+        print(answer)
     time.sleep(1)
 
     return answer
@@ -224,7 +235,7 @@ def print_phone_conversation(text: list, question: str, answers: {}, good_answer
     util.stop_sound()
 
 
-def telephone_help(question: str, answers: {}, correct_answer: str, hotkey:str):
+def telephone_help(question: str, answers: {}, correct_answer: str, hotkey: str):
     phone = safe_input(
         "Who'd you like to call?\n"
         "for mum, press 'm'\n"
@@ -239,7 +250,7 @@ def telephone_help(question: str, answers: {}, correct_answer: str, hotkey:str):
             print_phone_conversation(text, question, answers, correct_answer)
 
 
-def halving(question: str, answers: {}, correct_answer: str):
+def halving(question: str, answers: {}, correct_answer: str) -> dict:
     util.play_sound("lets_take_two.mp3", 0)
     util.clear_screen()
     time.sleep(2)
@@ -248,6 +259,7 @@ def halving(question: str, answers: {}, correct_answer: str):
     halved_answers = calculate_halved_answers(answers, correct_answer)
     for i in halved_answers:
         print(i + ": " + halved_answers[i])
+    return halved_answers
 
 
 def calculate_halved_answers(answers: {}, correct_answer: str) -> {}:
@@ -274,7 +286,10 @@ def audience_help(question: str, answers: {}, correct_value: str):
         print(question)
         chances = get_chances(answers, correct_value)
         for k in range(len(chances)):
-            print(str(answers_list[k]) + " : " + str(answers[answers_list[k]]) + " || " + str(chances[k]) + "%")
+            if str(answers[answers_list[k]]) != "":
+                print(str(answers_list[k]) + " : " + str(answers[answers_list[k]]) + " || " + str(chances[k]) + "%")
+            else:
+                print(str(answers_list[k]) + " : ")
         time.sleep(1)
         if i != len(answers_list) - 1:
             util.clear_screen()

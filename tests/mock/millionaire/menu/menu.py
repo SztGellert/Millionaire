@@ -58,7 +58,7 @@ def show_options(chosen_option=0):
 
 
 def select_exit():
-    sys.exit(0)
+    return
 
 
 def select_help():
