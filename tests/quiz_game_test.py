@@ -4,7 +4,7 @@ import unittest
 
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath + '/../millionaire')
-from millionaire.quiz_game import quiz_game
+from quiz_game import quiz_game
 
 
 class TestSum(unittest.TestCase):
