@@ -2,6 +2,7 @@ import os
 import pathlib
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
+os.environ['SDL_AUDIODRIVER'] = 'dsp'
 import pygame
 
 operating_system = os.name
