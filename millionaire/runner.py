@@ -7,7 +7,7 @@ from util import util
 
 def main():
     util.init()
-    menu.intro()
+    #menu.intro()
     menu.show_options()
     while True:
         chosen_option = menu.get_user_input()
