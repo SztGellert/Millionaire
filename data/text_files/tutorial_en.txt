@@ -15,9 +15,9 @@ If you choose an incorrect answer you will instantly lose the game.
 
 The prize that you bring home depends on your performance.
 
-    You earn guaranteed prize after the 5th correct question.
-    You earn guaranteed prize after the 10th correct question.
-    You earn guaranteed prize after the 15th correct question.
+    You earn guaranteed prize after the 5th correct answer.
+    You earn guaranteed prize after the 10th correct answer.
+    You earn guaranteed prize after the 15th correct answer.
 
 You can also make a guess out of the game to win guaranteed prizes.
 

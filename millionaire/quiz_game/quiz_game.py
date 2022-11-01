@@ -14,14 +14,19 @@ bg.orange = bg(255, 150, 50)
 prizes = ["5.000 Ft", "10.000 Ft", "25.000 Ft", "50.000 Ft", "100.000 Ft", "200.000 Ft", "300.000 Ft", "500.000 Ft",
           "800.000 Ft", "1.500.000 Ft", "3.000.000 Ft", "5.000.000 Ft", "10.000.000 Ft", "20.000.000 Ft",
           "40.000.000 Ft"]
+languages = ["en", "hu"]
 
 
 def play():
+    language_select = safe_input("Please select a language: 'e' for english and 'h' for hungarian:", ["0", "1"])
+    text = util.init_language(languages[int(language_select)])
+    lang = languages[int(language_select)]
     help_types = {"audience": True, "telephone": True, "halving": True}
     util.clear_screen()
     util.play_sound("lom.mp3", 0)
     time.sleep(2)
-    question_lines = util.open_file('questions.txt', "r")
+    question_file = 'questions_' + lang + ".txt"
+    question_lines = util.open_file(question_file, "r")
     random.shuffle(question_lines)
     for i in range(15):
         question = question_lines[i][0]

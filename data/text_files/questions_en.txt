@@ -12,7 +12,6 @@ Who has invented the zeppelin?,Ferdinand von Zeppelin,Karl Maybach,Stefan Sommer
 Which is the correct highest point of the Mount Everest?,8848,8840,8830,8838
 When did Henry VIII die?,1435,1978,1523,1547
 Which is the longest bridge in the world?,Danyang-Kunshan Grand Bridge,Cangde Grand Bridge,Bang Na Expressway,Runyang Bridge
-What makeup product makes eyelashes appear longer?,Mascara,Blush,Foundation,Lipstick
 What city contains the Eiffel Tower?,Paris,Sydney,Los Angeles,New York City
 Which sport is also known as football?,Soccer,Basketball,Baseball,Cricket
 How many continents are there?,7,1,3,20
@@ -52,11 +51,10 @@ Who invented sliced bread?,Otto Frederick Rohwedder,Samuel Morse,Alfred Nobel,Wr
 Which of these famous figures was a physicist?,Enrico Fermi,Berenice Abbott,Gertrude Abercrombie,Carla Accardi
 Which of these is NOT one of the Great Lakes in the Midwestern part of the United States?,Lake Toronto,Lake Huron,Lake Michigan,Lake Ontario
 What is the largest country in the world?,Russia,Canada,China,North America
-Which of the following is the correct formula of the Pythagorean Theorem?,a^2+b^2=c^2,y=mx+b,A= πr^2,S=4πr^2
 Which of these painters is known for his work in abstract expressionism?,Jackson Pollock,Max Ernst,René Magritte,Keith Haring
 Which of these flowers are poisonous?,Lily of the valley,Frilly Edible Chrysanthemum,Bergamot,Chervil
 Which of these states was NOT one of the original 13 colonies?,Florida,New York,Pennsylvania,Georgia
-A caffé macchiato has ________ origins.,Italian,Spanish,American,French
+A caffe macchiato has ________ origins.,Italian,Spanish,American,French
 The "hryvnia" is the currency of which of these countries?,Ukraine,Turkey,Iran,India
 Who wrote the pamphlet "Common Sense" in 1776?,Thomas Paine,George Read,George Clymer,John Hart
 "The Scream" is a famous painting that was created by...?,Edvard Munch,Pablo Picasso,Claude Monet,Henri Matisse
