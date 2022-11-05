@@ -9,13 +9,13 @@ fg.purple = Style(RgbFg(148, 0, 211))
 select_msg = "Select Menu Option: "
 return_msg = "Press ENTER to return to main menu..."
 bg.orange = bg(255, 150, 50)
-
+lang = "en"
 
 def intro():
     util.clear_screen()
     util.play_sound("loim_intro.wav", 0)
     time.sleep(2)
-    file = (util.open_file("intro.txt", 'r'))
+    file = (util.open_file("intro_" + lang + ".txt", 'r'))
     for line_index in range(len(file)):
         if line_index == 3:
             print(fg.purple + file[line_index][0] + fg.rs)

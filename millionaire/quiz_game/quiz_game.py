@@ -11,17 +11,23 @@ fg.purple = Style(RgbFg(148, 0, 211))
 fg.orange = Style(RgbFg(255, 150, 50))
 fg.green = Style(RgbFg(0, 255, 0))
 bg.orange = bg(255, 150, 50)
-prizes = ["5.000 Ft", "10.000 Ft", "25.000 Ft", "50.000 Ft", "100.000 Ft", "200.000 Ft", "300.000 Ft", "500.000 Ft",
-          "800.000 Ft", "1.500.000 Ft", "3.000.000 Ft", "5.000.000 Ft", "10.000.000 Ft", "20.000.000 Ft",
-          "40.000.000 Ft"]
+languages = util.available_languages
+language_dictionary = util.language_dictionary
+game_language = util.game_language
 
 
 def play():
+    language_select = safe_input("Please select a language: '0' for english and '1' for hungarian:", ["0", "1"])
+    global language_dictionary
+    language_dictionary = util.init_language(languages[int(language_select)])
+    global game_language
+    game_language = languages[int(language_select)]
     help_types = {"audience": True, "telephone": True, "halving": True}
     util.clear_screen()
     util.play_sound("lom.mp3", 0)
     time.sleep(2)
-    question_lines = util.open_file('questions.txt', "r")
+    question_file = 'questions_' + game_language + ".txt"
+    question_lines = util.open_file(question_file, "r")
     random.shuffle(question_lines)
     for i in range(15):
         question = question_lines[i][0]
@@ -34,7 +40,7 @@ def play():
         for k in range(len(answer_list)):
             print(list(answers.keys())[k] + ": " + answer_list[k])
         answer = safe_input(
-            "\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help! ",
+            language_dictionary[game_language].quiz.select_answer,
             ["a", "b", "c", "d", "h", "t"])
         correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
         correct_answer_value = question_lines[i][1]
@@ -45,7 +51,7 @@ def play():
                 for k in range(len(answer_list)):
                     print(list(answers.keys())[k] + ": " + answer_list[k])
                 util.play_sound("music_off.mp3", 0)
-                answer = safe_input("\nSelect the correct answer ('a','b','c','d') ! ",
+                answer = safe_input(language_dictionary[game_language].quiz.select_answer_out,
                                     ["a", "b", "c", "d"])
                 time.sleep(2)
                 util.play_sound("marked.mp3", 0)
@@ -61,14 +67,14 @@ def play():
                         util.play_sound("won_hundred_bucks.mp3", 0)
                         time.sleep(1)
                     else:
-                        print(fg.blue + "Correct answer! Better luck next time!" + fg.rs)
+                        print(fg.blue + language_dictionary[game_language].quiz.correct_answer_out + fg.rs)
                         util.play_sound("show_stop.mp3", 0)
                         time.sleep(1)
                 else:
-                    print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
+                    print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
-                safe_input("press ENTER for main menu..", ["enter"])
+                safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
                 util.clear_screen()
                 return
             if answer == "h":
@@ -77,13 +83,14 @@ def play():
                 for k in range(len(answer_list)):
                     print(list(answers.keys())[k] + ": " + answer_list[k])
                 help_functions = {"audience": audience_help, "telephone": telephone_help, "halving": halving}
-                chosen_help_type = safe_input("Choose help: 'a' for audience, 't' for telephone, 'h' for halving! ",
+                chosen_help_type = safe_input(language_dictionary[game_language].quiz.help_selection,
                                               ["a", "t", "h"])
                 for x in range(len(help_types)):
                     if chosen_help_type.lower() == list(help_types)[x][0]:
                         if help_types[list(help_types)[x]]:
                             if list(help_types)[x] == "halving":
-                                shuffled_answers = list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
+                                shuffled_answers = list(help_functions.values())[x](question, shuffled_answers,
+                                                                                    correct_answer_value)
                                 for a in range(len(answer_list)):
                                     answer_list[a] = list(shuffled_answers.values())[a]
                             else:
@@ -91,9 +98,10 @@ def play():
                             help_types[list(help_types)[x]] = False
                             break
                         else:
-                            print("You have already used the " + list(help_types)[x] + " help!")
+                            print(language_dictionary[game_language].quiz.help_disabled + list(help_types)[x] + " " +
+                                  language_dictionary[game_language].quiz.help)
                 answer = safe_input(
-                    "\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help! ",
+                    language_dictionary[game_language].quiz.select_answer,
                     ["a", "b", "c", "d", "h", "t"])
                 time.sleep(2)
                 util.clear_screen()
@@ -105,15 +113,15 @@ def play():
             if i < 14:
                 util.play_sound("correct_answer.mp3", 0)
                 if i == 4:
-                    print(fg.yellow + "You have guaranteed 100.000 Ft" + fg.rs)
+                    print(fg.yellow + language_dictionary[game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     util.play_sound("won_hundred_bucks.mp3", 0)
                     time.sleep(1)
                 elif i == 9:
-                    print(fg.yellow + "You have guaranteed 1.500.000 Ft" + fg.rs)
+                    print(fg.yellow + language_dictionary[game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     util.play_sound("now_comes_hard_part.mp3", 0)
                     time.sleep(1)
                 else:
-                    print(fg.green + "Well Done!" + fg.rs)
+                    print(fg.green + language_dictionary[game_language].quiz.correct_answer + fg.rs)
                     util.clear_screen()
                     print(bg.orange + show_prize(i) + bg.rs)
                     time.sleep(2)
@@ -121,13 +129,13 @@ def play():
                 util.play_sound("great_logic.mp3", 0)
                 time.sleep(1)
                 util.clear_screen()
-                print(fg.purple + "Congratulations! You have won 40 000 000 Ft!" + fg.rs)
+                print(fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(i) + " !" + fg.rs)
                 util.play_sound("winning_theme.mp3", 0)
                 time.sleep(35)
-                safe_input("press ENTER for main menu..", ["enter"])
+                safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
         else:
-            print(fg.red + "Bad answer! Better luck next time!" + fg.rs)
-            safe_input("press ENTER for main menu..", ["enter"])
+            print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
+            safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
             util.clear_screen()
             return
         util.clear_screen()
@@ -139,7 +147,8 @@ def safe_input(input_text: str, allowed_list_of_letters: list) -> str:
     print(input_text)
     answer = keyboard.read_key()
     if answer not in allowed_list_of_letters:
-        print("Error! Only letters: " + ' '.join(allowed_list_of_letters) + " allowed!")
+        print(language_dictionary[game_language].quiz.allowed_letters_error + ' '.join(allowed_list_of_letters) +
+              language_dictionary[game_language].quiz.allowed)
     while answer not in allowed_list_of_letters:
         answer = keyboard.read_key()
     if answer != "enter":
@@ -160,7 +169,8 @@ def check_answer(answer: str, correct_answer: str) -> bool:
 
 
 def show_prize(round_number: int) -> str:
-    return prizes[round_number]
+    prizes = util.open_file("prizes_" + game_language + ".txt", "r")
+    return prizes[round_number][0]
 
 
 def print_phone_conversation(text: list, question: str, answers: {}, good_answer: str):
@@ -181,23 +191,24 @@ def print_phone_conversation(text: list, question: str, answers: {}, good_answer
     now = time.time()
     util.play_sound('phone_call.mp3', 30.0)
     time.sleep(3)
-    print("Call Duration: ", int(now - then), " seconds\\ 30s")
+    print(language_dictionary[game_language].quiz.call_duration, int(now - then),
+          language_dictionary[game_language].quiz.call_seconds)
     util.stop_sound()
 
 
 def telephone_help(question: str, answers: {}, correct_answer: str):
-    phone = safe_input(
-        "Who'd you like to call?\n"
-        "for mum, press 'm'\n"
-        "for dad press 'd'\n"
-        "for old teacher from high school press 't'\n"
-        "for Maester Yoda press 'y': ",
-        ["m", "d", "t", "y"])
-    call_text_files = ["mum_phone.txt", "dad_phone.txt", "teacher_phone.txt", "yoda_master_phone.txt"]
+    time.sleep(10)
+    phone = safe_input(language_dictionary[game_language].quiz.phone_prompt,
+                       ["m", "d", "t", "y"])
+    call_text_files = ["mum_phone_" + game_language + ".txt",
+                       "dad_phone_" + game_language + ".txt",
+                       "teacher_phone_" + game_language + ".txt",
+                       "yoda_master_phone_" + game_language + ".txt"
+                       ]
     for i in range(len(call_text_files)):
         if phone.lower() == call_text_files[i][0]:
-            text = (util.open_file(call_text_files[i], 'r'))
-            print_phone_conversation(text, question, answers, correct_answer)
+            conversation = (util.open_file(call_text_files[i], 'r'))
+            print_phone_conversation(conversation, question, answers, correct_answer)
 
 
 def halving(question: str, answers: {}, correct_answer: str) -> dict:
@@ -252,11 +263,10 @@ def get_chances(answers: {}, correct_value: str) -> list:
     chances_dict[correct_answer] = random.randrange(40, 89)
     answers_list.pop(answers_list.index(correct_answer))
     for k in range(len(answers_list)):
-        if k == len(answers_list)-1:
+        if k == len(answers_list) - 1:
             chances_dict[answers_list[k]] = 100 - sum(chances_dict.values())
         else:
             chances_dict[answers_list[k]] = random.randrange(0, 100 - sum(chances_dict.values()))
     chances = sorted(chances_dict.values(), reverse=True)
 
     return chances
-
