@@ -9,7 +9,8 @@
                          "Display size",
                          "Question types",
                          "Back"],
-        "main_menu_options" : ["Play", "Tutorial", "Settings", "Credits ", "Exit"]
+        "main_menu_options" : ["Play", "Tutorial", "Settings", "Credits ", "Exit"],
+        "settings_menu_question_topics": ["Mixed ","Common","History ", "Geography ","Physics ","Chemistry ","Maths ","Arts","Literature","Music ","Gastronomy","Economy ","Sport "]
     },
     "quiz": {
         "select_answer":"\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help!",

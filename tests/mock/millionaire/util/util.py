@@ -10,6 +10,7 @@ operating_system = os.name
 available_languages = ["en", "hu"]
 game_language = available_languages[0]
 language_dictionary = {}
+question_topics = "Mixed "
 
 
 def init():
@@ -23,6 +24,11 @@ def init_language(selected_lang: str):
         language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
         global game_language
         game_language = selected_lang
+
+
+def init_question_topics(selected_topic: str):
+    global question_topics
+    question_topics = selected_topic
 
 
 def clear_screen():

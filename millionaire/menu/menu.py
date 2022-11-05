@@ -90,6 +90,12 @@ def select_settings():
             chosen_lang_option = get_user_input(langs, 20)
             util.init_language(util.available_languages[langs.index(chosen_lang_option)])
             show_options(language_dictionary[game_language].menu.settings_menu_options, 40)
+        if chosen_option == language_dictionary[game_language].menu.settings_menu_options[-2]:
+            show_options(language_dictionary[game_language].menu.settings_menu_question_topics, 20)
+            chosen_question_topic = get_user_input(language_dictionary[game_language].menu.settings_menu_question_topics, 20)
+            if chosen_question_topic != "Mixed ":
+                util.init_question_topics(chosen_question_topic)
+            show_options(language_dictionary[game_language].menu.settings_menu_options, 40)
         if chosen_option == language_dictionary[game_language].menu.settings_menu_options[-1]:
             return
 

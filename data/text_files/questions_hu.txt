@@ -1,73 +1,73 @@
-Hány másodperc van egy percben?,60,30,1,300
-Milyen magas az Eiffel Torony?,300 m,302 m,303 m,297 m
-Ki volt az USA 32. elnöke?,Franklin D. Roosevelt,John F. Kennedy,Richard Nixon,Herbert Hoover
-Melyik a valaha élt legnagyobb cápa?,Óriásfogú cápa,Nagy fehér cápa,Cetcápa,Tigriscápa
-Hol található a világ legmélyebb pontja?,Mariana-árok,Fülöp-szigeteki árok,Tonga-árok,Kermadec-árok
-Milyen hosszúságúak a Párizs alatt fellelhető katakombák?,300 km,100 km,150 km,250 km
-Mikor találták fel az első kamerát?,1816,1820,1656,1790
-Melyik a leggyorsabb szárazföldi állat?,Gepárd,Vándorantilop,Oroszlán,Quater Horse
-Ki írta a Harry Potter könyveket?,J.K. Rowling,George Orwell,Charles Dickens,Ian Fleming
-Melyik zenész született 1756-ban?,Wolfgang Amadeus Mozart,Ludwig van Beethoven,William Herschel,Joseph Haydn
-Ki találta fel a Zeppelint?,Ferdinand von Zeppelin,Karl Maybach,Stefan Sommer,Henri Giffard
-Melyik a legmagasabb pontja a Mount Everest-nek?,8848 m,8840 m,8830 m,8838 m
-Mikor halt meg VIII. Henrik?,1435,1978,1523,1547
-Melyik a világ leghosszabb hídja?,Tanjang–Kunsan vasúti híd,Cangde Grand Bridge,Bang Na Expressway,Runyang-híd
-Melyik városban található az Eiffel torony?,Párizs,Sydney,Los Angeles,New York
-Melyik a foci angol neve?,Soccer,Basketball,Baseball,Cricket
-Hány kontinens található a Földön?,7,1,3,20
-Ki NEM volt a Beatles tagja?,Justin Timberlake,John Lennon,Paul McCartney,Ringo Star
-Melyik nem egy tésztaféle?,Escargot,Spaghetti,Fettuccine,Ziti
-Melyik államban található San Francisco és Hollywood?,Kalifornia,Utah,Hawaii,Montana
-Melyik hangszernek nincsenek húrjai?,Harsona,Gitár,Basszusgitár,Cselló
-Milyen termékeket gyárt a Tesla?,Elektromos autó,Jégkrém,Televizió,Fésű
-Melyik nem főemlős?,Delfin,Csimpánz,Gorillla,Orángután
-Melyik gáztól lesz magasabb a hangunk ha belélegezzük?,Hélium,Oxigén,Nitrogén,Kén-hexafluorid
-Melyik amerikai ünnep esik július 4.-re?,Függetlenség Napja,Hálaadás,Karácsony,Újév
-Melyik csokiszelet osztozik egy galaxis nevén?,Milky Way,Snickers,3 Musketeers,Almond Joy
-Hogy hívják Anglia fővárosát?,London,Washington D.C.,Róma,Moszkva
-Melyik egyetem NEM tartozik a legelőkelőbb amerikai egyetemekhez?,Hogwarts,Harvard,Princeton,Columbia
-Hogy hívják az érmegyűjtéssel foglalkozó szakágat?,Numizmatika,Professzor,Séf,Fizioterápia
-Melyik videojátékot gyártja a Sony?,PlayStation,Xbox,Atari,Game Boy
-Hogy hívják a Super Mario Bros. figuráit?,Mario and Luigi,Tim and Eric,Batman and Robin,Sonic and Tails
-Melyik hercegnő vesztette el az üveg cipellőjét?,Hamupipőke,Hófehérke,Mulan,Belle
-Melyik amerikai autó márka gyártja a Mustángot, az F-150-est és az 'Escape'-et?,Ford,Toyota,Volkswagen,Nissan
-Ki volt az első nő aki egyedül repülte át az Atlanti Óceánt?,Amelia Earhart,Geraldine Ferraro,Martha Stewart,Sally Ride
-Melyik amerikai városban fellelhető a Szabadság Harangja és a Függetlenség Csarnoka?,Philadelphia,Vancouver,Mexikó város,Peking
-Luke Skywalker Han Solo és Darth Vader melyik popkultúra-franchise karakterei?,Star Wars,Harry Potter,Star Trek,James Bond
-Hány napos egy szökőév?,366,28,30,400
-Melyik oldalnak van a legnépszerűbb keresőmotorja?,Google,DuckDuckGo,Myspace,Bing
-Ki a jelenlegi Brit uralkodó?,III. Károly,Fülöp Király,II. Erzsébet Királyné,György Király
-Big Bird és Elmo melyik gyerek műsorban szerepeltek?,Sesame Street,Barney & Friends,Spongebob Squarepants,The Wiggles
-Ki épített bárkát a következő Bibliai személyek közül?,Noah,Jesus Christ,Moses,Eve
-Melyik az amerikai pénznem legkisebb fizetőegysége?,Penny,Dime,Quarter,Dollar
-Mi a keresztneve a McDonald's kabalájának?,Ronald,Susan,George,Karl
-Ki a jelenlegi házigazdája a "The Tonight Show?"-nak?,Jimmy Fallon,Oprah Winfrey,Anne Curry,Bob Barker
-Mi a görög abc első betűje?,Alfa,Omega,Zed,Epszilon
-Melyik tömegközlekedési módnak van hagyományosan két kereke?,Bicikli,Tricikli,Autó,Busz
-Mennyi a szolgálati ideje az Egyesült Államok elnökének?,4 years,1 year,10 years,20 years
-Melyik a legnagyobb külső szerve az emberi testnek?,Bőr,Szem,Fül,Orr
-Mi Izland fővárosa?,Reykjavik,Tegucigalpa,Kingston,Astana
-Ki találta fel a szeletelt kenyeret?,Otto Frederick Rohwedder,Samuel Morse,Alfred Nobel,Wright brothers
-Ki volt híres fizikus az alábbiak közül?,Enrico Fermi,Berenice Abbott,Gertrude Abercrombie,Carla Accardi
-Melyik NEM egy a Nagy Tavak közül Középnyugat-Amerikában?,Lake Toronto,Lake Huron,Lake Michigan,Lake Ontario
-Melyik a világ legnagyobb országa?,Oroszország,Kanada,Kína,Észak-Amerika
-Melyik festő ismert az absztrakt expresszionizmusáról?,Jackson Pollock,Max Ernst,René Magritte,Keith Haring
-Melyik virág mérgező?,Lily of the valley,Frilly Edible Chrysanthemum,Bergamot,Chervil
-Melyik NEM egyike az eredeti 13 kolóniának?,Florida,New York,Pennsylvania,Georgia
-A caffe macchiatonak ________ gyökerei vannak.,Olasz,Spanyol,Amerikai,Francia
-A "hrivnya" pénznem melyik országé?,Ukrajna,Törökország,Irán,India
-Ki írta a "Józan Ész" c. pamfletet 1776-ban?,Thomas Paine,George Read,George Clymer,John Hart
-A "Sikoly" egy híres festmény amelynek alkotója...?,Edvard Munch,Pablo Picasso,Claude Monet,Henri Matisse
-Melyik NEM elsődleges szín?,Zöld,Sárga,Piros,Kék
-Melyik országok NEM voltak részei a tengelyhatalmaknak a II. Világháborúban?,Kína,Japán,Olaszország,Németország
-Meddig tartott a 'Százéves Háború'?,116 év,101 év,99 év,100 év
-Melyik elem NEM található meg a Periódusos-rendszerben?,Polypodium,Kadmium,Aktínium,Berillium
-Melyik játék szerepelt a klasszikus "WarGames" filmben?,Tic-Tac-Toe,Checkers,Tower of Hanoi,Nim
-Hol található a garnéla szíve?,A fejében,A farkában,A lábaiban,A hátán
-Mi a fővárosa Dél-Dakotának?,Pierre,Bismarck,Raleigh,Columbia
-Melyiket tekintik a francia 'anyaszósz'-nak?,Hollandaise,Beurre blanc,Bordelaise,Charcutiere
-Ki volt az USA 15. elnöke?,James Buchanan,Franklin Pierce,James K. Polk,Zachary Taylor
-Melyik NEM egyike az ókori világ 'hét csodájának'?,Kapucínusok katakombái,Epheszoszi Artemisz-templom,Pharoszi világítótorony,Rodoszi kolosszus
-Melyik NEM gyümölcs?,Rutabaga,Banán,Alma,Paprika
-Melyik Walt Disney első filmje?,Hófehérke és a hét törpe,Dumbó,Fantázia,Pinokkió
-A szem külső fehér részére a következőképpen hivatkoznak: ________.,Sclera,Macula,Vitreous,Retina
+Hány másodperc van egy percben?,60,30,1,300,matematika
+Milyen magas az Eiffel Torony?,300 m,302 m,303 m,297 m,matematika
+Ki volt az USA 32. elnöke?,Franklin D. Roosevelt,John F. Kennedy,Richard Nixon,Herbert Hoover,történelem
+Melyik a valaha élt legnagyobb cápa?,Óriásfogú cápa,Nagy fehér cápa,Cetcápa,Tigriscápa,biológia
+Hol található a világ legmélyebb pontja?,Mariana-árok,Fülöp-szigeteki árok,Tonga-árok,Kermadec-árok,földrajz
+Milyen hosszúságúak a Párizs alatt fellelhető katakombák?,300 km,100 km,150 km,250 km,matematika
+Mikor találták fel az első kamerát?,1816,1820,1656,1790,történelem
+Melyik a leggyorsabb szárazföldi állat?,Gepárd,Vándorantilop,Oroszlán,Quater Horse,biológia
+Ki írta a Harry Potter könyveket?,J.K. Rowling,George Orwell,Charles Dickens,Ian Fleming,irodalom
+Melyik zenész született 1756-ban?,Wolfgang Amadeus Mozart,Ludwig van Beethoven,William Herschel,Joseph Haydn,zene
+Ki találta fel a Zeppelint?,Ferdinand von Zeppelin,Karl Maybach,Stefan Sommer,Henri Giffard,történelem
+Melyik a legmagasabb pontja a Mount Everest-nek?,8848 m,8840 m,8830 m,8838 m,földrajz
+Mikor halt meg VIII. Henrik?,1435,1978,1523,1547,történelem
+Melyik a világ leghosszabb hídja?,Tanjang–Kunsan vasúti híd,Cangde Grand Bridge,Bang Na Expressway,Runyang-híd,földrajz
+Melyik városban található az Eiffel torony?,Párizs,Sydney,Los Angeles,New York,földrajz
+Melyik a foci angol neve?,Soccer,Basketball,Baseball,Cricket,sport
+Hány kontinens található a Földön?,7,1,3,20,földrajz
+Ki NEM volt a Beatles tagja?,Justin Timberlake,John Lennon,Paul McCartney,Ringo Star,zene
+Melyik nem egy tésztaféle?,Escargot,Spaghetti,Fettuccine,Ziti,gasztronómia
+Melyik államban található San Francisco és Hollywood?,Kalifornia,Utah,Hawaii,Montana,földrajz
+Melyik hangszernek nincsenek húrjai?,Harsona,Gitár,Basszusgitár,Cselló,zene
+Milyen termékeket gyárt a Tesla?,Elektromos autó,Jégkrém,Televizió,Fésű,gazdaság
+Melyik nem főemlős?,Delfin,Csimpánz,Gorillla,Orángután,biológia
+Melyik gáztól lesz magasabb a hangunk ha belélegezzük?,Hélium,Oxigén,Nitrogén,Kén-hexafluorid,fizika
+Melyik amerikai ünnep esik július 4.-re?,Függetlenség Napja,Hálaadás,Karácsony,Újév,történelem
+Melyik csokiszelet osztozik egy galaxis nevén?,Milky Way,Snickers,3 Musketeers,Almond Joy,alapműveltség
+Hogy hívják Anglia fővárosát?,London,Washington D.C.,Róma,Moszkva,földrajz
+Melyik egyetem NEM tartozik a legelőkelőbb amerikai egyetemekhez?,Hogwarts,Harvard,Princeton,Columbia,alapműveltség
+Hogy hívják az érmegyűjtéssel foglalkozó szakágat?,Numizmatika,Professzor,Séf,Fizioterápia,alapműveltség
+Melyik videojátékot gyártja a Sony?,PlayStation,Xbox,Atari,Game Boy,gazdaság
+Hogy hívják a Super Mario Bros. figuráit?,Mario and Luigi,Tim and Eric,Batman and Robin,Sonic and Tails,alapműveltség
+Melyik hercegnő vesztette el az üveg cipellőjét?,Hamupipőke,Hófehérke,Mulan,Belle,alapműveltség
+Melyik amerikai autó márka gyártja a Mustángot, az F-150-est és az 'Escape'-et?,Ford,Toyota,Volkswagen,Nissan,gazdaság
+Ki volt az első nő aki egyedül repülte át az Atlanti Óceánt?,Amelia Earhart,Geraldine Ferraro,Martha Stewart,Sally Ride,történelem
+Melyik amerikai városban fellelhető a Szabadság Harangja és a Függetlenség Csarnoka?,Philadelphia,Vancouver,Mexikó város,Peking,földrajz
+Luke Skywalker Han Solo és Darth Vader melyik popkultúra-franchise karakterei?,Star Wars,Harry Potter,Star Trek,James Bond,alapműveltség
+Hány napos egy szökőév?,366,28,30,400,matematika
+Melyik oldalnak van a legnépszerűbb keresőmotorja?,Google,DuckDuckGo,Myspace,Bing,alapműveltség
+Ki a jelenlegi Brit uralkodó?,III. Károly,Fülöp Király,II. Erzsébet Királyné,György Király,történelem
+Big Bird és Elmo melyik gyerek műsorban szerepeltek?,Sesame Street,Barney & Friends,Spongebob Squarepants,The Wiggles,alapműveltség
+Ki épített bárkát a következő Bibliai személyek közül?,Noah,Jesus Christ,Moses,Eve,irodalom
+Melyik az amerikai pénznem legkisebb fizetőegysége?,Penny,Dime,Quarter,Dollar,gazdaság
+Mi a keresztneve a McDonald's kabalájának?,Ronald,Susan,George,Karl,alapműveltség
+Ki a jelenlegi házigazdája a "The Tonight Show?"-nak?,Jimmy Fallon,Oprah Winfrey,Anne Curry,Bob Barker,alapműveltség
+Mi a görög abc első betűje?,Alfa,Omega,Zed,Epszilon,irodalom
+Melyik tömegközlekedési módnak van hagyományosan két kereke?,Bicikli,Tricikli,Autó,Busz,alapműveltség
+Mennyi a szolgálati ideje az Egyesült Államok elnökének?,4 years,1 year,10 years,20 years,alapműveltség
+Melyik a legnagyobb külső szerve az emberi testnek?,Bőr,Szem,Fül,Orr,biológia
+Mi Izland fővárosa?,Reykjavik,Tegucigalpa,Kingston,Astana,földrajz
+Ki találta fel a szeletelt kenyeret?,Otto Frederick Rohwedder,Samuel Morse,Alfred Nobel,Wright brothers,történelem
+Ki volt híres fizikus az alábbiak közül?,Enrico Fermi,Berenice Abbott,Gertrude Abercrombie,Carla Accardi,fizika
+Melyik NEM egy a Nagy Tavak közül Középnyugat-Amerikában?,Lake Toronto,Lake Huron,Lake Michigan,Lake Ontario,földrajz
+Melyik a világ legnagyobb országa?,Oroszország,Kanada,Kína,Észak-Amerika,földrajz
+Melyik festő ismert az absztrakt expresszionizmusáról?,Jackson Pollock,Max Ernst,René Magritte,Keith Haring,művészet
+Melyik virág mérgező?,Lily of the valley,Frilly Edible Chrysanthemum,Bergamot,Chervil,biológia
+Melyik NEM egyike az eredeti 13 kolóniának?,Florida,New York,Pennsylvania,Georgia,történelem
+A caffe macchiatonak ________ gyökerei vannak.,Olasz,Spanyol,Amerikai,Francia,gasztronómia
+A "hrivnya" pénznem melyik országé?,Ukrajna,Törökország,Irán,India,gazdaság
+Ki írta a "Józan Ész" c. pamfletet 1776-ban?,Thomas Paine,George Read,George Clymer,John Hart,irodalom
+A "Sikoly" egy híres festmény amelynek alkotója...?,Edvard Munch,Pablo Picasso,Claude Monet,Henri Matisse,művészet
+Melyik NEM elsődleges szín?,Zöld,Sárga,Piros,Kék,fizika
+Melyik országok NEM voltak részei a tengelyhatalmaknak a II. Világháborúban?,Kína,Japán,Olaszország,Németország,történelem
+Meddig tartott a 'Százéves Háború'?,116 év,101 év,99 év,100 év,matematika
+Melyik elem NEM található meg a Periódusos-rendszerben?,Polypodium,Kadmium,Aktínium,Berillium,kémia
+Melyik játék szerepelt a klasszikus "WarGames" filmben?,Tic-Tac-Toe,Checkers,Tower of Hanoi,Nim,alapműveltség
+Hol található a garnéla szíve?,A fejében,A farkában,A lábaiban,A hátán,biológia
+Mi a fővárosa Dél-Dakotának?,Pierre,Bismarck,Raleigh,Columbia,földrajz
+Melyiket tekintik a francia 'anyaszósz'-nak?,Hollandaise,Beurre blanc,Bordelaise,Charcutiere,gasztronómia
+Ki volt az USA 15. elnöke?,James Buchanan,Franklin Pierce,James K. Polk,Zachary Taylor,történelem
+Melyik NEM egyike az ókori világ 'hét csodájának'?,Kapucínusok katakombái,Epheszoszi Artemisz-templom,Pharoszi világítótorony,Rodoszi kolosszus,történelem
+Melyik NEM gyümölcs?,Rutabaga,Banán,Alma,Paprika,biológia
+Melyik Walt Disney első filmje?,Hófehérke és a hét törpe,Dumbó,Fantázia,Pinokkió,alapműveltség
+A szem külső fehér részére a következőképpen hivatkoznak: ________.,Sclera,Macula,Vitreous,Retina,biológia

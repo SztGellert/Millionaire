@@ -11,7 +11,8 @@
                      "Vissza"],
         "main_menu_options": [
             "Játék ", "Útmutató", "Beállítások ", "Stáblista ", "Kilépés "
-        ]
+        ],
+        "settings_menu_question_topics": ["Vegyes","Alapműveltség ","Történelem", "Földrajz","Fizika","Kémia ","Matematika","Művészet","Irodalom","Zene","Gasztonómia ","Közgazdaság ","Sport "]
     },
     "quiz": {
         "select_answer":"\nVálassza ki a helyes választ ('a','b','c','d'), 't' a játékon kívüli válaszadáshoz, 'h' ha segítséget szeretne!",
