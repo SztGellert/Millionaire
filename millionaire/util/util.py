@@ -2,22 +2,23 @@ import json
 import os
 import pathlib
 from collections import namedtuple
+
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
 import pygame
 
 operating_system = os.name
-
+available_languages = ["en", "hu"]
+game_language = available_languages[0]
+language_dictionary = {}
 
 def init():
     pygame.mixer.init()
 
 
 def init_language(selected_lang: str) -> dict:
-    text = {}
-    languages = ["en", "hu"]
-    for lang in languages:
+    for lang in available_languages:
         lang_dict = read_json_dict(selected_lang)
-        text.update({lang: customDictDecoder(lang_dict)})
+        language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
         """
         print("\nPrinting nested dictionary as a key-value pair\n")
         for i in data['people1']:
@@ -26,7 +27,7 @@ def init_language(selected_lang: str) -> dict:
             print("From:", i['from'])
             print()
             """
-    return text
+    return language_dictionary
 
 
 def clear_screen():
@@ -69,14 +70,14 @@ def stop_sound():
 
 def read_json_dict(file_name: str) -> {}:
     file_path = get_data_path() + "/language_files/" + file_name + ".json"
-    with open(file_path) as json_file:
+    with open(file_path, encoding="UTF-8") as json_file:
         data = json.load(json_file)
 
         return data
 
-def customDictDecoder(dict1):
+
+def custom_dictionary_decoder(dict1):
     for key, value in dict1.items():
         if type(value) is dict:
-            dict1[key] = customDictDecoder(value)
+            dict1[key] = custom_dictionary_decoder(value)
     return namedtuple('X', dict1.keys())(*dict1.values())
-
