@@ -1,6 +1,5 @@
 import keyboard
 import random
-import sys
 import os
 from sty import Style, RgbFg, fg, bg
 from util import util

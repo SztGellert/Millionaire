@@ -1,8 +1,15 @@
 {
-    "eng": "english",
-    "hun": "hungarian",
+    "en": "english",
+    "hu": "hungarian",
     "menu": {
-        "return_prompt": "\"press ENTER for main menu..\""
+        "return_prompt": "\"press ENTER for main menu..\"",
+        "settings_menu_options": ["Language selection",
+                         "Sound Volume selection",
+                         "Default colour theme selection",
+                         "Display size",
+                         "Question types",
+                         "Back"],
+        "main_menu_options" : ["Play", "Tutorial", "Settings", "Credits ", "Exit"]
     },
     "quiz": {
         "select_answer":"\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help!",

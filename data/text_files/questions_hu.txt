@@ -42,10 +42,10 @@ Ki épített bárkát a következő Bibliai személyek közül?,Noah,Jesus Chris
 Melyik az amerikai pénznem legkisebb fizetőegysége?,Penny,Dime,Quarter,Dollar
 Mi a keresztneve a McDonald's kabalájának?,Ronald,Susan,George,Karl
 Ki a jelenlegi házigazdája a "The Tonight Show?"-nak?,Jimmy Fallon,Oprah Winfrey,Anne Curry,Bob Barker
-Mi a görög abc első betűje?,Alpha,Omega,Zed,E
-Melyik tömegközlekedési módnak van hagyományosan két kereke?,Bicycle,Tricycle,Car,Bus
+Mi a görög abc első betűje?,Alfa,Omega,Zed,Epszilon
+Melyik tömegközlekedési módnak van hagyományosan két kereke?,Bicikli,Tricikli,Autó,Busz
 Mennyi a szolgálati ideje az Egyesült Államok elnökének?,4 years,1 year,10 years,20 years
-Melyik a legnagyobb külső szerve az emberi testnek?,Skin,Eyes,Ears,Nose
+Melyik a legnagyobb külső szerve az emberi testnek?,Bőr,Szem,Fül,Orr
 Mi Izland fővárosa?,Reykjavik,Tegucigalpa,Kingston,Astana
 Ki találta fel a szeletelt kenyeret?,Otto Frederick Rohwedder,Samuel Morse,Alfred Nobel,Wright brothers
 Ki volt híres fizikus az alábbiak közül?,Enrico Fermi,Berenice Abbott,Gertrude Abercrombie,Carla Accardi

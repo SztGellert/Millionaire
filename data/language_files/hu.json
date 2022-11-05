@@ -1,8 +1,17 @@
 {
-    "eng": "english",
-    "hun": "hungarian",
+    "en": "angol",
+    "hu": "magyar",
     "menu": {
-        "return_prompt": "\"Nyomja meg az ENTER-t a menübe való visszatéréshez...\""
+        "return_prompt": "\"Nyomja meg az ENTER-t a menübe való visszatéréshez...\"",
+        "settings_menu_options": ["Nyelv kiválasztása",
+                     "Hangerő beállítása",
+                     "Színösszeállítás",
+                     "Képernyő méret",
+                     "Kérdés témakörök",
+                     "Vissza"],
+        "main_menu_options": [
+            "Játék ", "Útmutató", "Beállítások ", "Stáblista ", "Kilépés "
+        ]
     },
     "quiz": {
         "select_answer":"\nVálassza ki a helyes választ ('a','b','c','d'), 't' a játékon kívüli válaszadáshoz, 'h' ha segítséget szeretne!",

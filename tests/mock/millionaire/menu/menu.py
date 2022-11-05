@@ -1,22 +1,15 @@
-import sys
 import time
 import keyboard
 from util import util
 from sty import Style, RgbFg, fg, bg
 from quiz_game import quiz_game
 
-main_menu_options = ["Play", "Help", "Settings", "Credit", "Exit"]
+default_width = 40
 fg.purple = Style(RgbFg(148, 0, 211))
 bg.orange = bg(255, 150, 50)
 game_language = "en"
 language_dictionary = util.language_dictionary
-settings_menu_options = ["Language selection",
-                         "Sound Volume selection",
-                         "Default colour theme selection",
-                         "Display size",
-                         "Question types",
-                         "Back"
-                         ]
+
 
 
 def intro():
@@ -34,16 +27,16 @@ def intro():
 
 
 def show_title():
-    line_length = 43
+    line_length = default_width + 3
     util.clear_screen()
     print("=" * line_length)
-    print(fg.purple + " ♦ WHO WANTS TO BE A ♦" + fg.rs)
+    print(fg.purple + " ♦  W H O    W A N T S   T O   B E   A  ♦" + fg.rs)
     print("=" * line_length)
     print(fg.yellow + "|" * line_length + fg.rs)
-    print(fg.purple + " M I L L I O N A I R E" + fg.rs)
+    print(fg.purple + "     M  I  L  L  I  O  N  A  I  R  E" + fg.rs)
     print(fg.yellow + "|" * line_length + fg.rs)
     print("=" * line_length)
-    print(fg.purple + " ♦ WHO WANTS TO BE A ♦" + fg.rs)
+    print(fg.purple + " ♦  W H O    W A N T S   T O   B E   A  ♦" + fg.rs)
     print("=" * line_length + "\n\n")
 
 
@@ -93,27 +86,23 @@ def return_prompt():
 
 def select_settings():
     util.clear_screen()
-    show_options(settings_menu_options, 40)
+    show_options(language_dictionary[game_language].menu.settings_menu_options, 40)
     while True:
-        chosen_option = get_user_input(settings_menu_options, 40)
-        if chosen_option == "Language selection":
-            show_options(util.available_languages, 20)
-            chosen_lang_option = get_user_input(util.available_languages, 20)
-            lang_ = ""
-            if chosen_lang_option == util.available_languages[0]:
-                lang_ = util.available_languages[0]
-            if chosen_lang_option == util.available_languages[1]:
-                lang_ = util.available_languages[1]
-            util.init_language(lang_)
-            if chosen_lang_option:
-                show_options(settings_menu_options, 40)
-        if chosen_option == "Back":
+        chosen_option = get_user_input(language_dictionary[game_language].menu.settings_menu_options, 40)
+        if chosen_option == language_dictionary[game_language].menu.settings_menu_options[0]:
+            show_options([language_dictionary[game_language].en, language_dictionary[game_language].hu], 20)
+            langs = [language_dictionary[game_language].en, language_dictionary[game_language].hu]
+            chosen_lang_option = get_user_input(langs, 20)
+            util.init_language(util.available_languages[langs.index(chosen_lang_option)])
+            show_options(language_dictionary[game_language].menu.settings_menu_options, 40)
+        if chosen_option == language_dictionary[game_language].menu.settings_menu_options[-1]:
             return
 
 
-def get_user_input(option_list: [], max_option_length: int) -> str:
+def get_user_input(option_list: [], max_option_length: int, hotkey: str) -> str:
     i = 0
     while True:
+        keyboard.press(hotkey)
         if keyboard.read_key() == "enter":
             return option_list[i]
         if keyboard.read_key() == 'down':
@@ -137,21 +126,21 @@ def get_user_input(option_list: [], max_option_length: int) -> str:
 
 
 def handle_main_menu(input_: str, game_inputs: {}):
-    options_length = 40
-    show_options(main_menu_options, options_length)
+    options_length = default_width
+    show_options(language_dictionary[game_language].menu.main_menu_options, options_length)
     while True:
-        chosen_option = input_
-        if chosen_option == "Play":
+        chosen_option = get_user_input(language_dictionary[game_language].menu.main_menu_options, options_length, input_)
+        if chosen_option == language_dictionary[game_language].menu.main_menu_options[0]:
             quiz_game.play(game_inputs)
-            show_options(main_menu_options, options_length)
-        if chosen_option == "Help":
+            show_options(language_dictionary[game_language].menu.main_menu_options, options_length)
+        if chosen_option == language_dictionary[game_language].menu.main_menu_options[1]:
             select_help()
-            show_options(main_menu_options, options_length, 1)
-        if chosen_option == "Settings":
+            show_options(language_dictionary[game_language].menu.main_menu_options, options_length, 1)
+        if chosen_option == language_dictionary[game_language].menu.main_menu_options[2]:
             select_settings()
-            show_options(main_menu_options, options_length, 2)
-        if chosen_option == "Credit":
+            show_options(language_dictionary[game_language].menu.main_menu_options, options_length, 2)
+        if chosen_option == language_dictionary[game_language].menu.main_menu_options[3]:
             select_credits()
-            show_options(main_menu_options, options_length, 3)
-        if chosen_option == "Exit":
+            show_options(language_dictionary[game_language].menu.main_menu_options, options_length, 3)
+        if chosen_option == language_dictionary[game_language].menu.main_menu_options[4]:
             select_exit()
