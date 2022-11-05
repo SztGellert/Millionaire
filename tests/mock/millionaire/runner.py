@@ -10,20 +10,8 @@ from util import util
 def main(menu_inputs: list, game_inputs: dict):
     util.init()
     menu.intro()
-    menu.show_options()
     for i in range(len(menu_inputs)):
-        chosen_option = menu_inputs[i]
-        if chosen_option == "p":
-            quiz_game.play(game_inputs)
-            menu.show_options()
-        if chosen_option == "h":
-            menu.select_help()
-            menu.show_options(1)
-        if chosen_option == "c":
-            menu.select_credits()
-            menu.show_options(2)
-        if chosen_option == "e":
-            menu.select_exit()
+        menu.handle_main_menu(menu_inputs[i], game_inputs)
 
 
 if __name__ == "__main__":

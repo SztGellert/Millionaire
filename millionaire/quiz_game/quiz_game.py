@@ -13,15 +13,12 @@ fg.green = Style(RgbFg(0, 255, 0))
 bg.orange = bg(255, 150, 50)
 languages = util.available_languages
 language_dictionary = util.language_dictionary
-game_language = util.game_language
+game_language = "en"
 
 
 def play():
-    language_select = safe_input("Please select a language: '0' for english and '1' for hungarian:", ["0", "1"])
-    global language_dictionary
-    language_dictionary = util.init_language(languages[int(language_select)])
     global game_language
-    game_language = languages[int(language_select)]
+    game_language = util.game_language
     help_types = {"audience": True, "telephone": True, "halving": True}
     util.clear_screen()
     util.play_sound("lom.mp3", 0)

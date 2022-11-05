@@ -33,7 +33,7 @@ Melyik hercegnő vesztette el az üveg cipellőjét?,Hamupipőke,Hófehérke,Mul
 Melyik amerikai autó márka gyártja a Mustángot, az F-150-est és az 'Escape'-et?,Ford,Toyota,Volkswagen,Nissan
 Ki volt az első nő aki egyedül repülte át az Atlanti Óceánt?,Amelia Earhart,Geraldine Ferraro,Martha Stewart,Sally Ride
 Melyik amerikai városban fellelhető a Szabadság Harangja és a Függetlenség Csarnoka?,Philadelphia,Vancouver,Mexikó város,Peking
-Luke Skywalker, Han Solo és Darth Vader melyik popkultúra-franchise karakterei?,Star Wars,Harry Potter,Star Trek,James Bond
+Luke Skywalker Han Solo és Darth Vader melyik popkultúra-franchise karakterei?,Star Wars,Harry Potter,Star Trek,James Bond
 Hány napos egy szökőév?,366,28,30,400
 Melyik oldalnak van a legnépszerűbb keresőmotorja?,Google,DuckDuckGo,Myspace,Bing
 Ki a jelenlegi Brit uralkodó?,III. Károly,Fülöp Király,II. Erzsébet Királyné,György Király

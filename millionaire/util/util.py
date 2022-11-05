@@ -11,23 +11,18 @@ available_languages = ["en", "hu"]
 game_language = available_languages[0]
 language_dictionary = {}
 
+
 def init():
     pygame.mixer.init()
+    init_language(available_languages[0])
 
 
-def init_language(selected_lang: str) -> dict:
+def init_language(selected_lang: str):
     for lang in available_languages:
         lang_dict = read_json_dict(selected_lang)
         language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
-        """
-        print("\nPrinting nested dictionary as a key-value pair\n")
-        for i in data['people1']:
-            print("Name:", i['name'])
-            print("Website:", i['website'])
-            print("From:", i['from'])
-            print()
-            """
-    return language_dictionary
+        global game_language
+        game_language = selected_lang
 
 
 def clear_screen():
@@ -72,7 +67,6 @@ def read_json_dict(file_name: str) -> {}:
     file_path = get_data_path() + "/language_files/" + file_name + ".json"
     with open(file_path, encoding="UTF-8") as json_file:
         data = json.load(json_file)
-
         return data
 
 

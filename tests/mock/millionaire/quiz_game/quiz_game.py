@@ -12,16 +12,13 @@ fg.orange = Style(RgbFg(255, 150, 50))
 fg.green = Style(RgbFg(0, 255, 0))
 bg.orange = bg(255, 150, 50)
 languages = util.available_languages
-game_language = util.game_language
+game_language = "en"
 language_dictionary = util.language_dictionary
 
 
 def play(inputs: dict):
-    language_select = safe_input("Please select a language: '0' for english and '1' for hungarian:", ["0", "1"], "0")
-    global language_dictionary
-    language_dictionary = util.init_language(languages[int(language_select)])
     global game_language
-    lang = languages[int(language_select)]
+    game_language = util.game_language
     out_of_game_inputs = inputs["out_of_game_answers"]
     game_inputs = inputs["game_answers"]
     audience_inputs = inputs["audience_answers"]
@@ -32,7 +29,7 @@ def play(inputs: dict):
     util.clear_screen()
     util.play_sound("lom.mp3", 0)
     time.sleep(2)
-    question_file = 'questions_' + lang + ".txt"
+    question_file = 'questions_' + game_language + ".txt"
     question_lines = util.open_file(question_file, "r")
     random.shuffle(question_lines)
     for i in range(15):
@@ -49,11 +46,11 @@ def play(inputs: dict):
         correct_answer_value = question_lines[i][1]
         if game_inputs[i] == "OK":
             answer = safe_input(
-                language_dictionary[lang].quiz.select_answer,
+                language_dictionary[game_language].quiz.select_answer,
                 ["a", "b", "c", "d", "h", "t"], correct_answer_key)
         else:
             answer = safe_input(
-                language_dictionary[lang].quiz.select_answer,
+                language_dictionary[game_language].quiz.select_answer,
                 ["a", "b", "c", "d", "h", "t"], game_inputs[i])
         while answer not in list(answers.keys()):
             if answer == "t":
@@ -63,10 +60,10 @@ def play(inputs: dict):
                     print(list(answers.keys())[k] + ": " + answer_list[k])
                 util.play_sound("music_off.mp3", 0)
                 if out_of_game_inputs[0] == "OK":
-                    answer = safe_input(language_dictionary[lang].quiz.select_answer_out,
+                    answer = safe_input(language_dictionary[game_language].quiz.select_answer_out,
                         ["a", "b", "c", "d"], correct_answer_key)
                 else:
-                    answer = safe_input(language_dictionary[lang].quiz.select_answer_out,
+                    answer = safe_input(language_dictionary[game_language].quiz.select_answer_out,
                                         ["a", "b", "c", "d"], out_of_game_inputs[0])
                 time.sleep(2)
                 util.clear_screen()
@@ -83,14 +80,14 @@ def play(inputs: dict):
                         util.play_sound("won_hundred_bucks.mp3", 0)
                         time.sleep(1)
                     else:
-                        print(fg.blue + language_dictionary[lang].quiz.correct_answer_out + fg.rs)
+                        print(fg.blue + language_dictionary[game_language].quiz.correct_answer_out + fg.rs)
                         util.play_sound("show_stop.mp3", 0)
                         time.sleep(1)
                 else:
-                    print(fg.red + language_dictionary[lang].quiz.incorrect_answer + fg.rs)
+                    print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
-                safe_input(language_dictionary[lang].menu.return_prompt, ["enter"], return_inputs[0])
+                safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
                 util.clear_screen()
                 return
             if answer == "h":
@@ -113,7 +110,7 @@ def play(inputs: dict):
                         if chosen_help == "phone":
                             chosen_help_values = help_inputs[2]
                             chosen_input = "t"
-                chosen_help_type = safe_input(language_dictionary[lang].quiz.help_selection,
+                chosen_help_type = safe_input(language_dictionary[game_language].quiz.help_selection,
                                               ["a", "h", "t"], chosen_input)
                 for x in range(len(help_types)):
                     if chosen_help_type.lower() == list(help_types)[x][0]:
@@ -130,24 +127,24 @@ def play(inputs: dict):
                             help_types[list(help_types)[x]] = False
                             break
                         else:
-                            print(language_dictionary[lang].quiz.help_disabled + list(help_types)[x] + " " + language_dictionary[lang].quiz.help)
+                            print(language_dictionary[game_language].quiz.help_disabled + list(help_types)[x] + " " + language_dictionary[game_language].quiz.help)
                 if chosen_help != "phone":
                     if chosen_help_values[1] == "OK":
                         answer = safe_input(
-                            language_dictionary[lang].quiz.select_answer,
+                            language_dictionary[game_language].quiz.select_answer,
                             ["a", "b", "c", "d", "h", "t"], correct_answer_key)
                     else:
                         answer = safe_input(
-                            language_dictionary[lang].quiz.select_answer,
+                            language_dictionary[game_language].quiz.select_answer,
                             ["a", "b", "c", "d", "h", "t"], chosen_help_values[1])
                 else:
                     if chosen_help_values[2] == "OK":
                         answer = safe_input(
-                            language_dictionary[lang].quiz.select_answer,
+                            language_dictionary[game_language].quiz.select_answer,
                             ["a", "b", "c", "d", "h", "t"], correct_answer_key)
                     else:
                         answer = safe_input(
-                            language_dictionary[lang].quiz.select_answer,
+                            language_dictionary[game_language].quiz.select_answer,
                             ["a", "b", "c", "d", "h", "t"], chosen_help_values[2])
 
                 time.sleep(2)
@@ -160,15 +157,15 @@ def play(inputs: dict):
             if i < 14:
                 util.play_sound("correct_answer.mp3", 0)
                 if i == 4:
-                    print(fg.yellow + language_dictionary[lang].quiz.guaranteed_prize + show_prize(i) + fg.rs)
+                    print(fg.yellow + language_dictionary[game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     util.play_sound("won_hundred_bucks.mp3", 0)
                     time.sleep(1)
                 elif i == 9:
-                    print(fg.yellow + language_dictionary[lang].quiz.guaranteed_prize + show_prize(i) + fg.rs)
+                    print(fg.yellow + language_dictionary[game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     util.play_sound("now_comes_hard_part.mp3", 0)
                     time.sleep(1)
                 else:
-                    print(fg.green + language_dictionary[lang].quiz.correct_answer + fg.rs)
+                    print(fg.green + language_dictionary[game_language].quiz.correct_answer + fg.rs)
                     util.clear_screen()
                     print(bg.orange + show_prize(i) + bg.rs)
                     time.sleep(2)
@@ -176,13 +173,13 @@ def play(inputs: dict):
                 util.play_sound("great_logic.mp3", 0)
                 time.sleep(1)
                 util.clear_screen()
-                print(fg.purple + language_dictionary[lang].quiz.won_prize + show_prize(i) + " !" + fg.rs)
+                print(fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(i) + " !" + fg.rs)
                 util.play_sound("winning_theme.mp3", 0)
                 time.sleep(35)
-                safe_input(language_dictionary[lang].menu.return_prompt, ["enter"], return_inputs[0])
+                safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
         else:
-            print(fg.red + language_dictionary[lang].quiz.incorrect_answer + fg.rs)
-            safe_input(language_dictionary[lang].menu.return_prompt, ["enter"], return_inputs[0])
+            print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
+            safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
             util.clear_screen()
             return
         util.clear_screen()
@@ -195,7 +192,7 @@ def safe_input(input_text: str, allowed_list_of_letters: list, hotkey: str) -> s
     keyboard.press_and_release(hotkey)
     answer = hotkey
     if answer not in allowed_list_of_letters:
-        print(game_language[game_language].quiz.allowed_letters_error + ' '.join(allowed_list_of_letters) + game_language[game_language].quiz.allowed)
+        print(language_dictionary[game_language].quiz.allowed_letters_error + ' '.join(allowed_list_of_letters) + language_dictionary[game_language].quiz.allowed)
     while answer not in allowed_list_of_letters:
         answer = keyboard.read_key()
     if answer != "enter":
@@ -238,12 +235,12 @@ def print_phone_conversation(text: list, question: str, answers: {}, good_answer
     now = time.time()
     util.play_sound('phone_call.mp3', 30.0)
     time.sleep(3)
-    print(text[game_language].quiz.call_duration, int(now - then), text[game_language].quiz.call_seconds)
+    print(language_dictionary[game_language].quiz.call_duration, int(now - then), language_dictionary[game_language].quiz.call_seconds)
     util.stop_sound()
 
 
 def telephone_help(question: str, answers: {}, correct_answer: str, hotkey: str):
-    phone = safe_input(game_language[game_language].quiz.phone_prompt,
+    phone = safe_input(language_dictionary[game_language].quiz.phone_prompt,
                        ["m", "d", "t", "y"], hotkey)
     call_text_files = ["mum_phone_" + game_language + ".txt",
                        "dad_phone_" + game_language + ".txt",
