@@ -23,28 +23,28 @@ Milyen termékeket gyárt a Tesla?,Elektromos autó,Jégkrém,Televizió,Fésű,
 Melyik nem főemlős?,Delfin,Csimpánz,Gorillla,Orángután,biológia
 Melyik gáztól lesz magasabb a hangunk ha belélegezzük?,Hélium,Oxigén,Nitrogén,Kén-hexafluorid,fizika
 Melyik amerikai ünnep esik július 4.-re?,Függetlenség Napja,Hálaadás,Karácsony,Újév,történelem
-Melyik csokiszelet osztozik egy galaxis nevén?,Milky Way,Snickers,3 Musketeers,Almond Joy,alapműveltség
+Melyik csokiszelet osztozik egy galaxis nevén?,Milky Way,Snickers,3 Musketeers,Almond Joy,általános műveltség
 Hogy hívják Anglia fővárosát?,London,Washington D.C.,Róma,Moszkva,földrajz
-Melyik egyetem NEM tartozik a legelőkelőbb amerikai egyetemekhez?,Hogwarts,Harvard,Princeton,Columbia,alapműveltség
-Hogy hívják az érmegyűjtéssel foglalkozó szakágat?,Numizmatika,Professzor,Séf,Fizioterápia,alapműveltség
+Melyik egyetem NEM tartozik a legelőkelőbb amerikai egyetemekhez?,Hogwarts,Harvard,Princeton,Columbia,általános műveltség
+Hogy hívják az érmegyűjtéssel foglalkozó szakágat?,Numizmatika,Professzor,Séf,Fizioterápia,általános műveltség
 Melyik videojátékot gyártja a Sony?,PlayStation,Xbox,Atari,Game Boy,gazdaság
-Hogy hívják a Super Mario Bros. figuráit?,Mario and Luigi,Tim and Eric,Batman and Robin,Sonic and Tails,alapműveltség
-Melyik hercegnő vesztette el az üveg cipellőjét?,Hamupipőke,Hófehérke,Mulan,Belle,alapműveltség
+Hogy hívják a Super Mario Bros. figuráit?,Mario and Luigi,Tim and Eric,Batman and Robin,Sonic and Tails,általános műveltség
+Melyik hercegnő vesztette el az üveg cipellőjét?,Hamupipőke,Hófehérke,Mulan,Belle,általános műveltség
 Melyik amerikai autó márka gyártja a Mustángot, az F-150-est és az 'Escape'-et?,Ford,Toyota,Volkswagen,Nissan,gazdaság
 Ki volt az első nő aki egyedül repülte át az Atlanti Óceánt?,Amelia Earhart,Geraldine Ferraro,Martha Stewart,Sally Ride,történelem
 Melyik amerikai városban fellelhető a Szabadság Harangja és a Függetlenség Csarnoka?,Philadelphia,Vancouver,Mexikó város,Peking,földrajz
-Luke Skywalker Han Solo és Darth Vader melyik popkultúra-franchise karakterei?,Star Wars,Harry Potter,Star Trek,James Bond,alapműveltség
+Luke Skywalker Han Solo és Darth Vader melyik popkultúra-franchise karakterei?,Star Wars,Harry Potter,Star Trek,James Bond,általános műveltség
 Hány napos egy szökőév?,366,28,30,400,matematika
-Melyik oldalnak van a legnépszerűbb keresőmotorja?,Google,DuckDuckGo,Myspace,Bing,alapműveltség
+Melyik oldalnak van a legnépszerűbb keresőmotorja?,Google,DuckDuckGo,Myspace,Bing,általános műveltség
 Ki a jelenlegi Brit uralkodó?,III. Károly,Fülöp Király,II. Erzsébet Királyné,György Király,történelem
-Big Bird és Elmo melyik gyerek műsorban szerepeltek?,Sesame Street,Barney & Friends,Spongebob Squarepants,The Wiggles,alapműveltség
+Big Bird és Elmo melyik gyerek műsorban szerepeltek?,Sesame Street,Barney & Friends,Spongebob Squarepants,The Wiggles,általános műveltség
 Ki épített bárkát a következő Bibliai személyek közül?,Noah,Jesus Christ,Moses,Eve,irodalom
 Melyik az amerikai pénznem legkisebb fizetőegysége?,Penny,Dime,Quarter,Dollar,gazdaság
-Mi a keresztneve a McDonald's kabalájának?,Ronald,Susan,George,Karl,alapműveltség
-Ki a jelenlegi házigazdája a "The Tonight Show?"-nak?,Jimmy Fallon,Oprah Winfrey,Anne Curry,Bob Barker,alapműveltség
+Mi a keresztneve a McDonald's kabalájának?,Ronald,Susan,George,Karl,általános műveltség
+Ki a jelenlegi házigazdája a "The Tonight Show?"-nak?,Jimmy Fallon,Oprah Winfrey,Anne Curry,Bob Barker,általános műveltség
 Mi a görög abc első betűje?,Alfa,Omega,Zed,Epszilon,irodalom
-Melyik tömegközlekedési módnak van hagyományosan két kereke?,Bicikli,Tricikli,Autó,Busz,alapműveltség
-Mennyi a szolgálati ideje az Egyesült Államok elnökének?,4 years,1 year,10 years,20 years,alapműveltség
+Melyik tömegközlekedési módnak van hagyományosan két kereke?,Bicikli,Tricikli,Autó,Busz,általános műveltség
+Mennyi a szolgálati ideje az Egyesült Államok elnökének?,4 years,1 year,10 years,20 years,általános műveltség
 Melyik a legnagyobb külső szerve az emberi testnek?,Bőr,Szem,Fül,Orr,biológia
 Mi Izland fővárosa?,Reykjavik,Tegucigalpa,Kingston,Astana,földrajz
 Ki találta fel a szeletelt kenyeret?,Otto Frederick Rohwedder,Samuel Morse,Alfred Nobel,Wright brothers,történelem
@@ -62,12 +62,20 @@ Melyik NEM elsődleges szín?,Zöld,Sárga,Piros,Kék,fizika
 Melyik országok NEM voltak részei a tengelyhatalmaknak a II. Világháborúban?,Kína,Japán,Olaszország,Németország,történelem
 Meddig tartott a 'Százéves Háború'?,116 év,101 év,99 év,100 év,matematika
 Melyik elem NEM található meg a Periódusos-rendszerben?,Polypodium,Kadmium,Aktínium,Berillium,kémia
-Melyik játék szerepelt a klasszikus "WarGames" filmben?,Tic-Tac-Toe,Checkers,Tower of Hanoi,Nim,alapműveltség
+Melyik játék szerepelt a klasszikus "WarGames" filmben?,Tic-Tac-Toe,Checkers,Tower of Hanoi,Nim,általános műveltség
 Hol található a garnéla szíve?,A fejében,A farkában,A lábaiban,A hátán,biológia
 Mi a fővárosa Dél-Dakotának?,Pierre,Bismarck,Raleigh,Columbia,földrajz
 Melyiket tekintik a francia 'anyaszósz'-nak?,Hollandaise,Beurre blanc,Bordelaise,Charcutiere,gasztronómia
 Ki volt az USA 15. elnöke?,James Buchanan,Franklin Pierce,James K. Polk,Zachary Taylor,történelem
 Melyik NEM egyike az ókori világ 'hét csodájának'?,Kapucínusok katakombái,Epheszoszi Artemisz-templom,Pharoszi világítótorony,Rodoszi kolosszus,történelem
 Melyik NEM gyümölcs?,Rutabaga,Banán,Alma,Paprika,biológia
-Melyik Walt Disney első filmje?,Hófehérke és a hét törpe,Dumbó,Fantázia,Pinokkió,alapműveltség
+Melyik Walt Disney első filmje?,Hófehérke és a hét törpe,Dumbó,Fantázia,Pinokkió,általános műveltség
 A szem külső fehér részére a következőképpen hivatkoznak: ________.,Sclera,Macula,Vitreous,Retina,biológia
+Minek a tudománya az Entomológia?,Rovarok,Emberi viselkedés,A technikai és tudományos terminológiák eredete,Kőzetek kialakulása,általános műveltség
+Mely tudományágakért adhatják a Nobel-díjat?Mindegyikért,Irodalom,Béke és közgazdaságtudomány,Fiziológia vagy Orvostudomány,Fizika és Kémia,általános műveltség
+Grúzia és Üzbegisztán és Türkmenisztán melyik évben csatlakozott az ENSZ-hez?,1992,1991,1993,1994,történelem
+Németország aláírta a Compiègne-i fegyverszünetet ____. -án így az I. Világháború végetért?,1918 November 11.,1918 Február 15.,1918 Május 30.,1918 Január 19.,történelem
+Galilei egy olasz asztronómus, aki...,Mindegyik,felfedezte, hogy az inga mozgása szabályos időmérést eredményez,felfedezte a Jupiter négy holdját,kifejlesztette a távcsövet,földrajz
+A Nagy-Viktória-sivatag hol található?,Ausztrália,anada,Nyugat-Afrika,Észak-Amerika,földrajz
+Az alábbiak közül melyik trópusi füves terület?,Szavanna,Tajga,Pampa,Préri,földrajz
+A talajvíz két át nem eresztő réteg közé zárulhat. Mi az ilyen típusú zárt víz neve?,Artézi,Artézi kút,Szabad talajvíz,Zárt talajvíz,földrajz

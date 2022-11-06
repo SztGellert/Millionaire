@@ -93,7 +93,7 @@ def select_settings():
         if chosen_option == language_dictionary[game_language].menu.settings_menu_options[-2]:
             show_options(language_dictionary[game_language].menu.settings_menu_question_topics, 20)
             chosen_question_topic = get_user_input(language_dictionary[game_language].menu.settings_menu_question_topics, 20)
-            if chosen_question_topic != "Mixed ":
+            if chosen_question_topic != language_dictionary[game_language].menu.settings_menu_question_topics[0]:
                 util.init_question_topics(chosen_question_topic)
             show_options(language_dictionary[game_language].menu.settings_menu_options, 40)
         if chosen_option == language_dictionary[game_language].menu.settings_menu_options[-1]:

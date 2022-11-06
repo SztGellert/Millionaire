@@ -13,7 +13,7 @@ bg.orange = bg(255, 150, 50)
 languages = util.available_languages
 language_dictionary = util.language_dictionary
 game_language = "en"
-question_topics = "Mixed "
+question_topics = "All "
 
 
 def play():
@@ -27,7 +27,11 @@ def play():
     time.sleep(2)
     question_file = 'questions_' + game_language + ".txt"
     question_lines = util.open_file(question_file, "r")
-    if question_topics != "Mixed ":
+    for i in range(len(language_dictionary[game_language].menu.settings_menu_question_topics)):
+        topic = filter(lambda c: c[5] == language_dictionary[game_language].menu.settings_menu_question_topics[i].lower().strip(), question_lines)
+        print(language_dictionary[game_language].menu.settings_menu_question_topics[i].lower().strip() + " " + str(len(list(topic))))
+    time.sleep(30)
+    if question_topics != language_dictionary[game_language].menu.settings_menu_question_topics[0]:
         populated = filter(lambda c: c[5] == str(question_topics).lower().strip(), question_lines)
         question_lines = list(populated)
     random.shuffle(question_lines)

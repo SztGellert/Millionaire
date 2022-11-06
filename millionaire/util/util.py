@@ -10,7 +10,7 @@ operating_system = os.name
 available_languages = ["en", "hu"]
 game_language = available_languages[0]
 language_dictionary = {}
-question_topics = "Mixed "
+question_topics = "All "
 
 
 def init():
