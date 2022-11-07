@@ -2,7 +2,7 @@
     "en": "english",
     "hu": "hungarian",
     "menu": {
-        "return_prompt": "\"press ENTER for main menu..\"",
+        "return_prompt": "press ENTER for main menu..",
         "settings_menu_options": ["Language selection",
                          "Sound Volume selection",
                          "Default colour theme selection",
