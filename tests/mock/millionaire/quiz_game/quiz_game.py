@@ -13,7 +13,7 @@ bg.orange = bg(255, 150, 50)
 languages = util.available_languages
 game_language = "en"
 language_dictionary = util.language_dictionary
-question_topics = "Mixed "
+question_topics = "All "
 
 
 def play(inputs: dict):
@@ -32,7 +32,7 @@ def play(inputs: dict):
     util.play_sound("lom.mp3", 0)
     time.sleep(2)
     question_file = 'questions_' + game_language + ".txt"
-    question_lines = util.open_file(question_file, "r")
+    question_lines = util.open_file(question_file, "r", ";")
     if question_topics != "Mixed ":
         populated = filter(lambda c: c[5] == str(question_topics).lower().strip(), question_lines)
         question_lines = list(populated)

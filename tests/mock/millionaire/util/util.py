@@ -10,7 +10,7 @@ operating_system = os.name
 available_languages = ["en", "hu"]
 game_language = available_languages[0]
 language_dictionary = {}
-question_topics = "Mixed "
+question_topics = "All "
 
 
 def init():
@@ -55,12 +55,12 @@ def get_data_path() -> str:
     return data_path
 
 
-def open_file(filename: str, mode: str) -> list:
+def open_file(filename: str, mode: str, separator=",") -> list:
     file_path = get_data_path() + "/text_files/" + filename
     with open(file_path, mode, encoding="UTF-8") as file:
         list_of_file = []
         for line in file:
-            line = line.strip().split(',')
+            line = line.strip().split(separator)
             list_of_file.append(line)
     return list_of_file
 
