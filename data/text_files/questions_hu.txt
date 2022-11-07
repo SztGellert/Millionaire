@@ -13,13 +13,13 @@ Melyik a legmagasabb pontja a Mount Everest-nek?;8848 m;8840 m;8830 m;8838 m;fö
 Mikor halt meg VIII. Henrik?;1435;1978;1523;1547;történelem
 Melyik a világ leghosszabb hídja?;Tanjang–Kunsan vasúti híd;Cangde Grand Bridge;Bang Na Expressway;Runyang-híd;földrajz
 Melyik városban található az Eiffel torony?;Párizs;Sydney;Los Angeles;New York;földrajz
-Melyik a foci angol neve?;Soccer;Basketball;Baseball;Cricket;sports
+Melyik a foci angol neve?;Soccer;Basketball;Baseball;Cricket;sport
 Hány kontinens található a Földön?;7;1;3;20;földrajz
 Ki NEM volt a Beatles tagja?;Justin Timberlake;John Lennon;Paul McCartney;Ringo Star;zene
 Melyik nem egy tésztaféle?;Escargot;Spaghetti;Fettuccine;Ziti;gasztronómia
 Melyik államban található San Francisco és Hollywood?;Kalifornia;Utah;Hawaii;Montana;földrajz
 Melyik hangszernek nincsenek húrjai?;Harsona;Gitár;Basszusgitár;Cselló;zene
-Milyen termékeket gyárt a Tesla?;Elektromos autó;Jégkrém;Televizió;Fésű;gazdaság
+Milyen termékeket gyárt a Tesla?;Elektromos autó;Jégkrém;Televizió;Fésű;;közgazdaságtan
 Melyik nem főemlős?;Delfin;Csimpánz;Gorillla;Orángután;biológia
 Melyik gáztól lesz magasabb a hangunk ha belélegezzük?;Hélium;Oxigén;Nitrogén;Kén-hexafluorid;fizika
 Melyik amerikai ünnep esik július 4.-re?;Függetlenség Napja;Hálaadás;Karácsony;Újév;történelem
@@ -27,10 +27,10 @@ Melyik csokiszelet osztozik egy galaxis nevén?;Milky Way;Snickers;3 Musketeers;
 Hogy hívják Anglia fővárosát?;London;Washington D.C.;Róma;Moszkva;földrajz
 Melyik egyetem NEM tartozik a legelőkelőbb amerikai egyetemekhez?;Hogwarts;Harvard;Princeton;Columbia;általános műveltség
 Hogy hívják az érmegyűjtéssel foglalkozó szakágat?;Numizmatika;Professzor;Séf;Fizioterápia;általános műveltség
-Melyik videojátékot gyártja a Sony?;PlayStation;Xbox;Atari;Game Boy;gazdaság
+Melyik videojátékot gyártja a Sony?;PlayStation;Xbox;Atari;Game Boy;;közgazdaságtan
 Hogy hívják a Super Mario Bros. figuráit?;Mario and Luigi;Tim and Eric;Batman and Robin;Sonic and Tails;általános műveltség
 Melyik hercegnő vesztette el az üveg cipellőjét?;Hamupipőke;Hófehérke;Mulan;Belle;általános műveltség
-Melyik amerikai autó márka gyártja a Mustángot; az F-150-est és az 'Escape'-et?;Ford;Toyota;Volkswagen;Nissan;gazdaság
+Melyik amerikai autó márka gyártja a Mustángot; az F-150-est és az 'Escape'-et?;Ford;Toyota;Volkswagen;Nissan;;közgazdaságtan
 Ki volt az első nő aki egyedül repülte át az Atlanti Óceánt?;Amelia Earhart;Geraldine Ferraro;Martha Stewart;Sally Ride;történelem
 Melyik amerikai városban fellelhető a Szabadság Harangja és a Függetlenség Csarnoka?;Philadelphia;Vancouver;Mexikó város;Peking;földrajz
 Luke Skywalker Han Solo és Darth Vader melyik popkultúra-franchise karakterei?;Star Wars;Harry Potter;Star Trek;James Bond;általános műveltség
@@ -39,7 +39,7 @@ Melyik oldalnak van a legnépszerűbb keresőmotorja?;Google;DuckDuckGo;Myspace;
 Ki a jelenlegi Brit uralkodó?;III. Károly;Fülöp Király;II. Erzsébet Királyné;György Király;történelem
 Big Bird és Elmo melyik gyerek műsorban szerepeltek?;Sesame Street;Barney & Friends;Spongebob Squarepants;The Wiggles;általános műveltség
 Ki épített bárkát a következő Bibliai személyek közül?;Noah;Jesus Christ;Moses;Eve;irodalom
-Melyik az amerikai pénznem legkisebb fizetőegysége?;Penny;Dime;Quarter;Dollar;gazdaság
+Melyik az amerikai pénznem legkisebb fizetőegysége?;Penny;Dime;Quarter;Dollar;;közgazdaságtan
 Mi a keresztneve a McDonald's kabalájának?;Ronald;Susan;George;Karl;általános műveltség
 Ki a jelenlegi házigazdája a "The Tonight Show?"-nak?;Jimmy Fallon;Oprah Winfrey;Anne Curry;Bob Barker;általános műveltség
 Mi a görög abc első betűje?;Alfa;Omega;Zed;Epszilon;irodalom
@@ -55,7 +55,7 @@ Melyik festő ismert az absztrakt expresszionizmusáról?;Jackson Pollock;Max Er
 Melyik virág mérgező?;Lily of the valley;Frilly Edible Chrysanthemum;Bergamot;Chervil;biológia
 Melyik NEM egyike az eredeti 13 kolóniának?;Florida;New York;Pennsylvania;Georgia;történelem
 A caffe macchiatonak ________ gyökerei vannak.;Olasz;Spanyol;Amerikai;Francia;gasztronómia
-A "hrivnya" pénznem melyik országé?;Ukrajna;Törökország;Irán;India;gazdaság
+A "hrivnya" pénznem melyik országé?;Ukrajna;Törökország;Irán;India;;közgazdaságtan
 Ki írta a "Józan Ész" c. pamfletet 1776-ban?;Thomas Paine;George Read;George Clymer;John Hart;irodalom
 A "Sikoly" egy híres festmény amelynek alkotója...?;Edvard Munch;Pablo Picasso;Claude Monet;Henri Matisse;művészet
 Melyik NEM elsődleges szín?;Zöld;Sárga;Piros;Kék;fizika
@@ -72,35 +72,59 @@ Melyik NEM gyümölcs?;Rutabaga;Banán;Alma;Paprika;biológia
 Melyik Walt Disney első filmje?;Hófehérke és a hét törpe;Dumbó;Fantázia;Pinokkió;általános műveltség
 A szem külső fehér részére a következőképpen hivatkoznak: ________.;Sclera;Macula;Vitreous;Retina;biológia
 Minek a tudománya az Entomológia?;Rovarok;Emberi viselkedés;A technikai és tudományos terminológiák eredete;Kőzetek kialakulása;általános műveltség
-Mely tudományágakért adhatják a Nobel-díjat?Mindegyikért;Irodalom;Béke és közgazdaságtudomány;Fiziológia vagy Orvostudomány;Fizika és Kémia;általános műveltség
+Mely tudományágakért adhatják a Nobel-díjat?Mindegyikért;Irodalom;Béke és köz;közgazdaságtantudomány;Fiziológia vagy Orvostudomány;Fizika és Kémia;általános műveltség
 Grúzia és Üzbegisztán és Türkmenisztán melyik évben csatlakozott az ENSZ-hez?;1992;1991;1993;1994;történelem
 Németország aláírta a Compiègne-i fegyverszünetet ____. -án így az I. Világháború végetért?;1918 November 11.;1918 Február 15.;1918 Május 30.;1918 Január 19.;történelem
 Galilei egy olasz asztronómus; aki...;Mindegyik;felfedezte; hogy az inga mozgása szabályos időmérést eredményez;felfedezte a Jupiter négy holdját;kifejlesztette a távcsövet;földrajz
 A Nagy-Viktória-sivatag hol található?;Ausztrália;anada;Nyugat-Afrika;Észak-Amerika;földrajz
 Az alábbiak közül melyik trópusi füves terület?;Szavanna;Tajga;Pampa;Préri;földrajz
 A talajvíz két át nem eresztő réteg közé zárulhat. Mi az ilyen típusú zárt víz neve?;Artézi;Artézi kút;Szabad talajvíz;Zárt talajvíz;földrajz
-Mennyi időt kapnak a profi Golf Tour játékosok ütésenként?;45 másodperc;25 sodperc;1 perc;2 perc;sports
-Melyik NBA-játékos szerzett 8 pontot a meccs utolsó 7 másodpercében hogy győzelemre vezesse csapatát?;Reggie Miller;Baron Davis;Kevin Garnett;Stephon Maurbury;sports
-Ki birtokolja a második és harmadik helyet a legtöbb yardot tekintve egyetlen szezonban az NFL-ben?;OJ Simpson;Barry Sanders;Jim Brown;Dick Lane;sports
-Melyik ország nyerte meg a krikett világbajnokságot 1999-ben?;Ausztrália;Dél-Africa;Pakisztán;Anglia;sports
-Mi a nemzetközi neve annak a személynek aki irányít egy futballmérkőzést?;A referee;An umpire;A spectator;A goalkeeper;sports
-Melyik Major League Baseball csapat hazai pályája a Fenway Park?Boston Red Sox;New York Yankees;Chicago White Sox;Montreal Expos;sports
+Mennyi időt kapnak a profi Golf Tour játékosok ütésenként?;45 másodperc;25 sodperc;1 perc;2 perc;sport
+Melyik NBA-játékos szerzett 8 pontot a meccs utolsó 7 másodpercében hogy győzelemre vezesse csapatát?;Reggie Miller;Baron Davis;Kevin Garnett;Stephon Maurbury;sport
+Ki birtokolja a második és harmadik helyet a legtöbb yardot tekintve egyetlen szezonban az NFL-ben?;OJ Simpson;Barry Sanders;Jim Brown;Dick Lane;sport
+Melyik ország nyerte meg a krikett világbajnokságot 1999-ben?;Ausztrália;Dél-Africa;Pakisztán;Anglia;sport
+Mi a nemzetközi neve annak a személynek aki irányít egy futballmérkőzést?;A referee;An umpire;A spectator;A goalkeeper;sport
+Melyik Major League Baseball csapat hazai pályája a Fenway Park?Boston Red Sox;New York Yankees;Chicago White Sox;Montreal Expos;sport
 Az első sárkányrepülőt az alábbi személy fedezte fel...?;Leonardo DaVinci;A Wright fivérek;Francis Rogallo;Galileo;history
-Mi a közös Ernie Davis és Archie Griffin és Tony Dorsett afro-amerikai focistáiban?;Mindegyikük megnyerte a Heisman Trófeát;Mind játszottak a Pittsburgh-ben;Mind hozzájutottak Super Bowl címekhez;Nincs közös jellemzőjük;sports
-Az első sárkányrepülők amelyekkel már repültek melyik évszázadban készültek el...?;1800s;1600s;1700s;1900s;sports
-Az egykori ausztrál kapitány Mark Taylor játékoskarrierje során számos becenevet kapott. Az alábbiak közül melyik NEM volt köztük?Stumpy;Tubby;Stodge;Helium Bat;sports
-Melyik ország – amely 2003-ban debütált a Norwich Union League-ben – szerződtette Rahul Dravidot tengerentúli játékosának?;Skócia;Hollandia;Írország;Wales;sports
-Ki birkózott a The Rock főversenyén a "Wrestlemania" 1999-es kiadásában?;Stone Cold Steve Austin;Triple H;Mankind;Undertaker;sports
-Ki szerezte a valaha volt legtöbb "Test Hundreds"-et?;Sachin Tendulkar;Steve Waugh;Shane Warne;Sunil Gavaskar;sports
-Melyik atlétika sztár győzte le a gyermekkori gyermekbénulást hogy kora egyik legnagyobb sportsolójává váljon?;Wilma Rudolph;Gail Devers;Florence Griffith Joyner;Jackie Robinson;sports
-Melyik futballhős beceneve „The Sundance Kid” - kora egyik legnagyobb sportsolója?;Jim Kiick;Troy Aikman;Brett Favre;Joe Montana;sports
-Kit győzött le The Rock hogy megnyerje első WWE-címét?;Mankind;Triple H;Stone Cold Steve Austin;Bret Hart;sports
+Mi a közös Ernie Davis és Archie Griffin és Tony Dorsett afro-amerikai focistáiban?;Mindegyikük megnyerte a Heisman Trófeát;Mind játszottak a Pittsburgh-ben;Mind hozzájutottak Super Bowl címekhez;Nincs közös jellemzőjük;sport
+Az első sárkányrepülők amelyekkel már repültek melyik évszázadban készültek el...?;1800s;1600s;1700s;1900s;sport
+Az egykori ausztrál kapitány Mark Taylor játékoskarrierje során számos becenevet kapott. Az alábbiak közül melyik NEM volt köztük?Stumpy;Tubby;Stodge;Helium Bat;sport
+Melyik ország – amely 2003-ban debütált a Norwich Union League-ben – szerződtette Rahul Dravidot tengerentúli játékosának?;Skócia;Hollandia;Írország;Wales;sport
+Ki birkózott a The Rock főversenyén a "Wrestlemania" 1999-es kiadásában?;Stone Cold Steve Austin;Triple H;Mankind;Undertaker;sport
+Ki szerezte a valaha volt legtöbb "Test Hundreds"-et?;Sachin Tendulkar;Steve Waugh;Shane Warne;Sunil Gavaskar;sport
+Melyik atlétika sztár győzte le a gyermekkori gyermekbénulást hogy kora egyik legnagyobb sportolójává váljon?;Wilma Rudolph;Gail Devers;Florence Griffith Joyner;Jackie Robinson;sport
+Melyik futballhős beceneve „The Sundance Kid” - kora egyik legnagyobb sportolója?;Jim Kiick;Troy Aikman;Brett Favre;Joe Montana;sport
+Kit győzött le The Rock hogy megnyerje első WWE-címét?;Mankind;Triple H;Stone Cold Steve Austin;Bret Hart;sport
 Mi annak a garanciának neve amely az exportőrre vonatkozik hogy áruinak importőre azonnal kifizeti az általa megrendelt árut?;Akkreditív;Laissez-faire;Infláció;Egyik sem;economy
 Az Öböl-menti Együttműködési Tanácsot eredetileg kik alkották?;Bahrein és Kuvait és Omán és Katar és Szaúd-Arábia és az Egyesült Arab Emírségek;a Második Világ Nemzetei;a Harmadik Világ Nemzetei;a Negyedik Világ Nemzetei;economy
-A dömping az...?;Mindegyik;áru értékesítése külföldön jóval a hazai piaci ár előállítási költsége alatti áron;az a folyamat amelynek során egy gyártó termékének kínálata alacsony marad a belföldi piacon ami jobban kitermeli az árat; a GATT előírásai tiltják;gazdaság
-Mivel foglalkozik az Ökológia?;Az élőlények és környezetük kapcsolata;Madarak;Sejtképződés;Szövetek;gazdaság
-Mi a GATT (Általános Vám- és Kereskedelmi Egyezmény) ?;Mindkettő magyarázat helyes;1947-ben nem kommunista nemzetek között aláírt nemzetközi egyezmény amelynek célja a vámkorlátok által akadálymentes nemzetközi kereskedelem ösztönzése;olyan megállapodás amely a célját a tagok közötti kereskedelmi engedményekről szóló alku megszervezése és ösztönzése;Egyik sem;gazdaság
-A G-15 gazdasági csoportosulása a..?;A harmadik világbeli nemzeteknek;Az első világ nemzeteinek;A második világ nemzeteinek;A negyedik világ nemzeteinek;gazdaság
-Mik a gazdasági javak…?;minden olyan áru; amelynek mennyisége a keresletéhez képest korlátozott;A keresletüknek megfelelően elérhető áruk;A kereslethez képest jobban elérhető áruk;Egyik sem;gazdaság
-Minek a rövidítése az ESCAP?;Ázsiai és Csendes-óceáni Gazdasági és Szociális Bizottság;Európai Társadalmi Tanács Afrikának és Csendes-óceániának;Afrikai és Csendes-óceáni Gazdasági és Szociális Bizottság;A fentiek egyike sem;gazdaság
-Szabad piac definícója a következő..?;olyan piac ahol egy áru árát a kereslet és kínálat erőinek szabad játéka határozza meg;ez egy olyan állapot a nemzetközi piacon ahol a nemzetek nem vetnek ki vámot vagy egyéb adót az áruk behozatalára; a kikötőkre amelyek mentesek kereskedelmi cikkek vámfizetése elsősorban a turizmus ösztönzésére;A fentiek egyike sem;gazdaság
+A dömping az...?;Mindegyik;áru értékesítése külföldön jóval a hazai piaci ár előállítási költsége alatti áron;az a folyamat amelynek során egy gyártó termékének kínálata alacsony marad a belföldi piacon ami jobban kitermeli az árat; a GATT előírásai tiltják;;közgazdaságtan
+Mivel foglalkozik az Ökológia?;Az élőlények és környezetük kapcsolata;Madarak;Sejtképződés;Szövetek;;közgazdaságtan
+Mi a GATT (Általános Vám- és Kereskedelmi Egyezmény) ?;Mindkettő magyarázat helyes;1947-ben nem kommunista nemzetek között aláírt nemzetközi egyezmény amelynek célja a vámkorlátok által akadálymentes nemzetközi kereskedelem ösztönzése;olyan megállapodás amely a célját a tagok közötti kereskedelmi engedményekről szóló alku megszervezése és ösztönzése;Egyik sem;;közgazdaságtan
+A G-15 ;közgazdaságtani csoportosulása a..?;A harmadik világbeli nemzeteknek;Az első világ nemzeteinek;A második világ nemzeteinek;A negyedik világ nemzeteinek;;közgazdaságtan
+Mik a ;közgazdaságtani javak…?;minden olyan áru; amelynek mennyisége a keresletéhez képest korlátozott;A keresletüknek megfelelően elérhető áruk;A kereslethez képest jobban elérhető áruk;Egyik sem;;közgazdaságtan
+Minek a rövidítése az ESCAP?;Ázsiai és Csendes-óceáni ;közgazdaságtani és Szociális Bizottság;Európai Társadalmi Tanács Afrikának és Csendes-óceániának;Afrikai és Csendes-óceáni ;közgazdaságtani és Szociális Bizottság;A fentiek egyike sem;;közgazdaságtan
+Szabad piac definícója a következő..?;olyan piac ahol egy áru árát a kereslet és kínálat erőinek szabad játéka határozza meg;ez egy olyan állapot a nemzetközi piacon ahol a nemzetek nem vetnek ki vámot vagy egyéb adót az áruk behozatalára; a kikötőkre amelyek mentesek kereskedelmi cikkek vámfizetése elsősorban a turizmus ösztönzésére;A fentiek egyike sem;;közgazdaságtan
+Az Egyesült Államok melyik részén adják el a legtöbb fagylaltot?;A Nagy Tavak régió;A Közép-Nyugat;Dél;A nyugati part;gasztronómia
+Melyik Amerika legrégebbi gyorsétteremlánca?;White Castle;McDonald's;Burger King;Dairy Queen;gasztronómia
+Az amerikaiak hány százaléka issza feketén a kávéját?;20 százalék;15 százalék;25 százalék;30 százalék;gasztronómia
+Melyik gyümölcs kategóriába tartozik a banán?;Bogyó;Citrus;Trópusi;Dinnye;gasztronómia
+Honnan származik a lasagna?;Görögország;Olaszország;Franciaország;Spanyolország;gasztronómia
+Melyik zöld zöldségben van több C-vitamin, mint a narancsban?;Brokkoli;Zöld saláta;Zöldbab;Articsóka;gasztronómia
+Melyik állam minősíti hivatalosan a hot dogot szendvicsnek?;New York;New Jersey;Kalifornia;Texas;gasztronómia
+Hány éves a buboréktea?;40 éves;200 éves;100 éves;80 éves;gasztronómia
+A padlizsán gyümölcs vagy zöldség?;gyümölcs;zöldség;mindkettő;egyik sem;gasztronómia
+Mi a különbség a sushi és a sashimi között?;rizs és ecet;rizs;ecet;hal;gasztronómia
+Mikor érték el a mogyoróvajas és zselés szendvicsek a legnagyobb népszerűséget?;A II. világháború;a nagy ;közgazdaságtani világválság; első világháború;vietnami háború;történelem
+A paradicsom gyümölcs vagy zöldség?;gyümölcs;zöldség;mindkettő;egyik sem;gasztronómia
+Mi a legnépszerűbb pizza feltét?;Pepperoni;Kolbász;Gomba;Extra sajt;gasztronómia
+Melyik a legkevésbé népszerű pizzafeltét?;Szardella;Padlizsán;Ananász;Articsóka;gasztronómia
+Melyik a legnépszerűbb csokoládé?;tej;sötét;fehér;félédes;gasztronómia
+Hány százaléknyi szőlőt termelnek frissen fogyasztásra?;12%;30%;20%;8%;gasztronómia
+Milyen színű paprika támogatja legjobban a szem egészségét?;narancs;sárga;piros;zöld;gasztronómia
+Mi a legnépszerűbb burgonya chips íz?;Sima;Grill;Hagymás-tejfölös;Cheddar;gasztronómia
+Melyik gyorséttermi termék elkészítésében segített egy séf, aki korábban brit uralkodókat szolgált ki?;Chicken nuggets;French fries;Cheeseburgers;Milkshakes;gasztronómia
+Miből készül a wasabi-utánzat?;Torma, mustár és zöld ételfesték;Csípős szósz, mustár és zöld ételfesték;Torma, csípős szósz és zöld ételfesték;Torma és zöld ételfesték;gasztronómia
+Melyik összetevő kötelező a chai teához?;fahéj;gyömbér;kardamom;szegfűszeg;gasztronómia
+Hány tojás tartalmaz "bónusz" sárgáját?;1000 tojásból egy;500 tojásból egy;2000 tojásból egy;3000 tojásból egy;gasztronómia
+Melyik aszalt gyümölcs a legjobb azoknak a futóknak, akik energiafokozásra vágynak?;Mazsola;Datolya;Sárgabarack;A fentiek mindegyike;gasztronómia
+Hány gramm rost van egy nagy almában?;5 gramm;4 gramm;6 gramm;7 gramm;gasztronómia

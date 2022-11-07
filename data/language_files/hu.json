@@ -12,7 +12,7 @@
         "main_menu_options": [
             "Játék ", "Útmutató", "Beállítások ", "Stáblista ", "Kilépés "
         ],
-        "settings_menu_question_topics": ["Mind","Általános műveltség ","Történelem", "Földrajz","Fizika","Kémia ","Matematika","Művészet","Irodalom","Zene","Gasztonómia ","Közgazdaságtan","sports "]
+        "settings_menu_question_topics": ["Mind","Általános műveltség ","Történelem", "Földrajz","Fizika","Kémia ","Matematika","Művészet","Irodalom","Zene","Gasztronómia ","Közgazdaságtan","sport "]
     },
     "quiz": {
         "select_answer":"\nVálassza ki a helyes választ ('a','b','c','d'), 't' a játékon kívüli válaszadáshoz, 'h' ha segítséget szeretne!",
