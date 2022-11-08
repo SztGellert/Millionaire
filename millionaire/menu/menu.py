@@ -81,9 +81,9 @@ def select_credits():
 
 def select_settings():
     util.clear_screen()
-    show_options(language_dictionary[game_language].menu.settings_menu_options, 40)
+    show_options(language_dictionary[game_language].menu.settings_menu_options, default_width)
     while True:
-        chosen_option = get_user_input(language_dictionary[game_language].menu.settings_menu_options, 40)
+        chosen_option = get_user_input(language_dictionary[game_language].menu.settings_menu_options, default_width)
         if chosen_option == language_dictionary[game_language].menu.settings_menu_options[0]:
             show_options([language_dictionary[game_language].en, language_dictionary[game_language].hu], 20)
             langs = [language_dictionary[game_language].en, language_dictionary[game_language].hu]
@@ -91,8 +91,8 @@ def select_settings():
             util.init_language(util.available_languages[langs.index(chosen_lang_option)])
             show_options(language_dictionary[game_language].menu.settings_menu_options, 40)
         if chosen_option == language_dictionary[game_language].menu.settings_menu_options[-2]:
-            show_options(language_dictionary[game_language].menu.settings_menu_question_topics, 20)
-            chosen_question_topic = get_user_input(language_dictionary[game_language].menu.settings_menu_question_topics, 20)
+            show_options(language_dictionary[game_language].menu.settings_menu_question_topics, default_width)
+            chosen_question_topic = get_user_input(language_dictionary[game_language].menu.settings_menu_question_topics, default_width)
             if chosen_question_topic != language_dictionary[game_language].menu.settings_menu_question_topics[0]:
                 util.init_question_topics(chosen_question_topic)
             show_options(language_dictionary[game_language].menu.settings_menu_options, 40)

@@ -128,3 +128,15 @@ Which ingredient is a must for chai tea?;Cinnamon;Ginger;Cardamom;Cloves;gastron
 How many eggs contain a "bonus" yolk?;One in 1,000 eggs;One in 500 eggs;One in 2,000 eggs;One in 3,000 eggs;gastronomy
 What dried fruit is best for runners looking for an energy boost?;Raisins;Dates;Apricots;All of the above;gastronomy
 How many grams of fiber are in a large apple?;5 grams;4 grams;6 grams;7 grams;gastronomy
+The absorption of ink by blotting paper involves?;capillary action phenomenon;viscosity of ink;diffusion of ink through the blotting;siphon action;physics
+Nuclear sizes are expressed in a unit named?;Fermi;Angstrom;Newton;Tesla;physics
+One nanometer is equal to?;10^-9 m;10^-6 m;10^-8 m;10^-5 m;physics
+Intensity of sound has?;an object existence;a subject existence;no existence;both subjective and objective existence;physics
+Rain is falling vertically downwards. To a man running east-wards, the rain will appear to be coming from?;east;west;northeast;southeast;physics
+Large astronomical telescopes always use as objective?;combinations of lenses;lens;mirror;None of the above;physics
+One should not connect a number of electrical appliances to the same power socket because?;this can damage the domestic wiring due to overloading;this can damage the appliances due to overloading;this can damage the electrical meter;the appliance will not get full voltage;physics
+Natural radioactivity was discovered by?;Henri Becquerel;Marie Curie;Ernest Rutherfor;Enrico Fermi;physics
+Planets are?;non-luminous heavenly bodies?;luminous heavenly bodies revolving around a star;luminous heavenly bodies that twinkle;luminous heavenly bodies that do not twinkle;physics
+One watt-hour is equivalent to?;3.6 x 10^3 J;3.6 x 10^-3 J;	6.3 x 10^-7 J;6.3 x 10^3 J;physics
+Solar eclipse will take place when?;the moon is between the sun and the earth;the sun is between the moon and the earth;the earth is between the moon and the sun;the moon does not lie on the line joining the sun and the earth;physics
+Isotopes of an element contain?;the same number of protons but different number of neutrons;the same number of neutrons but different number of protons;equal number of protons and electrons;equal number of nucleons;physics

@@ -100,9 +100,9 @@ Az Öböl-menti Együttműködési Tanácsot eredetileg kik alkották?;Bahrein �
 A dömping az...?;Mindegyik;áru értékesítése külföldön jóval a hazai piaci ár előállítási költsége alatti áron;az a folyamat amelynek során egy gyártó termékének kínálata alacsony marad a belföldi piacon ami jobban kitermeli az árat; a GATT előírásai tiltják;;közgazdaságtan
 Mivel foglalkozik az Ökológia?;Az élőlények és környezetük kapcsolata;Madarak;Sejtképződés;Szövetek;;közgazdaságtan
 Mi a GATT (Általános Vám- és Kereskedelmi Egyezmény) ?;Mindkettő magyarázat helyes;1947-ben nem kommunista nemzetek között aláírt nemzetközi egyezmény amelynek célja a vámkorlátok által akadálymentes nemzetközi kereskedelem ösztönzése;olyan megállapodás amely a célját a tagok közötti kereskedelmi engedményekről szóló alku megszervezése és ösztönzése;Egyik sem;;közgazdaságtan
-A G-15 ;közgazdaságtani csoportosulása a..?;A harmadik világbeli nemzeteknek;Az első világ nemzeteinek;A második világ nemzeteinek;A negyedik világ nemzeteinek;;közgazdaságtan
-Mik a ;közgazdaságtani javak…?;minden olyan áru; amelynek mennyisége a keresletéhez képest korlátozott;A keresletüknek megfelelően elérhető áruk;A kereslethez képest jobban elérhető áruk;Egyik sem;;közgazdaságtan
-Minek a rövidítése az ESCAP?;Ázsiai és Csendes-óceáni ;közgazdaságtani és Szociális Bizottság;Európai Társadalmi Tanács Afrikának és Csendes-óceániának;Afrikai és Csendes-óceáni ;közgazdaságtani és Szociális Bizottság;A fentiek egyike sem;;közgazdaságtan
+A G-15 közgazdaságtani csoportosulása a..?;A harmadik világbeli nemzeteknek;Az első világ nemzeteinek;A második világ nemzeteinek;A negyedik világ nemzeteinek;;közgazdaságtan
+Mik a közgazdaságtani javak…?;minden olyan áru, amelynek mennyisége a keresletéhez képest korlátozott;A keresletüknek megfelelően elérhető áruk;A kereslethez képest jobban elérhető áruk;Egyik sem;;közgazdaságtan
+Minek a rövidítése az ESCAP?;Ázsiai és Csendes-óceáni Társadalmi és Szociális Bizottság;Európai Társadalmi Tanács Afrikának és Csendes-óceániának;Afrikai és Csendes-óceáni ;közgazdaságtani és Szociális Bizottság;A fentiek egyike sem;;közgazdaságtan
 Szabad piac definícója a következő..?;olyan piac ahol egy áru árát a kereslet és kínálat erőinek szabad játéka határozza meg;ez egy olyan állapot a nemzetközi piacon ahol a nemzetek nem vetnek ki vámot vagy egyéb adót az áruk behozatalára; a kikötőkre amelyek mentesek kereskedelmi cikkek vámfizetése elsősorban a turizmus ösztönzésére;A fentiek egyike sem;;közgazdaságtan
 Az Egyesült Államok melyik részén adják el a legtöbb fagylaltot?;A Nagy Tavak régió;A Közép-Nyugat;Dél;A nyugati part;gasztronómia
 Melyik Amerika legrégebbi gyorsétteremlánca?;White Castle;McDonald's;Burger King;Dairy Queen;gasztronómia
@@ -128,3 +128,15 @@ Melyik összetevő kötelező a chai teához?;fahéj;gyömbér;kardamom;szegfűs
 Hány tojás tartalmaz "bónusz" sárgáját?;1000 tojásból egy;500 tojásból egy;2000 tojásból egy;3000 tojásból egy;gasztronómia
 Melyik aszalt gyümölcs a legjobb azoknak a futóknak, akik energiafokozásra vágynak?;Mazsola;Datolya;Sárgabarack;A fentiek mindegyike;gasztronómia
 Hány gramm rost van egy nagy almában?;5 gramm;4 gramm;6 gramm;7 gramm;gasztronómia
+A tinta itatópapír általi felszívódása magában foglalja a..?;a kapilláris hatás jelenségét; a tinta viszkozitását; a tinta diffúzióját a blottoláson keresztül; a szifonhatást;fizika
+A nukleáris méreteket melyik egységben fejezzük ki?;Fermi;Angstrom;Newton;Tesla;fizika
+Egy nanométer egyenlő?;10^-9 m;10^-6 m;10^-8 m;10^-5 m;fizika
+A hang intenzitásának van?;objektív létezése;szubjektív létezése;nincs létezése;szubjektív és objektív létezés egyaránt;fizika
+Az eső függőlegesen lefelé esik. Egy kelet felé futó ember számára úgy tűnik, hogy az eső ____ felől jön?;kelet;nyugat;északkelet;délkelet;fizika
+A nagy csillagászati teleszkópok mindig objektívként használják a?;lencsék kombinációit;lencsét;tükröt;A fentiek egyike sem;fizika
+Nem szabad több elektromos készüléket ugyanahhoz a konnektorhoz csatlakoztatni, mert?;ez károsíthatja a háztartási vezetékeket a túlterhelés miatt;ez károsíthatja a készülékeket a túlterhelés miatt;ez károsíthatja az elektromos mérőt;a készülék nem kap teljes feszültséget;fizika
+A természetes radioaktivitást ki fedezte fel?;Henri Becquerel;Marie Curie;Ernest Rutherfor;Enrico Fermi;fizika
+Mik a bolgyók?;fénytelen égitestek;csillag körül keringő fényes égitestek;fényes és pislákoló égitestek;fényes égitestek, amelyek nem pislákolnak;fizika
+Egy wattóra ekvivalense?; 3,6 x 10^3 J; 3,6 x 10^-3 J; 6,3x10^-7 J;6,3x10^3 J;fizika
+Mikor lesz napfogyatkozás?;Ha a Hold a nap és a föld között van;Ha a nap a hold és a föld között van;Ha a föld a hold és a nap között van;Ha a hold nem fekszik a Napot és a Földet összekötő vonalon;fizika
+Egy elem izotópjai mit tartalmaznak?;ugyanannyi protont, de különböző számú neutront; ugyanannyi neutront, de különböző számú protont; azonos számú proton és elektron; azonos számú nukleon;fizika
