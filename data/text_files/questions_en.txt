@@ -1,9 +1,9 @@
-How many seconds are in a minute?;60;30;1;300;maths
-How tall is the Eiffel Tower?;300 meters;302 meters;303 meters;297 meters;maths
+How many seconds are in a minute?;60;30;1;300;mathematics
+How tall is the Eiffel Tower?;300 meters;302 meters;303 meters;297 meters;mathematics
 Who was the 32th president of the USA?;Franklin D. Roosevelt;John F. Kennedy;Richard Nixon;Herbert Hoover;history
 Which type of shark is the biggest ever?;Megalodon;Great White;Whale Shark;Tiger Shark;biology
 What's the deepest point of the Earth?;Mariana Trench;Philippine Trench;Tonga Trench;Kermadec Trench;geography
-How long are the catacombs under Paris?;300 kilometers;100 kilometers;150 kilometers;250 kilometers;maths
+How long are the catacombs under Paris?;300 kilometers;100 kilometers;150 kilometers;250 kilometers;geography
 When was the first camera invented?;1816;1820;1656;1790;history
 Which animal has the highest speed on land?;Cheetah;Springbok;Lion;Quater Horse;biology
 Who has written the Harry Potter books?;J.K. Rowling;George Orwell;Charles Dickens;Ian Fleming;literature
@@ -34,7 +34,7 @@ Which American car company makes the Mustang the F-150 and Escape?;Ford;Toyota;V
 Who was the first woman to fly solo across the Atlantic?;Amelia Earhart;Geraldine Ferraro;Martha Stewart;Sally Ride;history
 Which U.S. city is home to the Liberty Bell and Independence Hall?;Philadelphia;Vancouver;Mexico City;Beijing;geography
 Which pop culture franchise has characters named Luke Skywalker and Han Solo and Darth Vader?;Star Wars;Harry Potter;Star Trek;James Bond;general knowledge
-How many days are in a leap year?;366;28;30;400;maths
+How many days are in a leap year?;366;28;30;400;mathematics
 Which website is the most popular search engine?;Google;DuckDuckGo;Myspace;Bing;general knowledge
 Who is the current British monarch?;King Charles III;King Philippe;Queen Elizabeth II;King George;history
 What children's show features characters named Big Bird and Elmo?;Sesame Street;Barney & Friends;Spongebob Squarepants;The Wiggles;general knowledge
@@ -159,20 +159,20 @@ The first metal used by man was?;copper;iron;gold;bronze;chemistry
 The items amenable to detection by soft x-rays are?;genuine coins from counterfeit coins;narcotics;lead in bullets;lead in bullets;contrabands;chemistry
 The main use of salt in the diet is to?;produce in small amounts the hydrochloric acid required for the digestion of food;make the taste of food better;ease the process of cooking;increase the solubility of food particles in water;chemistry
 The most malleable metal is?;gold;platinum;silver;iron;chemistry
-If David’s age is 27 years old in 2011. What was his age in 2003?;19 years;20 years;37 years;17 years;maths
-What is the value of x if x^2 = 169?;13;1;169;338;maths
-If 5 boys take 7 hours to pack 35 cartoons, then how many boys can pack 65 cartoons in 3 hours?;None of these;45;39;26;maths
-What's pi?;3,14;4.15;100;0.99;maths
-Whose work gave rise to the terms algebra and algorithm?;Al-Khwarzimi;Al-Kashi;Hypatia;Issac Newton;maths
-What is the Fibonacci sequence, presented in 1202 in this problem: "A certain man put a pair of rabbits in a place surrounded on all sides by a wall. How many pairs of rabbits can be produced from that pair in a year if it is supposed that every month each pair begets a new pair which from the second month on becomes productive?";1,1,2,3,5,8,13,21,34,55,...;1,2,5,9,14,20,27,35..;1,2,4,8,16,32,64,128,356;2,4,16,256,65,536,4,294,697,296, ...;maths
-Which mathematical device simplifies tedious computations by converting problems of multiplication to addition and problems of division to subtraction?;logarithms;the calculator;algorithms;the abacus;maths
-Who gave the first proof of the fundamental theorem of algebra?;Carl Friedrich Gauss;Blaise Pascal;Ada Lovelace;Sophie Germain;maths
-What is the “Erdős number”?;a rank given to somebody who wrote a paper with Erdős himself or with somebody else who wrote a paper with Erdős, and so on?;any number beyond infinity;a number that characterizes the size of different infinite sets;the number of days an average mathematician can expect to live, based on the lifespan of Paul Erdős;maths
-What is the term for numbers that can be expressed as an infinite sequence of decimals (including terminating decimals that can be considered as having an infinite sequence of zeros on the end)?;real numbers;integers;natural numbers;prime numbers;maths
-What is the term for any positive integer greater than 1 that is divisible only by itself and 1?;prime number;real number;natural number;integer;maths
-What is the traditional term for the five unprovable, yet intuitively understood, fundamental principles of Euclidean geometry, such as “Given two points, there is a straight line that joins them”?;axioms;conjectures;theorems;propositions;maths
+If David’s age is 27 years old in 2011. What was his age in 2003?;19 years;20 years;37 years;17 years;mathematics
+What is the value of x if x^2 = 169?;13;1;169;338;mathematics
+If 5 boys take 7 hours to pack 35 cartoons, then how many boys can pack 65 cartoons in 3 hours?;None of these;45;39;26;mathematics
+What's pi?;3,14;4.15;100;0.99;mathematics
+Whose work gave rise to the terms algebra and algorithm?;Al-Khwarzimi;Al-Kashi;Hypatia;Issac Newton;mathematics
+What is the Fibonacci sequence, presented in 1202 in this problem: "A certain man put a pair of rabbits in a place surrounded on all sides by a wall. How many pairs of rabbits can be produced from that pair in a year if it is supposed that every month each pair begets a new pair which from the second month on becomes productive?";1,1,2,3,5,8,13,21,34,55,...;1,2,5,9,14,20,27,35..;1,2,4,8,16,32,64,128,356;2,4,16,256,65,536,4,294,697,296, ...;mathematics
+Which mathematical device simplifies tedious computations by converting problems of multiplication to addition and problems of division to subtraction?;logarithms;the calculator;algorithms;the abacus;mathematics
+Who gave the first proof of the fundamental theorem of algebra?;Carl Friedrich Gauss;Blaise Pascal;Ada Lovelace;Sophie Germain;mathematics
+What is the “Erdős number”?;a rank given to somebody who wrote a paper with Erdős himself or with somebody else who wrote a paper with Erdős, and so on?;any number beyond infinity;a number that characterizes the size of different infinite sets;the number of days an average mathematician can expect to live, based on the lifespan of Paul Erdős;mathematics
+What is the term for numbers that can be expressed as an infinite sequence of decimals (including terminating decimals that can be considered as having an infinite sequence of zeros on the end)?;real numbers;integers;natural numbers;prime numbers;mathematics
+What is the term for any positive integer greater than 1 that is divisible only by itself and 1?;prime number;real number;natural number;integer;mathematics
+What is the traditional term for the five unprovable, yet intuitively understood, fundamental principles of Euclidean geometry, such as “Given two points, there is a straight line that joins them”?;axioms;conjectures;theorems;propositions;mathematics
 Who formulated the simple mathematical law governing the electrical resistance of materials?;Georg Simon Ohm;Alessandro Volta;Maud Leonora Menten;André-Marie Ampére;physics
-What quantity is calculated by the formula hb/2?;The area of a triangle;The volume of a cylinder;The length of a side of a square;The area of a semicircle;maths
-By using the “method of exhaustion,” ancient Greek mathematicians were able to estimate the circumference and area of a circle without having an exact value for what important ratio?;pi;the golden ratio;the sacred ration;sine;maths
-What continental European mathematician-philosopher did Isaac Newton engage in a public dispute with over the invention of calculus?;Gottfried Wilhelm Leibniz;Blaise Pascal;René Descartes;Maimonides;maths
-What is the Pythagorean theorem?;the square on the hypotenuse of a right triangle is equal to the sum of the squares on the other two sides;the corresponding angles of two triangles are equal if and only if their corresponding sides are proportional;two sides of an isosceles triangle are equal if and only if the angles opposite them are equal;the sum of the angles of a triangle is always 180 degrees;maths
+What quantity is calculated by the formula hb/2?;The area of a triangle;The volume of a cylinder;The length of a side of a square;The area of a semicircle;mathematics
+By using the “method of exhaustion,” ancient Greek mathematicians were able to estimate the circumference and area of a circle without having an exact value for what important ratio?;pi;the golden ratio;the sacred ration;sine;mathematics
+What continental European mathematician-philosopher did Isaac Newton engage in a public dispute with over the invention of calculus?;Gottfried Wilhelm Leibniz;Blaise Pascal;René Descartes;Maimonides;mathematics
+What is the Pythagorean theorem?;the square on the hypotenuse of a right triangle is equal to the sum of the squares on the other two sides;the corresponding angles of two triangles are equal if and only if their corresponding sides are proportional;two sides of an isosceles triangle are equal if and only if the angles opposite them are equal;the sum of the angles of a triangle is always 180 degrees;mathematics

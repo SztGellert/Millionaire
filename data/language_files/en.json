@@ -10,7 +10,7 @@
                          "Question types",
                          "Back"],
         "main_menu_options" : ["Play", "Tutorial", "Settings", "Credits ", "Exit"],
-        "settings_menu_question_topics": ["All ","General knowledge ","History ", "Geography ","Physics ","Chemistry ","Maths ","Arts","Literature","Music ","Gastronomy","Economy ","sports"]
+        "settings_menu_question_topics": ["All ","General knowledge ","History ", "Geography ","Physics ","Chemistry ","Mathematics ","Arts","Literature","Music ","Gastronomy","Economy ","Sports"]
     },
     "quiz": {
         "select_answer":"\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help!",

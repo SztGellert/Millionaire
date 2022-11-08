@@ -3,7 +3,7 @@ Milyen magas az Eiffel Torony?;300 m;302 m;303 m;297 m;matematika
 Ki volt az USA 32. elnöke?;Franklin D. Roosevelt;John F. Kennedy;Richard Nixon;Herbert Hoover;történelem
 Melyik a valaha élt legnagyobb cápa?;Óriásfogú cápa;Nagy fehér cápa;Cetcápa;Tigriscápa;biológia
 Hol található a világ legmélyebb pontja?;Mariana-árok;Fülöp-szigeteki árok;Tonga-árok;Kermadec-árok;földrajz
-Milyen hosszúságúak a Párizs alatt fellelhető katakombák?;300 km;100 km;150 km;250 km;matematika
+Milyen hosszúságúak a Párizs alatt fellelhető katakombák?;300 km;100 km;150 km;250 km;földrajz
 Mikor találták fel az első kamerát?;1816;1820;1656;1790;történelem
 Melyik a leggyorsabb szárazföldi állat?;Gepárd;Vándorantilop;Oroszlán;Quater Horse;biológia
 Ki írta a Harry Potter könyveket?;J.K. Rowling;George Orwell;Charles Dickens;Ian Fleming;irodalom
