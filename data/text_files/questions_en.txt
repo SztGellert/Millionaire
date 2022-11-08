@@ -140,3 +140,22 @@ Planets are?;non-luminous heavenly bodies?;luminous heavenly bodies revolving ar
 One watt-hour is equivalent to?;3.6 x 10^3 J;3.6 x 10^-3 J;	6.3 x 10^-7 J;6.3 x 10^3 J;physics
 Solar eclipse will take place when?;the moon is between the sun and the earth;the sun is between the moon and the earth;the earth is between the moon and the sun;the moon does not lie on the line joining the sun and the earth;physics
 Isotopes of an element contain?;the same number of protons but different number of neutrons;the same number of neutrons but different number of protons;equal number of protons and electrons;equal number of nucleons;physics
+The number of moles of solute present in 1 kg of a solvent is called its?;molality;molarity;normality;formality;chemistry
+The most electronegative element among the following is?;fluorine;sodium;bromine;oxygen;chemistry
+The metallurgical process in which a metal is obtained in a fused state is called?;smelting;roasting;calcinations;froth floatation;chemistry
+The oldest rocks in the earth's crust were once molten, and came from deep inside the earth. The molten rock, called magma, spewed out in volcanic eruptions during the earth;s early life and solidified into hard rock's called?;igneous rocks;granite;basalt;sedimentary rocks;chemistry
+The law which states that the amount of gas dissolved in a liquid is proportional to its partial pressure is?;Henry's law;Dalton's law;Gay Lussac's law;Raoult's law;chemistry
+The gas present in the stratosphere which filters out some of the sun's ultraviolet light and provides an effective shield against radiation damage to living things is?;ozone;helium;oxygen;methane;chemistry
+The most commonly used bleaching agent is?;chlorine;sodium chlorine;carbon dioxide;alcohol;chemistry
+The nucleus of a hydrogen atom consists of?;1 proton only;1 proton + 2 neutron;1 neutron only;1 electron only;chemistry
+The names of the scientists, Newlands, Mendeleev, and Meyer are associated with the development of?;periodic table of contents;metallurgy;discovery of elements;atomic structure;chemistry
+The inert gases are ____ in water?;sparingly soluble;insoluble;soluble;None of these;chemistry
+The mass number of an atom is equal to?;the number of nucleons;the number of neutrons;the number of protons and electrons;the number of protons;chemistry
+The hottest part of the gas flame is known as?;non-luminous zone;blue zone;dark zone;luminous zone;chemistry
+The main active constituent of tea and coffee is?;caffeine;aspirin;chlorophyll;nicotine;chemistry
+The hardest form of carbon is?;diamond;charcoal;graphite;coke;chemistry
+The mineral containing both magnesium and calcium is?;dolomite;carnallite;calcite;magnesite;chemistry
+The first metal used by man was?;copper;iron;gold;bronze;chemistry
+The items amenable to detection by soft x-rays are?;genuine coins from counterfeit coins;narcotics;lead in bullets;lead in bullets;contrabands;chemistry
+The main use of salt in the diet is to?;produce in small amounts the hydrochloric acid required for the digestion of food;make the taste of food better;ease the process of cooking;increase the solubility of food particles in water;chemistry
+The most malleable metal is?;gold;platinum;silver;iron;chemistry

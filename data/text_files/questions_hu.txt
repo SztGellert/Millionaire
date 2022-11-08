@@ -140,3 +140,22 @@ Mik a bolgyók?;fénytelen égitestek;csillag körül keringő fényes égiteste
 Egy wattóra ekvivalense?; 3,6 x 10^3 J; 3,6 x 10^-3 J; 6,3x10^-7 J;6,3x10^3 J;fizika
 Mikor lesz napfogyatkozás?;Ha a Hold a nap és a föld között van;Ha a nap a hold és a föld között van;Ha a föld a hold és a nap között van;Ha a hold nem fekszik a Napot és a Földet összekötő vonalon;fizika
 Egy elem izotópjai mit tartalmaznak?;ugyanannyi protont, de különböző számú neutront; ugyanannyi neutront, de különböző számú protont; azonos számú proton és elektron; azonos számú nukleon;fizika
+Az 1 kg oldószerben jelenlévő oldott anyag móljainak számát hogyan nevezzük?;molalitás;molaritás;normalitás;formalitás;kémia
+Az alábbiak közül a legelektronegatívabb elem a..?;fluor;nátrium;bróm;oxigén;kémia
+Azt a kohászati eljárást, amelynek során a fémet olvasztott állapotban nyerik, hogyan nevezzük?;olvasztás;pörkölés;kalcinálás;hab lebegtetés;kémia
+A földkéreg legrégebbi kőzetei egykor megolvadtak, és a föld mélyéről származtak. Az olvadt kőzet, az úgynevezett magma, vulkánkitörések során lövellt ki a Föld korai élete során, és kemény kőzetekké szilárdult, úgynevezett..?;magmás kőzetekké;gránittá;bazalttá;üledékes kőzetekké;kémia
+Az a törvény, amely kimondja, hogy a folyadékban oldott gáz mennyisége arányos a parciális nyomásával?;Henry-törvény;Dalton-törvény;Gay Lussac-törvény;Raoult-törvény;kémia
+A sztratoszférában jelenlévő gáz, amely kiszűri a nap ultraibolya fényének egy részét, és hatékony védelmet nyújt az élőlények sugárzási károsodása ellen:;ózon;hélium;oxigén;metán;kémia
+A leggyakrabban használt fehérítőszer a következő:;klór;nátrium-klorid;szén-dioxid;alkohol;kémia
+A hidrogénatom magja a következőkből áll: 1 proton; 1 proton + 2 neutron; csak 1 neutron; csak 1 elektron;kémia
+A tudósok, Newlands, Mengyelejev és Meyer nevéhez fűződik?;Kémiai elemek periódusos rendszere;kohászat;elemek felfedezése atomszerkezet;kémia
+Az inert gázok ____ vízben?;szegényen oldódnak;oldhatatlanok;oldhatóak;egyik sem;kémia
+Egy atom tömegszáma egyenlő?;a nukleonok száma;a neutronok száma;a protonok és elektronok száma;a protonok száma;kémia
+A gázláng legforróbb része az úgynevezett?;nem világító zóna;kék zóna;sötét zóna;világító zóna;kémia
+A tea és a kávé fő hatóanyaga:;koffein;aszpirin;klorofill;nikotin;kémia
+A szén legkeményebb formája a ..?;gyémánt;faszén;grafit;koksz;kémia
+A magnéziumot és kalciumot egyaránt tartalmazó ásványi anyag..;dolomit;karnallit;kalcit;magnezit;kémia
+Az ember által használt első fém a..?réz;a vas;az arany;a bronz;kémia
+A lágy röntgensugarakkal észlelhető tárgyak a következők:;eredeti érmék hamisított érmékből;kábítószerek;ólom a golyókban;ólom a golyókban;csempészet;kémia
+A só fő felhasználása az étrendben az, hogy?;kis mennyiségben állítsa elő az élelmiszerek emésztéséhez szükséges sósavat;javítsa az ételek ízét;megkönnyítse a főzési folyamatot;növelje az élelmiszer-részecskék vízben való oldhatóságát;kémia
+A leginkább formálható fém a következő:;arany;platina;ezüst;vas;kémia
