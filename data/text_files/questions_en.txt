@@ -24,7 +24,7 @@ Which animal is not a primate?;Dolphin;Chimpanzee;Gorillla;Orangutan;biology
 What gas makes voices sound higher when inhaled?;Helium;Oxygen;Nitrogen;Sulfur Hexafluoride;physics
 What American holiday falls on July 4?;Independence Day;Thanksgiving Day;Christmas Day;New Year's Day;history
 Which candy bar shares its name with a galaxy?;Milky Way;Snickers;3 Musketeers;Almond Joy;economy
-What is the capital of England?;London;Washington D.C.;Rome;Moscow;geograhy
+What is the capital of England?;London;Washington D.C.;Rome;Moscow;geography
 Which one of the following is not an Ivy League University?;Hogwarts;Harvard;Princeton;Columbia;general knowledge
 What is someone who collects coins called?;Numismatist;Professor;Chef;Psychiatrist;general knowledge
 Which video game system does Sony produce?;PlayStation;Xbox;Atari;Game Boy;economy
@@ -143,7 +143,7 @@ Isotopes of an element contain?;the same number of protons but different number 
 The number of moles of solute present in 1 kg of a solvent is called its?;molality;molarity;normality;formality;chemistry
 The most electronegative element among the following is?;fluorine;sodium;bromine;oxygen;chemistry
 The metallurgical process in which a metal is obtained in a fused state is called?;smelting;roasting;calcinations;froth floatation;chemistry
-The oldest rocks in the earth's crust were once molten, and came from deep inside the earth. The molten rock, called magma, spewed out in volcanic eruptions during the earth;s early life and solidified into hard rock's called?;igneous rocks;granite;basalt;sedimentary rocks;chemistry
+The oldest rocks in the earth's crust were once molten, and came from deep inside the earth. The molten rock, called magma, spewed out in volcanic eruptions during the earths early life and solidified into hard rock's called?;igneous rocks;granite;basalt;sedimentary rocks;chemistry
 The law which states that the amount of gas dissolved in a liquid is proportional to its partial pressure is?;Henry's law;Dalton's law;Gay Lussac's law;Raoult's law;chemistry
 The gas present in the stratosphere which filters out some of the sun's ultraviolet light and provides an effective shield against radiation damage to living things is?;ozone;helium;oxygen;methane;chemistry
 The most commonly used bleaching agent is?;chlorine;sodium chlorine;carbon dioxide;alcohol;chemistry
@@ -156,7 +156,7 @@ The main active constituent of tea and coffee is?;caffeine;aspirin;chlorophyll;n
 The hardest form of carbon is?;diamond;charcoal;graphite;coke;chemistry
 The mineral containing both magnesium and calcium is?;dolomite;carnallite;calcite;magnesite;chemistry
 The first metal used by man was?;copper;iron;gold;bronze;chemistry
-The items amenable to detection by soft x-rays are?;genuine coins from counterfeit coins;narcotics;lead in bullets;lead in bullets;contrabands;chemistry
+The items amenable to detection by soft x-rays are?;genuine coins from counterfeit coins;narcotics;lead in bullets;contrabands;chemistry
 The main use of salt in the diet is to?;produce in small amounts the hydrochloric acid required for the digestion of food;make the taste of food better;ease the process of cooking;increase the solubility of food particles in water;chemistry
 The most malleable metal is?;gold;platinum;silver;iron;chemistry
 If David’s age is 27 years old in 2011. What was his age in 2003?;19 years;20 years;37 years;17 years;mathematics
