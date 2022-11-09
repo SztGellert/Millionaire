@@ -202,6 +202,6 @@ The celebrated novel 'The Godfather' was authored by?;Mario Puzo;Victor Hugo;Joh
 Who wrote the book 'The Prince'?;Niccolo Machiaveli;Bernard Shaw;V.S. Sharma;Emile Zola;literature
 'Crime and Punishment' was written by?;Fyodor Dostoevsky;Vladimir Nabakov;Lewis Carrol;Alexander Solzhenitsyn;arts
 David Copperfield is the name of ?;novel;famous actor;poem;writer;literature
-Who directed the film 'Little Buddha'?Bernardo Bertolucci;Richard Attenborough;Ben Johnson;Mani Kaul;arts
+Who directed the film 'Little Buddha'?;Bernardo Bertolucci;Richard Attenborough;Ben Johnson;Mani Kaul;arts
 The creator of 'Sherlock Holmes' was?;Arthur Conan Doyle;Ian Fleming;Dr.Watson;Shakespeare;literature
 Euclid was?;Greek mathematician;Contributor to the use of deductive principles of logic as the basis of geometry;Propounded the geometrical theorems;All of the above;mathematics
