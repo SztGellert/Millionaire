@@ -176,16 +176,14 @@ What quantity is calculated by the formula hb/2?;The area of a triangle;The volu
 By using the “method of exhaustion,” ancient Greek mathematicians were able to estimate the circumference and area of a circle without having an exact value for what important ratio?;pi;the golden ratio;the sacred ration;sine;mathematics
 What continental European mathematician-philosopher did Isaac Newton engage in a public dispute with over the invention of calculus?;Gottfried Wilhelm Leibniz;Blaise Pascal;René Descartes;Maimonides;mathematics
 What is the Pythagorean theorem?;the square on the hypotenuse of a right triangle is equal to the sum of the squares on the other two sides;the corresponding angles of two triangles are equal if and only if their corresponding sides are proportional;two sides of an isosceles triangle are equal if and only if the angles opposite them are equal;the sum of the angles of a triangle is always 180 degrees;mathematics
-
 Fastest shorthand writer was?;Dr. G. D. Bist;J.R.D. Tata;J.M. Tagore;Khudada Khan;literature
-
 Who wrote the line: ' A thing of beauty is a joy forever'?;John Keats;Robert Browing;P.B.Shelley;William Wordsworth;literature
 Who is the author of the book 'Nineteen Eighty Four'?;George Orwell;Walter Scott;Emile Zola;Thomas Hardy;literature
 Who is the father of English Poetry?;Chaucer;Wordsworth;Milton;Charles Dickens;literature
 Who wrote 'War and Peace'?;Leo Tolstoy;Mahatma Gandhi;Charles Dickens;Kipling;literature
 George Bernard Shaw, the great dramatist, was?;an Irishman;a Welsh;a Soctsman;an Englishman;literature
 Who said "God helps those who help themselves"?;Algernon Sidney;Swami Vivekananda;Andre Gide;Andre Maurois;literature
-'Alice in Wonderland' the famous TV serial is based on a book written by?;Lewis Caroll;Charles Dickens;Thomas Hardy;	Father Discoste;literature
+'Alice in Wonderland' the famous TV serial is based on a book written by?;Lewis Caroll;Charles Dickens;Thomas Hardy;Father Discoste;literature
 The Gathering Storm' is written by?;Winston Churchill;George Washington;Voltaire;Romain Rolland;literature
 Who is the author of the book 'My Experiments with Truth'?;Mahatma Gandhi;Michael Anderson;Winston Churchill;Jarnes Morris;literature
 The first history book was written by?;Herodotus;Euclid;Aristotle;Julius Caesar;literature
@@ -193,11 +191,11 @@ Who said 'Man is a political animal'?;Aristotle;Dante;Socrates;Plato;literature
 The General Happiness is the end of the state' who said this?;Bentham;Hegel;Plato;Green;literature
 Who is the author of the book - 'Preparing for the Twenty - First Century'?;Paul Kennedy;V.R. Krishna Iyer;V.S. Naipul;Larry Collins;literature
 The famous book 'Anna Karenina' written by ?;Leo Tolstoy;Lewis Carroll;Victor Hugo;Boris Pasternak;literature
-'Nature never did betray the heart that loved her' is a quotation from?;W.Wordsworth;J. Byron;P.B.ShellyJ.Keats;literature
+'Nature never did betray the heart that loved her' is a quotation from?;W.Wordsworth;J. Byron;P.B.Shelly;J.Keats;literature
 The book 'A Farewell to Arms' was written by?;Ernest Hemingway;Charles Dickens;Thomas Hardy;Huxley;literature
 'Man without society is either a beast or a God'. Who said this?;Aristotle;Gandhi;Plato;Henry Maine;literature
 Who has written the famous book 'Mankind and Mother Earth'?;Arnold Toynbee;Leo Tolstoy;John Ruskin;Bertrand Russel;literature
-The book 'Gulliver's Travels' was written by?;Jonathan Swift;Charles Dickens;Charles Lamb;	Alexandra Dumas;literature
+The book 'Gulliver's Travels' was written by?;Jonathan Swift;Charles Dickens;Charles Lamb;Alexandra Dumas;literature
 Who is the author of 'Tom Sawyer'?;Mark Twain;John Ruskin;William Shakespeare;Leo Tolstoy;literature
 Who said the words, 'I disapprove of what you say, but I will defend to Death your right to say it'?;Voltaire;George Bernard Shaw;Lenin;Mahatma Gandhi;literature
 The celebrated novel 'The Godfather' was authored by?;Mario Puzo;Victor Hugo;John Milton;Harold Robbins;literature
@@ -205,5 +203,5 @@ Who wrote the book 'The Prince'?;Niccolo Machiaveli;Bernard Shaw;V.S. Sharma;Emi
 'Crime and Punishment' was written by?;Fyodor Dostoevsky;Vladimir Nabakov;Lewis Carrol;Alexander Solzhenitsyn;arts
 David Copperfield is the name of ?;novel;famous actor;poem;writer;literature
 Who directed the film 'Little Buddha'?Bernardo Bertolucci;Richard Attenborough;Ben Johnson;Mani Kaul;arts
-The creator of 'Sherlock Holmes' was?;Arthur Conan Doyle;Ian Fleming;Dr.Watson;Shakespeare,literature
+The creator of 'Sherlock Holmes' was?;Arthur Conan Doyle;Ian Fleming;Dr.Watson;Shakespeare;literature
 Euclid was?;Greek mathematician;Contributor to the use of deductive principles of logic as the basis of geometry;Propounded the geometrical theorems;All of the above;mathematics
