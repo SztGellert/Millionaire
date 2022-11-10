@@ -218,3 +218,14 @@ Night blindness is cause by lack of which vitamin?;Vitamin A;Vitamin B;Vitamin C
 Our major foods, fibres, spices, fruits and beverage crops are?;flowering plants;gymnosperms plants;pteridophytes;bryophytes;biology
 Most abundant tissues of our body are?;connective;muscular;epithelial;nervous;biology
 Oxygen in our blood is transported by a protein named?;haemoglobin;keratin;collagen;myoglobin;biology
+Name the extravagant period of art and architecture prevalent in Europe during most of the 17th century?;The Baroque period;The Classicism period;The Rococo period;The Neoclassicism period;arts
+Which famous painter was also a sculptor, an architect, and an engineer?;Leonardo Da Vinci;Hasan al-Rammah;Filippo Brunelleschi;Guido da Vigevano;arts
+The artist Kandinsky is considered the first for this type of art?;Abstract;Modern;Impressionism;Surrealism;arts
+Which Italian architect and sculptor was famous for creating the Baroque style?;Gian Lorenzo Bernini;Michelangelo Merisi da Caravaggio;Rembrandt Harmenszoon van Rijn;Peter Paul Rubens;arts
+Which of Picasso’s famous paintings was inspired by the bombings of civilians during the Spanish War?;Guernica;La Vie;Les Demoiselles d'Avignon;The Tragedy;arts
+Which other painter is often associated with Francoise Gilot?;Pablo Picasso;Henri Matiess;Salvador Dalí;Andy Warhol;arts
+The American Gothic is one of the most recognizable paintings in the world. Who painted it?;Grant Wood;Thomas Hart Benton;John Steuart Curry;Andrew Wyeth;arts
+Claude Monet is most known for his paintings of what?;Water lily paintings;lavender field paintings;French War of Independence paintings;Sunflower paintings;arts
+The first “artists” of the world used which mediums to produce their work?;Ashes from fire, plant pigments, and red clay;Ashes from fire, plant pigments, and black clay;Ashes from fire, artist's pigments, and red clay;mixture of wax and resin as binders for the dye;arts
+Who was the first living person to have their art displayed in The Louvre?;Georges Braque;Eugène Delacroix;Giotto di Bodone;Nicolas Poussin;arts
+Where did Vincent Van Gogh paint the famous “Starry Night”?;From the window of his asylum room at Saint-Rémy-de-Provence;From the window of his asylum room at Saint Etienne De Gres;from the Jetée de Saint-Nicolas lighthouse;from the medieval Saint Nicolas fortress' tower;arts
