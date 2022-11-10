@@ -205,3 +205,16 @@ David Copperfield is the name of ?;novel;famous actor;poem;writer;literature
 Who directed the film 'Little Buddha'?;Bernardo Bertolucci;Richard Attenborough;Ben Johnson;Mani Kaul;arts
 The creator of 'Sherlock Holmes' was?;Arthur Conan Doyle;Ian Fleming;Dr.Watson;Shakespeare;literature
 Euclid was?;Greek mathematician;Contributor to the use of deductive principles of logic as the basis of geometry;Propounded the geometrical theorems;All of the above;mathematics
+Pine, fir, spruce, cedar, larch and cypress are the famous timber-yielding plants of which several also occur widely in the hilly regions of India. All these belong to?;gymnosperms;angiosperms;monocotyledons;dicotyledons;biology
+Plants receive their nutrients mainly from?;soil;light;atmosphere;chlorophyll;biology
+Movement of cell against concentration gradient is called?;osmosis;active transport;diffusion;passive transport;biology
+Plants absorb dissolved nitrates from soil and convert them into?;free nitrogen;urea;ammonia;proteins;biology
+Plants absorb most part of water needed by them through their?;root hairs;growing point;embryonic zone;zone of elongation;biology
+Most highly intelligent mammals are?;dolphins;whales;elephants;kangaroos;biology
+Most of the red, blue and purple colours of plants are due to a pigment called?;anthocyanin;carotene;chlorophyll;xanthophylls;biology
+Plant have ____ while animals lack it.;cellulose;starch;protein;fat;biology
+Pigmentation of skin is due to?;melanocytes;leucocytes;monocytes;lymphocytes;biology
+Night blindness is cause by lack of which vitamin?;Vitamin A;Vitamin B;Vitamin C;Vitamin D;biology
+Our major foods, fibres, spices, fruits and beverage crops are?;flowering plants;gymnosperms plants;pteridophytes;bryophytes;biology
+Most abundant tissues of our body are?;connective;muscular;epithelial;nervous;biology
+Oxygen in our blood is transported by a protein named?;haemoglobin;keratin;collagen;myoglobin;biology
