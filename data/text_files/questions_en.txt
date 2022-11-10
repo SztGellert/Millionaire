@@ -229,3 +229,15 @@ Claude Monet is most known for his paintings of what?;Water lily paintings;laven
 The first “artists” of the world used which mediums to produce their work?;Ashes from fire, plant pigments, and red clay;Ashes from fire, plant pigments, and black clay;Ashes from fire, artist's pigments, and red clay;mixture of wax and resin as binders for the dye;arts
 Who was the first living person to have their art displayed in The Louvre?;Georges Braque;Eugène Delacroix;Giotto di Bodone;Nicolas Poussin;arts
 Where did Vincent Van Gogh paint the famous “Starry Night”?;From the window of his asylum room at Saint-Rémy-de-Provence;From the window of his asylum room at Saint Etienne De Gres;from the Jetée de Saint-Nicolas lighthouse;from the medieval Saint Nicolas fortress' tower;arts
+Which Queen song has the lyrics “Is this the real life? Is this just fantasy?”;Bohemian Rhapsody;Another One Bites the Dust;Under Pressure;Radio Ga Ga;music
+Which country is Gangnam Style singer PSY from?;South Korea;Canada;Germany;North Korea;music
+In which year was Bruno Mars born?;1985;1987;1990;1992;music
+Which legendary musician starred in the movie Labyrinth?;David Bowie;Matt Goss;Elvis Presley;Elton John;music
+Which pop star's real name is Stefani Joanne Germanotta?;Lady Gaga;Pink;The singer from Florence and the Machnie;Olivia Rodrigo;music
+How many members are in the K-Pop group Twice?;9;3;7;2;music
+ABBA are a world-famous pop group from Sweden. Which member of the group is from Norway?;Anni-Frid Lyngstad;Agnetha Fältskog;Björn Ulvaeus;Benny Andersson;music
+Which of the following instruments is Lizzo known for playing?;The flute;The harp;The guitar;The ocarina;music
+Taylor Swift released two albums in 2020. What were they called?;Folklore and Evermore;Swifty and Swiftier;Taylor Made, Volumes 1 and 2;Oh Tay Can You See..;music
+Billie Eilish released her first album in 2019. What is it called?;When We All Fall Asleep, Where Do We Go?;Introducing Billie Eilish;It's Eilish, Not Eyelash;Nevermind;music
+What country is Rita Ora from?;Yugoslavia (now Kosovo);France;Denmark;Wales;music
+Which West End musical did Anne-Marie appear in aged 6?;Les Misérables;Chicago;Cats;School of Rock;music
