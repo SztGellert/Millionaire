@@ -7,7 +7,7 @@ from util import util
 
 def main():
     util.init()
-    #menu.intro()
+    menu.intro()
     menu.handle_main_menu()
 
 
