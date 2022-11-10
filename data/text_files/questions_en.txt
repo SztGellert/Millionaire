@@ -235,7 +235,7 @@ In which year was Bruno Mars born?;1985;1987;1990;1992;music
 Which legendary musician starred in the movie Labyrinth?;David Bowie;Matt Goss;Elvis Presley;Elton John;music
 Which pop star's real name is Stefani Joanne Germanotta?;Lady Gaga;Pink;The singer from Florence and the Machnie;Olivia Rodrigo;music
 How many members are in the K-Pop group Twice?;9;3;7;2;music
-ABBA are a world-famous pop group from Sweden. Which member of the group is from Norway?;Anni-Frid Lyngstad;Agnetha Fältskog;Björn Ulvaeus;Benny Andersson;music
+ABBA is a world-famous pop group from Sweden. Which member of the group is from Norway?;Anni-Frid Lyngstad;Agnetha Fältskog;Björn Ulvaeus;Benny Andersson;music
 Which of the following instruments is Lizzo known for playing?;The flute;The harp;The guitar;The ocarina;music
 Taylor Swift released two albums in 2020. What were they called?;Folklore and Evermore;Swifty and Swiftier;Taylor Made, Volumes 1 and 2;Oh Tay Can You See..;music
 Billie Eilish released her first album in 2019. What is it called?;When We All Fall Asleep, Where Do We Go?;Introducing Billie Eilish;It's Eilish, Not Eyelash;Nevermind;music
