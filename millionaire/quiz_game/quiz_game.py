@@ -81,7 +81,7 @@ def play():
                 safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
                 util.clear_screen()
                 if score != 0:
-                    scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
+                    scores.append({"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
                 return
             if answer == "h":
                 util.clear_screen()
@@ -145,11 +145,11 @@ def play():
             safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
             util.clear_screen()
             if score != 0:
-                scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
+                scores.append({"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
             return
         util.clear_screen()
 
-    scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
+    scores.append({"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
     return
 
 

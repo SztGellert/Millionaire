@@ -95,7 +95,7 @@ def play(inputs: dict):
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
                 if score != 0:
-                    scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
+                    scores.append({"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
                 safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
                 util.clear_screen()
                 return
@@ -188,7 +188,8 @@ def play(inputs: dict):
                 safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
         else:
             if score != 0:
-                scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
+                scores.append(
+                    {"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
             print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
             safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
             util.clear_screen()
@@ -196,7 +197,7 @@ def play(inputs: dict):
         util.clear_screen()
 
     if score != 0:
-        scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
+        scores.append({"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
     return
 
 
