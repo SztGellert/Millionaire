@@ -15,6 +15,7 @@
         "settings_menu_question_topics": ["Mind","Általános műveltség ","Történelem", "Földrajz","Fizika","Kémia ","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia ","Közgazdaságtan","sport "]
     },
     "quiz": {
+        "player_name_prompt": "Hogyan szólíthatom? ",
         "select_answer":"\nVálassza ki a helyes választ ('a','b','c','d'), 't' a játékon kívüli válaszadáshoz, 'h' ha segítséget szeretne!",
         "select_answer_out": "\nVálassza ki a helyes választ ('a','b','c','d') ! ",
         "correct_answer": "Szép volt!",

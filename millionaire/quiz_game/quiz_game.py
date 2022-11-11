@@ -22,6 +22,9 @@ def play():
     game_language = util.game_language
     global question_topics
     question_topics = util.question_topics
+    # Todo: keyborad.read_key() acts not the way it is desired. Single input is skipped due to duplicated key return
+    input()
+    player_name = input(language_dictionary[game_language].quiz.player_name_prompt)
     score = 0
     help_types = {"audience": True, "telephone": True, "halving": True}
     util.clear_screen()
@@ -81,7 +84,7 @@ def play():
                 safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
                 util.clear_screen()
                 if score != 0:
-                    scores.append({"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
+                    scores.append({"user": player_name, "topic": question_topics, "score": score, "time": time.ctime(time.time())})
                 return
             if answer == "h":
                 util.clear_screen()
@@ -145,11 +148,11 @@ def play():
             safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
             util.clear_screen()
             if score != 0:
-                scores.append({"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
+                scores.append({"user": player_name, "topic": question_topics, "score": score, "time": time.ctime(time.time())})
             return
         util.clear_screen()
 
-    scores.append({"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
+    scores.append({"user": player_name, "topic": question_topics, "score": score, "time": time.ctime(time.time())})
     return
 
 

@@ -18,10 +18,13 @@ scores = []
 
 
 def play(inputs: dict):
-    score = 0
     global game_language
     game_language = util.game_language
     global question_topics
+    # Todo: keyborad.read_key() acts not the way it is desired. Single input is skipped due to duplicated key return
+    input()
+    player_name = input(language_dictionary[game_language].quiz.player_name_prompt)
+    score = 0
     question_topics = util.question_topics
     out_of_game_inputs = inputs["out_of_game_answers"]
     game_inputs = inputs["game_answers"]

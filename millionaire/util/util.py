@@ -24,6 +24,8 @@ def init_language(selected_lang: str):
         language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
         global game_language
         game_language = selected_lang
+        global question_topics
+        question_topics = language_dictionary[game_language].menu.settings_menu_question_topics[0]
 
 
 def init_question_topics(selected_topic: str):
