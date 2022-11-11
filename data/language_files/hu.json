@@ -10,7 +10,7 @@
                      "Kérdés témakörök",
                      "Vissza"],
         "main_menu_options": [
-            "Játék ", "Útmutató", "Beállítások ", "Stáblista ", "Kilépés "
+            "Játék ", "Útmutató", "Beállítások ","Stáblista ","Pontszámok", "Kilépés "
         ],
         "settings_menu_question_topics": ["Mind","Általános műveltség ","Történelem", "Földrajz","Fizika","Kémia ","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia ","Közgazdaságtan","sport "]
     },

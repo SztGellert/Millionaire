@@ -14,9 +14,11 @@ languages = util.available_languages
 game_language = "en"
 language_dictionary = util.language_dictionary
 question_topics = "All "
+scores = []
 
 
 def play(inputs: dict):
+    score = 0
     global game_language
     game_language = util.game_language
     global question_topics
@@ -92,6 +94,8 @@ def play(inputs: dict):
                     print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
+                if score != 0:
+                    scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
                 safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
                 util.clear_screen()
                 return
@@ -183,12 +187,16 @@ def play(inputs: dict):
                 time.sleep(35)
                 safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
         else:
+            if score != 0:
+                scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
             print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
             safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
             util.clear_screen()
             return
         util.clear_screen()
 
+    if score != 0:
+        scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
     return
 
 

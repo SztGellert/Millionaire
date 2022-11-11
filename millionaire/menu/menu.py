@@ -79,6 +79,28 @@ def select_credits():
     return_prompt()
 
 
+def select_scores():
+    util.clear_screen()
+    #scores_sorted = sorted(quiz_game.scores, reverse=True)
+    #asd = [{"user": "user1", "score": 1, "time": "Nov 12 11:13"},{"user": "user1", "score": 7, "time": "Nov 12 11:12"},{"user": "user1", "score": 0, "time": "Nov 12 11:14"}
+    #       ]
+    if bool(quiz_game.scores):
+        scores_sorted = sorted(quiz_game.scores, key=lambda d: d['score'],reverse=True)
+        for item in scores_sorted:
+            for k, v in item.items():
+                print(k, ":", v, end=" ")
+            print("\n")
+    else:
+        print("First you need to play a game to achieve some points!")
+
+    #for score in scores_sorted:
+    #    print("Player 1" + ": " + score)
+    #file = (util.open_file("credits_" + util.game_language + ".txt", 'r'))
+    #for line in file:
+    #    print(line[0])
+    return_prompt()
+
+
 def select_settings():
     util.clear_screen()
     show_options(language_dictionary[game_language].menu.settings_menu_options, default_width)
@@ -149,4 +171,7 @@ def handle_main_menu():
             select_credits()
             show_options(language_dictionary[game_language].menu.main_menu_options, options_length, 3)
         if chosen_option == language_dictionary[game_language].menu.main_menu_options[4]:
+            select_scores()
+            show_options(language_dictionary[game_language].menu.main_menu_options, options_length, 4)
+        if chosen_option == language_dictionary[game_language].menu.main_menu_options[5]:
             select_exit()

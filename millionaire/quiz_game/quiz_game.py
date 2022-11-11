@@ -14,6 +14,7 @@ languages = util.available_languages
 language_dictionary = util.language_dictionary
 game_language = "en"
 question_topics = "All "
+scores = []
 
 
 def play():
@@ -21,6 +22,7 @@ def play():
     game_language = util.game_language
     global question_topics
     question_topics = util.question_topics
+    score = 0
     help_types = {"audience": True, "telephone": True, "halving": True}
     util.clear_screen()
     util.play_sound("lom.mp3", 0)
@@ -78,6 +80,8 @@ def play():
                     time.sleep(1)
                 safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
                 util.clear_screen()
+                if score != 0:
+                    scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
                 return
             if answer == "h":
                 util.clear_screen()
@@ -112,6 +116,7 @@ def play():
         is_correct = check_answer(answer, correct_answer_key)
         time.sleep(2)
         if is_correct:
+            score += 1
             if i < 14:
                 util.play_sound("correct_answer.mp3", 0)
                 if i == 4:
@@ -139,9 +144,12 @@ def play():
             print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
             safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
             util.clear_screen()
+            if score != 0:
+                scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
             return
         util.clear_screen()
 
+    scores.append({"user": "User 1", "score": score, "time": time.ctime(time.time())})
     return
 
 
