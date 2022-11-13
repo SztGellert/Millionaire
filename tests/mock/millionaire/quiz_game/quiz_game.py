@@ -4,6 +4,7 @@ import os
 from sty import Style, RgbFg, fg, bg
 from util import util
 import time
+import json
 
 operating_system = os.name
 fg.purple = Style(RgbFg(148, 0, 211))
@@ -14,7 +15,6 @@ languages = util.available_languages
 game_language = "en"
 language_dictionary = util.language_dictionary
 question_topics = "All "
-scores = []
 
 
 def play(inputs: dict):
@@ -98,7 +98,8 @@ def play(inputs: dict):
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
                 if score != 0:
-                    scores.append({"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
+                    write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
+                                                          "time": time.ctime(time.time())})
                 safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
                 util.clear_screen()
                 return
@@ -191,8 +192,8 @@ def play(inputs: dict):
                 safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
         else:
             if score != 0:
-                scores.append(
-                    {"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
+                write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
+                                                      "time": time.ctime(time.time())})
             print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
             safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
             util.clear_screen()
@@ -200,7 +201,7 @@ def play(inputs: dict):
         util.clear_screen()
 
     if score != 0:
-        scores.append({"user": "User 1", "topic": question_topics, "score": score, "time": time.ctime(time.time())})
+        write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,"time": time.ctime(time.time())})
     return
 
 
@@ -329,3 +330,17 @@ def get_chances(answers: {}, correct_value: str) -> list:
     chances = sorted(chances_dict.values(), reverse=True)
 
     return chances
+
+
+def write_content_to_file(filename: str, content: {}):
+    if os.path.isfile(filename):
+        with open(filename, 'r+') as file:
+            file_data = json.load(file)
+            file_data.append(content)
+            file.seek(0)
+            json.dump(file_data, file)
+
+    else:
+        with open(filename, "w", encoding="UTF-8") as outfile:
+            json.dump([content], outfile)
+

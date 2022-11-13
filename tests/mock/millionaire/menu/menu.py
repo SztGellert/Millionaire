@@ -1,4 +1,6 @@
 import time
+import os
+import json
 import keyboard
 from util import util
 from sty import Style, RgbFg, fg, bg
@@ -60,28 +62,6 @@ def show_options(options: list, max_options_length: int, chosen_option=0):
 
 def select_exit():
     return
-
-
-def select_scores():
-    util.clear_screen()
-    #scores_sorted = sorted(quiz_game.scores, reverse=True)
-    #asd = [{"user": "user1", "score": 1, "time": "Nov 12 11:13"},{"user": "user1", "score": 7, "time": "Nov 12 11:12"},{"user": "user1", "score": 0, "time": "Nov 12 11:14"}
-    #       ]
-    if bool(quiz_game.scores):
-        scores_sorted = sorted(quiz_game.scores, key=lambda d: d['score'],reverse=True)
-        for item in scores_sorted:
-            for k, v in item.items():
-                print(k, ":", v, end=" ")
-            print("\n")
-    else:
-        print("First you need to play a game to achieve some points!")
-
-    #for score in scores_sorted:
-    #    print("Player 1" + ": " + score)
-    #file = (util.open_file("credits_" + util.game_language + ".txt", 'r'))
-    #for line in file:
-    #    print(line[0])
-    return_prompt()
 
 
 def select_help():
@@ -175,3 +155,21 @@ def handle_main_menu(input_: str, game_inputs: {}):
             show_options(language_dictionary[game_language].menu.main_menu_options, options_length, 4)
         if chosen_option == language_dictionary[game_language].menu.main_menu_options[4]:
             select_exit()
+
+
+def select_scores():
+    util.clear_screen()
+    if os.path.isfile("scores.json"):
+        f = open("scores.json")
+        data = json.load(f)
+        scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)
+        print("-" * 100)
+        for item in scores_sorted:
+            for k, v in item.items():
+                print(k, ":", v, end=" ")
+            print("\n")
+            print("-" * 100)
+        f.close()
+    else:
+        print(language_dictionary[game_language].menu.empty_scores)
+    return_prompt()

@@ -1,8 +1,10 @@
+import os
 import sys
 import time
 import keyboard
 from util import util
 from sty import Style, RgbFg, fg, bg
+import json
 
 from quiz_game import quiz_game
 
@@ -81,23 +83,19 @@ def select_credits():
 
 def select_scores():
     util.clear_screen()
-    #scores_sorted = sorted(quiz_game.scores, reverse=True)
-    #asd = [{"user": "user1", "score": 1, "time": "Nov 12 11:13"},{"user": "user1", "score": 7, "time": "Nov 12 11:12"},{"user": "user1", "score": 0, "time": "Nov 12 11:14"}
-    #       ]
-    if bool(quiz_game.scores):
-        scores_sorted = sorted(quiz_game.scores, key=lambda d: d['score'],reverse=True)
+    if os.path.isfile("scores.json"):
+        f = open("scores.json")
+        data = json.load(f)
+        scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)
+        print("-" * 100)
         for item in scores_sorted:
             for k, v in item.items():
                 print(k, ":", v, end=" ")
             print("\n")
+            print("-" * 100)
+        f.close()
     else:
-        print("First you need to play a game to achieve some points!")
-
-    #for score in scores_sorted:
-    #    print("Player 1" + ": " + score)
-    #file = (util.open_file("credits_" + util.game_language + ".txt", 'r'))
-    #for line in file:
-    #    print(line[0])
+        print(language_dictionary[game_language].menu.empty_scores)
     return_prompt()
 
 
