@@ -11,7 +11,13 @@
                          "Back"],
         "main_menu_options" : ["Play", "Tutorial", "Settings", "Credits ","Scores", "Exit"],
         "settings_menu_question_topics": ["All ","General knowledge ","History ", "Geography ","Physics ","Chemistry ","Biology ","Mathematics ","Arts","Literature","Music ","Gastronomy","Economy ","Sports"],
-        "empty_scores": "First you need to play a game to achieve some points!"
+        "empty_scores": "First you need to play a game to achieve some points!",
+        "scores": {
+            "user":  "Player",
+            "topic": "Topic",
+            "score": "Score",
+            "time":  "Time"
+        }
     },
     "quiz": {
         "player_name_prompt": "How can I call you? ",

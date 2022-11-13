@@ -13,7 +13,13 @@
             "Játék ", "Útmutató", "Beállítások ","Stáblista ","Pontszámok", "Kilépés "
         ],
         "settings_menu_question_topics": ["Mind","Általános műveltség ","Történelem", "Földrajz","Fizika","Kémia ","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia ","Közgazdaságtan","sport "],
-        "empty_scores": "Indítson egy kvízjátékot hogy pontokat szerezzen!"
+        "empty_scores": "Indítson egy kvízjátékot hogy pontokat szerezzen!",
+        "scores": {
+            "user":  "Játékos",
+            "topic": "Témakör",
+            "score": "Pontszám",
+            "time":  "Idő"
+        }
     },
     "quiz": {
         "player_name_prompt": "Hogyan szólíthatom? ",

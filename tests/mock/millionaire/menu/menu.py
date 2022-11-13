@@ -165,8 +165,10 @@ def select_scores():
         scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)
         print("-" * 100)
         for item in scores_sorted:
+            i = 0
             for k, v in item.items():
-                print(k, ":", v, end=" ")
+                print(language_dictionary[game_language].menu.scores[i], ":", v, end=" ")
+                i += 1
             print("\n")
             print("-" * 100)
         f.close()
