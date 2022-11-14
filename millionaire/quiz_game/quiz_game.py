@@ -83,7 +83,7 @@ def play():
                     print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
-                safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
+                safe_input(language_dictionary[game_language].menu.return_prompt, ["esc"])
                 util.clear_screen()
                 if score != 0:
                     write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
@@ -145,12 +145,12 @@ def play():
                 print(fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(i) + " !" + fg.rs)
                 util.play_sound("winning_theme.mp3", 0)
                 time.sleep(35)
-                safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
+                safe_input(language_dictionary[game_language].menu.return_prompt, ["esc"])
         else:
             util.play_sound("bad_answer.mp3", 0)
             print(fg.green + correct_answer_value + fg.rs)
             print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
-            safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
+            safe_input(language_dictionary[game_language].menu.return_prompt, ["esc"])
             util.clear_screen()
             if score != 0:
                 write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score, "time": time.ctime(time.time())})
@@ -169,7 +169,7 @@ def safe_input(input_text: str, allowed_list_of_letters: list) -> str:
               language_dictionary[game_language].quiz.allowed)
     while answer not in allowed_list_of_letters:
         answer = keyboard.read_key()
-    if answer != "enter":
+    if answer != "esc":
         print(answer)
     time.sleep(1)
 
