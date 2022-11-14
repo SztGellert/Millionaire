@@ -85,7 +85,7 @@ Ki birtokolja a második és harmadik helyet a legtöbb yardot tekintve egyetlen
 Melyik ország nyerte meg a krikett világbajnokságot 1999-ben?;Ausztrália;Dél-Africa;Pakisztán;Anglia;sport
 Mi a nemzetközi neve annak a személynek aki irányít egy futballmérkőzést?;A referee;An umpire;A spectator;A goalkeeper;sport
 Melyik Major League Baseball csapat hazai pályája a Fenway Park?;Boston Red Sox;New York Yankees;Chicago White Sox;Montreal Expos;sport
-Az első sárkányrepülőt az alábbi személy fedezte fel...?;Leonardo DaVinci;A Wright fivérek;Francis Rogallo;Galileo;történelem
+Az első sárkányrepülőt az alábbi személy fedezte fel...?;Leonardo Da Vinci;A Wright fivérek;Francis Rogallo;Galileo;történelem
 Mi a közös Ernie Davis és Archie Griffin és Tony Dorsett afro-amerikai focistáiban?;Mindegyikük megnyerte a Heisman Trófeát;Mind játszottak a Pittsburgh-ben;Mind hozzájutottak Super Bowl címekhez;Nincs közös jellemzőjük;sport
 Az első sárkányrepülők amelyekkel már repültek melyik évszázadban készültek el...?;1800s;1600s;1700s;1900s;sport
 Az egykori ausztrál kapitány Mark Taylor játékoskarrierje során számos becenevet kapott. Az alábbiak közül melyik NEM volt köztük?;Stumpy;Tubby;Stodge;Helium Bat;sport
