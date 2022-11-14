@@ -1,8 +1,8 @@
-pip install pyinstaller
-pip install pillow
-pip install pipreqs
+pip3 install pyinstaller
+pip3 install pillow
+pip3 install pipreqs
 pipreqs .
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 pyinstaller --paths "./millionaire" --distpath "./bin" --noconfirm --onefile --console --icon "./loim.png" --name=millionaire "./millionaire/runner.py"
 set TARGET=Convert-Path .\bin\millionaire.exe
 set SHORTCUT='.\Millionaire.lnk'
