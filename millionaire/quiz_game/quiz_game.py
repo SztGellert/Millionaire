@@ -225,7 +225,7 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
                        ]
     for i in range(len(call_text_files)):
         if phone.lower() == call_text_files[i][0]:
-            conversation = (util.open_file(call_text_files[i], 'r'))
+            conversation = (util.open_file(call_text_files[i], 'r', separator=";"))
             print_phone_conversation(conversation, question, answers, correct_answer)
 
 
