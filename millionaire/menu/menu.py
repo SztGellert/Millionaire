@@ -133,6 +133,8 @@ def get_user_input(option_list: [], max_option_length: int) -> str:
     while True:
         if keyboard.read_key() == "enter":
             return option_list[i]
+        if keyboard.read_key() == "esc":
+            return option_list[-1]
         if keyboard.read_key() == 'down':
             if i == len(option_list) - 1:
                 i = 0
