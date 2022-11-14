@@ -264,17 +264,14 @@ def audience_help(question: str, answers: {}, correct_value: str):
     for i in range(len(answers_list)):
         print(question)
         chances = get_chances(answers, correct_value)
-        for k in range(len(chances)):
-            if str(answers[answers_list[k]]) != "":
-                print(str(answers_list[k]) + " : " + str(answers[answers_list[k]]) + " || " + str(chances[k]) + "%")
-            else:
-                print(str(answers_list[k]) + " : ")
+        for key, value in sorted(chances.items()):
+            print(key + " : " + str(answers[key]) + " || " + str(value) + "%")
         time.sleep(1)
         if i != len(answers_list) - 1:
             util.clear_screen()
 
 
-def get_chances(answers: {}, correct_value: str) -> list:
+def get_chances(answers: {}, correct_value: str) -> dict:
     answers_list = list(answers.keys())
     chances_dict = {}
     correct_answer = get_dictionary_key_by_value(answers, correct_value)
@@ -285,9 +282,8 @@ def get_chances(answers: {}, correct_value: str) -> list:
             chances_dict[answers_list[k]] = 100 - sum(chances_dict.values())
         else:
             chances_dict[answers_list[k]] = random.randrange(0, 100 - sum(chances_dict.values()))
-    chances = sorted(chances_dict.values(), reverse=True)
 
-    return chances
+    return chances_dict
 
 
 def write_content_to_file(filename: str, content: {}):

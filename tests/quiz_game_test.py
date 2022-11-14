@@ -2,6 +2,8 @@ import os
 import sys
 import unittest
 
+import pygame
+
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath + '/../millionaire')
 from millionaire.quiz_game import quiz_game
@@ -19,6 +21,12 @@ class TestSum(unittest.TestCase):
         result = sum(chances)
         self.assertEqual(100, result)
 
+    """"
+    This test can not fit to unit tests but can display how audience's help works.
+    def test_audience_help(self):
+        pygame.init()
+        chances = quiz_game.audience_help("How many seconds are in a minute?", {"a": "300", "b": "1", "c": "30", "d": "60"}, "60")
+    """
 
 
 if __name__ == "__main__":
