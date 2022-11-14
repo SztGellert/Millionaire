@@ -94,6 +94,8 @@ def play(inputs: dict):
                         util.play_sound("show_stop.mp3", 0)
                         time.sleep(1)
                 else:
+                    util.play_sound("bad_answer.mp3", 0)
+                    print(fg.green + correct_answer_value + fg.rs)
                     print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
@@ -191,12 +193,14 @@ def play(inputs: dict):
                 time.sleep(35)
                 safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
         else:
-            if score != 0:
-                write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
-                                                      "time": time.ctime(time.time())})
+            util.play_sound("bad_answer.mp3", 0)
+            print(fg.green + correct_answer_value + fg.rs)
             print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
             safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"], return_inputs[0])
             util.clear_screen()
+            if score != 0:
+                write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
+                                                      "time": time.ctime(time.time())})
             return
         util.clear_screen()
 

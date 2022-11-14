@@ -78,6 +78,8 @@ def play():
                         util.play_sound("show_stop.mp3", 0)
                         time.sleep(1)
                 else:
+                    util.play_sound("bad_answer.mp3", 0)
+                    print(fg.green + correct_answer_value + fg.rs)
                     print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
@@ -145,6 +147,8 @@ def play():
                 time.sleep(35)
                 safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
         else:
+            util.play_sound("bad_answer.mp3", 0)
+            print(fg.green + correct_answer_value + fg.rs)
             print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
             safe_input(language_dictionary[game_language].menu.return_prompt, ["enter"])
             util.clear_screen()
