@@ -66,7 +66,7 @@ def select_exit():
 
 def select_help():
     util.clear_screen()
-    file = (util.open_file("tutorial" + util.game_language + ".txt", 'r'))
+    file = (util.open_file("tutorial_" + util.game_language + ".txt", 'r'))
     for line in file:
         print(line[0])
     return_prompt()
@@ -82,7 +82,7 @@ def select_credits():
 
 def return_prompt():
     print(fg.red + "\n" + language_dictionary[game_language].menu.return_prompt + fg.rs)
-    if keyboard.read_key() == "enter":
+    if keyboard.read_key() == "esc":
         return
 
 
