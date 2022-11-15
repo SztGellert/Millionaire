@@ -23,7 +23,7 @@
     },
     "quiz": {
         "player_name_prompt": "Hogyan szólíthatom? ",
-        "select_answer":"\nVálassza ki a helyes választ ('a','b','c','d'), 't' a játékon kívüli válaszadáshoz, 'h' ha segítséget szeretne!",
+        "select_answer":"\nVálassza ki a helyes választ ('a','b','c','d'), 't' a játékon kívüli válaszadáshoz, 'h' ha segítséget szeretne!\n",
         "select_answer_out": "\nVálassza ki a helyes választ ('a','b','c','d') ! ",
         "correct_answer": "Szép volt!",
         "correct_answer_out": "Helyes válasz! Több szerencsét a következő alkalommal!",

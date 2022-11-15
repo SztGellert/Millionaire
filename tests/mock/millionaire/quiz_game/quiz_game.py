@@ -1,4 +1,3 @@
-import keyboard
 import random
 import os
 from sty import Style, RgbFg, fg, bg
@@ -21,11 +20,9 @@ def play(inputs: dict):
     global game_language
     game_language = util.game_language
     global question_topics
-    # Todo: keyborad.read_key() acts not the way it is desired. Single input is skipped due to duplicated key return
-    input()
     player_name = input(language_dictionary[game_language].quiz.player_name_prompt)
     score = 0
-    question_topics = util.question_topics
+    question_topics = util.question_topicsű
     out_of_game_inputs = inputs["out_of_game_answers"]
     game_inputs = inputs["game_answers"]
     audience_inputs = inputs["audience_answers"]
@@ -209,16 +206,13 @@ def play(inputs: dict):
     return
 
 
-def safe_input(input_text: str, allowed_list_of_letters: list, hotkey: str) -> str:
-    print(input_text)
-    keyboard.press_and_release(hotkey)
-    answer = hotkey
+def safe_input(input_text: str, allowed_list_of_letters: list) -> str:
+    answer = input(input_text)
     if answer not in allowed_list_of_letters:
-        print(language_dictionary[game_language].quiz.allowed_letters_error + ' '.join(allowed_list_of_letters) + language_dictionary[game_language].quiz.allowed)
+        print(language_dictionary[game_language].quiz.allowed_letters_error + ' '.join(allowed_list_of_letters) +
+              language_dictionary[game_language].quiz.allowed)
     while answer not in allowed_list_of_letters:
-        answer = keyboard.read_key()
-    if answer != "esc":
-        print(answer)
+        answer = input(input_text)
     time.sleep(1)
 
     return answer

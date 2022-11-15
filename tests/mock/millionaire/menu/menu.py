@@ -1,10 +1,10 @@
 import time
 import os
 import json
-import keyboard
 from util import util
 from sty import Style, RgbFg, fg, bg
 from quiz_game import quiz_game
+import msvcrt
 
 default_width = 40
 fg.purple = Style(RgbFg(148, 0, 211))
@@ -82,8 +82,52 @@ def select_credits():
 
 def return_prompt():
     print(fg.red + "\n" + language_dictionary[game_language].menu.return_prompt + fg.rs)
-    if keyboard.read_key() == "esc":
+    # escape
+    if msvcrt.getch() == b'\x1b':
         return
+
+
+def get_user_input(option_list: [], max_option_length: int,  hotkey: str) -> str:
+    i = 0
+    first_char = ""
+    while True:
+        print(hotkey)
+        if hotkey == "enter":
+            first_char = b'\r'
+        if hotkey == "esc":
+            first_char = b'\x1b'
+        if hotkey == "up":
+            first_char = b'H'
+        if hotkey == "down":
+            first_char = b'P'
+        # escape
+        if first_char == b'\x1b':
+            return option_list[-1]
+        # enter
+        if first_char == b'\r':
+            return option_list[i]
+        # up
+        if first_char == b'H':
+            if i == 0:
+                i = len(option_list) - 1
+                show_options(option_list, max_option_length, len(option_list) - 1)
+            else:
+                i -= 1
+                show_options(option_list, max_option_length, i)
+            # enter
+            if msvcrt.getch() == b'\r':
+                return option_list[i]
+        # down
+        if first_char == b'P':
+            if i == len(option_list) - 1:
+                i = 0
+                show_options(option_list, max_option_length)
+            else:
+                i += 1
+                show_options(option_list, max_option_length, i)
+            # enter
+            if msvcrt.getch() == b'\r':
+                return option_list[i]
 
 
 def select_settings():
@@ -105,34 +149,6 @@ def select_settings():
             show_options(language_dictionary[game_language].menu.settings_menu_options, 40)
         if chosen_option == language_dictionary[game_language].menu.settings_menu_options[-1]:
             return
-
-
-def get_user_input(option_list: [], max_option_length: int, hotkey: str) -> str:
-    i = 0
-    while True:
-        keyboard.press(hotkey)
-        if keyboard.read_key() == "enter":
-            return option_list[i]
-        if keyboard.read_key() == "esc":
-            return option_list[-1]
-        if keyboard.read_key() == 'down':
-            if i == len(option_list) - 1:
-                i = 0
-                show_options(option_list, max_option_length)
-            else:
-                i += 1
-                show_options(option_list, max_option_length, i)
-            if keyboard.read_key() == "enter":
-                return option_list[i]
-        if keyboard.read_key() == 'up':
-            if i == 0:
-                i = len(option_list) - 1
-                show_options(option_list, max_option_length, len(option_list) - 1)
-            else:
-                i -= 1
-                show_options(option_list, max_option_length, i)
-            if keyboard.read_key() == "enter":
-                return option_list[i]
 
 
 def handle_main_menu(input_: str, game_inputs: {}):

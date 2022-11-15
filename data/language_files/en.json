@@ -21,7 +21,7 @@
     },
     "quiz": {
         "player_name_prompt": "How can I call you? ",
-        "select_answer":"\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help!",
+        "select_answer":"\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help!\n",
         "select_answer_out": "\nSelect the correct answer ('a','b','c','d') ! ",
         "correct_answer": "Well Done!",
         "correct_answer_out": "Correct answer! Better luck next time!",

@@ -22,8 +22,6 @@ def play():
     game_language = util.game_language
     global question_topics
     question_topics = util.question_topics
-    # Todo: keyborad.read_key() acts not the way it is desired. Single input is skipped due to duplicated key return
-    input()
     player_name = input(language_dictionary[game_language].quiz.player_name_prompt)
     score = 0
     help_types = {"audience": True, "telephone": True, "halving": True}
@@ -162,15 +160,12 @@ def play():
 
 
 def safe_input(input_text: str, allowed_list_of_letters: list) -> str:
-    print(input_text)
-    answer = keyboard.read_key()
+    answer = input(input_text)
     if answer not in allowed_list_of_letters:
         print(language_dictionary[game_language].quiz.allowed_letters_error + ' '.join(allowed_list_of_letters) +
               language_dictionary[game_language].quiz.allowed)
     while answer not in allowed_list_of_letters:
-        answer = keyboard.read_key()
-    if answer != "esc":
-        print(answer)
+        answer = input(input_text)
     time.sleep(1)
 
     return answer
