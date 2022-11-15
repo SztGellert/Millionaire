@@ -2,6 +2,8 @@
     "en": "english",
     "hu": "hungarian",
     "menu": {
+        "title_first_line": " ♦  W H O    W A N T S   T O   B E   A  ♦",
+        "title_second_line": "     M  I  L  L  I  O  N  A  I  R  E",
         "return_prompt": "press ESC for main menu..",
         "settings_menu_options": ["Language selection",
                          "Sound Volume selection",

@@ -33,13 +33,13 @@ def show_title():
     line_length = default_width + 3
     util.clear_screen()
     print("=" * line_length)
-    print(fg.purple + " ♦  W H O    W A N T S   T O   B E   A  ♦" + fg.rs)
+    print(fg.purple + language_dictionary[game_language].menu.title_first_line + fg.rs)
     print("=" * line_length)
     print(fg.yellow + "|" * line_length + fg.rs)
-    print(fg.purple + "     M  I  L  L  I  O  N  A  I  R  E" + fg.rs)
+    print(fg.purple + language_dictionary[game_language].menu.title_second_line + fg.rs)
     print(fg.yellow + "|" * line_length + fg.rs)
     print("=" * line_length)
-    print(fg.purple + " ♦  W H O    W A N T S   T O   B E   A  ♦" + fg.rs)
+    print(fg.purple + language_dictionary[game_language].menu.title_first_line + fg.rs)
     print("=" * line_length + "\n\n")
 
 
