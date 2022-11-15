@@ -4,7 +4,6 @@ import time
 from util import util
 from sty import Style, RgbFg, fg, bg
 import json
-import msvcrt
 
 from quiz_game import quiz_game
 
@@ -123,16 +122,29 @@ def select_settings():
 
 
 def return_prompt():
+    if util.operating_system == "posix":
+        import getch
+        user_input = getch.getch()
+    else:
+        import msvcrt
+        user_input = msvcrt.getch()
+
     print(fg.red + "\n" + language_dictionary[game_language].menu.return_prompt + fg.rs)
     # escape
-    if msvcrt.getch() == b'\x1b':
+    if user_input == b'\x1b':
         return
 
 
 def get_user_input(option_list: [], max_option_length: int) -> str:
     i = 0
     while True:
-        first_char = msvcrt.getch()
+        if util.operating_system == "posix":
+            import getch
+            user_input = getch.getch()
+        else:
+            import msvcrt
+            user_input = msvcrt.getch()
+        first_char = user_input
         # escape
         if first_char == b'\x1b':
             return option_list[-1]
@@ -148,7 +160,7 @@ def get_user_input(option_list: [], max_option_length: int) -> str:
                 i -= 1
                 show_options(option_list, max_option_length, i)
             # enter
-            if msvcrt.getch() == b'\r':
+            if user_input == b'\r':
                 return option_list[i]
         # down
         if first_char == b'P':
@@ -159,7 +171,7 @@ def get_user_input(option_list: [], max_option_length: int) -> str:
                 i += 1
                 show_options(option_list, max_option_length, i)
             # enter
-            if msvcrt.getch() == b'\r':
+            if user_input == b'\r':
                 return option_list[i]
 
 

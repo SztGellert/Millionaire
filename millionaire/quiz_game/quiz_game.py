@@ -1,4 +1,3 @@
-import keyboard
 import random
 import os
 from sty import Style, RgbFg, fg, bg

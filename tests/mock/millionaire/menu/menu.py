@@ -4,7 +4,6 @@ import json
 from util import util
 from sty import Style, RgbFg, fg, bg
 from quiz_game import quiz_game
-import msvcrt
 
 default_width = 40
 fg.purple = Style(RgbFg(148, 0, 211))
@@ -82,14 +81,26 @@ def select_credits():
 
 def return_prompt():
     print(fg.red + "\n" + language_dictionary[game_language].menu.return_prompt + fg.rs)
+    if util.operating_system == "posix":
+        import getch
+        user_input = getch.getch()
+    else:
+        import msvcrt
+        user_input = msvcrt.getch()
     # escape
-    if msvcrt.getch() == b'\x1b':
+    if user_input == b'\x1b':
         return
 
 
 def get_user_input(option_list: [], max_option_length: int,  hotkey: str) -> str:
     i = 0
     first_char = ""
+    if util.operating_system == "posix":
+        import getch
+        user_input = getch.getch()
+    else:
+        import msvcrt
+        user_input = msvcrt.getch()
     while True:
         print(hotkey)
         if hotkey == "enter":
@@ -115,7 +126,7 @@ def get_user_input(option_list: [], max_option_length: int,  hotkey: str) -> str
                 i -= 1
                 show_options(option_list, max_option_length, i)
             # enter
-            if msvcrt.getch() == b'\r':
+            if user_input == b'\r':
                 return option_list[i]
         # down
         if first_char == b'P':
@@ -126,7 +137,7 @@ def get_user_input(option_list: [], max_option_length: int,  hotkey: str) -> str
                 i += 1
                 show_options(option_list, max_option_length, i)
             # enter
-            if msvcrt.getch() == b'\r':
+            if user_input == b'\r':
                 return option_list[i]
 
 
