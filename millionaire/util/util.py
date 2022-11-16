@@ -1,6 +1,7 @@
 import json
 import os
 import pathlib
+import time
 from collections import namedtuple
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
@@ -13,22 +14,51 @@ language_dictionary = {}
 question_topics = "All "
 
 
+
 def init():
     pygame.mixer.init()
-    init_language(available_languages[0])
+    init_settings(available_languages[0])
 
 
-def init_language(selected_lang: str):
+def init_settings(selected_lang: str):
+    global game_language
+    global question_topics
+    global language_dictionary
+
+    if os.path.isfile("settings.json"):
+        file_path = "settings.json"
+        with open(file_path, encoding="UTF-8") as json_file:
+            data = json.load(json_file)
+            global game_language
+
+            game_language = data["lang"]
+
+            for lang in available_languages:
+                lang_dict = read_json_dict(lang)
+                language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
+
+            lang_dict = read_json_dict(game_language)
+            language_dictionary.update({game_language: custom_dictionary_decoder(lang_dict)})
+            question_topics = data["topic"]
+    else:
+        for lang in available_languages:
+            lang_dict = read_json_dict(selected_lang)
+            language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
+            game_language = selected_lang
+            question_topics = language_dictionary[game_language].menu.settings_menu_question_topics[0]
+
+
+def set_game_language(selected_lang: str):
+    global game_language
+    global question_topics
     for lang in available_languages:
         lang_dict = read_json_dict(selected_lang)
         language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
-        global game_language
         game_language = selected_lang
-        global question_topics
         question_topics = language_dictionary[game_language].menu.settings_menu_question_topics[0]
 
 
-def init_question_topics(selected_topic: str):
+def set_question_topics(selected_topic: str):
     global question_topics
     question_topics = selected_topic
 
@@ -40,10 +70,10 @@ def clear_screen():
         os.system('cls')
 
 
-def play_sound(filename, starting_time):
+def play_sound(filename, starting_time, volume=0.07):
     file_path = get_data_path() + "/sound_files/" + filename
     pygame.mixer.music.load(file_path)
-    pygame.mixer.music.set_volume(0.07)
+    pygame.mixer.music.set_volume(volume)
     pygame.mixer.music.play(0, starting_time)
 
 
