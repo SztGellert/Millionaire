@@ -4,6 +4,7 @@ from sty import Style, RgbFg, fg, bg
 from util import util
 import time
 import json
+from menu import menu
 
 operating_system = os.name
 fg.purple = Style(RgbFg(148, 0, 211))
@@ -80,10 +81,10 @@ def play():
                     print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
-                safe_input(language_dictionary[game_language].menu.return_prompt, ["esc"])
+                menu.return_prompt()
                 util.clear_screen()
                 if score != 0:
-                    write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
+                    write_content_to_file("scores.json", {"user": player_name, "topic": language_dictionary[game_language].menu.settings_menu_question_topics.index(question_topics), "score": score,
                                                           "time": time.ctime(time.time())})
                 return
             if answer == "h":
@@ -142,19 +143,19 @@ def play():
                 print(fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(i) + " !" + fg.rs)
                 util.play_sound("winning_theme.mp3", 0)
                 time.sleep(35)
-                safe_input(language_dictionary[game_language].menu.return_prompt, ["esc"])
+                menu.return_prompt()
         else:
             util.play_sound("bad_answer.mp3", 0)
             print(fg.green + correct_answer_value + fg.rs)
             print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
-            safe_input(language_dictionary[game_language].menu.return_prompt, ["esc"])
+            menu.return_prompt()
             util.clear_screen()
             if score != 0:
-                write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score, "time": time.ctime(time.time())})
+                write_content_to_file("scores.json", {"user": player_name, "topic": language_dictionary[game_language].menu.settings_menu_question_topics.index(question_topics), "score": score, "time": time.ctime(time.time())})
             return
         util.clear_screen()
 
-    write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score, "time": time.ctime(time.time())})
+    write_content_to_file("scores.json", {"user": player_name, "topic": language_dictionary[game_language].menu.settings_menu_question_topics.index(question_topics), "score": score, "time": time.ctime(time.time())})
     return
 
 

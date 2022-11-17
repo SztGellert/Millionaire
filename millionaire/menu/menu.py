@@ -92,7 +92,10 @@ def select_scores():
         for item in scores_sorted:
             i = 0
             for k, v in item.items():
-                print(language_dictionary[util.game_language].menu.scores[i], ":", v, end=" ")
+                if i == 1:
+                    print(language_dictionary[util.game_language].menu.scores[i], ":", language_dictionary[util.game_language].menu.settings_menu_question_topics[v], end=" ")
+                else:
+                    print(language_dictionary[util.game_language].menu.scores[i], ":", v, end=" ")
                 i += 1
             print("\n")
             print("-" * 100)
