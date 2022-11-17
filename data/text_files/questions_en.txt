@@ -1,51 +1,51 @@
-How many seconds are in a minute?;60;30;1;300;mathematics
-How tall is the Eiffel Tower?;300 meters;302 meters;303 meters;297 meters;mathematics
-Who was the 32th president of the USA?;Franklin D. Roosevelt;John F. Kennedy;Richard Nixon;Herbert Hoover;history
-Which type of shark is the biggest ever?;Megalodon;Great White;Whale Shark;Tiger Shark;biology
-What's the deepest point of the Earth?;Mariana Trench;Philippine Trench;Tonga Trench;Kermadec Trench;geography
-How long are the catacombs under Paris?;300 kilometers;100 kilometers;150 kilometers;250 kilometers;geography
-When was the first camera invented?;1816;1820;1656;1790;history
-Which animal has the highest speed on land?;Cheetah;Springbok;Lion;Quater Horse;biology
-Who has written the Harry Potter books?;J.K. Rowling;George Orwell;Charles Dickens;Ian Fleming;literature
-Which musician was born in 1756?;Wolfgang Amadeus Mozart;Ludwig van Beethoven;William Herschel;Joseph Haydn;music
-Who has invented the zeppelin?;Ferdinand von Zeppelin;Karl Maybach;Stefan Sommer;Henri Giffard;history
-Which is the correct highest point of the Mount Everest?;8848;8840;8830;8838;geography
-When did Henry VIII die?;1435;1978;1523;1547;history
-Which is the longest bridge in the world?;Danyang-Kunshan Grand Bridge;Cangde Grand Bridge;Bang Na Expressway;Runyang Bridge;geography
-What city contains the Eiffel Tower?;Paris;Sydney;Los Angeles;New York City;geography
-Which sport is also known as football?;Soccer;Basketball;Baseball;Cricket;sports
-How many continents are there?;7;1;3;20;geography
-Who wasn't a member of the Beatles?;Justin Timberlake;John Lennon;Paul McCartney;Ringo Star;music
-Which of the following is not a type of pasta?;Escargot;Spaghetti;Fettuccine;Ziti;gastronomy
-Which state has cities named San Francisco and Hollywood?;California;Utah;Hawaii;Montana;geography
-Which instrument does not have strings?;Trombone;Guitar;Bass;Cello;music
-What product does Tesla produce?;Electric cars;Ice cream;Televisions;Hair brushes;economy
-Which animal is not a primate?;Dolphin;Chimpanzee;Gorillla;Orangutan;biology
-What gas makes voices sound higher when inhaled?;Helium;Oxygen;Nitrogen;Sulfur Hexafluoride;physics
-What American holiday falls on July 4?;Independence Day;Thanksgiving Day;Christmas Day;New Year's Day;history
-Which candy bar shares its name with a galaxy?;Milky Way;Snickers;3 Musketeers;Almond Joy;economy
-What is the capital of England?;London;Washington D.C.;Rome;Moscow;geography
-Which one of the following is not an Ivy League University?;Hogwarts;Harvard;Princeton;Columbia;general knowledge
-What is someone who collects coins called?;Numismatist;Professor;Chef;Psychiatrist;general knowledge
-Which video game system does Sony produce?;PlayStation;Xbox;Atari;Game Boy;economy
-What are the names of the Super Mario Bros.?;Mario and Luigi;Tim and Eric;Batman and Robin;Sonic and Tails;general knowledge
-Which princess lost a glass slipper?;Cinderella;Snow White;Mulan;Belle;general knowledge
-Which American car company makes the Mustang the F-150 and Escape?;Ford;Toyota;Volkswagen;Nissan;economy
-Who was the first woman to fly solo across the Atlantic?;Amelia Earhart;Geraldine Ferraro;Martha Stewart;Sally Ride;history
-Which U.S. city is home to the Liberty Bell and Independence Hall?;Philadelphia;Vancouver;Mexico City;Beijing;geography
-Which pop culture franchise has characters named Luke Skywalker and Han Solo and Darth Vader?;Star Wars;Harry Potter;Star Trek;James Bond;general knowledge
-How many days are in a leap year?;366;28;30;400;mathematics
-Which website is the most popular search engine?;Google;DuckDuckGo;Myspace;Bing;general knowledge
-Who is the current British monarch?;King Charles III;King Philippe;Queen Elizabeth II;King George;history
-What children's show features characters named Big Bird and Elmo?;Sesame Street;Barney & Friends;Spongebob Squarepants;The Wiggles;general knowledge
-Which biblical figure built an ark?;Noah;Jesus Christ;Moses;Eve;literature
-What is the smallest unit of American currency?;Penny;Dime;Quarter;Dollar;economy
-What is the first name of McDonald's mascot?;Ronald;Susan;George;Karl;general knowledge
-Who is the current host of "The Tonight Show?";Jimmy Fallon;Oprah Winfrey;Anne Curry;Bob Barker;general knowledge
-What is the first letter of the Greek alphabet?;Alpha;Omega;Zed;E;literature
-Which mode of transportation traditionally has two wheels?;Bicycle;Tricycle;Car;Bus;general knowledge
-What is the term length for the president of the United States?;4 years;1 year;10 years;20 years;general knowledge
-What is the largest external organ on the human body?;Skin;Eyes;Ears;Nose;biology
+How many seconds are in a minute?;60;30;1;300;mathematics;easy
+How tall is the Eiffel Tower?;300 meters;302 meters;303 meters;297 meters;mathematics;easy
+Who was the 32th president of the USA?;Franklin D. Roosevelt;John F. Kennedy;Richard Nixon;Herbert Hoover;history;medium
+Which type of shark is the biggest ever?;Megalodon;Great White;Whale Shark;Tiger Shark;biology;easy
+What's the deepest point of the Earth?;Mariana Trench;Philippine Trench;Tonga Trench;Kermadec Trench;geography;easy
+How long are the catacombs under Paris?;300 kilometers;100 kilometers;150 kilometers;250 kilometers;geography;medium
+When was the first camera invented?;1816;1820;1656;1790;history;medium
+Which animal has the highest speed on land?;Cheetah;Springbok;Lion;Quater Horse;biology;easy
+Who has written the Harry Potter books?;J.K. Rowling;George Orwell;Charles Dickens;Ian Fleming;literature;easy
+Which musician was born in 1756?;Wolfgang Amadeus Mozart;Ludwig van Beethoven;William Herschel;Joseph Haydn;music;easy
+Who has invented the zeppelin?;Ferdinand von Zeppelin;Karl Maybach;Stefan Sommer;Henri Giffard;history;easy
+Which is the correct highest point of the Mount Everest?;8848;8840;8830;8838;geography;easy
+When did Henry VIII die?;1435;1978;1523;1547;history;medium
+Which is the longest bridge in the world?;Danyang-Kunshan Grand Bridge;Cangde Grand Bridge;Bang Na Expressway;Runyang Bridge;geography;hard
+What city contains the Eiffel Tower?;Paris;Sydney;Los Angeles;New York City;geography;easy
+Which sport is also known as football?;Soccer;Basketball;Baseball;Cricket;sports;easy
+How many continents are there?;7;1;3;20;geography;easy
+Who wasn't a member of the Beatles?;Justin Timberlake;John Lennon;Paul McCartney;Ringo Star;music;easy
+Which of the following is not a type of pasta?;Escargot;Spaghetti;Fettuccine;Ziti;gastronomy;easy
+Which state has cities named San Francisco and Hollywood?;California;Utah;Hawaii;Montana;geography;easy
+Which instrument does not have strings?;Trombone;Guitar;Bass;Cello;music;easy
+What product does Tesla produce?;Electric cars;Ice cream;Televisions;Hair brushes;economy;easy
+Which animal is not a primate?;Dolphin;Chimpanzee;Gorillla;Orangutan;biology;easy
+What gas makes voices sound higher when inhaled?;Helium;Oxygen;Nitrogen;Sulfur Hexafluoride;physics;easy
+What American holiday falls on July 4?;Independence Day;Thanksgiving Day;Christmas Day;New Year's Day;history;easy
+Which candy bar shares its name with a galaxy?;Milky Way;Snickers;3 Musketeers;Almond Joy;economy;easy
+What is the capital of England?;London;Washington D.C.;Rome;Moscow;geography;easy
+Which one of the following is not an Ivy League University?;Hogwarts;Harvard;Princeton;Columbia;general knowledge;easy
+What is someone who collects coins called?;Numismatist;Professor;Chef;Psychiatrist;general knowledge;easy
+Which video game system does Sony produce?;PlayStation;Xbox;Atari;Game Boy;economy;easy
+What are the names of the Super Mario Bros.?;Mario and Luigi;Tim and Eric;Batman and Robin;Sonic and Tails;general knowledge;easy
+Which princess lost a glass slipper?;Cinderella;Snow White;Mulan;Belle;general knowledge;easy
+Which American car company makes the Mustang the F-150 and Escape?;Ford;Toyota;Volkswagen;Nissan;economy;easy
+Who was the first woman to fly solo across the Atlantic?;Amelia Earhart;Geraldine Ferraro;Martha Stewart;Sally Ride;history;hard
+Which U.S. city is home to the Liberty Bell and Independence Hall?;Philadelphia;Vancouver;Mexico City;Beijing;geography;medium
+Which pop culture franchise has characters named Luke Skywalker and Han Solo and Darth Vader?;Star Wars;Harry Potter;Star Trek;James Bond;general knowledge;easy
+How many days are in a leap year?;366;28;30;400;mathematics;easy
+Which website is the most popular search engine?;Google;DuckDuckGo;Myspace;Bing;general knowledge;easy
+Who is the current British monarch?;King Charles III;King Philippe;Queen Elizabeth II;King George;history;easy
+What children's show features characters named Big Bird and Elmo?;Sesame Street;Barney & Friends;Spongebob Squarepants;The Wiggles;general knowledge;easy
+Which biblical figure built an ark?;Noah;Jesus Christ;Moses;Eve;literature;easy
+What is the smallest unit of American currency?;Penny;Dime;Quarter;Dollar;economy;medium
+What is the first name of McDonald's mascot?;Ronald;Susan;George;Karl;general knowledge;easy
+Who is the current host of "The Tonight Show?";Jimmy Fallon;Oprah Winfrey;Anne Curry;Bob Barker;general knowledge;medium
+What is the first letter of the Greek alphabet?;Alpha;Omega;Zed;E;literature;easy
+Which mode of transportation traditionally has two wheels?;Bicycle;Tricycle;Car;Bus;general knowledge;easy
+What is the term length for the president of the United States?;4 years;1 year;10 years;20 years;general knowledge;medium
+What is the largest external organ on the human body?;Skin;Eyes;Ears;Nose;biology;easy
 What is the capital of Iceland?;Reykjavik;Tegucigalpa;Kingston;Astana;geography
 Who invented sliced bread?;Otto Frederick Rohwedder;Samuel Morse;Alfred Nobel;Wright brothers;history
 Which of these famous figures was a physicist?;Enrico Fermi;Berenice Abbott;Gertrude Abercrombie;Carla Accardi;physics
@@ -176,68 +176,68 @@ What quantity is calculated by the formula hb/2?;The area of a triangle;The volu
 By using the “method of exhaustion,” ancient Greek mathematicians were able to estimate the circumference and area of a circle without having an exact value for what important ratio?;pi;the golden ratio;the sacred ration;sine;mathematics
 What continental European mathematician-philosopher did Isaac Newton engage in a public dispute with over the invention of calculus?;Gottfried Wilhelm Leibniz;Blaise Pascal;René Descartes;Maimonides;mathematics
 What is the Pythagorean theorem?;the square on the hypotenuse of a right triangle is equal to the sum of the squares on the other two sides;the corresponding angles of two triangles are equal if and only if their corresponding sides are proportional;two sides of an isosceles triangle are equal if and only if the angles opposite them are equal;the sum of the angles of a triangle is always 180 degrees;mathematics
-Fastest shorthand writer was?;Dr. G. D. Bist;J.R.D. Tata;J.M. Tagore;Khudada Khan;literature
-Who wrote the line: ' A thing of beauty is a joy forever'?;John Keats;Robert Browing;P.B.Shelley;William Wordsworth;literature
-Who is the author of the book 'Nineteen Eighty Four'?;George Orwell;Walter Scott;Emile Zola;Thomas Hardy;literature
-Who is the father of English Poetry?;Chaucer;Wordsworth;Milton;Charles Dickens;literature
-Who wrote 'War and Peace'?;Leo Tolstoy;Mahatma Gandhi;Charles Dickens;Kipling;literature
-George Bernard Shaw, the great dramatist, was?;an Irishman;a Welsh;a Soctsman;an Englishman;literature
-Who said "God helps those who help themselves"?;Algernon Sidney;Swami Vivekananda;Andre Gide;Andre Maurois;literature
-'Alice in Wonderland' the famous TV serial is based on a book written by?;Lewis Caroll;Charles Dickens;Thomas Hardy;Father Discoste;literature
-The Gathering Storm' is written by?;Winston Churchill;George Washington;Voltaire;Romain Rolland;literature
-Who is the author of the book 'My Experiments with Truth'?;Mahatma Gandhi;Michael Anderson;Winston Churchill;Jarnes Morris;literature
-The first history book was written by?;Herodotus;Euclid;Aristotle;Julius Caesar;literature
-Who said 'Man is a political animal'?;Aristotle;Dante;Socrates;Plato;literature
-The General Happiness is the end of the state' who said this?;Bentham;Hegel;Plato;Green;literature
-Who is the author of the book - 'Preparing for the Twenty - First Century'?;Paul Kennedy;V.R. Krishna Iyer;V.S. Naipul;Larry Collins;literature
-The famous book 'Anna Karenina' written by ?;Leo Tolstoy;Lewis Carroll;Victor Hugo;Boris Pasternak;literature
-'Nature never did betray the heart that loved her' is a quotation from?;W.Wordsworth;J. Byron;P.B.Shelly;J.Keats;literature
-The book 'A Farewell to Arms' was written by?;Ernest Hemingway;Charles Dickens;Thomas Hardy;Huxley;literature
-'Man without society is either a beast or a God'. Who said this?;Aristotle;Gandhi;Plato;Henry Maine;literature
-Who has written the famous book 'Mankind and Mother Earth'?;Arnold Toynbee;Leo Tolstoy;John Ruskin;Bertrand Russel;literature
-The book 'Gulliver's Travels' was written by?;Jonathan Swift;Charles Dickens;Charles Lamb;Alexandra Dumas;literature
-Who is the author of 'Tom Sawyer'?;Mark Twain;John Ruskin;William Shakespeare;Leo Tolstoy;literature
-Who said the words, 'I disapprove of what you say, but I will defend to Death your right to say it'?;Voltaire;George Bernard Shaw;Lenin;Mahatma Gandhi;literature
-The celebrated novel 'The Godfather' was authored by?;Mario Puzo;Victor Hugo;John Milton;Harold Robbins;literature
-Who wrote the book 'The Prince'?;Niccolo Machiaveli;Bernard Shaw;V.S. Sharma;Emile Zola;literature
-'Crime and Punishment' was written by?;Fyodor Dostoevsky;Vladimir Nabakov;Lewis Carrol;Alexander Solzhenitsyn;arts
-David Copperfield is the name of ?;novel;famous actor;poem;writer;literature
-Who directed the film 'Little Buddha'?;Bernardo Bertolucci;Richard Attenborough;Ben Johnson;Mani Kaul;arts
-The creator of 'Sherlock Holmes' was?;Arthur Conan Doyle;Ian Fleming;Dr.Watson;Shakespeare;literature
-Euclid was?;Greek mathematician;Contributor to the use of deductive principles of logic as the basis of geometry;Propounded the geometrical theorems;All of the above;mathematics
-Pine, fir, spruce, cedar, larch and cypress are the famous timber-yielding plants of which several also occur widely in the hilly regions of India. All these belong to?;gymnosperms;angiosperms;monocotyledons;dicotyledons;biology
-Plants receive their nutrients mainly from?;soil;light;atmosphere;chlorophyll;biology
-Movement of cell against concentration gradient is called?;osmosis;active transport;diffusion;passive transport;biology
-Plants absorb dissolved nitrates from soil and convert them into?;free nitrogen;urea;ammonia;proteins;biology
-Plants absorb most part of water needed by them through their?;root hairs;growing point;embryonic zone;zone of elongation;biology
-Most highly intelligent mammals are?;dolphins;whales;elephants;kangaroos;biology
-Most of the red, blue and purple colours of plants are due to a pigment called?;anthocyanin;carotene;chlorophyll;xanthophylls;biology
-Plant have ____ while animals lack it.;cellulose;starch;protein;fat;biology
-Pigmentation of skin is due to?;melanocytes;leucocytes;monocytes;lymphocytes;biology
-Night blindness is cause by lack of which vitamin?;Vitamin A;Vitamin B;Vitamin C;Vitamin D;biology
-Our major foods, fibres, spices, fruits and beverage crops are?;flowering plants;gymnosperms plants;pteridophytes;bryophytes;biology
-Most abundant tissues of our body are?;connective;muscular;epithelial;nervous;biology
-Oxygen in our blood is transported by a protein named?;haemoglobin;keratin;collagen;myoglobin;biology
-Name the extravagant period of art and architecture prevalent in Europe during most of the 17th century?;The Baroque period;The Classicism period;The Rococo period;The Neoclassicism period;arts
-Which famous painter was also a sculptor, an architect, and an engineer?;Leonardo Da Vinci;Hasan al-Rammah;Filippo Brunelleschi;Guido da Vigevano;arts
-The artist Kandinsky is considered the first for this type of art?;Abstract;Modern;Impressionism;Surrealism;arts
-Which Italian architect and sculptor was famous for creating the Baroque style?;Gian Lorenzo Bernini;Michelangelo Merisi da Caravaggio;Rembrandt Harmenszoon van Rijn;Peter Paul Rubens;arts
-Which of Picasso’s famous paintings was inspired by the bombings of civilians during the Spanish War?;Guernica;La Vie;Les Demoiselles d'Avignon;The Tragedy;arts
-Which other painter is often associated with Francoise Gilot?;Pablo Picasso;Henri Matiess;Salvador Dalí;Andy Warhol;arts
-The American Gothic is one of the most recognizable paintings in the world. Who painted it?;Grant Wood;Thomas Hart Benton;John Steuart Curry;Andrew Wyeth;arts
-Claude Monet is most known for his paintings of what?;Water lily paintings;lavender field paintings;French War of Independence paintings;Sunflower paintings;arts
-The first “artists” of the world used which mediums to produce their work?;Ashes from fire, plant pigments, and red clay;Ashes from fire, plant pigments, and black clay;Ashes from fire, artist's pigments, and red clay;mixture of wax and resin as binders for the dye;arts
-Who was the first living person to have their art displayed in The Louvre?;Georges Braque;Eugène Delacroix;Giotto di Bodone;Nicolas Poussin;arts
-Where did Vincent Van Gogh paint the famous “Starry Night”?;From the window of his asylum room at Saint-Rémy-de-Provence;From the window of his asylum room at Saint Etienne De Gres;from the Jetée de Saint-Nicolas lighthouse;from the medieval Saint Nicolas fortress' tower;arts
-Which Queen song has the lyrics “Is this the real life? Is this just fantasy?”;Bohemian Rhapsody;Another One Bites the Dust;Under Pressure;Radio Ga Ga;music
-Which country is Gangnam Style singer PSY from?;South Korea;Canada;Germany;North Korea;music
-In which year was Bruno Mars born?;1985;1987;1990;1992;music
-Which legendary musician starred in the movie Labyrinth?;David Bowie;Matt Goss;Elvis Presley;Elton John;music
-Which pop star's real name is Stefani Joanne Germanotta?;Lady Gaga;Pink;The singer from Florence and the Machnie;Olivia Rodrigo;music
-How many members are in the K-Pop group Twice?;9;3;7;2;music
-ABBA is a world-famous pop group from Sweden. Which member of the group is from Norway?;Anni-Frid Lyngstad;Agnetha Fältskog;Björn Ulvaeus;Benny Andersson;music
-Which of the following instruments is Lizzo known for playing?;The flute;The harp;The guitar;The ocarina;music
-Taylor Swift released two albums in 2020. What were they called?;Folklore and Evermore;Swifty and Swiftier;Taylor Made, Volumes 1 and 2;Oh Tay Can You See..;music
-Billie Eilish released her first album in 2019. What is it called?;When We All Fall Asleep, Where Do We Go?;Introducing Billie Eilish;It's Eilish, Not Eyelash;Nevermind;music
-What country is Rita Ora from?;Yugoslavia (now Kosovo);France;Denmark;Wales;music
-Which West End musical did Anne-Marie appear in aged 6?;Les Misérables;Chicago;Cats;School of Rock;music
+Fastest shorthand writer was?;Dr. G. D. Bist;J.R.D. Tata;J.M. Tagore;Khudada Khan;literature;hard
+Who wrote the line: ' A thing of beauty is a joy forever'?;John Keats;Robert Browing;P.B.Shelley;William Wordsworth;literature;hard
+Who is the author of the book 'Nineteen Eighty Four'?;George Orwell;Walter Scott;Emile Zola;Thomas Hardy;literature;easy
+Who is the father of English Poetry?;Chaucer;Wordsworth;Milton;Charles Dickens;literature;hard
+Who wrote 'War and Peace'?;Leo Tolstoy;Mahatma Gandhi;Charles Dickens;Kipling;literature;easy
+George Bernard Shaw, the great dramatist, was?;an Irishman;a Welsh;a Soctsman;an Englishman;literature;medium
+Who said "God helps those who help themselves"?;Algernon Sidney;Swami Vivekananda;Andre Gide;Andre Maurois;literature;hard
+'Alice in Wonderland' the famous TV serial is based on a book written by?;Lewis Caroll;Charles Dickens;Thomas Hardy;Father Discoste;literature;hard
+The Gathering Storm' is written by?;Winston Churchill;George Washington;Voltaire;Romain Rolland;literature;medium
+Who is the author of the book 'My Experiments with Truth'?;Mahatma Gandhi;Michael Anderson;Winston Churchill;Jarnes Morris;literature;medium
+The first history book was written by?;Herodotus;Euclid;Aristotle;Julius Caesar;literature;hard
+Who said 'Man is a political animal'?;Aristotle;Dante;Socrates;Plato;literature;medium
+The General Happiness is the end of the state' who said this?;Bentham;Hegel;Plato;Green;literature;hard
+Who is the author of the book - 'Preparing for the Twenty - First Century'?;Paul Kennedy;V.R. Krishna Iyer;V.S. Naipul;Larry Collins;literature;medium
+The famous book 'Anna Karenina' written by ?;Leo Tolstoy;Lewis Carroll;Victor Hugo;Boris Pasternak;literature;medium
+'Nature never did betray the heart that loved her' is a quotation from?;W.Wordsworth;J. Byron;P.B.Shelly;J.Keats;literature;medium
+The book 'A Farewell to Arms' was written by?;Ernest Hemingway;Charles Dickens;Thomas Hardy;Huxley;literature;medium
+'Man without society is either a beast or a God'. Who said this?;Aristotle;Gandhi;Plato;Henry Maine;literature;medium
+Who has written the famous book 'Mankind and Mother Earth'?;Arnold Toynbee;Leo Tolstoy;John Ruskin;Bertrand Russel;literature;hard
+The book 'Gulliver's Travels' was written by?;Jonathan Swift;Charles Dickens;Charles Lamb;Alexandra Dumas;literature;medium
+Who is the author of 'Tom Sawyer'?;Mark Twain;John Ruskin;William Shakespeare;Leo Tolstoy;literature;medium
+Who said the words, 'I disapprove of what you say, but I will defend to Death your right to say it'?;Voltaire;George Bernard Shaw;Lenin;Mahatma Gandhi;literature;medium
+The celebrated novel 'The Godfather' was authored by?;Mario Puzo;Victor Hugo;John Milton;Harold Robbins;literature;medium
+Who wrote the book 'The Prince'?;Niccolo Machiaveli;Bernard Shaw;V.S. Sharma;Emile Zola;literature;hard
+'Crime and Punishment' was written by?;Fyodor Dostoevsky;Vladimir Nabakov;Lewis Carrol;Alexander Solzhenitsyn;arts;medium
+David Copperfield is the name of ?;novel;famous actor;poem;writer;literature;medium
+Who directed the film 'Little Buddha'?;Bernardo Bertolucci;Richard Attenborough;Ben Johnson;Mani Kaul;arts;hard
+The creator of 'Sherlock Holmes' was?;Arthur Conan Doyle;Ian Fleming;Dr.Watson;Shakespeare;literature;easy
+Euclid was?;Greek mathematician;Contributor to the use of deductive principles of logic as the basis of geometry;Propounded the geometrical theorems;All of the above;mathematics;medium
+Pine, fir, spruce, cedar, larch and cypress are the famous timber-yielding plants of which several also occur widely in the hilly regions of India. All these belong to?;gymnosperms;angiosperms;monocotyledons;dicotyledons;biology;medium
+Plants receive their nutrients mainly from?;soil;light;atmosphere;chlorophyll;biology;easy
+Movement of cell against concentration gradient is called?;osmosis;active transport;diffusion;passive transport;biology;medium
+Plants absorb dissolved nitrates from soil and convert them into?;free nitrogen;urea;ammonia;proteins;biology;medium
+Plants absorb most part of water needed by them through their?;root hairs;growing point;embryonic zone;zone of elongation;biology;easy
+Most highly intelligent mammals are?;dolphins;whales;elephants;kangaroos;biology;medium
+Most of the red, blue and purple colours of plants are due to a pigment called?;anthocyanin;carotene;chlorophyll;xanthophylls;biology;medium
+Plant have ____ while animals lack it.;cellulose;starch;protein;fat;biology;medium
+Pigmentation of skin is due to?;melanocytes;leucocytes;monocytes;lymphocytes;biology;medium
+Night blindness is cause by lack of which vitamin?;Vitamin A;Vitamin B;Vitamin C;Vitamin D;biology;medium
+Our major foods, fibres, spices, fruits and beverage crops are?;flowering plants;gymnosperms plants;pteridophytes;bryophytes;biology;easy
+Most abundant tissues of our body are?;connective;muscular;epithelial;nervous;biology;medium
+Oxygen in our blood is transported by a protein named?;haemoglobin;keratin;collagen;myoglobin;biology;easy
+Name the extravagant period of art and architecture prevalent in Europe during most of the 17th century?;The Baroque period;The Classicism period;The Rococo period;The Neoclassicism period;arts;medium
+Which famous painter was also a sculptor, an architect, and an engineer?;Leonardo Da Vinci;Hasan al-Rammah;Filippo Brunelleschi;Guido da Vigevano;arts;easy
+The artist Kandinsky is considered the first for this type of art?;Abstract;Modern;Impressionism;Surrealism;arts;medium
+Which Italian architect and sculptor was famous for creating the Baroque style?;Gian Lorenzo Bernini;Michelangelo Merisi da Caravaggio;Rembrandt Harmenszoon van Rijn;Peter Paul Rubens;arts;hard
+Which of Picasso’s famous paintings was inspired by the bombings of civilians during the Spanish War?;Guernica;La Vie;Les Demoiselles d'Avignon;The Tragedy;arts;medium
+Which other painter is often associated with Francoise Gilot?;Pablo Picasso;Henri Matiess;Salvador Dalí;Andy Warhol;arts;medium
+The American Gothic is one of the most recognizable paintings in the world. Who painted it?;Grant Wood;Thomas Hart Benton;John Steuart Curry;Andrew Wyeth;arts;hard
+Claude Monet is most known for his paintings of what?;Water lily paintings;lavender field paintings;French War of Independence paintings;Sunflower paintings;arts;medium
+The first “artists” of the world used which mediums to produce their work?;Ashes from fire, plant pigments, and red clay;Ashes from fire, plant pigments, and black clay;Ashes from fire, artist's pigments, and red clay;mixture of wax and resin as binders for the dye;arts;medium
+Who was the first living person to have their art displayed in The Louvre?;Georges Braque;Eugène Delacroix;Giotto di Bodone;Nicolas Poussin;arts;hard
+Where did Vincent Van Gogh paint the famous “Starry Night”?;From the window of his asylum room at Saint-Rémy-de-Provence;From the window of his asylum room at Saint Etienne De Gres;from the Jetée de Saint-Nicolas lighthouse;from the medieval Saint Nicolas fortress' tower;arts;medium
+Which Queen song has the lyrics “Is this the real life? Is this just fantasy?”;Bohemian Rhapsody;Another One Bites the Dust;Under Pressure;Radio Ga Ga;music;easy
+Which country is Gangnam Style singer PSY from?;South Korea;Canada;Germany;North Korea;music;easy
+In which year was Bruno Mars born?;1985;1987;1990;1992;music;medium
+Which legendary musician starred in the movie Labyrinth?;David Bowie;Matt Goss;Elvis Presley;Elton John;music;medium
+Which pop star's real name is Stefani Joanne Germanotta?;Lady Gaga;Pink;The singer from Florence and the Machnie;Olivia Rodrigo;music;easy
+How many members are in the K-Pop group Twice?;9;3;7;2;music;medium
+ABBA is a world-famous pop group from Sweden. Which member of the group is from Norway?;Anni-Frid Lyngstad;Agnetha Fältskog;Björn Ulvaeus;Benny Andersson;music;medium
+Which of the following instruments is Lizzo known for playing?;The flute;The harp;The guitar;The ocarina;music;easy
+Taylor Swift released two albums in 2020. What were they called?;Folklore and Evermore;Swifty and Swiftier;Taylor Made, Volumes 1 and 2;Oh Tay Can You See..;music;medium
+Billie Eilish released her first album in 2019. What is it called?;When We All Fall Asleep, Where Do We Go?;Introducing Billie Eilish;It's Eilish, Not Eyelash;Nevermind;music;medium
+What country is Rita Ora from?;Yugoslavia (now Kosovo);France;Denmark;Wales;music;medium
+Which West End musical did Anne-Marie appear in aged 6?;Les Misérables;Chicago;Cats;School of Rock;music;hard
