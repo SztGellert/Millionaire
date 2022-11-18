@@ -98,61 +98,61 @@ Who did The Rock beat to win his first WWE Title?;Mankind;Triple H;Stone Cold St
 Guarantee to an exporter that the importer of his goods will pay immediately for the goods ordered by him is known as?;Letter of Credit (L/C);laissezfaire;inflation;None of the above;economy;medium
 Gulf cooperation council was originally formed by?;Bahrain and Kuwait and Oman and Qatar and Saudi Arabia and United Arab Emirates;Second World Nations;Third World Nations;Fourth World Nations;economy;medium
 Dumping is..?;All of the above;selling of goods abroad at a price well below the production cost at the home market price;the process by which the supply of a manufacture's product remains low in the domestic market which batches him better price;prohibited by regulations of GATT;economy;medium
-Ecology deals with?;Relation between organisms and their environment;Birds;Cell formation;Tissues;economy
-GATT (General Agreement on Tariffs and Trade) is..?;Both definitons are correct;international agreement signed in 1947 between non-communist nations with the object of encouraging international trade unobstructed by tariff barriers;agreement which seeks to achieve its aim by arranging and encouraging bargaining with trade concessions between members;None of the above;economy
-G-15 is an economic grouping of?;Third World Nations;First World Nations;Second World Nations;Fourth World Nations;economy
-Economic goods are..?;all commodities that are limited in quantity as compared to their demand;Commodities that is available according to their demand;Commodities that is available more as compared to demand;None of the above;economy
-ESCAP stands for..?;Economic and Social Commission for Asia and Pacific;European Society Council for Africa and Pacific;Economic and Social Commission for Africa and Pacific;None of the above;economy
-Free market is?;market where the price of a commodity is determined by free play of the forces of supply and demand;a condition in the international market where nations do not impose customs duty or other taxes on import of goods;ports that are exempted from payment of customs duty on articles of commerce primarily to encourage tourism;None of the above;economy
-Which part of the United States sells the most ice cream?;The Great Lakes region;The Midwest;The South;The West Coast;gastronomy
-What is the oldest fast-food chain in America?;White Castle;McDonald's;Burger King;Dairy Queen;gastronomy
-What percentage of Americans drink their coffee black?;20 percent;15 percent;25 percent;30 percent;gastronomy
-What category of fruit do bananas fall into?;Berries;Citrus;Tropical;Melons;gastronomy
-Where did lasagna originate?;Greece;Italy;France;Spain;gastronomy
-Which green vegetable has more vitamin C than an orange?;Broccoli;Green leaf lettuce;Green beans;Artichokes;gastronomy
-Which state officially classifies hot dogs as sandwiches?;New York;New Jersey;California;Texas;gastronomy
-How old is bubble tea?;40 years old;200 years old;100 years old;80 years old;gastronomy
-Is eggplant a fruit or vegetable?;Fruit;Vegetable;Both;Neither;gastronomy
-What is the difference between sushi and sashimi?;Rice and vinegar;Rice;Vinegar;Fish;gastronomy
-When did peanut butter and jelly sandwiches reach peak popularity?;World War II;The Great Depression;World War I;The Vietnam War;history
-Is a tomato a fruit or a vegetable?;Fruit;Vegetable;Both;Neither;gastronomy
-What is the most popular pizza topping?;Pepperoni;Sausage;Mushroom;Extra cheese;gastronomy
-What is the least popular pizza topping?;Anchovies;Eggplant;Pineapple;Artichokes;gastronomy
-What is the most popular type of chocolate?;Milk;Dark;White;Semisweet;gastronomy
-What percentage of grapes are meant to be eaten fresh?;12 percent;30 percent;20 percent;8 percent;gastronomy
-What color pepper best supports eye health?;Orange;Yellow;Red;Green;gastronomy
-What is the most popular potato chip flavor?;Plain;Barbecue;Sour cream and onion;Cheddar;gastronomy
-A chef who formerly served British royalty helped create which fast-food item?;Chicken nuggets;French fries;Cheeseburgers;Milkshakes;gastronomy
-What is imitation wasabi made from?;Horseradish, mustard, and green food coloring;Hot sauce, mustard, and green food coloring;Horseradish, hot sauce, and green food coloring;Horseradish and green food coloring;gastronomy
-Which ingredient is a must for chai tea?;Cinnamon;Ginger;Cardamom;Cloves;gastronomy
-How many eggs contain a "bonus" yolk?;One in 1,000 eggs;One in 500 eggs;One in 2,000 eggs;One in 3,000 eggs;gastronomy
-What dried fruit is best for runners looking for an energy boost?;Raisins;Dates;Apricots;All of the above;gastronomy
-How many grams of fiber are in a large apple?;5 grams;4 grams;6 grams;7 grams;gastronomy
-The absorption of ink by blotting paper involves?;capillary action phenomenon;viscosity of ink;diffusion of ink through the blotting;siphon action;physics
-Nuclear sizes are expressed in a unit named?;Fermi;Angstrom;Newton;Tesla;physics
-One nanometer is equal to?;10^-9 m;10^-6 m;10^-8 m;10^-5 m;physics
-Intensity of sound has?;an object existence;a subject existence;no existence;both subjective and objective existence;physics
-Rain is falling vertically downwards. To a man running east-wards, the rain will appear to be coming from?;east;west;northeast;southeast;physics
-Large astronomical telescopes always use as objective?;combinations of lenses;lens;mirror;None of the above;physics
-One should not connect a number of electrical appliances to the same power socket because?;this can damage the domestic wiring due to overloading;this can damage the appliances due to overloading;this can damage the electrical meter;the appliance will not get full voltage;physics
-Natural radioactivity was discovered by?;Henri Becquerel;Marie Curie;Ernest Rutherfor;Enrico Fermi;physics
-Planets are?;non-luminous heavenly bodies?;luminous heavenly bodies revolving around a star;luminous heavenly bodies that twinkle;luminous heavenly bodies that do not twinkle;physics
-One watt-hour is equivalent to?;3.6 x 10^3 J;3.6 x 10^-3 J;	6.3 x 10^-7 J;6.3 x 10^3 J;physics
-Solar eclipse will take place when?;the moon is between the sun and the earth;the sun is between the moon and the earth;the earth is between the moon and the sun;the moon does not lie on the line joining the sun and the earth;physics
-Isotopes of an element contain?;the same number of protons but different number of neutrons;the same number of neutrons but different number of protons;equal number of protons and electrons;equal number of nucleons;physics
-The number of moles of solute present in 1 kg of a solvent is called its?;molality;molarity;normality;formality;chemistry
-The most electronegative element among the following is?;fluorine;sodium;bromine;oxygen;chemistry
-The metallurgical process in which a metal is obtained in a fused state is called?;smelting;roasting;calcinations;froth floatation;chemistry
-The oldest rocks in the earth's crust were once molten, and came from deep inside the earth. The molten rock, called magma, spewed out in volcanic eruptions during the earths early life and solidified into hard rock's called?;igneous rocks;granite;basalt;sedimentary rocks;chemistry
-The law which states that the amount of gas dissolved in a liquid is proportional to its partial pressure is?;Henry's law;Dalton's law;Gay Lussac's law;Raoult's law;chemistry
-The gas present in the stratosphere which filters out some of the sun's ultraviolet light and provides an effective shield against radiation damage to living things is?;ozone;helium;oxygen;methane;chemistry
-The most commonly used bleaching agent is?;chlorine;sodium chlorine;carbon dioxide;alcohol;chemistry
-The nucleus of a hydrogen atom consists of?;1 proton only;1 proton + 2 neutron;1 neutron only;1 electron only;chemistry
-The names of the scientists, Newlands, Mendeleev, and Meyer are associated with the development of?;periodic table of contents;metallurgy;discovery of elements;atomic structure;chemistry
-The inert gases are ____ in water?;sparingly soluble;insoluble;soluble;None of these;chemistry
-The mass number of an atom is equal to?;the number of nucleons;the number of neutrons;the number of protons and electrons;the number of protons;chemistry
-The hottest part of the gas flame is known as?;non-luminous zone;blue zone;dark zone;luminous zone;chemistry
-The main active constituent of tea and coffee is?;caffeine;aspirin;chlorophyll;nicotine;chemistry
+Ecology deals with?;Relation between organisms and their environment;Birds;Cell formation;Tissues;economy;easy
+GATT (General Agreement on Tariffs and Trade) is..?;Both definitons are correct;international agreement signed in 1947 between non-communist nations with the object of encouraging international trade unobstructed by tariff barriers;agreement which seeks to achieve its aim by arranging and encouraging bargaining with trade concessions between members;None of the above;economy;hard
+G-15 is an economic grouping of?;Third World Nations;First World Nations;Second World Nations;Fourth World Nations;economy;medium
+Economic goods are..?;all commodities that are limited in quantity as compared to their demand;Commodities that is available according to their demand;Commodities that is available more as compared to demand;None of the above;economy;medium
+ESCAP stands for..?;Economic and Social Commission for Asia and Pacific;European Society Council for Africa and Pacific;Economic and Social Commission for Africa and Pacific;None of the above;economy;hard
+Free market is?;market where the price of a commodity is determined by free play of the forces of supply and demand;a condition in the international market where nations do not impose customs duty or other taxes on import of goods;ports that are exempted from payment of customs duty on articles of commerce primarily to encourage tourism;None of the above;economy;medium
+Which part of the United States sells the most ice cream?;The Great Lakes region;The Midwest;The South;The West Coast;gastronomy;medium
+What is the oldest fast-food chain in America?;White Castle;McDonald's;Burger King;Dairy Queen;gastronomy;medium
+What percentage of Americans drink their coffee black?;20 percent;15 percent;25 percent;30 percent;gastronomy;medium
+What category of fruit do bananas fall into?;Berries;Citrus;Tropical;Melons;gastronomy;medium
+Where did lasagna originate?;Greece;Italy;France;Spain;gastronomy;easy
+Which green vegetable has more vitamin C than an orange?;Broccoli;Green leaf lettuce;Green beans;Artichokes;gastronomy;medium
+Which state officially classifies hot dogs as sandwiches?;New York;New Jersey;California;Texas;gastronomy;medium
+How old is bubble tea?;40 years old;200 years old;100 years old;80 years old;gastronomy;easy
+Is eggplant a fruit or vegetable?;Fruit;Vegetable;Both;Neither;gastronomy;medium
+What is the difference between sushi and sashimi?;Rice and vinegar;Rice;Vinegar;Fish;gastronomy;medium
+When did peanut butter and jelly sandwiches reach peak popularity?;World War II;The Great Depression;World War I;The Vietnam War;history;medium
+Is a tomato a fruit or a vegetable?;Fruit;Vegetable;Both;Neither;gastronomy;easy
+What is the most popular pizza topping?;Pepperoni;Sausage;Mushroom;Extra cheese;gastronomy;easy
+What is the least popular pizza topping?;Anchovies;Eggplant;Pineapple;Artichokes;gastronomy;medium
+What is the most popular type of chocolate?;Milk;Dark;White;Semisweet;gastronomy;easy
+What percentage of grapes are meant to be eaten fresh?;12 percent;30 percent;20 percent;8 percent;gastronomy;medium
+What color pepper best supports eye health?;Orange;Yellow;Red;Green;gastronomy;easy
+What is the most popular potato chip flavor?;Plain;Barbecue;Sour cream and onion;Cheddar;gastronomy;medium
+A chef who formerly served British royalty helped create which fast-food item?;Chicken nuggets;French fries;Cheeseburgers;Milkshakes;gastronomy;hard
+What is imitation wasabi made from?;Horseradish, mustard, and green food coloring;Hot sauce, mustard, and green food coloring;Horseradish, hot sauce, and green food coloring;Horseradish and green food coloring;gastronomy;hard
+Which ingredient is a must for chai tea?;Cinnamon;Ginger;Cardamom;Cloves;gastronomy;hard
+How many eggs contain a "bonus" yolk?;One in 1,000 eggs;One in 500 eggs;One in 2,000 eggs;One in 3,000 eggs;gastronomy;medium
+What dried fruit is best for runners looking for an energy boost?;Raisins;Dates;Apricots;All of the above;gastronomy;medium
+How many grams of fiber are in a large apple?;5 grams;4 grams;6 grams;7 grams;gastronomy;medium
+The absorption of ink by blotting paper involves?;capillary action phenomenon;viscosity of ink;diffusion of ink through the blotting;siphon action;physics;medium
+Nuclear sizes are expressed in a unit named?;Fermi;Angstrom;Newton;Tesla;physics;medium
+One nanometer is equal to?;10^-9 m;10^-6 m;10^-8 m;10^-5 m;physics;medium
+Intensity of sound has?;an object existence;a subject existence;no existence;both subjective and objective existence;physics;hard
+Rain is falling vertically downwards. To a man running east-wards, the rain will appear to be coming from?;east;west;northeast;southeast;physics;medium
+Large astronomical telescopes always use as objective?;combinations of lenses;lens;mirror;None of the above;physics;medium
+One should not connect a number of electrical appliances to the same power socket because?;this can damage the domestic wiring due to overloading;this can damage the appliances due to overloading;this can damage the electrical meter;the appliance will not get full voltage;physics;easy
+Natural radioactivity was discovered by?;Henri Becquerel;Marie Curie;Ernest Rutherfor;Enrico Fermi;physics;medium
+Planets are?;non-luminous heavenly bodies?;luminous heavenly bodies revolving around a star;luminous heavenly bodies that twinkle;luminous heavenly bodies that do not twinkle;physics;hard
+One watt-hour is equivalent to?;3.6 x 10^3 J;3.6 x 10^-3 J;	6.3 x 10^-7 J;6.3 x 10^3 J;physics;medium
+Solar eclipse will take place when?;the moon is between the sun and the earth;the sun is between the moon and the earth;the earth is between the moon and the sun;the moon does not lie on the line joining the sun and the earth;physics;easy
+Isotopes of an element contain?;the same number of protons but different number of neutrons;the same number of neutrons but different number of protons;equal number of protons and electrons;equal number of nucleons;physics;medium
+The number of moles of solute present in 1 kg of a solvent is called its?;molality;molarity;normality;formality;chemistry;medium
+The most electronegative element among the following is?;fluorine;sodium;bromine;oxygen;chemistry;medium
+The metallurgical process in which a metal is obtained in a fused state is called?;smelting;roasting;calcinations;froth floatation;chemistry;hard
+The oldest rocks in the earth's crust were once molten, and came from deep inside the earth. The molten rock, called magma, spewed out in volcanic eruptions during the earths early life and solidified into hard rock's called?;igneous rocks;granite;basalt;sedimentary rocks;chemistry;medium
+The law which states that the amount of gas dissolved in a liquid is proportional to its partial pressure is?;Henry's law;Dalton's law;Gay Lussac's law;Raoult's law;chemistry;hard
+The gas present in the stratosphere which filters out some of the sun's ultraviolet light and provides an effective shield against radiation damage to living things is?;ozone;helium;oxygen;methane;chemistry;easy
+The most commonly used bleaching agent is?;chlorine;sodium chlorine;carbon dioxide;alcohol;chemistry;medium
+The nucleus of a hydrogen atom consists of?;1 proton only;1 proton + 2 neutron;1 neutron only;1 electron only;chemistry;medium
+The names of the scientists, Newlands, Mendeleev, and Meyer are associated with the development of?;periodic table of contents;metallurgy;discovery of elements;atomic structure;chemistry;medium
+The inert gases are ____ in water?;sparingly soluble;insoluble;soluble;None of these;chemistry;medium
+The mass number of an atom is equal to?;the number of nucleons;the number of neutrons;the number of protons and electrons;the number of protons;chemistry;medium
+The hottest part of the gas flame is known as?;non-luminous zone;blue zone;dark zone;luminous zone;chemistry;medium
+The main active constituent of tea and coffee is?;caffeine;aspirin;chlorophyll;nicotine;chemistry;easy
 The hardest form of carbon is?;diamond;charcoal;graphite;coke;chemistry
 The mineral containing both magnesium and calcium is?;dolomite;carnallite;calcite;magnesite;chemistry
 The first metal used by man was?;copper;iron;gold;bronze;chemistry
