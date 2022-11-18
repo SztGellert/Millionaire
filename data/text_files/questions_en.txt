@@ -46,58 +46,58 @@ What is the first letter of the Greek alphabet?;Alpha;Omega;Zed;E;literature;eas
 Which mode of transportation traditionally has two wheels?;Bicycle;Tricycle;Car;Bus;general knowledge;easy
 What is the term length for the president of the United States?;4 years;1 year;10 years;20 years;general knowledge;medium
 What is the largest external organ on the human body?;Skin;Eyes;Ears;Nose;biology;easy
-What is the capital of Iceland?;Reykjavik;Tegucigalpa;Kingston;Astana;geography
-Who invented sliced bread?;Otto Frederick Rohwedder;Samuel Morse;Alfred Nobel;Wright brothers;history
-Which of these famous figures was a physicist?;Enrico Fermi;Berenice Abbott;Gertrude Abercrombie;Carla Accardi;physics
-Which of these is NOT one of the Great Lakes in the Midwestern part of the United States?;Lake Toronto;Lake Huron;Lake Michigan;Lake Ontario;geography
-What is the largest country in the world?;Russia;Canada;China;North America;geography
-Which of these painters is known for his work in abstract expressionism?;Jackson Pollock;Max Ernst;René Magritte;Keith Haring;arts
-Which of these flowers are poisonous?;Lily of the valley;Frilly Edible Chrysanthemum;Bergamot;Chervil;biology
-Which of these states was NOT one of the original 13 colonies?;Florida;New York;Pennsylvania;Georgia;history
-A caffe macchiato has ________ origins.;Italian;Spanish;American;French;gastronomy
-The "hryvnia" is the currency of which of these countries?;Ukraine;Turkey;Iran;India;economy
-Who wrote the pamphlet "general knowledge Sense" in 1776?;Thomas Paine;George Read;George Clymer;John Hart;literature
-"The Scream" is a famous painting that was created by...?;Edvard Munch;Pablo Picasso;Claude Monet;Henri Matisse;arts
-Which of the following is NOT a primary color?;Green;Yellow;Red;Blue;physics
-Which of these countries were NOT part of the Axis Powers during World War II?;China;Japan;Italy;Germany;history
-How long did the Hundred Years' War last?;116 years;101 years;99 years;100 years;history
+What is the capital of Iceland?;Reykjavik;Tegucigalpa;Kingston;Astana;geography;medium
+Who invented sliced bread?;Otto Frederick Rohwedder;Samuel Morse;Alfred Nobel;Wright brothers;history;medium
+Which of these famous figures was a physicist?;Enrico Fermi;Berenice Abbott;Gertrude Abercrombie;Carla Accardi;physics;medium
+Which of these is NOT one of the Great Lakes in the Midwestern part of the United States?;Lake Toronto;Lake Huron;Lake Michigan;Lake Ontario;geography;medium
+What is the largest country in the world?;Russia;Canada;China;North America;geography;easy
+Which of these painters is known for his work in abstract expressionism?;Jackson Pollock;Max Ernst;René Magritte;Keith Haring;arts;hard
+Which of these flowers are poisonous?;Lily of the valley;Frilly Edible Chrysanthemum;Bergamot;Chervil;biology;medium
+Which of these states was NOT one of the original 13 colonies?;Florida;New York;Pennsylvania;Georgia;history;medium
+A caffe macchiato has ________ origins.;Italian;Spanish;American;French;gastronomy;easy
+The "hryvnia" is the currency of which of these countries?;Ukraine;Turkey;Iran;India;economy;easy
+Who wrote the pamphlet "General knowledge Sense" in 1776?;Thomas Paine;George Read;George Clymer;John Hart;literature;hard
+"The Scream" is a famous painting that was created by...?;Edvard Munch;Pablo Picasso;Claude Monet;Henri Matisse;arts;medium
+Which of the following is NOT a primary color?;Green;Yellow;Red;Blue;physics;easy
+Which of these countries were NOT part of the Axis Powers during World War II?;China;Japan;Italy;Germany;history;easy
+How long did the Hundred Years' War last?;116 years;101 years;99 years;100 years;history;medium
 Which of these is NOT on the periodic table of elements?;Polypodium;Cadmium;Actinium;Beryllium;chemistry
-Which of these games was featured in the classic film "WarGames?";Tic-Tac-Toe;Checkers;Tower of Hanoi;Nim;general knowledge
-Where is a shrimp's heart located?;In its head;In its tail;In its legs;On its back;biology
-What is the capital of South Dakota?;Pierre;Bismarck;Raleigh;Columbia;geography
-Which of these is considered to be a French "mother sauce?";Hollandaise;Beurre blanc;Bordelaise;Charcutiere;gastronomy
-Who was the 15th president of the United States?;James Buchanan;Franklin Pierce;James K. Polk;Zachary Taylor;history
-Which of these is NOT one of the seven wonders of the 'Ancient World?';Capuchin Monastery Catacombs;Temple of Artemis at Ephesus;Lighthouse of Alexandria;Colossus of Rhodes;history
-Which of these is NOT a fruit?;Rutabaga;Banana;Apples;Peppers;biology
-Which of these was Walt Disney's first movie?;Snow White and the Seven Dwarfs;Dumbo;Fantasia;Pinocchio;general knowledge
-The outer white part of your eyes is referred to as the ________.;Sclera;Macula;Vitreous;Retina;biology
-Entomology is the science that studies?;Insects;Behavior of human beings;The origin and history of technical and scientific terms;The formation of rocks;general knowledge
-For which of the following disciplines is Nobel Prize awarded?All of the above;Literature; Peace and Economics;Physiology or Medicine;Physics and Chemistry;general knowledge
-Georgia and Uzbekistan and Turkmenistan became the members of UNO in?;1992;1991;1993;1994;history
-Germany signed the Armistice Treaty on ____ and World War I ended?;November 11. 1918;February 15. 1918;May 30. 1918;January 19. 1918;history
-Galilei was an Italian astronomer who..;All of the above;discovered that the movement of pendulum produces a regular time measurement;discovered four satellites of Jupiter;developed the telescope;geography
-The Great Victoria Desert is located in?;Australia;West Africa;Canada;North America;geography
-Which of the following is tropical grassland?;Savannah;Taiga;Pampas;Prairies;geography
-The groundwater can become confined between two impermeable layers. This type of enclosed water is called?;Artesian;Artesian well;Unconfined groundwater;Confined groundwater;geography
-How long are professional Golf Tour players allotted per shot?;45 seconds;25 seconds;1 minute;2 minutes;sports
-Which NBA player scored 8 points in the final 7 seconds of a game to lead his team to victory?;Reggie Miller;Baron Davis;Kevin Garnett;Stephon Maurbury;sports
-Who holds second and third place for most yards rushing in a single season in the NFL?;OJ Simpson;Barry Sanders;Jim Brown;Dick Lane;sports
-Which country won the Cricket World Cup in 1999?;Australia;South Africa;Pakistan;England;sports
-What is the name of the person that controls a football match?;A referee;An umpire;A spectator;A goalkeeper;sports
-Fenway Park is the home field of what Major League Baseball team?;Boston Red Sox;New York Yankees;Chicago White Sox;Montreal Expos;sports
-The first hand glider was designed by...?;Leonardo DaVinci;The Wright brothers;Francis Rogallo;Galileo;history
-What do African-American football players Ernie Davis and Archie Griffin and Tony Dorsett have in common?;They all won the Heisman Trophy;They all played for Pittsburgh;They all led to Super Bowl titles;They dont have any similarity;sports
-The first hang gliders to be flown were flown in...?;1800s;1600s;1700s;1900s;sports
-Former Australian captain Mark Taylor has had several nicknames over his playing career. Which of the following was NOT one of them?;Stumpy;Tubby;Stodge;Helium Bat;sports
-Which country - which made its debut in the Norwich Union League in 2003 - signed Rahul Dravid as their overseas player?;Scotland;Holland;Ireland;Wales;sports
-Who did The Rock wrestle in the main event at the 1999 edition of "Wrestlemania"?;Stone Cold Steve Austin;Triple H;Mankind;Undertaker;sports
-Who has scored the most Test hundreds ever?;Sachin Tendulkar;Steve Waugh;Shane Warne;Sunil Gavaskar;sports
-Which track and field star overcame childhood polio to become one of the greatest athletes of her time?;Wilma Rudolph;Gail Devers;Florence Griffith Joyner;Jackie Robinson;sports
-Which football hero was nicknamed "The Sundance Kid"?;Jim Kiick;Troy Aikman;Brett Favre;Joe Montana;sports
-Who did The Rock beat to win his first WWE Title?;Mankind;Triple H;Stone Cold Steve Austin;Bret Hart;sports
-Guarantee to an exporter that the importer of his goods will pay immediately for the goods ordered by him is known as?;Letter of Credit (L/C);laissezfaire;inflation;None of the above;economy
-Gulf cooperation council was originally formed by?;Bahrain and Kuwait and Oman and Qatar and Saudi Arabia and United Arab Emirates;Second World Nations;Third World Nations;Fourth World Nations;economy
-Dumping is..?;All of the above;selling of goods abroad at a price well below the production cost at the home market price;the process by which the supply of a manufacture's product remains low in the domestic market which batches him better price;prohibited by regulations of GATT;economy
+Which of these games was featured in the classic film "WarGames?";Tic-Tac-Toe;Checkers;Tower of Hanoi;Nim;general knowledge;medium
+Where is a shrimp's heart located?;In its head;In its tail;In its legs;On its back;biology;medium
+What is the capital of South Dakota?;Pierre;Bismarck;Raleigh;Columbia;geography;harc
+Which of these is considered to be a French "mother sauce?";Hollandaise;Beurre blanc;Bordelaise;Charcutiere;gastronomy;medium
+Who was the 15th president of the United States?;James Buchanan;Franklin Pierce;James K. Polk;Zachary Taylor;history;hard
+Which of these is NOT one of the seven wonders of the 'Ancient World?';Capuchin Monastery Catacombs;Temple of Artemis at Ephesus;Lighthouse of Alexandria;Colossus of Rhodes;history;medium
+Which of these is NOT a fruit?;Rutabaga;Banana;Apples;Peppers;biology;easy
+Which of these was Walt Disney's first movie?;Snow White and the Seven Dwarfs;Dumbo;Fantasia;Pinocchio;general knowledge;medium
+The outer white part of your eyes is referred to as the ________.;Sclera;Macula;Vitreous;Retina;biology;easy
+Entomology is the science that studies?;Insects;Behavior of human beings;The origin and history of technical and scientific terms;The formation of rocks;general knowledge;medium
+For which of the following disciplines is Nobel Prize awarded?All of the above;Literature; Peace and Economics;Physiology or Medicine;Physics and Chemistry;general knowledge;medium
+Georgia and Uzbekistan and Turkmenistan became the members of UNO in?;1992;1991;1993;1994;history;hard
+Germany signed the Armistice Treaty on ____ and World War I ended?;November 11. 1918;February 15. 1918;May 30. 1918;January 19. 1918;history;hard
+Galilei was an Italian astronomer who..;All of the above;discovered that the movement of pendulum produces a regular time measurement;discovered four satellites of Jupiter;developed the telescope;geography;medium
+The Great Victoria Desert is located in?;Australia;West Africa;Canada;North America;geography;easy
+Which of the following is tropical grassland?;Savannah;Taiga;Pampas;Prairies;geography;medium
+The groundwater can become confined between two impermeable layers. This type of enclosed water is called?;Artesian;Artesian well;Unconfined groundwater;Confined groundwater;geography;medium
+How long are professional Golf Tour players allotted per shot?;45 seconds;25 seconds;1 minute;2 minutes;sports;medium
+Which NBA player scored 8 points in the final 7 seconds of a game to lead his team to victory?;Reggie Miller;Baron Davis;Kevin Garnett;Stephon Maurbury;sports;hard
+Who holds second and third place for most yards rushing in a single season in the NFL?;OJ Simpson;Barry Sanders;Jim Brown;Dick Lane;sports;medium
+Which country won the Cricket World Cup in 1999?;Australia;South Africa;Pakistan;England;sports;hard
+What is the name of the person that controls a football match?;A referee;An umpire;A spectator;A goalkeeper;sports;easy
+Fenway Park is the home field of what Major League Baseball team?;Boston Red Sox;New York Yankees;Chicago White Sox;Montreal Expos;sports;hard
+The first hand glider was designed by...?;Leonardo DaVinci;The Wright brothers;Francis Rogallo;Galileo;history;easy
+What do African-American football players Ernie Davis and Archie Griffin and Tony Dorsett have in common?;They all won the Heisman Trophy;They all played for Pittsburgh;They all led to Super Bowl titles;They dont have any similarity;sports;hard
+The first hang gliders to be flown were flown in...?;1800s;1600s;1700s;1900s;sports;medium
+Former Australian captain Mark Taylor has had several nicknames over his playing career. Which of the following was NOT one of them?;Stumpy;Tubby;Stodge;Helium Bat;sports;hard
+Which country - which made its debut in the Norwich Union League in 2003 - signed Rahul Dravid as their overseas player?;Scotland;Holland;Ireland;Wales;sports;hard
+Who did The Rock wrestle in the main event at the 1999 edition of "Wrestlemania"?;Stone Cold Steve Austin;Triple H;Mankind;Undertaker;sports;medium
+Who has scored the most Test hundreds ever?;Sachin Tendulkar;Steve Waugh;Shane Warne;Sunil Gavaskar;sports;hard
+Which track and field star overcame childhood polio to become one of the greatest athletes of her time?;Wilma Rudolph;Gail Devers;Florence Griffith Joyner;Jackie Robinson;sports;medium
+Which football hero was nicknamed "The Sundance Kid"?;Jim Kiick;Troy Aikman;Brett Favre;Joe Montana;sports;hard
+Who did The Rock beat to win his first WWE Title?;Mankind;Triple H;Stone Cold Steve Austin;Bret Hart;sports;medium
+Guarantee to an exporter that the importer of his goods will pay immediately for the goods ordered by him is known as?;Letter of Credit (L/C);laissezfaire;inflation;None of the above;economy;medium
+Gulf cooperation council was originally formed by?;Bahrain and Kuwait and Oman and Qatar and Saudi Arabia and United Arab Emirates;Second World Nations;Third World Nations;Fourth World Nations;economy;medium
+Dumping is..?;All of the above;selling of goods abroad at a price well below the production cost at the home market price;the process by which the supply of a manufacture's product remains low in the domestic market which batches him better price;prohibited by regulations of GATT;economy;medium
 Ecology deals with?;Relation between organisms and their environment;Birds;Cell formation;Tissues;economy
 GATT (General Agreement on Tariffs and Trade) is..?;Both definitons are correct;international agreement signed in 1947 between non-communist nations with the object of encouraging international trade unobstructed by tariff barriers;agreement which seeks to achieve its aim by arranging and encouraging bargaining with trade concessions between members;None of the above;economy
 G-15 is an economic grouping of?;Third World Nations;First World Nations;Second World Nations;Fourth World Nations;economy
