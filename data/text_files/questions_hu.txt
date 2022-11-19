@@ -1,37 +1,37 @@
-Hány másodperc van egy percben?;60;30;1;300;matematika
-Milyen magas az Eiffel Torony?;300 m;302 m;303 m;297 m;matematika
-Ki volt az USA 32. elnöke?;Franklin D. Roosevelt;John F. Kennedy;Richard Nixon;Herbert Hoover;történelem
-Melyik a valaha élt legnagyobb cápa?;Óriásfogú cápa;Nagy fehér cápa;Cetcápa;Tigriscápa;biológia
-Hol található a világ legmélyebb pontja?;Mariana-árok;Fülöp-szigeteki árok;Tonga-árok;Kermadec-árok;földrajz
-Milyen hosszúságúak a Párizs alatt fellelhető katakombák?;300 km;100 km;150 km;250 km;földrajz
-Mikor találták fel az első kamerát?;1816;1820;1656;1790;történelem
-Melyik a leggyorsabb szárazföldi állat?;Gepárd;Vándorantilop;Oroszlán;Quater Horse;biológia
-Ki írta a Harry Potter könyveket?;J.K. Rowling;George Orwell;Charles Dickens;Ian Fleming;irodalom
-Melyik zenész született 1756-ban?;Wolfgang Amadeus Mozart;Ludwig van Beethoven;William Herschel;Joseph Haydn;zene
-Ki találta fel a Zeppelint?;Ferdinand von Zeppelin;Karl Maybach;Stefan Sommer;Henri Giffard;történelem
-Melyik a legmagasabb pontja a Mount Everest-nek?;8848 m;8840 m;8830 m;8838 m;földrajz
-Mikor halt meg VIII. Henrik?;1435;1978;1523;1547;történelem
-Melyik a világ leghosszabb hídja?;Tanjang–Kunsan vasúti híd;Cangde Grand Bridge;Bang Na Expressway;Runyang-híd;földrajz
-Melyik városban található az Eiffel torony?;Párizs;Sydney;Los Angeles;New York;földrajz
-Melyik a foci angol neve?;Soccer;Basketball;Baseball;Cricket;sport
-Hány kontinens található a Földön?;7;1;3;20;földrajz
-Ki NEM volt a Beatles tagja?;Justin Timberlake;John Lennon;Paul McCartney;Ringo Star;zene
-Melyik nem egy tésztaféle?;Escargot;Spaghetti;Fettuccine;Ziti;gasztronómia
-Melyik államban található San Francisco és Hollywood?;Kalifornia;Utah;Hawaii;Montana;földrajz
-Melyik hangszernek nincsenek húrjai?;Harsona;Gitár;Basszusgitár;Cselló;zene
-Milyen termékeket gyárt a Tesla?;Elektromos autó;Jégkrém;Televizió;Fésű;közgazdaságtan
-Melyik nem főemlős?;Delfin;Csimpánz;Gorillla;Orángután;biológia
-Melyik gáztól lesz magasabb a hangunk ha belélegezzük?;Hélium;Oxigén;Nitrogén;Kén-hexafluorid;fizika
-Melyik amerikai ünnep esik július 4.-re?;Függetlenség Napja;Hálaadás;Karácsony;Újév;történelem
-Melyik csokiszelet osztozik egy galaxis nevén?;Milky Way;Snickers;3 Musketeers;Almond Joy;közgazdaságtan
-Hogy hívják Anglia fővárosát?;London;Washington D.C.;Róma;Moszkva;földrajz
-Melyik egyetem NEM tartozik a legelőkelőbb amerikai egyetemekhez?;Hogwarts;Harvard;Princeton;Columbia;általános műveltség
-Hogy hívják az érmegyűjtéssel foglalkozó szakágat?;Numizmatika;Professzor;Séf;Fizioterápia;általános műveltség
-Melyik videojátékot gyártja a Sony?;PlayStation;Xbox;Atari;Game Boy;közgazdaságtan
-Hogy hívják a Super Mario Bros. figuráit?;Mario and Luigi;Tim and Eric;Batman and Robin;Sonic and Tails;általános műveltség
-Melyik hercegnő vesztette el az üveg cipellőjét?;Hamupipőke;Hófehérke;Mulan;Belle;általános műveltség
-Melyik amerikai autó márka gyártja a Mustángot, az F-150-est és az 'Escape'-et?;Ford;Toyota;Volkswagen;Nissan;közgazdaságtan
-Ki volt az első nő aki egyedül repülte át az Atlanti Óceánt?;Amelia Earhart;Geraldine Ferraro;Martha Stewart;Sally Ride;történelem
+Hány másodperc van egy percben?;60;30;1;300;matematika;könnyű
+Milyen magas az Eiffel Torony?;300 m;302 m;303 m;297 m;matematika;könnyű
+Ki volt az USA 32. elnöke?;Franklin D. Roosevelt;John F. Kennedy;Richard Nixon;Herbert Hoover;történelem;közepes
+Melyik a valaha élt legnagyobb cápa?;Óriásfogú cápa;Nagy fehér cápa;Cetcápa;Tigriscápa;biológia;könnyű
+Hol található a világ legmélyebb pontja?;Mariana-árok;Fülöp-szigeteki árok;Tonga-árok;Kermadec-árok;földrajz;könnyű
+Milyen hosszúságúak a Párizs alatt fellelhető katakombák?;300 km;100 km;150 km;250 km;földrajz;közepes
+Mikor találták fel az első kamerát?;1816;1820;1656;1790;történelem;közepes
+Melyik a leggyorsabb szárazföldi állat?;Gepárd;Vándorantilop;Oroszlán;Quater Horse;biológia;könnyű
+Ki írta a Harry Potter könyveket?;J.K. Rowling;George Orwell;Charles Dickens;Ian Fleming;irodalom;könnyű
+Melyik zenész született 1756-ban?;Wolfgang Amadeus Mozart;Ludwig van Beethoven;William Herschel;Joseph Haydn;zene;könnyű
+Ki találta fel a Zeppelint?;Ferdinand von Zeppelin;Karl Maybach;Stefan Sommer;Henri Giffard;történelem;könnyű
+Melyik a legmagasabb pontja a Mount Everest-nek?;8848 m;8840 m;8830 m;8838 m;földrajz;könnyű
+Mikor halt meg VIII. Henrik?;1435;1978;1523;1547;történelem;közepes
+Melyik a világ leghosszabb hídja?;Tanjang–Kunsan vasúti híd;Cangde Grand Bridge;Bang Na Expressway;Runyang-híd;földrajz;nehéz
+Melyik városban található az Eiffel torony?;Párizs;Sydney;Los Angeles;New York;földrajz;könnyű
+Melyik a foci angol neve?;Soccer;Basketball;Baseball;Cricket;sport;könnyű
+Hány kontinens található a Földön?;7;1;3;20;földrajz;könnyű
+Ki NEM volt a Beatles tagja?;Justin Timberlake;John Lennon;Paul McCartney;Ringo Star;zene;könnyű
+Melyik nem egy tésztaféle?;Escargot;Spaghetti;Fettuccine;Ziti;gasztronómia;könnyű
+Melyik államban található San Francisco és Hollywood?;Kalifornia;Utah;Hawaii;Montana;földrajz;könnyű
+Melyik hangszernek nincsenek húrjai?;Harsona;Gitár;Basszusgitár;Cselló;zene;könnyű
+Milyen termékeket gyárt a Tesla?;Elektromos autó;Jégkrém;Televizió;Fésű;közgazdaságtan;könnyű
+Melyik nem főemlős?;Delfin;Csimpánz;Gorillla;Orángután;biológia;;könnyű
+Melyik gáztól lesz magasabb a hangunk ha belélegezzük?;Hélium;Oxigén;Nitrogén;Kén-hexafluorid;fizika;könnyű
+Melyik amerikai ünnep esik július 4.-re?;Függetlenség Napja;Hálaadás;Karácsony;Újév;történelem;könnyű
+Melyik csokiszelet osztozik egy galaxis nevén?;Milky Way;Snickers;3 Musketeers;Almond Joy;közgazdaságtan;könnyű
+Hogy hívják Anglia fővárosát?;London;Washington D.C.;Róma;Moszkva;földrajz;könnyű
+Melyik egyetem NEM tartozik a legelőkelőbb amerikai egyetemekhez?;Hogwarts;Harvard;Princeton;Columbia;általános műveltség;könnyű
+Hogy hívják az érmegyűjtéssel foglalkozó szakágat?;Numizmatika;Professzor;Séf;Fizioterápia;általános műveltség;könnyű
+Melyik videojátékot gyártja a Sony?;PlayStation;Xbox;Atari;Game Boy;közgazdaságtan;könnyű
+Hogy hívják a Super Mario Bros. figuráit?;Mario and Luigi;Tim and Eric;Batman and Robin;Sonic and Tails;általános műveltség;könnyű
+Melyik hercegnő vesztette el az üveg cipellőjét?;Hamupipőke;Hófehérke;Mulan;Belle;általános műveltség;könnyű
+Melyik amerikai autó márka gyártja a Mustángot, az F-150-est és az 'Escape'-et?;Ford;Toyota;Volkswagen;Nissan;közgazdaságtan;könnyű
+Ki volt az első nő aki egyedül repülte át az Atlanti Óceánt?;Amelia Earhart;Geraldine Ferraro;Martha Stewart;Sally Ride;történelem;nehéz
 Melyik amerikai városban fellelhető a Szabadság Harangja és a Függetlenség Csarnoka?;Philadelphia;Vancouver;Mexikó város;Peking;földrajz
 Luke Skywalker Han Solo és Darth Vader melyik popkultúra-franchise karakterei?;Star Wars;Harry Potter;Star Trek;James Bond;általános műveltség
 Hány napos egy szökőév?;366;28;30;400;matematika
