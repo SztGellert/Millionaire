@@ -197,47 +197,47 @@ A „Búcsú a fegyverektől” c. könyvet ki írta?;Ernest Hemingway;Charles D
 Ki írta az "Az emberiség és a Földanya" című híres könyvet?;Arnold Toynbee;Lev Tolsztoj;John Ruskin;Bertrand Russel;irodalom
 A „Gulliver utazásai” c. könyvet ki írta?;Jonathan Swift;Charles Dickens;Charles Lamb;Alexandra Dumas;irodalom
 Ki a "Tom Sawyer" című mű szerzője?;Mark Twain;John Ruskin;William Shakespeare;Lev Tolsztoj;irodalom
-Ki mondta ezeket a szavakat: "Nem helyeslem, amit mondasz, de mindhalálig megvédem, hogy kimondhatod"?;Voltaire;George Bernard Shaw;Lenin;Mahatma Gandhi;irodalom
-Az közkedvelt "A keresztapa" című regénynek ki a szerzője?;Mario Puzo;Victor Hugo;John Milton;Harold Robbins;irodalom
-Ki írta "A Herceg" című könyvet?;Niccolo Machiavelli;Bernard Shaw;V.S. Sharma;Emile Zola;irodalom
-A „Bűn és bűnhődés” szerzője az alábbi írók közül melyik?;Fjodor Dosztojevszkij;Vlagyimir Nabokov;Lewis Carroll;Szolzsenyicin Sándor;művészet
-David Copperfield minek/kinek a neve?;regény;híres színész;vers;író;irodalom
-Ki rendezte a "Kis Buddha" című filmet?;Bernardo Bertolucci;Richard Attenborough;Ben Johnson;Mani Kaul;művészet
-A "Sherlock Holmes"-nak ki az alkotója?;Arthur Conan Doyle;Ian Fleming;Dr.Watson;Shakespeare;irodalom
-Euklidész attól lett híres, mert ....?;Görög matematikus;Hozzájárult a logika deduktív elveinek a geometria alapjaként való használatához;előterjesztette a geometriai tételeket;mindegyik;matematika
-A fenyő, az erdei fenyő, a lucfenyő, a cédrus, a vörösfenyő és a ciprus a híres faanyag-adó növények, amelyek közül néhány india dombos vidékein is széles körben előfordul. Ezek mind a következőkhöz tartoznak?;Nyitvatermők;Zárvatermők;Egyszikűek;Kétszikűek;biológia
-A növények tápanyagaikat főként honnan szerzik?;A talajból;A fényből;A légkörből;A klorofillból;biológia
-A sejt koncentrációs gradiens elleni mozgását minek nevezzük?;ozmózisnak;aktív transzportnak;diffúziónak;passzív transzportnak;biológia
-A növények felszívják az oldott nitrátokat a talajból és mivé alakítják át azokat?;szabad nitrogén;karbamid;ammónia;fehérjék;biológia
-A növények a szükséges víz nagy részét min keresztül szívják fel?;A gyökérszőrükön;Növekedési pontjukon;Embrionális zónájukon;Megnyúlási zónájukon;biológia
-Melyik az alábbiak közül a legintelligensebb emlős?;delfinek;bálnák;elefántok;kenguruk;biológia
-A növények vörös, kék és lila színeinek többsége a .... nevű pigmentnek köszönhető?;antocianin;karotin;klorofill;xantofillok;biológia
-A növényekben van ____, míg az állatokból hiányzik.;cellulóz;keményítő;fehérje;zsír;biológia
-A bőr pigmentációját mik okozzák?;melanociták;leukociták;monociták;limfociták;biológia
-Melyik vitamin hiánya okozza az éjszakai vakságot?;A-vitamin;B-vitamin;C-vitamin;D-vitamin;biológia
-Főbb élelmiszereink, rostjaink, fűszereink, gyümölcseink és italnövényeink a következők:;Virágos növények;Nyitvatermő növények;Pteridofiták;Mohafélék;biológia
-Testünk legtöbb szövete melyik csoportba tartozik?;kötőszövet;izomszövet;epiteliális szövet;idegszövet;biológia
-A vérünkben lévő oxigént milyen nevű fehérje szállítja?;hemoglobin;keratin;kollagén;mioglobin;biológia
-Nevezze meg a 17. század nagy részében Európában elterjedt extravagáns művészet és építészet korszakát?;barokk;klasszicizmus;rokokó;neoklasszicizmus;művészet
-Melyik híres festő volt szobrász, építész és mérnök is?;Leonardo Da Vinci;Hasan al-Ramma;Filippo Brunelleschi;Guido da Vigevano;művészet
-Kandinsky művészt tartják az elsőnek ebben a fajta művészetben?;Absztrakt;Modern;Impresszionizmus;Szürrealizmus;művészet
-Melyik olasz építész és szobrász volt híres a barokk stílus megteremtéséről?;Gian Lorenzo Bernini;Michelangelo Merisi da Caravaggio;Rembrandt Harmenszoon van Rijn;Peter Paul Rubens;művészet
-Picasso melyik híres festményét ihlették a spanyol háború alatti civilek bombázásai?;Guernica;La Vie (Az élet);Avignoni kisasszonyok;A tragédia;művészet
-Melyik másik festőt kötik gyakran Francoise Gilot-hoz?;Pablo Picasso;Henri Matiess;Salvador Dalí;Andy Warhol;művészet
-Az amerikai gótika a világ egyik legismertebb festménye. Ki festette?;Grant Wood;Thomas Hart Benton;John Steuart Curry;Andrew Wyeth;művészet
-Claude Monet melyik festményeiről a leginkább híres?;Tavirózsa festmények;levendulamező festmények;francia szabadságharc festmények;napraforgó festmények;művészet
-A világ első „művészei” milyen eszközöket használtak munkáik előállításához?;Tűzből származó hamu, növényi pigmentek és vörös agyag;Tűzből származó hamu, növényi pigmentek és fekete agyag;Tűzből származó hamu, emberi pigmentek és vörös agyag; viasz és gyanta keveréke festék kötőanyagaként;művészet
-Ki volt az első élő ember, akinek művészetét bemutatták a Louvre-ban?;Georges Braque;Eugène Delacroix;Giotto di Bodone;Nicolas Poussin;művészet
-Hol festette Vincent Van Gogh a híres „Csillagos éj”-t?;Saint-Rémy-de-Provence-i menedékének szobájának ablakából;Saint Etienne De Gres-i menedékének szobájának ablakából;A Jetée de Saint-Nicolas világítótoronyból;a középkori Szent Miklós-erőd tornyából;művészet
+Ki mondta ezeket a szavakat: "Nem helyeslem, amit mondasz, de mindhalálig megvédem, hogy kimondhatod"?;Voltaire;George Bernard Shaw;Lenin;Mahatma Gandhi;irodalom;közepes
+Az közkedvelt "A keresztapa" című regénynek ki a szerzője?;Mario Puzo;Victor Hugo;John Milton;Harold Robbins;irodalom;közepes
+Ki írta "A Herceg" című könyvet?;Niccolo Machiavelli;Bernard Shaw;V.S. Sharma;Emile Zola;irodalom;nehéz
+A „Bűn és bűnhődés” szerzője az alábbi írók közül melyik?;Fjodor Dosztojevszkij;Vlagyimir Nabokov;Lewis Carroll;Szolzsenyicin Sándor;művészet;közepes
+David Copperfield minek/kinek a neve?;regény;híres színész;vers;író;irodalom;közepes
+Ki rendezte a "Kis Buddha" című filmet?;Bernardo Bertolucci;Richard Attenborough;Ben Johnson;Mani Kaul;művészet;nehéz
+A "Sherlock Holmes"-nak ki az alkotója?;Arthur Conan Doyle;Ian Fleming;Dr.Watson;Shakespeare;irodalom;könnyű
+Euklidész attól lett híres, mert ....?;Görög matematikus;Hozzájárult a logika deduktív elveinek a geometria alapjaként való használatához;előterjesztette a geometriai tételeket;mindegyik;matematika;közepes
+A fenyő, az erdei fenyő, a lucfenyő, a cédrus, a vörösfenyő és a ciprus a híres faanyag-adó növények, amelyek közül néhány india dombos vidékein is széles körben előfordul. Ezek mind a következőkhöz tartoznak?;Nyitvatermők;Zárvatermők;Egyszikűek;Kétszikűek;biológia;közepes
+A növények tápanyagaikat főként honnan szerzik?;A talajból;A fényből;A légkörből;A klorofillból;biológia;könnyű
+A sejt koncentrációs gradiens elleni mozgását minek nevezzük?;ozmózisnak;aktív transzportnak;diffúziónak;passzív transzportnak;biológia;közepes
+A növények felszívják az oldott nitrátokat a talajból és mivé alakítják át azokat?;szabad nitrogén;karbamid;ammónia;fehérjék;biológia;közepes
+A növények a szükséges víz nagy részét min keresztül szívják fel?;A gyökérszőrükön;Növekedési pontjukon;Embrionális zónájukon;Megnyúlási zónájukon;biológia;könnyű
+Melyik az alábbiak közül a legintelligensebb emlős?;delfinek;bálnák;elefántok;kenguruk;biológia;közepes
+A növények vörös, kék és lila színeinek többsége a .... nevű pigmentnek köszönhető?;antocianin;karotin;klorofill;xantofillok;biológia;közepes
+A növényekben van ____, míg az állatokból hiányzik.;cellulóz;keményítő;fehérje;zsír;biológia;közepes
+A bőr pigmentációját mik okozzák?;melanociták;leukociták;monociták;limfociták;biológia;közepes
+Melyik vitamin hiánya okozza az éjszakai vakságot?;A-vitamin;B-vitamin;C-vitamin;D-vitamin;biológia;közepes
+Főbb élelmiszereink, rostjaink, fűszereink, gyümölcseink és italnövényeink a következők:;Virágos növények;Nyitvatermő növények;Pteridofiták;Mohafélék;biológia;könnyű
+Testünk legtöbb szövete melyik csoportba tartozik?;kötőszövet;izomszövet;epiteliális szövet;idegszövet;biológia;közepes
+A vérünkben lévő oxigént milyen nevű fehérje szállítja?;hemoglobin;keratin;kollagén;mioglobin;biológia;könnyű
+Nevezze meg a 17. század nagy részében Európában elterjedt extravagáns művészet és építészet korszakát?;barokk;klasszicizmus;rokokó;neoklasszicizmus;művészet;közepes
+Melyik híres festő volt szobrász, építész és mérnök is?;Leonardo Da Vinci;Hasan al-Ramma;Filippo Brunelleschi;Guido da Vigevano;művészet;könnyű
+Kandinsky művészt tartják az elsőnek ebben a fajta művészetben?;Absztrakt;Modern;Impresszionizmus;Szürrealizmus;művészet;közepes
+Melyik olasz építész és szobrász volt híres a barokk stílus megteremtéséről?;Gian Lorenzo Bernini;Michelangelo Merisi da Caravaggio;Rembrandt Harmenszoon van Rijn;Peter Paul Rubens;művészet;nehéz
+Picasso melyik híres festményét ihlették a spanyol háború alatti civilek bombázásai?;Guernica;La Vie (Az élet);Avignoni kisasszonyok;A tragédia;művészet;közepes
+Melyik másik festőt kötik gyakran Francoise Gilot-hoz?;Pablo Picasso;Henri Matiess;Salvador Dalí;Andy Warhol;művészet;közepes
+Az amerikai gótika a világ egyik legismertebb festménye. Ki festette?;Grant Wood;Thomas Hart Benton;John Steuart Curry;Andrew Wyeth;művészet;nehéz
+Claude Monet melyik festményeiről a leginkább híres?;Tavirózsa festmények;levendulamező festmények;francia szabadságharc festmények;napraforgó festmények;művészet;közepes
+A világ első „művészei” milyen eszközöket használtak munkáik előállításához?;Tűzből származó hamu, növényi pigmentek és vörös agyag;Tűzből származó hamu, növényi pigmentek és fekete agyag;Tűzből származó hamu, emberi pigmentek és vörös agyag; viasz és gyanta keveréke festék kötőanyagaként;művészet;közepes
+Ki volt az első élő ember, akinek művészetét bemutatták a Louvre-ban?;Georges Braque;Eugène Delacroix;Giotto di Bodone;Nicolas Poussin;művészet;nehéz
+Hol festette Vincent Van Gogh a híres „Csillagos éj”-t?;Saint-Rémy-de-Provence-i menedékének szobájának ablakából;Saint Etienne De Gres-i menedékének szobájának ablakából;A Jetée de Saint-Nicolas világítótoronyból;a középkori Szent Miklós-erőd tornyából;művészet;közepes
 Melyik Queen szám szövege: „Is this the real life? Is this just fantasy?”;Bohemian Rhapsody;Another One Bites the Dust;Under Pressure;Radio Ga Ga;zene
-Melyik országból származik a Gangnam Style énekese, PSY?;Dél-Korea;Kanada;Németország;Észak-Korea;zene
-Melyik évben született Bruno Mars?;1985;1987;1990;1992;zene
-Melyik legendás zenész játszott a Labirintus című filmben?;David Bowie;Matt Goss;Elvis Presley;Elton John;zene
-Melyik popsztár valódi neve Stefani Joanne Germanotta?;Lady Gaga;Pink;Florence and the Machnie énekese;Olivia Rodrigo;zene
-Hány tagja van a Twice K-Pop csoportnak?;9;3;7;2;zene
-Az ABBA egy világhírű svéd popegyüttes. A csoport melyik tagja származik Norvégiából?;Anni-Frid Lyngstad;Agnetha Fältskog;Björn Ulvaeus;Benny Andersson;zene
-Az alábbi hangszerek közül melyikről ismert Lizzo?;Fuvola;Hárfa;Gitár;Okarina;zene
-Taylor Swift két albumot adott ki 2020-ban. Hogy hívták őket?;Folklore and Evermore;Swifty and Swiftier;Taylor Made, Volumes 1 and 2;Oh Tay Can You See..;zene
-Billie Eilish 2019-ben adta ki első albumát. Mi a neve?;When We All Fall Asleep, Where Do We Go?;Introducing Billie Eilish;It's Eilish, not Eyelash;Nevermind;zene
-Melyik országból származik Rita Ora?;Jugoszlávia (ma Koszovó);Franciaország;Dánia;Wales;zene
-Melyik West End musicalben szerepelt Anne-Marie 6 évesen?;A nyomorultak (Les Misérables);Chicago;Macskák (Cats);Rocksuli (School of Rock);zene
+Melyik országból származik a Gangnam Style énekese, PSY?;Dél-Korea;Kanada;Németország;Észak-Korea;zene;könnyű
+Melyik évben született Bruno Mars?;1985;1987;1990;1992;zene;közepes
+Melyik legendás zenész játszott a Labirintus című filmben?;David Bowie;Matt Goss;Elvis Presley;Elton John;zene;közepes
+Melyik popsztár valódi neve Stefani Joanne Germanotta?;Lady Gaga;Pink;Florence and the Machnie énekese;Olivia Rodrigo;zene;könnyű
+Hány tagja van a Twice K-Pop csoportnak?;9;3;7;2;zene;közepes
+Az ABBA egy világhírű svéd popegyüttes. A csoport melyik tagja származik Norvégiából?;Anni-Frid Lyngstad;Agnetha Fältskog;Björn Ulvaeus;Benny Andersson;zene;közepes
+Az alábbi hangszerek közül melyikről ismert Lizzo?;Fuvola;Hárfa;Gitár;Okarina;zene;könnyű
+Taylor Swift két albumot adott ki 2020-ban. Hogy hívták őket?;Folklore and Evermore;Swifty and Swiftier;Taylor Made, Volumes 1 and 2;Oh Tay Can You See..;zene;közepes
+Billie Eilish 2019-ben adta ki első albumát. Mi a neve?;When We All Fall Asleep, Where Do We Go?;Introducing Billie Eilish;It's Eilish, not Eyelash;Nevermind;zene;közepes
+Melyik országból származik Rita Ora?;Jugoszlávia (ma Koszovó);Franciaország;Dánia;Wales;zene;közepes
+Melyik West End musicalben szerepelt Anne-Marie 6 évesen?;A nyomorultak (Les Misérables);Chicago;Macskák (Cats);Rocksuli (School of Rock);zene;nehéz
