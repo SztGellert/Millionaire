@@ -37,6 +37,13 @@ def play():
     #    question_lines = list(populated)
     #if question_difficulty != "":
     levels = language_dictionary[game_language].menu.question_difficulty_levels
+    #print(question_topics)
+    #print(str(language_dictionary[game_language].menu.settings_menu_question_topics[0]).lower())
+    if question_topics == "All " or "Mind":
+        for a in levels:
+            print(a)
+            # populated = filter(lambda c: c[6] == a.lower().strip(), question_lines_)
+            print(sum(1 for _ in filter(lambda c: c[6] == a.lower().strip(), question_lines)))
     for b in language_dictionary[game_language].menu.settings_menu_question_topics:
         populated1 = filter(lambda c: c[5] == b.lower().strip(), question_lines)
         question_lines_ = list(populated1)
