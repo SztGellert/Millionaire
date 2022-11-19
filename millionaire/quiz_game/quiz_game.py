@@ -32,28 +32,12 @@ def play():
     time.sleep(2)
     question_file = 'questions_' + game_language + ".txt"
     question_lines = util.open_file(question_file, "r", ";")
-    #if question_topics != language_dictionary[game_language].menu.settings_menu_question_topics[0]:
-    #    populated = filter(lambda c: c[5] == str(question_topics).lower().strip(), question_lines)
-    #    question_lines = list(populated)
-    #if question_difficulty != "":
-    levels = language_dictionary[game_language].menu.question_difficulty_levels
-    #print(question_topics)
-    #print(str(language_dictionary[game_language].menu.settings_menu_question_topics[0]).lower())
-    if question_topics == "All " or "Mind":
-        for a in levels:
-            print(a)
-            # populated = filter(lambda c: c[6] == a.lower().strip(), question_lines_)
-            print(sum(1 for _ in filter(lambda c: c[6] == a.lower().strip(), question_lines)))
-    for b in language_dictionary[game_language].menu.settings_menu_question_topics:
-        populated1 = filter(lambda c: c[5] == b.lower().strip(), question_lines)
-        question_lines_ = list(populated1)
-        print(b)
-        for a in levels:
-            print(a)
-            #populated = filter(lambda c: c[6] == a.lower().strip(), question_lines_)
-            print(sum(1 for _ in filter(lambda c: c[6] == a.lower().strip(), question_lines_)))
-    time.sleep(30)
-    #question_lines = list(populated)
+    if question_topics != language_dictionary[game_language].menu.settings_menu_question_topics[0]:
+        populated = filter(lambda c: c[5] == str(question_topics).lower().strip(), question_lines)
+        question_lines = list(populated)
+    if question_difficulty != "":
+        populated = filter(lambda c: c[6] == str(question_difficulty).lower().strip(), question_lines)
+        question_lines = list(populated)
     random.shuffle(question_lines)
     for i in range(15):
         question = question_lines[i][0]

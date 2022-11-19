@@ -20,7 +20,7 @@ Melyik nem egy tésztaféle?;Escargot;Spaghetti;Fettuccine;Ziti;gasztronómia;k�
 Melyik államban található San Francisco és Hollywood?;Kalifornia;Utah;Hawaii;Montana;földrajz;könnyű
 Melyik hangszernek nincsenek húrjai?;Harsona;Gitár;Basszusgitár;Cselló;zene;könnyű
 Milyen termékeket gyárt a Tesla?;Elektromos autó;Jégkrém;Televizió;Fésű;közgazdaságtan;könnyű
-Melyik nem főemlős?;Delfin;Csimpánz;Gorillla;Orángután;biológia;;könnyű
+Melyik nem főemlős?;Delfin;Csimpánz;Gorillla;Orángután;biológia;könnyű
 Melyik gáztól lesz magasabb a hangunk ha belélegezzük?;Hélium;Oxigén;Nitrogén;Kén-hexafluorid;fizika;könnyű
 Melyik amerikai ünnep esik július 4.-re?;Függetlenség Napja;Hálaadás;Karácsony;Újév;történelem;könnyű
 Melyik csokiszelet osztozik egy galaxis nevén?;Milky Way;Snickers;3 Musketeers;Almond Joy;közgazdaságtan;könnyű
@@ -45,14 +45,14 @@ Ki a jelenlegi házigazdája a "The Tonight Show?"-nak?;Jimmy Fallon;Oprah Winfr
 Mi a görög abc első betűje?;Alfa;Omega;Zed;Epszilon;irodalom;könnyű
 Melyik tömegközlekedési módnak van hagyományosan két kereke?;Bicikli;Tricikli;Autó;Busz;általános műveltség;könnyű
 Mennyi a szolgálati ideje az Egyesült Államok elnökének?;4 years;1 year;10 years;20 years;általános műveltség;közepes
-Melyik a legnagyobb külső szerve az emberi testnek?;Bőr;Szem;Fül;Orr;biológia;;könnyű
+Melyik a legnagyobb külső szerve az emberi testnek?;Bőr;Szem;Fül;Orr;biológia;könnyű
 Mi Izland fővárosa?;Reykjavik;Tegucigalpa;Kingston;Astana;földrajz;közepes
 Ki találta fel a szeletelt kenyeret?;Otto Frederick Rohwedder;Samuel Morse;Alfred Nobel;Wright brothers;történelem;közepes
 Ki volt híres fizikus az alábbiak közül?;Enrico Fermi;Berenice Abbott;Gertrude Abercrombie;Carla Accardi;fizika;közepes
 Melyik NEM egy a Nagy Tavak közül Középnyugat-Amerikában?;Lake Toronto;Lake Huron;Lake Michigan;Lake Ontario;földrajz;közepes
 Melyik a világ legnagyobb országa?;Oroszország;Kanada;Kína;Észak-Amerika;földrajz;könnyű
 Melyik festő ismert az absztrakt expresszionizmusáról?;Jackson Pollock;Max Ernst;René Magritte;Keith Haring;művészet;nehéz
-Melyik virág mérgező?;Lily of the valley;Frilly Edible Chrysanthemum;Bergamot;Chervil;biológia;;közepes
+Melyik virág mérgező?;Lily of the valley;Frilly Edible Chrysanthemum;Bergamot;Chervil;biológia;közepes
 Melyik NEM egyike az eredeti 13 kolóniának?;Florida;New York;Pennsylvania;Georgia;történelem;közepes
 A caffe macchiatonak ________ gyökerei vannak.;Olasz;Spanyol;Amerikai;Francia;gasztronómia;könnyű
 A "hrivnya" pénznem melyik országé?;Ukrajna;Törökország;Irán;India;közgazdaságtan;könnyű
@@ -84,7 +84,7 @@ Melyik NBA-játékos szerzett 8 pontot a meccs utolsó 7 másodpercében hogy gy
 Ki birtokolja a második és harmadik helyet a legtöbb yardot tekintve egyetlen szezonban az NFL-ben?;OJ Simpson;Barry Sanders;Jim Brown;Dick Lane;sport;közepes
 Melyik ország nyerte meg a krikett világbajnokságot 1999-ben?;Ausztrália;Dél-Africa;Pakisztán;Anglia;sport;nehéz
 Mi a nemzetközi neve annak a személynek aki irányít egy futballmérkőzést?;A referee;An umpire;A spectator;A goalkeeper;sport;könnyű
-Melyik Major League Baseball csapat hazai pályája a Fenway Park?;Boston Red Sox;New York Yankees;Chicago White Sox;Montreal Expos;sport;;nehéz
+Melyik Major League Baseball csapat hazai pályája a Fenway Park?;Boston Red Sox;New York Yankees;Chicago White Sox;Montreal Expos;sport;nehéz
 Az első sárkányrepülőt az alábbi személy fedezte fel...?;Leonardo Da Vinci;A Wright fivérek;Francis Rogallo;Galileo;történelem;könnyű
 Mi a közös Ernie Davis és Archie Griffin és Tony Dorsett afro-amerikai focistáiban?;Mindegyikük megnyerte a Heisman Trófeát;Mind játszottak a Pittsburgh-ben;Mind hozzájutottak Super Bowl címekhez;Nincs közös jellemzőjük;sport;nehéz
 Az első sárkányrepülők amelyekkel már repültek melyik évszázadban készültek el...?;1800s;1600s;1700s;1900s;sport;közepes
@@ -151,7 +151,7 @@ A hidrogénatom magja a következőkből áll:;1 proton;1 proton + 2 neutron;csa
 A tudósok, Newlands, Mengyelejev és Meyer nevéhez fűződik?;Kémiai elemek periódusos rendszere;kohászat;elemek felfedezése;atomszerkezet;kémia;közepes
 Az inert gázok ____ vízben?;kevéssé oldódnak;oldhatatlanok;oldhatóak;egyik sem;kémia;közepes
 Egy atom tömegszáma egyenlő?;a nukleonok száma;a neutronok száma;a protonok és elektronok száma;a protonok száma;kémia;közepes
-A gázláng legforróbb része az úgynevezett?;nem világító zóna;kék zóna;sötét zóna;világító zóna;kémia;nehéz
+A gázláng legforróbb része az úgynevezett?;nem világító zóna;kék zóna;sötét zóna;világító zóna;kémia;médium
 A tea és a kávé fő hatóanyaga:;koffein;aszpirin;klorofill;nikotin;kémia;könnyű
 A szén legkeményebb formája a ..?;gyémánt;faszén;grafit;koksz;kémia;könnyű
 A magnéziumot és kalciumot egyaránt tartalmazó ásványi anyag..;dolomit;karnallit;kalcit;magnezit;kémia;közepes
@@ -178,7 +178,7 @@ Melyik kontinentális európai matematikus-filozófussal kezdett nyilvános vit�
 Mi a Pitagorasz-tétel?;egy derékszögű háromszög befogóján lévő négyzet egyenlő a másik két oldal négyzeteinek összegével;két háromszög megfelelő szöge akkor és csak akkor egyenlő, ha a megfelelő oldalaik arányosak;két oldal egy egyenlő szárú háromszög akkor és csak akkor egyenlő, ha a velük szemközti szögek egyenlőek; egy háromszög szögeinek összege mindig 180 fok;matematika;közepes
 Ki volt a leggyorsabb gyorsíró?;Dr. G. D. Bist;J.R.D. Tata;J.M. Tagore;Khudada Khan;irodalom;nehéz
 Ki írta az alábbi sort: "A szépség örökkévaló öröm"?;John Keats;Robert Browing;P.B.Shelley;William Wordsworth;irodalom;nehéz
-Ki a szerzője az „Ezerkilencszáznyolcvannégy” könyvnek?;George Orwell;Walter Scott;Emile Zola;Thomas Hardy;irodalom;nehéz
+Ki a szerzője az „Ezerkilencszáznyolcvannégy” könyvnek?;George Orwell;Walter Scott;Emile Zola;Thomas Hardy;irodalom;könnyű
 Ki az angol költészet atyja?;Chaucer;Wordsworth;Milton;Charles Dickens;irodalom;nehéz
 Ki írta a "Háború és békét"?;Lev Tolsztoj;Mahatma Gandhi;Charles Dickens;Kipling;irodalom;könnyű
 George Bernard Shaw, milyen származású?;ír;walesi;skót;angol;irodalom;közepes
@@ -192,7 +192,7 @@ Kitől származik a híres mondat: "Az ember egy politikai állat"?;Arisztotelé
 Ki a szerzője a „Felkészülés a 21. századra" könyvnek?;Paul Kennedy;V.R. Krishna Iyer;V.S. Naipul;Larry Collins;irodalom;közepes
 A híres "Anna Karenina" kinek a műve?;Lev Tolsztoj;Lewis Carroll;Victor Hugo;Boris Pasternak;irodalom;közepes
 „A természet soha nem árulta el a szívet, amelyik szerette” – kinek a tollából származik?;W.Wordsworth;J. Byron;P.B.Shelly;J.Keats;irodalom;közepes
-A „Búcsú a fegyverektől” c. könyvet ki írta?;Ernest Hemingway;Charles Dickens;Thomas Hardy;Huxley;irodalom;nehéz
+A „Búcsú a fegyverektől” c. könyvet ki írta?;Ernest Hemingway;Charles Dickens;Thomas Hardy;Huxley;irodalom;közepes
 „Az ember társadalom nélkül vagy vadállat, vagy isten”. Ki mondta ezt?;Arisztotelész;Gandhi;Platón;Henry Maine;irodalom;közepes
 Ki írta az "Az emberiség és a Földanya" című híres könyvet?;Arnold Toynbee;Lev Tolsztoj;John Ruskin;Bertrand Russel;irodalom;nehéz
 A „Gulliver utazásai” c. könyvet ki írta?;Jonathan Swift;Charles Dickens;Charles Lamb;Alexandra Dumas;irodalom;közepes
@@ -229,7 +229,7 @@ Claude Monet melyik festményeiről a leginkább híres?;Tavirózsa festmények;
 A világ első „művészei” milyen eszközöket használtak munkáik előállításához?;Tűzből származó hamu, növényi pigmentek és vörös agyag;Tűzből származó hamu, növényi pigmentek és fekete agyag;Tűzből származó hamu, emberi pigmentek és vörös agyag; viasz és gyanta keveréke festék kötőanyagaként;művészet;közepes
 Ki volt az első élő ember, akinek művészetét bemutatták a Louvre-ban?;Georges Braque;Eugène Delacroix;Giotto di Bodone;Nicolas Poussin;művészet;nehéz
 Hol festette Vincent Van Gogh a híres „Csillagos éj”-t?;Saint-Rémy-de-Provence-i menedékének szobájának ablakából;Saint Etienne De Gres-i menedékének szobájának ablakából;A Jetée de Saint-Nicolas világítótoronyból;a középkori Szent Miklós-erőd tornyából;művészet;közepes
-Melyik Queen szám szövege: „Is this the real life? Is this just fantasy?”;Bohemian Rhapsody;Another One Bites the Dust;Under Pressure;Radio Ga Ga;zene
+Melyik Queen szám szövege: „Is this the real life? Is this just fantasy?”;Bohemian Rhapsody;Another One Bites the Dust;Under Pressure;Radio Ga Ga;zene;könnyű
 Melyik országból származik a Gangnam Style énekese, PSY?;Dél-Korea;Kanada;Németország;Észak-Korea;zene;könnyű
 Melyik évben született Bruno Mars?;1985;1987;1990;1992;zene;közepes
 Melyik legendás zenész játszott a Labirintus című filmben?;David Bowie;Matt Goss;Elvis Presley;Elton John;zene;közepes

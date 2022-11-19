@@ -38,11 +38,11 @@ def play(inputs: dict):
     time.sleep(2)
     question_file = 'questions_' + game_language + ".txt"
     question_lines = util.open_file(question_file, "r", ";")
+    if question_topics != language_dictionary[game_language].menu.settings_menu_question_topics[0]:
+        populated = filter(lambda c: c[5] == str(question_topics).lower().strip(), question_lines)
+        question_lines = list(populated)
     if question_difficulty != "":
         populated = filter(lambda c: c[6] == str(question_difficulty).lower().strip(), question_lines)
-        question_lines = list(populated)
-    if question_topics != "Mixed ":
-        populated = filter(lambda c: c[5] == str(question_topics).lower().strip(), question_lines)
         question_lines = list(populated)
     random.shuffle(question_lines)
     for i in range(15):

@@ -121,11 +121,16 @@ def select_settings():
             chosen_question_topic = get_user_input(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width)
             if chosen_question_topic != language_dictionary[util.game_language].menu.settings_menu_question_topics[0]:
                 util.set_question_topics(chosen_question_topic)
+            else:
+                util.set_question_topics(chosen_question_topic)
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
         if chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[-2]:
             show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20)
             chosen_difficulty_option = get_user_input(language_dictionary[util.game_language].menu.question_difficulty_levels,20)
-            util.set_question_difficulty(chosen_difficulty_option)
+            if chosen_difficulty_option != language_dictionary[util.game_language].menu.question_difficulty_levels[0]:
+                util.set_question_difficulty(chosen_difficulty_option)
+            else:
+                util.set_question_difficulty("")
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
         if chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[-1]:
             update_settings_file()

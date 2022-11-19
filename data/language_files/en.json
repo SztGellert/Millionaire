@@ -21,7 +21,7 @@
             "score": "Score",
             "time":  "Time"
         },
-        "question_difficulty_levels": ["Easy", "Medium", "Hard"]
+        "question_difficulty_levels": ["All ","Easy", "Medium", "Hard"]
     },
     "quiz": {
         "player_name_prompt": "How can I call you? ",

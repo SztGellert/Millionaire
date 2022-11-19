@@ -15,7 +15,7 @@
         "main_menu_options": [
             "Játék ", "Útmutató", "Beállítások ","Stáblista ","Pontszámok", "Kilépés "
         ],
-        "settings_menu_question_topics": ["Mind","Általános műveltség ","Történelem", "Földrajz","Fizika","Kémia ","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia ","Közgazdaságtan","sport "],
+        "settings_menu_question_topics": ["Mind","Általános műveltség ","Történelem", "Földrajz","Fizika","Kémia ","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia","Közgazdaságtan","sport "],
         "empty_scores": "Indítson egy kvízjátékot hogy pontokat szerezzen!",
         "scores": {
             "user":  "Játékos",
@@ -23,7 +23,7 @@
             "score": "Pontszám",
             "time":  "Idő"
         },
-        "question_difficulty_levels": ["Könnyű", "Közepes ", "Nehéz "]
+        "question_difficulty_levels": ["Mind","Könnyű", " Közepes", "Nehéz "]
     },
     "quiz": {
         "player_name_prompt": "Hogyan szólíthatom? ",
