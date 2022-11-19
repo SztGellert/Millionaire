@@ -22,6 +22,8 @@ def play():
     game_language = util.game_language
     global question_topics
     question_topics = util.question_topics
+    global question_difficulty
+    question_difficulty = util.question_difficulty
     player_name = input(language_dictionary[game_language].quiz.player_name_prompt)
     score = 0
     help_types = {"audience": True, "telephone": True, "halving": True}
@@ -32,6 +34,9 @@ def play():
     question_lines = util.open_file(question_file, "r", ";")
     if question_topics != language_dictionary[game_language].menu.settings_menu_question_topics[0]:
         populated = filter(lambda c: c[5] == str(question_topics).lower().strip(), question_lines)
+        question_lines = list(populated)
+    if question_difficulty != "":
+        populated = filter(lambda c: c[6] == str(question_difficulty).lower().strip(), question_lines)
         question_lines = list(populated)
     random.shuffle(question_lines)
     for i in range(15):

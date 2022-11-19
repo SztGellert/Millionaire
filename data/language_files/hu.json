@@ -1,5 +1,5 @@
 {
-    "en": "angol",
+    "en": "angol ",
     "hu": "magyar",
     "menu": {
         "title_first_line": " ♦      L E G Y E N     Ö N    I S      ♦",
@@ -10,6 +10,7 @@
                      "Színösszeállítás",
                      "Képernyő méret",
                      "Kérdés témakörök",
+                     "Kérdés nehézség ",
                      "Vissza"],
         "main_menu_options": [
             "Játék ", "Útmutató", "Beállítások ","Stáblista ","Pontszámok", "Kilépés "
@@ -21,7 +22,8 @@
             "topic": "Témakör",
             "score": "Pontszám",
             "time":  "Idő"
-        }
+        },
+        "question_difficulty_levels": ["Könnyű", "Közepes ", "Nehéz "]
     },
     "quiz": {
         "player_name_prompt": "Hogyan szólíthatom? ",

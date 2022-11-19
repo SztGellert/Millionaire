@@ -10,6 +10,7 @@
                          "Default colour theme selection",
                          "Display size",
                          "Question types",
+                         "Question difficulty ",
                          "Back"],
         "main_menu_options" : ["Play", "Tutorial", "Settings", "Credits ","Scores", "Exit"],
         "settings_menu_question_topics": ["All ","General knowledge ","History ", "Geography ","Physics ","Chemistry ","Biology ","Mathematics ","Arts","Literature","Music ","Gastronomy","Economy ","Sports"],
@@ -19,7 +20,8 @@
             "topic": "Topic",
             "score": "Score",
             "time":  "Time"
-        }
+        },
+        "question_difficulty_levels": ["Easy", "Medium", "Hard"]
     },
     "quiz": {
         "player_name_prompt": "How can I call you? ",

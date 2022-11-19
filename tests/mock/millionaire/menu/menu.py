@@ -154,6 +154,11 @@ def select_settings():
             if chosen_question_topic != language_dictionary[util.game_language].menu.settings_menu_question_topics[0]:
                 util.set_question_topics(chosen_question_topic)
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
+        if chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[-2]:
+            show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20)
+            chosen_difficulty_option = get_user_input(language_dictionary[util.game_language].menu.question_difficulty_levels,20)
+            util.set_question_difficulty(chosen_difficulty_option)
+            show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
         if chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[-1]:
             update_settings_file()
             return
@@ -213,6 +218,6 @@ def select_scores():
 
 def update_settings_file():
     filename = "settings.json"
-    content = {"lang": util.game_language, "topic": util.question_topics}
+    content = {"language": util.game_language, "topic": util.question_topics, "difficulty": util.question_difficulty}
     with open(filename, "w", encoding="UTF-8") as outfile:
         json.dump(content, outfile)

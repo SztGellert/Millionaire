@@ -11,21 +11,40 @@ available_languages = ["en", "hu"]
 game_language = available_languages[0]
 language_dictionary = {}
 question_topics = "All "
+question_difficulty = ""
 
 
 def init():
     pygame.mixer.init()
-    init_language(available_languages[0])
+    init_settings(available_languages[0])
 
 
-def init_language(selected_lang: str):
-    for lang in available_languages:
-        lang_dict = read_json_dict(selected_lang)
-        language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
-        global game_language
-        game_language = selected_lang
-        global question_topics
-        question_topics = language_dictionary[game_language].menu.settings_menu_question_topics[0]
+def init_settings(selected_lang: str):
+    global game_language
+    global question_topics
+    global language_dictionary
+    global question_difficulty
+
+    if os.path.isfile("settings.json"):
+        file_path = "settings.json"
+        with open(file_path, encoding="UTF-8") as json_file:
+            data = json.load(json_file)
+            global game_language
+            game_language = data["language"]
+            question_difficulty = data["difficulty"]
+            for lang in available_languages:
+                lang_dict = read_json_dict(lang)
+                language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
+            lang_dict = read_json_dict(game_language)
+            language_dictionary.update({game_language: custom_dictionary_decoder(lang_dict)})
+            question_topics = data["topic"]
+    else:
+        for lang in available_languages:
+            lang_dict = read_json_dict(selected_lang)
+            language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
+            game_language = selected_lang
+            question_topics = language_dictionary[game_language].menu.settings_menu_question_topics[0]
+
 
 def init_question_topics(selected_topic: str):
     global question_topics
@@ -82,3 +101,23 @@ def custom_dictionary_decoder(dict1):
         if type(value) is dict:
             dict1[key] = custom_dictionary_decoder(value)
     return namedtuple('X', dict1.keys())(*dict1.values())
+
+
+def set_question_topics(selected_topic: str):
+    global question_topics
+    question_topics = selected_topic
+
+
+def set_question_difficulty(level: str):
+    global question_difficulty
+    question_difficulty = level
+
+
+def set_game_language(selected_lang: str):
+    global game_language
+    global question_topics
+    for lang in available_languages:
+        lang_dict = read_json_dict(selected_lang)
+        language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
+        game_language = selected_lang
+        question_topics = language_dictionary[game_language].menu.settings_menu_question_topics[0]
