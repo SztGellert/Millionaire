@@ -98,105 +98,105 @@ Kit győzött le The Rock hogy megnyerje első WWE-címét?;Mankind;Triple H;Sto
 Mi annak a garanciának neve amely az exportőrre vonatkozik hogy áruinak importőre azonnal kifizeti az általa megrendelt árut?;Akkreditív;Laissez-faire;Infláció;Egyik sem;közgazdaságtan;közepes
 Az Öböl-menti Együttműködési Tanácsot eredetileg kik alkották?;Bahrein és Kuvait és Omán és Katar és Szaúd-Arábia és az Egyesült Arab Emírségek;a Második Világ Nemzetei;a Harmadik Világ Nemzetei;a Negyedik Világ Nemzetei;közgazdaságtan;közepes
 A dömping az...?;Mindegyik;áru értékesítése külföldön jóval a hazai piaci ár előállítási költsége alatti áron;az a folyamat amelynek során egy gyártó termékének kínálata alacsony marad a belföldi piacon ami jobban kitermeli az árat; a GATT előírásai tiltják;közgazdaságtan;közepes
-Mivel foglalkozik az Ökológia?;Az élőlények és környezetük kapcsolata;Madarak;Sejtképződés;Szövetek;közgazdaságtan
-Mi a GATT (Általános Vám- és Kereskedelmi Egyezmény) ?;Mindkettő magyarázat helyes;1947-ben nem kommunista nemzetek között aláírt nemzetközi egyezmény amelynek célja a vámkorlátok által akadálymentes nemzetközi kereskedelem ösztönzése;olyan megállapodás amely a célját a tagok közötti kereskedelmi engedményekről szóló alku megszervezése és ösztönzése;Egyik sem;közgazdaságtan
-A G-15 közgazdaságtani csoportosulása a..?;A harmadik világbeli nemzeteknek;Az első világ nemzeteinek;A második világ nemzeteinek;A negyedik világ nemzeteinek;közgazdaságtan
-Mik a közgazdaságtani javak…?;minden olyan áru, amelynek mennyisége a keresletéhez képest korlátozott;A keresletüknek megfelelően elérhető áruk;A kereslethez képest jobban elérhető áruk;Egyik sem;közgazdaságtan
-Minek a rövidítése az ESCAP?;Ázsiai és Csendes-óceáni Társadalmi és Szociális Bizottság;Európai Társadalmi Tanács Afrikának és Csendes-óceániának;Afrikai és Csendes-óceáni közgazdaságtani és Szociális Bizottság;A fentiek egyike sem;közgazdaságtan
-Szabad piac definícója a következő..?;olyan piac ahol egy áru árát a kereslet és kínálat erőinek szabad játéka határozza meg;ez egy olyan állapot a nemzetközi piacon ahol a nemzetek nem vetnek ki vámot vagy egyéb adót az áruk behozatalára; a kikötőkre amelyek mentesek kereskedelmi cikkek vámfizetése elsősorban a turizmus ösztönzésére;A fentiek egyike sem;közgazdaságtan
-Az Egyesült Államok melyik részén adják el a legtöbb fagylaltot?;A Nagy Tavak régió;A Közép-Nyugat;Dél;A nyugati part;gasztronómia
-Melyik Amerika legrégebbi gyorsétteremlánca?;White Castle;McDonald's;Burger King;Dairy Queen;gasztronómia
-Az amerikaiak hány százaléka issza feketén a kávéját?;20 százalék;15 százalék;25 százalék;30 százalék;gasztronómia
-Melyik gyümölcs kategóriába tartozik a banán?;Bogyó;Citrus;Trópusi;Dinnye;gasztronómia
-Honnan származik a lasagna?;Görögország;Olaszország;Franciaország;Spanyolország;gasztronómia
-Melyik zöld zöldségben van több C-vitamin, mint a narancsban?;Brokkoli;Zöld saláta;Zöldbab;Articsóka;gasztronómia
-Melyik állam minősíti hivatalosan a hot dogot szendvicsnek?;New York;New Jersey;Kalifornia;Texas;gasztronómia
-Hány éves a buboréktea?;40 éves;200 éves;100 éves;80 éves;gasztronómia
-A padlizsán gyümölcs vagy zöldség?;gyümölcs;zöldség;mindkettő;egyik sem;gasztronómia
-Mi a különbség a sushi és a sashimi között?;rizs és ecet;rizs;ecet;hal;gasztronómia
-Mikor érték el a mogyoróvajas és zselés szendvicsek a legnagyobb népszerűséget?;A II. világháború;a nagy gazdasági világválság;első világháború;vietnami háború;történelem
-A paradicsom gyümölcs vagy zöldség?;gyümölcs;zöldség;mindkettő;egyik sem;gasztronómia
-Mi a legnépszerűbb pizza feltét?;Pepperoni;Kolbász;Gomba;Extra sajt;gasztronómia
-Melyik a legkevésbé népszerű pizzafeltét?;Szardella;Padlizsán;Ananász;Articsóka;gasztronómia
-Melyik a legnépszerűbb csokoládé?;tej;sötét;fehér;félédes;gasztronómia
-Hány százaléknyi szőlőt termelnek frissen fogyasztásra?;12%;30%;20%;8%;gasztronómia
-Milyen színű paprika támogatja legjobban a szem egészségét?;narancs;sárga;piros;zöld;gasztronómia
-Mi a legnépszerűbb burgonya chips íz?;Sima;Grill;Hagymás-tejfölös;Cheddar;gasztronómia
-Melyik gyorséttermi termék elkészítésében segített egy séf, aki korábban brit uralkodókat szolgált ki?;Chicken nuggets;French fries;Cheeseburgers;Milkshakes;gasztronómia
-Miből készül a wasabi-utánzat?;Torma, mustár és zöld ételfesték;Csípős szósz, mustár és zöld ételfesték;Torma, csípős szósz és zöld ételfesték;Torma és zöld ételfesték;gasztronómia
-Melyik összetevő kötelező a chai teához?;fahéj;gyömbér;kardamom;szegfűszeg;gasztronómia
-Hány tojás tartalmaz "bónusz" sárgáját?;1000 tojásból egy;500 tojásból egy;2000 tojásból egy;3000 tojásból egy;gasztronómia
-Melyik aszalt gyümölcs a legjobb azoknak a futóknak, akik energiafokozásra vágynak?;Mazsola;Datolya;Sárgabarack;A fentiek mindegyike;gasztronómia
-Hány gramm rost van egy nagy almában?;5 gramm;4 gramm;6 gramm;7 gramm;gasztronómia
-A tinta itatópapír általi felszívódása magában foglalja a..?;a kapilláris hatás jelenségét; a tinta viszkozitását; a tinta diffúzióját a blottoláson keresztül; a szifonhatást;fizika
-A nukleáris méreteket melyik egységben fejezzük ki?;Fermi;Angstrom;Newton;Tesla;fizika
-Egy nanométer egyenlő?;10^-9 m;10^-6 m;10^-8 m;10^-5 m;fizika
-A hang intenzitásának van?;objektív létezése;szubjektív létezése;nincs létezése;szubjektív és objektív létezés egyaránt;fizika
-Az eső függőlegesen lefelé esik. Egy kelet felé futó ember számára úgy tűnik, hogy az eső ____ felől jön?;kelet;nyugat;északkelet;délkelet;fizika
-A nagy csillagászati teleszkópok mindig objektívként használják a?;lencsék kombinációit;lencsét;tükröt;A fentiek egyike sem;fizika
-Nem szabad több elektromos készüléket ugyanahhoz a konnektorhoz csatlakoztatni, mert?;ez károsíthatja a háztartási vezetékeket a túlterhelés miatt;ez károsíthatja a készülékeket a túlterhelés miatt;ez károsíthatja az elektromos mérőt;a készülék nem kap teljes feszültséget;fizika
-A természetes radioaktivitást ki fedezte fel?;Henri Becquerel;Marie Curie;Ernest Rutherfor;Enrico Fermi;fizika
-Mik a bolgyók?;fénytelen égitestek;csillag körül keringő fényes égitestek;fényes és pislákoló égitestek;fényes égitestek, amelyek nem pislákolnak;fizika
-Egy wattóra ekvivalense?; 3,6 x 10^3 J; 3,6 x 10^-3 J; 6,3x10^-7 J;6,3x10^3 J;fizika
-Mikor lesz napfogyatkozás?;Ha a Hold a nap és a föld között van;Ha a nap a hold és a föld között van;Ha a föld a hold és a nap között van;Ha a hold nem fekszik a Napot és a Földet összekötő vonalon;fizika
-Egy elem izotópjai mit tartalmaznak?;ugyanannyi protont, de különböző számú neutront; ugyanannyi neutront, de különböző számú protont; azonos számú proton és elektron; azonos számú nukleon;fizika
-Az 1 kg oldószerben jelenlévő oldott anyag móljainak számát hogyan nevezzük?;molalitás;molaritás;normalitás;formalitás;kémia
-Az alábbiak közül a legelektronegatívabb elem a..?;fluor;nátrium;bróm;oxigén;kémia
-Azt a kohászati eljárást, amelynek során a fémet olvasztott állapotban nyerik, hogyan nevezzük?;olvasztás;pörkölés;kalcinálás;hab lebegtetés;kémia
-A földkéreg legrégebbi kőzetei egykor megolvadtak, és a föld mélyéről származtak. Az olvadt kőzet, az úgynevezett magma, vulkánkitörések során lövellt ki a Föld korai élete során, és kemény kőzetekké szilárdult, úgynevezett..?;magmás kőzetekké;gránittá;bazalttá;üledékes kőzetekké;kémia
-Az a törvény, amely kimondja, hogy a folyadékban oldott gáz mennyisége arányos a parciális nyomásával?;Henry-törvény;Dalton-törvény;Gay Lussac-törvény;Raoult-törvény;kémia
-A sztratoszférában jelenlévő gáz, amely kiszűri a nap ultraibolya fényének egy részét, és hatékony védelmet nyújt az élőlények sugárzási károsodása ellen:;ózon;hélium;oxigén;metán;kémia
-A leggyakrabban használt fehérítőszer a következő:;klór;nátrium-klorid;szén-dioxid;alkohol;kémia
-A hidrogénatom magja a következőkből áll:;1 proton;1 proton + 2 neutron;csak 1 neutron;csak 1 elektron;kémia
-A tudósok, Newlands, Mengyelejev és Meyer nevéhez fűződik?;Kémiai elemek periódusos rendszere;kohászat;elemek felfedezése;atomszerkezet;kémia
-Az inert gázok ____ vízben?;kevéssé oldódnak;oldhatatlanok;oldhatóak;egyik sem;kémia
-Egy atom tömegszáma egyenlő?;a nukleonok száma;a neutronok száma;a protonok és elektronok száma;a protonok száma;kémia
-A gázláng legforróbb része az úgynevezett?;nem világító zóna;kék zóna;sötét zóna;világító zóna;kémia
-A tea és a kávé fő hatóanyaga:;koffein;aszpirin;klorofill;nikotin;kémia
-A szén legkeményebb formája a ..?;gyémánt;faszén;grafit;koksz;kémia
-A magnéziumot és kalciumot egyaránt tartalmazó ásványi anyag..;dolomit;karnallit;kalcit;magnezit;kémia
-Az ember által használt első fém a..?;réz;a vas;az arany;a bronz;kémia
-A lágy röntgensugarakkal észlelhető tárgyak a következők:;eredeti érmék hamisított érmékből;kábítószerek;ólom a golyókban;csempészet;kémia
-A só fő felhasználása az étrendben az, hogy?;kis mennyiségben állítsa elő az élelmiszerek emésztéséhez szükséges sósavat;javítsa az ételek ízét;megkönnyítse a főzési folyamatot;növelje az élelmiszer-részecskék vízben való oldhatóságát;kémia
-A leginkább formálható fém a következő:;arany;platina;ezüst;vas;kémia
-Ha Dávid 27 éves 2011-ben, hány éves volt 2003-ban?;19 éves;20 éves;37 éves;17 éves;matematika
-Mennyi az értéke x-nek ha x^2 = 169?;13;1;169;338;matematika
-Ha 5 fiúnak 7 órába telik 35 kartonpapírt becsomagolni, akkor hány fiú tud 65 kartonpapírt 3 óra alatt?;Egyik sem;45;39;26;matematika
-Mi a pi szám?;3,14;4.15;100;0.99;matematika
-Kinek a munkája adta az algebra és az algoritmus kifejezéseket?;Al-Khwarzimi;Al-Kashi;Hypatia;Issac Newton;matematika
-Mi a Fibonacci-szekvencia, amelyet 1202-ben mutattak be ebben a feladatban: "Egy bizonyos ember egy nyulat tett egy olyan helyre, amelyet minden oldalról fal vett körül.Hány pár nyulat lehet ebből a párból előállítani egy év alatt, ha feltételezzük, hogy minden hónapban minden pár egy új párt nemz, amely a második hónaptól kezdve termővé válik?;1,1,2,3,5,8,13,21,34,55,...;1,2,5,9,14,20,27,35..;1,2,4,8,16,32,64,128,356;2,4,16,256,65,536,4,294,697,296, ...;matematika
-Melyik matematikai eszköz egyszerűsíti le az unalmas számításokat azáltal, hogy a szorzási feladatokat összeadássá, az osztási feladatokat pedig kivonással alakítja át?;logaritmusok;a számológép;algoritmusok;az abakusz;matematika
-Ki adta az első bizonyítást az algebra alaptételére?;Carl Friedrich Gauss;Blaise Pascal;Ada Lovelace;Sophie Germain;matematika
-Mi az „Erdős-szám”?;rangsort annak adnak, aki magával Erdőssel írt dolgozatot, vagy valaki mással, aki Erdőssel dolgozott, és így tovább?;bármilyen szám a végtelenen túl; olyan szám, amely a különböző méreteket jellemzi végtelen halmazok;hány napra számíthat egy átlagos matematikus, Erdős Pál élettartama alapján;matematika
-Mi a kifejezés azokra a számokra, amelyek tizedesjegyek végtelen sorozataként fejezhetők ki (beleértve azokat a tizedesjegyeket is, amelyeknek a végén végtelen nullák sorozata van)?;valós számok;egészek;természetes számok;prímszámok;matematika
-Mi a kifejezés minden 1-nél nagyobb pozitív egész számra, amely csak önmagával és 1-gyel osztható?;prímszám;valós szám;természetes szám;integer;matematika
-Mi a hagyományos kifejezés az euklideszi geometria öt bizonyíthatatlan, mégis intuitív módon megértett alapelvére, mint például: „Adott két ponton van egy egyenes, amely összeköti őket”?;axiómák;sejtések;tételek;állítások;matematika
-Ki fogalmazta meg az anyagok elektromos ellenállását szabályozó egyszerű matematikai törvényt?;Georg Simon Ohm;Alessandro Volta;Maud Leonora Menten;André-Marie Ampére;fizika
-Milyen mennyiséget számít ki a a*m/2 képlet?;Egy háromszög területe;Egy henger térfogata;Egy négyzet oldalának hossza;Egy félkör területe;matematika
-A „kimerítés módszerével” az ókori görög matematikusok meg tudták becsülni a kör kerületét és területét anélkül, hogy pontosan meg tudták volna határozni, milyen fontos arány?;pi;az aranymetszés;a szent arány;szinusz;matematika
-Melyik kontinentális európai matematikus-filozófussal kezdett nyilvános vitát Isaac Newton a számítás feltalálása miatt?;Gottfried Wilhelm Leibniz;Blaise Pascal;René Descartes;Maimonides;matematika
-Mi a Pitagorasz-tétel?;egy derékszögű háromszög befogóján lévő négyzet egyenlő a másik két oldal négyzeteinek összegével;két háromszög megfelelő szöge akkor és csak akkor egyenlő, ha a megfelelő oldalaik arányosak;két oldal egy egyenlő szárú háromszög akkor és csak akkor egyenlő, ha a velük szemközti szögek egyenlőek; egy háromszög szögeinek összege mindig 180 fok;matematika
-Ki volt a leggyorsabb gyorsíró?;Dr. G. D. Bist;J.R.D. Tata;J.M. Tagore;Khudada Khan;irodalom
-Ki írta az alábbi sort: "A szépség örökkévaló öröm"?;John Keats;Robert Browing;P.B.Shelley;William Wordsworth;irodalom
-Ki a szerzője az „Ezerkilencszáznyolcvannégy” könyvnek?;George Orwell;Walter Scott;Emile Zola;Thomas Hardy;irodalom
-Ki az angol költészet atyja?;Chaucer;Wordsworth;Milton;Charles Dickens;irodalom
-Ki írta a "Háború és békét"?;Lev Tolsztoj;Mahatma Gandhi;Charles Dickens;Kipling;irodalom
-George Bernard Shaw, milyen származású?;ír;walesi;skót;angol;irodalom
-Ki mondta, hogy "Isten megsegíti azokat, akik segítenek magukon"?;Algernon Sidney;Swami Vivekananda;Andre Gide;Andre Maurois;irodalom
-Az "Alice Csodaországban" című híres tévésorozat egy könyv alapján készült. Ki a szerzője?;Lewis Caroll;Charles Dickens;Thomas Hardy;Discoste atya;irodalom
-A "Gyülekező vihar" c. regényt ki írta?;Winston Churchill;George Washington;Voltaire;Romain Rolland;irodalom
-Ki a szerzője a "Tapasztalataim az igazságról" című könyvnek?;Mahatma Gandhi;Michael Anderson;Winston Churchill;Jarnes Morris;irodalom
-Ki írta az első történelemkönyvet?;Hérodotosz;Eukleidész;Arisztotelész;Julius Caesar;irodalom
-Kitől származik a híres mondat: "Az ember egy politikai állat"?;Arisztotelész;Dante;Szókratész;Platón;irodalom
-"Az általános boldogság az állam vége" kitől származik?;Bentham;Hegel;Platón;Zöld;irodalom
-Ki a szerzője a „Felkészülés a 21. századra" könyvnek?;Paul Kennedy;V.R. Krishna Iyer;V.S. Naipul;Larry Collins;irodalom
-A híres "Anna Karenina" kinek a műve?;Lev Tolsztoj;Lewis Carroll;Victor Hugo;Boris Pasternak;irodalom
-„A természet soha nem árulta el a szívet, amelyik szerette” – kinek a tollából származik?;W.Wordsworth;J. Byron;P.B.Shelly;J.Keats;irodalom
-A „Búcsú a fegyverektől” c. könyvet ki írta?;Ernest Hemingway;Charles Dickens;Thomas Hardy;Huxley;irodalom
-„Az ember társadalom nélkül vagy vadállat, vagy isten”. Ki mondta ezt?;Arisztotelész;Gandhi;Platón;Henry Maine;irodalom
-Ki írta az "Az emberiség és a Földanya" című híres könyvet?;Arnold Toynbee;Lev Tolsztoj;John Ruskin;Bertrand Russel;irodalom
-A „Gulliver utazásai” c. könyvet ki írta?;Jonathan Swift;Charles Dickens;Charles Lamb;Alexandra Dumas;irodalom
-Ki a "Tom Sawyer" című mű szerzője?;Mark Twain;John Ruskin;William Shakespeare;Lev Tolsztoj;irodalom
+Mivel foglalkozik az Ökológia?;Az élőlények és környezetük kapcsolata;Madarak;Sejtképződés;Szövetek;közgazdaságtan;könnyű
+Mi a GATT (Általános Vám- és Kereskedelmi Egyezmény) ?;Mindkettő magyarázat helyes;1947-ben nem kommunista nemzetek között aláírt nemzetközi egyezmény amelynek célja a vámkorlátok által akadálymentes nemzetközi kereskedelem ösztönzése;olyan megállapodás amely a célját a tagok közötti kereskedelmi engedményekről szóló alku megszervezése és ösztönzése;Egyik sem;közgazdaságtan;nehéz
+A G-15 közgazdaságtani csoportosulása a..?;A harmadik világbeli nemzeteknek;Az első világ nemzeteinek;A második világ nemzeteinek;A negyedik világ nemzeteinek;közgazdaságtan;közepes
+Mik a közgazdaságtani javak…?;minden olyan áru, amelynek mennyisége a keresletéhez képest korlátozott;A keresletüknek megfelelően elérhető áruk;A kereslethez képest jobban elérhető áruk;Egyik sem;közgazdaságtan;közepes
+Minek a rövidítése az ESCAP?;Ázsiai és Csendes-óceáni Társadalmi és Szociális Bizottság;Európai Társadalmi Tanács Afrikának és Csendes-óceániának;Afrikai és Csendes-óceáni közgazdaságtani és Szociális Bizottság;A fentiek egyike sem;közgazdaságtan;nehéz
+Szabad piac definícója a következő..?;olyan piac ahol egy áru árát a kereslet és kínálat erőinek szabad játéka határozza meg;ez egy olyan állapot a nemzetközi piacon ahol a nemzetek nem vetnek ki vámot vagy egyéb adót az áruk behozatalára; a kikötőkre amelyek mentesek kereskedelmi cikkek vámfizetése elsősorban a turizmus ösztönzésére;A fentiek egyike sem;közgazdaságtan;közepes
+Az Egyesült Államok melyik részén adják el a legtöbb fagylaltot?;A Nagy Tavak régió;A Közép-Nyugat;Dél;A nyugati part;gasztronómia;közepes
+Melyik Amerika legrégebbi gyorsétteremlánca?;White Castle;McDonald's;Burger King;Dairy Queen;gasztronómia;közepes
+Az amerikaiak hány százaléka issza feketén a kávéját?;20 százalék;15 százalék;25 százalék;30 százalék;gasztronómia;közepes
+Melyik gyümölcs kategóriába tartozik a banán?;Bogyó;Citrus;Trópusi;Dinnye;gasztronómia;közepes
+Honnan származik a lasagna?;Görögország;Olaszország;Franciaország;Spanyolország;gasztronómia;könnyű
+Melyik zöld zöldségben van több C-vitamin, mint a narancsban?;Brokkoli;Zöld saláta;Zöldbab;Articsóka;gasztronómia;közepes
+Melyik állam minősíti hivatalosan a hot dogot szendvicsnek?;New York;New Jersey;Kalifornia;Texas;gasztronómia;közepes
+Hány éves a buboréktea?;40 éves;200 éves;100 éves;80 éves;gasztronómia;könnyű
+A padlizsán gyümölcs vagy zöldség?;gyümölcs;zöldség;mindkettő;egyik sem;gasztronómia;közepes
+Mi a különbség a sushi és a sashimi között?;rizs és ecet;rizs;ecet;hal;gasztronómia;közepes
+Mikor érték el a mogyoróvajas és zselés szendvicsek a legnagyobb népszerűséget?;A II. világháború;a nagy gazdasági világválság;első világháború;vietnami háború;történelem;közepes
+A paradicsom gyümölcs vagy zöldség?;gyümölcs;zöldség;mindkettő;egyik sem;gasztronómia;könnyű
+Mi a legnépszerűbb pizza feltét?;Pepperoni;Kolbász;Gomba;Extra sajt;gasztronómia;könnyű
+Melyik a legkevésbé népszerű pizzafeltét?;Szardella;Padlizsán;Ananász;Articsóka;gasztronómia;közepes
+Melyik a legnépszerűbb csokoládé?;tej;sötét;fehér;félédes;gasztronómia;könnyű
+Hány százaléknyi szőlőt termelnek frissen fogyasztásra?;12%;30%;20%;8%;gasztronómia;közepes
+Milyen színű paprika támogatja legjobban a szem egészségét?;narancs;sárga;piros;zöld;gasztronómia;könnyű
+Mi a legnépszerűbb burgonya chips íz?;Sima;Grill;Hagymás-tejfölös;Cheddar;gasztronómia;közepes
+Melyik gyorséttermi termék elkészítésében segített egy séf, aki korábban brit uralkodókat szolgált ki?;Chicken nuggets;French fries;Cheeseburgers;Milkshakes;gasztronómia;nehéz
+Miből készül a wasabi-utánzat?;Torma, mustár és zöld ételfesték;Csípős szósz, mustár és zöld ételfesték;Torma, csípős szósz és zöld ételfesték;Torma és zöld ételfesték;gasztronómia;nehéz
+Melyik összetevő kötelező a chai teához?;fahéj;gyömbér;kardamom;szegfűszeg;gasztronómia;nehéz
+Hány tojás tartalmaz "bónusz" sárgáját?;1000 tojásból egy;500 tojásból egy;2000 tojásból egy;3000 tojásból egy;gasztronómia;közepes
+Melyik aszalt gyümölcs a legjobb azoknak a futóknak, akik energiafokozásra vágynak?;Mazsola;Datolya;Sárgabarack;A fentiek mindegyike;gasztronómia;közepes
+Hány gramm rost van egy nagy almában?;5 gramm;4 gramm;6 gramm;7 gramm;gasztronómia;közepes
+A tinta itatópapír általi felszívódása magában foglalja a..?;a kapilláris hatás jelenségét; a tinta viszkozitását; a tinta diffúzióját a blottoláson keresztül; a szifonhatást;fizika;közepes
+A nukleáris méreteket melyik egységben fejezzük ki?;Fermi;Angstrom;Newton;Tesla;fizika;közepes
+Egy nanométer egyenlő?;10^-9 m;10^-6 m;10^-8 m;10^-5 m;fizika;közepes
+A hang intenzitásának van?;objektív létezése;szubjektív létezése;nincs létezése;szubjektív és objektív létezés egyaránt;fizika;nehéz
+Az eső függőlegesen lefelé esik. Egy kelet felé futó ember számára úgy tűnik, hogy az eső ____ felől jön?;kelet;nyugat;északkelet;délkelet;fizika;közepes
+A nagy csillagászati teleszkópok mindig objektívként használják a?;lencsék kombinációit;lencsét;tükröt;A fentiek egyike sem;fizika;közepes
+Nem szabad több elektromos készüléket ugyanahhoz a konnektorhoz csatlakoztatni, mert?;ez károsíthatja a háztartási vezetékeket a túlterhelés miatt;ez károsíthatja a készülékeket a túlterhelés miatt;ez károsíthatja az elektromos mérőt;a készülék nem kap teljes feszültséget;fizika;könnyű
+A természetes radioaktivitást ki fedezte fel?;Henri Becquerel;Marie Curie;Ernest Rutherfor;Enrico Fermi;fizika;közepes
+Mik a bolgyók?;fénytelen égitestek;csillag körül keringő fényes égitestek;fényes és pislákoló égitestek;fényes égitestek, amelyek nem pislákolnak;fizika;nehéz
+Egy wattóra ekvivalense?; 3,6 x 10^3 J; 3,6 x 10^-3 J; 6,3x10^-7 J;6,3x10^3 J;fizika;közepes
+Mikor lesz napfogyatkozás?;Ha a Hold a nap és a föld között van;Ha a nap a hold és a föld között van;Ha a föld a hold és a nap között van;Ha a hold nem fekszik a Napot és a Földet összekötő vonalon;fizika;könnyű
+Egy elem izotópjai mit tartalmaznak?;ugyanannyi protont, de különböző számú neutront; ugyanannyi neutront, de különböző számú protont; azonos számú proton és elektron; azonos számú nukleon;fizika;közepes
+Az 1 kg oldószerben jelenlévő oldott anyag móljainak számát hogyan nevezzük?;molalitás;molaritás;normalitás;formalitás;kémia;közepes
+Az alábbiak közül a legelektronegatívabb elem a..?;fluor;nátrium;bróm;oxigén;kémia;közepes
+Azt a kohászati eljárást, amelynek során a fémet olvasztott állapotban nyerik, hogyan nevezzük?;olvasztás;pörkölés;kalcinálás;hab lebegtetés;kémia;nehéz
+A földkéreg legrégebbi kőzetei egykor megolvadtak, és a föld mélyéről származtak. Az olvadt kőzet, az úgynevezett magma, vulkánkitörések során lövellt ki a Föld korai élete során, és kemény kőzetekké szilárdult, úgynevezett..?;magmás kőzetekké;gránittá;bazalttá;üledékes kőzetekké;kémia;közepes
+Az a törvény, amely kimondja, hogy a folyadékban oldott gáz mennyisége arányos a parciális nyomásával?;Henry-törvény;Dalton-törvény;Gay Lussac-törvény;Raoult-törvény;kémia;nehéz
+A sztratoszférában jelenlévő gáz, amely kiszűri a nap ultraibolya fényének egy részét, és hatékony védelmet nyújt az élőlények sugárzási károsodása ellen:;ózon;hélium;oxigén;metán;kémia;könnyű
+A leggyakrabban használt fehérítőszer a következő:;klór;nátrium-klorid;szén-dioxid;alkohol;kémia;közepes
+A hidrogénatom magja a következőkből áll:;1 proton;1 proton + 2 neutron;csak 1 neutron;csak 1 elektron;kémia;közepes
+A tudósok, Newlands, Mengyelejev és Meyer nevéhez fűződik?;Kémiai elemek periódusos rendszere;kohászat;elemek felfedezése;atomszerkezet;kémia;közepes
+Az inert gázok ____ vízben?;kevéssé oldódnak;oldhatatlanok;oldhatóak;egyik sem;kémia;közepes
+Egy atom tömegszáma egyenlő?;a nukleonok száma;a neutronok száma;a protonok és elektronok száma;a protonok száma;kémia;közepes
+A gázláng legforróbb része az úgynevezett?;nem világító zóna;kék zóna;sötét zóna;világító zóna;kémia;nehéz
+A tea és a kávé fő hatóanyaga:;koffein;aszpirin;klorofill;nikotin;kémia;könnyű
+A szén legkeményebb formája a ..?;gyémánt;faszén;grafit;koksz;kémia;könnyű
+A magnéziumot és kalciumot egyaránt tartalmazó ásványi anyag..;dolomit;karnallit;kalcit;magnezit;kémia;közepes
+Az ember által használt első fém a..?;réz;a vas;az arany;a bronz;kémia;közepes
+A lágy röntgensugarakkal észlelhető tárgyak a következők:;eredeti érmék hamisított érmékből;kábítószerek;ólom a golyókban;csempészet;kémia;közepes
+A só fő felhasználása az étrendben az, hogy?;kis mennyiségben állítsa elő az élelmiszerek emésztéséhez szükséges sósavat;javítsa az ételek ízét;megkönnyítse a főzési folyamatot;növelje az élelmiszer-részecskék vízben való oldhatóságát;kémia;közepes
+A leginkább formálható fém a következő:;arany;platina;ezüst;vas;kémia;közepes
+Ha Dávid 27 éves 2011-ben, hány éves volt 2003-ban?;19 éves;20 éves;37 éves;17 éves;matematika;könnyű
+Mennyi az értéke x-nek ha x^2 = 169?;13;1;169;338;matematika;könnyű
+Ha 5 fiúnak 7 órába telik 35 kartonpapírt becsomagolni, akkor hány fiú tud 65 kartonpapírt 3 óra alatt?;Egyik sem;45;39;26;matematika;könnyű
+Mi a pi szám?;3,14;4.15;100;0.99;matematika;könnyű
+Kinek a munkája adta az algebra és az algoritmus kifejezéseket?;Al-Khwarzimi;Al-Kashi;Hypatia;Issac Newton;matematika;nehéz
+Mi a Fibonacci-szekvencia, amelyet 1202-ben mutattak be ebben a feladatban: "Egy bizonyos ember egy nyulat tett egy olyan helyre, amelyet minden oldalról fal vett körül.Hány pár nyulat lehet ebből a párból előállítani egy év alatt, ha feltételezzük, hogy minden hónapban minden pár egy új párt nemz, amely a második hónaptól kezdve termővé válik?;1,1,2,3,5,8,13,21,34,55,...;1,2,5,9,14,20,27,35..;1,2,4,8,16,32,64,128,356;2,4,16,256,65,536,4,294,697,296, ...;matematika;közepes
+Melyik matematikai eszköz egyszerűsíti le az unalmas számításokat azáltal, hogy a szorzási feladatokat összeadássá, az osztási feladatokat pedig kivonással alakítja át?;logaritmusok;a számológép;algoritmusok;az abakusz;matematika;közepes
+Ki adta az első bizonyítást az algebra alaptételére?;Carl Friedrich Gauss;Blaise Pascal;Ada Lovelace;Sophie Germain;matematika;nehéz
+Mi az „Erdős-szám”?;rangsort annak adnak, aki magával Erdőssel írt dolgozatot, vagy valaki mással, aki Erdőssel dolgozott, és így tovább?;bármilyen szám a végtelenen túl; olyan szám, amely a különböző méreteket jellemzi végtelen halmazok;hány napra számíthat egy átlagos matematikus, Erdős Pál élettartama alapján;matematika;nehéz
+Mi a kifejezés azokra a számokra, amelyek tizedesjegyek végtelen sorozataként fejezhetők ki (beleértve azokat a tizedesjegyeket is, amelyeknek a végén végtelen nullák sorozata van)?;valós számok;egészek;természetes számok;prímszámok;matematika;nehéz
+Mi a kifejezés minden 1-nél nagyobb pozitív egész számra, amely csak önmagával és 1-gyel osztható?;prímszám;valós szám;természetes szám;integer;matematika;közepes
+Mi a hagyományos kifejezés az euklideszi geometria öt bizonyíthatatlan, mégis intuitív módon megértett alapelvére, mint például: „Adott két ponton van egy egyenes, amely összeköti őket”?;axiómák;sejtések;tételek;állítások;matematika;könnyű
+Ki fogalmazta meg az anyagok elektromos ellenállását szabályozó egyszerű matematikai törvényt?;Georg Simon Ohm;Alessandro Volta;Maud Leonora Menten;André-Marie Ampére;fizika;közepes
+Milyen mennyiséget számít ki a a*m/2 képlet?;Egy háromszög területe;Egy henger térfogata;Egy négyzet oldalának hossza;Egy félkör területe;matematika;közepes
+A „kimerítés módszerével” az ókori görög matematikusok meg tudták becsülni a kör kerületét és területét anélkül, hogy pontosan meg tudták volna határozni, milyen fontos arány?;pi;az aranymetszés;a szent arány;szinusz;matematika;könnyű
+Melyik kontinentális európai matematikus-filozófussal kezdett nyilvános vitát Isaac Newton a számítás feltalálása miatt?;Gottfried Wilhelm Leibniz;Blaise Pascal;René Descartes;Maimonides;matematika;nehéz
+Mi a Pitagorasz-tétel?;egy derékszögű háromszög befogóján lévő négyzet egyenlő a másik két oldal négyzeteinek összegével;két háromszög megfelelő szöge akkor és csak akkor egyenlő, ha a megfelelő oldalaik arányosak;két oldal egy egyenlő szárú háromszög akkor és csak akkor egyenlő, ha a velük szemközti szögek egyenlőek; egy háromszög szögeinek összege mindig 180 fok;matematika;közepes
+Ki volt a leggyorsabb gyorsíró?;Dr. G. D. Bist;J.R.D. Tata;J.M. Tagore;Khudada Khan;irodalom;nehéz
+Ki írta az alábbi sort: "A szépség örökkévaló öröm"?;John Keats;Robert Browing;P.B.Shelley;William Wordsworth;irodalom;nehéz
+Ki a szerzője az „Ezerkilencszáznyolcvannégy” könyvnek?;George Orwell;Walter Scott;Emile Zola;Thomas Hardy;irodalom;nehéz
+Ki az angol költészet atyja?;Chaucer;Wordsworth;Milton;Charles Dickens;irodalom;nehéz
+Ki írta a "Háború és békét"?;Lev Tolsztoj;Mahatma Gandhi;Charles Dickens;Kipling;irodalom;könnyű
+George Bernard Shaw, milyen származású?;ír;walesi;skót;angol;irodalom;közepes
+Ki mondta, hogy "Isten megsegíti azokat, akik segítenek magukon"?;Algernon Sidney;Swami Vivekananda;Andre Gide;Andre Maurois;irodalom;nehéz
+Az "Alice Csodaországban" című híres tévésorozat egy könyv alapján készült. Ki a szerzője?;Lewis Caroll;Charles Dickens;Thomas Hardy;Discoste atya;irodalom;nehéz
+A "Gyülekező vihar" c. regényt ki írta?;Winston Churchill;George Washington;Voltaire;Romain Rolland;irodalom;közepes
+Ki a szerzője a "Tapasztalataim az igazságról" című könyvnek?;Mahatma Gandhi;Michael Anderson;Winston Churchill;Jarnes Morris;irodalom;közepes
+Ki írta az első történelemkönyvet?;Hérodotosz;Eukleidész;Arisztotelész;Julius Caesar;irodalom;nehéz
+Kitől származik a híres mondat: "Az ember egy politikai állat"?;Arisztotelész;Dante;Szókratész;Platón;irodalom;közepes
+"Az általános boldogság az állam vége" kitől származik?;Bentham;Hegel;Platón;Zöld;irodalom;nehéz
+Ki a szerzője a „Felkészülés a 21. századra" könyvnek?;Paul Kennedy;V.R. Krishna Iyer;V.S. Naipul;Larry Collins;irodalom;közepes
+A híres "Anna Karenina" kinek a műve?;Lev Tolsztoj;Lewis Carroll;Victor Hugo;Boris Pasternak;irodalom;közepes
+„A természet soha nem árulta el a szívet, amelyik szerette” – kinek a tollából származik?;W.Wordsworth;J. Byron;P.B.Shelly;J.Keats;irodalom;közepes
+A „Búcsú a fegyverektől” c. könyvet ki írta?;Ernest Hemingway;Charles Dickens;Thomas Hardy;Huxley;irodalom;nehéz
+„Az ember társadalom nélkül vagy vadállat, vagy isten”. Ki mondta ezt?;Arisztotelész;Gandhi;Platón;Henry Maine;irodalom;közepes
+Ki írta az "Az emberiség és a Földanya" című híres könyvet?;Arnold Toynbee;Lev Tolsztoj;John Ruskin;Bertrand Russel;irodalom;nehéz
+A „Gulliver utazásai” c. könyvet ki írta?;Jonathan Swift;Charles Dickens;Charles Lamb;Alexandra Dumas;irodalom;közepes
+Ki a "Tom Sawyer" című mű szerzője?;Mark Twain;John Ruskin;William Shakespeare;Lev Tolsztoj;irodalom;közepes
 Ki mondta ezeket a szavakat: "Nem helyeslem, amit mondasz, de mindhalálig megvédem, hogy kimondhatod"?;Voltaire;George Bernard Shaw;Lenin;Mahatma Gandhi;irodalom;közepes
 Az közkedvelt "A keresztapa" című regénynek ki a szerzője?;Mario Puzo;Victor Hugo;John Milton;Harold Robbins;irodalom;közepes
 Ki írta "A Herceg" című könyvet?;Niccolo Machiavelli;Bernard Shaw;V.S. Sharma;Emile Zola;irodalom;nehéz
