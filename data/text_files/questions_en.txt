@@ -64,7 +64,7 @@ How long did the Hundred Years' War last?;116 years;101 years;99 years;100 years
 Which of these is NOT on the periodic table of elements?;Polypodium;Cadmium;Actinium;Beryllium;chemistry
 Which of these games was featured in the classic film "WarGames?";Tic-Tac-Toe;Checkers;Tower of Hanoi;Nim;general knowledge;medium
 Where is a shrimp's heart located?;In its head;In its tail;In its legs;On its back;biology;medium
-What is the capital of South Dakota?;Pierre;Bismarck;Raleigh;Columbia;geography;harc
+What is the capital of South Dakota?;Pierre;Bismarck;Raleigh;Columbia;geography;hard
 Which of these is considered to be a French "mother sauce?";Hollandaise;Beurre blanc;Bordelaise;Charcutiere;gastronomy;medium
 Who was the 15th president of the United States?;James Buchanan;Franklin Pierce;James K. Polk;Zachary Taylor;history;hard
 Which of these is NOT one of the seven wonders of the 'Ancient World?';Capuchin Monastery Catacombs;Temple of Artemis at Ephesus;Lighthouse of Alexandria;Colossus of Rhodes;history;medium
@@ -153,19 +153,19 @@ The inert gases are ____ in water?;sparingly soluble;insoluble;soluble;None of t
 The mass number of an atom is equal to?;the number of nucleons;the number of neutrons;the number of protons and electrons;the number of protons;chemistry;medium
 The hottest part of the gas flame is known as?;non-luminous zone;blue zone;dark zone;luminous zone;chemistry;medium
 The main active constituent of tea and coffee is?;caffeine;aspirin;chlorophyll;nicotine;chemistry;easy
-The hardest form of carbon is?;diamond;charcoal;graphite;coke;chemistry
-The mineral containing both magnesium and calcium is?;dolomite;carnallite;calcite;magnesite;chemistry
-The first metal used by man was?;copper;iron;gold;bronze;chemistry
-The items amenable to detection by soft x-rays are?;genuine coins from counterfeit coins;narcotics;lead in bullets;contrabands;chemistry
-The main use of salt in the diet is to?;produce in small amounts the hydrochloric acid required for the digestion of food;make the taste of food better;ease the process of cooking;increase the solubility of food particles in water;chemistry
-The most malleable metal is?;gold;platinum;silver;iron;chemistry
-If David’s age is 27 years old in 2011. What was his age in 2003?;19 years;20 years;37 years;17 years;mathematics
-What is the value of x if x^2 = 169?;13;1;169;338;mathematics
-If 5 boys take 7 hours to pack 35 cartoons, then how many boys can pack 65 cartoons in 3 hours?;None of these;45;39;26;mathematics
-What's pi?;3,14;4.15;100;0.99;mathematics
-Whose work gave rise to the terms algebra and algorithm?;Al-Khwarzimi;Al-Kashi;Hypatia;Issac Newton;mathematics
+The hardest form of carbon is?;diamond;charcoal;graphite;coke;chemistry;easy
+The mineral containing both magnesium and calcium is?;dolomite;carnallite;calcite;magnesite;chemistry;medium
+The first metal used by man was?;copper;iron;gold;bronze;chemistry;medium
+The items amenable to detection by soft x-rays are?;genuine coins from counterfeit coins;narcotics;lead in bullets;contrabands;chemistry;medium
+The main use of salt in the diet is to?;produce in small amounts the hydrochloric acid required for the digestion of food;make the taste of food better;ease the process of cooking;increase the solubility of food particles in water;chemistry;medium
+The most malleable metal is?;gold;platinum;silver;iron;chemistry;medium
+If David’s age is 27 years old in 2011. What was his age in 2003?;19 years;20 years;37 years;17 years;mathematics;easy
+What is the value of x if x^2 = 169?;13;1;169;338;mathematics;easy
+If 5 boys take 7 hours to pack 35 cartoons, then how many boys can pack 65 cartoons in 3 hours?;None of these;45;39;26;mathematics;easy
+What's pi?;3,14;4.15;100;0.99;mathematics;easy
+Whose work gave rise to the terms algebra and algorithm?;Al-Khwarzimi;Al-Kashi;Hypatia;Issac Newton;mathematics;hard
 What is the Fibonacci sequence, presented in 1202 in this problem: "A certain man put a pair of rabbits in a place surrounded on all sides by a wall. How many pairs of rabbits can be produced from that pair in a year if it is supposed that every month each pair begets a new pair which from the second month on becomes productive?";1,1,2,3,5,8,13,21,34,55,...;1,2,5,9,14,20,27,35..;1,2,4,8,16,32,64,128,356;2,4,16,256,65,536,4,294,697,296, ...;mathematics;medium
-Which mathematical device simplifies tedious computations by converting problems of multiplication to addition and problems of division to subtraction?;logarithms;the calculator;algorithms;the abacus;mathematics;mediu
+Which mathematical device simplifies tedious computations by converting problems of multiplication to addition and problems of division to subtraction?;logarithms;the calculator;algorithms;the abacus;mathematics;medium
 Who gave the first proof of the fundamental theorem of algebra?;Carl Friedrich Gauss;Blaise Pascal;Ada Lovelace;Sophie Germain;mathematics;hard
 What is the “Erdős number”?;a rank given to somebody who wrote a paper with Erdős himself or with somebody else who wrote a paper with Erdős, and so on?;any number beyond infinity;a number that characterizes the size of different infinite sets;the number of days an average mathematician can expect to live, based on the lifespan of Paul Erdős;mathematics;hard
 What is the term for numbers that can be expressed as an infinite sequence of decimals (including terminating decimals that can be considered as having an infinite sequence of zeros on the end)?;real numbers;integers;natural numbers;prime numbers;mathematics;hard
