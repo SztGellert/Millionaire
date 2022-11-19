@@ -61,7 +61,7 @@ Who wrote the pamphlet "General knowledge Sense" in 1776?;Thomas Paine;George Re
 Which of the following is NOT a primary color?;Green;Yellow;Red;Blue;physics;easy
 Which of these countries were NOT part of the Axis Powers during World War II?;China;Japan;Italy;Germany;history;easy
 How long did the Hundred Years' War last?;116 years;101 years;99 years;100 years;history;medium
-Which of these is NOT on the periodic table of elements?;Polypodium;Cadmium;Actinium;Beryllium;chemistry
+Which of these is NOT on the periodic table of elements?;Polypodium;Cadmium;Actinium;Beryllium;chemistry;medium
 Which of these games was featured in the classic film "WarGames?";Tic-Tac-Toe;Checkers;Tower of Hanoi;Nim;general knowledge;medium
 Where is a shrimp's heart located?;In its head;In its tail;In its legs;On its back;biology;medium
 What is the capital of South Dakota?;Pierre;Bismarck;Raleigh;Columbia;geography;hard
