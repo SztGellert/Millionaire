@@ -50,13 +50,10 @@ def play():
         if question_difficulty == "":
             if i < 5:
                 question_lines = question_lines_easy
-                time.sleep(2)
             elif i < 10:
                 question_lines = question_lines_medium
-                time.sleep(2)
             else:
                 question_lines = question_lines_hard
-                time.sleep(2)
         question = question_lines[i][0]
         print(question)
         answers = {"a": question_lines[i][1], "b": question_lines[i][2], "c": question_lines[i][3],
