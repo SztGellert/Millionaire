@@ -31,7 +31,7 @@
         "correct_answer_out": "Correct answer! Better luck next time!",
         "incorrect_answer": "Bad answer! Better luck next time!",
         "guaranteed_prize": "You have guaranteed ",
-        "won_prize": "Congratulations! You have won ",
+        "won_prize": "Congratulations!! You have just won: ",
         "help": "help",
         "help_selection": "\"Choose help: 'a' for audience, 't' for telephone, 'h' for halving! \"",
         "help_disabled": "You have already used the ",

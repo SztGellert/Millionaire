@@ -33,7 +33,7 @@
         "correct_answer_out": "Helyes válasz! Több szerencsét a következő alkalommal!",
         "incorrect_answer": "Rossz válasz! Több szerencsét a következő alkalommal!",
         "guaranteed_prize": "Megvan a biztos ",
-        "won_prize": "Gratulálunk!! Ön most nyert ",
+        "won_prize": "Gratulálunk!! Ön most nyert: ",
         "help": "segítséget",
         "help_selection": "\nVálasszon a lehetőségek közül: 'a' a közönséghez, 't' a telefonhoz, 'h' hogy felezze a kérdéseket!",
         "help_disabled": "Már használta a ",
