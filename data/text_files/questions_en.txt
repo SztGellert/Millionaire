@@ -326,3 +326,30 @@ The Forbidden City in Beijing was built during what dynasty?;Ming;Liao;Xin;Song;
 Which of these countries was once part of the Soviet Union?;Belarus;France;United Kingdom;Italy;history;easy
 Who cried "Eureka!" after making an important finding?;Archimedes;Socrates;Seneca;Aristotle;history;medium
 What country sent the first human to outer space?;Soviet Union;USA;Mexico;China;history;medium
+Where can we find Nova Scotia?;Canada;Australia;Greenland;Denmark;geography;medium
+What is true for Italy?;It borders Switzerland;It is landlocked;Its main language is French;Its capital is Vienna;geography;easy
+Phoenix is the capital of …?;Arizona;Maine;Iowa;Delaware;geography;hard
+In which US state is the private research university named MIT located?;Massachusetts;California;Oregon;Tennesse;geography;medium
+The Colorado river flows through the …?;Rocky Mountains;Himalayas;Transantarctic mountains;Andes;geography;medium
+What is the capital of Indonesia?;Jakarta;Bandung;Kuching;Singapore;geography;medium
+What is the home of the dwarf planet Pluto?;Kuiper Belt;Mariana Trench;Strait of Canso;Maliku Kandu;geography;hard
+What is the largest metropole in Japan?;Tokyo;Osaka;Kyoto;Yokohama;geography;medium
+What is the capital of Texas?;Austin;Dallas;Phoenix;Lubbock;geography;hard
+What is the largest state of Germany by area?;Bavaria;Berlin;Hesse;Bremen;geography;hard
+What is the capital of Denmark?;Copenhagen;Amsterdam;Stockholm;Berlin;geography;easy
+What is "12" on the Beaufort scale?;Hurricane force;Violent storm;Strong gale;Strong breeze;geography;hard
+Where can we find St. Paul's Cathedral?;London;Rome;Sydney;Madrid;geography;easy
+Which planet has the most prominent ring system?;Saturn;Jupiter;Mars;Venus;geography;hard
+What is the capital of Australia?;Canberra;Adelaide;Melbourne;Sydney;geography;hard
+In which country is the world's highest waterfall?;Venezuela;Usa;Brazil;South africa;geography;hard
+What is the capital of the Philippines?;Manilla;Jakarta;Dili;Marawi;geography;hard
+In which country is Mount Fuji located?;Japan;China;Peru;North korea;geography;easy
+In which country is the Cape of Good Hope?;South africa;Australia;Candada;Usa;geography;easy
+The Sierra Madre Oriental is a mountain range in which country?;Mexico;China;Peru;Argentina;geography;easy
+In which ocean is the island of Madagascar?;Indian;Pacific;Arctic;Atlantic;geography;hard
+What is the study of human beings and their cultures?;Anthropology;Anthology;Geography;Apiology;geography;easy
+What group of people inhabits the Arctic regions of Greenland, Canada and Alaska?;Inuit;Nenets;Cossacks;Aztec;geography;hard
+What is the largest island?;Greenland;Borneo;New Guinea;Madagascar;geography;hard
+Which of these rivers is the longest?;Amazon;Yangtze;Ganges;Mississippi;geography;hard
+Hong Kong is located at the southern coast of …?;China;Vietnam;Japan;Taiwan;geography;hard
+What is the most populous state of the USA?;California;Illinois;Indiana;Florida;geography;hard
