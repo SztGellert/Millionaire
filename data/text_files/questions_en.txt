@@ -442,3 +442,19 @@ A person crosses a 600 m long street in 5 minutes. What is his speed in km per h
 If a person walks at 14 km/hr instead of 10 km/hr, he would have walked 20 km more. The actual distance travelled by him is:;50 km;56 km;70 km;80 km;mathematics;easy
 Excluding stoppages, the speed of a bus is 54 kmph and including stoppages, it is 45 kmph. For how many minutes does the bus stop per hour?;10;9;12;20;mathematics;medium
 It was Sunday on Jan 1, 2006. What was the day of the week Jan 1, 2010?;Friday;Wednesday;Saturday;Sunday;mathematics;easy
+Solve the equation: 2a+5=a+7;a=2;a=3;a=4;a=1;mathematics;medium
+Solve: 7(2x−2)=3(x−4)+9;x=1;x=2;x=4;x=3;mathematics;medium
+Who created the equal sign?;Robert Recorde;William Playfair;Thales;Gerolamo Cardano;mathematics;hard
+How many sides does an “enneadecagon” have?;19;20;21;17;mathematics;hard
+What does the term ‘crore’ mean?;Ten Million;Ten Thousand;Ten Billion;Ten Trillion;mathematics;hard
+What was the original name for the number 0?;Cipher;Nil;Nol;Cero;mathematics;hard
+In 1940, what number one followed by 100 zeros was used by Milton Sirotta for the first time?;Googol;Googolplex;Eddington number;Graham's number;mathematics;hard
+What is the value of e?;2.718;3.14;42;3.6;mathematics;hard
+What is the name of the number system that has a base of two?;Binary;Ternary;Duodecimal;Duocentesimal;mathematics;hard
+Who considered the fastest human calculator?;Scott Flansburg;Jack Kilby;Edith Clarke;Blaise Pascal;mathematics;hard
+What is the world’s biggest known number?;Googolplex;Googol;Eddington number;Graham's number;mathematics;hard
+What do you call the two consecutive primes that differ by two?;Twin Primes;Cousin primes;Factorial primes;Good primes;mathematics;hard
+C=2πr is the formula for?;Circumference of a Circle;Circumference of a Triangle;Area of a Circle;None of these;mathematics;medium
+What is the formula for the area of a square?;A=s^^2;A=s;A=s^^3;A=s + s;mathematics;medium
+The formula for the cotangent is?;Cotθ = adjacent/opposite;Cotθ = adjacent x opposite;Cotθ = opposite/adjacent;Cotθ = opposite/hypotenuse;mathematics;medium
+2 × (L+W) is the formula for?;The perimeter of a rectangle;The perimeter of a triangle;The perimeter of a pentagon;The area of a pentagon;mathematics;medium
