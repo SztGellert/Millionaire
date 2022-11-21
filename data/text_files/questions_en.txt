@@ -458,3 +458,24 @@ C=2πr is the formula for?;Circumference of a Circle;Circumference of a Triangle
 What is the formula for the area of a square?;A=s^^2;A=s;A=s^^3;A=s + s;mathematics;medium
 The formula for the cotangent is?;Cotθ = adjacent/opposite;Cotθ = adjacent x opposite;Cotθ = opposite/adjacent;Cotθ = opposite/hypotenuse;mathematics;medium
 2 × (L+W) is the formula for?;The perimeter of a rectangle;The perimeter of a triangle;The perimeter of a pentagon;The area of a pentagon;mathematics;medium
+Where can we find Stonehenge?;England;Wales;Scotland;Ireland;arts;medium
+Which Spanish painter was known for his hallucinatory paintings?;Salvador Dalí;Francisco de Zurbarán;Johannes Vermeer;Georges Seurat;arts;hard
+How many people are visible in The Last Supper by Leonardo da Vinci?;13;3;10;7;arts;easy
+Which sculptor is best known for his colossal Statue of Freedom?;Thomas Crawford;Hiram Powers;Clark Mills;Horatio Greenough;arts;hard
+Who is the creator of the famous sculptures The Thinker and The Kiss?;Auguste Rodin;Nicolai Abildgaard;Hans von Aachen;Dirck Jacobszoon;arts;hard
+In the quarrel of color versus drawing, what are the supporters of the supremacy of disegno (“drawing”) over color called?;Poussinist;Ancient;Rubenist;Modern;arts;hard
+In which year was the German art society Nazarene founded?;1809;1923;1924;1819;arts;hard
+Which one of these is not a well-known Indian sculptor?;Henry Moore;Ramkinkar Baij;Krishna Reddy;Kumaradeva;arts;hard
+Name the church where Leonardo da Vinci''s famous fresco the "Last Supper" is painted.;Santa Maria delle Grazie;San Nazaro in Brolo; Duomo di Milano;Basilica di Sant'Ambrogio;arts;hard
+Who painted "The Starry Night"?;Vincent van Gogh;Georges Seurat;Pierre-Auguste Renoir;Paul Gauguin;arts;easy
+What was the artistic movement that originated in Italy in the early 20th-century?;Futurism;Suprematism;Stridentism;Neoplasticism;arts;medium
+Which art movement flourished in Zurich, Switzerland, during the early 20th century?;Dada;Rococo;Modern art;Pop art;arts;medium
+The first artist to receive the MacArthur Foundation "genius" award was:;Robert Irwin;Mary Corse;Barnett Newman;Larry Bell;arts;hard
+Which art technique uses light and shadow to define three-dimensional objects?;Chiaroscuro;Grisaille;Impasto;Oil painting;arts;hard
+Who was the teacher of Leonardo da Vinci?;Andrea del Verrocchio;Raphael;Giorgio Vasari;Sandro Botticelli;arts;hard
+During whose reign did the Carolingian art begin?;Charlemagne;Pepin the Short;Desiderius;Clovis I;arts;medium
+When did Constructivism in art begin?;1913;1886;1770;1600;arts;easy
+Who is the founder of the Rayonism art movement?;Mikhail Fyodorovich Larionov;Franz Marc;Robert Delaunay;Albert Gleizes;arts;hard
+Which American filmmaker is also known as one of the originators of the assemblage form of sculpture?;Joseph Cornell;Joseph Bard;Robert Motherwell;Elieen Agar;arts;hard
+Name the art group formed from the initials of the founders'' home cities;COBRA;De Stijl;Section d''Or;Puteaux group;arts;medium
+The motto "Art for art''s sake" belongs to which art movement?;Aestheticism;Costumbrismo;Mannerism;Expressionism;arts;easys
