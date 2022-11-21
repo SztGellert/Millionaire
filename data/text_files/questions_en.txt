@@ -422,3 +422,12 @@ Where do cashews grow?;On trees;On grasse;Under water;In the ground;biology;easy
 What kind of animal is a nightjar?;Bird;Rodent;Fish;Reptile;biology;easy
 Where in the human body is the epiglottis?;Voice box;Ear;Stomach;Liver;biology;hard
 What is the "white" of a chicken egg?;Albumen;Vitellum;Globulin;Yolk;biology;easy
+Mycobacterium leprae causes leprosy, Corynebacterium diphtheria causes diphtheria and Vibrio comma causes?;cholera;influenza;tetanus;typhoid;biology;hard
+Ptyalin is an enzyme produced in the?;salivary glands;pituitary glands;thyroid glands;pancreas;biology;hard
+Pollination by wind is called?;anemophily;hydrophily;zoophily;entomophily;biology;hard
+Mutation is?;a change that is inherited;a change which affects the offspring of F2 generation only;a factor responsible for plant growth;a change which affects the parents;biology;hard
+Plants that grow under average temperature and moisture are called?;mesophytes;xerophytes;hydrophytes;halophytes;biology;hard
+Mumps is a disease caused by?;virus;bacterium;fungus;None of these;biology;hard
+Rain water helps to increase the ____ to some extent.;calcium contents;nitrogen contents;phosphorous contents;potash contents;biology;hard
+Number of chromosomes in Down's syndrome is?;47;48;46;49;biology;hard
+Outer covering of virus made up of protein is?;capsid;coat;virion;viriod;biology;hard
