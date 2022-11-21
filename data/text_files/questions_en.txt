@@ -456,7 +456,7 @@ What is the world’s biggest known number?;Googolplex;Googol;Eddington number;G
 What do you call the two consecutive primes that differ by two?;Twin Primes;Cousin primes;Factorial primes;Good primes;mathematics;hard
 C=2πr is the formula for?;Circumference of a Circle;Circumference of a Triangle;Area of a Circle;None of these;mathematics;medium
 What is the formula for the area of a square?;A=s^^2;A=s;A=s^^3;A=s + s;mathematics;medium
-The formula for the cotangent is?;Cotθ = adjacent/opposite;Cotθ = adjacent x opposite;Cotθ = opposite/adjacent;Cotθ = opposite/hypotenuse;mathematics;medium
+The formula for the cotangent is?;Cotθ = adjacent/opposite;Cotθ = adjacent x opposite;Cotθ = opposite/adjacent;Cotθ = opposite/hypotenuse;mathematics;medium
 2 × (L+W) is the formula for?;The perimeter of a rectangle;The perimeter of a triangle;The perimeter of a pentagon;The area of a pentagon;mathematics;medium
 Where can we find Stonehenge?;England;Wales;Scotland;Ireland;arts;medium
 Which Spanish painter was known for his hallucinatory paintings?;Salvador Dalí;Francisco de Zurbarán;Johannes Vermeer;Georges Seurat;arts;hard
@@ -561,3 +561,12 @@ Proteins must compose ___________of a person's daily Calorie intake.;20-30%;30-4
 What are the main purposes of proteins in a body?;They help in repairing cells and aiding the processing of other nutrients.;They help in building and repairing body tissue and also help regulate enzymes.;They aid in energy formation and help in clearing the digestive tract.;None;gastronomy;hard
 What happens to the body if a person consumes excess protein?;The person could develop kidney failure or calcium loss.;The person could develop liver failure or hypertension.;The person needs to eat less nutrients;Nothing would happen to the person.;gastronomy;hard
 Which waxy substance is found in all animal sources of protein?;Cholesterol;Unsaturated fat;Trans fat;None of the above;gastronomy;hard
+What historical event led to the creation of the field of macroeconomics?;The Great Depression;The end of WWII;The Bretton Woods Agreement;The U.S. gaining independence from Great Britain;economy;hard
+What is the Paradox of Thrift?;The idea that many individuals saving money can actually be bad for an economy;The idea that saving money can actually harm a person’s finances in the future;When many people put money in savings, it can spur a country’s economic growth;When you find super nice stuff at a thrift store;economy;medium
+What does Gross Domestic Product (GDP) measure?;The sum of all goods and services an economy produces;The measure of how much money is in the economy;The total salary of everyone in a country minus environmental impact;The most disgusting product made in people’s homes every year;economy;easy
+Which one of these is *not* a stage of the business cycle?;Regression;Peak;Recession;Trough;economy;medium
+What is counter-cyclical policy?;Policy pushes that are counter to the business cycle;Anti-recycling policies;Policy that goes against popular opinion (often in the name of the economy);Policy that doesn’t seem to make logical sense, but ends up benefiting the economy;economy;hard
+Which of the following is *not* thought to be a contributor to inflation?;The Fed announcing that it plans to raise interest rates;People getting worried that prices will go up;Demand for products increasing relative to supply;Government spending;economy;medium
+Which of these is a cause of structural unemployment?;Job losses that result from technological advancement;Someone looking for a job but not interested in working 40 hours a week because there’s too much living to do;Job losses that result from a whole company going under;Professional Santas looking for work in June;economy;easy
+Which of these is the job of the Federal Reserve?;All of the above;Being a lender of last resort to the U.S. banking system;Keeping unemployment low;Keeping inflation under control;economy;hard
+What did Keynes say he wished he would have done more of at the end of his life?;He wished he’d drunk more champagne;He wished he’d lived a simpler life;He wished he’s spent more time with his family (the greatest asset of all);He wished he’d gotten around to writing that rap battle;economy;hard
