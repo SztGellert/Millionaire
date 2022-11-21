@@ -392,3 +392,33 @@ What chemical element is liquid at room temperature?;Bromine;Thulium;Tungsten;He
 According to Brønsted, a substance that is able to accept protons is a …?;Base;Acid;Metal;Salt;chemistry;hard
 Which is a form of ascorbic acid?;Vitamin C;Hydrochloric acid;Ammonia;LSD;chemistry;hard
 What was replaced in nearly every country due to the "Montreal Protocol" of 1987?;CFCs;LSD;USWs;FM;chemistry;hard
+The metal used to recover copper from a solution of copper sulphate is?;Fe;Hg;Ag;Na;chemistry;easy
+The molecules of which gas have highest speed?;H2 at -73oC;CH4 at 300 K;N2 at 1,027oC;O2 at 0oC;chemistry;hard
+The main buffer system of the human blood is?;H2CO3 - HCO3;H2CO3 - CO32-;CH3COOH - CH3COO-;NH2CONH2 - NH2CONH+;chemistry;hard
+The nuclear particles which are assumed to hold the nucleons together are?;mesons;neutrons;positrons;electrons;chemistry;hard
+The octane number of zero is assigned to?;n-heptane;2-methyl octane;iso-octane;3-methyl octane;chemistry;hard
+The most abundant rare gas in the atmosphere is?;Ar;Ne;He;Xe;chemistry;easy
+The Latin word formica means ant. The name formic acid is derived from this Latin word because?;this acid was first obtained by the distillation of ants;ants are attracted by the odour of this acid;this corrosive acid is secreted by ants to drive away their enemies;this acid, in ancient times, was used to eliminate ant-hills;chemistry;hard
+The ore which is found in abundance in India is?;monazite;fluorspar;bauxite;magnetite;chemistry;hard
+The inherited traits of an organism are controlled by?;DNA molecules;nucleotides;RNA molecules;enzymes;chemistry;hard
+The heat energy produced when the human body metabolises 1 gram of fat is?;39 KJ;29 KJ;1 KJ;30 KJ;chemistry;hard
+What are the number of moles of CO2 which contains 16 g of oxygen?;0.5 mole;0.2 mole;0.4 mole;0.25 mole;chemistry;hard
+The monomer of polythene is?;ethylene;vinyl chloride;ethyl alcohol;None of the above;chemistry;easy
+The method that cannot be used for removing permanent hardness of water is?;boiling;adding caustic soda;distillation;adding sodium carbonate;chemistry;easy
+What are, on average, the heaviest primates?;Gorillas;Orangutans;Chimpanzees;Humans;biology;easy
+Charles Darwin concluded that evolution is driven by …?;Natural selection;Divine intervention;Serendipity;Fate;biology;easy
+What is the outermost layer of our skin?;Epidermis;Skin carapace;Hypodermis;Corium;biology;easy
+Which is NOT part of the water cycle?;Adherence;Precipitation;Percolation;Evaporation;biology;easy
+What is the study of heredity?;Genetics;Paleontology;Macrobiology;Zoology;biology;hard
+Which is an example of viral infection?;Polio;Rheumatism hard;Stroke;Gout;biology;hard
+What do conchiferous creatures have?;Shells;Wings;Paws;Horns;biology;easy
+The Przewalski's horse is native to …?;Mongolia;Sweden;Alaska;Chile;biology;hard
+The Dingo is endemic to …?;Australia;Brazil;South Africa;Sri Lanka;biology;easy
+How many horns did a triceratops have?;3;2;4;0;biology;medium
+Which of these is the smallest?;Virus;Plant cell;Bacterium;Animal;biology;easy
+When did Darwin publish "On the Origin of Species"?;1859;1912;1735;1788;biology;hard
+The shape of DNA is known as the …?;Double helix;Beta hairpin;Zinc finger;Coiled-coil;biology;hard
+Where do cashews grow?;On trees;On grasse;Under water;In the ground;biology;easy
+What kind of animal is a nightjar?;Bird;Rodent;Fish;Reptile;biology;easy
+Where in the human body is the epiglottis?;Voice box;Ear;Stomach;Liver;biology;hard
+What is the "white" of a chicken egg?;Albumen;Vitellum;Globulin;Yolk;biology;easy
