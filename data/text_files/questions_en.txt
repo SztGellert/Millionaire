@@ -578,3 +578,42 @@ Stocks are similar to bonds in that:;None of the above; Both have credit ratings
 Financial bubbles are exacerbated by:;All of the above;Herd behavior;Excessive optimism;FOMO;economy;medium
 When you attempt to buy a house that you know is overpriced because you plan to quickly sell it to a bigger dupe at an even higher price, taking the risk that you will be left owning it if the price starts falling, you are confirming:;The greater fool theory;The lucky loser hypothesis;The sucker’s paradise proposition;The pinhead postulate;economy;easy
 There will never be more than..;21 million bitcoins;13,000 bitcoins;57 billion bitcoins; Psych! There’s no bitcoin cap.;economy;easy
+Which statement odes not relate to the role of the economist?;Identifying ways to make society fairer;Forecasting the effects of a change in government policy;Attempting explain the causes of economic phenomena;Measuring general changes in the price level;economy;easy
+The need for exchange exists because?;Specialisation and the division of labour exist;Unemployment will fall as a result of exchange;Free goods have no opportunity cost;Consumers have both wants and needs;economy;easy
+Adam Smith was:;A Scottish economist;An american phylosopher;A Welsh geologist;An English poet;economy;easy
+Which statement best describes the "economic problem"?;Matching endless wants with limited resources;The fact that economies often go into recession;Having high levels of unemployment;The problem that high exchange rates deter exports;economy;easy
+Adam Smith, the founding father of economics, likened the price mechanism to:;invisible hand;heard of animals;computer;machine;economy;medium
+Opportunity cost is best defined as:;The cost of a decision expressed in terms of the next best alternative;How an economy suffers when in a recession;The cost of a decision expressed in monetary terms;The financial costs association with the production of goods and services;economy;medium
+Which is a "mixed" economy?;There are periods of growth and recession;Resources are allocated through the price mechanism and government;All resources are allocated through the price mechanism;The governmen commands how all resources are used;economy;medium
+A positive statement is one which:;Can be tested and verified;Cannot be tested or verified;Is based on opinion;Is based on a value judgement;economy;hard
+Which is not a positive statement?;Falling prices are good for consumers;An increase in the price of houses will affect real incomes;Rising prices can ecourage production;Falling prices can ecourageconsumer spending;economy;hard
+Which statement is a positive one?;The rate of growth was greater in 2007 than in 2018;Students should be given a greater financial support when they go to university;Some scarce resources are better left unused;The role of the economist is of increasing importance;economy;hard
+Which of the following statements is normative?;Poverty is something society should reduce;Not all resources experience price rises;An increase in house prices is likely to lead to a reduction in demand;Some of the earth's scare resources are non-renewable;economy;hard
+The "rationing" function of the price mechanism can be explained in which of the following ways?;As resources are increasingly used, prices are driven up which slows down the rate of usage;Prices reflects the wants and needs of consumers;Governments limiting the supply of scare resources during time of war;When prices are falling suppliers are likely to supply more goods;economy;hard
+Which of the following is an example of a direct tax?;Corporation tax;Value added tax;Parking charges;Sales tax;economy;hard
+A government decides to subsidise the building of new houses. Which situation is likely to lead to the smallest increase in new house building:;Elasticity of supply of land is less than 1;Elasticity of supply of demand for houses is less than 1;Elasticity of supply of land is greater than 1;There is ample availability of land;economy;hard
+Which of the following is a likely motive for the imposition of a specific unit tax?;To reduce the consumption of harmful demerit goods;To stimulate spending on the good or service;To encourage the consumption of goods which generate positive externalities;To reduce the consumption of benefical merit goods;economy;hard
+Where did the first modern Summer Olympic games take place in 1896?;Athen;Sydney;Rome;Paris;sports;easy
+What is the nickname for Arsenal FC?;The Gunners;The Sky Blues;The Citizens;The Red Devils;sports;easy
+What number shirt is worn by a fullback in rugby union?;15;18;21;13;sports;medium
+Which boxer did Muhammad Ali fight in ‘The Rumble in the Jungle’?;George Foreman;Floyd Mayweather;Mike Tyson;Julio César Chávez;sports;medium
+How many Premier League titles did Manchester United win under Sir Alex Ferguson?;13;15;10;1;sports;medium
+In what year was the first edition of The Hundred cricket tournament?;2021;2022;2016;2018;sports;medium
+Which Irish footballer was sent home before the start of the 2002 FIFA World Cup after a public quarrel with his manager?;Roy Keane;Shay Given;Kiely Dean;Nick Colgan;sports;medium
+Ricky Hatton’s first career loss was to which other boxer?;Floyd Mayweather Jr.;Rocky Marciano;Manny Pacquiao;Joe Louis;sports;hard
+What date do all racehorses in the Northern Hemisphere celebrate their birthday?;1st January;31st December;16th May;6th January;sports;medium
+In which sport would you commonly use the terms; chukka, neckshot and millionaire’s shot?;Polo;Shooting;Archery;Horse Riding;sports;medium
+Which French city is known for its 24 hour motor race?;Le Mans;Marseille;Paris;Nizza;sports;easy
+What is the name of the only racehorse to win the Grand National 3 times?;Red Rum;Arkle;American Pharaoh;Winx;sports;easy
+Which football club has stands named after Graham Taylor and Sir Elton John?;Watford FC;Wulfrunians FC;Ashton FC;Bashley FC;sports;hard
+Which sport takes place in a velodrome?;Cycling;Running;Hurdles;Relay race;sports;easy
+In which 2 countries did the 2019 Cricket World Cup take place?;England & Wales;England & Germany;England & Denmark;England & France;sports;easy
+Follower and rover are positions in which sport?;Australian Rules Football;Sepak takraw;Underwater hockey;Disc golf;sports;easy
+Which nation won the 2019 Rugby World Cup?;South Africa;Chile;Paraguay;Jemen;sports;easy
+What is the term for a score of 1 over par on a golf hole?;Bogey;Birdie;Ace;Eagle;sports;easy
+Andy Murray’s first Grand Slam title was at which tennis tournament?;U.S. Open;Australian Open;French Open;Wimbledon;sports;easy
+At which football stadium would you find The Shankly Gates?;Anfield, Liverpool;Wembley, London;Old Trafford, Manchester;Westfalenstadion, Dortmund;sports;easy
+How many Olympic gold medals did Michael Phelps win?;23;24;25;30;sports;hard
+Which sport do the New York Giants play?;American Football;Soccer;Volleyball;Basketball;sports;easy
+What is the national sport of Japan?;Sumo wrestling;Karate;Judo;Jiu-jitsu;sports;easy
+The Boat Race is an annual event between which 2 universities?;Oxford & Cambridge;MIT & Chicago;Yale & Harvard;Boston & Chicago;sports;medium
