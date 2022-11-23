@@ -111,22 +111,26 @@ def select_settings():
     while True:
         chosen_option = get_user_input(language_dictionary[util.game_language].menu.settings_menu_options, default_width)
         if chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[0]:
-            show_options([language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu], 20)
             langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu]
-            chosen_lang_option = get_user_input(langs, 20)
+            show_options(langs, 20, util.available_languages.index(util.game_language))
+            chosen_lang_option = get_user_input(langs, 20, util.available_languages.index(util.game_language))
             util.set_game_language(util.available_languages[langs.index(chosen_lang_option)])
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
         if chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[-3]:
-            show_options(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width)
-            chosen_question_topic = get_user_input(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width)
+            show_options(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width,  language_dictionary[util.game_language].menu.settings_menu_question_topics.index(util.question_topics))
+            chosen_question_topic = get_user_input(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width, language_dictionary[util.game_language].menu.settings_menu_question_topics.index(util.question_topics))
             if chosen_question_topic != language_dictionary[util.game_language].menu.settings_menu_question_topics[0]:
                 util.set_question_topics(chosen_question_topic)
             else:
                 util.set_question_topics(chosen_question_topic)
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
         if chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[-2]:
-            show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20)
-            chosen_difficulty_option = get_user_input(language_dictionary[util.game_language].menu.question_difficulty_levels,20)
+            if util.question_difficulty != "":
+                show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20, language_dictionary[util.game_language].menu.question_difficulty_levels.index(util.question_difficulty))
+                chosen_difficulty_option = get_user_input(language_dictionary[util.game_language].menu.question_difficulty_levels,20,language_dictionary[util.game_language].menu.question_difficulty_levels.index(util.question_difficulty))
+            else:
+                show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20)
+                chosen_difficulty_option = get_user_input(language_dictionary[util.game_language].menu.question_difficulty_levels, 20,)
             if chosen_difficulty_option != language_dictionary[util.game_language].menu.question_difficulty_levels[0]:
                 util.set_question_difficulty(chosen_difficulty_option)
             else:
