@@ -12,9 +12,7 @@ fg.orange = Style(RgbFg(255, 150, 50))
 fg.green = Style(RgbFg(0, 255, 0))
 bg.orange = bg(255, 150, 50)
 languages = util.available_languages
-game_language = "en"
 language_dictionary = util.language_dictionary
-question_topics = "All "
 
 
 def play(inputs: dict):
@@ -39,10 +37,10 @@ def play(inputs: dict):
     question_file = 'questions_' + game_language + ".txt"
     question_lines = util.open_file(question_file, "r", ";")
     random.shuffle(question_lines)
-    if question_topics != language_dictionary[game_language].menu.settings_menu_question_topics[0]:
+    if question_topics != util.Topics.ALL.name:
         populated = filter(lambda c: c[5] == str(question_topics).lower().strip(), question_lines)
         question_lines = list(populated)
-    if question_difficulty != "":
+    if question_difficulty != util.Difficulty.ALL.name:
         populated = filter(lambda c: c[6] == str(question_difficulty).lower().strip(), question_lines)
         question_lines = list(populated)
     else:
@@ -117,7 +115,7 @@ def play(inputs: dict):
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
                 if score != 0:
-                    write_content_to_file("scores.json", {"user": player_name, "topic": language_dictionary[game_language].menu.settings_menu_question_topics.index(question_topics), "score": score,
+                    write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
                                                           "time": time.ctime(time.time())})
                 menu.return_prompt()
                 util.clear_screen()
@@ -216,13 +214,13 @@ def play(inputs: dict):
             menu.return_prompt()
             util.clear_screen()
             if score != 0:
-                write_content_to_file("scores.json", {"user": player_name, "topic": language_dictionary[game_language].menu.settings_menu_question_topics.index(question_topics), "score": score,
+                write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
                                                       "time": time.ctime(time.time())})
             return
         util.clear_screen()
 
     if score != 0:
-        write_content_to_file("scores.json", {"user": player_name, "topic": language_dictionary[game_language].menu.settings_menu_question_topics.index(question_topics), "score": score,"time": time.ctime(time.time())})
+        write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,"time": time.ctime(time.time())})
     return
 
 
