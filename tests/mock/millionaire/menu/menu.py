@@ -13,7 +13,7 @@ default_width = 40
 
 def intro():
     util.clear_screen()
-    if util.game_language == "hu":
+    if util.game_language == util.Language.HUNGARIAN.name:
         util.play_sound("intro_hu.mp3", 0, volume=1)
     else:
         util.play_sound("loim_intro.wav", 0)
