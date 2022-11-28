@@ -125,19 +125,19 @@ def select_settings():
                 util.set_question_topics(chosen_question_topic)
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[-3]:
-            if util.question_difficulty != "":
+            if util.question_difficulty != util.Difficulty.ALL.name:
                 show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20, language_dictionary[util.game_language].menu.question_difficulty_levels.index(util.question_difficulty))
-                chosen_difficulty_option = get_user_input(language_dictionary[util.game_language].menu.question_difficulty_levels,20,language_dictionary[util.game_language].menu.question_difficulty_levels.index(util.question_difficulty))
+                chosen_difficulty_option = get_user_input(language_dictionary[util.game_language].menu.question_difficulty_levels,20, language_dictionary[util.game_language].menu.question_difficulty_levels.index(util.question_difficulty))
             else:
                 show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20)
                 chosen_difficulty_option = get_user_input(language_dictionary[util.game_language].menu.question_difficulty_levels, 20,)
             if chosen_difficulty_option != language_dictionary[util.game_language].menu.question_difficulty_levels[0]:
                 util.set_question_difficulty(chosen_difficulty_option)
             else:
-                util.set_question_difficulty("")
+                util.set_question_difficulty(util.Difficulty.ALL.name)
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[-2]:
-            util.init_settings(util.available_languages[0])
+            util.init_settings(util.Language.ENGLISH.name, reset_settings=True)
         else:
             update_settings_file()
             return

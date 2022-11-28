@@ -6,6 +6,7 @@ from collections import namedtuple
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
 import pygame
 from enum import Enum
+
 operating_system = os.name
 
 
@@ -34,15 +35,17 @@ class Topics(Enum):
 class Difficulty(Enum):
     ALL = 0
     EASY = 1
-    MEDIUM = 2
+    Medium = 2
     HARD = 3
 
 
-available_languages = [item.name for item in Language]
-game_language = Language.ENGLISH.name
-question_difficulty = Difficulty.ALL.name
-question_topics = Topics.ALL.name
+available_languages = [item.name.capitalize() for item in Language]
+game_language = Language.ENGLISH.name.capitalize()
+question_difficulty = Difficulty.ALL.name.capitalize()
+question_topics = Topics.ALL.name.capitalize()
 language_dictionary = {}
+topics = [topic.name for topic in Topics]
+difficulty_levels = [level.name for level in Difficulty]
 
 
 def init():
@@ -50,13 +53,13 @@ def init():
     init_settings(game_language)
 
 
-def init_settings(selected_lang: str):
+def init_settings(selected_lang: str, reset_settings=False):
     global game_language
     global question_topics
     global language_dictionary
     global question_difficulty
 
-    if os.path.isfile("settings.json"):
+    if os.path.isfile("settings.json") and reset_settings == False:
         file_path = "settings.json"
         with open(file_path, encoding="UTF-8") as json_file:
             data = json.load(json_file)

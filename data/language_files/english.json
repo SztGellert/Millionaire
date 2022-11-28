@@ -1,6 +1,6 @@
 {
-    "en": "english ",
-    "hu": "hungarian ",
+    "en": "english",
+    "hu": "hungarian",
     "menu": {
         "title_first_line": " ♦  W H O    W A N T S   T O   B E   A  ♦",
         "title_second_line": "     M  I  L  L  I  O  N  A  I  R  E",
@@ -10,11 +10,11 @@
                          "Default colour theme selection",
                          "Display size",
                          "Question types",
-                         "Question difficulty ",
+                         "Question difficulty",
                          "Restore Settings",
                          "Back"],
         "main_menu_options" : ["Play", "Tutorial", "Settings", "Credits ","Scores", "Exit"],
-        "settings_menu_question_topics": ["All ","General knowledge ","History ", "Geography ","Physics ","Chemistry ","Biology ","Mathematics ","Arts","Literature","Music ","Gastronomy","Economy ","Sports"],
+        "settings_menu_question_topics": ["All","General ","History", "Geography","Physics","Chemistry","Biology","Mathematics","Arts","Literature","Music","Gastronomy","Economy","Sports"],
         "empty_scores": "First you need to play a game to achieve some points!",
         "scores": {
             "user":  "Player",
