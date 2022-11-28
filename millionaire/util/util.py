@@ -18,7 +18,7 @@ class Language(Enum):
 
 class Topics(Enum):
     ALL = 0
-    GENERAL_KNOWLEDGE = 1
+    GENERAL = 1
     HISTORY = 3
     GEOGRAPHY = 4
     PHYSICS = 5
@@ -36,14 +36,14 @@ class Topics(Enum):
 class Difficulty(Enum):
     ALL = 0
     EASY = 1
-    Medium = 2
+    MEDIUM = 2
     HARD = 3
 
 
-available_languages = [item.name.capitalize() for item in Language]
-game_language = Language.ENGLISH.name.capitalize()
-question_difficulty = Difficulty.ALL.name.capitalize()
-question_topics = Topics.ALL.name.capitalize()
+available_languages = [item.name for item in Language]
+game_language = Language.ENGLISH.name
+question_difficulty = Difficulty.ALL.name
+question_topics = Topics.ALL.name
 language_dictionary = {}
 topics = [topic.name for topic in Topics]
 difficulty_levels = [level.name for level in Difficulty]
@@ -124,8 +124,8 @@ def get_data_path() -> str:
     return data_path
 
 
-def open_file(filename: str, mode: str, separator=",") -> list:
-    file_path = get_data_path() + "/text_files/" + filename
+def open_file(filename: str, mode: str, separator=",", filepath="/text_files/") -> list:
+    file_path = get_data_path() + filepath + filename + ".txt"
     with open(file_path, mode, encoding="UTF-8") as file:
         list_of_file = []
         for line in file:

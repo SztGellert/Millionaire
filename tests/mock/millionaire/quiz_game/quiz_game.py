@@ -34,24 +34,51 @@ def play(inputs: dict):
     util.clear_screen()
     util.play_sound("lom.mp3", 0)
     time.sleep(2)
-    question_file = 'questions_' + game_language + ".txt"
-    question_lines = util.open_file(question_file, "r", ";")
-    random.shuffle(question_lines)
-    if question_topics != util.Topics.ALL.name:
-        populated = filter(lambda c: c[5] == str(question_topics).lower().strip(), question_lines)
-        question_lines = list(populated)
-    if question_difficulty != util.Difficulty.ALL.name:
-        populated = filter(lambda c: c[6] == str(question_difficulty).lower().strip(), question_lines)
-        question_lines = list(populated)
+    question_lines = []
+    question_lines_easy = []
+    question_lines_medium = []
+    question_lines_hard = []
+    if question_topics == util.Topics.ALL.name:
+        for topic in util.Topics:
+            if topic.name != util.Topics.ALL.name and question_difficulty != util.Difficulty.ALL.name:
+                for level in util.Difficulty:
+                    if question_difficulty == level.name:
+                        for line in util.open_file(level.name, "r", ";",
+                                                   "/text_files/topics/" + game_language + "/" + topic.name + "/" + level.name + "/"):
+                            question_lines.append(line)
+            else:
+                if topic.name != util.Topics.ALL.name:
+                    for line in util.open_file(util.Difficulty.EASY.name, "r", ";",
+                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.EASY.name + "/"):
+                        question_lines_easy.append(line)
+                    for line in util.open_file(util.Difficulty.MEDIUM.name, "r", ";",
+                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.MEDIUM.name + "/"):
+                        question_lines_medium.append(line)
+                    for line in util.open_file(util.Difficulty.HARD.name, "r", ";",
+                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.HARD.name + "/"):
+                        question_lines_hard.append(line)
     else:
-        populated_easy_questions = filter(lambda c: c[6] == str(language_dictionary[game_language].menu.question_difficulty_levels[1]).lower().strip(), question_lines)
-        question_lines_easy = list(populated_easy_questions)
-        populated_medium_questions = filter(lambda c: c[6] == str(language_dictionary[game_language].menu.question_difficulty_levels[2]).lower().strip(), question_lines)
-        question_lines_medium = list(populated_medium_questions)
-        populated_hard_questions = filter(lambda c: c[6] == str(language_dictionary[game_language].menu.question_difficulty_levels[3]).lower().strip(), question_lines)
-        question_lines_hard = list(populated_hard_questions)
+        for level in util.Difficulty:
+            if question_difficulty == level.name and question_difficulty != util.Difficulty.ALL.name:
+                for line in util.open_file(level.name, "r", ";",
+                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + level.name + "/"):
+                    question_lines.append(line)
+            else:
+                for line in util.open_file(util.Difficulty.EASY.name, "r", ";",
+                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.EASY.name + "/"):
+                    question_lines_easy.append(line)
+                for line in util.open_file(util.Difficulty.MEDIUM.name, "r", ";",
+                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.MEDIUM.name + "/"):
+                    question_lines_medium.append(line)
+                for line in util.open_file(util.Difficulty.HARD.name, "r", ";",
+                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.HARD.name + "/"):
+                    question_lines_hard.append(line)
+    random.shuffle(question_lines)
+    random.shuffle(question_lines_easy)
+    random.shuffle(question_lines_medium)
+    random.shuffle(question_lines_hard)
     for i in range(15):
-        if question_difficulty == "":
+        if question_difficulty == util.Difficulty.ALL.name:
             if i < 5:
                 question_lines = question_lines_easy
             elif i < 10:
