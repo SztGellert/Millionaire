@@ -37,27 +37,35 @@ def play():
             if topic.name != util.Topics.ALL.name and question_difficulty != util.Difficulty.ALL.name:
                 for level in util.Difficulty:
                     if question_difficulty == level.name:
-                        for line in util.open_file(level.name, "r", ";", "/text_files/topics/" + game_language + "/" + topic.name + "/" + level.name + "/"):
+                        for line in util.open_file(level.name, "r", ";",
+                                                   "/text_files/topics/" + game_language + "/" + topic.name + "/" + level.name + "/"):
                             question_lines.append(line)
             else:
                 if topic.name != util.Topics.ALL.name:
-                    for line in util.open_file(util.Difficulty.EASY.name, "r", ";", "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.EASY.name + "/"):
+                    for line in util.open_file(util.Difficulty.EASY.name, "r", ";",
+                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.EASY.name + "/"):
                         question_lines_easy.append(line)
-                    for line in util.open_file(util.Difficulty.MEDIUM.name, "r", ";", "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.MEDIUM.name + "/"):
+                    for line in util.open_file(util.Difficulty.MEDIUM.name, "r", ";",
+                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.MEDIUM.name + "/"):
                         question_lines_medium.append(line)
-                    for line in util.open_file(util.Difficulty.HARD.name, "r", ";", "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.HARD.name + "/"):
+                    for line in util.open_file(util.Difficulty.HARD.name, "r", ";",
+                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.HARD.name + "/"):
                         question_lines_hard.append(line)
     else:
         for level in util.Difficulty:
             if question_difficulty == level.name and question_difficulty != util.Difficulty.ALL.name:
-                for line in util.open_file(level.name, "r", ";","/text_files/topics/" + game_language + "/" + question_topics + "/" + level.name + "/"):
+                for line in util.open_file(level.name, "r", ";",
+                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + level.name + "/"):
                     question_lines.append(line)
             else:
-                for line in util.open_file(util.Difficulty.EASY.name, "r", ";", "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.EASY.name + "/"):
+                for line in util.open_file(util.Difficulty.EASY.name, "r", ";",
+                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.EASY.name + "/"):
                     question_lines_easy.append(line)
-                for line in util.open_file(util.Difficulty.MEDIUM.name, "r", ";", "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.MEDIUM.name + "/"):
+                for line in util.open_file(util.Difficulty.MEDIUM.name, "r", ";",
+                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.MEDIUM.name + "/"):
                     question_lines_medium.append(line)
-                for line in util.open_file(util.Difficulty.HARD.name, "r", ";", "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.HARD.name + "/"):
+                for line in util.open_file(util.Difficulty.HARD.name, "r", ";",
+                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.HARD.name + "/"):
                     question_lines_hard.append(line)
     random.shuffle(question_lines)
     random.shuffle(question_lines_easy)
@@ -72,17 +80,17 @@ def play():
             else:
                 question_lines = question_lines_hard
         question = question_lines[i][0]
-        print(question)
         answers = {"a": question_lines[i][1], "b": question_lines[i][2], "c": question_lines[i][3],
                    "d": question_lines[i][4]}
         answer_list = list(answers.values())
         random.shuffle(answer_list)
         shuffled_answers = dict(zip(answers, answer_list))
-        for k in range(len(answer_list)):
-            print(list(answers.keys())[k] + ": " + answer_list[k])
+        print_question(question, shuffled_answers)
         answer = safe_input(
             language_dictionary[game_language].quiz.select_answer,
             ["a", "b", "c", "d", "h", "t"])
+        util.clear_screen()
+        print_question(question, shuffled_answers, answer, "orange")
         correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
         correct_answer_value = question_lines[i][1]
         while answer not in list(answers.keys()):
@@ -159,39 +167,55 @@ def play():
             score += 1
             if i < 14:
                 util.play_sound("correct_answer.mp3", 0)
+                util.clear_screen()
+                print_question(question, shuffled_answers, answer, "green")
+                time.sleep(2)
+                util.clear_screen()
                 if i == 4:
-                    print(fg.yellow + language_dictionary[game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
+                    print("\n" + " " * 20 + fg.yellow + language_dictionary[game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     util.play_sound("won_hundred_bucks.mp3", 0)
-                    time.sleep(1)
+                    print("-" * (len(question) + len(show_prize(i)) + 8))
+                    print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
+                          " " * (int(len(question) / 2)), bg.rs, "|")
+                    print("-" * (len(question) + len(show_prize(i)) + 8))
+                    time.sleep(3)
                 elif i == 9:
-                    print(fg.yellow + language_dictionary[game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
+                    print("\n" + " " * 20 + fg.yellow + language_dictionary[game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     util.play_sound("now_comes_hard_part.mp3", 0)
-                    time.sleep(1)
+                    print("-" * (len(question) + len(show_prize(i)) + 8))
+                    print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
+                          " " * (int(len(question) / 2)), bg.rs, "|")
+                    print("-" * (len(question) + len(show_prize(i)) + 8))
+                    time.sleep(3)
                 else:
-                    print(fg.green + language_dictionary[game_language].quiz.correct_answer + fg.rs)
-                    util.clear_screen()
-                    print(bg.orange + show_prize(i) + bg.rs)
+                    print("-" * (len(question)+len(show_prize(i))+8))
+                    print("|",bg.orange,fg.black," " * (int(len(question)/2)) + show_prize(i),fg.rs, " " * (int(len(question)/2)),bg.rs, "|")
+                    print("-" * (len(question)+len(show_prize(i))+8))
                     time.sleep(2)
             else:
                 util.play_sound("great_logic.mp3", 0)
                 time.sleep(1)
                 util.clear_screen()
-                print(fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(i) + " !" + fg.rs)
+                print("\n" + " " * 20 + fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(i) + " !" + fg.rs)
                 util.play_sound("winning_theme.mp3", 0)
                 time.sleep(35)
                 menu.return_prompt()
         else:
             util.play_sound("bad_answer.mp3", 0)
-            print(fg.green + correct_answer_value + fg.rs)
+            util.clear_screen()
+            print_question(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key)
+            time.sleep(2)
             print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
             menu.return_prompt()
             util.clear_screen()
             if score != 0:
-                write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score, "time": time.ctime(time.time())})
+                write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
+                                                      "time": time.ctime(time.time())})
             return
         util.clear_screen()
 
-    write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score, "time": time.ctime(time.time())})
+    write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
+                                          "time": time.ctime(time.time())})
     return
 
 
@@ -218,7 +242,7 @@ def check_answer(answer: str, correct_answer: str) -> bool:
 
 
 def show_prize(round_number: int) -> str:
-    prizes = util.open_file("prizes_" + game_language + ".txt", "r")
+    prizes = util.open_file("prizes_" + game_language, "r")
     return prizes[round_number][0]
 
 
@@ -249,10 +273,10 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
     time.sleep(10)
     phone = safe_input(language_dictionary[game_language].quiz.phone_prompt,
                        ["m", "d", "t", "y"])
-    call_text_files = ["mum_phone_" + game_language + ".txt",
-                       "dad_phone_" + game_language + ".txt",
-                       "teacher_phone_" + game_language + ".txt",
-                       "yoda_master_phone_" + game_language + ".txt"
+    call_text_files = ["mum_phone_" + game_language,
+                       "dad_phone_" + game_language,
+                       "teacher_phone_" + game_language,
+                       "yoda_master_phone_" + game_language
                        ]
     for i in range(len(call_text_files)):
         if phone.lower() == call_text_files[i][0]:
@@ -328,3 +352,42 @@ def write_content_to_file(filename: str, content: {}):
     else:
         with open(filename, "w", encoding="UTF-8") as outfile:
             json.dump([content], outfile)
+
+
+def print_question(question: str, answers_: {}, selected="", color="", correct_answer=""):
+    answer_values = list(answers_.values())
+    len_first_answer = len(list(answers_.items())[0][1])
+    len_second_answer = len(list(answers_.items())[1][1])
+    len_third_answer = len(list(answers_.items())[2][1])
+    len_fourth_answer = len(list(answers_.items())[3][1])
+    longest_string = list(sorted(answers_.values(), key=len))[-1]
+    len_separator = len(longest_string) * 2 + 20
+    table_length = 0
+    if len_separator > len(question) + 6:
+        table_length = len_separator
+    else:
+        table_length = int(len(question)) + 6
+    if selected != "":
+        for i in answers_:
+            if correct_answer != "" and i == correct_answer:
+                answer_values[list(answers_).index(i)] = bg.green + fg.black + answers_[i] + fg.rs + bg.rs
+            if i == selected:
+                if color == "orange":
+                    answer_values[list(answers_).index(i)] = bg.orange + fg.black + answers_[i] + fg.rs + bg.rs
+                if color == "green":
+                    answer_values[list(answers_).index(i)] = bg.green + fg.black + answers_[i] + fg.rs + bg.rs
+    print("-" * (table_length))
+    print("| " + question + " " * (table_length - len(question) - 3) + "|")
+    print("-" * (table_length))
+    print("\n")
+    print("-" * table_length)
+    print("| " + list(answers_.items())[0][0].upper(), ": ", answer_values[0],
+          " " * (int(table_length / 2) - len_first_answer -10), "|",
+          list(answers_.items())[1][0].upper(), ": ", answer_values[1],
+          " " * (int(table_length / 2) - len_second_answer-9), "|")
+    print("-" * table_length)
+    print("| " + list(answers_.items())[2][0].upper(), ": ", answer_values[2],
+          " " * (int(table_length / 2) - len_third_answer-10), "|",
+          list(answers_.items())[3][0].upper(), ": ", answer_values[3],
+          " " * (int(table_length / 2) - len_fourth_answer-9), "|")
+    print("-" * table_length)

@@ -20,7 +20,7 @@ def intro():
     else:
         util.play_sound("loim_intro.wav", 0)
     time.sleep(2)
-    file = (util.open_file("intro_" + util.game_language + ".txt", 'r'))
+    file = (util.open_file("intro_" + util.game_language, 'r'))
     for line_index in range(len(file)):
         if line_index == 3:
             print(fg.purple + file[line_index][0] + fg.rs)
@@ -68,7 +68,7 @@ def select_exit():
 
 def select_help():
     util.clear_screen()
-    file = (util.open_file("tutorial_" + util.game_language + ".txt", 'r'))
+    file = (util.open_file("tutorial_" + util.game_language, 'r'))
     for line in file:
         print(line[0])
     return_prompt()
@@ -76,7 +76,7 @@ def select_help():
 
 def select_credits():
     util.clear_screen()
-    file = (util.open_file("credits_" + util.game_language + ".txt", 'r'))
+    file = (util.open_file("credits_" + util.game_language, 'r'))
     for line in file:
         print(line[0])
     return_prompt()
