@@ -82,12 +82,10 @@ def init_settings(selected_lang: str, reset_settings=False):
 
 def set_game_language(selected_lang: str):
     global game_language
-    global question_topics
     for lang in available_languages:
         lang_dict = read_json_dict(selected_lang)
         language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
         game_language = selected_lang
-        question_topics = language_dictionary[game_language].menu.settings_menu_question_topics[0]
 
 
 def set_question_topics(selected_topic: str):

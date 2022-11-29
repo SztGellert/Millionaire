@@ -362,12 +362,19 @@ def print_question(question: str, answers_: {}, selected="", color="", correct_a
     len_third_answer = len(list(answers_.items())[2][1])
     len_fourth_answer = len(list(answers_.items())[3][1])
     longest_string = list(sorted(answers_.values(), key=len))[-1]
-    len_separator = len(longest_string) * 2 + 20
+    len_separator = len(longest_string) * 2 + 30
     table_length = 0
+    number_of_spaces = 0
     if len_separator > len(question) + 6:
         table_length = len_separator
+        if table_length % 2 == 0:
+            table_length += 1
+        number_of_spaces = int((table_length/2)-9)
     else:
         table_length = int(len(question)) + 6
+        if table_length % 2 == 0:
+            table_length += 1
+        number_of_spaces = int((table_length / 2) - 9)
     if selected != "":
         for i in answers_:
             if correct_answer != "" and i == correct_answer:
@@ -386,12 +393,12 @@ def print_question(question: str, answers_: {}, selected="", color="", correct_a
     print("\n")
     print("-" * table_length)
     print("| " + list(answers_.items())[0][0].upper(), ": ", answer_values[0],
-          " " * (int(table_length / 2) - len_first_answer -10), "|",
+          " " * (number_of_spaces - len_first_answer), "|",
           list(answers_.items())[1][0].upper(), ": ", answer_values[1],
-          " " * (int(table_length / 2) - len_second_answer-9), "|")
+          " " * (number_of_spaces - len_second_answer), "|")
     print("-" * table_length)
     print("| " + list(answers_.items())[2][0].upper(), ": ", answer_values[2],
-          " " * (int(table_length / 2) - len_third_answer-10), "|",
+          " " * (number_of_spaces - len_third_answer), "|",
           list(answers_.items())[3][0].upper(), ": ", answer_values[3],
-          " " * (int(table_length / 2) - len_fourth_answer-9), "|")
+          " " * (number_of_spaces - len_fourth_answer), "|")
     print("-" * table_length)
