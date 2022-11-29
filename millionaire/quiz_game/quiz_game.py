@@ -96,18 +96,18 @@ def play():
         while answer not in list(answers.keys()):
             if answer == "t":
                 util.clear_screen()
-                print(question)
-                for k in range(len(answer_list)):
-                    print(list(answers.keys())[k] + ": " + answer_list[k])
+                print_question(question, shuffled_answers)
                 util.play_sound("music_off.mp3", 0)
                 answer = safe_input(language_dictionary[game_language].quiz.select_answer_out,
                                     ["a", "b", "c", "d"])
-                time.sleep(2)
+                util.clear_screen()
+                print_question(question, shuffled_answers, answer, "blue")
                 util.play_sound("marked.mp3", 0)
                 time.sleep(2)
                 is_correct = check_answer(answer, correct_answer_key)
                 if is_correct:
                     util.clear_screen()
+                    print_question(question, shuffled_answers, answer, "green")
                     if i > 9:
                         print(bg.orange + show_prize(9) + bg.rs)
                         time.sleep(1)
@@ -121,7 +121,8 @@ def play():
                         time.sleep(1)
                 else:
                     util.play_sound("bad_answer.mp3", 0)
-                    print(fg.green + correct_answer_value + fg.rs)
+                    util.clear_screen()
+                    print_question(question, shuffled_answers, answer, "blue", correct_answer=correct_answer_key)
                     print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     util.play_sound("so_sorry.mp3", 0)
                     time.sleep(1)
@@ -376,6 +377,9 @@ def print_question(question: str, answers_: {}, selected="", color="", correct_a
                     answer_values[list(answers_).index(i)] = bg.orange + fg.black + answers_[i] + fg.rs + bg.rs
                 if color == "green":
                     answer_values[list(answers_).index(i)] = bg.green + fg.black + answers_[i] + fg.rs + bg.rs
+                if color == "blue":
+                    answer_values[list(answers_).index(i)] = bg.blue + fg.black + answers_[i] + fg.rs + bg.rs
+
     print("-" * (table_length))
     print("| " + question + " " * (table_length - len(question) - 3) + "|")
     print("-" * (table_length))
