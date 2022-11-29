@@ -59,20 +59,21 @@ def play(inputs: dict):
                         question_lines_hard.append(line)
     else:
         for level in util.Difficulty:
-            if question_difficulty == level.name and question_difficulty != util.Difficulty.ALL.name:
+            if question_difficulty == level.name and level.name != util.Difficulty.ALL.name:
                 for line in util.open_file(level.name, "r", ";",
-                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + level.name + "/"):
+                                           "/text_files/topics/" + game_language + "/" + level.name + "/" + level.name + "/"):
                     question_lines.append(line)
             else:
-                for line in util.open_file(util.Difficulty.EASY.name, "r", ";",
-                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.EASY.name + "/"):
-                    question_lines_easy.append(line)
-                for line in util.open_file(util.Difficulty.MEDIUM.name, "r", ";",
-                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.MEDIUM.name + "/"):
-                    question_lines_medium.append(line)
-                for line in util.open_file(util.Difficulty.HARD.name, "r", ";",
-                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty.HARD.name + "/"):
-                    question_lines_hard.append(line)
+                if level.name != util.Difficulty.ALL.name:
+                    for line in util.open_file(util.Difficulty(level).name, "r", ";",
+                                               "/text_files/topics/" + game_language + "/" + question_topics + "/" + util.Difficulty(
+                                                   level).name + "/"):
+                        if level.name == util.Difficulty.EASY.name:
+                            question_lines_easy.append(line)
+                        if level.name == util.Difficulty.MEDIUM.name:
+                            question_lines_medium.append(line)
+                        if level.name == util.Difficulty.HARD.name:
+                            question_lines_hard.append(line)
     random.shuffle(question_lines)
     random.shuffle(question_lines_easy)
     random.shuffle(question_lines_medium)
@@ -177,6 +178,7 @@ def play(inputs: dict):
                                                                                     correct_answer_value)
                                 for a in range(len(answer_list)):
                                     answer_list[a] = list(shuffled_answers.values())[a]
+                                print_question(question, shuffled_answers)
                             if chosen_help == "audience":
                                 list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
                             if chosen_help == "phone":
@@ -206,8 +208,8 @@ def play(inputs: dict):
 
                 time.sleep(2)
                 util.clear_screen()
+                print_question(question, shuffled_answers, answer, "orange")
         util.play_sound("marked.mp3", 0)
-        time.sleep(2)
         is_correct = check_answer(answer, correct_answer_key)
         time.sleep(2)
         if is_correct:
@@ -333,10 +335,7 @@ def halving(question: str, answers: {}, correct_answer: str) -> dict:
     util.clear_screen()
     time.sleep(2)
     util.play_sound("halving.mp3", 0)
-    print(question)
     halved_answers = calculate_halved_answers(answers, correct_answer)
-    for i in halved_answers:
-        print(i + ": " + halved_answers[i])
     return halved_answers
 
 
@@ -363,8 +362,13 @@ def audience_help(question: str, answers: {}, correct_value: str):
     for i in range(len(answers_list)):
         print(question)
         chances = get_chances(answers, correct_value)
+        print("\n")
         for key, value in sorted(chances.items()):
-            print(key + " : " + str(answers[key]) + " || " + str(value) + "%")
+            string_value = str(value)
+            if len(string_value) == 1:
+                string_value = string_value + " "
+            print(key.upper() + " : " + string_value + "% " + bg.orange + value*" " + bg.rs + " " + str(answers[key]))
+            print("\n")
         time.sleep(1)
         if i != len(answers_list) - 1:
             util.clear_screen()
