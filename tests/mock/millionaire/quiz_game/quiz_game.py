@@ -146,6 +146,8 @@ def play(inputs: dict):
                 util.clear_screen()
                 return
             if answer == "h":
+                util.clear_screen()
+                print_question(question, shuffled_answers)
                 help_functions = {"audience": audience_help, "halving": halving, "telephone": telephone_help}
                 help_inputs = [audience_inputs, halving_inputs, phone_inputs]
                 chosen_help = str

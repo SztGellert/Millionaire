@@ -134,9 +134,7 @@ def play():
                 return
             if answer == "h":
                 util.clear_screen()
-                print(question)
-                for k in range(len(answer_list)):
-                    print(list(answers.keys())[k] + ": " + answer_list[k])
+                print_question(question, shuffled_answers)
                 help_functions = {"audience": audience_help, "telephone": telephone_help, "halving": halving}
                 chosen_help_type = safe_input(language_dictionary[game_language].quiz.help_selection,
                                               ["a", "t", "h"])
