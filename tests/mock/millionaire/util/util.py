@@ -47,6 +47,7 @@ question_topics = Topics.ALL.name
 language_dictionary = {}
 topics = [topic.name for topic in Topics]
 difficulty_levels = [level.name for level in Difficulty]
+system_volume = True
 
 
 def init():
@@ -59,6 +60,7 @@ def init_settings(selected_lang: str, reset_settings=False):
     global question_topics
     global language_dictionary
     global question_difficulty
+    global system_volume
 
     if os.path.isfile("settings.json") and reset_settings == False:
         file_path = "settings.json"
@@ -73,6 +75,8 @@ def init_settings(selected_lang: str, reset_settings=False):
             lang_dict = read_json_dict(game_language)
             language_dictionary.update({game_language: custom_dictionary_decoder(lang_dict)})
             question_topics = data["topic"]
+            system_volume = data["volume"]
+
     else:
         for lang in available_languages:
             lang_dict = read_json_dict(selected_lang)
@@ -106,10 +110,11 @@ def clear_screen():
 
 
 def play_sound(filename, starting_time, volume=0.07):
-    file_path = get_data_path() + "/sound_files/" + filename
-    pygame.mixer.music.load(file_path)
-    pygame.mixer.music.set_volume(volume)
-    pygame.mixer.music.play(0, starting_time)
+    if system_volume:
+        file_path = get_data_path() + "/sound_files/" + filename
+        pygame.mixer.music.load(file_path)
+        pygame.mixer.music.set_volume(volume)
+        pygame.mixer.music.play(0, starting_time)
 
 
 def get_data_path() -> str:
@@ -133,7 +138,8 @@ def open_file(filename: str, mode: str, separator=",", filepath="/text_files/") 
 
 
 def stop_sound():
-    pygame.mixer.music.stop()
+    if system_volume:
+        pygame.mixer.music.stop()
 
 
 def read_json_dict(file_name: str) -> {}:

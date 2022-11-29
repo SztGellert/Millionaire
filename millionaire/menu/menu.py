@@ -4,6 +4,7 @@ import time
 from util import util
 from sty import Style, RgbFg, fg, bg
 import json
+import keyboard
 
 from quiz_game import quiz_game
 
@@ -118,6 +119,13 @@ def select_settings():
             chosen_lang_option = get_user_input(langs, util.available_languages, 20, util.available_languages.index(util.game_language), False)
             util.set_game_language(util.available_languages[util.available_languages.index(chosen_lang_option)])
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
+        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[1]:
+            if util.system_volume:
+                util.system_volume = False
+            else:
+                util.system_volume = True
+        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[2]:
+            keyboard.press('f11')
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[-4]:
             show_options(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width,  util.topics.index(util.question_topics))
             chosen_question_topic = get_user_input(language_dictionary[util.game_language].menu.settings_menu_question_topics, util.topics, default_width, util.topics.index(util.question_topics), False)
@@ -144,7 +152,7 @@ def select_settings():
 
 def update_settings_file():
     filename = "settings.json"
-    content = {"language": util.game_language, "topic": util.question_topics, "difficulty": util.question_difficulty}
+    content = {"language": util.game_language, "topic": util.question_topics, "difficulty": util.question_difficulty, "volume": util.system_volume}
     with open(filename, "w", encoding="UTF-8") as outfile:
         json.dump(content, outfile)
 

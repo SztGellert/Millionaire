@@ -6,15 +6,14 @@
         "title_second_line": "     M   I   L   L   I   O   M   O   S",
         "return_prompt": "Nyomja meg az ESCAPE-t a menübe való visszatéréshez...",
         "settings_menu_options": ["Nyelv kiválasztása",
-                     "Hangerő beállítása",
-                     "Színösszeállítás",
-                     "Képernyő méret",
+                     "Hangok ki/bekapcsolása",
+                     "Teljes képernyő <F11>",
                      "Kérdés témakörök",
                      "Kérdés nehézség ",
                      "Alapértelmezett beállítások",
                      "Vissza"],
         "main_menu_options": [
-            "Játék", "Útmutató", "Beállítások","Stáblista","Pontszámok", "Kilépés "
+            "Játék", "Útmutató", "Beállítások","Stáblista","Pontszámok", "Kilépés"
         ],
         "settings_menu_question_topics": ["Mind","Általános","Történelem", "Földrajz","Fizika","Kémia","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia","Közgazdaságtan","Sport"],
         "empty_scores": "Indítson egy kvízjátékot hogy pontokat szerezzen!",
