@@ -1,6 +1,5 @@
 from mock.millionaire import runner
 
-
 def main():
     test_select_correct_answers()
     test_guess_out_of_the_game()

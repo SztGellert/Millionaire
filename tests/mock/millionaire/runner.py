@@ -1,9 +1,5 @@
 #!/usr/bin/python3
 
-import os, sys
-myPath = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, myPath + '/../millionaire')
-from quiz_game import quiz_game
 from menu import menu
 from util import util
 
