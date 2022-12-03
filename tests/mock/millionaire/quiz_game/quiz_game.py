@@ -1,3 +1,6 @@
+# pylint: disable=<warning>
+
+
 import random
 import os
 from sty import Style, RgbFg, fg, bg

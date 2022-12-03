@@ -1,3 +1,6 @@
+# pylint: disable=<warning>
+
+
 import json
 import os
 import pathlib
