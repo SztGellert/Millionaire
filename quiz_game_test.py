@@ -24,6 +24,7 @@ class TestSum(unittest.TestCase):
     """
 
     def test_update_settings_file(self):
+        quiz.write_content_to_file("settings.json", {})
         settings = [
             {"lang": "en", "topic": "All"},
             {"lang": "en", "topic": "Phisycs"},
