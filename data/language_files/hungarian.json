@@ -1,0 +1,46 @@
+{
+    "en": "Angol",
+    "hu": "Magyar",
+    "menu": {
+        "title_first_line": " ♦      L E G Y E N     Ö N    I S      ♦",
+        "title_second_line": "     M   I   L   L   I   O   M   O   S",
+        "return_prompt": "Nyomja meg az ESCAPE-t a menübe való visszatéréshez...",
+        "settings_menu_options": ["Nyelv kiválasztása",
+                     "Hangok ki/bekapcsolása",
+                     "Teljes képernyő <F11>",
+                     "Kérdés témakörök",
+                     "Kérdés nehézség ",
+                     "Alapértelmezett beállítások",
+                     "Vissza"],
+        "main_menu_options": [
+            "Játék", "Útmutató", "Beállítások","Stáblista","Pontszámok", "Kilépés"
+        ],
+        "settings_menu_question_topics": ["Mind","Általános","Történelem", "Földrajz","Fizika","Kémia","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia","Közgazdaságtan","Sport"],
+        "empty_scores": "Indítson egy kvízjátékot hogy pontokat szerezzen!",
+        "scores": {
+            "user":  "Játékos",
+            "topic": "Témakör",
+            "score": "Pontszám",
+            "time":  "Idő"
+        },
+        "question_difficulty_levels": ["Mind","Könnyű", "Közepes", "Nehéz"]
+    },
+    "quiz": {
+        "player_name_prompt": "Hogyan szólíthatom? ",
+        "select_answer":"\nVálassza ki a helyes választ ('a','b','c','d'), 't' a játékon kívüli válaszadáshoz, 'h' ha segítséget szeretne!\n",
+        "select_answer_out": "\nVálassza ki a helyes választ ('a','b','c','d') ! ",
+        "correct_answer": "Szép volt!",
+        "correct_answer_out": "Helyes válasz! Több szerencsét a következő alkalommal!",
+        "incorrect_answer": "Rossz válasz! Több szerencsét a következő alkalommal!",
+        "guaranteed_prize": "Megvan a biztos ",
+        "won_prize": "Gratulálunk!! Ön most nyert: ",
+        "help": "segítséget",
+        "help_selection": "\nVálasszon a lehetőségek közül: 'a' a közönséghez, 't' a telefonhoz, 'h' hogy felezze a kérdéseket!",
+        "help_disabled": "Már használta a ",
+        "phone_prompt": "Kit szeretne felhívni?\n\nha a mamát, nyomjon 'm' -et\nha a papát, nyomja meg a 'd'-t\nha az idős tanárát a régi iskolájából, nyomja meg a 't'-t\nés ha Yoda Mestert, nyomjon 'y'-t!",
+        "allowed_letters_error": "Hiba! Csak az alábbi karakterek: ",
+        "allowed": " engedélyezettek!",
+        "call_duration": "Hívás időtartam: ",
+        "call_seconds": " mp\\ 30mp"
+    }
+}

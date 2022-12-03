@@ -10,9 +10,9 @@ pip install -r requirements.txt
 cd ./bin || exit
 cat <<EOF1 >create_linux_desktop_launcher.sh
 #!/bin/bash
-path_to_millionaire=\$(readlink -f ../millionaire/runner.py)
+path_to_millionaire=\$(readlink -f ../runner.py)
 path_to_icon=\$(readlink -f ../loim.png)
-chmod +x ../millionaire/runner.py
+chmod +x ../runner.py
 cd ~/Desktop || exit
 cat <<EOF >millionaire.desktop
 [Desktop Entry]
@@ -25,7 +25,7 @@ EOF
 chmod +x millionaire.desktop
 gio set millionaire.desktop metadata::trusted true
 EOF1
-path_to_millionaire=$(echo readlink -f ../millionaire/runner.py)
+path_to_millionaire=$(echo readlink -f ../runner.py)
 cat <<EOF > millionaire.sh
 #!/bin/bash
 python3 $($path_to_millionaire)

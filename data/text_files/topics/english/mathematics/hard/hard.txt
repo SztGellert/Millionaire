@@ -1,0 +1,15 @@
+Whose work gave rise to the terms algebra and algorithm?;Al-Khwarzimi;Al-Kashi;Hypatia;Issac Newton
+Who gave the first proof of the fundamental theorem of algebra?;Carl Friedrich Gauss;Blaise Pascal;Ada Lovelace;Sophie Germain
+What is the “Erdős number”?;a rank given to somebody who wrote a paper with Erdős himself or with somebody else who wrote a paper with Erdős, and so on?;any number beyond infinity;a number that characterizes the size of different infinite sets;the number of days an average mathematician can expect to live, based on the lifespan of Paul Erdős
+What is the term for numbers that can be expressed as an infinite sequence of decimals (including terminating decimals that can be considered as having an infinite sequence of zeros on the end)?;real numbers;integers;natural numbers;prime numbers
+What continental European mathematician-philosopher did Isaac Newton engage in a public dispute with over the invention of calculus?;Gottfried Wilhelm Leibniz;Blaise Pascal;René Descartes;Maimonides
+Who created the equal sign?;Robert Recorde;William Playfair;Thales;Gerolamo Cardano
+How many sides does an “enneadecagon” have?;19;20;21;17
+What does the term ‘crore’ mean?;Ten Million;Ten Thousand;Ten Billion;Ten Trillion
+What was the original name for the number 0?;Cipher;Nil;Nol;Cero
+In 1940, what number one followed by 100 zeros was used by Milton Sirotta for the first time?;Googol;Googolplex;Eddington number;Graham's number
+What is the value of e?;2.718;3.14;42;3.6
+What is the name of the number system that has a base of two?;Binary;Ternary;Duodecimal;Duocentesimal
+Who considered the fastest human calculator?;Scott Flansburg;Jack Kilby;Edith Clarke;Blaise Pascal
+What is the world’s biggest known number?;Googolplex;Googol;Eddington number;Graham's number
+What do you call the two consecutive primes that differ by two?;Twin Primes;Cousin primes;Factorial primes;Good primes

@@ -1,0 +1,16 @@
+Mi a Fibonacci-szekvencia, amelyet 1202-ben mutattak be ebben a feladatban: "Egy bizonyos ember egy nyulat tett egy olyan helyre, amelyet minden oldalról fal vett körül.Hány pár nyulat lehet ebből a párból előállítani egy év alatt, ha feltételezzük, hogy minden hónapban minden pár egy új párt nemz, amely a második hónaptól kezdve termővé válik?;1,1,2,3,5,8,13,21,34,55,...;1,2,5,9,14,20,27,35..;1,2,4,8,16,32,64,128,356;2,4,16,256,65,536,4,294,697,296, ...
+Melyik matematikai eszköz egyszerűsíti le az unalmas számításokat azáltal, hogy a szorzási feladatokat összeadássá, az osztási feladatokat pedig kivonással alakítja át?;logaritmusok;a számológép;algoritmusok;az abakusz
+Mi a kifejezés minden 1-nél nagyobb pozitív egész számra, amely csak önmagával és 1-gyel osztható?;prímszám;valós szám;természetes szám;integer
+Milyen mennyiséget számít ki a a*m/2 képlet?;Egy háromszög területe;Egy henger térfogata;Egy négyzet oldalának hossza;Egy félkör területe
+Mi a Pitagorasz-tétel?;egy derékszögű háromszög befogóján lévő négyzet egyenlő a másik két oldal négyzeteinek összegével;két háromszög megfelelő szöge akkor és csak akkor egyenlő, ha a megfelelő oldalaik arányosak;két oldal egy egyenlő szárú háromszög akkor és csak akkor egyenlő, ha a velük szemközti szögek egyenlőek; egy háromszög szögeinek összege mindig 180 fok
+Euklidész attól lett híres, mert ....?;Görög matematikus;Hozzájárult a logika deduktív elveinek a geometria alapjaként való használatához;előterjesztette a geometriai tételeket;mindegyik
+Mi a számok számtani átlaga [3, 5, 10]?;6;8;7;9
+A férj, feleség és gyermekük átlagéletkora 3 évvel ezelőtt 27 év, a feleségé és a gyermeké 5 évvel ezelőtt 20 év volt. Mennyi a férj jelenlegi életkora?;40 év;35 év;50 év;Egyik sem
+Vasárnap átlagosan 510, egyéb napokon 240 látogatója van egy könyvtárnak. A vasárnappal kezdődő 30 napos hónap átlagos napi látogatóinak száma:;285;280;276;250
+Egy busz sebessége megállás nélkül 54 km/óra, megállásokkal együtt pedig 45 km/óra. Hány percig áll a busz óránként?;10;9;12;20
+Oldja meg a következőt: 7(2x-2)=3(x-4)+9;x=1;x=2;x=4;x=3
+Oldja meg a következőt: 2a+5=a+7;a=2;a=3;a=4;a=1
+K=2πr minek a képlete?;kör kerülete;háromszög kerülete;kör területe;Egyik sem
+Mi a képlet a négyzet területére?;T=a^^2;T=a;T=a^^3;T=a + a
+Melyik a kotangens képlete?;Cotθ = a szög melletti befogó / szöggel szembeni befogó;Cotθ = a szög melletti befogó * szöggel szembeni befogó;Cotθ = szöggel szembeni befogó / a szög melletti befogó;Cotθ = a szög melletti befogó / átfogó
+2 × (L+W) minek a képlete?;Téglalap kerülete;háromszög kerülete;Ötszög kerülete;Ötszög területe

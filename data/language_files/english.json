@@ -1,0 +1,44 @@
+{
+    "en": "English",
+    "hu": "Hungarian",
+    "menu": {
+        "title_first_line": " ♦  W H O    W A N T S   T O   B E   A  ♦",
+        "title_second_line": "     M  I  L  L  I  O  N  A  I  R  E",
+        "return_prompt": "press ESC for main menu..",
+        "settings_menu_options": ["Language selection",
+                         "Disable/Enable Sound",
+                         "Full Screen <F11>",
+                         "Question types",
+                         "Question difficulty",
+                         "Restore Settings",
+                         "Back"],
+        "main_menu_options" : ["Play", "Tutorial", "Settings", "Credits","Scores", "Exit"],
+        "settings_menu_question_topics": ["All","General","History", "Geography","Physics","Chemistry","Biology","Mathematics","Arts","Literature","Music","Gastronomy","Economy","Sports"],
+        "empty_scores": "First you need to play a game to achieve some points!",
+        "scores": {
+            "user":  "Player",
+            "topic": "Topic",
+            "score": "Score",
+            "time":  "Time"
+        },
+        "question_difficulty_levels": ["All","Easy", "Medium", "Hard"]
+    },
+    "quiz": {
+        "player_name_prompt": "How can I call you? ",
+        "select_answer":"\nSelect the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help!\n",
+        "select_answer_out": "\nSelect the correct answer ('a','b','c','d') ! ",
+        "correct_answer": "Well Done!",
+        "correct_answer_out": "Correct answer! Better luck next time!",
+        "incorrect_answer": "Bad answer! Better luck next time!",
+        "guaranteed_prize": "You have guaranteed ",
+        "won_prize": "Congratulations!! You have just won: ",
+        "help": "help",
+        "help_selection": "\nChoose help: 'a' for audience, 't' for telephone, 'h' for halving!\n",
+        "help_disabled": "You have already used the ",
+        "phone_prompt": "Who'd you like to call?\n for mum, press 'm'\n for dad press 'd'\n for old teacher from high school press 't'\n for Maester Yoda press 'y': ",
+        "allowed_letters_error": "Error! Only letters: ",
+        "allowed": " allowed!",
+        "call_duration": "Call Duration: ",
+        "call_seconds": " seconds\\ 30s"
+    }
+}

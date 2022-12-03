@@ -1,0 +1,16 @@
+What is the Fibonacci sequence, presented in 1202 in this problem: "A certain man put a pair of rabbits in a place surrounded on all sides by a wall. How many pairs of rabbits can be produced from that pair in a year if it is supposed that every month each pair begets a new pair which from the second month on becomes productive?";1,1,2,3,5,8,13,21,34,55,...;1,2,5,9,14,20,27,35..;1,2,4,8,16,32,64,128,356;2,4,16,256,65,536,4,294,697,296, ...
+Which mathematical device simplifies tedious computations by converting problems of multiplication to addition and problems of division to subtraction?;logarithms;the calculator;algorithms;the abacus
+What is the term for any positive integer greater than 1 that is divisible only by itself and 1?;prime number;real number;natural number;integer
+What quantity is calculated by the formula hb/2?;The area of a triangle;The volume of a cylinder;The length of a side of a square;The area of a semicircle
+What is the Pythagorean theorem?;the square on the hypotenuse of a right triangle is equal to the sum of the squares on the other two sides;the corresponding angles of two triangles are equal if and only if their corresponding sides are proportional;two sides of an isosceles triangle are equal if and only if the angles opposite them are equal;the sum of the angles of a triangle is always 180 degrees
+Euclid was?;Greek mathematician;Contributor to the use of deductive principles of logic as the basis of geometry;Propounded the geometrical theorems;All of the above
+What is the arithmetic mean of the numbers [3, 5, 10]?;6;8;7;9
+The average age of husband, wife and their child 3 years ago was 27 years and that of wife and the child 5 years ago was 20 years. The present age of the husband is:;40 years;35 years;50 years;None of these
+A library has an average of 510 visitors on Sundays and 240 on other days. The average number of visitors per day in a month of 30 days beginning with a Sunday is:;285;280;276;250
+Excluding stoppages, the speed of a bus is 54 kmph and including stoppages, it is 45 kmph. For how many minutes does the bus stop per hour?;10;9;12;20
+Solve the equation: 2a+5=a+7;a=2;a=3;a=4;a=1
+Solve: 7(2x−2)=3(x−4)+9;x=1;x=2;x=4;x=3
+C=2πr is the formula for?;Circumference of a Circle;Circumference of a Triangle;Area of a Circle;None of these
+What is the formula for the area of a square?;A=s^^2;A=s;A=s^^3;A=s + s
+The formula for the cotangent is?;Cotθ = adjacent/opposite;Cotθ = adjacent x opposite;Cotθ = opposite/adjacent;Cotθ = opposite/hypotenuse
+2 × (L+W) is the formula for?;The perimeter of a rectangle;The perimeter of a triangle;The perimeter of a pentagon;The area of a pentagon
