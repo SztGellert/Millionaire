@@ -6,6 +6,7 @@ import keyboard
 from sty import Style, RgbFg, fg, bg
 import millionaire.quiz_game.quiz_game as quiz
 import millionaire.util.util as util
+import helpers
 
 fg.purple = Style(RgbFg(148, 0, 211))
 bg.orange = bg(255, 150, 50)
@@ -166,12 +167,9 @@ def update_settings_file():
 
 def return_prompt():
     if util.operating_system == "posix":
-        import getch
-        user_input = getch.getch()
+        user_input = helpers.return_user_input_linux()
     else:
-        import msvcrt
-        user_input = msvcrt.getch()
-
+        user_input = helpers.return_user_input_windows()
     print(fg.red + "\n" + language_dictionary[util.game_language].menu.return_prompt + fg.rs)
     # escape
     if user_input == b'\x1b':
