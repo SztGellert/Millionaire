@@ -1,3 +1,5 @@
+# pylint: skip-file
+
 def return_user_input_windows() -> bytes:
     import msvcrt
     user_input = msvcrt.getch()
