@@ -1,12 +1,11 @@
 import os
 import sys
 import time
-from util import util
-from sty import Style, RgbFg, fg, bg
 import json
 import keyboard
-
-from quiz_game import quiz_game
+from sty import Style, RgbFg, fg, bg
+import millionaire.quiz_game.quiz_game as quiz
+import millionaire.util.util as util
 
 fg.purple = Style(RgbFg(148, 0, 211))
 bg.orange = bg(255, 150, 50)
@@ -229,7 +228,7 @@ def handle_main_menu():
     while True:
         chosen_option = get_user_input(language_dictionary[util.game_language].menu.main_menu_options, language_dictionary[util.game_language].menu.main_menu_options, options_length, start_index)
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[0]:
-            quiz_game.play()
+            quiz.play()
             show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length)
             start_index = 0
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[1]:

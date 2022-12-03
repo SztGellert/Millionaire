@@ -3,7 +3,7 @@ pip3 install pillow
 pip3 install pipreqs
 pipreqs .
 pip3 install -r requirements.txt
-pyinstaller --paths "./millionaire" --distpath "./bin" --noconfirm --onefile --console --icon "./loim.png" --name=millionaire "./millionaire/runner.py"
+pyinstaller --paths "./millionaire" --distpath "./bin" --noconfirm --onefile --console --icon "./loim.png" --name=millionaire "./runner.py"
 set TARGET=Convert-Path .\bin\millionaire.exe
 set SHORTCUT='.\Millionaire.lnk'
 set WORKINGFOLDER=Convert-Path .\millionaire

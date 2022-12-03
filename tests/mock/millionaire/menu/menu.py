@@ -1,9 +1,9 @@
 import time
 import os
 import json
-from util import util
+from millionaire.util import util
 from sty import Style, RgbFg, fg, bg
-from quiz_game import quiz_game
+from millionaire.quiz_game.quiz_game import quiz_game
 import keyboard
 
 fg.purple = Style(RgbFg(148, 0, 211))

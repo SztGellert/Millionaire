@@ -1,7 +1,6 @@
 import json
 import os
 import pathlib
-import time
 from collections import namedtuple
 from enum import Enum
 
@@ -120,7 +119,7 @@ def get_data_path() -> str:
         path = str(pathlib.Path(__file__).parent.parent.parent.resolve())
         data_path = path + "/data"
     else:
-        data_path = "../data"
+        data_path = "./data"
 
     return data_path
 

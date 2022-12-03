@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
-from quiz_game import quiz_game
-from menu import menu
-from util import util
+from millionaire.quiz_game import quiz_game
+from millionaire.menu import menu
+from millionaire.util import util
 
 
 def main():

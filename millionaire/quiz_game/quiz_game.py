@@ -1,10 +1,10 @@
-import random
 import os
-from sty import Style, RgbFg, fg, bg
-from util import util
-import time
+import random
 import json
-from menu import menu
+import time
+from sty import Style, RgbFg, fg, bg
+import millionaire.menu.menu as menu
+import millionaire.util.util as util
 
 operating_system = os.name
 fg.purple = Style(RgbFg(148, 0, 211))

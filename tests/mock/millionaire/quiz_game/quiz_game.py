@@ -1,10 +1,10 @@
 import random
 import os
 from sty import Style, RgbFg, fg, bg
-from util import util
+import millionaire.util.util as util
 import time
 import json
-from menu import menu
+import millionaire.menu.menu as menu
 
 operating_system = os.name
 fg.purple = Style(RgbFg(148, 0, 211))
@@ -23,7 +23,7 @@ def play(inputs: dict):
     question_difficulty = util.question_difficulty
     player_name = input(language_dictionary[game_language].quiz.player_name_prompt)
     score = 0
-    question_topics = util.question_topicsű
+    question_topics = util.question_topics
     out_of_game_inputs = inputs["out_of_game_answers"]
     game_inputs = inputs["game_answers"]
     audience_inputs = inputs["audience_answers"]

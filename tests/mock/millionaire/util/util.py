@@ -1,7 +1,6 @@
 import json
 import os
 import pathlib
-import time
 from collections import namedtuple
 from enum import Enum
 
