@@ -6,7 +6,7 @@ import keyboard
 from sty import Style, RgbFg, fg, bg
 import millionaire.quiz_game.quiz_game as quiz
 import millionaire.util.util as util
-import helpers
+import millionaire.menu.helpers as helpers
 
 fg.purple = Style(RgbFg(148, 0, 211))
 bg.orange = bg(255, 150, 50)
