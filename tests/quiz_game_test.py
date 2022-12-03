@@ -1,13 +1,6 @@
-import os
-import sys
+from millionaire.quiz_game import quiz_game
 import unittest
 import json
-import pygame
-
-myPath = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, myPath + '/../millionaire')
-from millionaire.quiz_game import quiz_game
-from millionaire.menu import menu
 
 
 class TestSum(unittest.TestCase):
