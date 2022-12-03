@@ -44,5 +44,6 @@ jobs:
         pipreqs .
         pip install -r requirements.txt
         pip install getch
+        pip install sty
         pytest tests/quiz_game_test.py
       
