@@ -1,3 +1,5 @@
+# pylint: disable=<warning>
+
 import os
 import random
 import json
