@@ -1,16 +1,18 @@
-from ..mock import millionaire
+import unittest
+
+import millionaire.quiz_game as quiz
 import json
 
 
 class TestSum(unittest.TestCase):
 
     def test_halving(self):
-        halved_answers = millionaire.quiz_game.calculate_halved_answers({"a": "30", "b": "60", "c": "300", "d": "1"}, "60")
+        halved_answers = quiz.calculate_halved_answers({"a": "30", "b": "60", "c": "300", "d": "1"}, "60")
         self.assertIn("60", halved_answers.values())
         self.assertTrue(list(halved_answers.values()).count("") == 2)
 
     def test_audience_chances(self):
-        chances = millionaire.quiz_game.get_chances({"a": "300", "b": "1", "c": "30", "d": "60"}, "60")
+        chances = quiz.get_chances({"a": "300", "b": "1", "c": "30", "d": "60"}, "60")
         result = sum(chances)
         self.assertEqual(100, result)
 
