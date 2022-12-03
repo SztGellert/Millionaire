@@ -1,4 +1,4 @@
-from tests.mock.millionaire import runner
+from mock.millionaire import runner
 
 def main():
     test_select_correct_answers()
