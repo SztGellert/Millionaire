@@ -5,6 +5,7 @@ from millionaire.util import util
 from sty import Style, RgbFg, fg, bg
 from millionaire.quiz_game.quiz_game import quiz_game
 import keyboard
+import helpers
 
 fg.purple = Style(RgbFg(148, 0, 211))
 bg.orange = bg(255, 150, 50)
@@ -86,11 +87,9 @@ def select_credits():
 def return_prompt():
     print(fg.red + "\n" + language_dictionary[util.game_language].menu.return_prompt + fg.rs)
     if util.operating_system == "posix":
-        import getch
-        user_input = getch.getch()
+        user_input = helpers.return_user_input_linux()
     else:
-        import msvcrt
-        user_input = msvcrt.getch()
+        user_input = helpers.return_user_input_windows()
     # escape
     if user_input == b'\x1b':
         return
