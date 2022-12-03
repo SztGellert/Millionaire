@@ -180,11 +180,9 @@ def get_user_input(option_list: [], values_list: [], max_option_length: int, sta
     i = start_index
     while True:
         if util.operating_system == "posix":
-            import getch
-            user_input = getch.getch()
+            user_input = helpers.return_user_input_linux()
         else:
-            import msvcrt
-            user_input = msvcrt.getch()
+            user_input = helpers.return_user_input_windows()
         first_char = user_input
         # escape
         if first_char == b'\x1b':

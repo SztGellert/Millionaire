@@ -24,4 +24,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint --disable=W,C,R --ignore=millionaire/menu/helpers.py $(git ls-files './millionaire/*.py')
+        pylint --disable=W,C,R --ignore='./millionaire/menu/helpers.py' $(git ls-files './millionaire/*.py')
