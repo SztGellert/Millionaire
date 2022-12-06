@@ -27,7 +27,8 @@ def play():
     util.clear_screen()
     util.play_sound("start.mp3", 0)
     show_game_structure()
-    time.sleep(4)
+    if game_language == util.Language.HUNGARIAN.name:
+        time.sleep(5)
     question_lines = []
     question_lines_easy = []
     question_lines_medium = []
@@ -416,38 +417,56 @@ def print_question(question: str, answers_: {}, selected="", color="", correct_a
 
 def show_game_structure():
     prizes = util.open_file("prizes_" + game_language, "r")
-    for i in range(len(prizes)):
-        for j in range(len(prizes)):
-            round_number = str(len(prizes)-j)
-            if len(prizes)-j < 10:
-                round_number = " " + round_number
-            if i == len(prizes)-j:
-                print(round_number + " " + bg.orange + fg.black + prizes[::-1][j][0] + fg.rs + bg.rs)
-            else:
-                if j == 5 or j == 10 or j == 0:
-                    print(round_number + " " +prizes[::-1][j][0])
+    if game_language == util.Language.HUNGARIAN.name:
+        for i in range(len(prizes)):
+            for j in range(len(prizes)):
+                round_number = str(len(prizes) - j)
+                if len(prizes) - j < 10:
+                    round_number = " " + round_number
+                if i == len(prizes) - j:
+                    print(round_number + " " + bg.orange + fg.black + prizes[::-1][j][0] + fg.rs + bg.rs)
                 else:
-                    print(round_number + " " +fg.orange + prizes[::-1][j][0] + fg.rs)
-        time.sleep(0.3)
-        if i != 15:
-            util.clear_screen()
-    time.sleep(3)
-    helps = [" 50 : 50 ","     \_] ", "  ☺ ☺ ☺  "]
-    for i in range(3):
-        for j in range(3):
-            if i ==j:
-                print(11*"-")
-                print("|"  + bg.orange + fg.black + helps[i] + fg.rs + bg.rs + "|")
-                print(11*"-")
+                    if j == 5 or j == 10 or j == 0:
+                        print(round_number + " " + prizes[::-1][j][0])
+                    else:
+                        print(round_number + " " + fg.orange + prizes[::-1][j][0] + fg.rs)
+            if game_language == util.Language.HUNGARIAN.name:
+                time.sleep(0.3)
+            if i != 15:
+                util.clear_screen()
+        time.sleep(3)
+        helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
+        for i in range(3):
+            for j in range(3):
+                if i == j:
+                    print(11 * "-")
+                    print("|" + bg.orange + fg.black + helps[i] + fg.rs + bg.rs + "|")
+                    print(11 * "-")
 
-            else:
-                print(11 * "-")
-                print("|"  + helps[j]  + "|")
-                print(11 * "-")
-        time.sleep(1)
+                else:
+                    print(11 * "-")
+                    print("|" + helps[j] + "|")
+                    print(11 * "-")
+            time.sleep(1)
+            util.clear_screen()
+        time.sleep(2)
         util.clear_screen()
-    time.sleep(2)
-    util.clear_screen()
+    else:
+        helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
+        separator = fg.blue + "|" + fg.rs
+        print(fg.blue + 31*"-" + fg. rs)
+        print(separator + helps[0] + separator + helps[1] + separator + helps[2] + separator)
+        print(fg.blue + 31*"-" + fg. rs)
+        for i in range(len(prizes)):
+            round_number = str(len(prizes) - i)
+            if len(prizes) - i < 10:
+                round_number = " " + round_number
+            if i == 5 or i == 10 or i == 0:
+                print(round_number + " " + prizes[::-1][i][0])
+            else:
+                print(round_number + " " + fg.orange + prizes[::-1][i][0] + fg.rs)
+        time.sleep(4)
+        util.clear_screen()
 
 
 def play_music(round: int):
