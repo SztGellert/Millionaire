@@ -5,7 +5,6 @@ import time
 from sty import Style, RgbFg, fg, bg
 import millionaire.menu.menu as menu
 import millionaire.util.util as util
-
 operating_system = os.name
 fg.purple = Style(RgbFg(148, 0, 211))
 fg.orange = Style(RgbFg(255, 150, 50))
@@ -27,6 +26,7 @@ def play():
     help_types = {"audience": True, "telephone": True, "halving": True}
     util.clear_screen()
     util.play_sound("start.mp3", 0)
+    show_game_structure()
     time.sleep(4)
     question_lines = []
     question_lines_easy = []
@@ -85,7 +85,10 @@ def play():
         answer_list = list(answers.values())
         random.shuffle(answer_list)
         shuffled_answers = dict(zip(answers, answer_list))
+        if i == 0:
+            time.sleep(4)
         print_question(question, shuffled_answers)
+        play_music(i)
         answer = safe_input(
             language_dictionary[game_language].quiz.select_answer,
             ["a", "b", "c", "d", "h", "t"])
@@ -93,6 +96,7 @@ def play():
         print_question(question, shuffled_answers, answer, "orange")
         correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
         correct_answer_value = question_lines[i][1]
+        util.stop_sound()
         while answer not in list(answers.keys()):
             if answer == "t":
                 util.clear_screen()
@@ -408,3 +412,46 @@ def print_question(question: str, answers_: {}, selected="", color="", correct_a
           list(answers_.items())[3][0].upper(), ": ", answer_values[3],
           " " * (number_of_spaces - len_fourth_answer), "|")
     print("-" * table_length)
+
+
+def show_game_structure():
+    prizes = util.open_file("prizes_" + game_language, "r")
+    for i in range(len(prizes)):
+        for j in range(len(prizes)):
+            round_number = str(len(prizes)-j)
+            if len(prizes)-j < 10:
+                round_number = " " + round_number
+            if i == len(prizes)-j:
+                print(round_number + " " + bg.orange + fg.black + prizes[::-1][j][0] + fg.rs + bg.rs)
+            else:
+                if j == 5 or j == 10 or j == 0:
+                    print(round_number + " " +prizes[::-1][j][0])
+                else:
+                    print(round_number + " " +fg.orange + prizes[::-1][j][0] + fg.rs)
+        time.sleep(0.3)
+        if i != 15:
+            util.clear_screen()
+    time.sleep(3)
+    helps = [" 50 : 50 ","     \_] ", "  ☺ ☺ ☺  "]
+    for i in range(3):
+        for j in range(3):
+            if i ==j:
+                print(11*"-")
+                print("|"  + bg.orange + fg.black + helps[i] + fg.rs + bg.rs + "|")
+                print(11*"-")
+
+            else:
+                print(11 * "-")
+                print("|"  + helps[j]  + "|")
+                print(11 * "-")
+        time.sleep(1)
+        util.clear_screen()
+    time.sleep(2)
+    util.clear_screen()
+
+
+def play_music(round: int):
+    if round < 5:
+        util.play_background_music(str(5), 0)
+    else:
+        util.play_background_music(str(round), 0)

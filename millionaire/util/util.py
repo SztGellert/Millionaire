@@ -114,6 +114,14 @@ def play_sound(filename, starting_time, volume=0.07):
         pygame.mixer.music.play(0, starting_time)
 
 
+def play_background_music(filename, starting_time, volume=0.07):
+    if system_volume:
+        file_path = get_data_path() + "/sound_files/" + "general" + "/" + "background" + "/" + filename + ".mp3"
+        pygame.mixer.music.load(file_path)
+        pygame.mixer.music.set_volume(volume)
+        pygame.mixer.music.play(0, starting_time)
+
+
 def get_data_path() -> str:
     if operating_system == "posix":
         path = str(pathlib.Path(__file__).parent.parent.parent.resolve())
