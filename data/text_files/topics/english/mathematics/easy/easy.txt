@@ -10,6 +10,6 @@ By using the “method of exhaustion,” ancient Greek mathematicians were able 
 What is the square root of 256?;16;8;12;32
 The average of 20 numbers is zero. Of them, at the most, how many may be greater than zero?;19;10;1;0
 The average weight of 8 person's increases by 2.5 kg when a new person comes in place of one of them weighing 65 kg. What might be the weight of the new person?;85 kg;76 kg;Data inadequate;None of these
-A person crosses a 600 m long street in 5 minutes. What is his speed in km per hour?;10;8.4;7.2;3.6
+A person crosses a 600 m long street in 5 minutes. What is his speed in km per hour?;7.2;10;8.4;3.6
 If a person walks at 14 km/hr instead of 10 km/hr, he would have walked 20 km more. The actual distance travelled by him is:;50 km;56 km;70 km;80 km
 It was Sunday on Jan 1, 2006. What was the day of the week Jan 1, 2010?;Friday;Wednesday;Saturday;Sunday

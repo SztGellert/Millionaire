@@ -10,6 +10,6 @@ A „kimerítés módszerével” az ókori görög matematikusok meg tudták be
 Mi a 256 négyzetgyöke?;16;8;12;32
 20 szám átlaga nulla. Közülük legfeljebb hány lehet nagyobb nullánál?;19;10;1;0
 8 személy átlagos súlya 2,5 kg-mal növekszik, ha az egyik 65 kg-os helyett új személy jön. Mennyi lehet az új személy súlya?;85 kg;76 kg;Nem megfelelőek az adatok;Egyik sem
-Egy személy 5 perc alatt átsétál egy 600 m hosszú utcán. Mekkora a sebessége km/órában?;10;8,4;7,2;3,6
+Egy személy 5 perc alatt átsétál egy 600 m hosszú utcán. Mekkora a sebessége km/órában?;7,2;10;8,4;3,6
 Ha valaki 10 km/óra helyett 14 km/h-val gyalogol, akkor 20 km-rel többet gyalogolt volna. Az általa ténylegesen megtett távolság:;50 km;56 km;70 km;80 km
 2006. január 1. vasárnap volt. Milyen nap volt 2010. január 1.?;Péntek;Szerda;Szombat;Vasárnap
