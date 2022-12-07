@@ -32,9 +32,9 @@ def play(inputs: dict):
     return_inputs = inputs["return_prompt_answers"]
     help_types = {"audience": True, "halving": True, "phone": True}
     util.clear_screen()
-    util.play_sound("start.mp3", 0)
+    util.play_sound("start", 0)
     if game_language == util.Language.HUNGARIAN.name:
-        time.sleep(5)
+        time.sleep(7)
     question_lines = []
     question_lines_easy = []
     question_lines_medium = []
@@ -112,7 +112,7 @@ def play(inputs: dict):
                 util.clear_screen()
                 print_question(question, shuffled_answers)
                 if util.game_language == util.Language.HUNGARIAN.name:
-                    util.play_sound("music_off.mp3", 0)
+                    util.play_sound("music_off", 0)
                 if out_of_game_inputs[0] == "OK":
                     answer = safe_input(language_dictionary[game_language].quiz.select_answer_out,
                                         ["a", "b", "c", "d"], correct_answer_key)
@@ -121,7 +121,7 @@ def play(inputs: dict):
                                         ["a", "b", "c", "d"], out_of_game_inputs[0])
                 util.clear_screen()
                 print_question(question, shuffled_answers, answer, "blue")
-                util.play_sound("marked.mp3", 0)
+                util.play_sound("marked", 0)
                 time.sleep(2)
                 is_correct = check_answer(answer, correct_answer_key)
                 if is_correct:
@@ -132,19 +132,19 @@ def play(inputs: dict):
                         time.sleep(1)
                     elif i > 4:
                         print(bg.orange + show_prize(4) + bg.rs)
-                        util.play_sound("won_hundred_bucks.mp3", 0)
+                        util.play_sound("won_hundred_bucks", 0)
                         time.sleep(1)
                     else:
                         print(fg.blue + language_dictionary[game_language].quiz.correct_answer_out + fg.rs)
-                        util.play_sound("show_stop.mp3", 0)
+                        util.play_sound("show_stop", 0)
                         time.sleep(1)
                 else:
-                    util.play_sound("bad_answer.mp3", 0)
+                    util.play_sound("bad_answer", 0)
                     util.clear_screen()
                     print_question(question, shuffled_answers, answer, "blue", correct_answer=correct_answer_key)
                     print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     if util.game_language == util.Language.HUNGARIAN.name:
-                        util.play_sound("so_sorry.mp3", 0)
+                        util.play_sound("so_sorry", 0)
                     time.sleep(1)
                 if score != 0:
                     write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
@@ -215,20 +215,24 @@ def play(inputs: dict):
                 time.sleep(2)
                 util.clear_screen()
                 print_question(question, shuffled_answers, answer, "orange")
-        util.play_sound("marked.mp3", 0)
+        if game_language == util.Language.HUNGARIAN.name:
+            play_marked_sound(answer)
+        util.play_sound("marked", 0)
         is_correct = check_answer(answer, correct_answer_key)
         time.sleep(2)
         if is_correct:
             if i < 14:
-                util.play_sound("correct_answer.mp3", 0)
+                util.play_sound("correct_answer", 0)
                 util.clear_screen()
                 print_question(question, shuffled_answers, answer, "green")
                 time.sleep(2)
                 util.clear_screen()
+                if len(question) % 2 == 0:
+                    question = question + " "
                 if i == 4:
                     print("\n" + " " * 20 + fg.yellow + language_dictionary[
                         game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
-                    util.play_sound("won_hundred_bucks.mp3", 0)
+                    util.play_sound("won_hundred_bucks", 0)
                     print("-" * (len(question) + len(show_prize(i)) + 8))
                     print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
                           " " * (int(len(question) / 2)), bg.rs, "|")
@@ -238,7 +242,7 @@ def play(inputs: dict):
                     print("\n" + " " * 20 + fg.yellow + language_dictionary[
                         game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     if util.game_language == util.Language.HUNGARIAN.name:
-                        util.play_sound("now_comes_hard_part.mp3", 0)
+                        util.play_sound("now_comes_hard_part", 0)
                     print("-" * (len(question) + len(show_prize(i)) + 8))
                     print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
                           " " * (int(len(question) / 2)), bg.rs, "|")
@@ -251,7 +255,7 @@ def play(inputs: dict):
                     print("-" * (len(question) + len(show_prize(i)) + 8))
                     time.sleep(2)
             else:
-                util.play_sound("bad_answer.mp3", 0)
+                util.play_sound("bad_answer", 0)
                 util.clear_screen()
                 print_question(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key)
                 time.sleep(2)
@@ -259,7 +263,7 @@ def play(inputs: dict):
                 menu.return_prompt()
                 util.clear_screen()
         else:
-            util.play_sound("bad_answer.mp3", 0)
+            util.play_sound("bad_answer", 0)
             print(fg.green + correct_answer_value + fg.rs)
             print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
             menu.return_prompt()
@@ -303,9 +307,9 @@ def show_prize(round_number: int) -> str:
 
 
 def print_phone_conversation(text: list, question: str, answers: {}, good_answer: str):
-    util.play_sound("phone_ring.mp3", 0)
+    util.play_sound("phone_ring", 0)
     time.sleep(2)
-    util.play_sound("phone_call.mp3", 0)
+    util.play_sound("phone_call", 0)
     then = time.time()
     for i in range(len(text)):
         print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
@@ -318,7 +322,7 @@ def print_phone_conversation(text: list, question: str, answers: {}, good_answer
             print(text[i][0])
     print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
     now = time.time()
-    util.play_sound('phone_call.mp3', 30.0)
+    util.play_sound('phone_call', 30.0)
     time.sleep(3)
     print(language_dictionary[game_language].quiz.call_duration, int(now - then), language_dictionary[game_language].quiz.call_seconds)
     util.stop_sound()
@@ -339,10 +343,10 @@ def telephone_help(question: str, answers: {}, correct_answer: str, hotkey: str)
 
 def halving(question: str, answers: {}, correct_answer: str) -> dict:
     if util.game_language == util.Language.HUNGARIAN.name:
-        util.play_sound("lets_take_two.mp3", 0)
+        util.play_sound("lets_take_two", 0)
     util.clear_screen()
     time.sleep(2)
-    util.play_sound("halving.mp3", 0)
+    util.play_sound("halving", 0)
     halved_answers = calculate_halved_answers(answers, correct_answer)
     return halved_answers
 
@@ -363,7 +367,7 @@ def calculate_halved_answers(answers: {}, correct_answer: str) -> {}:
 
 
 def audience_help(question: str, answers: {}, correct_value: str):
-    util.play_sound("push_your_buttons.mp3", 0)
+    util.play_sound("push_your_buttons", 0)
     time.sleep(3)
     util.clear_screen()
     answers_list = list(answers.keys())
@@ -518,3 +522,9 @@ def play_music(round: int):
         util.play_background_music(str(5), 0)
     else:
         util.play_background_music(str(round), 0)
+
+
+def play_marked_sound(choise: str):
+    sound_files = ["mark_" + choise,"mark_" + choise + "_1","mark_" + choise+ "_2"]
+    util.play_sound(random.choice(sound_files), 0)
+    time.sleep(1)

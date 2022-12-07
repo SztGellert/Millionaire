@@ -110,7 +110,7 @@ def clear_screen():
 
 def play_sound(filename, starting_time, volume=0.07):
     if system_volume:
-        file_path = get_data_path() + "/sound_files/" + game_language + "/" + filename
+        file_path = get_data_path() + "/sound_files/" + game_language + "/" + filename + ".mp3"
         pygame.mixer.music.load(file_path)
         pygame.mixer.music.set_volume(volume)
         pygame.mixer.music.play(0, starting_time)
