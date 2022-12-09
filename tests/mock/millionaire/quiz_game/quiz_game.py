@@ -5,6 +5,7 @@ import millionaire.util.util as util
 import time
 import json
 import millionaire.menu.menu as menu
+import millionaire.menu.helpers as helpers
 
 operating_system = os.name
 fg.purple = Style(RgbFg(148, 0, 211))
@@ -96,6 +97,13 @@ def play(inputs: dict):
             time.sleep(4)
         print_question(question, shuffled_answers)
         play_music(i)
+        if game_language == util.Language.HUNGARIAN.name:
+            print("\n", language_dictionary[game_language].quiz.select_answer)
+            answer = handle_user_input(question, shuffled_answers, i)
+        else:
+            answer = safe_input(
+                language_dictionary[game_language].quiz.select_answer,
+                ["a", "b", "c", "d", "h", "t"])
         correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
         correct_answer_value = question_lines[i][1]
         if game_inputs[i] == "OK":
@@ -114,6 +122,13 @@ def play(inputs: dict):
                 if util.game_language == util.Language.HUNGARIAN.name:
                     util.play_sound("music_off", 0)
                 if out_of_game_inputs[0] == "OK":
+                    if game_language == util.Language.HUNGARIAN.name:
+                        print("\n", language_dictionary[game_language].quiz.select_answer_out)
+                        answer = handle_user_input(question, shuffled_answers, i)
+                    else:
+                        answer = safe_input(
+                            language_dictionary[game_language].quiz.select_answer_out,
+                            ["a", "b", "c", "d"])
                     answer = safe_input(language_dictionary[game_language].quiz.select_answer_out,
                                         ["a", "b", "c", "d"], correct_answer_key)
                 else:
@@ -153,6 +168,8 @@ def play(inputs: dict):
                 util.clear_screen()
                 return
             if answer == "h":
+                if list(help_types.values()).count(True) == len(help_types) and game_language == util.Language.HUNGARIAN.name:
+                    util.play_sound("still_have_all_helps", 0)
                 util.clear_screen()
                 print_question(question, shuffled_answers)
                 help_functions = {"audience": audience_help, "halving": halving, "telephone": telephone_help}
@@ -211,10 +228,19 @@ def play(inputs: dict):
                         answer = safe_input(
                             language_dictionary[game_language].quiz.select_answer,
                             ["a", "b", "c", "d", "h", "t"], chosen_help_values[2])
-
+                if game_language == util.Language.HUNGARIAN.name:
+                    print("\n", language_dictionary[game_language].quiz.select_answer)
+                    answer = handle_user_input(question, shuffled_answers, i)
+                else:
+                    answer = safe_input(
+                        language_dictionary[game_language].quiz.select_answer,
+                        ["a", "b", "c", "d", "h", "t"])
                 time.sleep(2)
-                util.clear_screen()
-                print_question(question, shuffled_answers, answer, "orange")
+                if game_language == util.Language.HUNGARIAN.name:
+                    util.play_sound("so_sorry", 0)
+                    time.sleep(1)
+            util.clear_screen()
+            print_question(question, shuffled_answers, answer, "orange")
         if game_language == util.Language.HUNGARIAN.name:
             play_marked_sound(answer)
         util.play_sound("marked", 0)
@@ -466,38 +492,52 @@ def print_question(question: str, answers_: {}, selected="", color="", correct_a
 def show_game_structure():
     prizes = util.open_file("prizes_" + game_language, "r")
     if game_language == util.Language.HUNGARIAN.name:
+        print_helps()
+        print("\n\n")
         for i in range(len(prizes)):
             for j in range(len(prizes)):
                 round_number = str(len(prizes) - j)
                 if len(prizes) - j < 10:
                     round_number = " " + round_number
-                if i == len(prizes) - j:
-                    print(round_number + " " + bg.orange + fg.black + prizes[::-1][j][0] + fg.rs + bg.rs)
+                if i == len(prizes) - j-1:
+                    print(round_number + " ♦ " + bg.orange + fg.black + prizes[::-1][j][0] + fg.rs + bg.rs)
                 else:
                     if j == 5 or j == 10 or j == 0:
-                        print(round_number + " " + prizes[::-1][j][0])
+                        print(round_number + " ♦ " + prizes[::-1][j][0])
                     else:
-                        print(round_number + " " + fg.orange + prizes[::-1][j][0] + fg.rs)
-            if game_language == util.Language.HUNGARIAN.name:
-                time.sleep(0.3)
-            if i != 15:
+                        print(round_number + " ♦ " + fg.orange + prizes[::-1][j][0] + fg.rs)
+            time.sleep(0.3)
+            if i != 14:
                 util.clear_screen()
-        time.sleep(3)
-        helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
-        for i in range(3):
-            for j in range(3):
-                if i == j:
-                    print(11 * "-")
-                    print("|" + bg.orange + fg.black + helps[i] + fg.rs + bg.rs + "|")
-                    print(11 * "-")
+                print_helps()
+                print("\n\n")
 
+        util.clear_screen()
+        print_helps()
+        print("\n\n")
+        for a in range(2):
+            for b in range(len(prizes)):
+                round_number = str(len(prizes) -b )
+                if len(prizes) - b < 10:
+                    round_number = " " + round_number
+                if a == 0 and b == 10 or a == 1 and  b==5:
+                    print(round_number + " ♦ " + bg.orange + fg.black + prizes[::-1][b][0] + fg.rs + bg.rs)
                 else:
-                    print(11 * "-")
-                    print("|" + helps[j] + "|")
-                    print(11 * "-")
+                    if b == 0 or b == 5 or b == 10:
+                        print(round_number + " ♦ " + prizes[::-1][b][0])
+                    else:
+                        print(round_number + " ♦ " + fg.orange + prizes[::-1][b][0] + fg.rs)
             time.sleep(1)
             util.clear_screen()
-        time.sleep(2)
+            print_helps()
+            print("\n\n")
+        util.clear_screen()
+        list_helps()
+        util.clear_screen()
+        print_helps()
+        print("\n\n")
+        print_prizes()
+        time.sleep(8)
         util.clear_screen()
     else:
         helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
@@ -505,17 +545,54 @@ def show_game_structure():
         print(fg.blue + 31*"-" + fg. rs)
         print(separator + helps[0] + separator + helps[1] + separator + helps[2] + separator)
         print(fg.blue + 31*"-" + fg. rs)
-        for i in range(len(prizes)):
-            round_number = str(len(prizes) - i)
-            if len(prizes) - i < 10:
-                round_number = " " + round_number
-            if i == 5 or i == 10 or i == 0:
-                print(round_number + " " + prizes[::-1][i][0])
-            else:
-                print(round_number + " " + fg.orange + prizes[::-1][i][0] + fg.rs)
+        print("\n\n")
+        print_prizes()
         time.sleep(4)
         util.clear_screen()
 
+def print_helps():
+    helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
+    separator = fg.blue + "|" + fg.rs
+    print(fg.blue + 31 * "-" + fg.rs)
+    print(separator + helps[0] + separator + helps[1] + separator + helps[2] + separator)
+    print(fg.blue + 31 * "-" + fg.rs)
+
+
+def list_helps():
+    helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
+    separator = fg.blue + "|" + fg.rs
+    print(fg.blue + 31 * "-" + fg.rs)
+    print(separator + bg.orange + fg.black + helps[0] + fg. rs + bg.rs + separator + helps[1] + separator + helps[2] + separator)
+    print(fg.blue + 31 * "-" + fg.rs)
+    print("\n\n")
+    print_prizes()
+    time.sleep(1.3)
+    util.clear_screen()
+    print(fg.blue + 31 * "-" + fg.rs)
+    print(separator + helps[0]  + separator +  bg.orange + fg.black + helps[1] + fg. rs +  bg.rs + separator + helps[2] + separator)
+    print(fg.blue + 31 * "-" + fg.rs)
+    print("\n\n")
+    print_prizes()
+    time.sleep(1.3)
+    util.clear_screen()
+    print(fg.blue + 31 * "-" + fg.rs)
+    print(separator + helps[0] + separator + helps[1] + separator +  bg.orange + fg.black + "  ☻ ☻ ☻  " + fg. rs +  bg.rs + separator)
+    print(fg.blue + 31 * "-" + fg.rs)
+    print("\n\n")
+    print_prizes()
+    time.sleep(1.3)
+
+
+def print_prizes():
+    prizes = util.open_file("prizes_" + game_language, "r")
+    for i in range(len(prizes)):
+        round_number = str(len(prizes) - i)
+        if len(prizes) - i < 10:
+            round_number = " " + round_number
+        if i == 5 or i == 10 or i == 0:
+            print(round_number + " " + prizes[::-1][i][0])
+        else:
+            print(round_number + " " + fg.orange + prizes[::-1][i][0] + fg.rs)
 
 def play_music(round: int):
     if round < 5:
@@ -524,7 +601,95 @@ def play_music(round: int):
         util.play_background_music(str(round), 0)
 
 
-def play_marked_sound(choise: str):
+def play_marked_sound(choise: str, level: int):
     sound_files = ["mark_" + choise,"mark_" + choise + "_1","mark_" + choise+ "_2"]
-    util.play_sound(random.choice(sound_files), 0)
-    time.sleep(1)
+    if level == 4:
+        util.play_sound("mark_500", 0)
+        time.sleep(6)
+    else:
+        util.play_sound(random.choice(sound_files), 0)
+        time.sleep(1)
+
+
+def handle_user_input(question: str, answers: dict, level: int) -> str:
+    final_sounds = ["final", "final_1", "final_2", "final_3", "final_4", "final_5"]
+    lets_see_sounds = ["lets_mark", "lets_see", "lets_see_1", "lets_see_2", "lets_see_3"]
+    while True:
+        user_input = get_user_input()
+        if user_input == b'a' :
+            selected_final_sound = random.choice(final_sounds)
+            selected_lets_see_sound = random.choice(lets_see_sounds)
+            util.play_sound(selected_final_sound, 0)
+            util.clear_screen()
+            print_question(question, answers)
+            print("\n" + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "A")
+            while True:
+                user_input = get_user_input()
+                if user_input == b'\r':
+                    play_marked_sound("a", level)
+                    util.play_sound(selected_lets_see_sound, 0)
+                    time.sleep(3)
+                    return "a"
+                else:
+                    break
+        if user_input == b'b' :
+            selected_final_sound = random.choice(final_sounds)
+            selected_lets_see_sound = random.choice(lets_see_sounds)
+            util.play_sound(selected_final_sound, 0)
+            util.clear_screen()
+            print_question(question, answers)
+            print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "B")
+            while True:
+                user_input = get_user_input()
+                if user_input == b'\r':
+                    play_marked_sound("b", level)
+                    util.play_sound(selected_lets_see_sound, 0)
+                    time.sleep(3)
+                    return "b"
+                else:
+                    break
+        if user_input == b'c' :
+            selected_final_sound = random.choice(final_sounds)
+            selected_lets_see_sound = random.choice(lets_see_sounds)
+            util.play_sound(selected_final_sound, 0)
+            util.clear_screen()
+            print_question(question, answers)
+            print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "C")
+            while True:
+                user_input = get_user_input()
+                if user_input == b'\r':
+                    play_marked_sound("c", level)
+                    util.play_sound(selected_lets_see_sound, 0)
+                    time.sleep(3)
+                    return "c"
+                else:
+                    break
+        if user_input == b'd' :
+            selected_final_sound = random.choice(final_sounds)
+            selected_lets_see_sound = random.choice(lets_see_sounds)
+            util.play_sound(selected_final_sound, 0)
+            util.clear_screen()
+            print_question(question, answers)
+            print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "D")
+            while True:
+                user_input = get_user_input()
+                if user_input == b'\r':
+                    play_marked_sound("d", level)
+                    util.play_sound(selected_lets_see_sound, 0)
+                    time.sleep(3)
+                    return "d"
+                else:
+                    break
+        if user_input == b't' :
+            return "t"
+        if user_input == b'h' :
+            return "h"
+
+
+def get_user_input() -> bytes:
+    if util.operating_system == "posix":
+        user_input = helpers.return_user_input_linux()
+    else:
+        user_input = helpers.return_user_input_windows()
+
+    return user_input
