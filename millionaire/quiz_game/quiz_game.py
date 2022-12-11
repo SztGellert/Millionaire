@@ -13,7 +13,7 @@ fg.green = Style(RgbFg(0, 255, 0))
 bg.orange = bg(255, 150, 50)
 languages = util.available_languages
 language_dictionary = util.language_dictionary
-table_length = 110
+table_length = 113
 
 
 def play():
@@ -88,7 +88,7 @@ def play():
         shuffled_answers = dict(zip(answers, answer_list))
         #if i == 0:
         #    time.sleep(4)
-        print_question(question, shuffled_answers)
+        print_quiz_table(question, shuffled_answers)
         play_music(i)
         if game_language == util.Language.HUNGARIAN.name:
             print("\n", language_dictionary[game_language].quiz.select_answer)
@@ -103,7 +103,7 @@ def play():
         while answer not in list(answers.keys()):
             if answer == "t":
                 util.clear_screen()
-                print_question(question, shuffled_answers)
+                print_quiz_table(question, shuffled_answers)
                 if util.game_language == util.Language.HUNGARIAN.name:
                     util.play_sound("music_off", 0)
                 if game_language == util.Language.HUNGARIAN.name:
@@ -114,13 +114,13 @@ def play():
                         language_dictionary[game_language].quiz.select_answer_out,
                         ["a", "b", "c", "d"])
                 util.clear_screen()
-                print_question(question, shuffled_answers, answer, "blue")
+                print_quiz_table(question, shuffled_answers, answer, "blue")
                 util.play_sound("marked", 0)
                 time.sleep(2)
                 is_correct = check_answer(answer, correct_answer_key)
                 if is_correct:
                     util.clear_screen()
-                    print_question(question, shuffled_answers, answer, "green")
+                    print_quiz_table(question, shuffled_answers, answer, "green")
                     if i > 9:
                         print(bg.orange + show_prize(9) + bg.rs)
                         time.sleep(1)
@@ -135,7 +135,7 @@ def play():
                 else:
                     util.play_sound("bad_answer", 0)
                     util.clear_screen()
-                    print_question(question, shuffled_answers, answer, "blue", correct_answer=correct_answer_key)
+                    print_quiz_table(question, shuffled_answers, answer, "blue", correct_answer=correct_answer_key)
                     print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     if util.game_language == util.Language.HUNGARIAN.name:
                         util.play_sound("so_sorry", 0)
@@ -150,7 +150,7 @@ def play():
                 if list(help_types.values()).count(True) == len(help_types) and game_language == util.Language.HUNGARIAN.name:
                     util.play_sound("still_have_all_helps", 0)
                 util.clear_screen()
-                print_question(question, shuffled_answers)
+                print_quiz_table(question, shuffled_answers)
                 help_functions = {"audience": audience_help, "telephone": telephone_help, "halving": halving}
                 chosen_help_type = safe_input(language_dictionary[game_language].quiz.help_selection,
                                               ["a", "t", "h"])
@@ -162,7 +162,7 @@ def play():
                                                                                     correct_answer_value)
                                 for a in range(len(answer_list)):
                                     answer_list[a] = list(shuffled_answers.values())[a]
-                                print_question(question, shuffled_answers)
+                                print_quiz_table(question, shuffled_answers)
                             else:
                                 list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
                             help_types[list(help_types)[x]] = False
@@ -179,7 +179,7 @@ def play():
                         ["a", "b", "c", "d", "h", "t"])
                 time.sleep(2)
         util.clear_screen()
-        print_question(question, shuffled_answers, answer, "orange")
+        print_quiz_table(question, shuffled_answers, answer, "orange")
         util.play_sound("marked", 0)
         is_correct = check_answer(answer, correct_answer_key)
         time.sleep(2)
@@ -188,7 +188,7 @@ def play():
             if i < 14:
                 util.play_sound("correct_answer", 0)
                 util.clear_screen()
-                print_question(question, shuffled_answers, answer, "green")
+                print_quiz_table(question, shuffled_answers, answer, "green")
                 time.sleep(2)
                 util.clear_screen()
                 if len(question) % 2 == 0:
@@ -229,7 +229,7 @@ def play():
         else:
             util.play_sound("bad_answer", 0)
             util.clear_screen()
-            print_question(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key)
+            print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key)
             time.sleep(2)
             if game_language == util.Language.HUNGARIAN.name:
                 util.play_sound("so_sorry", 0)
@@ -388,8 +388,8 @@ def write_content_to_file(filename: str, content: {}):
 
 def divide_question(question: str) -> list:
     question_parts = []
-    basic_question_length = 107
-    if len(question) > basic_question_length:
+    basic_question_length = 109
+    if len(question) >= basic_question_length:
         for i in range(int(len(question) / basic_question_length)+1):
             index = basic_question_length * i
             question_parts.append(question[index:basic_question_length*(i+1)])
@@ -399,13 +399,11 @@ def divide_question(question: str) -> list:
 
 def divide_answer(answer: str, number_of_parts: int) -> list:
     answer_parts = []
-    basic_question_length = 107
-    basic_answer_length = int((basic_question_length / 2) -2)
+    basic_question_length = 109
+    basic_answer_length = int((basic_question_length / 2) -5)
     for i in range(number_of_parts+1):
         if len(answer[i:basic_answer_length*(i+1)]) > 0:
             index = basic_answer_length * i
-            #print(question[index:basic_question_length*(i+1)])
-            #time.sleep(1)
             answer_parts.append(answer[index:basic_answer_length*(i+1)])
         else:
             answer_parts.append("")
@@ -413,43 +411,25 @@ def divide_answer(answer: str, number_of_parts: int) -> list:
     return answer_parts
 
 
-def print_question(question: str, answers_: {}, selected="", color="", correct_answer=""):
-    # TESTING
-    #answers_['a'] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaBCEND"
+def print_quiz_table(question: str, answers_: {}, selected="", color="", correct_answer=""):
     global table_length
-    basic_question_length = 108
+    basic_question_length = 109
     answer_values = list(answers_.values())
-    len_first_answer = len(list(answers_.items())[0][1])
-    len_second_answer = len(list(answers_.items())[1][1])
-    len_third_answer = len(list(answers_.items())[2][1])
-    len_fourth_answer = len(list(answers_.items())[3][1])
     longest_string = list(sorted(answers_.values(), key=len))[-1]
-    number_of_spaces = 0
     spaces_after_question = table_length - len(question) -3
     if len(question) > basic_question_length:
         question_list = divide_question(question)
         question = ""
         for i in range(len(question_list)):
             if i < len(question_list)-1:
-                question = question + question_list[i] + " |\n| "
+                spaces_after_question = table_length - (len(question_list[i])) -4
+                question = question + question_list[i] + spaces_after_question*" " + " |\n| "
             else:
                 question = question + question_list[i]
-                spaces_after_question = table_length - (len(question_list[i]) + 2)
-                print(spaces_after_question)
-        number_of_spaces = int((table_length / 2) -9)
+                spaces_after_question = table_length - (len(question_list[i])) -3
+        number_of_spaces = int((table_length / 2) -6)
     else:
-        number_of_spaces = int((table_length / 2) -9)
-    if selected != "":
-        for i in answers_:
-            if correct_answer != "" and i == correct_answer:
-                answer_values[list(answers_).index(i)] = bg.green + fg.black + answers_[i] + fg.rs + bg.rs
-            if i == selected:
-                if color == "orange":
-                    answer_values[list(answers_).index(i)] = bg.orange + fg.black + answers_[i] + fg.rs + bg.rs
-                if color == "green":
-                    answer_values[list(answers_).index(i)] = bg.green + fg.black + answers_[i] + fg.rs + bg.rs
-                if color == "blue":
-                    answer_values[list(answers_).index(i)] = bg.blue + fg.black + answers_[i] + fg.rs + bg.rs
+        number_of_spaces = int((table_length / 2) -6)
 
     print("-" * (table_length))
     print("| " + question + " " * spaces_after_question + "|")
@@ -457,7 +437,7 @@ def print_question(question: str, answers_: {}, selected="", color="", correct_a
     print("\n")
     print("-" * table_length)
     if len(longest_string)> number_of_spaces:
-        number_of_spaces = number_of_spaces +6
+        number_of_spaces = number_of_spaces +7
         number_of_parts = int(len(longest_string) / number_of_spaces)
         answer_list_a = divide_answer(answer_values[0], number_of_parts)
         answer_list_b = divide_answer(answer_values[1], number_of_parts)
@@ -470,11 +450,37 @@ def print_question(question: str, answers_: {}, selected="", color="", correct_a
         for i in range(4):
             if i == 0 or i == 2:
                 for j in range(longest_string_divided+1):
-                    first_string = answers_lists[index][j]
-                    second_string= answers_lists[index+1][j]
-                    first_spaces = number_of_spaces-len(first_string)
-                    second_spaces = number_of_spaces-len(second_string)
-                    answer = answer + "| " + first_string + " " * first_spaces + "| " + second_string + " " * second_spaces + " |"
+                    if j == 0:
+                        first_string = list(answers_.items())[i][j].upper() + ": " + answers_lists[index][j]
+                        second_string = list(answers_.items())[i + 1][j].upper() + ": " + answers_lists[index + 1][j]
+                    else:
+                        first_string = " "*3 + answers_lists[index][j]
+                        second_string= " "*3 +answers_lists[index+1][j]
+                    first_spaces = number_of_spaces-len(first_string)-4
+                    second_spaces = number_of_spaces-len(second_string)-4
+                    first_string = first_string + " " * first_spaces
+                    second_string = second_string + " " * second_spaces
+                    if selected != "":
+                        for answer_ in answers_:
+                            if correct_answer != "" and correct_answer == list(answers_.keys())[index]:
+                                first_string = bg.green + fg.black + first_string + fg.rs + bg.rs
+                            if correct_answer != "" and correct_answer == list(answers_.keys())[index+1]:
+                                second_string = bg.green + fg.black + second_string + fg.rs + bg.rs
+                            if list(answers_.keys())[index] == selected:
+                                if color == "orange":
+                                    first_string = bg.orange + fg.black + first_string + fg.rs + bg.rs
+                                if color == "green":
+                                    first_string = bg.green + fg.black + first_string + fg.rs + bg.rs
+                                if color == "blue":
+                                    first_string = bg.blue + fg.black + first_string + fg.rs + bg.rs
+                            if list(answers_.keys())[index+1] == selected:
+                                if color == "orange":
+                                    second_string = bg.orange + fg.black + second_string + fg.rs + bg.rs
+                                if color == "green":
+                                    second_string = bg.green + fg.black + second_string + fg.rs + bg.rs
+                                if color == "blue":
+                                    second_string = bg.blue + fg.black + second_string + fg.rs + bg.rs
+                    answer = answer + "| " + first_string + " | " + second_string + " |"
                     if j < longest_string_divided:
                         answer = answer +  "\n"
             if i == 0:
@@ -482,15 +488,28 @@ def print_question(question: str, answers_: {}, selected="", color="", correct_a
             index += 1
         print(answer)
     else:
-        print("| " + list(answers_.items())[0][0].upper(), ": ", answer_values[0],
-              " " * (number_of_spaces - len_first_answer), "|",
-              list(answers_.items())[1][0].upper(), ": ", answer_values[1],
-              " " * (number_of_spaces - len_second_answer), "|")
+        if selected != "":
+            index = 0
+            for i in answers_:
+                if i == selected:
+                    if color == "orange":
+                        answer_values[list(answers_).index(i)] = bg.orange + fg.black + list(answers_.items())[index][0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(list(answers_.items())[index][1])) + fg.rs + bg.rs
+                    if color == "green":
+                        answer_values[list(answers_).index(i)] = bg.green + fg.black + list(answers_.items())[index][0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(list(answers_.items())[index][1])) + fg.rs + bg.rs
+                    if color == "blue":
+                        answer_values[list(answers_).index(i)] = bg.blue + fg.black + list(answers_.items())[index][0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(list(answers_.items())[index][1])) + fg.rs + bg.rs
+                elif correct_answer != "" and i == correct_answer:
+                    answer_values[list(answers_).index(i)] = bg.green + fg.black + list(answers_.items())[index][0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(list(answers_.items())[index][1])) + fg.rs + bg.rs
+                else:
+                    answer_values[list(answers_).index(i)] =  list(answers_.items())[index][0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(list(answers_.items())[index][1]))
+                index += 1
+        else:
+            for i in range(len(answers_)):
+                answer_values[i] =  list(answers_.items())[i][0].upper() + ": " + answer_values[i] + " " * (number_of_spaces - len(list(answers_.items())[i][1]))
+
+        print("| " + answer_values[0] + " | " + answer_values[1] + " |")
         print("-" * table_length)
-        print("| " + list(answers_.items())[2][0].upper(), ": ", answer_values[2],
-              " " * (number_of_spaces - len_third_answer), "|",
-              list(answers_.items())[3][0].upper(), ": ", answer_values[3],
-              " " * (number_of_spaces - len_fourth_answer), "|")
+        print("| " +  answer_values[2] + " | " + answer_values[3] + " |")
     print("-" * table_length)
 
 
@@ -626,7 +645,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.play_sound(selected_final_sound, 0)
             util.clear_screen()
-            print_question(question, answers)
+            print_quiz_table(question, answers)
             print("\n" + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "A")
             while True:
                 user_input = get_user_input()
@@ -642,7 +661,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.play_sound(selected_final_sound, 0)
             util.clear_screen()
-            print_question(question, answers)
+            print_quiz_table(question, answers)
             print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "B")
             while True:
                 user_input = get_user_input()
@@ -658,7 +677,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.play_sound(selected_final_sound, 0)
             util.clear_screen()
-            print_question(question, answers)
+            print_quiz_table(question, answers)
             print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "C")
             while True:
                 user_input = get_user_input()
@@ -674,7 +693,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.play_sound(selected_final_sound, 0)
             util.clear_screen()
-            print_question(question, answers)
+            print_quiz_table(question, answers)
             print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "D")
             while True:
                 user_input = get_user_input()
