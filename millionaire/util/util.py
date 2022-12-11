@@ -30,6 +30,7 @@ class Topics(Enum):
     GASTRONOMY = 12
     ECONOMY = 13
     SPORTS = 14
+    ORIGINAL = 15
 
 
 class Difficulty(Enum):
@@ -108,9 +109,9 @@ def clear_screen():
         os.system('cls')
 
 
-def play_sound(filename, starting_time, volume=0.07):
+def play_sound(filename, starting_time, file_type="mp3", volume=0.07):
     if system_volume:
-        file_path = get_data_path() + "/sound_files/" + game_language + "/" + filename + ".mp3"
+        file_path = get_data_path() + "/sound_files/" + game_language + "/" + filename + "." + file_type
         pygame.mixer.music.load(file_path)
         pygame.mixer.music.set_volume(volume)
         pygame.mixer.music.play(0, starting_time)

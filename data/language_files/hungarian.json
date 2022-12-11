@@ -15,7 +15,7 @@
         "main_menu_options": [
             "Játék", "Útmutató", "Beállítások","Stáblista","Pontszámok", "Kilépés"
         ],
-        "settings_menu_question_topics": ["Mind","Általános","Történelem", "Földrajz","Fizika","Kémia","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia","Közgazdaságtan","Sport"],
+        "settings_menu_question_topics": ["Mind","Általános","Történelem", "Földrajz","Fizika","Kémia","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia","Közgazdaságtan","Sport", "Eredeti"],
         "empty_scores": "Indítson egy kvízjátékot hogy pontokat szerezzen!",
         "scores": {
             "user":  "Játékos",

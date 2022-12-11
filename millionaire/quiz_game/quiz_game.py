@@ -27,8 +27,8 @@ def play():
     score = 0
     help_types = {"audience": True, "telephone": True, "halving": True}
     util.clear_screen()
-    #util.play_sound("start", 0)
-    #show_game_structure()
+    util.play_sound("start", 0)
+    show_game_structure()
     question_lines = []
     question_lines_easy = []
     question_lines_medium = []
@@ -86,8 +86,8 @@ def play():
         answer_list = list(answers.values())
         random.shuffle(answer_list)
         shuffled_answers = dict(zip(answers, answer_list))
-        #if i == 0:
-        #    time.sleep(4)
+        if i == 0:
+            time.sleep(4)
         print_quiz_table(question, shuffled_answers)
         play_music(i)
         if game_language == util.Language.HUNGARIAN.name:
@@ -200,7 +200,7 @@ def play():
                     print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
                           " " * (int(len(question) / 2)), bg.rs, "|")
                     print("-" * (len(question) + len(show_prize(i)) + 8))
-                    time.sleep(3)
+                    time.sleep(7)
                 elif i == 9:
                     print("\n" + " " * 20 + fg.yellow + language_dictionary[game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     if util.game_language == util.Language.HUNGARIAN.name:

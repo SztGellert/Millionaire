@@ -264,7 +264,7 @@ def play(inputs: dict):
                     print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
                           " " * (int(len(question) / 2)), bg.rs, "|")
                     print("-" * (len(question) + len(show_prize(i)) + 8))
-                    time.sleep(3)
+                    time.sleep(7)
                 elif i == 9:
                     print("\n" + " " * 20 + fg.yellow + language_dictionary[
                         game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
