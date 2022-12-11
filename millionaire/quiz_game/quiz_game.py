@@ -13,6 +13,7 @@ fg.green = Style(RgbFg(0, 255, 0))
 bg.orange = bg(255, 150, 50)
 languages = util.available_languages
 language_dictionary = util.language_dictionary
+table_length = 110
 
 
 def play():
@@ -26,8 +27,8 @@ def play():
     score = 0
     help_types = {"audience": True, "telephone": True, "halving": True}
     util.clear_screen()
-    util.play_sound("start", 0)
-    show_game_structure()
+    #util.play_sound("start", 0)
+    #show_game_structure()
     question_lines = []
     question_lines_easy = []
     question_lines_medium = []
@@ -85,8 +86,8 @@ def play():
         answer_list = list(answers.values())
         random.shuffle(answer_list)
         shuffled_answers = dict(zip(answers, answer_list))
-        if i == 0:
-            time.sleep(4)
+        #if i == 0:
+        #    time.sleep(4)
         print_question(question, shuffled_answers)
         play_music(i)
         if game_language == util.Language.HUNGARIAN.name:
@@ -385,26 +386,59 @@ def write_content_to_file(filename: str, content: {}):
             json.dump([content], outfile)
 
 
+def divide_question(question: str) -> list:
+    question_parts = []
+    basic_question_length = 107
+    if len(question) > basic_question_length:
+        for i in range(int(len(question) / basic_question_length)+1):
+            index = basic_question_length * i
+            question_parts.append(question[index:basic_question_length*(i+1)])
+
+    return question_parts
+
+
+def divide_answer(answer: str, number_of_parts: int) -> list:
+    answer_parts = []
+    basic_question_length = 107
+    basic_answer_length = int((basic_question_length / 2) -2)
+    for i in range(number_of_parts+1):
+        if len(answer[i:basic_answer_length*(i+1)]) > 0:
+            index = basic_answer_length * i
+            #print(question[index:basic_question_length*(i+1)])
+            #time.sleep(1)
+            answer_parts.append(answer[index:basic_answer_length*(i+1)])
+        else:
+            answer_parts.append("")
+
+    return answer_parts
+
+
 def print_question(question: str, answers_: {}, selected="", color="", correct_answer=""):
+    # TESTING
+    #answers_['a'] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaBCEND"
+    global table_length
+    basic_question_length = 108
     answer_values = list(answers_.values())
     len_first_answer = len(list(answers_.items())[0][1])
     len_second_answer = len(list(answers_.items())[1][1])
     len_third_answer = len(list(answers_.items())[2][1])
     len_fourth_answer = len(list(answers_.items())[3][1])
     longest_string = list(sorted(answers_.values(), key=len))[-1]
-    len_separator = len(longest_string) * 2 + 30
-    table_length = 0
     number_of_spaces = 0
-    if len_separator > len(question) + 6:
-        table_length = len_separator
-        if table_length % 2 == 0:
-            table_length += 1
-        number_of_spaces = int((table_length/2)-9)
+    spaces_after_question = table_length - len(question) -3
+    if len(question) > basic_question_length:
+        question_list = divide_question(question)
+        question = ""
+        for i in range(len(question_list)):
+            if i < len(question_list)-1:
+                question = question + question_list[i] + " |\n| "
+            else:
+                question = question + question_list[i]
+                spaces_after_question = table_length - (len(question_list[i]) + 2)
+                print(spaces_after_question)
+        number_of_spaces = int((table_length / 2) -9)
     else:
-        table_length = int(len(question)) + 6
-        if table_length % 2 == 0:
-            table_length += 1
-        number_of_spaces = int((table_length / 2) - 9)
+        number_of_spaces = int((table_length / 2) -9)
     if selected != "":
         for i in answers_:
             if correct_answer != "" and i == correct_answer:
@@ -418,19 +452,45 @@ def print_question(question: str, answers_: {}, selected="", color="", correct_a
                     answer_values[list(answers_).index(i)] = bg.blue + fg.black + answers_[i] + fg.rs + bg.rs
 
     print("-" * (table_length))
-    print("| " + question + " " * (table_length - len(question) - 3) + "|")
+    print("| " + question + " " * spaces_after_question + "|")
     print("-" * (table_length))
     print("\n")
     print("-" * table_length)
-    print("| " + list(answers_.items())[0][0].upper(), ": ", answer_values[0],
-          " " * (number_of_spaces - len_first_answer), "|",
-          list(answers_.items())[1][0].upper(), ": ", answer_values[1],
-          " " * (number_of_spaces - len_second_answer), "|")
-    print("-" * table_length)
-    print("| " + list(answers_.items())[2][0].upper(), ": ", answer_values[2],
-          " " * (number_of_spaces - len_third_answer), "|",
-          list(answers_.items())[3][0].upper(), ": ", answer_values[3],
-          " " * (number_of_spaces - len_fourth_answer), "|")
+    if len(longest_string)> number_of_spaces:
+        number_of_spaces = number_of_spaces +6
+        number_of_parts = int(len(longest_string) / number_of_spaces)
+        answer_list_a = divide_answer(answer_values[0], number_of_parts)
+        answer_list_b = divide_answer(answer_values[1], number_of_parts)
+        answer_list_c = divide_answer(answer_values[2], number_of_parts)
+        answer_list_d = divide_answer(answer_values[3], number_of_parts)
+        answers_lists = [answer_list_a, answer_list_b, answer_list_c, answer_list_d]
+        longest_string_divided = int(len(longest_string) / number_of_spaces)
+        answer = ""
+        index = 0
+        for i in range(4):
+            if i == 0 or i == 2:
+                for j in range(longest_string_divided+1):
+                    first_string = answers_lists[index][j]
+                    second_string= answers_lists[index+1][j]
+                    first_spaces = number_of_spaces-len(first_string)
+                    second_spaces = number_of_spaces-len(second_string)
+                    answer = answer + "| " + first_string + " " * first_spaces + "| " + second_string + " " * second_spaces + " |"
+                    if j < longest_string_divided:
+                        answer = answer +  "\n"
+            if i == 0:
+                answer = answer + "\n" + "-" * table_length + "\n"
+            index += 1
+        print(answer)
+    else:
+        print("| " + list(answers_.items())[0][0].upper(), ": ", answer_values[0],
+              " " * (number_of_spaces - len_first_answer), "|",
+              list(answers_.items())[1][0].upper(), ": ", answer_values[1],
+              " " * (number_of_spaces - len_second_answer), "|")
+        print("-" * table_length)
+        print("| " + list(answers_.items())[2][0].upper(), ": ", answer_values[2],
+              " " * (number_of_spaces - len_third_answer), "|",
+              list(answers_.items())[3][0].upper(), ": ", answer_values[3],
+              " " * (number_of_spaces - len_fourth_answer), "|")
     print("-" * table_length)
 
 
