@@ -16,9 +16,9 @@ default_width = 40
 def intro():
     util.clear_screen()
     if util.game_language == util.Language.HUNGARIAN.name:
-        util.play_sound("intro.mp3", 0, volume=1)
+        util.play_sound("intro", 0, volume=1)
     else:
-        util.play_sound("intro.wav", 0)
+        util.play_sound("intro", 0, file_type="wav")
     time.sleep(2)
     file = (util.open_file("intro_" + util.game_language, 'r'))
     for line_index in range(len(file)):

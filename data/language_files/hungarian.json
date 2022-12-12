@@ -15,7 +15,7 @@
         "main_menu_options": [
             "Játék", "Útmutató", "Beállítások","Stáblista","Pontszámok", "Kilépés"
         ],
-        "settings_menu_question_topics": ["Mind","Általános","Történelem", "Földrajz","Fizika","Kémia","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia","Közgazdaságtan","Sport"],
+        "settings_menu_question_topics": ["Mind","Általános","Történelem", "Földrajz","Fizika","Kémia","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia","Közgazdaságtan","Sport", "Eredeti"],
         "empty_scores": "Indítson egy kvízjátékot hogy pontokat szerezzen!",
         "scores": {
             "user":  "Játékos",
@@ -27,8 +27,9 @@
     },
     "quiz": {
         "player_name_prompt": "Hogyan szólíthatom? ",
-        "select_answer":"\nVálassza ki a helyes választ ('a','b','c','d'), 't' a játékon kívüli válaszadáshoz, 'h' ha segítséget szeretne!\n",
-        "select_answer_out": "\nVálassza ki a helyes választ ('a','b','c','d') ! ",
+        "select_answer":"\nVálassza ki a helyes válasz betűjelét, 't' a játékon kívüli válaszadáshoz, 'h' ha segítséget szeretne!\n",
+        "selected_answer":"\nAz ön válasza: ",
+        "select_answer_out": "\nVálassza ki a helyes válasz betűjelét! ",
         "correct_answer": "Szép volt!",
         "correct_answer_out": "Helyes válasz! Több szerencsét a következő alkalommal!",
         "incorrect_answer": "Rossz válasz! Több szerencsét a következő alkalommal!",

@@ -30,6 +30,7 @@ class Topics(Enum):
     GASTRONOMY = 12
     ECONOMY = 13
     SPORTS = 14
+    ORIGINAL = 15
 
 
 class Difficulty(Enum):
@@ -81,7 +82,9 @@ def init_settings(selected_lang: str, reset_settings=False):
             lang_dict = read_json_dict(selected_lang)
             language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
             game_language = selected_lang
-
+            question_difficulty = Difficulty.ALL.name
+            question_topics = Topics.ALL.name
+            system_volume = True
 
 def set_game_language(selected_lang: str):
     global game_language
@@ -108,9 +111,17 @@ def clear_screen():
         os.system('cls')
 
 
-def play_sound(filename, starting_time, volume=0.07):
+def play_sound(filename, starting_time, file_type="mp3", volume=0.07):
     if system_volume:
-        file_path = get_data_path() + "/sound_files/" + game_language + "/" + filename
+        file_path = get_data_path() + "/sound_files/" + game_language + "/" + filename + "." + file_type
+        pygame.mixer.music.load(file_path)
+        pygame.mixer.music.set_volume(volume)
+        pygame.mixer.music.play(0, starting_time)
+
+
+def play_background_music(filename, starting_time, volume=0.07):
+    if system_volume:
+        file_path = get_data_path() + "/sound_files/" + "general" + "/" + "background" + "/" + filename + ".mp3"
         pygame.mixer.music.load(file_path)
         pygame.mixer.music.set_volume(volume)
         pygame.mixer.music.play(0, starting_time)
