@@ -23,3 +23,9 @@ Mire nem vadászik a sas a híres mondás szerint?;Légyre;Elefántra;Sasfióka;
 Melyik uralkodó rendelt a róla elnevezett lepkés, virágos herendi porcelánkészletből?;Viktória királynő;II. Miksa József;III. Napóleon;I. Miklós
 A Heti hetes melyik közreműködőjének nevét viseli kontinens?;Bajor Imre;Verebes István;Gálvölgyi János;Havas Henrik
 Melyik település neve egy József Attila-vers címe?;Balatonszárszó;Bécs;Makó;Öcsöd
+Melyik volt az a dinasztia, amelyik egy Henrikkel kezdődött és utolsó uralkodója I. Erzsébet volt?;Tudor;Morgó;Szende;Szundi
+Hányadik Henrikkel kezdődött a Tudor-dinasztia?;V.;VI.;VII.;VIII
+Ki volt a szegedi egyetem "fura ura"?;Horger Antal;Juhász Gyula;Havas Henrik;Szent-Györgyi Albert
+Milyen eredetű a Mercédesz női név?;Spanyol;Görög;Német;Francia
+Hogy írjuk helyesen az alábbi szót?;Tehergépkocsi-vezető;Tehergépkocsivezető;Teher-gépkocsivezető;Tehergép-kocsivezető
+Milyen ruhája csupa tarka virág a Csinibabának az azonos című slágerben?;Karton;Muszlin;Dzsörzé;Perlon

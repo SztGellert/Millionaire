@@ -17,8 +17,12 @@ Melyik női név egy ismert Kosztolányi-vers címe?;Ilona;Klára;Mária;Borbál
 Melyik királyunknak nem volt felesége?;V. László;Károly Róbert;IV.Béla;Könyves Kálmán
 Melyik országban ered a Hernád folyó?;Szlovákia;Ukrajna;Németország;Ausztria
 Mi volt az eredeti neve Jókai Mór feleségének, Laborfalvy Rózának?;Benke Judit;Reindl Lujza;Nagy Bella;Engelhardt Anna
-Milyen címmel írt lóversennyel kapcsolatos művet Széchenyi István?;A lovas futtatás ügye;Telivérekrül és versenyekrül;A lovas versenysportrúl;Néhány szó a lóverseny körül
+Milyen címmel írt lóversennyel kapcsolatos művet Széchenyi István?;Néhány szó a lóverseny körül;A lovas futtatás ügye;Telivérekrül és versenyekrül;A lovas versenysportrúl
 Melyikre használják a sörtésztát?;Rántott húsok bundázására;Sörízesítésre;Malátaélesztésre;Söröshordók szigetelésére
 Melyek voltak az 1951-ben alakított Bp. KJinizsi SE klubszínei?;Piros-fehér;Lila-fehér;Zöld-sárga;Fekete-fehér
 Milyen eredetű kőzetek közé tartozik a dolomit?;Üledékes;Átalakult;Mélységi magmás;Vulkáni törmelékes
 Melyik volt egy török adófajta neve?;haradzs;hidzsra;rádzsa;dzsámi
+Az alábbiak közül melyik esemény nem 1949-ben történt?;Elindul a 3 éves terv;Létrejön a Nato;Elfogadják az űj alkotmányt;Bajnok lesz az FTC
+Milyen név hiányzik a következő településnevek elől? -büd, -céce, -kak, -kércs, -petri, -szurdok, -vécse?;Hernád;Duna;Mátra;Bakony
+Milyen közös keresztvén tartozik az uralkodói előnevekhez: "Civakodó, Hebegő, Henye, Bajor"?;Lajos;István;Henrik;Imre
+Melyik két világbajnokságon nyert ezüstérmet labdarűgó-válogatottunk?;1938-ban és 1954-ben;1954-ben és 1966-ban;1934-ben és 1954-ben;1954-ben és 1962-ben
