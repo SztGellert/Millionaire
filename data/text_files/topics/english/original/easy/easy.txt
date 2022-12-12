@@ -8,3 +8,8 @@ What do you need to play the traditional game "cat's cradle"?;String;Dice;Cards;
 What breed of dog was film and TV star Lassie?;Collie;Poodle;St. Bernard;German Shepherd
 How many cells make up an amoeba?;One;Two;Three;Zero
 Which of the following items are traditionally stored in a humidor to keep them fresh?;Cigars;Cheese;Wine;Bread
+According to the common phrase, something that "goes around" does what?;Comes around;Never comes back;Keeps going;Gets dizzy
+Traditionally, what type of fruit is given to a teacher to make a good impression?;Apple;Peach;Kumquat;Watermelon
+What term coined in the 1980s describes people who spend all their time watching TV?;Couch potatoes;See slugs;Remote controllers;Teletubbies
+Where on the body would you find the jowls?;Jaw;Leg;Arm;Toes
+What do players ride on during a traditional game of polo?;Horses;Zebras;Mules;Ostriches
