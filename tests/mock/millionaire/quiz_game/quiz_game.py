@@ -441,7 +441,7 @@ def write_content_to_file(filename: str, content: {}):
             json.dump([content], outfile)
 
 
-d
+
 def divide_question(question: str) -> list:
     question_parts = []
     basic_question_length = 109
