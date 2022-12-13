@@ -76,7 +76,6 @@ def init_settings(selected_lang: str, reset_settings=False):
             language_dictionary.update({game_language: custom_dictionary_decoder(lang_dict)})
             question_topics = data["topic"]
             system_volume = data["volume"]
-
     else:
         for lang in available_languages:
             lang_dict = read_json_dict(selected_lang)
@@ -85,6 +84,7 @@ def init_settings(selected_lang: str, reset_settings=False):
             question_difficulty = Difficulty.ALL.name
             question_topics = Topics.ALL.name
             system_volume = True
+
 
 def set_game_language(selected_lang: str):
     global game_language
@@ -132,7 +132,7 @@ def get_data_path() -> str:
         path = str(pathlib.Path(__file__).parent.parent.parent.resolve())
         data_path = path + "/data"
     else:
-        data_path = "../data"
+        data_path = "./data"
 
     return data_path
 

@@ -1,0 +1,17 @@
+Melyik a világ leghosszabb hídja?;Tanjang–Kunsan vasúti híd;Cangde Grand Bridge;Bang Na Expressway;Runyang-híd
+Mi a fővárosa Dél-Dakotának?;Pierre;Bismarck;Raleigh;Columbia
+Minek a fővárosa Phoenix?;Arizona;Maine;Iowa;Delaware
+Hol található a Plútó törpebolygó?;Kuiper-öv;Mariana-árok;Canso-szoros;Maliku Kandu
+Mi Texas fővárosa?;Austin;Dallas;Phoenix;Lubbock
+Melyik Németország legnagyobb állama területe alapján?;Bajorország;Berlin;Hesse;Bréma
+Mit jelent a „12”-es a Beaufort-skálán?;Hurrikán erősség;Erős vihar;Erős szélvihar;Erős szellő
+Melyik bolygónak van a legkiemelkedőbb gyűrűrendszere?;Szaturnusz;Jupiter;Mars;Vénusz
+Mi Ausztrália fővárosa?;Canberra;Adelaide;Melbourne;Sydney
+Melyik országban található a világ legmagasabb vízesése?;Venezuela;Usa;Brazília;Dél-Afrika
+Mi a Fülöp-szigetek fővárosa?;Manilla;Jakarta;Dili;Marawi
+Melyik óceánon található Madagaszkár szigete?;Indiai;Csendes-óceáni;Sarkvidéki;Atlanti
+Milyen népcsoport él Grönland, Kanada és Alaszka sarkvidéki régióiban?;Inuit;Nyenyec;Kozák;Azték
+Melyik a legnagyobb sziget?;Grönland;Borneo;Új-Guinea;Madagaszkár
+Melyik a leghosszabb folyó?;Amazon;Jangce;Gange;Mississippi
+Melyik ország déli partján található HongKong?;Kína;Vietnam;Japán;Tajvan
+Melyik az USA legnépesebb állama?;Kalifornia;Illinois;Indiana;Florida

@@ -1,11 +1,11 @@
 import time
 import os
 import json
-from millionaire.util import util
 from sty import Style, RgbFg, fg, bg
-from millionaire.quiz_game.quiz_game import quiz_game
 import keyboard
-import helpers
+from tests.mock.millionaire.util import util as util
+from tests.mock.millionaire.menu import helpers as helpers
+from tests.mock.millionaire.quiz_game import quiz_game as quiz_game
 
 fg.purple = Style(RgbFg(148, 0, 211))
 bg.orange = bg(255, 150, 50)
@@ -84,8 +84,10 @@ def select_credits():
     return_prompt()
 
 
-def return_prompt():
+def return_prompt(input: str):
     print(fg.red + "\n" + language_dictionary[util.game_language].menu.return_prompt + fg.rs)
+    if input == "enter":
+        return
     if util.operating_system == "posix":
         user_input = helpers.return_user_input_linux()
     else:
@@ -144,6 +146,7 @@ def get_user_input(option_list: [], values_list: [], max_option_length: int, hot
 def select_settings():
     start_index = 0
     util.clear_screen()
+    print(language_dictionary)
     show_options(language_dictionary[util.game_language].menu.settings_menu_options, default_width)
     while True:
         chosen_option = get_user_input(language_dictionary[util.game_language].menu.settings_menu_options, language_dictionary[util.game_language].menu.settings_menu_options, default_width, start_index)
@@ -191,14 +194,18 @@ def select_settings():
             return
 
 
-def handle_main_menu():
+def handle_main_menu(menu_inputs: [], game_inputs: {}):
     start_index = 0
     options_length = default_width
+    print(language_dictionary)
     show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length)
-    while True:
-        chosen_option = get_user_input(language_dictionary[util.game_language].menu.main_menu_options, language_dictionary[util.game_language].menu.main_menu_options, options_length, start_index)
+    #while True:
+    for input in menu_inputs:
+        print(input)
+        time.sleep(3)
+        chosen_option = input
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[0]:
-            quiz_game.play()
+            quiz_game.play(game_inputs)
             show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length)
             start_index = 0
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[1]:

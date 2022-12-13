@@ -1,0 +1,12 @@
+        Ez a stáblista oldala a Helpless Gooses csapat Milliomos játékának.
+
+Ezt a játékot Sztankovszky Gellért fejlesztette tovább egy a Helpless Gooses csapat heti projekt feladatából.
+Önszórakoztatás és python programozás tanulás céljából került folytatásra.
+
+Oszd meg a játékot és a véleményed!
+
+Köszönöm hogy elolvastad!
+
+https://github.com/SztGellert
+
+Jó szórakozást!

@@ -1,0 +1,15 @@
+Melyik a foci angol neve?;Soccer;Basketball;Baseball;Cricket
+Mi a nemzetközi neve annak a személynek aki irányít egy futballmérkőzést?;A referee;An umpire;A spectator;A goalkeeper
+Hol voltak az első modern Nyári olimpiai játékok 1896-ban?;Athén;Sydney;Róma;Párizs
+Mi az Arsenal FC beceneve?;The Gunners;The Sky Blues;The Citizens;The Red Devils
+Melyik francia város ismert a 24 órás autóversenyéről?;Le Mans;Marseille;Párizs;Nizza
+Mi a neve az egyetlen versenylónak, aki háromszor nyerte meg a Grand National-t?;Red Rum;Arkle;American Pharaoh;Winx
+Melyik sportágat játsszák ovális versenypályán?;Kerékpározás;Futás;Gátfutás;Váltófutás
+Melyik 2 országban rendezték meg a 2019-es Krikett Világbajnokságot?;Anglia és Wales;Anglia és Németország;Anglia és Dánia;Anglia és Franciaország
+Melyik sportágban használják a "follower" és a "rover" pozíciókat?;Ausztrál Rules Football;Sepak takraw;Víz alatti jégkorong;Disc golf
+Melyik ország nyerte meg a 2019-es Rögbi Világbajnokságot?;Dél-Afrika;Chile;Paraguay;Jemen
+Mit jelent a golflyukon elért 1-gyel magasabb pontszám?;Bogey;Birdie;Ace;Eagle
+Melyik teniszversenyen szerezte meg Andy Murray első Grand Slam-bajnoki címét?;US Open;Australian Open;Roland Garros (French Open);Wimbledon
+Melyik futballstadionban találná a The Shankly Gates-t?;Anfield, Liverpool;Wembley, London;Old Trafford, Manchester;Westfalenstadion, Dortmund
+Melyik sportágat űzi a New York Giants?;Amerikai futball;Futball;Röplabda;Kosárlabda
+Mi Japán nemzeti sportja?;Szumóbirkózás;Karate;Dzsúdó;Dzsúdzsucu

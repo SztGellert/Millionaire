@@ -1,0 +1,16 @@
+A hang intenzitásának van?;objektív létezése;szubjektív létezése;nincs létezése;szubjektív és objektív létezés egyaránt
+Mik a bolgyók?;fénytelen égitestek;csillag körül keringő fényes égitestek;fényes és pislákoló égitestek;fényes égitestek, amelyek nem pislákolnak
+Miért kapta Hermann Scheer (Németország) 1999-ben a "Right Livelihood Award" díjat?;A napenergia világszintű népszerűsítéséért végzett fáradhatatlan munkájáért;A diktátorok büntetlenségének megszüntetésére irányuló hosszú távú erőfeszítéseiért;Megmutatta, hogy a biogazdálkodás kulcsfontosságú mind a környezeti fenntarthatóság, mind az élelmezésbiztonság szempontjából;Egyik sem
+A Földről a Hold felé kilőtt rakéta szökési sebessége az a sebesség, amellyel megszabadulhat a...?;A Föld gravitációs vonzása;A Hold gravitációs vonzása;A Föld forgásából adódó centrális erő;A légkör nyomása
+Ki volt Gabriel Daniel Fahrenheit?;A fentiek mindegyike;Német fizikus;Kifejlesztette a higanyhőmérőt 1714-ben;Kidolgozta a hőmérsékleti skálát
+Minek az eredményeképpen keletkezik Radiokarbon a légkörben?;Gyors neutronok és a légkörben jelenlévő nitrogénatommagok ütközése;A nap ultraibolya fényének a légköri oxigénre gyakorolt hatása;A napsugárzás, különösen a kozmikus sugarak hatása a légkörben lévő szén-dioxidra. légkör;Villámkisülés a légkörben
+A nagy transzformátorok, ha hosszabb ideig használják, nagyon felforrósodnak, és a keringető olaj lehűti őket. A transzformátor forrósodása a következőknek köszönhető:;Mind az áram, mind a hiszterézis veszteség fűtő hatása;Intenzív napfény délben;Egyedül a hiszterézis veszteség;Egyedül az áram fűtő hatása
+Mi a délibáb oka?;A légkör különböző részeinek egyenlőtlen fűtése;A légkör mágneses zavarai;A légkör ózonrétegének csökkenése;A légkör különböző részeinek egyenlő felmelegedése
+A bolygók azért nem pislákolnak, mert?;Közelebb vannak a Földhöz, és ezért nagyobb mennyiségű fényt kapunk, ezért az intenzitás kisebb eltérései nem észrevehetők;Nagyon távol vannak a Földtől, ami a fény intenzitásának csökkenését eredményezi;A Földtől való távolság nem változik az idő múlásával;Állandó intenzitású fényt bocsátanak ki
+A következő párok közül válassza ki azt a párat, amelyben a fizikai mennyiségek mérete nem azonos?;Impulzus és erőnyomaték;Lineáris impulzuserő és változási sebesség;Planck-állandó és szögimpulzus;Nyomás- és Young-modulok
+A tiszta üveglapon egy vízcsepp vékony réteget képez, míg a higanycsepp szinte gömb alakú marad, mert?;A higany kohéziója nagyobb, mint az üveghez való tapadása;A víz kohéziója nagyobb, mint az üveghez való tapadása;A higany nagyobb, mint a víz;a higany fém
+Ha két különböző tömegű, kezdetben nyugalmi testre ugyanaz az erő hat ugyanannyi ideig, akkor mindkét test megegyező _____ kap?;Impulzus;Sebesség;Gyorsulás;Mozgási energia
+Válassza ki a skaláris mennyiséget!;Nyomás;Erő;Sebesség;Gyorsulás
+Mire használják az egyenirányítókat?;Váltakozó áram egyenárammá konvertálása;Egyenáram váltakozó árammá konvertálása;Magas feszültség alacsony feszültséggé konvertálása;Alacsony feszültség magas feszültséggé konvertálása
+Az alábbiak közül melyiket nem bocsát ki radioaktív anyag?;Neutronok;Alfa-részecskék;Elektromágneses sugárzások;Elektronok
+A 20 Hz alatti frekvenciájú hangot hogyan nevezzük?;Infrahang;Audiohang;Ultrahang;Szuperszonikus
