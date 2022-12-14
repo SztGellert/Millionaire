@@ -1,7 +1,6 @@
 import unittest
 
 from millionaire.quiz_game import quiz_game
-import json
 
 
 class TestSum(unittest.TestCase):
