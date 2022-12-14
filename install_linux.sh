@@ -7,12 +7,13 @@ sudo apt install pythonpy
 pip install pipreqs
 pipreqs .
 pip install -r requirements.txt
+mkdir bin
 cd ./bin || exit
 cat <<EOF1 >create_linux_desktop_launcher.sh
 #!/bin/bash
 path_to_millionaire=\$(readlink -f ../runner.py)
 path_to_icon=\$(readlink -f ../loim.png)
-chmod +x ../runner.py
+sudo chmod u+x../runner.py
 cd ~/Desktop || exit
 cat <<EOF >millionaire.desktop
 [Desktop Entry]
