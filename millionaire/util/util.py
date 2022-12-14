@@ -111,7 +111,7 @@ def clear_screen():
 
 def play_sound(filename, starting_time, file_type="mp3", volume=0.07):
     if system_volume:
-        file_path = get_data_path() + "/sound_files/" + game_language + "/" + filename + "." + file_type
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
         pygame.mixer.music.load(file_path)
         pygame.mixer.music.set_volume(volume)
         pygame.mixer.music.play(0, starting_time)
@@ -151,7 +151,7 @@ def stop_sound():
 
 
 def read_json_dict(file_name: str) -> {}:
-    file_path = get_data_path() + "/language_files/" + file_name + ".json"
+    file_path = get_data_path() + "/language_files/" + file_name.lower() + ".json"
     with open(file_path, encoding="UTF-8") as json_file:
         data = json.load(json_file)
         return data

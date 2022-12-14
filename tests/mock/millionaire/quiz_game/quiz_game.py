@@ -49,30 +49,39 @@ def play(inputs: dict):
             if topic.name != util.Topics.ALL.name and question_difficulty != util.Difficulty.ALL.name:
                 for level in util.Difficulty:
                     if question_difficulty == level.name:
-                        for line in util.open_file(level.name, "r", ";",
-                                                   "/text_files/topics/" + game_language + "/" + topic.name + "/" + level.name + "/"):
+                        for line in util.open_file(str(level.name).lower(), "r", ";",
+                                                   "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                                       topic.name).lower() + "/" + str(level.name).lower() + "/"):
                             question_lines.append(line)
             else:
                 if topic.name != util.Topics.ALL.name:
-                    for line in util.open_file(util.Difficulty.EASY.name, "r", ";",
-                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.EASY.name + "/"):
+                    for line in util.open_file(str(util.Difficulty.EASY.name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                                   topic.name).lower() + "/" + str(
+                                                   util.Difficulty.EASY.name).lower() + "/"):
                         question_lines_easy.append(line)
-                    for line in util.open_file(util.Difficulty.MEDIUM.name, "r", ";",
-                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.MEDIUM.name + "/"):
+                    for line in util.open_file(str(util.Difficulty.MEDIUM.name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                                   topic.name).lower() + "/" + str(
+                                                   util.Difficulty.MEDIUM.name).lower() + "/"):
                         question_lines_medium.append(line)
-                    for line in util.open_file(util.Difficulty.HARD.name, "r", ";",
-                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.HARD.name + "/"):
+                    for line in util.open_file(str(util.Difficulty.HARD.name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                                   topic.name).lower() + "/" + str(
+                                                   util.Difficulty.HARD.name).lower() + "/"):
                         question_lines_hard.append(line)
     else:
         for level in util.Difficulty:
             if question_difficulty == level.name and level.name != util.Difficulty.ALL.name:
-                for line in util.open_file(level.name, "r", ";",
-                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + level.name + "/"):
+                for line in util.open_file(str(level.name).lower(), "r", ";",
+                                           "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                               question_topics).lower() + "/" + str(level.name).lower() + "/"):
                     question_lines.append(line)
             else:
                 if level.name != util.Difficulty.ALL.name:
-                    for line in util.open_file(util.Difficulty(level).name, "r", ";",
-                                               "/text_files/topics/" + game_language + "/" + question_topics + "/" + level.name + "/"):
+                    for line in util.open_file(str(util.Difficulty(level).name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                                   question_topics).lower() + "/" + str(level.name).lower() + "/"):
                         if level.name == util.Difficulty.EASY.name:
                             question_lines_easy.append(line)
                         if level.name == util.Difficulty.MEDIUM.name:
@@ -327,7 +336,7 @@ def check_answer(answer: str, correct_answer: str) -> bool:
 
 
 def show_prize(round_number: int) -> str:
-    prizes = util.open_file("prizes_" + game_language, "r")
+    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     return prizes[round_number][0]
 
 
@@ -357,10 +366,11 @@ def print_phone_conversation(text: list, question: str, answers: {}, good_answer
 def telephone_help(question: str, answers: {}, correct_answer: str, hotkey: str):
     phone = safe_input(language_dictionary[game_language].quiz.phone_prompt,
                        ["m", "d", "t", "y"], hotkey)
-    call_text_files = ["mum_phone_" + game_language,
-                       "dad_phone_" + game_language,
-                       "teacher_phone_" + game_language,
-                       "yoda_master_phone_" + game_language]
+    call_text_files = ["mum_phone_" + str(game_language).lower(),
+                       "dad_phone_" + str(game_language).lower(),
+                       "teacher_phone_" + str(game_language).lower(),
+                       "yoda_master_phone_" + str(game_language).lower()
+                       ]
     for i in range(len(call_text_files)):
         if phone.lower() == call_text_files[i][0]:
             conversation = (util.open_file(call_text_files[i], 'r', separator=";"))
@@ -571,7 +581,7 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
 
 
 def show_game_structure():
-    prizes = util.open_file("prizes_" + game_language, "r")
+    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     if game_language == util.Language.HUNGARIAN.name:
         print_helps()
         print("\n\n")
@@ -587,12 +597,16 @@ def show_game_structure():
                         print(round_number + " ♦ " + prizes[::-1][j][0])
                     else:
                         print(round_number + " ♦ " + fg.orange + prizes[::-1][j][0] + fg.rs)
-            time.sleep(0.3)
+            if os.name == "POSIX":
+                time.sleep(0.3)
+            else:
+                time.sleep(0.4)
             if i != 14:
                 util.clear_screen()
                 print_helps()
                 print("\n\n")
-
+        if os.name != "POSIX":
+            time.sleep(2)
         util.clear_screen()
         print_helps()
         print("\n\n")
@@ -666,7 +680,7 @@ def list_helps():
 
 
 def print_prizes():
-    prizes = util.open_file("prizes_" + game_language, "r")
+    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     for i in range(len(prizes)):
         round_number = str(len(prizes) - i)
         if len(prizes) - i < 10:

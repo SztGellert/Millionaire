@@ -2,10 +2,12 @@
 
 def return_user_input_windows() -> bytes:
     import msvcrt
-    user_input = msvcrt.getch()
-    return user_input
 
-def return_user_input_linux() -> bytes:
-    import getch
-    user_input = getch.getch()
-    return user_input
+    return msvcrt.getch()
+
+def return_user_input_linux() -> str:
+    from curtsies import Input
+    with Input() as input_generator:
+        for c in input_generator:
+
+            return c

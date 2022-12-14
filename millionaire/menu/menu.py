@@ -21,7 +21,7 @@ def intro():
     else:
         util.play_sound("intro", 0, file_type="wav")
     time.sleep(2)
-    file = (util.open_file("intro_" + util.game_language, 'r'))
+    file = (util.open_file("intro_" + str(util.game_language).lower(), 'r'))
     for line_index in range(len(file)):
         if line_index == 3:
             print(fg.purple + file[line_index][0] + fg.rs)
@@ -71,7 +71,7 @@ def select_exit():
 
 def select_help():
     util.clear_screen()
-    file = (util.open_file("tutorial_" + util.game_language, 'r'))
+    file = (util.open_file("tutorial_" + str(util.game_language).lower(), 'r'))
     for line in file:
         print(line[0])
     return_prompt()
@@ -79,7 +79,7 @@ def select_help():
 
 def select_credits():
     util.clear_screen()
-    file = (util.open_file("credits_" + util.game_language, 'r'))
+    file = (util.open_file("credits_" + str(util.game_language).lower(), 'r'))
     for line in file:
         print(line[0])
     return_prompt()
@@ -96,7 +96,8 @@ def select_scores():
             i = 0
             for k, v in item.items():
                 if i == 1:
-                    print(language_dictionary[util.game_language].menu.scores[i], ":", language_dictionary[util.game_language].menu.settings_menu_question_topics[v], end=" ")
+                    index = list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(str(v).capitalize())
+                    print(language_dictionary[util.game_language].menu.scores[i], ":", language_dictionary[util.game_language].menu.settings_menu_question_topics[index], end=" ")
                 else:
                     print(language_dictionary[util.game_language].menu.scores[i], ":", v, end=" ")
                 i += 1
@@ -129,7 +130,8 @@ def select_settings():
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, default_width, chosen_option=1)
             start_index = 1
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[2]:
-            keyboard.press('f11')
+            if os.name == "POSIX":
+                keyboard.press('f11')
             start_index = 2
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[3]:
             show_options(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width,  util.topics.index(util.question_topics))
@@ -172,7 +174,7 @@ def return_prompt():
         user_input = helpers.return_user_input_windows()
     print(fg.red + "\n" + language_dictionary[util.game_language].menu.return_prompt + fg.rs)
     # escape
-    if user_input == b'\x1b':
+    if user_input == b'\x1b' or user_input == '<ESC>':
         return
 
 
@@ -185,16 +187,16 @@ def get_user_input(option_list: [], values_list: [], max_option_length: int, sta
             user_input = helpers.return_user_input_windows()
         first_char = user_input
         # escape
-        if first_char == b'\x1b':
+        if first_char == b'\x1b' or first_char == '<ESC>':
             if esc == True:
                 return values_list[-1]
             else:
                 return values_list[start_index]
         # enter
-        if first_char == b'\r':
+        if first_char == b'\r' or first_char == '<Ctrl-j>':
             return values_list[i]
         # up
-        if first_char == b'H':
+        if first_char == b'H' or first_char == '<UP>':
             if i == 0:
                 i = len(option_list) - 1
                 show_options(option_list, max_option_length, len(option_list) - 1)
@@ -202,10 +204,10 @@ def get_user_input(option_list: [], values_list: [], max_option_length: int, sta
                 i -= 1
                 show_options(option_list, max_option_length, i)
             # enter
-            if user_input == b'\r':
+            if user_input == b'\r' or user_input == '<Ctrl-j>':
                 return values_list[i]
         # down
-        if first_char == b'P':
+        if first_char == b'P' or first_char == '<DOWN>':
             if i == len(option_list) - 1:
                 i = 0
                 show_options(option_list, max_option_length)
@@ -213,7 +215,7 @@ def get_user_input(option_list: [], values_list: [], max_option_length: int, sta
                 i += 1
                 show_options(option_list, max_option_length, i)
             # enter
-            if user_input == b'\r':
+            if user_input == b'\r' or user_input == '<Ctrl-j>':
                 return values_list[i]
 
 

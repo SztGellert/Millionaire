@@ -39,30 +39,30 @@ def play():
             if topic.name != util.Topics.ALL.name and question_difficulty != util.Difficulty.ALL.name:
                 for level in util.Difficulty:
                     if question_difficulty == level.name:
-                        for line in util.open_file(level.name, "r", ";",
-                                                   "/text_files/topics/" + game_language + "/" + topic.name + "/" + level.name + "/"):
+                        for line in util.open_file(str(level.name).lower(), "r", ";",
+                                                   "/text_files/topics/" + str(game_language).lower() + "/" + str(topic.name).lower() + "/" + str(level.name).lower() + "/"):
                             question_lines.append(line)
             else:
                 if topic.name != util.Topics.ALL.name:
-                    for line in util.open_file(util.Difficulty.EASY.name, "r", ";",
-                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.EASY.name + "/"):
+                    for line in util.open_file(str(util.Difficulty.EASY.name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(topic.name).lower() + "/" + str(util.Difficulty.EASY.name).lower() + "/"):
                         question_lines_easy.append(line)
-                    for line in util.open_file(util.Difficulty.MEDIUM.name, "r", ";",
-                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.MEDIUM.name + "/"):
+                    for line in util.open_file(str(util.Difficulty.MEDIUM.name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(topic.name).lower() + "/" + str(util.Difficulty.MEDIUM.name).lower() + "/"):
                         question_lines_medium.append(line)
-                    for line in util.open_file(util.Difficulty.HARD.name, "r", ";",
-                                               "/text_files/topics/" + game_language + "/" + topic.name + "/" + util.Difficulty.HARD.name + "/"):
+                    for line in util.open_file(str(util.Difficulty.HARD.name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(topic.name).lower() + "/" + str(util.Difficulty.HARD.name).lower() + "/"):
                         question_lines_hard.append(line)
     else:
         for level in util.Difficulty:
             if question_difficulty == level.name and level.name != util.Difficulty.ALL.name:
-                for line in util.open_file(level.name, "r", ";",
-                                           "/text_files/topics/" + game_language + "/" + question_topics + "/" + level.name + "/"):
+                for line in util.open_file(str(level.name).lower(), "r", ";",
+                                           "/text_files/topics/" + str(game_language).lower() + "/" + str(question_topics).lower() + "/" + str(level.name).lower() + "/"):
                     question_lines.append(line)
             else:
                 if level.name != util.Difficulty.ALL.name:
-                    for line in util.open_file(util.Difficulty(level).name, "r", ";",
-                                               "/text_files/topics/" + game_language + "/" + question_topics + "/" + level.name + "/"):
+                    for line in util.open_file(str(util.Difficulty(level).name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(question_topics).lower() + "/" + str(level.name).lower() + "/"):
                         if level.name == util.Difficulty.EASY.name:
                             question_lines_easy.append(line)
                         if level.name == util.Difficulty.MEDIUM.name:
@@ -277,7 +277,7 @@ def check_answer(answer: str, correct_answer: str) -> bool:
 
 
 def show_prize(round_number: int) -> str:
-    prizes = util.open_file("prizes_" + game_language, "r")
+    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     return prizes[round_number][0]
 
 
@@ -307,10 +307,10 @@ def print_phone_conversation(text: list, question: str, answers: {}, good_answer
 def telephone_help(question: str, answers: {}, correct_answer: str):
     phone = safe_input(language_dictionary[game_language].quiz.phone_prompt,
                        ["m", "d", "t", "y"])
-    call_text_files = ["mum_phone_" + game_language,
-                       "dad_phone_" + game_language,
-                       "teacher_phone_" + game_language,
-                       "yoda_master_phone_" + game_language
+    call_text_files = ["mum_phone_" + str(game_language).lower(),
+                       "dad_phone_" + str(game_language).lower(),
+                       "teacher_phone_" + str(game_language).lower(),
+                       "yoda_master_phone_" + str(game_language).lower()
                        ]
     for i in range(len(call_text_files)):
         if phone.lower() == call_text_files[i][0]:
@@ -532,7 +532,7 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
 
 
 def show_game_structure():
-    prizes = util.open_file("prizes_" + game_language, "r")
+    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     if game_language == util.Language.HUNGARIAN.name:
         print_helps()
         print("\n\n")
@@ -548,12 +548,16 @@ def show_game_structure():
                         print(round_number + " ♦ " + prizes[::-1][j][0])
                     else:
                         print(round_number + " ♦ " + fg.orange + prizes[::-1][j][0] + fg.rs)
-            time.sleep(0.3)
+            if os.name == "POSIX":
+                time.sleep(0.3)
+            else:
+                time.sleep(0.4)
             if i != 14:
                 util.clear_screen()
                 print_helps()
                 print("\n\n")
-
+        if os.name != "POSIX":
+            time.sleep(2)
         util.clear_screen()
         print_helps()
         print("\n\n")
@@ -630,7 +634,7 @@ def list_helps():
 
 
 def print_prizes():
-    prizes = util.open_file("prizes_" + game_language, "r")
+    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     for i in range(len(prizes)):
         round_number = str(len(prizes) - i)
         if len(prizes) - i < 10:
@@ -663,7 +667,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
     lets_see_sounds = ["lets_mark", "lets_see", "lets_see_1", "lets_see_2", "lets_see_3"]
     while True:
         user_input = get_user_input()
-        if user_input == b'a':
+        if user_input == b'a' or user_input == "a":
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.play_sound(selected_final_sound, 0)
@@ -673,14 +677,14 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                 game_language].quiz.selected_answer + "A")
             while True:
                 user_input = get_user_input()
-                if user_input == b'\r':
+                if user_input == b'\r' or user_input == '<Ctrl-j>':
                     play_marked_sound("a", level)
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "a"
                 else:
                     break
-        if user_input == b'b':
+        if user_input == b'b' or user_input == "b":
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.play_sound(selected_final_sound, 0)
@@ -690,14 +694,14 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                 game_language].quiz.selected_answer + "B")
             while True:
                 user_input = get_user_input()
-                if user_input == b'\r':
+                if user_input == b'\r' or user_input == '<Ctrl-j>':
                     play_marked_sound("b", level)
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "b"
                 else:
                     break
-        if user_input == b'c':
+        if user_input == b'c' or user_input == "c":
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.play_sound(selected_final_sound, 0)
@@ -707,14 +711,14 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                 game_language].quiz.selected_answer + "C")
             while True:
                 user_input = get_user_input()
-                if user_input == b'\r':
+                if user_input == b'\r' or user_input == '<Ctrl-j>':
                     play_marked_sound("c", level)
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "c"
                 else:
                     break
-        if user_input == b'd':
+        if user_input == b'd' or user_input == "d":
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.play_sound(selected_final_sound, 0)
@@ -724,16 +728,16 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                 game_language].quiz.selected_answer + "D")
             while True:
                 user_input = get_user_input()
-                if user_input == b'\r':
+                if user_input == b'\r' or user_input == '<Ctrl-j>':
                     play_marked_sound("d", level)
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "d"
                 else:
                     break
-        if user_input == b't':
+        if user_input == b't' or user_input == "t":
             return "t"
-        if user_input == b'h':
+        if user_input == b'h' or user_input == "h":
             return "h"
 
 
