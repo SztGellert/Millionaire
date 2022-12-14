@@ -130,7 +130,7 @@ def select_settings():
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, default_width, chosen_option=1)
             start_index = 1
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[2]:
-            if os.name == "POSIX":
+            if os.name == "nt":
                 keyboard.press('f11')
             start_index = 2
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[3]:

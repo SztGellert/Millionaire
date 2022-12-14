@@ -4,7 +4,7 @@ from tests.mock.millionaire.util import util
 
 def main(menu_inputs: list, game_inputs: dict):
     util.init()
-    #menu.intro()
+    menu.intro()
     menu.handle_main_menu(menu_inputs, game_inputs)
 
 
