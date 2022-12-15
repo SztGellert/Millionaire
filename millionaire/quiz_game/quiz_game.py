@@ -558,6 +558,8 @@ def show_game_structure():
                 print("\n\n")
         if os.name == "posix":
             time.sleep(2)
+        else:
+            time.sleep(0.7)
         util.clear_screen()
         print_helps()
         print("\n\n")
@@ -574,6 +576,8 @@ def show_game_structure():
                     else:
                         print(round_number + " ♦ " + fg.orange + prizes[::-1][b][0] + fg.rs)
             time.sleep(1)
+            if a == 1 and os.name == "nt":
+                time.sleep(0.4)
             util.clear_screen()
             print_helps()
             print("\n\n")
@@ -646,15 +650,15 @@ def print_prizes():
 
 
 def play_music(round: int):
-    if round < 5:
+    if round < 4:
         util.play_background_music(str(5), 0)
     else:
-        util.play_background_music(str(round), 0)
+        util.play_background_music(str(round+1), 0)
 
 
 def play_marked_sound(choise: str, level: int):
     sound_files = ["mark_" + choise, "mark_" + choise + "_1", "mark_" + choise + "_2"]
-    if level == 4:
+    if level == 7:
         util.play_sound("mark_500", 0)
         time.sleep(6)
     else:
