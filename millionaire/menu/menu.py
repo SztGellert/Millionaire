@@ -96,7 +96,7 @@ def select_scores():
             i = 0
             for k, v in item.items():
                 if i == 1:
-                    index = list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(str(v).capitalize())
+                    index = list(language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(str(v).capitalize())
                     print(language_dictionary[util.game_language].menu.scores[i], ":", language_dictionary[util.game_language].menu.settings_menu_question_topics[index], end=" ")
                 else:
                     print(language_dictionary[util.game_language].menu.scores[i], ":", v, end=" ")

@@ -597,7 +597,7 @@ def show_game_structure():
                         print(round_number + " ♦ " + prizes[::-1][j][0])
                     else:
                         print(round_number + " ♦ " + fg.orange + prizes[::-1][j][0] + fg.rs)
-            if os.name == "POSIX":
+            if os.name == "nt":
                 time.sleep(0.3)
             else:
                 time.sleep(0.4)
@@ -605,7 +605,7 @@ def show_game_structure():
                 util.clear_screen()
                 print_helps()
                 print("\n\n")
-        if os.name != "POSIX":
+        if os.name == "posix":
             time.sleep(2)
         util.clear_screen()
         print_helps()
