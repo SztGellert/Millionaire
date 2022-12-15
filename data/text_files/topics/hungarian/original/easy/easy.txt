@@ -1,4 +1,4 @@
-Melyik egy nemzetközi hírnevű magyar étel neve?;Gulyás;;Kondás;Kanász;Juhász
+Melyik egy nemzetközi hírnevű magyar étel neve?;Gulyás;Kondás;Kanász;Juhász
 Milyen pitypangnak hívják a gyermekláncfüvet?;Pongyola;Pipogya;Patyolat;Papucs
 Egészítse ki a híres novella címét! "Mario és a ..";Varázsló;Varázshegy;Kiválasztott;Buddenbrook-ház
 Mit neveztek régen indóháznak?;Vasútállomást;Telefonközpontot;Kékfestőműhelyt;Az automobil motorját
@@ -19,7 +19,7 @@ Melyik alapanyag nem kell a görög salátához?;Sárgarépa;Uborka;Paradicsom;J
 Ki volt az a XVI. századi francia orvos és asztrológus, aki ma reneszánszát éli?;Nostradamus;Fabricius;Vesalius;Paracelsus
 Melyik városhoz tartoznak a következő települések?;Zalaegerszeg;Szekszárd;Sátoraljaújhely;Szombathely
 Hogyan szokás nevezni a fehéres szálakkal tarkított sötét szőrű lovat?;Deres;Párás;Zúzmarás;Harmatos
-Mire nem vadászik a sas a híres mondás szerint?;Légyre;Elefántra;Sasfióka;Bolhára;
+Mire nem vadászik a sas a híres mondás szerint?;Légyre;Elefántra;Sasfióka;Bolhára
 Melyik uralkodó rendelt a róla elnevezett lepkés, virágos herendi porcelánkészletből?;Viktória királynő;II. Miksa József;III. Napóleon;I. Miklós
 A Heti hetes melyik közreműködőjének nevét viseli kontinens?;Bajor Imre;Verebes István;Gálvölgyi János;Havas Henrik
 Melyik település neve egy József Attila-vers címe?;Balatonszárszó;Bécs;Makó;Öcsöd
