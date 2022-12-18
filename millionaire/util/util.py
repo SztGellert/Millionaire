@@ -1,6 +1,7 @@
 import json
 import os
 import pathlib
+import time
 from collections import namedtuple
 from enum import Enum
 
@@ -49,9 +50,10 @@ topics = [topic.name for topic in Topics]
 difficulty_levels = [level.name for level in Difficulty]
 system_volume = True
 
+
 def init():
-    pygame.mixer.init()
     init_settings(game_language)
+    pygame.mixer.init()
 
 
 def init_settings(selected_lang: str, reset_settings=False):
@@ -84,6 +86,7 @@ def init_settings(selected_lang: str, reset_settings=False):
             question_topics = Topics.ALL.name
             system_volume = True
 
+
 def set_game_language(selected_lang: str):
     global game_language
     for lang in available_languages:
@@ -109,20 +112,23 @@ def clear_screen():
         os.system('cls')
 
 
-def play_sound(filename, starting_time, file_type="mp3", volume=0.07):
+def play_sound(filename, starting_time, file_type="wav", volume=0.07, fading_time=0, timer=False):
     if system_volume:
         file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
         pygame.mixer.music.load(file_path)
         pygame.mixer.music.set_volume(volume)
-        pygame.mixer.music.play(0, starting_time)
+        pygame.mixer.music.play(0, starting_time, fade_ms=fading_time)
+        if timer == True:
+            a = pygame.mixer.Sound(file_path)
+            time.sleep(a.get_length())
 
 
 def play_background_music(filename, starting_time, volume=0.07):
     if system_volume:
-        file_path = get_data_path() + "/sound_files/" + "general" + "/" + "background" + "/" + filename + ".mp3"
+        file_path = get_data_path() + "/sound_files/" + "general" + "/" + "background" + "/" + filename + ".wav"
         pygame.mixer.music.load(file_path)
         pygame.mixer.music.set_volume(volume)
-        pygame.mixer.music.play(0, starting_time)
+        pygame.mixer.music.play(-1, starting_time)
 
 
 def get_data_path() -> str:
@@ -143,6 +149,16 @@ def open_file(filename: str, mode: str, separator=",", filepath="/text_files/") 
             line = line.strip().split(separator)
             list_of_file.append(line)
     return list_of_file
+
+
+def pause_music():
+    if system_volume:
+        pygame.mixer.music.pause()
+
+
+def continue_music():
+    if system_volume:
+        pygame.mixer.music.unpause()
 
 
 def stop_sound():

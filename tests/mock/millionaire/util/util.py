@@ -111,17 +111,17 @@ def clear_screen():
         os.system('cls')
 
 
-def play_sound(filename, starting_time, file_type="mp3", volume=0.07):
+def play_sound(filename, starting_time, file_type="wav", volume=0.07):
     if system_volume:
         file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
-        pygame.mixer.music.load(file_path)
-        pygame.mixer.music.set_volume(volume)
+        pygame.mixer.Sound.play(file_path)
+        pygame.mixer.Sound.set_volume(volume)
         pygame.mixer.music.play(0, starting_time)
 
 
 def play_background_music(filename, starting_time, volume=0.07):
     if system_volume:
-        file_path = get_data_path() + "/sound_files/" + "general" + "/" + "background" + "/" + filename + ".mp3"
+        file_path = get_data_path() + "/sound_files/" + "general" + "/" + "background" + "/" + filename + ".wav"
         pygame.mixer.music.load(file_path)
         pygame.mixer.music.set_volume(volume)
         pygame.mixer.music.play(0, starting_time)

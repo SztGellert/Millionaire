@@ -6,7 +6,7 @@ from sty import Style, RgbFg, fg, bg
 import millionaire.menu.menu as menu
 import millionaire.util.util as util
 import millionaire.menu.helpers as helpers
-
+import pygame
 operating_system = os.name
 fg.purple = Style(RgbFg(148, 0, 211))
 fg.orange = Style(RgbFg(255, 150, 50))
@@ -28,8 +28,8 @@ def play():
     score = 0
     help_types = {"halving": True, "telephone": True, "audience": True}
     util.clear_screen()
-    util.play_sound("start", 0)
-    show_game_structure()
+    #util.play_sound("start", 0)
+    #show_game_structure()
     question_lines = []
     question_lines_easy = []
     question_lines_medium = []
@@ -74,6 +74,7 @@ def play():
     random.shuffle(question_lines_medium)
     random.shuffle(question_lines_hard)
     for i in range(15):
+        time.sleep(4)
         if question_difficulty == util.Difficulty.ALL.name:
             if i < 5:
                 question_lines = question_lines_easy
@@ -87,8 +88,8 @@ def play():
         answer_list = list(answers.values())
         random.shuffle(answer_list)
         shuffled_answers = dict(zip(answers, answer_list))
-        if i == 0:
-            time.sleep(4)
+        #if i == 0:
+            #time.sleep(4)
         print_quiz_table(question, shuffled_answers)
         play_music(i)
         if game_language == util.Language.HUNGARIAN.name:
@@ -181,10 +182,11 @@ def play():
                         ["a", "b", "c", "d", "h", "t"])
                 time.sleep(2)
         util.clear_screen()
-        print_quiz_table(question, shuffled_answers, answer, "orange")
-        util.play_sound("marked", 0)
+        if game_language == util.Language.ENGLISH:
+            print_quiz_table(question, shuffled_answers, answer, "orange")
+            util.play_sound("marked", 0)
+            time.sleep(2)
         is_correct = check_answer(answer, correct_answer_key)
-        time.sleep(2)
         if is_correct:
             score += 1
             if i < 14:
@@ -657,7 +659,7 @@ def play_music(round: int):
 
 
 def play_marked_sound(choise: str, level: int):
-    sound_files = ["mark_" + choise, "mark_" + choise + "_1", "mark_" + choise + "_2"]
+    sound_files = ["Lets_mark", "mark_" + choise, "mark_" + choise + "_1", "mark_" + choise + "_2"]
     if level == 7:
         util.play_sound("mark_500", 0)
         time.sleep(6)
@@ -667,22 +669,31 @@ def play_marked_sound(choise: str, level: int):
 
 
 def handle_user_input(question: str, answers: dict, level: int) -> str:
-    final_sounds = ["final", "final_1", "final_2", "final_3", "final_4", "final_5"]
-    lets_see_sounds = ["lets_mark", "lets_see", "lets_see_1", "lets_see_2", "lets_see_3"]
+    final_sounds = ["final"]
+    for i in range(18):
+        final_sounds.append("final_" + str(i+1))
+    lets_see_sounds = ["lets_see", "lets_see_1", "lets_see_2", "lets_see_3"]
     while True:
         user_input = get_user_input()
         if user_input == b'a' or user_input == "a":
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
-            util.play_sound(selected_final_sound, 0)
             util.clear_screen()
             print_quiz_table(question, answers)
             print("\n" + language_dictionary[game_language].quiz.select_answer + language_dictionary[
                 game_language].quiz.selected_answer + "A")
+            util.stop_sound()
+            util.play_sound(selected_final_sound, 0, timer=True)
+            play_music(level)
             while True:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
+                    util.clear_screen()
+                    print_quiz_table(question, answers, "a", "orange")
+                    util.stop_sound()
                     play_marked_sound("a", level)
+                    util.play_sound("marked", 0)
+                    time.sleep(2)
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "a"
@@ -691,15 +702,22 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
         if user_input == b'b' or user_input == "b":
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
-            util.play_sound(selected_final_sound, 0)
             util.clear_screen()
             print_quiz_table(question, answers)
-            print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[
+            print("\n" + language_dictionary[game_language].quiz.select_answer + language_dictionary[
                 game_language].quiz.selected_answer + "B")
+            util.stop_sound()
+            util.play_sound(selected_final_sound, 0, timer=True)
+            play_music(level)
             while True:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
+                    util.clear_screen()
+                    print_quiz_table(question, answers, "b", "orange")
+                    util.stop_sound()
                     play_marked_sound("b", level)
+                    util.play_sound("marked", 0)
+                    time.sleep(2)
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "b"
@@ -708,15 +726,22 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
         if user_input == b'c' or user_input == "c":
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
-            util.play_sound(selected_final_sound, 0)
             util.clear_screen()
             print_quiz_table(question, answers)
-            print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[
+            print("\n" + language_dictionary[game_language].quiz.select_answer + language_dictionary[
                 game_language].quiz.selected_answer + "C")
+            util.stop_sound()
+            util.play_sound(selected_final_sound, 0, timer=True)
+            play_music(level)
             while True:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
+                    util.clear_screen()
+                    print_quiz_table(question, answers, "c", "orange")
+                    util.stop_sound()
                     play_marked_sound("c", level)
+                    util.play_sound("marked", 0)
+                    time.sleep(2)
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "c"
@@ -725,15 +750,22 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
         if user_input == b'd' or user_input == "d":
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
-            util.play_sound(selected_final_sound, 0)
             util.clear_screen()
             print_quiz_table(question, answers)
-            print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[
+            print("\n" + language_dictionary[game_language].quiz.select_answer + language_dictionary[
                 game_language].quiz.selected_answer + "D")
+            util.stop_sound()
+            util.play_sound(selected_final_sound, 0, timer=True)
+            play_music(level)
             while True:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
+                    util.clear_screen()
+                    print_quiz_table(question, answers, "d", "orange")
+                    util.stop_sound()
                     play_marked_sound("d", level)
+                    util.play_sound("marked", 0)
+                    time.sleep(2)
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "d"

@@ -699,7 +699,7 @@ def play_music(round: int):
 
 
 def play_marked_sound(choise: str, level: int):
-    sound_files = ["mark_" + choise, "mark_" + choise + "_1", "mark_" + choise + "_2"]
+    sound_files = ["Lets_mark", "mark_" + choise, "mark_" + choise + "_1", "mark_" + choise + "_2"]
     if level == 7:
         util.play_sound("mark_500", 0)
         time.sleep(6)
@@ -708,14 +708,16 @@ def play_marked_sound(choise: str, level: int):
         time.sleep(1)
 
 def handle_user_input(question: str, answers: dict, level: int, hotkey: str, return_key: str) -> str:
-    final_sounds = ["final", "final_1", "final_2", "final_3", "final_4", "final_5"]
-    lets_see_sounds = ["lets_mark", "lets_see", "lets_see_1", "lets_see_2", "lets_see_3"]
+    final_sounds = ["final"]
+    for i in range(18):
+        final_sounds.append("final_" + str(i + 1))
+    lets_see_sounds = ["lets_see", "lets_see_1", "lets_see_2", "lets_see_3"]
     while True:
         user_input = hotkey
         if user_input == "a":
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
-            util.play_sound(selected_final_sound, 0)
+            util.play_sound(selected_final_sound, 0, "wav")
             util.clear_screen()
             print_quiz_table(question, answers)
             print("\n" + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "A")
@@ -728,10 +730,10 @@ def handle_user_input(question: str, answers: dict, level: int, hotkey: str, ret
                     return "a"
                 else:
                     break
-        if user_input =="b" :
+        if user_input == "b":
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
-            util.play_sound(selected_final_sound, 0)
+            util.play_sound(selected_final_sound, 0, "wav")
             util.clear_screen()
             print_quiz_table(question, answers)
             print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "B")
@@ -747,7 +749,7 @@ def handle_user_input(question: str, answers: dict, level: int, hotkey: str, ret
         if user_input == "c":
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
-            util.play_sound(selected_final_sound, 0)
+            util.play_sound(selected_final_sound, 0, "wav")
             util.clear_screen()
             print_quiz_table(question, answers)
             print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "C")
@@ -763,7 +765,7 @@ def handle_user_input(question: str, answers: dict, level: int, hotkey: str, ret
         if user_input == "d" :
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
-            util.play_sound(selected_final_sound, 0)
+            util.play_sound(selected_final_sound, 0, "wav")
             util.clear_screen()
             print_quiz_table(question, answers)
             print("\n " + language_dictionary[game_language].quiz.select_answer + language_dictionary[game_language].quiz.selected_answer + "D")

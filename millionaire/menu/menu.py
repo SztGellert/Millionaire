@@ -19,7 +19,7 @@ def intro():
     if util.game_language == util.Language.HUNGARIAN.name:
         util.play_sound("intro", 0, volume=1)
     else:
-        util.play_sound("intro", 0, file_type="wav")
+        util.play_sound("intro", 0)
     time.sleep(2)
     file = (util.open_file("intro_" + str(util.game_language).lower(), 'r'))
     for line_index in range(len(file)):
