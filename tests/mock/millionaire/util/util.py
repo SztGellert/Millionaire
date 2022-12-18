@@ -3,7 +3,7 @@ import os
 import pathlib
 from collections import namedtuple
 from enum import Enum
-
+import time
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
 import pygame
 
@@ -111,12 +111,15 @@ def clear_screen():
         os.system('cls')
 
 
-def play_sound(filename, starting_time, file_type="wav", volume=0.07):
+def play_sound(filename, starting_time, file_type="wav", volume=0.07, fading_time=0, timer=False):
     if system_volume:
         file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
-        pygame.mixer.Sound.play(file_path)
-        pygame.mixer.Sound.set_volume(volume)
-        pygame.mixer.music.play(0, starting_time)
+        pygame.mixer.music.load(file_path)
+        pygame.mixer.music.set_volume(volume)
+        pygame.mixer.music.play(0, starting_time, fade_ms=fading_time)
+        if timer == True:
+            a = pygame.mixer.Sound(file_path)
+            time.sleep(a.get_length())
 
 
 def play_background_music(filename, starting_time, volume=0.07):
@@ -124,7 +127,7 @@ def play_background_music(filename, starting_time, volume=0.07):
         file_path = get_data_path() + "/sound_files/" + "general" + "/" + "background" + "/" + filename + ".wav"
         pygame.mixer.music.load(file_path)
         pygame.mixer.music.set_volume(volume)
-        pygame.mixer.music.play(0, starting_time)
+        pygame.mixer.music.play(-1, starting_time)
 
 
 def get_data_path() -> str:

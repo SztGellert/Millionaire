@@ -52,8 +52,8 @@ system_volume = True
 
 
 def init():
-    init_settings(game_language)
     pygame.mixer.init()
+    init_settings(game_language)
 
 
 def init_settings(selected_lang: str, reset_settings=False):

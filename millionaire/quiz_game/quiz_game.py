@@ -6,7 +6,6 @@ from sty import Style, RgbFg, fg, bg
 import millionaire.menu.menu as menu
 import millionaire.util.util as util
 import millionaire.menu.helpers as helpers
-import pygame
 operating_system = os.name
 fg.purple = Style(RgbFg(148, 0, 211))
 fg.orange = Style(RgbFg(255, 150, 50))
