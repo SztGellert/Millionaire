@@ -119,6 +119,10 @@ def play(inputs: dict):
         if game_language == util.Language.HUNGARIAN.name:
             print("\n", language_dictionary[game_language].quiz.select_answer)
             answer = handle_user_input(question, shuffled_answers, i, input_, return_inputs[0])
+            if answer == "esc":
+                menu.return_prompt(return_inputs[0])
+                util.stop_sound()
+                return
         else:
             answer = safe_input(language_dictionary[game_language].quiz.select_answer, ["a", "b", "c", "d", "h", "t"], input_)
         util.stop_sound()
@@ -815,6 +819,8 @@ def handle_user_input(question: str, answers: dict, level: int, hotkey: str, ret
             return "t"
         if user_input == "h":
             return "h"
+        if user_input == "esc":
+            return "esc"
 
 
 def get_user_input() -> bytes:
