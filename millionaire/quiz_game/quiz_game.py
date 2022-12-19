@@ -23,12 +23,7 @@ def play():
     question_topics = util.question_topics
     global question_difficulty
     question_difficulty = util.question_difficulty
-    player_name = input(language_dictionary[game_language].quiz.player_name_prompt)
-    score = 0
     help_types = {"halving": True, "telephone": True, "audience": True}
-    util.clear_screen()
-    #util.play_sound("start", 0)
-    #show_game_structure()
     question_lines = []
     question_lines_easy = []
     question_lines_medium = []
@@ -72,6 +67,12 @@ def play():
     random.shuffle(question_lines_easy)
     random.shuffle(question_lines_medium)
     random.shuffle(question_lines_hard)
+    player_name = input(language_dictionary[game_language].quiz.player_name_prompt)
+    score = 0
+    util.clear_screen()
+    if game_language == util.Language.ENGLISH:
+        util.play_sound("start", 0)
+    show_game_structure()
     for i in range(game_levels):
         time.sleep(4)
         if question_difficulty == util.Difficulty.ALL.name:
@@ -87,8 +88,6 @@ def play():
         answer_list = list(answers.values())
         random.shuffle(answer_list)
         shuffled_answers = dict(zip(answers, answer_list))
-        #if i == 0:
-            #time.sleep(4)
         print_quiz_table(question, shuffled_answers)
         play_music(i)
         if game_language == util.Language.HUNGARIAN.name:
@@ -532,6 +531,7 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
 def show_game_structure():
     prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     if game_language == util.Language.HUNGARIAN.name:
+        util.play_sound("prizes_description", 0)
         print_helps()
         print("\n\n")
         for i in range(len(prizes)):
@@ -579,13 +579,15 @@ def show_game_structure():
             util.clear_screen()
             print_helps()
             print("\n\n")
+        util.play_sound("help_modules", 0)
         util.clear_screen()
         list_helps()
+        time.sleep(3)
         util.clear_screen()
         print_helps()
         print("\n\n")
         print_prizes()
-        time.sleep(8)
+        util.play_sound("prologue_end", 0, timer=True)
         util.clear_screen()
     else:
         helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
@@ -632,7 +634,6 @@ def list_helps():
     print(fg.blue + 31 * "-" + fg.rs)
     print("\n\n")
     print_prizes()
-    time.sleep(1.3)
 
 
 def print_prizes():

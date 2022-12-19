@@ -25,9 +25,6 @@ def play(inputs: dict):
     global question_topics
     global question_difficulty
     question_difficulty = util.question_difficulty
-    player_name = "Tester"
-    print(language_dictionary[game_language].quiz.player_name_prompt + player_name)
-    score = 0
     question_topics = util.question_topics
     out_of_game_inputs = inputs["out_of_game_answers"]
     game_inputs = inputs["game_answers"]
@@ -37,10 +34,6 @@ def play(inputs: dict):
     return_inputs = inputs["return_prompt_answers"]
     help_types = {"halving": True, "telephone": True, "audience": True}
     util.clear_screen()
-    util.play_sound("start", 0)
-    show_game_structure()
-    if game_language == util.Language.HUNGARIAN.name:
-        time.sleep(7)
     question_lines = []
     question_lines_easy = []
     question_lines_medium = []
@@ -93,6 +86,13 @@ def play(inputs: dict):
     random.shuffle(question_lines_easy)
     random.shuffle(question_lines_medium)
     random.shuffle(question_lines_hard)
+    player_name = "Tester"
+    print(language_dictionary[game_language].quiz.player_name_prompt + player_name)
+    score = 0
+    util.clear_screen()
+    if game_language == util.Language.ENGLISH:
+        util.play_sound("start", 0)
+    show_game_structure()
     for i in range(game_levels):
         if question_difficulty == util.Difficulty.ALL.name:
             if i < 5:
@@ -581,6 +581,7 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
 def show_game_structure():
     prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     if game_language == util.Language.HUNGARIAN.name:
+        util.play_sound("prizes_description", 0)
         print_helps()
         print("\n\n")
         for i in range(len(prizes)):
@@ -588,13 +589,16 @@ def show_game_structure():
                 round_number = str(len(prizes) - j)
                 if len(prizes) - j < 10:
                     round_number = " " + round_number
-                if i == len(prizes) - j-1:
+                if i == len(prizes) - j - 1:
                     print(round_number + " ♦ " + bg.orange + fg.black + prizes[::-1][j][0] + fg.rs + bg.rs)
                 else:
                     if j == 5 or j == 10 or j == 0:
                         print(round_number + " ♦ " + prizes[::-1][j][0])
                     else:
                         print(round_number + " ♦ " + fg.orange + prizes[::-1][j][0] + fg.rs)
+            if os.name == "nt":
+                time.sleep(0.3)
+            else:
                 time.sleep(0.4)
             if i != 14:
                 util.clear_screen()
@@ -609,10 +613,10 @@ def show_game_structure():
         print("\n\n")
         for a in range(2):
             for b in range(len(prizes)):
-                round_number = str(len(prizes) -b )
+                round_number = str(len(prizes) - b)
                 if len(prizes) - b < 10:
                     round_number = " " + round_number
-                if a == 0 and b == 10 or a == 1 and  b==5:
+                if a == 0 and b == 10 or a == 1 and b == 5:
                     print(round_number + " ♦ " + bg.orange + fg.black + prizes[::-1][b][0] + fg.rs + bg.rs)
                 else:
                     if b == 0 or b == 5 or b == 10:
@@ -625,24 +629,27 @@ def show_game_structure():
             util.clear_screen()
             print_helps()
             print("\n\n")
+        util.play_sound("help_modules", 0)
         util.clear_screen()
         list_helps()
+        time.sleep(3)
         util.clear_screen()
         print_helps()
         print("\n\n")
         print_prizes()
-        time.sleep(8)
+        util.play_sound("prologue_end", 0, timer=True)
         util.clear_screen()
     else:
         helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
         separator = fg.blue + "|" + fg.rs
-        print(fg.blue + 31*"-" + fg. rs)
+        print(fg.blue + 31 * "-" + fg.rs)
         print(separator + helps[0] + separator + helps[1] + separator + helps[2] + separator)
-        print(fg.blue + 31*"-" + fg. rs)
+        print(fg.blue + 31 * "-" + fg.rs)
         print("\n\n")
         print_prizes()
         time.sleep(4)
         util.clear_screen()
+
 
 def print_helps():
     helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
@@ -656,25 +663,27 @@ def list_helps():
     helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
     separator = fg.blue + "|" + fg.rs
     print(fg.blue + 31 * "-" + fg.rs)
-    print(separator + bg.orange + fg.black + helps[0] + fg. rs + bg.rs + separator + helps[1] + separator + helps[2] + separator)
+    print(separator + bg.orange + fg.black + helps[0] + fg.rs + bg.rs + separator + helps[1] + separator + helps[
+        2] + separator)
     print(fg.blue + 31 * "-" + fg.rs)
     print("\n\n")
     print_prizes()
     time.sleep(1.3)
     util.clear_screen()
     print(fg.blue + 31 * "-" + fg.rs)
-    print(separator + helps[0]  + separator +  bg.orange + fg.black + helps[1] + fg. rs +  bg.rs + separator + helps[2] + separator)
+    print(separator + helps[0] + separator + bg.orange + fg.black + helps[1] + fg.rs + bg.rs + separator + helps[
+        2] + separator)
     print(fg.blue + 31 * "-" + fg.rs)
     print("\n\n")
     print_prizes()
     time.sleep(1.3)
     util.clear_screen()
     print(fg.blue + 31 * "-" + fg.rs)
-    print(separator + helps[0] + separator + helps[1] + separator +  bg.orange + fg.black + "  ☻ ☻ ☻  " + fg. rs +  bg.rs + separator)
+    print(separator + helps[0] + separator + helps[
+        1] + separator + bg.orange + fg.black + "  ☻ ☻ ☻  " + fg.rs + bg.rs + separator)
     print(fg.blue + 31 * "-" + fg.rs)
     print("\n\n")
     print_prizes()
-    time.sleep(1.3)
 
 
 
