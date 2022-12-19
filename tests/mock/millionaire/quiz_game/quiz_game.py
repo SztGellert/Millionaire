@@ -16,6 +16,7 @@ bg.orange = bg(255, 150, 50)
 languages = util.available_languages
 language_dictionary = util.language_dictionary
 table_length = 113
+game_levels = 15
 
 
 def play(inputs: dict):
@@ -92,7 +93,7 @@ def play(inputs: dict):
     random.shuffle(question_lines_easy)
     random.shuffle(question_lines_medium)
     random.shuffle(question_lines_hard)
-    for i in range(15):
+    for i in range(game_levels):
         if question_difficulty == util.Difficulty.ALL.name:
             if i < 5:
                 question_lines = question_lines_easy
@@ -120,8 +121,7 @@ def play(inputs: dict):
             print("\n", language_dictionary[game_language].quiz.select_answer)
             answer = handle_user_input(question, shuffled_answers, i, input_, return_inputs[0])
             if answer == "esc":
-                menu.return_prompt(return_inputs[0])
-                util.stop_sound()
+                quit_game(i, player_name, question_topics, return_inputs[0])
                 return
         else:
             answer = safe_input(language_dictionary[game_language].quiz.select_answer, ["a", "b", "c", "d", "h", "t"], input_)
@@ -170,11 +170,8 @@ def play(inputs: dict):
                     if util.game_language == util.Language.HUNGARIAN.name:
                         util.play_sound("so_sorry", 0)
                     time.sleep(1)
-                if score != 0:
-                    write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
-                                                          "time": time.ctime(time.time())})
-                menu.return_prompt(return_inputs[0])
                 util.clear_screen()
+                quit_game(i, player_name, question_topics, return_inputs[0])
                 return
             if answer == "h":
                 if list(help_types.values()).count(True) == len(help_types) and game_language == util.Language.HUNGARIAN.name:
@@ -297,21 +294,18 @@ def play(inputs: dict):
                     i) + " !" + fg.rs)
                 util.play_sound("winning_theme", 0)
                 time.sleep(35)
-                menu.return_prompt(return_inputs[0])
+                quit_game(i, player_name, question_topics, return_inputs[0])
         else:
             util.play_sound("bad_answer", 0)
             print(fg.green + correct_answer_value + fg.rs)
             print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
-            menu.return_prompt(return_inputs[0])
+            quit_game(i, player_name, question_topics, return_inputs[0])
             util.clear_screen()
-            if score != 0:
-                write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
-                                                      "time": time.ctime(time.time())})
+
             return
         util.clear_screen()
+    quit_game(game_levels, player_name, question_topics, return_inputs[0])
 
-    write_content_to_file("scores.json", {"user": player_name, "topic": question_topics, "score": score,
-                                          "time": time.ctime(time.time())})
     return
 
 
@@ -830,3 +824,10 @@ def get_user_input() -> bytes:
         user_input = helpers.return_user_input_windows()
 
     return user_input
+
+
+def quit_game(level: int, name, topic, key):
+    if level > 0:
+        write_content_to_file("scores.json", {"user": name, "topic": topic, "score": level+1, "time": time.ctime(time.time())})
+    menu.return_prompt(key)
+    util.stop_sound()

@@ -92,9 +92,10 @@ def return_prompt(input: str):
         user_input = helpers.return_user_input_linux()
     else:
         user_input = helpers.return_user_input_windows()
-    # escape
-    if user_input == b'\x1b' or user_input == '<ESC>':
-        return
+    while True:
+        # escape
+        if user_input == b'\x1b' or user_input == '<ESC>':
+            return
 
 
 def get_user_input(option_list: [], values_list: [], max_option_length: int, hotkey: str, start_index = 0, esc=True) -> str:
