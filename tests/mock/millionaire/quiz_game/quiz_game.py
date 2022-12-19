@@ -737,7 +737,7 @@ def handle_user_input(question: str, answers: dict, level: int, hotkey: str, ret
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "a"
-                else:
+                if user_input != "a":
                     break
         if user_input == "b":
             selected_final_sound = random.choice(final_sounds)
@@ -761,7 +761,7 @@ def handle_user_input(question: str, answers: dict, level: int, hotkey: str, ret
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "b"
-                else:
+                if user_input != "b":
                     break
         if user_input == "c":
             selected_final_sound = random.choice(final_sounds)
@@ -785,7 +785,7 @@ def handle_user_input(question: str, answers: dict, level: int, hotkey: str, ret
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "c"
-                else:
+                if user_input != "c":
                     break
         if user_input == "d":
             selected_final_sound = random.choice(final_sounds)
@@ -809,7 +809,7 @@ def handle_user_input(question: str, answers: dict, level: int, hotkey: str, ret
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "d"
-                else:
+                if user_input != "d":
                     break
         if user_input == "t":
             return "t"

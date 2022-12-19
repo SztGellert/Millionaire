@@ -696,7 +696,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "a"
-                else:
+                if user_input not in [b'a', "a"]:
                     break
         if user_input == b'b' or user_input == "b":
             selected_final_sound = random.choice(final_sounds)
@@ -720,7 +720,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "b"
-                else:
+                if user_input not in [b'b', "b"]:
                     break
         if user_input == b'c' or user_input == "c":
             selected_final_sound = random.choice(final_sounds)
@@ -744,7 +744,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "c"
-                else:
+                if user_input not in [b'c', "c"]:
                     break
         if user_input == b'd' or user_input == "d":
             selected_final_sound = random.choice(final_sounds)
@@ -768,7 +768,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                     util.play_sound(selected_lets_see_sound, 0)
                     time.sleep(3)
                     return "d"
-                else:
+                if user_input not in [b'd', "d"]:
                     break
         if user_input == b't' or user_input == "t":
             return "t"
