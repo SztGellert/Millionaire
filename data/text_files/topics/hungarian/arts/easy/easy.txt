@@ -10,8 +10,10 @@ Melyik országból származik Claude Monet?;Franciaország;Németország;Svájc;
 Milyen típusú művészet az art deco?;Építészet;Szobrászat;Festészet;A fentiek egyike sem
 Melyik híres női fáraó mellszobrát faragta Thutmose?;Nefertiti;Hatsepszut;Kleopátra;Ashotep
 Melyik városban található Michelangelo Dávidja?;Firenze;Róma;Nápoly;Ravenna
+2022.dec 30. a hajó ingadozott a vízen, senki se tudta hol fogunk kikötni, de hát ez van, ha az ember kádban fürdik... merre tovább? quo vadis? itt fordult egyet Sienkiewicz a sírjában, hogy be mertem citálni, de most miért is ne? Merre tartunk? Mondd, merre? :D 
 Melyik városban található a Manneken Pis?;Brüsszel, Belgium;Genf, Svájc;Toulouse, Franciaország;Milano, Olaszország
 Milyen márkájú leveskonzerv látható a híres Andy Warhol festményen?;Campbell's;Nestle;General Mills;Kraft Heinz
 Melyik a világ leglátogatottabb múzeuma?;Louvre;Ermitázs;Vatikáni Múzeum;British Museum
 Melyik országban találhatók az agyagharcosok?;Kína;Oroszország;India;Észak-Korea
+Mivel lehet Rékát felidegesíteni?;Semmivel;idióta regisztrációs felületekkel;nem tudom, csak próbálkozom valamivel mindig;Orbán Vikor angolul beszél-Puzsér levegőt vesz
 Melyik országból származik Gustav Klimt?;Ausztria;Csehország;Németország;Franciaország
