@@ -534,8 +534,7 @@ def show_game_structure():
     timeout = 2
     startTime = time.time()
     inp = None
-
-    print("Press any key to skip game introduction... ")
+    print(language_dictionary[util.game_language].quiz.skip_prompt)
     while True:
         if msvcrt.kbhit():
             inp = msvcrt.getch()

@@ -12,6 +12,7 @@
                      "Kérdés nehézség ",
                      "Alapértelmezett beállítások",
                      "Vissza"],
+        "skip_prompt": "Nyomjon meg egy gombot az intro kihagyásához..",
         "main_menu_options": [
             "Játék", "Útmutató", "Beállítások","Stáblista","Pontszámok", "Kilépés"
         ],
@@ -27,6 +28,7 @@
     },
     "quiz": {
         "player_name_prompt": "Hogyan szólíthatom? ",
+        "skip_prompt": "Nyomjon meg egy gombot a bemutató kihagyásához..",
         "select_answer":"\nVálassza ki a helyes válasz betűjelét, 't' a játékon kívüli válaszadáshoz, 'h' ha segítséget szeretne!\n",
         "selected_answer":"\nAz ön válasza: ",
         "select_answer_out": "\nVálassza ki a helyes válasz betűjelét! ",

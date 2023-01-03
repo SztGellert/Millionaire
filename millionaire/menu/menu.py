@@ -38,7 +38,7 @@ def intro():
     startTime = time.time()
     inp = None
 
-    print("Press any key to skip intro... ")
+    print(language_dictionary[util.game_language].menu.skip_prompt)
     time.sleep(1)
     util.clear_screen()
     while True:
