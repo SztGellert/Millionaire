@@ -528,6 +528,25 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
 
 
 def show_game_structure():
+    import time, msvcrt
+    # TODO: only works on win
+
+    timeout = 2
+    startTime = time.time()
+    inp = None
+
+    print("Press any key to skip game introduction... ")
+    while True:
+        if msvcrt.kbhit():
+            inp = msvcrt.getch()
+            break
+        elif time.time() - startTime > timeout:
+            break
+    util.clear_screen()
+    if inp:
+        return
+
+
     prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     if game_language == util.Language.HUNGARIAN.name:
         util.play_sound("prizes_description", 0)
