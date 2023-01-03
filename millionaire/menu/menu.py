@@ -1,7 +1,9 @@
+import msvcrt
 import os
 import sys
 import time
 import json
+import threading
 import keyboard
 from sty import Style, RgbFg, fg, bg
 import millionaire.quiz_game.quiz_game as quiz
@@ -20,15 +22,63 @@ def intro():
         util.play_sound("intro", 0, volume=1)
     else:
         util.play_sound("intro", 0)
-    time.sleep(2)
     file = (util.open_file("intro_" + str(util.game_language).lower(), 'r'))
-    for line_index in range(len(file)):
-        if line_index == 3:
-            print(fg.purple + file[line_index][0] + fg.rs)
-            time.sleep(2)
-        else:
-            print(file[line_index][0])
-        time.sleep(1)
+
+    first_line = threading.Timer(6.0, print_intro_lines, args=(file[0][0], ""))
+    second_line = threading.Timer(9.0, print_intro_lines, args=(file[3][0], "purple"))
+    third_line = threading.Timer(11.0, print_intro_lines, args=(file[1][0], ""))
+    fourth_line = threading.Timer(13.0, print_intro_lines, args=(file[2][0], ""))
+
+    first_line.start()
+    second_line.start()
+    third_line.start()
+    fourth_line.start()
+
+    timeout = 15
+    startTime = time.time()
+    inp = None
+
+    print("Press any key to skip intro... ")
+    time.sleep(1)
+    util.clear_screen()
+    while True:
+        # TODO: only works on win
+        if msvcrt.kbhit():
+            inp = msvcrt.getch()
+            break
+        elif time.time() - startTime > timeout:
+            break
+
+    if inp:
+        threading.Timer.cancel(first_line)
+        threading.Timer.cancel(second_line)
+        threading.Timer.cancel(third_line)
+        threading.Timer.cancel(fourth_line)
+        util.stop_sound()
+        return
+    else:
+        return
+
+
+def print_intro_lines(text: "", text_color: ""):
+    if text_color == "purple":
+        print(fg.purple + text + fg.rs)
+        return
+    else:
+        print(text)
+        return
+
+
+def user_pressed_space():
+    if util.operating_system == "posix":
+        user_input = helpers.return_user_input_linux()
+    else:
+        user_input = helpers.return_user_input_windows()
+    if user_input not in [b' ', '<SPACE>']:
+        return
+
+    util.stop_sound()
+    return
 
 
 def show_title():
@@ -96,8 +146,11 @@ def select_scores():
             i = 0
             for k, v in item.items():
                 if i == 1:
-                    index = list(language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(str(v).capitalize())
-                    print(language_dictionary[util.game_language].menu.scores[i], ":", language_dictionary[util.game_language].menu.settings_menu_question_topics[index], end=" ")
+                    index = list(
+                        language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
+                        str(v).capitalize())
+                    print(language_dictionary[util.game_language].menu.scores[i], ":",
+                          language_dictionary[util.game_language].menu.settings_menu_question_topics[index], end=" ")
                 else:
                     print(language_dictionary[util.game_language].menu.scores[i], ":", v, end=" ")
                 i += 1
@@ -114,11 +167,14 @@ def select_settings():
     util.clear_screen()
     show_options(language_dictionary[util.game_language].menu.settings_menu_options, default_width)
     while True:
-        chosen_option = get_user_input(language_dictionary[util.game_language].menu.settings_menu_options, language_dictionary[util.game_language].menu.settings_menu_options, default_width, start_index)
+        chosen_option = get_user_input(language_dictionary[util.game_language].menu.settings_menu_options,
+                                       language_dictionary[util.game_language].menu.settings_menu_options,
+                                       default_width, start_index)
         if chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[0]:
             langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu]
             show_options(langs, 20, util.available_languages.index(util.game_language))
-            chosen_lang_option = get_user_input(langs, util.available_languages, 20, util.available_languages.index(util.game_language), False)
+            chosen_lang_option = get_user_input(langs, util.available_languages, 20,
+                                                util.available_languages.index(util.game_language), False)
             util.set_game_language(util.available_languages[util.available_languages.index(chosen_lang_option)])
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
             start_index = 0
@@ -127,25 +183,34 @@ def select_settings():
                 util.system_volume = False
             else:
                 util.system_volume = True
-            show_options(language_dictionary[util.game_language].menu.settings_menu_options, default_width, chosen_option=1)
+            show_options(language_dictionary[util.game_language].menu.settings_menu_options, default_width,
+                         chosen_option=1)
             start_index = 1
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[2]:
             if os.name == "nt":
                 keyboard.press('f11')
             start_index = 2
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[3]:
-            show_options(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width,  util.topics.index(util.question_topics))
-            chosen_question_topic = get_user_input(language_dictionary[util.game_language].menu.settings_menu_question_topics, util.topics, default_width, util.topics.index(util.question_topics), False)
+            show_options(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width,
+                         util.topics.index(util.question_topics))
+            chosen_question_topic = get_user_input(
+                language_dictionary[util.game_language].menu.settings_menu_question_topics, util.topics, default_width,
+                util.topics.index(util.question_topics), False)
             util.set_question_topics(chosen_question_topic)
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=3)
             start_index = 3
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[4]:
             if util.question_difficulty != util.Difficulty.ALL.name:
-                show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20, util.difficulty_levels.index(util.question_difficulty))
-                chosen_difficulty_option = get_user_input(language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels, 20, util.difficulty_levels.index(util.question_difficulty), False)
+                show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20,
+                             util.difficulty_levels.index(util.question_difficulty))
+                chosen_difficulty_option = get_user_input(
+                    language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels, 20,
+                    util.difficulty_levels.index(util.question_difficulty), False)
             else:
                 show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20)
-                chosen_difficulty_option = get_user_input(language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels, 20, 0, False)
+                chosen_difficulty_option = get_user_input(
+                    language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels, 20,
+                    0, False)
             if chosen_difficulty_option != language_dictionary[util.game_language].menu.question_difficulty_levels[0]:
                 util.set_question_difficulty(chosen_difficulty_option)
             else:
@@ -162,24 +227,29 @@ def select_settings():
 
 def update_settings_file():
     filename = "settings.json"
-    content = {"language": util.game_language, "topic": util.question_topics, "difficulty": util.question_difficulty, "volume": util.system_volume}
+    content = {"language": util.game_language, "topic": util.question_topics, "difficulty": util.question_difficulty,
+               "volume": util.system_volume}
     with open(filename, "w", encoding="UTF-8") as outfile:
         json.dump(content, outfile)
 
 
 def return_prompt():
+    esc_keys = [b'\x1b', '<ESC>']
+    print(fg.red + "\n" + language_dictionary[util.game_language].menu.return_prompt + fg.rs)
     if util.operating_system == "posix":
         user_input = helpers.return_user_input_linux()
     else:
         user_input = helpers.return_user_input_windows()
-    print(fg.red + "\n" + language_dictionary[util.game_language].menu.return_prompt + fg.rs)
-    while True:
-        # escape
-        if user_input == b'\x1b' or user_input == '<ESC>':
+    while user_input not in esc_keys:
+        if util.operating_system == "posix":
+            user_input = helpers.return_user_input_linux()
+        else:
+            user_input = helpers.return_user_input_windows()
+        if user_input in esc_keys:
             return
 
 
-def get_user_input(option_list: [], values_list: [], max_option_length: int, start_index = 0, esc=True) -> str:
+def get_user_input(option_list: [], values_list: [], max_option_length: int, start_index=0, esc=True) -> str:
     i = start_index
     while True:
         if util.operating_system == "posix":
@@ -225,26 +295,32 @@ def handle_main_menu():
     options_length = default_width
     show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length)
     while True:
-        chosen_option = get_user_input(language_dictionary[util.game_language].menu.main_menu_options, language_dictionary[util.game_language].menu.main_menu_options, options_length, start_index)
+        chosen_option = get_user_input(language_dictionary[util.game_language].menu.main_menu_options,
+                                       language_dictionary[util.game_language].menu.main_menu_options, options_length,
+                                       start_index)
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[0]:
             quiz.play()
             show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length)
             start_index = 0
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[1]:
             select_help()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length, chosen_option=1)
+            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
+                         chosen_option=1)
             start_index = 1
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[2]:
             select_settings()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length, chosen_option=2)
+            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
+                         chosen_option=2)
             start_index = 2
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[3]:
             select_credits()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length, chosen_option=3)
+            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
+                         chosen_option=3)
             start_index = 3
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[4]:
             select_scores()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length, chosen_option=4)
+            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
+                         chosen_option=4)
             start_index = 4
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[5]:
             select_exit()

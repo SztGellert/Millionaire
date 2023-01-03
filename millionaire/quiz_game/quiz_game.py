@@ -74,7 +74,6 @@ def play():
         util.play_sound("start", 0)
     show_game_structure()
     for i in range(game_levels):
-        time.sleep(4)
         if question_difficulty == util.Difficulty.ALL.name:
             if i < 5:
                 question_lines = question_lines_easy
