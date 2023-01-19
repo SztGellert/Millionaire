@@ -435,12 +435,12 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
     else:
         number_of_spaces = int((table_length / 2) - 6)
 
-    print("-" * (table_length))
-    print("| " + question + " " * spaces_after_question + "|")
-    print("-" * (table_length))
+    print("  /" + "‾" * (table_length) + "\\")
+    print(" ◄  " + question + " " * spaces_after_question + "   ►")
+    print("  \\" + "_" * (table_length) + "/")
     print("\n")
-    print("-" * table_length)
     if len(longest_string) > number_of_spaces:
+        print("  " + "_" * (number_of_spaces + 4) + "     " + "_" * (number_of_spaces + 5))
         number_of_spaces = number_of_spaces + 7
         number_of_parts = int(len(longest_string) / number_of_spaces)
         answer_list_a = divide_answer(answer_values[0], number_of_parts)
@@ -484,14 +484,17 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
                                     second_string = bg.green + fg.black + second_string + fg.rs + bg.rs
                                 if color == "blue":
                                     second_string = bg.blue + fg.black + second_string + fg.rs + bg.rs
-                    answer = answer + "| " + first_string + " | " + second_string + " |"
+                    answer = answer + "◄| " + first_string + "|►━◄| " + second_string + " |►"
                     if j < longest_string_divided:
                         answer = answer + "\n"
             if i == 0:
-                answer = answer + "\n" + "-" * table_length + "\n"
+                answer = answer + "\n" + "  " + "‾" * (number_of_spaces  - 3)  + "     " + "‾" * (number_of_spaces - 2) +\
+                         "\n" + "  " +  "_" * (number_of_spaces  - 3)  + "     " + "_" * (number_of_spaces - 2) + "\n"
             index += 1
         print(answer)
+        print("  "  + "‾" * (number_of_spaces -3) + "     " + "‾" * (number_of_spaces-1))
     else:
+        print("   " + "_" * (number_of_spaces + 4) + "     " + "_" * (number_of_spaces + 4))
         if selected != "":
             index = 0
             for i in answers_:
@@ -521,10 +524,11 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
                 answer_values[i] = list(answers_.items())[i][0].upper() + ": " + answer_values[i] + " " * (
                             number_of_spaces - len(list(answers_.items())[i][1]))
 
-        print("| " + answer_values[0] + " | " + answer_values[1] + " |")
-        print("-" * table_length)
-        print("| " + answer_values[2] + " | " + answer_values[3] + " |")
-    print("-" * table_length)
+        print(" ◄| " + answer_values[0] + "|►━◄| " + answer_values[1] + "|►")
+        print("   " + "‾" * (number_of_spaces  + 4) + "     " + "‾" * (number_of_spaces + 4))
+        print("   " + "_" * (number_of_spaces  + 4) + "     " + "_" * (number_of_spaces + 4))
+        print(" ◄| " + answer_values[2] + "|►━◄| " + answer_values[3] + "|►")
+        print("   "  + "‾" * (number_of_spaces + 4) + "     " + "‾" * (number_of_spaces+4))
 
 
 def show_game_structure():
