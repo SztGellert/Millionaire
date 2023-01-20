@@ -23,6 +23,7 @@ def play():
     question_topics = util.question_topics
     global question_difficulty
     question_difficulty = util.question_difficulty
+    global help_types
     help_types = {"halving": True, "telephone": True, "audience": True}
     question_lines = []
     question_lines_easy = []
@@ -433,7 +434,7 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
         number_of_spaces = int((table_length / 2) - 6)
     else:
         number_of_spaces = int((table_length / 2) - 6)
-    print_quizmaster(game_level)
+    print_quizmaster_with_prizes(game_level)
     print("  /" + "‾" * (table_length) + "\\")
     print(" ◄  " + question + " " * spaces_after_question + "   ►")
     print("  \\" + "_" * (table_length) + "/")
@@ -532,26 +533,50 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
         print("   "  + "‾" * (number_of_spaces + 4) + "     " + "‾" * (number_of_spaces+4))
 
 
-def print_quizmaster(level: int):
-    game_language = "hungarian"
+def print_quizmaster_with_prizes(level: int):
     prizes = util.open_file("prizes_" + str(game_language).lower(), "r")[::-1]
+    prizes_ = util.open_file("prizes_" + str(game_language).lower(), "r")[::-1]
     index = 0
-    len_al = 60
+    len_al = 45
+    helps = [" 50 : 50 ", "   \_] ", "   ☺ ☺ ☺   "]
+    helps_ = [" 50 : 50 ", "   \_] ", "   ☺ ☺ ☺   "]
+    i = 0
+    for key, value in help_types.items():
+        if not value:
+            helps_[i] = fg.red + helps[i] + fg.rs
+        i += 1
+    help_length = len(helps[0] + helps[1] + helps[2])+2
+    print(" " * 87 + " " + help_length* "_" )
+    print(" " * 87 + "|" + (help_length-2)*" " +"  |")
+    print(" " * 87 + "|" + helps_[0] + helps_[1] + helps_[2] +"  |")
+    print(" " * 87+ "|" + help_length* "_" + "|")
+
     for line in util.open_file("quizmaster", "r", ";","/text_files/", strip=False):
-        prize = ""
         if index < len(prizes):
             missing_space = len_al-len(line[0])
-
-            #if index == 0:
-            #    prizes[::-1][index][0] = fg.orange + prizes[::-1][index][0] + fg.rs
-
-            #    print(line[0] + " " * missing_space + fg.orange + prizes[index][0] + fg.rs)
+            round_number = str(len(prizes)-index)
+            if len(prizes) - index < 10:
+                round_number = " " + round_number
+            box_space = len(round_number + " ♦ " + prizes[index][0]) + 1
             if index == level:
-                prizes[::-1][index][0] = fg.orange + prizes[::-1][index][0] + fg.rs
-            print(line[0] + " "*missing_space + prizes[index][0])
+                prizes_[::-1][index][0] = bg.orange + fg.black + prizes[::-1][index][0] + fg.rs + bg.rs
+
+            if len(prizes)-index <= level:
+                if len(prizes)-index in [5,10,15]:
+                    print(line[0] + " "*missing_space + "| " + round_number + " ♦ " + fg.orange + prizes_[index][0] + fg.rs + " " * (help_length - box_space) + "|")
+                else:
+                    print(line[0] + " "*missing_space + "| " + round_number + " ♦ "  + fg.orange + prizes_[index][0] + fg.rs + " " * (help_length - box_space) + "|")
+            else:
+                if len(prizes)-index in [5,10,15]:
+                    print(line[0] + " "*missing_space + "| " + round_number + "   " + prizes_[index][0] + " " * (help_length - box_space) + "|")
+                else:
+                    print(line[0] + " "*missing_space + "| " + round_number + "   " + fg.orange + prizes_[index][0]  + fg.rs +" " * (help_length - box_space) + "|")
+        elif index == len(prizes):
+            print(line[0] + " " * (missing_space+3) + help_length*"‾")
         else:
             print(line[0])
         index += 1
+
 
 def show_game_structure():
     import time, msvcrt
