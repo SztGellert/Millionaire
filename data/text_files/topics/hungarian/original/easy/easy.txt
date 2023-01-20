@@ -9,7 +9,7 @@ Melyik művészeti ág képviselőjeként vált híressé Gács Rezső?;Bűvész
 Melyik város nevezetes a z ókor legnagyobb ismert könyvtárát?;Alexandria;Knosszosz;Büblosz;Milétosz
 Melyik állat nevét vieseli a rendőrség autótolvajokra specializálódott különleges csoportja?;Gepárd;Leopárd;Puma;Tigris
 Milyen a "szomszéd nője" Jack Lemmon és Walter Matthau filmjének címe szerint?;Mindig zöldebb;Mindig szőkébb;Mindig teltebb;Mélyebb dekoltázsú
-Milyen királyságnak nevezik a rövid idejig tartó hatalmat?;Pünkösdi;Hűsvéti;Újévi;Karácsonyi
+Milyen királyságnak nevezik a rövid idejig tartó hatalmat?;Pünkösdi;Húsvéti;Újévi;Karácsonyi
 Milyen gazdasági társulás nevét vette fek egy magyar rockegyüttes a 80-as években?;KFT;TSZ;GMK;ÁFÉSZ
 Mi a neve a Bánk bán intrikáló "lézengő ritterének"?;Biberach;Tiborc;Petúr;Solom
 Melyik város nevezetessége volt a "Checkpoint Charlie"?;Berlin;London;San Francisco;New York
