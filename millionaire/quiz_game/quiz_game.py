@@ -401,17 +401,16 @@ def divide_question(question: str) -> list:
     return question_parts
 
 
-def divide_answer(answer: str, number_of_parts: int) -> list:
+def divide_answer(answer: str, number_of_parts: float) -> list:
     answer_parts = []
     basic_question_length = 109
     basic_answer_length = int((basic_question_length / 2) - 5)
-    for i in range(number_of_parts + 1):
+    for i in range(int(number_of_parts) + 1):
         if len(answer[i:basic_answer_length * (i + 1)]) > 0:
             index = basic_answer_length * i
             answer_parts.append(answer[index:basic_answer_length * (i + 1)])
         else:
             answer_parts.append("")
-
     return answer_parts
 
 
@@ -442,13 +441,15 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
     if len(longest_string) > number_of_spaces:
         print("  " + "_" * (number_of_spaces + 3) + "     " + "_" * (number_of_spaces + 4))
         number_of_spaces = number_of_spaces + 7
-        number_of_parts = int(len(longest_string) / number_of_spaces)
+        number_of_parts = len(longest_string) / number_of_spaces
+        if type(number_of_parts) == float:
+            number_of_parts += 1
         answer_list_a = divide_answer(answer_values[0], number_of_parts)
         answer_list_b = divide_answer(answer_values[1], number_of_parts)
         answer_list_c = divide_answer(answer_values[2], number_of_parts)
         answer_list_d = divide_answer(answer_values[3], number_of_parts)
         answers_lists = [answer_list_a, answer_list_b, answer_list_c, answer_list_d]
-        longest_string_divided = int(len(longest_string) / number_of_spaces)
+        longest_string_divided = int(number_of_parts)
         answer = ""
         index = 0
         for i in range(4):
