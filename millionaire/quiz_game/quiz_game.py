@@ -433,7 +433,7 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
         number_of_spaces = int((table_length / 2) - 6)
     else:
         number_of_spaces = int((table_length / 2) - 6)
-
+    print_quizmaster()
     print("  /" + "‾" * (table_length) + "\\")
     print(" ◄  " + question + " " * spaces_after_question + "   ►")
     print("  \\" + "_" * (table_length) + "/")
@@ -531,6 +531,10 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
         print(" ◄|" + answer_values[2] + "|►━◄|" + answer_values[3] + "|►")
         print("   "  + "‾" * (number_of_spaces + 4) + "     " + "‾" * (number_of_spaces+4))
 
+
+def print_quizmaster():
+    for line in util.open_file("quizmaster", "r", ";","/text_files/"):
+        print(line[0])
 
 def show_game_structure():
     import time, msvcrt
