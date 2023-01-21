@@ -199,32 +199,24 @@ def play():
                     print("\n" + " " * 20 + fg.yellow + language_dictionary[
                         game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     util.play_sound("won_hundred_bucks", 0)
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
-                    print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
-                          " " * (int(len(question) / 2)), bg.rs, "|")
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
+                    print_prizes_with_quizmaster(i)
                     time.sleep(7)
                 elif i == 9:
                     print("\n" + " " * 20 + fg.yellow + language_dictionary[
                         game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     if util.game_language == util.Language.HUNGARIAN.name:
                         util.play_sound("now_comes_hard_part", 0)
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
-                    print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
-                          " " * (int(len(question) / 2)), bg.rs, "|")
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
+                    print_prizes_with_quizmaster(i)
                     time.sleep(3)
                 else:
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
-                    print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
-                          " " * (int(len(question) / 2)), bg.rs, "|")
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
+                    print_prizes_with_quizmaster(i)
                     time.sleep(2)
             else:
                 if util.game_language == util.Language.HUNGARIAN.name:
                     util.play_sound("after_marking", 0)
                     time.sleep(4)
                     util.play_sound("great_logic", 0)
+                    print_prizes_with_quizmaster(i)
                 time.sleep(1)
                 util.clear_screen()
                 print("\n" + " " * 20 + fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(
@@ -576,6 +568,21 @@ def print_quizmaster_with_prizes(level: int):
         else:
             print(line[0])
         index += 1
+
+
+def print_prizes_with_quizmaster(level: int):
+    # TODO: Align text to center
+    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
+    util.clear_screen()
+    global table_length
+    spaces_after_question = table_length - len(prizes[level][0]) - 9
+    for i in range(4):
+        print("\r")
+    for line in util.open_file("quizmaster", "r", ";","/text_files/", strip=False):
+        print(line[0])
+    print("  /" + "‾" * (table_length) + "\\")
+    print(" ◄  " + bg. blue + fg.orange + " ♦ " +  prizes[level][0] + " ♦ "  + fg.rs + " " * spaces_after_question + bg.rs + "   ►")
+    print("  \\" + "_" * (table_length) + "/")
 
 
 def show_game_structure():
