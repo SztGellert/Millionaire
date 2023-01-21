@@ -17,7 +17,7 @@ Hogy nevezik az önző, fösvény személyt?;Szükkeblű,Bővérű,Nagymellény�
 Mije van "tele" annak, akinek elege van valamiből?;Hócipője;Makkos cipője;Felemás cipője;Táncoló fekete lakkcipője
 Melyik alapanyag nem kell a görög salátához?;Sárgarépa;Uborka;Paradicsom;Juhsajt(feta)
 Ki volt az a XVI. századi francia orvos és asztrológus, aki ma reneszánszát éli?;Nostradamus;Fabricius;Vesalius;Paracelsus
-Melyik városhoz tartoznak a következő települések?;Zalaegerszeg;Szekszárd;Sátoraljaújhely;Szombathely
+Melyik városhoz tartoznak a következő települések: Andráshida, Ebergény, Csácsbozsok?;Zalaegerszeg;Szekszárd;Sátoraljaújhely;Szombathely
 Hogyan szokás nevezni a fehéres szálakkal tarkított sötét szőrű lovat?;Deres;Párás;Zúzmarás;Harmatos
 Mire nem vadászik a sas a híres mondás szerint?;Légyre;Elefántra;Sasfióka;Bolhára
 Melyik uralkodó rendelt a róla elnevezett lepkés, virágos herendi porcelánkészletből?;Viktória királynő;II. Miksa József;III. Napóleon;I. Miklós
