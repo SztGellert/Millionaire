@@ -286,8 +286,8 @@ def print_phone_conversation(text: list, question: str, answers: {}, good_answer
             print(text[i][0])
     print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
     now = time.time()
-    util.play_sound('phone_call', 30.0)
-    time.sleep(3)
+    util.play_sound('phone_call_ends', 0)
+    time.sleep(5)
     print(language_dictionary[game_language].quiz.call_duration, int(now - then),
           language_dictionary[game_language].quiz.call_seconds)
     util.stop_sound()
