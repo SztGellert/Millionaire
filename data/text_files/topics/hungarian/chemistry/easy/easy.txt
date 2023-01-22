@@ -6,7 +6,7 @@ Mi a szén-dioxid szilárd formája?;Szárazjég;Gyanta;Vaj;Csokoládé
 Mit jelent a "Pb" vegyjel?;Ólom;Plutónium;Palladium;Lítium
 Mit nevezünk egy atom középpontjának?;Atommag;Pivot;Epicentrum;Fulcrum
 Mi az a szilárd anyag, amelynek molekulái rendezett, ismétlődő mintázatban helyezkednek el?;Kristály;Gránit;Bazalt;Konglomerátum
-Mi a második legkönnyebb kémiai elem?;Hélium;Szén;Gidrogén;Rádium
+Mi a második legkönnyebb kémiai elem?;Hélium;Szén;Hidrogén;Rádium
 Melyik molekula szerkezetében NINCS oxigén?;Ammónia;Víz;Etanol;Ózon
 Melyik a világegyetem legnagyobb mennyiségben előforduló eleme?;Hidrogén;Nitrogén;Nátrium;Oxigén
 Melyik a réz réz-szulfát oldatából történő kinyerésére használt fém?;Fe;Hg;Ag;Na
