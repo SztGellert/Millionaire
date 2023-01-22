@@ -16,6 +16,7 @@ language_dictionary = util.language_dictionary
 table_length = 113
 game_levels = 15
 
+
 def play():
     global game_language, question_lines_easy, question_lines_medium, question_lines_hard
     game_language = util.game_language
@@ -23,6 +24,7 @@ def play():
     question_topics = util.question_topics
     global question_difficulty
     question_difficulty = util.question_difficulty
+    global help_types
     help_types = {"halving": True, "telephone": True, "audience": True}
     question_lines = []
     question_lines_easy = []
@@ -87,7 +89,7 @@ def play():
         answer_list = list(answers.values())
         random.shuffle(answer_list)
         shuffled_answers = dict(zip(answers, answer_list))
-        print_quiz_table(question, shuffled_answers)
+        print_quiz_table(question, shuffled_answers, game_level=i)
         play_music(i)
         if game_language == util.Language.HUNGARIAN.name:
             print("\n", language_dictionary[game_language].quiz.select_answer)
@@ -105,7 +107,7 @@ def play():
         while answer not in list(answers.keys()):
             if answer == "t":
                 util.clear_screen()
-                print_quiz_table(question, shuffled_answers)
+                print_quiz_table(question, shuffled_answers, game_level=i)
                 if util.game_language == util.Language.HUNGARIAN.name:
                     util.play_sound("music_off", 0)
                 if game_language == util.Language.HUNGARIAN.name:
@@ -116,13 +118,13 @@ def play():
                         language_dictionary[game_language].quiz.select_answer_out,
                         ["a", "b", "c", "d"])
                 util.clear_screen()
-                print_quiz_table(question, shuffled_answers, answer, "blue")
+                print_quiz_table(question, shuffled_answers, answer, "blue", "", game_level=i)
                 util.play_sound("marked", 0)
                 time.sleep(2)
                 is_correct = check_answer(answer, correct_answer_key)
                 if is_correct:
                     util.clear_screen()
-                    print_quiz_table(question, shuffled_answers, answer, "green")
+                    print_quiz_table(question, shuffled_answers, answer, "green", "", game_level=i)
                     if i > 9:
                         print(bg.orange + show_prize(9) + bg.rs)
                         time.sleep(1)
@@ -137,7 +139,7 @@ def play():
                 else:
                     util.play_sound("bad_answer", 0)
                     util.clear_screen()
-                    print_quiz_table(question, shuffled_answers, answer, "blue", correct_answer=correct_answer_key)
+                    print_quiz_table(question, shuffled_answers, answer, "blue", correct_answer=correct_answer_key, game_level=i)
                     print(fg.red + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     if util.game_language == util.Language.HUNGARIAN.name:
                         util.play_sound("so_sorry", 0)
@@ -150,7 +152,7 @@ def play():
                         help_types) and game_language == util.Language.HUNGARIAN.name:
                     util.play_sound("still_have_all_helps", 0)
                 util.clear_screen()
-                print_quiz_table(question, shuffled_answers)
+                print_quiz_table(question, shuffled_answers, game_level=i)
                 help_functions = {"halving": halving, "telephone": telephone_help, "audience": audience_help}
                 chosen_help_type = safe_input(language_dictionary[game_language].quiz.help_selection,
                                               ["a", "t", "h"])
@@ -162,7 +164,7 @@ def play():
                                                                                     correct_answer_value)
                                 for a in range(len(answer_list)):
                                     answer_list[a] = list(shuffled_answers.values())[a]
-                                print_quiz_table(question, shuffled_answers)
+                                print_quiz_table(question, shuffled_answers, game_level=i)
                             else:
                                 list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
                             help_types[list(help_types)[x]] = False
@@ -180,7 +182,7 @@ def play():
                 time.sleep(2)
         util.clear_screen()
         if game_language == util.Language.ENGLISH:
-            print_quiz_table(question, shuffled_answers, answer, "orange")
+            print_quiz_table(question, shuffled_answers, answer, "orange", game_level=i)
             util.play_sound("marked", 0)
             time.sleep(2)
         is_correct = check_answer(answer, correct_answer_key)
@@ -189,7 +191,7 @@ def play():
             if i < 14:
                 util.play_sound("correct_answer", 0)
                 util.clear_screen()
-                print_quiz_table(question, shuffled_answers, answer, "green")
+                print_quiz_table(question, shuffled_answers, answer, "green", game_level=i)
                 time.sleep(2)
                 util.clear_screen()
                 if len(question) % 2 == 0:
@@ -198,32 +200,24 @@ def play():
                     print("\n" + " " * 20 + fg.yellow + language_dictionary[
                         game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     util.play_sound("won_hundred_bucks", 0)
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
-                    print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
-                          " " * (int(len(question) / 2)), bg.rs, "|")
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
+                    print_prizes_with_quizmaster(i)
                     time.sleep(7)
                 elif i == 9:
                     print("\n" + " " * 20 + fg.yellow + language_dictionary[
                         game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     if util.game_language == util.Language.HUNGARIAN.name:
                         util.play_sound("now_comes_hard_part", 0)
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
-                    print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
-                          " " * (int(len(question) / 2)), bg.rs, "|")
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
+                    print_prizes_with_quizmaster(i)
                     time.sleep(3)
                 else:
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
-                    print("|", bg.orange, fg.black, " " * (int(len(question) / 2)) + show_prize(i), fg.rs,
-                          " " * (int(len(question) / 2)), bg.rs, "|")
-                    print("-" * (len(question) + len(show_prize(i)) + 8))
+                    print_prizes_with_quizmaster(i)
                     time.sleep(2)
             else:
                 if util.game_language == util.Language.HUNGARIAN.name:
                     util.play_sound("after_marking", 0)
                     time.sleep(4)
                     util.play_sound("great_logic", 0)
+                    print_prizes_with_quizmaster(i)
                 time.sleep(1)
                 util.clear_screen()
                 print("\n" + " " * 20 + fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(
@@ -234,7 +228,7 @@ def play():
         else:
             util.play_sound("bad_answer", 0)
             util.clear_screen()
-            print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key)
+            print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key, game_level=i)
             time.sleep(2)
             if game_language == util.Language.HUNGARIAN.name:
                 util.play_sound("so_sorry", 0)
@@ -293,8 +287,8 @@ def print_phone_conversation(text: list, question: str, answers: {}, good_answer
             print(text[i][0])
     print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
     now = time.time()
-    util.play_sound('phone_call', 30.0)
-    time.sleep(3)
+    util.play_sound('phone_call_ends', 0)
+    time.sleep(5)
     print(language_dictionary[game_language].quiz.call_duration, int(now - then),
           language_dictionary[game_language].quiz.call_seconds)
     util.stop_sound()
@@ -414,7 +408,7 @@ def divide_answer(answer: str, number_of_parts: float) -> list:
     return answer_parts
 
 
-def print_quiz_table(question: str, answers_: {}, selected="", color="", correct_answer=""):
+def print_quiz_table(question: str, answers_: {}, selected="", color="", correct_answer="", game_level=0):
     global table_length
     basic_question_length = 109
     answer_values = list(answers_.values())
@@ -426,20 +420,20 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
         for i in range(len(question_list)):
             if i < len(question_list) - 1:
                 spaces_after_question = table_length - (len(question_list[i])) - 4
-                question = question + question_list[i] + spaces_after_question * " " + " |\n| "
+                question = question + question_list[i] + spaces_after_question * " " + "    ►\n ◄  "
             else:
                 question = question + question_list[i]
                 spaces_after_question = table_length - (len(question_list[i])) - 3
         number_of_spaces = int((table_length / 2) - 6)
     else:
         number_of_spaces = int((table_length / 2) - 6)
-
-    print("-" * (table_length))
-    print("| " + question + " " * spaces_after_question + "|")
-    print("-" * (table_length))
+    print_quizmaster_with_prizes(game_level)
+    print("  /" + "‾" * (table_length) + "\\")
+    print(" ◄  " + question + " " * spaces_after_question + "   ►")
+    print("  \\" + "_" * (table_length) + "/")
     print("\n")
-    print("-" * table_length)
     if len(longest_string) > number_of_spaces:
+        print("  " + "_" * (number_of_spaces + 3) + "     " + "_" * (number_of_spaces + 4))
         number_of_spaces = number_of_spaces + 7
         number_of_parts = len(longest_string) / number_of_spaces
         if type(number_of_parts) == float:
@@ -456,8 +450,8 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
             if i == 0 or i == 2:
                 for j in range(longest_string_divided + 1):
                     if j == 0:
-                        first_string = list(answers_.items())[i][j].upper() + ": " + answers_lists[index][j]
-                        second_string = list(answers_.items())[i + 1][j].upper() + ": " + answers_lists[index + 1][j]
+                        first_string = " " +list(answers_.items())[i][j].upper() + ": " + answers_lists[index][j]
+                        second_string = " " +list(answers_.items())[i + 1][j].upper() + ": " + answers_lists[index + 1][j]
                     else:
                         first_string = " " * 3 + answers_lists[index][j]
                         second_string = " " * 3 + answers_lists[index + 1][j]
@@ -485,47 +479,115 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
                                     second_string = bg.green + fg.black + second_string + fg.rs + bg.rs
                                 if color == "blue":
                                     second_string = bg.blue + fg.black + second_string + fg.rs + bg.rs
-                    answer = answer + "| " + first_string + " | " + second_string + " |"
+                    answer = answer + "◄|" + first_string + "|►━◄|" + second_string + " |►"
                     if j < longest_string_divided:
                         answer = answer + "\n"
             if i == 0:
-                answer = answer + "\n" + "-" * table_length + "\n"
+                answer = answer + "\n" + "  " + "‾" * (number_of_spaces  - 4)  + "     " + "‾" * (number_of_spaces - 3) +\
+                         "\n" + "  " +  "_" * (number_of_spaces  - 4)  + "     " + "_" * (number_of_spaces - 3) + "\n"
             index += 1
         print(answer)
+        print("  "  + "‾" * (number_of_spaces -4) + "     " + "‾" * (number_of_spaces-3))
     else:
+        print("   " + "_" * (number_of_spaces + 4) + "     " + "_" * (number_of_spaces + 4))
         if selected != "":
             index = 0
             for i in answers_:
                 if i == selected:
                     if color == "orange":
-                        answer_values[list(answers_).index(i)] = bg.orange + fg.black + list(answers_.items())[index][
+                        answer_values[list(answers_).index(i)] = bg.orange + fg.black + " " +list(answers_.items())[index][
                             0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(
                             list(answers_.items())[index][1])) + fg.rs + bg.rs
                     if color == "green":
-                        answer_values[list(answers_).index(i)] = bg.green + fg.black + list(answers_.items())[index][
+                        answer_values[list(answers_).index(i)] = bg.green + fg.black + " " + list(answers_.items())[index][
                             0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(
                             list(answers_.items())[index][1])) + fg.rs + bg.rs
                     if color == "blue":
-                        answer_values[list(answers_).index(i)] = bg.blue + fg.black + list(answers_.items())[index][
+                        answer_values[list(answers_).index(i)] = bg.blue + fg.black + " " + list(answers_.items())[index][
                             0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(
                             list(answers_.items())[index][1])) + fg.rs + bg.rs
                 elif correct_answer != "" and i == correct_answer:
-                    answer_values[list(answers_).index(i)] = bg.green + fg.black + list(answers_.items())[index][
+                    answer_values[list(answers_).index(i)] = bg.green + fg.black + " " +  list(answers_.items())[index][
                         0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(
                         list(answers_.items())[index][1])) + fg.rs + bg.rs
                 else:
-                    answer_values[list(answers_).index(i)] = list(answers_.items())[index][0].upper() + ": " + answers_[
+                    answer_values[list(answers_).index(i)] = " " + list(answers_.items())[index][0].upper() + ": " + answers_[
                         i] + " " * (number_of_spaces - len(list(answers_.items())[index][1]))
                 index += 1
         else:
             for i in range(len(answers_)):
-                answer_values[i] = list(answers_.items())[i][0].upper() + ": " + answer_values[i] + " " * (
+                answer_values[i] = " " + list(answers_.items())[i][0].upper() + ": " + answer_values[i] + " " * (
                             number_of_spaces - len(list(answers_.items())[i][1]))
 
-        print("| " + answer_values[0] + " | " + answer_values[1] + " |")
-        print("-" * table_length)
-        print("| " + answer_values[2] + " | " + answer_values[3] + " |")
-    print("-" * table_length)
+        print(" ◄|" + answer_values[0] + "|►━◄|" + answer_values[1] + "|►")
+        print("   " + "‾" * (number_of_spaces  + 4) + "     " + "‾" * (number_of_spaces + 4))
+        print("   " + "_" * (number_of_spaces  + 4) + "     " + "_" * (number_of_spaces + 4))
+        print(" ◄|" + answer_values[2] + "|►━◄|" + answer_values[3] + "|►")
+        print("   "  + "‾" * (number_of_spaces + 4) + "     " + "‾" * (number_of_spaces+4))
+
+
+def print_quizmaster_with_prizes(level: int):
+    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")[::-1]
+    prizes_ = util.open_file("prizes_" + str(game_language).lower(), "r")[::-1]
+    index = 0
+    len_al = 45
+    helps = [" 50 : 50 ", "   \_] ", "   ☺ ☺ ☺   "]
+    helps_ = [" 50 : 50 ", "   \_] ", "   ☺ ☺ ☺   "]
+    i = 0
+    for key, value in help_types.items():
+        if not value:
+            helps_[i] = fg.red + helps[i] + fg.rs
+        i += 1
+    help_length = len(helps[0] + helps[1] + helps[2])+2
+    print(" " * 87 + " " + help_length* "_" )
+    print(" " * 87 + "|" + (help_length-2)*" " +"  |")
+    print(" " * 87 + "|" + helps_[0] + helps_[1] + helps_[2] +"  |")
+    print(" " * 87+ "|" + help_length* "_" + "|")
+
+    for line in util.open_file("quizmaster", "r", ";","/text_files/", strip=False):
+        if index < len(prizes):
+            missing_space = len_al-len(line[0])
+            round_number = str(len(prizes)-index)
+            if len(prizes) - index < 10:
+                round_number = " " + round_number
+            box_space = len(round_number + " ♦ " + prizes[index][0]) + 1
+            if index == level:
+                prizes_[::-1][index][0] = bg.orange + fg.black + prizes[::-1][index][0] + fg.rs + bg.rs
+
+            if len(prizes)-index <= level:
+                if len(prizes)-index in [5,10,15]:
+                    print(line[0] + " "*missing_space + "| " + round_number + " ♦ " + fg.orange + prizes_[index][0] + fg.rs + " " * (help_length - box_space) + "|")
+                else:
+                    print(line[0] + " "*missing_space + "| " + round_number + " ♦ "  + fg.orange + prizes_[index][0] + fg.rs + " " * (help_length - box_space) + "|")
+            else:
+                if len(prizes)-index in [5,10,15]:
+                    print(line[0] + " "*missing_space + "| " + round_number + "   " + prizes_[index][0] + " " * (help_length - box_space) + "|")
+                else:
+                    print(line[0] + " "*missing_space + "| " + round_number + "   " + fg.orange + prizes_[index][0]  + fg.rs +" " * (help_length - box_space) + "|")
+        elif index == len(prizes):
+            print(line[0] + " " * (missing_space+3) + help_length*"‾")
+        else:
+            print(line[0])
+        index += 1
+
+
+def print_prizes_with_quizmaster(level: int):
+    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
+    util.clear_screen()
+    global table_length
+    decor_str = " ♦ "
+    prize = decor_str + prizes[level][0] + decor_str
+    prize_length = len(prize)
+    number_of_spaces = int((table_length - prize_length) / 2)
+    if prize_length % 2 == 0:
+        prize = prize + " "
+    for i in range(4):
+        print("\r")
+    for line in util.open_file("quizmaster", "r", ";", "/text_files/", strip=False):
+        print(line[0])
+    print("  /" + "‾" * (table_length) + "\\")
+    print(" ◄ " + bg. blue + fg.orange + number_of_spaces * " " + prize  + fg.rs + " " * number_of_spaces + bg.rs + " ►")
+    print("  \\" + "_" * (table_length) + "/")
 
 
 def show_game_structure():
@@ -694,7 +756,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.clear_screen()
-            print_quiz_table(question, answers)
+            print_quiz_table(question, answers, game_level=level)
             print("\n" + language_dictionary[game_language].quiz.select_answer + language_dictionary[
                 game_language].quiz.selected_answer + "A")
             util.stop_sound()
@@ -704,7 +766,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
                     util.clear_screen()
-                    print_quiz_table(question, answers, "a", "orange")
+                    print_quiz_table(question, answers, "a", "orange", game_level=level)
                     util.stop_sound()
                     play_marked_sound("a", level)
                     util.play_sound("marked", 0)
@@ -718,7 +780,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.clear_screen()
-            print_quiz_table(question, answers)
+            print_quiz_table(question, answers, game_level=level)
             print("\n" + language_dictionary[game_language].quiz.select_answer + language_dictionary[
                 game_language].quiz.selected_answer + "B")
             util.stop_sound()
@@ -728,7 +790,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
                     util.clear_screen()
-                    print_quiz_table(question, answers, "b", "orange")
+                    print_quiz_table(question, answers, "b", "orange", game_level=level)
                     util.stop_sound()
                     play_marked_sound("b", level)
                     util.play_sound("marked", 0)
@@ -742,7 +804,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.clear_screen()
-            print_quiz_table(question, answers)
+            print_quiz_table(question, answers, game_level=level)
             print("\n" + language_dictionary[game_language].quiz.select_answer + language_dictionary[
                 game_language].quiz.selected_answer + "C")
             util.stop_sound()
@@ -752,7 +814,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
                     util.clear_screen()
-                    print_quiz_table(question, answers, "c", "orange")
+                    print_quiz_table(question, answers, "c", "orange", game_level=level)
                     util.stop_sound()
                     play_marked_sound("c", level)
                     util.play_sound("marked", 0)
@@ -766,7 +828,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
             selected_final_sound = random.choice(final_sounds)
             selected_lets_see_sound = random.choice(lets_see_sounds)
             util.clear_screen()
-            print_quiz_table(question, answers)
+            print_quiz_table(question, answers, game_level=level)
             print("\n" + language_dictionary[game_language].quiz.select_answer + language_dictionary[
                 game_language].quiz.selected_answer + "D")
             util.stop_sound()
@@ -776,7 +838,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
                     util.clear_screen()
-                    print_quiz_table(question, answers, "d", "orange")
+                    print_quiz_table(question, answers, "d", "orange", game_level=level)
                     util.stop_sound()
                     play_marked_sound("d", level)
                     util.play_sound("marked", 0)
