@@ -16,6 +16,7 @@ language_dictionary = util.language_dictionary
 table_length = 113
 game_levels = 15
 
+
 def play():
     global game_language, question_lines_easy, question_lines_medium, question_lines_hard
     game_language = util.game_language
@@ -75,6 +76,8 @@ def play():
         util.play_sound("start", 0)
     show_game_structure()
     for i in range(game_levels):
+        print_prizes_with_quizmaster(9)
+        time.sleep(1000)
         if question_difficulty == util.Difficulty.ALL.name:
             if i < 5:
                 question_lines = question_lines_easy
@@ -571,17 +574,21 @@ def print_quizmaster_with_prizes(level: int):
 
 
 def print_prizes_with_quizmaster(level: int):
-    # TODO: Align text to center
     prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     util.clear_screen()
     global table_length
-    spaces_after_question = table_length - len(prizes[level][0]) - 9
+    decor_str = " ♦ "
+    prize = decor_str + prizes[level][0] + decor_str
+    prize_length = len(prize)
+    number_of_spaces = int((table_length - prize_length) / 2)
+    if prize_length % 2 == 0:
+        prize = prize + " "
     for i in range(4):
         print("\r")
-    for line in util.open_file("quizmaster", "r", ";","/text_files/", strip=False):
+    for line in util.open_file("quizmaster", "r", ";", "/text_files/", strip=False):
         print(line[0])
     print("  /" + "‾" * (table_length) + "\\")
-    print(" ◄  " + bg. blue + fg.orange + " ♦ " +  prizes[level][0] + " ♦ "  + fg.rs + " " * spaces_after_question + bg.rs + "   ►")
+    print(" ◄ " + bg. blue + fg.orange + number_of_spaces * " " + prize  + fg.rs + " " * number_of_spaces + bg.rs + " ►")
     print("  \\" + "_" * (table_length) + "/")
 
 
