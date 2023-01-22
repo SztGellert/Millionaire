@@ -170,8 +170,12 @@ def play():
                             help_types[list(help_types)[x]] = False
                             break
                         else:
-                            print(language_dictionary[game_language].quiz.help_disabled + list(help_types)[x] + " " +
-                                  language_dictionary[game_language].quiz.help)
+                            if list(help_types)[x] == "audience":
+                                print(language_dictionary[game_language].quiz.audience_help_disabled)
+                            elif list(help_types)[x] == "halving":
+                                print(language_dictionary[game_language].quiz.halving_help_disabled)
+                            else:
+                                print(language_dictionary[game_language].quiz.phone_help_disabled)
                 if game_language == util.Language.HUNGARIAN.name:
                     print("\n", language_dictionary[game_language].quiz.select_answer)
                     answer = handle_user_input(question, shuffled_answers, i)
