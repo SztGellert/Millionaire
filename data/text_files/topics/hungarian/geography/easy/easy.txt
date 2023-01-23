@@ -9,7 +9,7 @@ Mi igaz Olaszországra?;Svájccal határos;Tengerparthoz nem tartozik;Fő nyelve
 Mi Dánia fővárosa?;Koppenhága;Amszterdam;Stockholm;Berlin
 Melyik országban található a Fuji-hegy?;Japán;Kína;Peru;Észak-Korea
 Mi az emberi lények és kultúráik tanulmányozásának tudománya?;Antropológia;Antológia;Földrajz;Apiológia
-Melyik az USA legnagyobb kiterjedésű állama?;Kalifornia;Alaszka;Texas;Hawaii
+Melyik az USA legnagyobb kiterjedésű állama?;Alaszka;Kalifornia;Texas;Hawaii
 Mi Kenya fővárosa?;Nairobi;Tripoli;Bamako;Kankan
 Hol élnek a legtöbben?;Marokkó;Dél-Szudán;Libéria;Madagaszkár
 Melyik a legnagyobb ország a felsoroltak közül?;Etiópia;Kenya;Ghána;Egyiptom
