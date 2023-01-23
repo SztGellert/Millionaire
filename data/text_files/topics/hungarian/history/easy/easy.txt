@@ -10,7 +10,7 @@ Az Agyag Hadsereg a melyik ország uralkodójának hadseregét jelképezi?;Kína
 Hol volt Salamon temploma?;Jeruzsálem;Haifa;Betlehem;Tel Aviv
 Melyik ország volt valaha a Szovjetunió része?;Fehéroroszország;Franciaország;Egyesült Királyság;Olaszország
 Magyarország mikor csatlakozott az Európai Unióhoz?;2004;2006;2001;1996
-Mikor támadta meg Németország Lengyelországot a második világháborúban?;1939. szeptember 1.;1945. április 12.;1941. június 27.;1945. febr. 19
-Mikor uralkodott Mátyás király?;1458-1490.;1446-1485.;1450-1504.;1308-1342
+Mikor támadta meg Németország Lengyelországot a második világháborúban?;1939. szeptember 1;1945. április 12;1941. június 27;1945. febr. 19
+Mikor uralkodott Mátyás király?;1458-1490;1446-1485;1450-1504;1308-1342
 Mikor volt a Pákozdi csata?;1848. szeptember 29.;1849. október 23.;1526. március 17.;1711. április 29.
-Mikor volt a visegrádi királytalálkozó?;1335.;1356.;1437.;1516
+Mikor volt a visegrádi királytalálkozó?;1335;1356;1437;1516

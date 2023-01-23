@@ -9,7 +9,7 @@ What is true for Italy?;It borders Switzerland;It is landlocked;Its main languag
 What is the capital of Denmark?;Copenhagen;Amsterdam;Stockholm;Berlin
 In which country is Mount Fuji located?;Japan;China;Peru;North korea
 What is the study of human beings and their cultures?;Anthropology;Anthology;Geography;Apiology
-Which state has the largest area in the USA?;California;Alaska;Texas;Hawaii
+Which state has the largest area in the USA?;Alaska;California;Texas;Hawaii
 What is the capital of Kenya?;Nairobi;Tripoli;Bamako;Kankan
 Where do most people live?; Morocco;South Sudan;Liberia;Madagascar
 Which is the largest country among those listed?;Ethiopia;Kenya;Ghana;Egypt
