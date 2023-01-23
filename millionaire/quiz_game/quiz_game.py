@@ -277,43 +277,6 @@ def show_prize(round_number: int) -> str:
     return prizes[round_number][0]
 
 
-def print_phone_conversation(text: list, question: str, answers: {}, good_answer: str):
-    util.play_sound("phone_ring", 0)
-    time.sleep(2)
-    util.play_sound("phone_call", 0)
-    then = time.time()
-    for i in range(len(text)):
-        print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
-        time.sleep(2)
-        if i == 0:
-            print(text[i][0] + " " + question + " " + ",".join(list(answers.values())))
-        elif i == len(text) - 1:
-            print(text[i][0] + " " + good_answer.upper())
-        else:
-            print(text[i][0])
-    print(fg.orange + str(30 - int(time.time() - then)) + fg.rs)
-    now = time.time()
-    util.play_sound('phone_call_ends', 0)
-    time.sleep(5)
-    print(language_dictionary[game_language].quiz.call_duration, int(now - then),
-          language_dictionary[game_language].quiz.call_seconds)
-    util.stop_sound()
-
-
-def telephone_help(question: str, answers: {}, correct_answer: str):
-    phone = safe_input(language_dictionary[game_language].quiz.phone_prompt,
-                       ["m", "d", "t", "y"])
-    call_text_files = ["mum_phone_" + str(game_language).lower(),
-                       "dad_phone_" + str(game_language).lower(),
-                       "teacher_phone_" + str(game_language).lower(),
-                       "yoda_master_phone_" + str(game_language).lower()
-                       ]
-    for i in range(len(call_text_files)):
-        if phone.lower() == call_text_files[i][0]:
-            conversation = (util.open_file(call_text_files[i], 'r', separator=";"))
-            print_phone_conversation(conversation, question, answers, correct_answer)
-
-
 def halving(question: str, answers: {}, correct_answer: str) -> dict:
     if util.game_language == util.Language.HUNGARIAN.name:
         util.play_sound("lets_take_two", 0)
@@ -623,6 +586,68 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
             i += 1
         else:
             util.play_sound("audience_end", 0)
+
+
+def telephone_help(question: str, answers: {}, correct_answer: str):
+    phone = safe_input(language_dictionary[game_language].quiz.phone_prompt,
+                       ["m", "d", "t", "y"])
+    call_text_files = ["mum_phone_" + str(game_language).lower(),
+                       "dad_phone_" + str(game_language).lower(),
+                       "teacher_phone_" + str(game_language).lower(),
+                       "yoda_master_phone_" + str(game_language).lower()
+                       ]
+    conversation = ""
+    for i in range(len(call_text_files)):
+        if phone.lower() == call_text_files[i][0]:
+            conversation = (util.open_file(call_text_files[i], 'r', separator=";"))
+            util.play_sound("phone_ring", 0)
+            time.sleep(2)
+            util.play_sound("phone_call", 0)
+    len_al = 45
+    util.clear_screen()
+    len_window = 5
+    then = time.time()
+    text = ""
+    now = 0.0
+    for i in range(30):
+        index = 0
+        for line in util.open_file("quizmaster", "r", ";","/text_files/", strip=False):
+
+            missing_space = len_al-len(line[0])
+            if index == 0:
+                print(line[0] + " " * (missing_space+1) + "_"*(len_window-1))
+            elif index == 1:
+                print(line[0] + " " * missing_space + "|" + (len_window-1)*" " + "|")
+            else:
+                if index == 2:
+                    now = time.time()
+                    print(line[0]+ " " * (missing_space) + "| " + fg.orange + str(30 - int(now - then)) + fg.rs + " |")
+                    print(line[0] + " " * (missing_space) + "|"  + "_" * (len_window - 1)+ "|")
+                else:
+                    print(line[0])
+            index += 1
+        print_quiz_table(question, answers, quizmaster=False)
+        if i == 0:
+            text = text + "\n" + conversation[0][0] + " \n" + question + " " + ", ".join(list(answers.values()))
+        elif i == len(conversation)-1:
+            text = text + "\n" + conversation[4][0] + " " + correct_answer.upper()
+            print(text)
+            break
+        elif i == len(conversation)-2:
+            time.sleep(2)
+            text = text + "\n" + conversation[i][0]
+        else:
+            text = text + "\n" + conversation[i][0]
+        print(text)
+        time.sleep(2)
+        if i < 30:
+            util.clear_screen()
+            i += 1
+    util.play_sound('phone_call_ends', 0)
+    time.sleep(5)
+    print(language_dictionary[game_language].quiz.call_duration, int(now - then),
+          language_dictionary[game_language].quiz.call_seconds)
+    util.stop_sound()
 
 
 def print_prizes_with_quizmaster(level: int):
