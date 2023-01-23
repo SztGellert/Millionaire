@@ -9,7 +9,7 @@ Melyik városban található Michelangelo Dávidja?;Firenze;Róma;Nápoly;Ravenn
 Melyik a világ leglátogatottabb múzeuma?;Louvre;Ermitázs;Vatikáni Múzeum;British Museum
 Melyik országban találhatók az agyagharcosok?;Kína;Oroszország;India;Észak-Korea
 Gízai piramisok néven három piramist értünk. Melyik nem tartozik ezen piramisok közé?;Hafré;Kheopsz;Khephrén;Mükerinosz
-Az egyik legelterjedtebb elmélet szerint Szemiramisz függőkertje II. Nabú-kudurri-uszur kérésére épült. Mi volt a király célja ezzel az építménnyel?;Felseégét akarta megörvendeztetni a kerttel;Víztározóként funkcionált;Egyedi temetkezési helyet akart a dinasztiájának;Hatalmát akarta fitogtatni
+Az egyik legelterjedtebb elmélet szerint Szemiramisz függőkertje II. Nabú-kudurri-uszur kérésére épült. Mi volt a király célja ezzel az építménnyel?;Feleségét akarta megörvendeztetni a kerttel;Víztározóként funkcionált;Egyedi temetkezési helyet akart a dinasztiájának;Hatalmát akarta fitogtatni
 A pharoszi vagy alexandriai világítótorony tetején egy szobor állt. Vita van a történészek között arról, hogy melyik istenséget ábrázolta a szobor. Ki a két lehetséges görög isten?;Poszeidón és Zeusz;Héra és Gaia;Artemisz és Apollón;Hádész és Árész
 Mi a neve Auguste Rodin ülő alakot ábrázoló szobrának?;A gondolkodó;A töprengő;Az ülő fiú;A tanítvány
 A graffiti az olasz graffito szóból származik, mit jelent?;Kapar, karcol;Festéket szór;Vandalizmus;Átfest

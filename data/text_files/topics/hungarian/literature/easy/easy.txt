@@ -13,3 +13,4 @@ Zeusz apja, Kronosz az alábbiak közül melyiket tette gyermekeivel?;Élve ette
 Milyen szokatlan módon született Athéné?;Zeusz fejéből pattant ki;Óriás kagylóból emelkedett ki;Farkasból átalakult;Márványból faragták ki
 Hol született Arany János?;Nagyszalonta;Nagyszeben;Kiskőrös;Sárospatak
 Kinek az első felesége volt Laborfalvi Róza?;Jókai Mór;Arany János;Ady Endre;Babits Mihály
+Ki a négy evangélista?;Máté, Márk, Lukács és János;János, Fülöp, András és Jakab;Júdás, Tamás, Simon és Péter;Bertalan, Máté, Júdás és Jakab

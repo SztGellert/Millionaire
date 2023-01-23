@@ -13,3 +13,5 @@ Melyik nem vörösborszőlő?;Chardonnay;Kadarka;Carignan;Cabernet sauvignon
 Melyik a kakukktojás?;Bodnár;Kádár;Pintér;Tímár
 Melyik magyar borszőlőfajta nem őshonos Magyarországon?;Kunleány;Cserszegi fűszeres;Furmint;Kéknyelű
 Milyen savak találhatók meg a szőlőben természetes állapotában?;Almasav, citromsav, borkősav;Szalicilsav, oxálsav, glikolsav;Csersav, tejsav, ecetsav;Vajsav, cukorsav, szorbinsav
+Melyik Spanyolország legnépszerűbb étele?;Paella;Pozole;BBQ;Pizza
+Melyik ország különleges desszertje a tiramisu?;Olaszország;Írország;Skócia;Görögország
