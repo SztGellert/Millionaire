@@ -165,6 +165,8 @@ def play():
                                 for a in range(len(answer_list)):
                                     answer_list[a] = list(shuffled_answers.values())[a]
                                 print_quiz_table(question, shuffled_answers, game_level=i)
+                            if list(help_types)[x] == "audience":
+                                audience_help(question, shuffled_answers, correct_answer_value, game_level=i)
                             else:
                                 list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
                             help_types[list(help_types)[x]] = False
@@ -337,29 +339,6 @@ def calculate_halved_answers(answers: {}, correct_answer: str) -> {}:
     return halved_answers
 
 
-def audience_help(question: str, answers: {}, correct_value: str):
-    if util.game_language == util.Language.HUNGARIAN.name:
-        util.play_sound("push_your_buttons", 0)
-        time.sleep(3)
-    else:
-        util.play_sound("audience", 0)
-    util.clear_screen()
-    answers_list = list(answers.keys())
-    for i in range(len(answers_list)):
-        print(question)
-        chances = get_chances(answers, correct_value)
-        print("\n")
-        for key, value in sorted(chances.items()):
-            string_value = str(value)
-            if len(string_value) == 1:
-                string_value = string_value + " "
-            print(key.upper() + " : " + string_value + "% " + bg.orange + value * " " + bg.rs + " " + str(answers[key]))
-            print("\n")
-        time.sleep(1)
-        if i != len(answers_list) - 1:
-            util.clear_screen()
-
-
 def get_chances(answers: {}, correct_value: str) -> dict:
     answers_list = list(answers.keys())
     chances_dict = {}
@@ -412,7 +391,7 @@ def divide_answer(answer: str, number_of_parts: float) -> list:
     return answer_parts
 
 
-def print_quiz_table(question: str, answers_: {}, selected="", color="", correct_answer="", game_level=0):
+def print_quiz_table(question: str, answers_: {}, selected="", color="", correct_answer="", game_level=0, quizmaster=True):
     global table_length
     basic_question_length = 109
     answer_values = list(answers_.values())
@@ -431,7 +410,8 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
         number_of_spaces = int((table_length / 2) - 6)
     else:
         number_of_spaces = int((table_length / 2) - 6)
-    print_quizmaster_with_prizes(game_level)
+    if quizmaster:
+        print_quizmaster_with_prizes(game_level)
     print("  /" + "‾" * (table_length) + "\\")
     print(" ◄  " + question + " " * spaces_after_question + "   ►")
     print("  \\" + "_" * (table_length) + "/")
@@ -573,6 +553,76 @@ def print_quizmaster_with_prizes(level: int):
         else:
             print(line[0])
         index += 1
+
+
+def audience_help(question, answers: {}, correct_value: str, game_level):
+    len_al = 45
+    percent_color = bg(200, 35, 254)
+    answers_list = list(answers.keys())
+    if util.game_language == util.Language.HUNGARIAN.name:
+        util.play_sound("push_your_buttons", 0)
+        time.sleep(2)
+    else:
+        util.play_sound("audience", 0)
+    util.clear_screen()
+    len_window = 21
+
+    for i in range(len(answers_list)):
+        answers_list = list(answers.keys())
+        chances = get_chances(answers, correct_value)
+        string_value = ""
+        values = []
+        for key, value in sorted(chances.items()):
+            values.append(round(value/10))
+            next_value = str(value)
+            if len(next_value) == 1:
+                next_value = next_value + " "
+            string_value = string_value + " " + next_value + "% "
+        index = 0
+        for line in util.open_file("quizmaster", "r", ";","/text_files/", strip=False):
+            percentages = ""
+            missing_space = len_al-len(line[0])
+            if index == 0:
+                print(line[0] + " " * (missing_space+1) + "_"*(len_window-1))
+            elif index == 1:
+                print(line[0] + " " * missing_space + "|" + string_value + "|")
+            elif index == 2:
+                print(line[0] + " " * missing_space + "|" + (len_window-1)*" " + "|")
+            else:
+                if index < 13:
+                    for j in range(10):
+                        if j == (index -3):
+                            if values[0] >= 10-j:
+                                percentages = percentages + percent_color + "   " + bg. rs + "  "
+                            else:
+                                percentages = percentages + "     "
+                            if values[1] >= 10-j:
+                                percentages = percentages + percent_color + "   " + bg. rs  + "  "
+                            else:
+                                percentages = percentages + "     "
+                            if values[2] >= 10-j:
+                                percentages = percentages + percent_color + "   " + bg. rs  + "  "
+                            else:
+                                percentages = percentages + "     "
+                            if values[3] >= 10-j:
+                                percentages = percentages + percent_color + "   " + bg. rs
+                            else:
+                                percentages = percentages + "   "
+                    print(line[0]+ " " * (missing_space) + "| " + percentages + " |")
+                elif index == 13:
+                    print(line[0]+ " " * (missing_space) + "|" + fg.orange + "  A ♦  B ♦  C ♦  D " + fg.rs + " |")
+                elif index == 14:
+                    print(line[0] + " " * (missing_space+1) + "‾" * (len_window-1))
+                else:
+                    print(line[0])
+            index += 1
+        print_quiz_table(question, answers, game_level=game_level, quizmaster=False)
+        time.sleep(1)
+        if i < len(answers_list)-1:
+            util.clear_screen()
+            i += 1
+        else:
+            util.play_sound("audience_end", 0)
 
 
 def print_prizes_with_quizmaster(level: int):
@@ -858,6 +908,7 @@ def handle_user_input(question: str, answers: dict, level: int) -> str:
             return "h"
         if user_input == b'\x1b' or user_input == '<ESC>':
             return "esc"
+
 
 def get_user_input() -> bytes:
     if util.operating_system == "posix":
