@@ -317,6 +317,14 @@ def get_chances(answers: {}, correct_value: str) -> dict:
     correct_answer = get_dictionary_key_by_value(answers, correct_value)
     chances_dict[correct_answer] = random.randrange(40, 89)
     answers_list.pop(answers_list.index(correct_answer))
+    if list(answers.values()).count("") == 2:
+        for k in range(len(list(answers.keys()))-1):
+            if list(answers.values())[k] != "":
+                chances_dict[answers_list[k]] = 100 - sum(chances_dict.values())
+            else:
+                chances_dict[answers_list[k]] = 0
+        return chances_dict
+
     for k in range(len(answers_list)):
         if k == len(answers_list) - 1:
             chances_dict[answers_list[k]] = 100 - sum(chances_dict.values())
