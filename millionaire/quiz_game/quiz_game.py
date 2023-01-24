@@ -2,7 +2,7 @@ import os
 import random
 import json
 import time
-from sty import Style, RgbFg, fg, bg
+from sty import Style, RgbFg, fg, bg, rs
 import millionaire.menu.menu as menu
 import millionaire.util.util as util
 import millionaire.menu.helpers as helpers
@@ -182,11 +182,11 @@ def play():
                             break
                         else:
                             if list(help_types)[x] == "audience":
-                                print(language_dictionary[game_language].quiz.audience_help_disabled)
+                                print("  " + language_dictionary[game_language].quiz.audience_help_disabled)
                             elif list(help_types)[x] == "halving":
-                                print(language_dictionary[game_language].quiz.halving_help_disabled)
+                                print("  " + language_dictionary[game_language].quiz.halving_help_disabled)
                             else:
-                                print(language_dictionary[game_language].quiz.phone_help_disabled)
+                                print("  " + language_dictionary[game_language].quiz.phone_help_disabled)
                 if game_language == util.Language.HUNGARIAN.name:
                     print("\n\n ", fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
                     answer = handle_user_input(question, shuffled_answers, i)
@@ -262,7 +262,7 @@ def play():
 def safe_input(input_text: str, allowed_list_of_letters: list) -> str:
     answer = input(input_text)
     if answer not in allowed_list_of_letters:
-        print(language_dictionary[game_language].quiz.allowed_letters_error + ' '.join(allowed_list_of_letters) +
+        print("  " + language_dictionary[game_language].quiz.allowed_letters_error + ' '.join(allowed_list_of_letters) +
               language_dictionary[game_language].quiz.allowed)
     while answer not in allowed_list_of_letters:
         answer = input(input_text)
@@ -390,14 +390,14 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
         number_of_spaces = int((table_length / 2) - 6)
     else:
         number_of_spaces = int((table_length / 2) - 6)
-    if quizmaster:
-        print_quizmaster_with_prizes(game_level)
+    #if quizmaster:
+        #print_quizmaster_with_prizes(game_level)
     print("  /" + "‾" * (table_length) + "\\")
     print(" ◄  " + question + " " * spaces_after_question + "   ►")
     print("  \\" + "_" * (table_length) + "/")
     print("\n")
     if len(longest_string) > number_of_spaces:
-        print("  " + "_" * (number_of_spaces + 3) + "     " + "_" * (number_of_spaces + 4))
+        print("   " + "_" * (number_of_spaces + 3) + "     " + "_" * (number_of_spaces + 5))
         number_of_spaces = number_of_spaces + 7
         number_of_parts = len(longest_string) / number_of_spaces
         if type(number_of_parts) == float:
@@ -447,15 +447,15 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
                                     second_string = bg.blue + fg.black + second_string + fg.rs + bg.rs
                                 if color == "yellow":
                                     second_string = bg.yellow + fg.black + second_string + fg.rs + bg.rs
-                    answer = answer + "◄|" + first_string + "|►━◄|" + second_string + " |►"
+                    answer = answer + " ◄|" + first_string + "|►━◄|" + second_string + "  |►"
                     if j < longest_string_divided:
                         answer = answer + "\n"
             if i == 0:
-                answer = answer + "\n" + "  " + "‾" * (number_of_spaces  - 4)  + "     " + "‾" * (number_of_spaces - 3) +\
-                         "\n" + "  " +  "_" * (number_of_spaces  - 4)  + "     " + "_" * (number_of_spaces - 3) + "\n"
+                answer = answer + "\n" + "   " + "‾" * (number_of_spaces  - 4)  + "     " + "‾" * (number_of_spaces - 2) +\
+                         "\n" + "   " +  "_" * (number_of_spaces  - 4)  + "     " + "_" * (number_of_spaces - 2) + "\n"
             index += 1
         print(answer)
-        print("  "  + "‾" * (number_of_spaces -4) + "     " + "‾" * (number_of_spaces-3))
+        print("   "  + "‾" * (number_of_spaces -4) + "     " + "‾" * (number_of_spaces-2))
     else:
         print("   " + "_" * (number_of_spaces + 4) + "     " + "_" * (number_of_spaces + 4))
         if selected != "":
@@ -598,7 +598,7 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
                                 percentages = percentages + "   "
                     print(line[0]+ " " * (missing_space) + "| " + percentages + " |")
                 elif index == 13:
-                    print(line[0]+ " " * (missing_space) + "|" + fg.orange + "  A ♦  B ♦  C ♦  D " + fg.rs + " |")
+                    print(line[0]+ " " * (missing_space) + "|" + fg.orange + rs.dim_bold +"  A ♦  B ♦  C ♦  D " + fg.rs + " |")
                 elif index == 14:
                     print(line[0] + " " * (missing_space+1) + "‾" * (len_window-1))
                 else:
@@ -614,7 +614,7 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
 
 
 def telephone_help(question: str, answers: {}, correct_answer: str):
-    phone = safe_input(language_dictionary[game_language].quiz.phone_prompt,
+    phone = safe_input("  " + language_dictionary[game_language].quiz.phone_prompt,
                        ["m", "d", "t", "y"])
     call_text_files = ["mum_phone_" + str(game_language).lower(),
                        "dad_phone_" + str(game_language).lower(),
@@ -640,7 +640,7 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
 
             missing_space = len_al-len(line[0])
             if index == 0:
-                print(line[0] + " " * (missing_space+1) + "_"*(len_window-1))
+                print("\n\n\n\n" + line[0] + " " * (missing_space+1) + "_"*(len_window-1))
             elif index == 1:
                 print(line[0] + " " * missing_space + "|" + (len_window-1)*" " + "|")
             else:
@@ -653,19 +653,19 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
             index += 1
         print_quiz_table(question, answers, quizmaster=False)
         if i == 0:
-            text = text + "\n" + conversation[0][0] + " \n" + question + " " + ", ".join(list(answers.values()))
+            text = "  " +  text + "\n" + "  " + conversation[0][0] + " \n" + "  " + question + " " + ", ".join(list(answers.values()))
         elif i == len(conversation)-1:
             if phone == "y":
-                text = text + "\n" + conversation[5][0] + " " + correct_answer.upper()
+                text = "  " + text + "\n" + "  " + conversation[5][0] + " " + correct_answer.upper()
             else:
-                text = text + "\n" + conversation[4][0] + " " + correct_answer.upper()
+                text = "  " +  text + "\n" + "  " + conversation[4][0] + " " + correct_answer.upper()
             print(text)
             break
         elif i == len(conversation)-2:
             time.sleep(2)
-            text = text + "\n" + conversation[i][0]
+            text = text + "\n" + "  " +  conversation[i][0]
         else:
-            text = text + "\n" + conversation[i][0]
+            text = text + "\n" + "  " +  conversation[i][0]
         print(text)
         time.sleep(2)
         if i < 30:
@@ -673,7 +673,7 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
             i += 1
     util.play_sound('phone_call_ends', 0)
     time.sleep(5)
-    print(language_dictionary[game_language].quiz.call_duration, int(now - then),
+    print("  " + language_dictionary[game_language].quiz.call_duration, int(now - then),
           language_dictionary[game_language].quiz.call_seconds)
     util.stop_sound()
 
