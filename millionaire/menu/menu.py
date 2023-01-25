@@ -14,7 +14,7 @@ fg.purple = Style(RgbFg(148, 0, 211))
 bg.orange = bg(255, 150, 50)
 language_dictionary = util.language_dictionary
 default_width = 40
-
+screen_distance = 60
 
 def intro():
     util.clear_screen()
@@ -84,15 +84,15 @@ def user_pressed_space():
 def show_title():
     line_length = default_width + 3
     util.clear_screen()
-    print("=" * line_length)
-    print(fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
-    print("=" * line_length)
-    print(fg.yellow + "|" * line_length + fg.rs)
-    print(fg.purple + language_dictionary[util.game_language].menu.title_second_line + fg.rs)
-    print(fg.yellow + "|" * line_length + fg.rs)
-    print("=" * line_length)
-    print(fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
-    print("=" * line_length + "\n\n")
+    print(screen_distance*" " + "=" * line_length)
+    print(screen_distance*" " + fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
+    print(screen_distance*" " + "=" * line_length)
+    print(screen_distance*" " + fg.yellow + "|" * line_length + fg.rs)
+    print(screen_distance*" " + fg.purple + language_dictionary[util.game_language].menu.title_second_line + fg.rs)
+    print(screen_distance*" " + fg.yellow + "|" * line_length + fg.rs)
+    print(screen_distance*" " + "=" * line_length)
+    print(screen_distance*" " + fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
+    print(screen_distance*" " + "=" * line_length + "\n\n")
 
 
 def show_options(options: list, max_options_length: int, chosen_option=0):
@@ -106,13 +106,15 @@ def show_options(options: list, max_options_length: int, chosen_option=0):
         number_of_spaces = int((option_length - len(options[i]) - len(fore_string) - len(after_string)) / 2)
         if len(option) % 2 != 0:
             option = option + " "
-        print("  " + "-" * line_length)
+        print(screen_distance*" " +  "  " + "_" * line_length)
         if i == chosen_option:
             string_to_print = "  " + fore_string + bg.orange + number_of_spaces * " " + fg.black + option + fg.rs + number_of_spaces * " " + bg.rs + after_string
         else:
             string_to_print = "  " + fore_string + number_of_spaces * " " + option + number_of_spaces * " " + after_string
-        print(string_to_print)
-    print("  " + "-" * line_length + "\n")
+        print(screen_distance*" " +  string_to_print)
+        print(screen_distance*" " +  "  " + "‾" * line_length + "\n")
+
+
 
 
 def select_exit():
@@ -122,16 +124,20 @@ def select_exit():
 def select_help():
     util.clear_screen()
     file = (util.open_file("tutorial_" + str(util.game_language).lower(), 'r'))
+    print("\n")
     for line in file:
-        print(line[0])
+        print("   " + line[0])
+    print("\n")
     return_prompt()
 
 
 def select_credits():
     util.clear_screen()
     file = (util.open_file("credits_" + str(util.game_language).lower(), 'r'))
+    print("\n")
     for line in file:
-        print(line[0])
+        print("   " + line[0])
+    print("\n")
     return_prompt()
 
 
