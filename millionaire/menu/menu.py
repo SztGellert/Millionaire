@@ -235,7 +235,7 @@ def update_settings_file():
 
 def return_prompt():
     esc_keys = [b'\x1b', '<ESC>']
-    print(fg.red + "\n" + language_dictionary[util.game_language].menu.return_prompt + fg.rs)
+    print(fg.grey + "\n\n   " + language_dictionary[util.game_language].menu.return_prompt + fg.rs)
     if util.operating_system == "posix":
         user_input = helpers.return_user_input_linux()
     else:
