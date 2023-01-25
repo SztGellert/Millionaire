@@ -154,7 +154,8 @@ def play():
             if answer == "h" or "s":
                 if list(help_types.values()).count(True) == len(
                         help_types) and game_language == util.Language.HUNGARIAN.name:
-                    util.play_sound("still_have_all_helps", 0)
+                    util.play_sound("still_have_all_helps", 0, timer=True)
+                    play_music(i)
                 util.clear_screen()
                 print_quiz_table(question, shuffled_answers, game_level=i)
                 help_functions = {"halving": halving, "telephone": telephone_help, "audience": audience_help}
@@ -178,6 +179,7 @@ def play():
                                 for a in range(len(answer_list)):
                                     answer_list[a] = list(shuffled_answers.values())[a]
                                 print_quiz_table(question, shuffled_answers, game_level=i)
+                                time.sleep(2)
                             elif list(help_types)[x] == "audience":
                                 audience_help(question, shuffled_answers, correct_answer_value, game_level=i)
                             else:
@@ -191,6 +193,7 @@ def play():
                                 print("  " + language_dictionary[game_language].quiz.halving_help_disabled)
                             else:
                                 print("  " + language_dictionary[game_language].quiz.phone_help_disabled)
+                play_music(i)
                 if game_language == util.Language.HUNGARIAN.name:
                     print("\n\n  ", fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
                     answer = handle_user_input(question, shuffled_answers, i)
@@ -663,19 +666,19 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
             index += 1
         print_quiz_table(question, answers, quizmaster=False)
         if i == 0:
-            text = "  " +  text + "\n" + "  " + conversation[0][0] + " \n" + "  " + question + " " + ", ".join(list(answers.values()))
+            text = "  " +  text + "\n" + "   " + conversation[0][0] + " \n" + "   " + question + " " + ", ".join(list(answers.values()))
         elif i == len(conversation)-1:
             if phone == "y":
-                text = "  " + text + "\n" + "  " + conversation[5][0] + " " + correct_answer.upper()
+                text = "  " + text + "\n" + "   " + conversation[5][0] + " " + correct_answer.upper()
             else:
-                text = "  " +  text + "\n" + "  " + conversation[4][0] + " " + correct_answer.upper()
+                text = "  " +  text + "\n" + "   " + conversation[4][0] + " " + correct_answer.upper()
             print(text)
             break
         elif i == len(conversation)-2:
             time.sleep(2)
-            text = text + "\n" + "  " +  conversation[i][0]
+            text = text + "\n" + "   " +  conversation[i][0]
         else:
-            text = text + "\n" + "  " +  conversation[i][0]
+            text = text + "\n" + "   " +  conversation[i][0]
         print(text)
         time.sleep(2)
         if i < 30:
@@ -683,7 +686,7 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
             i += 1
     util.play_sound('phone_call_ends', 0)
     time.sleep(5)
-    print("  " + language_dictionary[game_language].quiz.call_duration, int(now - then),
+    print("\n   " + language_dictionary[game_language].quiz.call_duration, int(now - then),
           language_dictionary[game_language].quiz.call_seconds)
     util.stop_sound()
 
@@ -885,7 +888,8 @@ def handle_user_input(question: str, answers: dict, level: int, final_color="ora
             print("\n\n   " + fg.grey + select_text + fg.rs)
             util.stop_sound()
             util.play_sound(selected_final_sound, 0, timer=True)
-            play_music(level)
+            if not out_of_game:
+                play_music(level)
             while True:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
@@ -908,7 +912,8 @@ def handle_user_input(question: str, answers: dict, level: int, final_color="ora
             print("\n\n   " + fg.grey + select_text + fg.rs)
             util.stop_sound()
             util.play_sound(selected_final_sound, 0, timer=True)
-            play_music(level)
+            if not out_of_game:
+                play_music(level)
             while True:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
@@ -931,7 +936,8 @@ def handle_user_input(question: str, answers: dict, level: int, final_color="ora
             print("\n\n   " + fg.grey + select_text + fg.rs)
             util.stop_sound()
             util.play_sound(selected_final_sound, 0, timer=True)
-            play_music(level)
+            if not out_of_game:
+                play_music(level)
             while True:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
@@ -954,7 +960,8 @@ def handle_user_input(question: str, answers: dict, level: int, final_color="ora
             print("\n\n   " + fg.grey + select_text + fg.rs)
             util.stop_sound()
             util.play_sound(selected_final_sound, 0, timer=True)
-            play_music(level)
+            if not out_of_game:
+                play_music(level)
             while True:
                 user_input = get_user_input()
                 if user_input == b'\r' or user_input == '<Ctrl-j>':
