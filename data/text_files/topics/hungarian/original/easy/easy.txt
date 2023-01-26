@@ -8,7 +8,7 @@ Melyik város nevezetes az ókor legnagyobb ismert könyvtárát?;Alexandria;Kno
 Milyen a "szomszéd nője" Jack Lemmon és Walter Matthau filmjének címe szerint?;Mindig zöldebb;Mindig szőkébb;Mindig teltebb;Mélyebb dekoltázsú
 Milyen királyságnak nevezik a rövid idejig tartó hatalmat?;Pünkösdi;Húsvéti;Újévi;Karácsonyi
 Milyen gazdasági társulás nevét vette fel egy magyar rockegyüttes a 80-as években?;KFT;TSZ;GMK;ÁFÉSZ
-Hogy nevezik az önző, fösvény személyt?;Szükkeblű,Bővérű,Nagymellényű,Önfejű
+Hogy nevezik az önző, fösvény személyt?;Szükkeblű;Bővérű;Nagymellényű;Önfejű
 Mije van "tele" annak, akinek elege van valamiből?;Hócipője;Makkos cipője;Felemás cipője;Táncoló fekete lakkcipője
 Melyik alapanyag nem kell a görög salátához?;Sárgarépa;Uborka;Paradicsom;Juhsajt(feta)
 Hogyan szokás nevezni a fehéres szálakkal tarkított sötét szőrű lovat?;Deres;Párás;Zúzmarás;Harmatos

@@ -5,7 +5,7 @@ import time
 import json
 import threading
 import keyboard
-from sty import Style, RgbFg, fg, bg
+from sty import Style, RgbFg, fg, bg, rs
 import millionaire.quiz_game.quiz_game as quiz
 import millionaire.util.util as util
 import millionaire.menu.helpers as helpers
@@ -122,6 +122,7 @@ def select_exit():
 
 
 def select_help():
+    quiz.show_game_structure()
     util.clear_screen()
     file = (util.open_file("tutorial_" + str(util.game_language).lower(), 'r'))
     print("\n")
@@ -134,7 +135,14 @@ def select_help():
 def select_credits():
     util.clear_screen()
     file = (util.open_file("credits_" + str(util.game_language).lower(), 'r'))
-    print("\n")
+    print("\n" + fg.purple + rs.italic)
+    print("   $$$$   $$$$  $  $     $     $  $$$$$  $$   $     $$$     $  $$$$  $$$$$")
+    print("   $  $   $  $  $  $     $     $  $   $  $$   $     $ $     $  $  $  $")
+    print("   $   $$    $  $  $     $     $  $   $  $ $  $    $   $    $  $  $  $$$$")
+    print("   $         $  $  $     $     $  $   $  $  $ $   $$$$$$$   $  $$$   $")
+    print("   $         $  $  $$$$  $$$$  $  $$$$$  $   $$  $       $  $  $  $  $$$$$")
+    print("\n" + fg.rs)
+
     for line in file:
         print("   " + line[0])
     print("\n")
@@ -143,6 +151,23 @@ def select_credits():
 
 def select_scores():
     util.clear_screen()
+    print("\n" + fg.purple + rs.italic)
+    if util.game_language == util.Language.HUNGARIAN.name:
+        print("\n" + fg.purple + rs.italic)
+        print("   $$$$$$$$$$$  $$$$$$$$$$   $$      $  $$$$$$$$  $$$$$$$$$$  $       $$")
+        print("   $         $  $        $   $ $$    $     $      $        $  $     $$")
+        print("   $$$$$$$$$$$  $        $   $   $$  $     $      $        $  $$$$$$")
+        print("   $            $        $   $    $$ $     $      $        $  $     $$")
+        print("   $            $$$$$$$$$$   $     $$$     $      $$$$$$$$$$  $       $$")
+        print("\n" + fg.rs)
+    else:
+        print("\n" + fg.purple + rs.italic)
+        print("   $$$$$  $$$$   $$$$$$   $$$$    $$$$  $$$$$$")
+        print("   $      $      $    $   $   $   $     $")
+        print("   $$$$$  $      $    $   $ $$    $$$$  $$$$$")
+        print("       $  $      $    $   $   $   $         $")
+        print("   $$$$$  $$$$$  $$$$$$   $    $  $$$$  $$$$$")
+        print("\n" + fg.rs)
     if os.path.isfile("scores.json"):
         f = open("scores.json")
         data = json.load(f)

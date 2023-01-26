@@ -15,6 +15,7 @@ languages = util.available_languages
 language_dictionary = util.language_dictionary
 table_length = 113
 game_levels = 15
+screen_distance = 60
 
 
 def play():
@@ -69,7 +70,7 @@ def play():
     random.shuffle(question_lines_easy)
     random.shuffle(question_lines_medium)
     random.shuffle(question_lines_hard)
-    player_name = input(language_dictionary[game_language].quiz.player_name_prompt)
+    player_name = input(" "*screen_distance + language_dictionary[game_language].quiz.player_name_prompt)
     score = 0
     util.clear_screen()
     if game_language == util.Language.ENGLISH:
@@ -733,7 +734,7 @@ def show_game_structure():
     if inp:
         return
 
-
+    game_language = util.game_language
     prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     if game_language == util.Language.HUNGARIAN.name:
         util.play_sound("prizes_description", 0)
@@ -842,6 +843,7 @@ def list_helps():
 
 
 def print_prizes():
+    game_language = util.game_language
     prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     for i in range(len(prizes)):
         round_number = str(len(prizes) - i)
@@ -854,7 +856,7 @@ def print_prizes():
 
 
 def play_music(round: int):
-    if round < 4:
+    if round < 5:
         util.play_background_music(str(5), 0)
     else:
         util.play_background_music(str(round), 0)
