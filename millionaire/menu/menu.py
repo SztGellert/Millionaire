@@ -172,24 +172,61 @@ def select_scores():
         f = open("scores.json")
         data = json.load(f)
         scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)
-        print("-" * 100)
+        len_val = 0
+        len_player = 0
+        index = 0
         for item in scores_sorted:
             i = 0
             for k, v in item.items():
+                if i == 0:
+                    if len(v) > len_player:
+                        len_player = len(v)
                 if i == 1:
                     index = list(
                         language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
                         str(v).capitalize())
-                    print(language_dictionary[util.game_language].menu.scores[i], ":",
-                          language_dictionary[util.game_language].menu.settings_menu_question_topics[index], end=" ")
-                else:
-                    print(language_dictionary[util.game_language].menu.scores[i], ":", v, end=" ")
+                    if len(language_dictionary[util.game_language].menu.settings_menu_question_topics[index]) > len_val:
+                        len_val = len(language_dictionary[util.game_language].menu.settings_menu_question_topics[index])
                 i += 1
-            print("\n")
-            print("-" * 100)
+        if len_val > len(language_dictionary[util.game_language].menu.scores[1]):
+            score_space = len_val - len(language_dictionary[util.game_language].menu.scores[1])
+        else:
+            score_space = len(language_dictionary[util.game_language].menu.scores[1]) - len_val
+
+        table_len = len(language_dictionary[util.game_language].menu.scores[0]+language_dictionary[util.game_language].menu.scores[1] +
+                        language_dictionary[util.game_language].menu.scores[2] + language_dictionary[util.game_language].menu.scores[3])+\
+                    score_space+24-len(language_dictionary[util.game_language].menu.scores[3]) + 13
+        print("   " + "_" * table_len)
+        print("   " +"| " + fg.orange + language_dictionary[util.game_language].menu.scores[0] + fg.rs +" | " + fg.orange + language_dictionary[util.game_language].menu.scores[1] + score_space*" " + fg.rs +" | " + fg.orange +
+              language_dictionary[util.game_language].menu.scores[2] + fg.rs +" | " + fg.orange + language_dictionary[util.game_language].menu.scores[3] + (24-len(language_dictionary[util.game_language].menu.scores[3]))*" "+ fg.rs + " |")
+        print("   " +"‾" * table_len)
+        print("   " +"—" * table_len)
+
+        for item in scores_sorted:
+            i = 0
+            for k, v in item.items():
+                if i == 0:
+                    if len(v) > len_player:
+                        print("   " +"| " +v + " "*(len(v)-len_player), end=" | ")
+                    else:
+                        print("   " +"| " +v + " "*(len_player-len(v)), end=" | ")
+                if i == 1:
+                    index = list(
+                        language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
+                        str(v).capitalize())
+                    print(
+                          language_dictionary[util.game_language].menu.settings_menu_question_topics[index] +
+                          (len_val-len(language_dictionary[util.game_language].menu.settings_menu_question_topics[index]))*" ", end=" | ")
+                if i == 2:
+                    print(str(v) + " " * (len(language_dictionary[util.game_language].menu.scores[1])-len(str(v))+1), end=" | ")
+                if i == 3:
+                    print(v, end=" | ")
+
+                i += 1
+            print("\n"+ "   " +"—" * table_len)
         f.close()
     else:
-        print(language_dictionary[util.game_language].menu.empty_scores)
+        print("\n\n   " + language_dictionary[util.game_language].menu.empty_scores)
     return_prompt()
 
 
