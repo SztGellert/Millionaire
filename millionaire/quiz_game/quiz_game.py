@@ -304,11 +304,13 @@ def fastest_finger_first():
     random.shuffle(answer_list)
     #shuffled_answers = dict(zip(answers, answer_list))
     shuffled_answers = answers
-    print_fastest_fingers_table(question, shuffled_answers, game_level=0,quizmaster=True,prizes=False)
-    start = time.time()
+    print_quizmaster()
     if game_language == util.Language.HUNGARIAN.name:
         util.play_sound("lets_look_at_the_fastest_fingers_question", 0)
         time.sleep(2)
+    start = time.time()
+    util.clear_screen()
+    print_fastest_fingers_table(question, shuffled_answers, game_level=0,quizmaster=True,prizes=False)
     util.play_sound("fastest_fingers_first", 0)
     print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer_out + fg.rs)
     for i in range(4):
@@ -324,24 +326,21 @@ def fastest_finger_first():
     util.stop_sound()
     print_fastest_fingers_table(question, answers, total_answer, "orange", game_level=0, quizmaster=True, prizes=False)
     if game_language == util.Language.HUNGARIAN.name:
-        util.play_sound("bacd", 0)
+        if os.path.isfile("./data/sound_files/hungarian/" + correct_answer_keys + ".wav"):
+            util.play_sound(correct_answer_keys, 0)
         time.sleep(1)
         util.play_sound("lets_see_who_is_correct", 0)
     time.sleep(2)
     if is_correct:
         util.play_sound("fastest_fingers_correct", 0)
-        #print_quiz_table(question, shuffled_answers, answer, "green", game_level=0)
         util.clear_screen()
         if len(question) % 2 == 0:
             question = question + " "
-        print_prizes_with_quizmaster(0,False, special_text = player_name + " : " + str(end-start)[:5], bg_color=bg.green)
+        print_prizes_with_quizmaster(0,False, special_text = "♦ " + player_name + " : " + str(end-start)[:5] +" ♦", bg_color=bg.green)
+        time.sleep(2)
+        util.play_sound("fastest_fingers_win", 0)
     else:
         util.play_sound("fastest_fingers_bad", 0)
-        #print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key, game_level=0)
-        #time.sleep(2)
-        #if game_language == util.Language.HUNGARIAN.name:
-        #    util.play_sound("so_sorry", 0)
-        #    time.sleep(1)
         util.clear_screen()
         print("\n   " + fg.orange + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
         quit_game(score, player_name, question_topics)
