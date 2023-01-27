@@ -304,7 +304,7 @@ def fastest_finger_first():
     random.shuffle(answer_list)
     #shuffled_answers = dict(zip(answers, answer_list))
     shuffled_answers = answers
-    print_quiz_table(question, shuffled_answers, game_level=0,quizmaster=True,prizes=False)
+    print_fastest_fingers_table(question, shuffled_answers, game_level=0,quizmaster=True,prizes=False)
     start = time.time()
     if game_language == util.Language.HUNGARIAN.name:
         util.play_sound("lets_look_at_the_fastest_fingers_question", 0)
@@ -312,7 +312,7 @@ def fastest_finger_first():
     util.play_sound("fastest_fingers_first", 0)
     print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer_out + fg.rs)
     for i in range(4):
-        answer = handle_fastest_fingers_first_input(question, shuffled_answers, 0)
+        answer = handle_fastest_fingers_first_input(question, shuffled_answers, 0, total_answer)
         if answer == "esc":
             quit_game(0, player_name, question_topics)
             return
@@ -322,6 +322,7 @@ def fastest_finger_first():
     end = time.time()
     is_correct = check_answer(total_answer, correct_answer_keys)
     util.stop_sound()
+    print_fastest_fingers_table(question, answers, total_answer, "orange", game_level=0, quizmaster=True, prizes=False)
     if game_language == util.Language.HUNGARIAN.name:
         util.play_sound("bacd", 0)
         time.sleep(1)
@@ -333,7 +334,7 @@ def fastest_finger_first():
         util.clear_screen()
         if len(question) % 2 == 0:
             question = question + " "
-        print_prizes_with_quizmaster(0,False, special_text = player_name + " : " + str(end-start)[:5])
+        print_prizes_with_quizmaster(0,False, special_text = player_name + " : " + str(end-start)[:5], bg_color=bg.green)
     else:
         util.play_sound("fastest_fingers_bad", 0)
         #print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key, game_level=0)
@@ -533,7 +534,7 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
                                     first_string = bg.blue + fg.black + first_string + fg.rs + bg.rs
                                 if color == "li_grey":
                                     first_string = bg.li_grey + fg.black + first_string + fg.rs + bg.rs
-                            if list(answers_.keys())[index + 1] == selected:
+                            if list(answers_.keys())[index + 1] == selected :
                                 if color == "orange":
                                     second_string = bg.orange + fg.black + second_string + fg.rs + bg.rs
                                 if color == "green":
@@ -585,6 +586,142 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
             for i in range(len(answers_)):
                 answer_values[i] = " " + list(answers_.items())[i][0].upper() + ": " + answer_values[i] + " " * (
                             number_of_spaces - len(list(answers_.items())[i][1]))
+
+        print(" ◄|" + answer_values[0] + "|►━◄|" + answer_values[1] + "|►")
+        print("   " + "‾" * (number_of_spaces  + 4) + "     " + "‾" * (number_of_spaces + 4))
+        print("   " + "_" * (number_of_spaces  + 4) + "     " + "_" * (number_of_spaces + 4))
+        print(" ◄|" + answer_values[2] + "|►━◄|" + answer_values[3] + "|►")
+        print("   "  + "‾" * (number_of_spaces + 4) + "     " + "‾" * (number_of_spaces+4))
+
+
+def print_fastest_fingers_table(question: str, answers_: {}, selected="", color="", correct_answer="", game_level=0, quizmaster=True, prizes=True):
+    global table_length
+    basic_question_length = 109
+    answer_values = list(answers_.values())
+    longest_string = list(sorted(answers_.values(), key=len))[-1]
+    spaces_after_question = table_length - len(question) - 3
+    if len(question) > basic_question_length:
+        question_list = divide_question(question)
+        question = ""
+        for i in range(len(question_list)):
+            if i < len(question_list) - 1:
+                spaces_after_question = table_length - (len(question_list[i])) - 4
+                question = question + question_list[i] + spaces_after_question * " " + "    ►\n ◄  "
+            else:
+                question = question + question_list[i]
+                spaces_after_question = table_length - (len(question_list[i])) - 3
+        number_of_spaces = int((table_length / 2) - 6)
+    else:
+        number_of_spaces = int((table_length / 2) - 6)
+    if quizmaster:
+        if prizes:
+            print_quizmaster_with_prizes(game_level)
+        else:
+            print_quizmaster()
+    print("  /" + "‾" * (table_length) + "\\")
+    print(" ◄  " + question + " " * spaces_after_question + "   ►")
+    print("  \\" + "_" * (table_length) + "/")
+    print("\n")
+    if len(longest_string) > number_of_spaces:
+        print("   " + "_" * (number_of_spaces + 3) + "     " + "_" * (number_of_spaces + 5))
+        number_of_spaces = number_of_spaces + 7
+        number_of_parts = len(longest_string) / number_of_spaces
+        if type(number_of_parts) == float:
+            number_of_parts += 1
+        answer_list_a = divide_answer(answer_values[0], number_of_parts)
+        answer_list_b = divide_answer(answer_values[1], number_of_parts)
+        answer_list_c = divide_answer(answer_values[2], number_of_parts)
+        answer_list_d = divide_answer(answer_values[3], number_of_parts)
+        answers_lists = [answer_list_a, answer_list_b, answer_list_c, answer_list_d]
+        longest_string_divided = int(number_of_parts)
+        answer = ""
+        index = 0
+        for i in range(4):
+            if i == 0 or i == 2:
+                for j in range(longest_string_divided + 1):
+                    if j == 0:
+                        first_string = " " +list(answers_.items())[i][j].upper() + ": " + answers_lists[index][j]
+                        second_string = " " +list(answers_.items())[i + 1][j].upper() + ": " + answers_lists[index + 1][j]
+                    else:
+                        first_string = " " * 3 + answers_lists[index][j]
+                        second_string = " " * 3 + answers_lists[index + 1][j]
+                    first_spaces = number_of_spaces - len(first_string) - 4
+                    second_spaces = number_of_spaces - len(second_string) - 4
+                    first_string = first_string + " " * first_spaces
+                    second_string = second_string + " " * second_spaces
+                    if selected != "":
+                        for answer_ in answers_:
+                            if correct_answer != "" and correct_answer == list(answers_.keys())[index]:
+                                first_string = bg.green + fg.black + first_string + fg.rs + bg.rs
+                            if correct_answer != "" and correct_answer == list(answers_.keys())[index + 1]:
+                                second_string = bg.green + fg.black + second_string + fg.rs + bg.rs
+                            if list(answers_.keys())[index] == selected or list(answers_.keys())[index] in selected:
+                                if list(answers_.keys())[index] in selected:
+                                    first_string = str(selected.index(list(answers_.items())[index][
+                            0])+1) + ": " + first_string
+                                if color == "orange":
+                                    first_string = bg.orange + fg.black + first_string + fg.rs + bg.rs
+                                if color == "green":
+                                    first_string = bg.green + fg.black + first_string + fg.rs + bg.rs
+                                if color == "blue":
+                                    first_string = bg.blue + fg.black + first_string + fg.rs + bg.rs
+                                if color == "li_grey":
+                                    first_string = bg.li_grey + fg.black + first_string + fg.rs + bg.rs
+                            if list(answers_.keys())[index + 1] == selected and list(answers_.keys())[index] in selected:
+                                if list(answers_.keys())[index] in selected:
+                                    second_string = str(selected.index(list(answers_.items())[index][
+                            0])+1) + ": " + first_string
+                                if color == "orange":
+                                    second_string = bg.orange + fg.black + second_string + fg.rs + bg.rs
+                                if color == "green":
+                                    second_string = bg.green + fg.black + second_string + fg.rs + bg.rs
+                                if color == "blue":
+                                    second_string = bg.blue + fg.black + second_string + fg.rs + bg.rs
+                                if color == "li_grey":
+                                    second_string = bg.li_grey + fg.black + second_string + fg.rs + bg.rs
+                    answer = answer + " ◄|" + first_string + "|►━◄|" + second_string + "  |►"
+                    if j < longest_string_divided:
+                        answer = answer + "\n"
+            if i == 0:
+                answer = answer + "\n" + "   " + "‾" * (number_of_spaces  - 4)  + "     " + "‾" * (number_of_spaces - 2) +\
+                         "\n" + "   " +  "_" * (number_of_spaces  - 4)  + "     " + "_" * (number_of_spaces - 2) + "\n"
+            index += 1
+        print(answer)
+        print("   "  + "‾" * (number_of_spaces -4) + "     " + "‾" * (number_of_spaces-2))
+    else:
+        print("   " + "_" * (number_of_spaces + 4) + "     " + "_" * (number_of_spaces + 4))
+        if selected != "":
+            index = 0
+            for i in answers_:
+                if i == selected or list(answers_.keys())[index] in selected:
+                    if color == "orange":
+                        answer_values[list(answers_).index(i)] = bg.orange + fg.black + " " + str(selected.index(list(answers_.items())[index][
+                            0])+1) + ": " + answers_[i] + " " * (number_of_spaces - len(
+                            list(answers_.items())[index][1])) + fg.rs + bg.rs
+                    if color == "green":
+                        answer_values[list(answers_).index(i)] = bg.green + fg.black + " " + str(selected.index(list(answers_.items())[index][
+                            0])+1) + ": " + answers_[i] + " " * (number_of_spaces - len(
+                            list(answers_.items())[index][1])) + fg.rs + bg.rs
+                    if color == "blue":
+                        answer_values[list(answers_).index(i)] = bg.blue + fg.black + " " + str(selected.index(list(answers_.items())[index][
+                            0])+1) + ": " + answers_[i] + " " * (number_of_spaces - len(
+                            list(answers_.items())[index][1])) + fg.rs + bg.rs
+                    if color == "li_grey":
+                        answer_values[list(answers_).index(i)] = bg.li_grey + fg.black + " " + str(selected.index(list(answers_.items())[index][
+                            0])+1) + ": " + answers_[i] + " " * (number_of_spaces - len(
+                            list(answers_.items())[index][1])) + fg.rs + bg.rs
+                elif correct_answer != "" and i == correct_answer:
+                    answer_values[list(answers_).index(i)] = bg.green + fg.black + " " + str(selected.index(list(answers_.items())[index][
+                            0])+1) + ": " + answers_[i] + " " * (number_of_spaces - len(
+                        list(answers_.items())[index][1])) + fg.rs + bg.rs
+                else:
+                    answer_values[list(answers_).index(i)] = " " + list(answers_.items())[index][0].upper() + ": " + \
+                        answers_[i] + " " * (number_of_spaces - len(list(answers_.items())[index][1]))
+                index += 1
+        else:
+            for i in range(len(answers_)):
+                answer_values[i] = " " + list(answers_.items())[i][0].upper() + ": " + answer_values[i] + " " * (
+                        number_of_spaces - len(list(answers_.items())[i][1]))
 
         print(" ◄|" + answer_values[0] + "|►━◄|" + answer_values[1] + "|►")
         print("   " + "‾" * (number_of_spaces  + 4) + "     " + "‾" * (number_of_spaces + 4))
@@ -777,7 +914,7 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
     util.stop_sound()
 
 
-def print_prizes_with_quizmaster(level: int, nullprize=False, special_text=""):
+def print_prizes_with_quizmaster(level: int, nullprize=False, special_text="", bg_color = bg.blue):
     prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     util.clear_screen()
     global table_length
@@ -799,7 +936,7 @@ def print_prizes_with_quizmaster(level: int, nullprize=False, special_text=""):
     for line in util.open_file("quizmaster", "r", ";", "/text_files/", strip=False):
         print(line[0])
     print("  /" + "‾" * (table_length) + "\\")
-    print(" ◄ " + bg. blue + fg.orange + number_of_spaces * " " + prize  + fg.rs + " " * number_of_spaces + bg.rs + " ►")
+    print(" ◄ " + bg_color + fg.orange + number_of_spaces * " " + prize  + fg.rs + " " * number_of_spaces + bg.rs + " ►")
     print("  \\" + "_" * (table_length) + "/")
 
 
@@ -1078,110 +1215,35 @@ def handle_user_input(question: str, answers: dict, level: int, final_color="ora
             return "esc"
 
 
-def handle_fastest_fingers_first_input(question: str, answers: dict, level: int, final_color="orange", out_of_game = False) -> str:
+def handle_fastest_fingers_first_input(question: str, answers: dict, level: int, selected: str, final_color="orange") -> str:
     select_text = language_dictionary[game_language].quiz.select_answer_out
-    #final_sounds = ["final"]
-    #for i in range(18):
-    #    final_sounds.append("final_" + str(i+1))
-    #lets_see_sounds = ["lets_see", "lets_see_1", "lets_see_2", "lets_see_3"]
     while True:
         user_input = get_user_input()
+
         if user_input == b'a' or user_input == "a":
-            #selected_final_sound = random.choice(final_sounds)
-            #selected_lets_see_sound = random.choice(lets_see_sounds)
             util.clear_screen()
-            print_quiz_table(question, answers, game_level=level, selected="a", color="li_grey", quizmaster=True, prizes=False)
+            print_fastest_fingers_table(question, answers, selected+"a", final_color, game_level=level, quizmaster=True, prizes=False)
             print("\n\n   " + fg.grey + select_text + fg.rs)
-            #util.stop_sound()
-            #util.play_sound(selected_final_sound, 0, timer=True)
-            #if not out_of_game:
-            #    play_music(level)
-            while True:
-                user_input = get_user_input()
-                if user_input == b'\r' or user_input == '<Ctrl-j>':
-                    util.clear_screen()
-                    print_quiz_table(question, answers, "a", final_color, game_level=level, quizmaster=True, prizes=False)
-                    util.stop_sound()
-                    #play_marked_sound("a", level)
-                    #util.play_sound("marked", 0)
-                    #time.sleep(2)
-                    #util.play_sound(selected_lets_see_sound, 0)
-                    #time.sleep(1)
-                    return "a"
-                if user_input not in [b'a', "a"]:
-                    break
+            return "a"
+
         if user_input == b'b' or user_input == "b":
-            #selected_final_sound = random.choice(final_sounds)
-            #selected_lets_see_sound = random.choice(lets_see_sounds)
             util.clear_screen()
-            print_quiz_table(question, answers, game_level=level, selected="b", color="li_grey", quizmaster=True, prizes=False)
+            print_fastest_fingers_table(question, answers, selected+"b", final_color, game_level=level, quizmaster=True, prizes=False)
             print("\n\n   " + fg.grey + select_text + fg.rs)
-            #util.stop_sound()
-            #util.play_sound(selected_final_sound, 0, timer=True)
-            #if not out_of_game:
-            #    play_music(level)
-            while True:
-                user_input = get_user_input()
-                if user_input == b'\r' or user_input == '<Ctrl-j>':
-                    util.clear_screen()
-                    print_quiz_table(question, answers, "b", final_color, game_level=level, quizmaster=True, prizes=False)
-                    #util.stop_sound()
-                    #play_marked_sound("b", level)
-                    #util.play_sound("marked", 0)
-                    #time.sleep(2)
-                    #util.play_sound(selected_lets_see_sound, 0)
-                    #time.sleep(1)
-                    return "b"
-                if user_input not in [b'b', "b"]:
-                    break
+            return "b"
+
         if user_input == b'c' or user_input == "c":
-            #selected_final_sound = random.choice(final_sounds)
-            #selected_lets_see_sound = random.choice(lets_see_sounds)
             util.clear_screen()
-            print_quiz_table(question, answers, game_level=level, selected="c", color="li_grey", quizmaster=True, prizes=False)
+            print_fastest_fingers_table(question, answers, selected+"c", final_color, game_level=level, quizmaster=True, prizes=False)
             print("\n\n   " + fg.grey + select_text + fg.rs)
-            #util.stop_sound()
-            #util.play_sound(selected_final_sound, 0, timer=True)
-            #if not out_of_game:
-            #    play_music(level)
-            while True:
-                user_input = get_user_input()
-                if user_input == b'\r' or user_input == '<Ctrl-j>':
-                    util.clear_screen()
-                    print_quiz_table(question, answers, "c", final_color, game_level=level, quizmaster=True, prizes=False)
-                    #util.stop_sound()
-                    #play_marked_sound("c", level)
-                    #util.play_sound("marked", 0)
-                    #time.sleep(2)
-                    #util.play_sound(selected_lets_see_sound, 0)
-                    #time.sleep(1)
-                    return "c"
-                if user_input not in [b'c', "c"]:
-                    break
+            return "c"
+
         if user_input == b'd' or user_input == "d":
-            #selected_final_sound = random.choice(final_sounds)
-            #selected_lets_see_sound = random.choice(lets_see_sounds)
             util.clear_screen()
-            print_quiz_table(question, answers, game_level=level, selected="d", color="li_grey", quizmaster=True, prizes=False)
+            print_fastest_fingers_table(question, answers, selected+"d", final_color, game_level=level, quizmaster=True, prizes=False)
             print("\n\n   " + fg.grey + select_text + fg.rs)
-            #util.stop_sound()
-            #util.play_sound(selected_final_sound, 0, timer=True)
-            #if not out_of_game:
-            #    play_music(level)
-            while True:
-                user_input = get_user_input()
-                if user_input == b'\r' or user_input == '<Ctrl-j>':
-                    util.clear_screen()
-                    print_quiz_table(question, answers, "d", final_color, game_level=level, quizmaster=True, prizes=False)
-                    #util.stop_sound()
-                    #play_marked_sound("d", level)
-                    #util.play_sound("marked", 0)
-                    #time.sleep(1)
-                    #util.play_sound(selected_lets_see_sound, 0)
-                    #time.sleep(3)
-                    return "d"
-                if user_input not in [b'd', "d"]:
-                    break
+            return "d"
+
         if user_input == b'\x1b' or user_input == '<ESC>':
             return "esc"
 
