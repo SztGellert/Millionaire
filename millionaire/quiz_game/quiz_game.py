@@ -297,7 +297,6 @@ def fastest_finger_first():
     util.clear_screen()
     if game_language == util.Language.ENGLISH:
         util.play_sound("start", 0)
-    show_game_structure()
     question = question_lines[0][0]
     answers = {"a": question_lines[0][1], "b": question_lines[0][2], "c": question_lines[0][3],
                "d": question_lines[0][4]}
@@ -306,30 +305,28 @@ def fastest_finger_first():
     #shuffled_answers = dict(zip(answers, answer_list))
     shuffled_answers = answers
     print_quiz_table(question, shuffled_answers, game_level=0,quizmaster=True,prizes=False)
-    util.play_sound("fastest_fingers_first", 0)
     start = time.time()
     if game_language == util.Language.HUNGARIAN.name:
-        print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
-        for i in range(4):
-            answer = handle_fastest_fingers_first_input(question, shuffled_answers, 0)
-            if answer == "esc":
-                quit_game(0, player_name, question_topics)
-                return
-            total_answer += answer
-    else:
-        answer = safe_input(
-            fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs,
-            ["a", "b", "c", "d", "h", "t"])
-    correct_answer_keys =question_lines[0][5]
-    util.stop_sound()
-    util.clear_screen()
-    if game_language == util.Language.ENGLISH:
-        print_quiz_table(question, shuffled_answers, answer, "orange", game_level=0)
-        util.play_sound("marked", 0)
+        util.play_sound("lets_look_at_the_fastest_fingers_question", 0)
         time.sleep(2)
-    time.sleep(5)
+    util.play_sound("fastest_fingers_first", 0)
+    print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer_out + fg.rs)
+    for i in range(4):
+        answer = handle_fastest_fingers_first_input(question, shuffled_answers, 0)
+        if answer == "esc":
+            quit_game(0, player_name, question_topics)
+            return
+        total_answer += answer
+    correct_answer_keys =question_lines[0][5]
+    util.clear_screen()
     end = time.time()
     is_correct = check_answer(total_answer, correct_answer_keys)
+    util.stop_sound()
+    if game_language == util.Language.HUNGARIAN.name:
+        util.play_sound("bacd", 0)
+        time.sleep(1)
+        util.play_sound("lets_see_who_is_correct", 0)
+    time.sleep(2)
     if is_correct:
         util.play_sound("fastest_fingers_correct", 0)
         #print_quiz_table(question, shuffled_answers, answer, "green", game_level=0)
@@ -337,28 +334,18 @@ def fastest_finger_first():
         if len(question) % 2 == 0:
             question = question + " "
         print_prizes_with_quizmaster(0,False, special_text = player_name + " : " + str(end-start)[:5])
-        quit_game(score, player_name, question_topics)
     else:
-        util.play_sound("bad_answer", 0)
+        util.play_sound("fastest_fingers_bad", 0)
+        #print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key, game_level=0)
+        #time.sleep(2)
+        #if game_language == util.Language.HUNGARIAN.name:
+        #    util.play_sound("so_sorry", 0)
+        #    time.sleep(1)
         util.clear_screen()
-        print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key, game_level=0)
-        time.sleep(2)
-        if game_language == util.Language.HUNGARIAN.name:
-            util.play_sound("so_sorry", 0)
-            time.sleep(1)
-        util.clear_screen()
-        if i > 9:
-            print_prizes_with_quizmaster(9)
-        elif i > 4:
-            print_prizes_with_quizmaster(4)
-        else:
-            print_prizes_with_quizmaster(0, nullprize=True)
         print("\n   " + fg.orange + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
         quit_game(score, player_name, question_topics)
-        util.clear_screen()
-
         return
-    util.clear_screen()
+
     quit_game(score, player_name, question_topics)
 
     return
@@ -1119,7 +1106,7 @@ def handle_fastest_fingers_first_input(question: str, answers: dict, level: int,
                     #util.play_sound("marked", 0)
                     #time.sleep(2)
                     #util.play_sound(selected_lets_see_sound, 0)
-                    time.sleep(1)
+                    #time.sleep(1)
                     return "a"
                 if user_input not in [b'a', "a"]:
                     break
@@ -1143,7 +1130,7 @@ def handle_fastest_fingers_first_input(question: str, answers: dict, level: int,
                     #util.play_sound("marked", 0)
                     #time.sleep(2)
                     #util.play_sound(selected_lets_see_sound, 0)
-                    time.sleep(1)
+                    #time.sleep(1)
                     return "b"
                 if user_input not in [b'b', "b"]:
                     break
@@ -1167,7 +1154,7 @@ def handle_fastest_fingers_first_input(question: str, answers: dict, level: int,
                     #util.play_sound("marked", 0)
                     #time.sleep(2)
                     #util.play_sound(selected_lets_see_sound, 0)
-                    time.sleep(1)
+                    #time.sleep(1)
                     return "c"
                 if user_input not in [b'c', "c"]:
                     break
@@ -1189,7 +1176,7 @@ def handle_fastest_fingers_first_input(question: str, answers: dict, level: int,
                     #util.stop_sound()
                     #play_marked_sound("d", level)
                     #util.play_sound("marked", 0)
-                    time.sleep(1)
+                    #time.sleep(1)
                     #util.play_sound(selected_lets_see_sound, 0)
                     #time.sleep(3)
                     return "d"
