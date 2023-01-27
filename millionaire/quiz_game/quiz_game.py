@@ -307,6 +307,7 @@ def fastest_finger_first():
     shuffled_answers = answers
     print_quiz_table(question, shuffled_answers, game_level=0,quizmaster=True,prizes=False)
     util.play_sound("fastest_fingers_first", 0)
+    start = time.time()
     if game_language == util.Language.HUNGARIAN.name:
         print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
         for i in range(4):
@@ -327,19 +328,15 @@ def fastest_finger_first():
         util.play_sound("marked", 0)
         time.sleep(2)
     time.sleep(5)
+    end = time.time()
     is_correct = check_answer(total_answer, correct_answer_keys)
     if is_correct:
-        util.play_sound("correct_answer", 0)
-        util.clear_screen()
-        print_quiz_table(question, shuffled_answers, answer, "green", game_level=0)
-        time.sleep(2)
+        util.play_sound("fastest_fingers_correct", 0)
+        #print_quiz_table(question, shuffled_answers, answer, "green", game_level=0)
         util.clear_screen()
         if len(question) % 2 == 0:
             question = question + " "
-        else:
-            print_prizes_with_quizmaster(0)
-            time.sleep(2)
-        util.clear_screen()
+        print_prizes_with_quizmaster(0,False, special_text = player_name + " : " + str(end-start)[:5])
         quit_game(score, player_name, question_topics)
     else:
         util.play_sound("bad_answer", 0)
@@ -793,7 +790,7 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
     util.stop_sound()
 
 
-def print_prizes_with_quizmaster(level: int, nullprize=False):
+def print_prizes_with_quizmaster(level: int, nullprize=False, special_text=""):
     prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     util.clear_screen()
     global table_length
@@ -804,6 +801,8 @@ def print_prizes_with_quizmaster(level: int, nullprize=False):
             prize= "0 Ft"
         if util.game_language == util.Language.ENGLISH.name:
             prize= "£0"
+    if special_text != "":
+        prize = special_text
     prize_length = len(prize)
     number_of_spaces = int((table_length - prize_length) / 2)
     if prize_length % 2 == 0:
