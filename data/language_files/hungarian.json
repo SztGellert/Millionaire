@@ -14,7 +14,7 @@
                      "Vissza"],
         "skip_prompt": "Nyomjon meg egy gombot az intro kihagyásához..",
         "main_menu_options": [
-            "Játék", "Útmutató", "Beállítások","Stáblista","Pontszámok", "Kilépés"
+            "Játék", "Sorkérdés","Útmutató", "Beállítások","Stáblista","Pontszámok", "Kilépés"
         ],
         "settings_menu_question_topics": ["Mind","Általános","Történelem", "Földrajz","Fizika","Kémia","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia","Közgazdaságtan","Sport", "Eredeti"],
         "empty_scores": "Indítson egy kvízjátékot hogy pontokat szerezzen!",

@@ -13,7 +13,7 @@
                          "Restore Settings",
                          "Back"],
         "skip_prompt": "Press any key to skip game intro...",
-        "main_menu_options" : ["Play", "Tutorial", "Settings", "Credits","Scores", "Exit"],
+        "main_menu_options" : ["Play", "Fastest Fingers First","Tutorial", "Settings", "Credits","Scores", "Exit"],
         "settings_menu_question_topics": ["All","General","History", "Geography","Physics","Chemistry","Biology","Mathematics","Arts","Literature","Music","Gastronomy","Economy","Sports", "Original"],
         "empty_scores": "First you need to play a game to achieve some points!",
         "scores": {
