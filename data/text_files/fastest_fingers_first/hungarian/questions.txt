@@ -4,5 +4,5 @@
 Milyen sorrendben vannak Mauritius zászlójának színei?;Zöld;Sárga;Piros;Kék;cdab
 Mik a rántotthús panírozásának lépései?;Tojás;Liszt;Klopfolás;Zsemlemorzsa;cbad
 Állítsa sorba a csirke fejlődési szakaszait visszafelé!;Előnevelt csirke;Csibe;Jérce;Tyúk;dcab
-Tegye időben sorrendbe a következő történemi eseményeket:;Tatárjárás,Mohácsi vész,Pákozdi csata,Szatmári béke;abdc
+Tegye időben sorrendbe a következő történemi eseményeket:;Tatárjárás;Mohácsi vész;Pákozdi csata;Szatmári béke;abdc
 Állítsa időben fordított sorrendbe a következő kémiai elemek felfedezését!;Bór;Arany;Plutónium;Hélium;acdb
