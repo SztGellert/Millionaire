@@ -371,24 +371,29 @@ def handle_main_menu():
             show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length)
             start_index = 0
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[1]:
-            select_help()
+            quiz.fastest_finger_first()
             show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
                          chosen_option=1)
             start_index = 1
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[2]:
-            select_settings()
+            select_help()
             show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
                          chosen_option=2)
             start_index = 2
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[3]:
-            select_credits()
+            select_settings()
             show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
                          chosen_option=3)
             start_index = 3
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[4]:
-            select_scores()
+            select_credits()
             show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
                          chosen_option=4)
             start_index = 4
         if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[5]:
+            select_scores()
+            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
+                         chosen_option=5)
+            start_index = 5
+        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[6]:
             select_exit()
