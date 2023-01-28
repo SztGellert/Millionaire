@@ -6,3 +6,5 @@ Mik a rántotthús panírozásának lépései?;Tojás;Liszt;Klopfolás;Zsemlemor
 Állítsa sorba a csirke fejlődési szakaszait visszafelé!;Előnevelt csirke;Csibe;Jérce;Tyúk;dcab
 Tegye időben sorrendbe a következő történemi eseményeket:;Tatárjárás;Mohácsi vész;Pákozdi csata;Szatmári béke;abdc
 Állítsa időben fordított sorrendbe a következő kémiai elemek felfedezését!;Bór;Arany;Plutónium;Hélium;acdb
+Állítsa zsírtartalmuk szerint sorrendbe az alábbi ételeket:;Csirkemell filé;Csirkemáj;Rák;Lazac;cabd
+Állítsa fehérjetartalmuk szerint csökkenő sorrendbe az alábbi ételeket:;Kecsketej;Tejszínhab;Tojás;Camembert;dcab
