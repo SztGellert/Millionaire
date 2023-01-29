@@ -24,8 +24,6 @@ def intro():
     else:
         util.play_sound("intro", 0)
 
-
-
     ## 109 normal 1 liner question
     # quiz.print_quiz_table("Mely állítási ódák nem kapcsolódnak a közgazdász szerepéhez?aa111111111111111111111111aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     #                      {"a": "A t1á1rs",
@@ -35,11 +33,11 @@ def intro():
     width = 48
     i = 0
     if util.game_language == util.Language.HUNGARIAN.name:
-        text_millionaire = bg.rs + fg.white + "   M     I     L     L     I     O     M     O     S    " + bg.rs
-        text_who =  "   LEGYEN   ÖN   IS "
+        text_millionaire = bg.rs + fg.white + "   M     I     L     L     I     O     M     O     S    " + bg.rs + fg.rs
+        text_who =  "  LEGYEN   ÖN   IS  "
         text_who2 = "   LEGYEN   ÖN  IS "
     else:
-        text_millionaire = bg.rs + fg.white + "  M    I    L    L    I    O    N    A    I    R    E   " + bg.rs
+        text_millionaire = bg.rs + fg.white + "  M    I    L    L    I    O    N    A    I    R    E   " + bg.rs + fg.rs
         text_who =  " WHO WANTS  TO BE A "
         text_who2 = " WHO WANTS TO BE A "
 
@@ -48,9 +46,9 @@ def intro():
         if i < width / 3:
             len_spaces = int(width / 3) - i
             if i == 0 or i == 1:
-                line = bg.purple + ((2 * (int(width / 3)) + i * 2) + 4) * "X" + bg.rs
+                line = bg.purple + ((2 * (int(width / 3)) + i * 2) + 4) * "X"
             elif i == 12:
-                line = int((2 * (int(width / 3)) + i * 2) / 3) * "X" + text_who + int(
+                line = bg.blue + fg.blue + int((2 * (int(width / 3)) + i * 2) / 3) * "X" + fg.rs + bg.rs + text_who + bg.blue + fg.blue + int(
                     (2 * (int(width / 3)) + i * 2) / 3) * "X"
             # elif i == 7:
             #    line= int((2*(int(width / 3)) + i*2)/3) * "X" + text_wants + bg.purple + int((2*(int(width / 3)) + i*2)/3) * "X"+ bg.rs
@@ -59,28 +57,28 @@ def intro():
             # elif i == 11:
             #    line= int((2*(int(width / 3)) + i*2)/3) * "X" + text_a + bg.purple + int((2*(int(width / 3)) + i*2)/3) * "X"+ bg.rs
             else:
-                line = (2 * (int(width / 3)) + i * 2) * "X"
+                line = bg.blue + fg.blue + (2 * (int(width / 3)) + i * 2) * "X"
         elif i < width - width / 3:
             len_spaces = 0
             if i == width / 2:
-                line = int(width / 10) * "X" + int(
-                    ((width - int(width / 3)) - len(text_millionaire)) / 2) * " " + text_millionaire + int(
+                line = bg.blue + fg.blue + int(width / 10) * "X" + int(
+                    ((width - int(width / 3)) - len(text_millionaire)) / 2) * " " + fg.rs + bg.rs + text_millionaire + bg.blue + fg.blue + int(
                     ((width - int(width / 3)) - len(text_millionaire)) / 2) * " " + int(width / 10) * "X"
             else:
-                line = (width - int(width / 3)) * "X" + (width - int(width / 3)) * "X"
+                line =  bg.blue  + fg.blue + (width - int(width / 3)) * "X" + (width - int(width / 3)) * "X" + bg.rs
         else:
             len_spaces = i - (width - int(width / 3)) - 1
             if i == 36:
-                line = int((width * 2 - (i - (width - (int(width / 3)) - 1)) - i) / 3) * "X" + text_who2 + int(
+                line = bg.blue + fg.blue + int((width * 2 - (i - (width - (int(width / 3)) - 1)) - i) / 3) * "X" + fg.rs + bg.rs + text_who2 + bg.blue + fg.blue + int(
                     (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) / 3) * "X"
             elif i == 46 or i == 47:
                 line = bg.purple + ((width * 2 - (i - (width - (int(width / 3)) - 1)) - i) + 4) * "X" + bg.rs
             else:
-                line = (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) * "X"
+                line =  bg.blue + fg.blue + (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) * "X"
         if i not in [0, 1, 46, 47]:
-            print(bg.rs + len_spaces * " " + bg.purple + line[:2] + bg.rs + line + bg.purple + line[-2:] + bg.rs)
+            print(bg.rs + fg.rs + len_spaces * " " + bg.purple + fg.purple + "XX" + bg.rs + line + bg.purple + fg.purple + line[-2:] + bg.rs)
         else:
-            print(len_spaces * " " + line + bg.rs)
+            print(len_spaces * " " + fg.purple+ line + bg.rs + fg.rs)
 
         time.sleep(0.1)
 
