@@ -32,6 +32,8 @@ class Topics(Enum):
     ECONOMY = 13
     SPORTS = 14
     ORIGINAL = 15
+    SOCPOLITICS = 16
+    SOCWORK = 16
 
 
 class Difficulty(Enum):
