@@ -84,6 +84,9 @@ def play():
                 question_lines = question_lines_medium
             else:
                 question_lines = question_lines_hard
+        if len(question_lines[i]) < 5:
+            write_content_to_file("error_log.json", str(time.ctime()) + " : " +  str(question_lines[i]))
+            question_lines.pop(i)
         question = question_lines[i][0]
         answers = {"a": question_lines[i][1], "b": question_lines[i][2], "c": question_lines[i][3],
                    "d": question_lines[i][4]}
