@@ -96,7 +96,7 @@ def play():
             print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
             answer = handle_user_input(question, shuffled_answers, i)
             if answer == "esc":
-                quit_game(i, player_name, question_topics)
+                quit_game(score, player_name, question_topics)
                 return
         else:
             answer = safe_input(
@@ -149,7 +149,7 @@ def play():
                     if util.game_language == util.Language.HUNGARIAN.name:
                         util.play_sound("so_sorry", 0)
                     time.sleep(1)
-                quit_game(i, player_name, question_topics)
+                quit_game(score, player_name, question_topics)
                 util.clear_screen()
                 return
             if answer == "h" or "s":
@@ -247,7 +247,7 @@ def play():
                     i) + " !" + fg.rs)
                 util.play_sound("winning_theme", 0)
                 time.sleep(35)
-                quit_game(i, player_name, question_topics)
+                quit_game(score, player_name, question_topics)
         else:
             util.play_sound("bad_answer", 0)
             util.clear_screen()
@@ -264,7 +264,7 @@ def play():
             else:
                 print_prizes_with_quizmaster(0, nullprize=True)
             print("\n   " + fg.orange + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
-            quit_game(i, player_name, question_topics)
+            quit_game(score, player_name, question_topics)
             util.clear_screen()
 
             return
@@ -1256,8 +1256,8 @@ def get_user_input() -> bytes:
     return user_input
 
 
-def quit_game(level: int, name, topic):
-    if level > 0:
-        write_content_to_file("scores.json", {"user": name, "topic": topic, "score": level+1, "time": time.ctime(time.time())})
+def quit_game(score: int, name, topic):
+    if score > 0:
+        write_content_to_file("scores.json", {"user": name, "topic": topic, "score": score, "time": time.ctime(time.time())})
     menu.return_prompt()
     util.stop_sound()
