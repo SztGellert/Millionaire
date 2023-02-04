@@ -34,6 +34,7 @@ class Topics(Enum):
     ORIGINAL = 15
     SOCPOLITICS = 16
     SOCWORK = 16
+    THESIS = 17
 
 
 class Difficulty(Enum):
