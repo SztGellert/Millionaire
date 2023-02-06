@@ -103,7 +103,7 @@ def play():
         print_quiz_table(question, shuffled_answers, game_level=i)
         play_music(i)
         print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
-        answer = handle_user_input(question, shuffled_answers, i)
+        answer = handle_user_input(question, shuffled_answers, level=i)
         if answer == "esc":
             quit_game(score, player_name, question_topics)
             return
@@ -117,7 +117,7 @@ def play():
                 if util.game_language == util.Language.HUNGARIAN.name:
                     util.play_sound("music_off", 0)
                 print("\n\n  ", fg.grey + language_dictionary[game_language].quiz.select_answer_out + fg.rs)
-                answer = handle_user_input(question, shuffled_answers, i, final_color="blue", out_of_game=True)
+                answer = handle_user_input(question, shuffled_answers, level=i, final_color="blue", out_of_game=True)
                 if answer == "esc":
                     quit_game(score, player_name, question_topics)
                     return
@@ -190,7 +190,7 @@ def play():
                                 print("  " + language_dictionary[game_language].quiz.phone_help_disabled)
                 play_music(i)
                 print("\n\n  ", fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
-                answer = handle_user_input(question, shuffled_answers, i)
+                answer = handle_user_input(question, shuffled_answers, level=i)
                 time.sleep(2)
         util.clear_screen()
         is_correct = check_answer(answer, correct_answer_key)
@@ -336,18 +336,6 @@ def fastest_finger_first():
     quit_game(score, player_name, question_topics)
 
     return
-
-
-def safe_input(input_text: str, allowed_list_of_letters: list) -> str:
-    answer = input(input_text)
-    if answer not in allowed_list_of_letters:
-        print("  " + language_dictionary[game_language].quiz.allowed_letters_error + ' '.join(allowed_list_of_letters) +
-              language_dictionary[game_language].quiz.allowed)
-    while answer not in allowed_list_of_letters:
-        answer = input(input_text)
-    time.sleep(1)
-
-    return answer
 
 
 def get_dictionary_key_by_value(dictionary: {}, value: str) -> str:
@@ -866,8 +854,8 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
 
 
 def telephone_help(question: str, answers: {}, correct_answer: str):
-    phone = safe_input("  " + language_dictionary[game_language].quiz.phone_prompt,
-                       ["m", "d", "t", "y"])
+    print("\n   " + language_dictionary[game_language].quiz.phone_prompt)
+    phone = handle_user_input(question, answers, help=True)
     call_text_files = ["mum_phone_" + str(game_language).lower(),
                        "dad_phone_" + str(game_language).lower(),
                        "teacher_phone_" + str(game_language).lower(),
@@ -1113,7 +1101,7 @@ def play_marked_sound(choise: str, level: int):
         time.sleep(1)
 
 
-def handle_user_input(question: str, answers: dict, level: int, final_color="orange", out_of_game=False, help=False) -> str:
+def handle_user_input(question: str, answers: dict, level=0, final_color="orange", out_of_game=False, help=False) -> str:
     select_text = language_dictionary[game_language].quiz.select_answer
     if out_of_game:
         select_text = language_dictionary[game_language].quiz.select_answer_out
@@ -1240,8 +1228,14 @@ def handle_user_input(question: str, answers: dict, level: int, final_color="ora
         if not out_of_game:
             if user_input == b'a' or user_input == "a":
                 return "a"
+            if user_input == b'd' or user_input == "d":
+                return "d"
             if user_input == b'f' or user_input == "f":
                 return "h"
+            if user_input == b'm' or user_input == "m":
+                return "m"
+            if user_input == b'p' or user_input == "p":
+                return "d"
             if user_input == b't' or user_input == "t":
                 return "t"
             if user_input == b'k' or user_input == "k":
@@ -1250,6 +1244,8 @@ def handle_user_input(question: str, answers: dict, level: int, final_color="ora
                 return "h"
             if user_input == b's' or user_input == "s":
                 return "h"
+            if user_input == b'y' or user_input == "y":
+                return "y"
         if user_input == b'\x1b' or user_input == '<ESC>':
             return "esc"
 

@@ -16,6 +16,7 @@ language_dictionary = util.language_dictionary
 default_width = 40
 screen_distance = 60
 
+
 def intro():
     bg.purple = bg(148, 0, 211)
     util.clear_screen()
@@ -24,21 +25,15 @@ def intro():
     else:
         util.play_sound("intro", 0)
 
-    ## 109 normal 1 liner question
-    # quiz.print_quiz_table("Mely állítási ódák nem kapcsolódnak a közgazdász szerepéhez?aa111111111111111111111111aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    #                      {"a": "A t1á1rs",
-    #                      "b": "A kormányphhhhhhhhhhh4444444444444444444222222222222222hhhhhhhhhhhhhhhhh11111111111111111111111111111111111111111111101234567890123311111111111111111111111112222222222222222222222113",
-    #                          "c": "Kísérlet",
-    #                     "d": "Általános"})
     width = 48
     i = 0
     if util.game_language == util.Language.HUNGARIAN.name:
         text_millionaire = bg.rs + fg.white + "   M     I     L     L     I     O     M     O     S    " + bg.rs + fg.rs
-        text_who =  "  LEGYEN   ÖN   IS  "
+        text_who = "  LEGYEN   ÖN   IS  "
         text_who2 = "   LEGYEN   ÖN  IS "
     else:
         text_millionaire = bg.rs + fg.white + "  M    I    L    L    I    O    N    A    I    R    E   " + bg.rs + fg.rs
-        text_who =  " WHO WANTS  TO BE A "
+        text_who = " WHO WANTS  TO BE A "
         text_who2 = " WHO WANTS TO BE A "
 
     for i in range(width):
@@ -48,56 +43,51 @@ def intro():
             if i == 0 or i == 1:
                 line = bg.purple + ((2 * (int(width / 3)) + i * 2) + 4) * "X"
             elif i == 12:
-                line = bg.blue + fg.blue + int((2 * (int(width / 3)) + i * 2) / 3) * "X" + fg.rs + bg.rs + text_who + bg.blue + fg.blue + int(
+                line = bg.blue + fg.blue + int(
+                    (2 * (int(width / 3)) + i * 2) / 3) * "X" + fg.rs + bg.rs + text_who + bg.blue + fg.blue + int(
                     (2 * (int(width / 3)) + i * 2) / 3) * "X"
-            # elif i == 7:
-            #    line= int((2*(int(width / 3)) + i*2)/3) * "X" + text_wants + bg.purple + int((2*(int(width / 3)) + i*2)/3) * "X"+ bg.rs
-            # elif i == 9:
-            #    line= int((2*(int(width / 3)) + i*2)/3) * "X" + text_to_be + bg.purple + int((2*(int(width / 3)) + i*2)/3) * "X"+ bg.rs
-            # elif i == 11:
-            #    line= int((2*(int(width / 3)) + i*2)/3) * "X" + text_a + bg.purple + int((2*(int(width / 3)) + i*2)/3) * "X"+ bg.rs
             else:
                 line = bg.blue + fg.blue + (2 * (int(width / 3)) + i * 2) * "X"
         elif i < width - width / 3:
             len_spaces = 0
             if i == width / 2:
                 line = bg.blue + fg.blue + int(width / 10) * "X" + int(
-                    ((width - int(width / 3)) - len(text_millionaire)) / 2) * " " + fg.rs + bg.rs + text_millionaire + bg.blue + fg.blue + int(
+                    ((width - int(width / 3)) - len(
+                        text_millionaire)) / 2) * " " + fg.rs + bg.rs + text_millionaire + bg.blue + fg.blue + int(
                     ((width - int(width / 3)) - len(text_millionaire)) / 2) * " " + int(width / 10) * "X"
             else:
-                line =  bg.blue  + fg.blue + (width - int(width / 3)) * "X" + (width - int(width / 3)) * "X" + bg.rs
+                line = bg.blue + fg.blue + (width - int(width / 3)) * "X" + (width - int(width / 3)) * "X" + bg.rs
         else:
             len_spaces = i - (width - int(width / 3)) - 1
             if i == 36:
-                line = bg.blue + fg.blue + int((width * 2 - (i - (width - (int(width / 3)) - 1)) - i) / 3) * "X" + fg.rs + bg.rs + text_who2 + bg.blue + fg.blue + int(
+                line = bg.blue + fg.blue + int((width * 2 - (i - (width - (
+                    int(width / 3)) - 1)) - i) / 3) * "X" + fg.rs + bg.rs + text_who2 + bg.blue + fg.blue + int(
                     (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) / 3) * "X"
             elif i == 46 or i == 47:
                 line = bg.purple + ((width * 2 - (i - (width - (int(width / 3)) - 1)) - i) + 4) * "X" + bg.rs
             else:
-                line =  bg.blue + fg.blue + (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) * "X"
+                line = bg.blue + fg.blue + (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) * "X"
         if i not in [0, 1, 46, 47]:
-            print(bg.rs + fg.rs + len_spaces * " " + bg.purple + fg.purple + "XX" + bg.rs + line + bg.purple + fg.purple + line[-2:] + bg.rs)
+            print(
+                bg.rs + fg.rs + len_spaces * " " + bg.purple + fg.purple + "XX" + bg.rs + line + bg.purple + fg.purple + line[
+                                                                                                                         -2:] + bg.rs)
         else:
-            print(len_spaces * " " + fg.purple+ line + bg.rs + fg.rs)
+            print(len_spaces * " " + fg.purple + line + bg.rs + fg.rs)
 
         time.sleep(0.1)
-
-
         i += 1
 
     timeout = 15
-    startTime = time.time()
+    start_time = time.time()
     inp = None
 
-    print( screen_distance * "   " + language_dictionary[util.game_language].menu.skip_prompt)
-    #time.sleep(1)
-    #util.clear_screen()
+    print(screen_distance * "   " + language_dictionary[util.game_language].menu.skip_prompt)
     while True:
         # TODO: only works on win
         if msvcrt.kbhit():
             inp = msvcrt.getch()
             break
-        elif time.time() - startTime > timeout:
+        elif time.time() - start_time > timeout:
             break
 
     if inp:
@@ -115,7 +105,6 @@ def old_intro():
         util.play_sound("intro", 0)
     file = (util.open_file("intro_" + str(util.game_language).lower(), 'r'))
 
-
     first_line = threading.Timer(6.0, print_intro_lines, args=(file[0][0], ""))
     second_line = threading.Timer(9.0, print_intro_lines, args=(file[3][0], "purple"))
     third_line = threading.Timer(11.0, print_intro_lines, args=(file[1][0], ""))
@@ -130,7 +119,7 @@ def old_intro():
     startTime = time.time()
     inp = None
 
-    print("\n"*default_width + screen_distance * "   "  +language_dictionary[util.game_language].menu.skip_prompt)
+    print("\n" * default_width + screen_distance * "   " + language_dictionary[util.game_language].menu.skip_prompt)
     time.sleep(1)
     util.clear_screen()
     while True:
@@ -176,15 +165,15 @@ def user_pressed_space():
 def show_title():
     line_length = default_width + 3
     util.clear_screen()
-    print(screen_distance*" " + "=" * line_length)
-    print(screen_distance*" " + fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
-    print(screen_distance*" " + "=" * line_length)
-    print(screen_distance*" " + fg.yellow + "|" * line_length + fg.rs)
-    print(screen_distance*" " + fg.purple + language_dictionary[util.game_language].menu.title_second_line + fg.rs)
-    print(screen_distance*" " + fg.yellow + "|" * line_length + fg.rs)
-    print(screen_distance*" " + "=" * line_length)
-    print(screen_distance*" " + fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
-    print(screen_distance*" " + "=" * line_length + "\n\n")
+    print(screen_distance * " " + "=" * line_length)
+    print(screen_distance * " " + fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
+    print(screen_distance * " " + "=" * line_length)
+    print(screen_distance * " " + fg.yellow + "|" * line_length + fg.rs)
+    print(screen_distance * " " + fg.purple + language_dictionary[util.game_language].menu.title_second_line + fg.rs)
+    print(screen_distance * " " + fg.yellow + "|" * line_length + fg.rs)
+    print(screen_distance * " " + "=" * line_length)
+    print(screen_distance * " " + fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
+    print(screen_distance * " " + "=" * line_length + "\n\n")
 
 
 def show_options(options: list, max_options_length: int, chosen_option=0):
@@ -198,15 +187,13 @@ def show_options(options: list, max_options_length: int, chosen_option=0):
         number_of_spaces = int((option_length - len(options[i]) - len(fore_string) - len(after_string)) / 2)
         if len(option) % 2 != 0:
             option = option + " "
-        print(screen_distance*" " +  "  " + "_" * line_length)
+        print(screen_distance * " " + "  " + "_" * line_length)
         if i == chosen_option:
             string_to_print = "  " + fore_string + bg.orange + number_of_spaces * " " + fg.black + option + fg.rs + number_of_spaces * " " + bg.rs + after_string
         else:
             string_to_print = "  " + fore_string + number_of_spaces * " " + option + number_of_spaces * " " + after_string
-        print(screen_distance*" " +  string_to_print)
-        print(screen_distance*" " +  "  " + "‾" * line_length + "\n")
-
-
+        print(screen_distance * " " + string_to_print)
+        print(screen_distance * " " + "  " + "‾" * line_length + "\n")
 
 
 def select_exit():
@@ -285,37 +272,47 @@ def select_scores():
         else:
             score_space = len(language_dictionary[util.game_language].menu.scores[1]) - len_val
 
-        table_len = len(language_dictionary[util.game_language].menu.scores[0]+language_dictionary[util.game_language].menu.scores[1] +
-                        language_dictionary[util.game_language].menu.scores[2] + language_dictionary[util.game_language].menu.scores[3])+\
-                    score_space+24-len(language_dictionary[util.game_language].menu.scores[3]) + 13
+        table_len = len(language_dictionary[util.game_language].menu.scores[0] +
+                        language_dictionary[util.game_language].menu.scores[1] +
+                        language_dictionary[util.game_language].menu.scores[2] +
+                        language_dictionary[util.game_language].menu.scores[3]) + \
+                    score_space + 24 - len(language_dictionary[util.game_language].menu.scores[3]) + 13
         print("   " + "_" * table_len)
-        print("   " +"| " + fg.orange + language_dictionary[util.game_language].menu.scores[0] + fg.rs +" | " + fg.orange + language_dictionary[util.game_language].menu.scores[1] + score_space*" " + fg.rs +" | " + fg.orange +
-              language_dictionary[util.game_language].menu.scores[2] + fg.rs +" | " + fg.orange + language_dictionary[util.game_language].menu.scores[3] + (24-len(language_dictionary[util.game_language].menu.scores[3]))*" "+ fg.rs + " |")
-        print("   " +"‾" * table_len)
-        print("   " +"—" * table_len)
+        print("   " + "| " + fg.orange + language_dictionary[util.game_language].menu.scores[
+            0] + fg.rs + " | " + fg.orange + language_dictionary[util.game_language].menu.scores[
+                  1] + score_space * " " + fg.rs + " | " + fg.orange +
+              language_dictionary[util.game_language].menu.scores[2] + fg.rs + " | " + fg.orange +
+              language_dictionary[util.game_language].menu.scores[3] + (
+                          24 - len(language_dictionary[util.game_language].menu.scores[3])) * " " + fg.rs + " |")
+        print("   " + "‾" * table_len)
+        print("   " + "—" * table_len)
 
         for item in scores_sorted:
             i = 0
             for k, v in item.items():
                 if i == 0:
                     if len(v) > len_player:
-                        print("   " +"| " +v + " "*(len(v)-len_player), end=" | ")
+                        print("   " + "| " + v + " " * (len(v) - len_player), end=" | ")
                     else:
-                        print("   " +"| " +v + " "*(len_player-len(v)), end=" | ")
+                        print("   " + "| " + v + " " * (len_player - len(v)), end=" | ")
                 if i == 1:
                     index = list(
                         language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
                         str(v).capitalize())
                     print(
-                          language_dictionary[util.game_language].menu.settings_menu_question_topics[index] +
-                          (len_val-len(language_dictionary[util.game_language].menu.settings_menu_question_topics[index]))*" ", end=" | ")
+                        language_dictionary[util.game_language].menu.settings_menu_question_topics[index] +
+                        (len_val - len(
+                            language_dictionary[util.game_language].menu.settings_menu_question_topics[index])) * " ",
+                        end=" | ")
                 if i == 2:
-                    print(str(v) + " " * (len(language_dictionary[util.game_language].menu.scores[1])-len(str(v))+1), end=" | ")
+                    print(
+                        str(v) + " " * (len(language_dictionary[util.game_language].menu.scores[1]) - len(str(v)) + 1),
+                        end=" | ")
                 if i == 3:
                     print(v, end=" | ")
 
                 i += 1
-            print("\n"+ "   " +"—" * table_len)
+            print("\n" + "   " + "—" * table_len)
         f.close()
     else:
         print("\n\n   " + language_dictionary[util.game_language].menu.empty_scores)

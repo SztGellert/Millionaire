@@ -45,7 +45,7 @@
         "audience_help_disabled": "Már használta a közönség segítségét.",
         "halving_help_disabled": "Már használta a felezést.",
         "phone_help_disabled": "Már használta a telefonos segítséget.",
-        "phone_prompt": "Kit szeretne felhívni?\n\n  ha a mamát, nyomjon 'm' -et\n  ha a papát, nyomja meg a 'd'-t\n  ha az idős tanárát a régi iskolájából, nyomja meg a 't'-t\n  és ha Yoda Mestert, nyomjon 'y'-t!",
+        "phone_prompt": "Kit szeretne felhívni?\n\n   ha a mamát, nyomjon 'm' -et\n   ha a papát, nyomja meg a 'p'-t\n   ha az idős tanárát a régi iskolájából, nyomja meg a 't'-t\n   és ha Yoda Mestert, nyomjon 'y'-t!",
         "allowed_letters_error": "Hiba! Csak az alábbi karakterek: ",
         "allowed": " engedélyezettek!",
         "call_duration": "Hívás időtartam: ",
