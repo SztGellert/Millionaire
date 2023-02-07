@@ -131,10 +131,10 @@ def play():
                     else:
                         print_prizes_with_quizmaster(level=i, nullprize=True)
                     print(fg.orange + "\n   " + language_dictionary[game_language].quiz.correct_answer_out + fg.rs)
-                    util.play_sound("time_end_horn", 0)
+                    util.play_sound("time_end_horn", 0, general=True)
                     time.sleep(1)
                 else:
-                    util.play_sound("bad_answer", 0)
+                    util.play_sound("bad_answer", 0, general=True)
                     util.clear_screen()
                     print_quiz_table(question, shuffled_answers, answer, "blue", correct_answer=correct_answer_key,
                                      game_level=i)
@@ -197,7 +197,7 @@ def play():
         if is_correct:
             score += 1
             if i < 14:
-                util.play_sound("correct_answer", 0)
+                util.play_sound("correct_answer", 0, general=True)
                 util.clear_screen()
                 print_quiz_table(question, shuffled_answers, answer, "green", game_level=i)
                 time.sleep(2)
@@ -207,7 +207,7 @@ def play():
                 if i == 4:
                     print("\n" + " " * 20 + fg.yellow + language_dictionary[
                         game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
-                    util.play_sound("won_hundred_bucks", 0)
+                    util.play_sound("won_hundred_bucks", 0, general=True)
                     print_prizes_with_quizmaster(i)
                     time.sleep(7)
                 elif i == 9:
@@ -230,11 +230,11 @@ def play():
                 util.clear_screen()
                 print("\n" + " " * 20 + fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(
                     i) + " !" + fg.rs)
-                util.play_sound("winning_theme", 0)
+                util.play_sound("winning_theme", 0, general=True)
                 time.sleep(35)
                 quit_game(score, player_name, question_topics)
         else:
-            util.play_sound("bad_answer", 0)
+            util.play_sound("bad_answer", 0, general=True)
             util.clear_screen()
             print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key,
                              game_level=i)
@@ -297,7 +297,7 @@ def fastest_finger_first():
     start = time.time()
     util.clear_screen()
     print_fastest_fingers_table(question, shuffled_answers, game_level=0, quizmaster=True, prizes=False)
-    util.play_sound("fastest_fingers_first", 0)
+    util.play_sound("fastest_fingers_first", 0, general=True)
     print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer_out + fg.rs)
     for i in range(4):
         answer = handle_fastest_fingers_first_input(question, shuffled_answers, 0, total_answer)
@@ -318,16 +318,16 @@ def fastest_finger_first():
         util.play_sound("lets_see_who_is_correct", 0)
     time.sleep(2)
     if is_correct:
-        util.play_sound("fastest_fingers_correct", 0)
+        util.play_sound("fastest_fingers_correct", 0, general=True)
         util.clear_screen()
         if len(question) % 2 == 0:
             question = question + " "
         print_prizes_with_quizmaster(0, False, special_text="♦ " + player_name + " : " + str(end - start)[:5] + " ♦",
                                      bg_color=bg.green)
         time.sleep(2)
-        util.play_sound("fastest_fingers_win", 0)
+        util.play_sound("fastest_fingers_win", 0, general=True)
     else:
-        util.play_sound("fastest_fingers_bad", 0)
+        util.play_sound("fastest_fingers_bad", 0, general=True)
         util.clear_screen()
         print("\n   " + fg.orange + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
         quit_game(score, player_name, question_topics)
@@ -358,7 +358,7 @@ def halving(question: str, answers: {}, correct_answer: str) -> dict:
         util.play_sound("lets_take_two", 0)
     util.clear_screen()
     time.sleep(2)
-    util.play_sound("halving", 0)
+    util.play_sound("halving", 0, general=True)
     halved_answers = calculate_halved_answers(answers, correct_answer)
     return halved_answers
 
@@ -790,7 +790,7 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
         util.play_sound("push_your_buttons", 0)
         time.sleep(2)
     else:
-        util.play_sound("audience", 0)
+        util.play_sound("audience", 0, general=True)
     util.clear_screen()
     len_window = 21
 
@@ -850,7 +850,7 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
             util.clear_screen()
             i += 1
         else:
-            util.play_sound("audience_end", 0)
+            util.play_sound("audience_end", 0, general=True)
 
 
 def telephone_help(question: str, answers: {}, correct_answer: str):
@@ -865,9 +865,9 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
     for i in range(len(call_text_files)):
         if phone.lower() == call_text_files[i][0]:
             conversation = (util.open_file(call_text_files[i], 'r', separator=";"))
-            util.play_sound("phone_ring", 0)
+            util.play_sound("phone_ring", 0, general=True)
             time.sleep(2)
-            util.play_sound("phone_call", 0)
+            util.play_sound("phone_call", 0, general=True)
     len_al = 45
     util.clear_screen()
     len_window = 5
@@ -912,7 +912,7 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
         if i < 30:
             util.clear_screen()
             i += 1
-    util.play_sound('phone_call_ends', 0)
+    util.play_sound('phone_call_ends', 0, general=True)
     time.sleep(5)
     print("\n   " + language_dictionary[game_language].quiz.call_duration, int(now - then),
           language_dictionary[game_language].quiz.call_seconds)
@@ -1133,7 +1133,7 @@ def handle_user_input(question: str, answers: dict, level=0, final_color="orange
                         util.stop_sound()
                         if util.game_language == util.Language.HUNGARIAN.name:
                             play_marked_sound("a", level)
-                        util.play_sound("marked", 0)
+                        util.play_sound("marked", 0, general=True)
                         time.sleep(2)
                         if util.game_language == util.Language.HUNGARIAN.name:
                             util.play_sound(selected_lets_see_sound, 0)
@@ -1161,7 +1161,7 @@ def handle_user_input(question: str, answers: dict, level=0, final_color="orange
                         util.stop_sound()
                         if util.game_language == util.Language.HUNGARIAN.name:
                             play_marked_sound("b", level)
-                        util.play_sound("marked", 0)
+                        util.play_sound("marked", 0, general=True)
                         time.sleep(2)
                         if util.game_language == util.Language.HUNGARIAN.name:
                             util.play_sound(selected_lets_see_sound, 0)
@@ -1189,7 +1189,7 @@ def handle_user_input(question: str, answers: dict, level=0, final_color="orange
                         util.stop_sound()
                         if util.game_language == util.Language.HUNGARIAN.name:
                             play_marked_sound("c", level)
-                        util.play_sound("marked", 0)
+                        util.play_sound("marked", 0, general=True)
                         time.sleep(2)
                         if util.game_language == util.Language.HUNGARIAN.name:
                             util.play_sound(selected_lets_see_sound, 0)
@@ -1217,7 +1217,7 @@ def handle_user_input(question: str, answers: dict, level=0, final_color="orange
                         util.stop_sound()
                         if util.game_language == util.Language.HUNGARIAN.name:
                             play_marked_sound("d", level)
-                        util.play_sound("marked", 0)
+                        util.play_sound("marked", 0, general=True)
                         time.sleep(2)
                         if util.game_language == util.Language.HUNGARIAN.name:
                             util.play_sound(selected_lets_see_sound, 0)
