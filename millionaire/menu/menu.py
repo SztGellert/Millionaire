@@ -10,73 +10,83 @@ import millionaire.quiz_game.quiz_game as quiz
 import millionaire.util.util as util
 import millionaire.menu.helpers as helpers
 
-fg.purple = Style(RgbFg(148, 0, 211))
+fg.purple = Style(RgbFg(64, 0, 128))
 bg.orange = bg(255, 150, 50)
 language_dictionary = util.language_dictionary
 default_width = 40
 screen_distance = 60
-
+bg.dark_blue = bg(0, 0, 155)
+bg.darkest_blue = bg(42, 45, 112)
 
 def intro():
-    bg.purple = bg(148, 0, 211)
+    bg.purple = bg(30, 0, 60)
+    bg.blue = bg.darkest_blue
     util.clear_screen()
     if util.game_language == util.Language.HUNGARIAN.name:
         util.play_sound("intro", 0, volume=1)
     else:
         util.play_sound("intro", 0)
 
-    width = 48
+    width = 60
     i = 0
     if util.game_language == util.Language.HUNGARIAN.name:
-        text_millionaire = bg.rs + fg.white + "   M     I     L     L     I     O     M     O     S    " + bg.rs + fg.rs
+        millionaire_lines = ["    ||||     ||||  || ||    ||    || |||||||| ||||     |||| |||||||| ||||||     ",
+                             "    ||  || ||  ||  || ||    ||    || ||    || ||  || ||  || ||    || ||         ",
+                             "    ||   |||   ||  || ||    ||    || ||    || ||   |||   || ||    || ||         " ,
+                             "    ||         ||  || ||    ||    || ||    || ||         || ||    || ||||||     ",
+                             "    ||         ||  || ||    ||    || ||    || ||         || ||    ||     ||     ",
+                             "    ||         ||  || ||||| ||||| || |||||||| ||         || |||||||| ||||||     "]
         text_who = "  LEGYEN   ÖN   IS  "
-        text_who2 = "   LEGYEN   ÖN  IS "
+        text_who2 = "  LEGYEN   ÖN  IS  "
     else:
-        text_millionaire = bg.rs + fg.white + "  M    I    L    L    I    O    N    A    I    R    E   " + bg.rs + fg.rs
+        millionaire_lines = [" ||||    ||||  || ||    ||    || |||||||| ||||    || |||||||  || ||||||  |||||| ",
+                             " ||  || || ||  || ||    ||    || ||    || || ||   || ||   ||  || ||   || ||     ",
+                             " ||   ||   ||  || ||    ||    || ||    || ||  ||  || ||   ||  || ||   || |||||| ",
+                             " ||        ||  || ||    ||    || ||    || ||   || || |||||||  || |||||   ||     " ,
+                             " ||        ||  || ||    ||    || ||    || ||    |||| ||   ||  || ||  ||  ||     ",
+                             " ||        ||  || ||||| ||||| || |||||||| ||     ||| ||   ||  || ||   || |||||| "]
         text_who = " WHO WANTS  TO BE A "
         text_who2 = " WHO WANTS TO BE A "
-
+    s = 0
+    fill_character = " "
     for i in range(width):
         line = ""
         if i < width / 3:
             len_spaces = int(width / 3) - i
             if i == 0 or i == 1:
-                line = bg.purple + ((2 * (int(width / 3)) + i * 2) + 4) * "X"
+                line = bg.purple + ((2 * (int(width / 3)) + i * 2) + 4) * fill_character
             elif i == 12:
                 line = bg.blue + fg.blue + int(
-                    (2 * (int(width / 3)) + i * 2) / 3) * "X" + fg.rs + bg.rs + text_who + bg.blue + fg.blue + int(
-                    (2 * (int(width / 3)) + i * 2) / 3) * "X"
+                    (2 * (int(width / 3)) + i+7 * 2) / 3) * fill_character + fg.rs + bg.rs + bg.purple + text_who + bg.blue + fg.blue + int(
+                    (2 * ((int(width / 3)) + i+1 * 2) / 3)) * fill_character
             else:
-                line = bg.blue + fg.blue + (2 * (int(width / 3)) + i * 2) * "X"
+                line = bg.blue + fg.blue + (2 * (int(width / 3)) + i * 2) * fill_character
         elif i < width - width / 3:
             len_spaces = 0
-            if i == width / 2:
-                line = bg.blue + fg.blue + int(width / 10) * "X" + int(
-                    ((width - int(width / 3)) - len(
-                        text_millionaire)) / 2) * " " + fg.rs + bg.rs + text_millionaire + bg.blue + fg.blue + int(
-                    ((width - int(width / 3)) - len(text_millionaire)) / 2) * " " + int(width / 10) * "X"
+            if i >= 27 and i <= 32:
+                line =  bg.darkest_blue + fg.white + millionaire_lines[s]
+                s += 1
             else:
-                line = bg.blue + fg.blue + (width - int(width / 3)) * "X" + (width - int(width / 3)) * "X" + bg.rs
+                line = bg.blue + fg.blue + (width - int(width / 3)) * fill_character + (width - int(width / 3)) * fill_character
         else:
             len_spaces = i - (width - int(width / 3)) - 1
-            if i == 36:
+            if i == 47:
                 line = bg.blue + fg.blue + int((width * 2 - (i - (width - (
-                    int(width / 3)) - 1)) - i) / 3) * "X" + fg.rs + bg.rs + text_who2 + bg.blue + fg.blue + int(
-                    (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) / 3) * "X"
-            elif i == 46 or i == 47:
-                line = bg.purple + ((width * 2 - (i - (width - (int(width / 3)) - 1)) - i) + 4) * "X" + bg.rs
+                    int(width / 3)) - 1)) - i + 4) / 3) * fill_character + fg.rs + bg.rs + bg.purple + text_who2 + bg.rs + bg.blue + fg.blue + int(
+                    (width * 2 - (i - (width - (int(width / 3)) - 1)) - i+4) / 3) * fill_character
+            elif i == 58 or i == 59:
+                line = bg.purple + ((width * 2 - (i - (width - (int(width / 3)) - 1)) - i) + 4) * fill_character + bg.rs
             else:
-                line = bg.blue + fg.blue + (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) * "X"
-        if i not in [0, 1, 46, 47]:
+                line = bg.blue + fg.blue + (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) * fill_character
+        if i not in [0, 1, 58, 59]:
             print(
-                bg.rs + fg.rs + len_spaces * " " + bg.purple + fg.purple + "XX" + bg.rs + line + bg.purple + fg.purple + line[
+                bg.rs + fg.rs + len_spaces * fill_character + bg.purple + fg.purple + "  " + bg.rs + line + bg.purple + fg.purple + line[
                                                                                                                          -2:] + bg.rs)
         else:
             print(len_spaces * " " + fg.purple + line + bg.rs + fg.rs)
 
         time.sleep(0.1)
         i += 1
-
     timeout = 15
     start_time = time.time()
     inp = None
@@ -94,59 +104,6 @@ def intro():
         util.stop_sound()
         return
     else:
-        return
-
-
-def old_intro():
-    util.clear_screen()
-    if util.game_language == util.Language.HUNGARIAN.name:
-        util.play_sound("intro", 0, volume=1)
-    else:
-        util.play_sound("intro", 0)
-    file = (util.open_file("intro_" + str(util.game_language).lower(), 'r'))
-
-    first_line = threading.Timer(6.0, print_intro_lines, args=(file[0][0], ""))
-    second_line = threading.Timer(9.0, print_intro_lines, args=(file[3][0], "purple"))
-    third_line = threading.Timer(11.0, print_intro_lines, args=(file[1][0], ""))
-    fourth_line = threading.Timer(13.0, print_intro_lines, args=(file[2][0], ""))
-
-    first_line.start()
-    second_line.start()
-    third_line.start()
-    fourth_line.start()
-
-    timeout = 15
-    startTime = time.time()
-    inp = None
-
-    print("\n" * default_width + screen_distance * "   " + language_dictionary[util.game_language].menu.skip_prompt)
-    time.sleep(1)
-    util.clear_screen()
-    while True:
-        # TODO: only works on win
-        if msvcrt.kbhit():
-            inp = msvcrt.getch()
-            break
-        elif time.time() - startTime > timeout:
-            break
-
-    if inp:
-        threading.Timer.cancel(first_line)
-        threading.Timer.cancel(second_line)
-        threading.Timer.cancel(third_line)
-        threading.Timer.cancel(fourth_line)
-        util.stop_sound()
-        return
-    else:
-        return
-
-
-def print_intro_lines(text: "", text_color: ""):
-    if text_color == "purple":
-        print(fg.purple + text + fg.rs)
-        return
-    else:
-        print(text)
         return
 
 
