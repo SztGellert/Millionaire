@@ -3,7 +3,6 @@ import os
 import sys
 import time
 import json
-import threading
 import keyboard
 from sty import Style, RgbFg, fg, bg, rs
 import millionaire.quiz_game.quiz_game as quiz
@@ -19,7 +18,8 @@ bg.dark_blue = bg(0, 0, 155)
 bg.darkest_blue = bg(42, 45, 112)
 
 def intro():
-    bg.purple = bg(30, 0, 60)
+    bg.deep_purple = bg(30, 0, 60)
+    fg.deep_purple = Style(RgbFg(30, 0, 60))
     bg.blue = bg.darkest_blue
     util.clear_screen()
     if util.game_language == util.Language.HUNGARIAN.name:
@@ -30,12 +30,12 @@ def intro():
     width = 60
     i = 0
     if util.game_language == util.Language.HUNGARIAN.name:
-        millionaire_lines = ["    ||||     ||||  || ||    ||    || |||||||| ||||     |||| |||||||| ||||||     ",
+        millionaire_lines = ["    ||||     ||||  || ||    ||    || |||||||| ||||     |||| |||||||| |||||||    ",
                              "    ||  || ||  ||  || ||    ||    || ||    || ||  || ||  || ||    || ||         ",
-                             "    ||   |||   ||  || ||    ||    || ||    || ||   |||   || ||    || ||         " ,
-                             "    ||         ||  || ||    ||    || ||    || ||         || ||    || ||||||     ",
-                             "    ||         ||  || ||    ||    || ||    || ||         || ||    ||     ||     ",
-                             "    ||         ||  || ||||| ||||| || |||||||| ||         || |||||||| ||||||     "]
+                             "    ||   |||   ||  || ||    ||    || ||    || ||   |||   || ||    || |||||||    ",
+                             "    ||         ||  || ||    ||    || ||    || ||         || ||    ||      ||    ",
+                             "    ||         ||  || ||    ||    || ||    || ||         || ||    ||      ||    ",
+                             "    ||         ||  || ||||| ||||| || |||||||| ||         || |||||||| |||||||    "]
         text_who = "  LEGYEN   ÖN   IS  "
         text_who2 = "  LEGYEN   ÖN  IS  "
     else:
@@ -54,7 +54,7 @@ def intro():
         if i < width / 3:
             len_spaces = int(width / 3) - i
             if i == 0 or i == 1:
-                line = bg.purple + ((2 * (int(width / 3)) + i * 2) + 4) * fill_character
+                line = bg.deep_purple + ((2 * (int(width / 3)) + i * 2) + 4) * fill_character + bg.rs
             elif i == 12:
                 line = bg.blue + fg.blue + int(
                     (2 * (int(width / 3)) + i+7 * 2) / 3) * fill_character + fg.rs + bg.rs + bg.purple + text_who + bg.blue + fg.blue + int(
@@ -64,7 +64,10 @@ def intro():
         elif i < width - width / 3:
             len_spaces = 0
             if i >= 27 and i <= 32:
-                line =  bg.darkest_blue + fg.white + millionaire_lines[s]
+                line =  millionaire_lines[s]
+                line = line.replace(" ", bg.darkest_blue + " " + bg.rs + fg.rs)
+                line = line.replace("|", bg.white + " " + bg.rs)
+                line = line + bg.rs
                 s += 1
             else:
                 line = bg.blue + fg.blue + (width - int(width / 3)) * fill_character + (width - int(width / 3)) * fill_character
@@ -75,15 +78,15 @@ def intro():
                     int(width / 3)) - 1)) - i + 4) / 3) * fill_character + fg.rs + bg.rs + bg.purple + text_who2 + bg.rs + bg.blue + fg.blue + int(
                     (width * 2 - (i - (width - (int(width / 3)) - 1)) - i+4) / 3) * fill_character
             elif i == 58 or i == 59:
-                line = bg.purple + ((width * 2 - (i - (width - (int(width / 3)) - 1)) - i) + 4) * fill_character + bg.rs
+                line = bg.deep_purple + ((width * 2 - (i - (width - (int(width / 3)) - 1)) - i) + 4) * fill_character + bg.rs
             else:
                 line = bg.blue + fg.blue + (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) * fill_character
         if i not in [0, 1, 58, 59]:
             print(
-                bg.rs + fg.rs + len_spaces * fill_character + bg.purple + fg.purple + "  " + bg.rs + line + bg.purple + fg.purple + line[
-                                                                                                                         -2:] + bg.rs)
+                bg.rs + fg.rs + len_spaces * fill_character + bg.deep_purple + fg.deep_purple + "  " + bg.rs + line + bg.deep_purple + fg.deep_purple + line[
+                                                                                                       -2:] + bg.rs)
         else:
-            print(len_spaces * " " + fg.purple + line + bg.rs + fg.rs)
+            print(len_spaces * " "  + line + fg.rs)
 
         time.sleep(0.1)
         i += 1
