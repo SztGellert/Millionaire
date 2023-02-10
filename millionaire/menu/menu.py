@@ -9,7 +9,7 @@ import millionaire.quiz_game.quiz_game as quiz
 import millionaire.util.util as util
 import millionaire.menu.helpers as helpers
 
-fg.purple = Style(RgbFg(64, 0, 128))
+fg.purple = Style(RgbFg(148, 0, 211))
 bg.orange = bg(255, 150, 50)
 language_dictionary = util.language_dictionary
 default_width = 40
@@ -30,21 +30,32 @@ def intro():
     width = 60
     i = 0
     if util.game_language == util.Language.HUNGARIAN.name:
-        millionaire_lines = ["    ||||     ||||  || ||    ||    || |||||||| ||||     |||| |||||||| |||||||    ",
-                             "    ||  || ||  ||  || ||    ||    || ||    || ||  || ||  || ||    || ||         ",
-                             "    ||   |||   ||  || ||    ||    || ||    || ||   |||   || ||    || |||||||    ",
-                             "    ||         ||  || ||    ||    || ||    || ||         || ||    ||      ||    ",
-                             "    ||         ||  || ||    ||    || ||    || ||         || ||    ||      ||    ",
-                             "    ||         ||  || ||||| ||||| || |||||||| ||         || |||||||| |||||||    "]
+        millionaire_lines = [" XXXXX   XXXXX XXX XXX    XXX    XXX XXXXXXXXX XXXXX   XXXXX XXXXXXXXX XXXXXXXX ",
+                             " X|||XX XX|||X X|X X|X    X|X    X|X X|||||||X X|||XX XX|||X X|||||||X X||||||X ",
+                             " X||||XXX||||X X|X X|X    X|X    X|X X|XXXXX|X X||||XXX||||X X|XXXXX|X X||XXXXX ",
+                             " X|XXX|X|XXX|X X|X X|X    X|X    X|X X|X   X|X X|XXX|X|XXX|X X|X   X|X X||X     ",
+                             " X|X XX|XX X|X X|X X|X    X|X    X|X X|X   X|X X|X XX|XX X|X X|X   X|X X||XXXXX ",
+                             " X|X  XXX  X|X X|X X|X    X|X    X|X X|X   X|X X|X  XXX  X|X X|X   X|X X||||||X ",
+                             " X|X       X|X X|X X|X    X|X    X|X X|X   X|X X|X       X|X X|X   X|X XXXXX||X ",
+                             " X|X       X|X X|X X|X    X|X    X|X X|X   X|X X|X       X|X X|X   X|X     X||X ",
+                             " X|X       X|X X|X X|XXXX X|XXXX X|X X|XXXXX|X X|X       X|X X|XXXXX|X XXXXX||X ",
+                             " X|X       X|X X|X X||||X X||||X X|X X|||||||X X|X       X|X X|||||||X X||||||X ",
+                             " XXX       XXX XXX XXXXXX XXXXXX XXX XXXXXXXXX XXX       XXX XXXXXXXXX XXXXXXXX "]
+
         text_who = "  LEGYEN   ÖN   IS  "
         text_who2 = "  LEGYEN   ÖN  IS  "
     else:
-        millionaire_lines = [" ||||    ||||  || ||    ||    || |||||||| ||||    || |||||||  || ||||||  |||||| ",
-                             " ||  || || ||  || ||    ||    || ||    || || ||   || ||   ||  || ||   || ||     ",
-                             " ||   ||   ||  || ||    ||    || ||    || ||  ||  || ||   ||  || ||   || |||||| ",
-                             " ||        ||  || ||    ||    || ||    || ||   || || |||||||  || |||||   ||     " ,
-                             " ||        ||  || ||    ||    || ||    || ||    |||| ||   ||  || ||  ||  ||     ",
-                             " ||        ||  || ||||| ||||| || |||||||| ||     ||| ||   ||  || ||   || |||||| "]
+        millionaire_lines = ["XXXX   XXXX XXX XXX    XXX    XXX XXXXXXXXX XXXX  XXX XXXXXXX XXX XXXXXX  XXXXXX",
+                             "X||XX XX||X X|X X|X    X|X    X|X X|||||||X X||X  X|X X|||||X X|X X||||XX X||||X",
+                             "X|||XXX|||X X|X X|X    X|X    X|X X|XXXXX|X X||X  X|X X|XXX|X X|X X|X X|X X|X   ",
+                             "X|XX|||XX|X X|X X|X    X|X    X|X X|X   X|X X|X|X X|X X|X X|X X|X X|X X|X X|XXXX",
+                             "X|X X|X X|X X|X X|X    X|X    X|X X|X   X|X X|X|X X|X X|XXX|  X|X X||||X  X||||X",
+                             "X|X  X  X|X X|X X|X    X|X    X|X X|X   X|X X|X | X|X X|||||X X|X X|X X|X X|XXXX",
+                             "X|X     X|X X|X X|X    X|X    X|X X|X   X|X X|X ||X|X X|XXX|X X|X X|X X|X X|X   ",
+                             "X|X     X|X X|X X|X    X|X    X|X X|X   X|X X|X X|X|X X|X X|X X|X X|X X|X X|X   ",
+                             "X|X     X|X X|X X|XXXX X|XXXX X|X X|XXXXX|X X|X X|X|X X|XXX|X X|X X|X X|X X|XXXX",
+                             "X|X     X|X X|X X||||X X||||X X|X X|||||||X X|X  X||X X|X X|X X|X X|X X|X X||||X",
+                             "XXX     XXX XXX XXXXXX XXXXXX XXX XXXXXXXXX XXX   X|X X|X X|X XXX X|X  X|X XXXXX"]
         text_who = " WHO WANTS  TO BE A "
         text_who2 = " WHO WANTS TO BE A "
     s = 0
@@ -57,16 +68,17 @@ def intro():
                 line = bg.deep_purple + ((2 * (int(width / 3)) + i * 2) + 4) * fill_character + bg.rs
             elif i == 12:
                 line = bg.blue + fg.blue + int(
-                    (2 * (int(width / 3)) + i+7 * 2) / 3) * fill_character + fg.rs + bg.rs + bg.purple + text_who + bg.blue + fg.blue + int(
+                    (2 * (int(width / 3)) + i+7 * 2) / 3) * fill_character + fg.rs + bg.rs + bg.deep_purple + text_who + bg.blue + fg.blue + int(
                     (2 * ((int(width / 3)) + i+1 * 2) / 3)) * fill_character
             else:
                 line = bg.blue + fg.blue + (2 * (int(width / 3)) + i * 2) * fill_character
         elif i < width - width / 3:
             len_spaces = 0
-            if i >= 27 and i <= 32:
+            if i >= 24 and i <= 33:
                 line =  millionaire_lines[s]
                 line = line.replace(" ", bg.darkest_blue + " " + bg.rs + fg.rs)
                 line = line.replace("|", bg.white + " " + bg.rs)
+                line = line.replace("X", bg.black + " " + bg.rs)
                 line = line + bg.rs
                 s += 1
             else:
@@ -75,7 +87,7 @@ def intro():
             len_spaces = i - (width - int(width / 3)) - 1
             if i == 47:
                 line = bg.blue + fg.blue + int((width * 2 - (i - (width - (
-                    int(width / 3)) - 1)) - i + 4) / 3) * fill_character + fg.rs + bg.rs + bg.purple + text_who2 + bg.rs + bg.blue + fg.blue + int(
+                    int(width / 3)) - 1)) - i + 4) / 3) * fill_character + fg.rs + bg.rs + bg.deep_purple + text_who2 + bg.rs + bg.blue + fg.blue + int(
                     (width * 2 - (i - (width - (int(width / 3)) - 1)) - i+4) / 3) * fill_character
             elif i == 58 or i == 59:
                 line = bg.deep_purple + ((width * 2 - (i - (width - (int(width / 3)) - 1)) - i) + 4) * fill_character + bg.rs
