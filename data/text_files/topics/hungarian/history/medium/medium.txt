@@ -1,6 +1,6 @@
 Ki volt az USA 32. elnöke?;Franklin D. Roosevelt;John F. Kennedy;Richard Nixon;Herbert Hoover
 Mikor találták fel az első kamerát?;1816;1820;1656;1790
-Mikor halt meg VIII. Henrik?;1435;1978;1523;1547
+Mikor halt meg VIII. Henrik?;1547;1435;1978;1523
 Ki találta fel a szeletelt kenyeret?;Otto Frederick Rohwedder;Samuel Morse;Alfred Nobel;Wright brothers
 Melyik NEM egyike az eredeti 13 kolóniának?;Florida;New York;Pennsylvania;Georgia
 Meddig tartott a 'Százéves Háború'?;116 év;101 év;99 év;100 év
