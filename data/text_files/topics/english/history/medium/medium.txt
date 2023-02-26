@@ -1,6 +1,6 @@
 Who was the 32th president of the USA?;Franklin D. Roosevelt;John F. Kennedy;Richard Nixon;Herbert Hoover
 When was the first camera invented?;1816;1820;1656;1790
-When did Henry VIII die?;1435;1978;1523;1547
+When did Henry VIII die?;1547;1435;1978;1523
 Who invented sliced bread?;Otto Frederick Rohwedder;Samuel Morse;Alfred Nobel;Wright brothers
 Which of these states was NOT one of the original 13 colonies?;Florida;New York;Pennsylvania;Georgia
 How long did the Hundred Years' War last?;116 years;101 years;99 years;100 years
