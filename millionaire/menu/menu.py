@@ -20,18 +20,16 @@ bg.darkest_blue = bg(42, 45, 112)
 def intro():
     if util.game_language == util.Language.HUNGARIAN.name:
         util.play_sound("intro", 0, volume=1)
+        first_text = " ♦ LEGYEN   "
+        second_text = "  ÖN   IS  ♦"
     else:
         util.play_sound("intro", 0)
+        first_text = " ♦WHO WANTS "
+        second_text = "  TO BE A  ♦"
 
     bg.light_blue = bg(96,180,225)
     bg.deep_purple = bg(30, 0, 60)
     bg.blue = bg.darkest_blue
-    if util.game_language == util.Language.HUNGARIAN:
-        first_text = " ♦ LEGYEN   "
-        second_text = "  ÖN   IS  ♦"
-    else:
-        first_text = " ♦WHO WANTS "
-        second_text = "  TO BE A  ♦"
 
     text_count = 0
     if util.game_language == util.Language.HUNGARIAN.name:
