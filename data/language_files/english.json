@@ -25,7 +25,8 @@
             "time":  "Time"
         },
         "question_difficulty_levels": ["All","Easy", "Medium", "Hard"],
-        "millionaire_lines": ["XXXX   XXXX XXX XXX    XXX    XXX XXXXXXXXX XXXX  XXX XXXXXXX XXX XXXXXX  XXXXXX",
+        "millionaire_lines": [
+                             "XXXX   XXXX XXX XXX    XXX    XXX XXXXXXXXX XXXX  XXX XXXXXXX XXX XXXXXX  XXXXXX",
                              "X||XX XX||X X|X X|X    X|X    X|X X|||||||X X||X  X|X X|||||X X|X X||||XX X||||X",
                              "X|||XXX|||X X|X X|X    X|X    X|X X|XXXXX|X X||X  X|X X|XXX|X X|X X|X X|X X|X   ",
                              "X|XX|||XX|X X|X X|X    X|X    X|X X|X   X|X X|X|X X|X X|X X|X X|X X|X X|X X|XXXX",
@@ -35,7 +36,7 @@
                              "X|X     X|X X|X X|X    X|X    X|X X|X   X|X X|X X|X|X X|X X|X X|X X|X X|X X|X   ",
                              "X|X     X|X X|X X|XXXX X|XXXX X|X X|XXXXX|X X|X X|X|X X|XXX|X X|X X|X X|X X|XXXX",
                              "X|X     X|X X|X X||||X X||||X X|X X|||||||X X|X  X||X X|X X|X X|X X|X X|X X||||X",
-                             "XXX     XXX XXX XXXXXX XXXXXX XXX XXXXXXXXX XXX   X|X X|X X|X XXX X|X  X|X XXXXX"
+                             "XXX     XXX XXX XXXXXX XXXXXX XXX XXXXXXXXX XXX   XXX XXX XXX XXX XXX  XXX XXXXX"
         ],
         "credits_title_lines":     ["   $$$$   $$$$  $  $     $     $  $$$$$  $$   $     $$$     $  $$$$  $$$$$",
                                     "   $  $   $  $  $  $     $     $  $   $  $$   $     $ $     $  $  $  $",
