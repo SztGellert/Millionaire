@@ -20,44 +20,19 @@ bg.darkest_blue = bg(42, 45, 112)
 def intro():
     if util.game_language == util.Language.HUNGARIAN.name:
         util.play_sound("intro", 0, volume=1)
-        first_text = " ♦ LEGYEN   "
-        second_text = "  ÖN   IS  ♦"
+
     else:
         util.play_sound("intro", 0)
-        first_text = " ♦WHO WANTS "
-        second_text = "  TO BE A  ♦"
 
     bg.light_blue = bg(96,180,225)
     bg.deep_purple = bg(30, 0, 60)
     bg.blue = bg.darkest_blue
 
     text_count = 0
-    if util.game_language == util.Language.HUNGARIAN.name:
-        millionaire_lines = [" XXXXX   XXXXX XXX XXX    XXX    XXX XXXXXXXXX XXXXX   XXXXX XXXXXXXXX XXXXXXXX ",
-                             " X|||XX XX|||X X|X X|X    X|X    X|X X|||||||X X|||XX XX|||X X|||||||X X||||||X ",
-                             " X||||XXX||||X X|X X|X    X|X    X|X X|XXXXX|X X||||XXX||||X X|XXXXX|X X||XXXXX ",
-                             " X|XXX|X|XXX|X X|X X|X    X|X    X|X X|X   X|X X|XXX|X|XXX|X X|X   X|X X||X     ",
-                             " X|X XX|XX X|X X|X X|X    X|X    X|X X|X   X|X X|X XX|XX X|X X|X   X|X X||XXXXX ",
-                             " X|X  XXX  X|X X|X X|X    X|X    X|X X|X   X|X X|X  XXX  X|X X|X   X|X X||||||X ",
-                             " X|X       X|X X|X X|X    X|X    X|X X|X   X|X X|X       X|X X|X   X|X XXXXX||X ",
-                             " X|X       X|X X|X X|X    X|X    X|X X|X   X|X X|X       X|X X|X   X|X     X||X ",
-                             " X|X       X|X X|X X|XXXX X|XXXX X|X X|XXXXX|X X|X       X|X X|XXXXX|X XXXXX||X ",
-                             " X|X       X|X X|X X||||X X||||X X|X X|||||||X X|X       X|X X|||||||X X||||||X ",
-                             " XXX       XXX XXX XXXXXX XXXXXX XXX XXXXXXXXX XXX       XXX XXXXXXXXX XXXXXXXX "]
 
-
-    else:
-        millionaire_lines = ["XXXX   XXXX XXX XXX    XXX    XXX XXXXXXXXX XXXX  XXX XXXXXXX XXX XXXXXX  XXXXXX",
-                             "X||XX XX||X X|X X|X    X|X    X|X X|||||||X X||X  X|X X|||||X X|X X||||XX X||||X",
-                             "X|||XXX|||X X|X X|X    X|X    X|X X|XXXXX|X X||X  X|X X|XXX|X X|X X|X X|X X|X   ",
-                             "X|XX|||XX|X X|X X|X    X|X    X|X X|X   X|X X|X|X X|X X|X X|X X|X X|X X|X X|XXXX",
-                             "X|X X|X X|X X|X X|X    X|X    X|X X|X   X|X X|X|X X|X X|XXX|  X|X X||||X  X||||X",
-                             "X|X  X  X|X X|X X|X    X|X    X|X X|X   X|X X|X | X|X X|||||X X|X X|X X|X X|XXXX",
-                             "X|X     X|X X|X X|X    X|X    X|X X|X   X|X X|X ||X|X X|XXX|X X|X X|X X|X X|X   ",
-                             "X|X     X|X X|X X|X    X|X    X|X X|X   X|X X|X X|X|X X|X X|X X|X X|X X|X X|X   ",
-                             "X|X     X|X X|X X|XXXX X|XXXX X|X X|XXXXX|X X|X X|X|X X|XXX|X X|X X|X X|X X|XXXX",
-                             "X|X     X|X X|X X||||X X||||X X|X X|||||||X X|X  X||X X|X X|X X|X X|X X|X X||||X",
-                             "XXX     XXX XXX XXXXXX XXXXXX XXX XXXXXXXXX XXX   X|X X|X X|X XXX X|X  X|X XXXXX"]
+    first_text = language_dictionary[util.game_language].menu.side_title_first_part
+    second_text = language_dictionary[util.game_language].menu.side_title_second_part
+    millionaire_lines = language_dictionary[util.game_language].menu.millionaire_lines
 
     pixels_in_line = 0
     pixels_per_line = []
@@ -262,12 +237,10 @@ def select_help():
 def select_credits():
     util.clear_screen()
     file = (util.open_file("credits_" + str(util.game_language).lower(), 'r'))
+    title_lines = language_dictionary[util.game_language].menu.credits_title_lines
     print("\n" + fg.purple + rs.italic)
-    print("   $$$$   $$$$  $  $     $     $  $$$$$  $$   $     $$$     $  $$$$  $$$$$")
-    print("   $  $   $  $  $  $     $     $  $   $  $$   $     $ $     $  $  $  $")
-    print("   $   $$    $  $  $     $     $  $   $  $ $  $    $   $    $  $  $  $$$$")
-    print("   $         $  $  $     $     $  $   $  $  $ $   $$$$$$$   $  $$$   $")
-    print("   $         $  $  $$$$  $$$$  $  $$$$$  $   $$  $       $  $  $  $  $$$$$")
+    for line in title_lines:
+        print(line)
     print("\n" + fg.rs)
 
     for line in file:
@@ -277,24 +250,13 @@ def select_credits():
 
 
 def select_scores():
+    title_lines = language_dictionary[util.game_language].menu.scores_title_lines
     util.clear_screen()
     print("\n" + fg.purple + rs.italic)
-    if util.game_language == util.Language.HUNGARIAN.name:
-        print("\n" + fg.purple + rs.italic)
-        print("   $$$$$$$$$$$  $$$$$$$$$$   $$      $  $$$$$$$$  $$$$$$$$$$  $       $$")
-        print("   $         $  $        $   $ $$    $     $      $        $  $     $$")
-        print("   $$$$$$$$$$$  $        $   $   $$  $     $      $        $  $$$$$$")
-        print("   $            $        $   $    $$ $     $      $        $  $     $$")
-        print("   $            $$$$$$$$$$   $     $$$     $      $$$$$$$$$$  $       $$")
-        print("\n" + fg.rs)
-    else:
-        print("\n" + fg.purple + rs.italic)
-        print("   $$$$$  $$$$   $$$$$$   $$$$    $$$$  $$$$$$")
-        print("   $      $      $    $   $   $   $     $")
-        print("   $$$$$  $      $    $   $ $$    $$$$  $$$$$")
-        print("       $  $      $    $   $   $   $         $")
-        print("   $$$$$  $$$$$  $$$$$$   $    $  $$$$  $$$$$")
-        print("\n" + fg.rs)
+    for line in title_lines:
+        print(line)
+    print("\n" + fg.rs)
+
     if os.path.isfile("scores.json"):
         f = open("scores.json")
         data = json.load(f)
