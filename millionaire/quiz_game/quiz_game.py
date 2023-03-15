@@ -440,6 +440,13 @@ def divide_answer(answer: str, number_of_parts: float) -> list:
 
 def print_quiz_table(question: str, answers_: {}, selected="", color="", correct_answer="", game_level=0,
                      quizmaster=True, prizes=True):
+    colors_ = {
+        "orange":  bg.orange,
+        "green":   bg.green,
+        "blue":    bg.blue ,
+        "li_grey": bg.li_grey,
+    }
+
     global table_length
     basic_question_length = 109
     answer_values = list(answers_.values())
@@ -502,23 +509,14 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
                             if correct_answer != "" and correct_answer == list(answers_.keys())[index + 1]:
                                 second_string = bg.green + fg.black + second_string + fg.rs + bg.rs
                             if list(answers_.keys())[index] == selected:
-                                if color == "orange":
-                                    first_string = bg.orange + fg.black + first_string + fg.rs + bg.rs
-                                if color == "green":
-                                    first_string = bg.green + fg.black + first_string + fg.rs + bg.rs
-                                if color == "blue":
-                                    first_string = bg.blue + fg.black + first_string + fg.rs + bg.rs
-                                if color == "li_grey":
-                                    first_string = bg.li_grey + fg.black + first_string + fg.rs + bg.rs
+                                for bg_color in colors_:
+                                    if color == bg_color:
+                                        first_string = colors_[color] + fg.black + first_string + fg.rs + bg.rs
                             if list(answers_.keys())[index + 1] == selected:
-                                if color == "orange":
-                                    second_string = bg.orange + fg.black + second_string + fg.rs + bg.rs
-                                if color == "green":
-                                    second_string = bg.green + fg.black + second_string + fg.rs + bg.rs
-                                if color == "blue":
-                                    second_string = bg.blue + fg.black + second_string + fg.rs + bg.rs
-                                if color == "li_grey":
-                                    second_string = bg.li_grey + fg.black + second_string + fg.rs + bg.rs
+                                for bg_color in colors_:
+                                    if color == bg_color:
+                                        second_string = colors_[color] + fg.black + second_string + fg.rs + bg.rs
+
                     answer = answer + " ◄|" + first_string + "|►━◄|" + second_string + "  |►"
                     if j < longest_string_divided:
                         answer = answer + "\n"
@@ -534,34 +532,14 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
             index = 0
             for i in answers_:
                 if i == selected:
-                    if color == "orange":
-                        answer_values[list(answers_).index(i)] = bg.orange + fg.black + " " + \
-                                                                 list(answers_.items())[index][
-                                                                     0].upper() + ": " + answers_[i] + " " * (
-                                                                         number_of_spaces - len(
+                    for bg_color in colors_:
+                        if color == bg_color:
+                            answer_values[list(answers_).index(i)] = colors_[color] + fg.black + " " + \
                                                                      list(answers_.items())[index][
-                                                                         1])) + fg.rs + bg.rs
-                    if color == "green":
-                        answer_values[list(answers_).index(i)] = bg.green + fg.black + " " + \
-                                                                 list(answers_.items())[index][
-                                                                     0].upper() + ": " + answers_[i] + " " * (
-                                                                         number_of_spaces - len(
-                                                                     list(answers_.items())[index][
-                                                                         1])) + fg.rs + bg.rs
-                    if color == "blue":
-                        answer_values[list(answers_).index(i)] = bg.blue + fg.black + " " + \
-                                                                 list(answers_.items())[index][
-                                                                     0].upper() + ": " + answers_[i] + " " * (
-                                                                         number_of_spaces - len(
-                                                                     list(answers_.items())[index][
-                                                                         1])) + fg.rs + bg.rs
-                    if color == "li_grey":
-                        answer_values[list(answers_).index(i)] = bg.li_grey + fg.black + " " + \
-                                                                 list(answers_.items())[index][
-                                                                     0].upper() + ": " + answers_[i] + " " * (
-                                                                         number_of_spaces - len(
-                                                                     list(answers_.items())[index][
-                                                                         1])) + fg.rs + bg.rs
+                                                                         0].upper() + ": " + answers_[i] + " " * (
+                                                                             number_of_spaces - len(
+                                                                         list(answers_.items())[index][
+                                                                             1])) + fg.rs + bg.rs
                 elif correct_answer != "" and i == correct_answer:
                     answer_values[list(answers_).index(i)] = bg.green + fg.black + " " + list(answers_.items())[index][
                         0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(
@@ -586,6 +564,12 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
 
 def print_fastest_fingers_table(question: str, answers_: {}, selected="", color="", correct_answer="", game_level=0,
                                 quizmaster=True, prizes=True):
+    colors_ = {
+        "orange": bg.orange,
+        "green": bg.green,
+        "blue": bg.blue,
+        "li_grey": bg.li_grey,
+    }
     global table_length
     basic_question_length = 109
     answer_values = list(answers_.values())
@@ -651,27 +635,17 @@ def print_fastest_fingers_table(question: str, answers_: {}, selected="", color=
                                 if list(answers_.keys())[index] in selected:
                                     first_string = str(selected.index(list(answers_.items())[index][
                                                                           0]) + 1) + ": " + first_string
-                                if color == "orange":
-                                    first_string = bg.orange + fg.black + first_string + fg.rs + bg.rs
-                                if color == "green":
-                                    first_string = bg.green + fg.black + first_string + fg.rs + bg.rs
-                                if color == "blue":
-                                    first_string = bg.blue + fg.black + first_string + fg.rs + bg.rs
-                                if color == "li_grey":
-                                    first_string = bg.li_grey + fg.black + first_string + fg.rs + bg.rs
+                                for bg_color in colors_:
+                                    if color == bg_color:
+                                        first_string = colors_[color] + fg.black + first_string + fg.rs + bg.rs
                             if list(answers_.keys())[index + 1] == selected and list(answers_.keys())[
                                 index] in selected:
                                 if list(answers_.keys())[index] in selected:
                                     second_string = str(selected.index(list(answers_.items())[index][
                                                                            0]) + 1) + ": " + first_string
-                                if color == "orange":
-                                    second_string = bg.orange + fg.black + second_string + fg.rs + bg.rs
-                                if color == "green":
-                                    second_string = bg.green + fg.black + second_string + fg.rs + bg.rs
-                                if color == "blue":
-                                    second_string = bg.blue + fg.black + second_string + fg.rs + bg.rs
-                                if color == "li_grey":
-                                    second_string = bg.li_grey + fg.black + second_string + fg.rs + bg.rs
+                                for bg_color in colors_:
+                                    if color == bg_color:
+                                        second_string = colors_[color] + fg.black + second_string + fg.rs + bg.rs
                     answer = answer + " ◄|" + first_string + "|►━◄|" + second_string + "  |►"
                     if j < longest_string_divided:
                         answer = answer + "\n"
@@ -687,26 +661,12 @@ def print_fastest_fingers_table(question: str, answers_: {}, selected="", color=
             index = 0
             for i in answers_:
                 if i == selected or list(answers_.keys())[index] in selected:
-                    if color == "orange":
-                        answer_values[list(answers_).index(i)] = bg.orange + fg.black + " " + str(
-                            selected.index(list(answers_.items())[index][
-                                               0]) + 1) + ": " + answers_[i] + " " * (number_of_spaces - len(
-                            list(answers_.items())[index][1])) + fg.rs + bg.rs
-                    if color == "green":
-                        answer_values[list(answers_).index(i)] = bg.green + fg.black + " " + str(
-                            selected.index(list(answers_.items())[index][
-                                               0]) + 1) + ": " + answers_[i] + " " * (number_of_spaces - len(
-                            list(answers_.items())[index][1])) + fg.rs + bg.rs
-                    if color == "blue":
-                        answer_values[list(answers_).index(i)] = bg.blue + fg.black + " " + str(
-                            selected.index(list(answers_.items())[index][
-                                               0]) + 1) + ": " + answers_[i] + " " * (number_of_spaces - len(
-                            list(answers_.items())[index][1])) + fg.rs + bg.rs
-                    if color == "li_grey":
-                        answer_values[list(answers_).index(i)] = bg.li_grey + fg.black + " " + str(
-                            selected.index(list(answers_.items())[index][
-                                               0]) + 1) + ": " + answers_[i] + " " * (number_of_spaces - len(
-                            list(answers_.items())[index][1])) + fg.rs + bg.rs
+                    for bg_color in colors_:
+                        if color == bg_color:
+                            answer_values[list(answers_).index(i)] = colors_[color] + fg.black + " " + str(
+                                selected.index(list(answers_.items())[index][
+                                                   0]) + 1) + ": " + answers_[i] + " " * (number_of_spaces - len(
+                                list(answers_.items())[index][1])) + fg.rs + bg.rs
                 elif correct_answer != "" and i == correct_answer:
                     answer_values[list(answers_).index(i)] = bg.green + fg.black + " " + str(
                         selected.index(list(answers_.items())[index][
