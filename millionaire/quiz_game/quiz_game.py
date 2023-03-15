@@ -1025,11 +1025,7 @@ def show_game_structure():
         util.play_sound("prologue_end", 0, timer=True)
         util.clear_screen()
     else:
-        helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
-        separator = fg.blue + "|" + fg.rs
-        print(fg.blue + 31 * "-" + fg.rs)
-        print(separator + helps[0] + separator + helps[1] + separator + helps[2] + separator)
-        print(fg.blue + 31 * "-" + fg.rs)
+        print_helps()
         print("\n\n")
         print_prizes()
         time.sleep(4)
