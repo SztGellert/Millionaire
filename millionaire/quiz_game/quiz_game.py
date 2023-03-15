@@ -1113,118 +1113,36 @@ def handle_user_input(question: str, answers: dict, level=0, final_color="orange
     while True:
         user_input = get_user_input()
         if not help:
-            if user_input == b'a' or user_input == "a":
-                if util.game_language == util.Language.HUNGARIAN.name:
-                    selected_final_sound = random.choice(final_sounds)
-                    selected_lets_see_sound = random.choice(lets_see_sounds)
-                util.clear_screen()
-                print_quiz_table(question, answers, game_level=level, selected="a", color="li_grey")
-                print("\n\n   " + fg.grey + select_text + fg.rs)
-                util.stop_sound()
-                if util.game_language == util.Language.HUNGARIAN.name:
-                    util.play_sound(selected_final_sound, 0, timer=True)
-                if not out_of_game:
-                    play_music(level)
-                while True:
-                    user_input = get_user_input()
-                    if user_input == b'\r' or user_input == '<Ctrl-j>':
-                        util.clear_screen()
-                        print_quiz_table(question, answers, "a", final_color, game_level=level)
-                        util.stop_sound()
-                        if util.game_language == util.Language.HUNGARIAN.name:
-                            play_marked_sound("a", level)
-                        util.play_sound("marked", 0)
-                        time.sleep(2)
-                        if util.game_language == util.Language.HUNGARIAN.name:
-                            util.play_sound(selected_lets_see_sound, 0)
-                            time.sleep(3)
-                        return "a"
-                    if user_input not in [b'a', "a"]:
-                        break
-            if user_input == b'b' or user_input == "b":
-                if util.game_language == util.Language.HUNGARIAN.name:
-                    selected_final_sound = random.choice(final_sounds)
-                    selected_lets_see_sound = random.choice(lets_see_sounds)
-                util.clear_screen()
-                print_quiz_table(question, answers, game_level=level, selected="b", color="li_grey")
-                print("\n\n   " + fg.grey + select_text + fg.rs)
-                util.stop_sound()
-                if util.game_language == util.Language.HUNGARIAN.name:
-                    util.play_sound(selected_final_sound, 0, timer=True)
-                if not out_of_game:
-                    play_music(level)
-                while True:
-                    user_input = get_user_input()
-                    if user_input == b'\r' or user_input == '<Ctrl-j>':
-                        util.clear_screen()
-                        print_quiz_table(question, answers, "b", final_color, game_level=level)
-                        util.stop_sound()
-                        if util.game_language == util.Language.HUNGARIAN.name:
-                            play_marked_sound("b", level)
-                        util.play_sound("marked", 0)
-                        time.sleep(2)
-                        if util.game_language == util.Language.HUNGARIAN.name:
-                            util.play_sound(selected_lets_see_sound, 0)
-                            time.sleep(3)
-                        return "b"
-                    if user_input not in [b'b', "b"]:
-                        break
-            if user_input == b'c' or user_input == "c":
-                if util.game_language == util.Language.HUNGARIAN.name:
-                    selected_final_sound = random.choice(final_sounds)
-                    selected_lets_see_sound = random.choice(lets_see_sounds)
-                util.clear_screen()
-                print_quiz_table(question, answers, game_level=level, selected="c", color="li_grey")
-                print("\n\n   " + fg.grey + select_text + fg.rs)
-                util.stop_sound()
-                if util.game_language == util.Language.HUNGARIAN.name:
-                    util.play_sound(selected_final_sound, 0, timer=True)
-                if not out_of_game:
-                    play_music(level)
-                while True:
-                    user_input = get_user_input()
-                    if user_input == b'\r' or user_input == '<Ctrl-j>':
-                        util.clear_screen()
-                        print_quiz_table(question, answers, "c", final_color, game_level=level)
-                        util.stop_sound()
-                        if util.game_language == util.Language.HUNGARIAN.name:
-                            play_marked_sound("c", level)
-                        util.play_sound("marked", 0)
-                        time.sleep(2)
-                        if util.game_language == util.Language.HUNGARIAN.name:
-                            util.play_sound(selected_lets_see_sound, 0)
-                            time.sleep(3)
-                        return "c"
-                    if user_input not in [b'c', "c"]:
-                        break
-            if user_input == b'd' or user_input == "d":
-                if util.game_language == util.Language.HUNGARIAN.name:
-                    selected_final_sound = random.choice(final_sounds)
-                    selected_lets_see_sound = random.choice(lets_see_sounds)
-                util.clear_screen()
-                print_quiz_table(question, answers, game_level=level, selected="d", color="li_grey")
-                print("\n\n   " + fg.grey + select_text + fg.rs)
-                util.stop_sound()
-                if util.game_language == util.Language.HUNGARIAN.name:
-                    util.play_sound(selected_final_sound, 0, timer=True)
-                if not out_of_game:
-                    play_music(level)
-                while True:
-                    user_input = get_user_input()
-                    if user_input == b'\r' or user_input == '<Ctrl-j>':
-                        util.clear_screen()
-                        print_quiz_table(question, answers, "d", final_color, game_level=level)
-                        util.stop_sound()
-                        if util.game_language == util.Language.HUNGARIAN.name:
-                            play_marked_sound("d", level)
-                        util.play_sound("marked", 0)
-                        time.sleep(2)
-                        if util.game_language == util.Language.HUNGARIAN.name:
-                            util.play_sound(selected_lets_see_sound, 0)
-                            time.sleep(3)
-                        return "d"
-                    if user_input not in [b'd', "d"]:
-                        break
+            user_inputs = [[b'a', "a"], [b'b', "b"], [b'c', "c"], [b'd', "d"]]
+            for input_ in user_inputs:
+                if user_input == input_[0] or user_input == input_[1]:
+                    if util.game_language == util.Language.HUNGARIAN.name:
+                        selected_final_sound = random.choice(final_sounds)
+                        selected_lets_see_sound = random.choice(lets_see_sounds)
+                    util.clear_screen()
+                    print_quiz_table(question, answers, game_level=level, selected=input_[1], color="li_grey")
+                    print("\n\n   " + fg.grey + select_text + fg.rs)
+                    util.stop_sound()
+                    if util.game_language == util.Language.HUNGARIAN.name:
+                        util.play_sound(selected_final_sound, 0, timer=True)
+                    if not out_of_game:
+                        play_music(level)
+                    while True:
+                        user_input = get_user_input()
+                        if user_input == b'\r' or user_input == '<Ctrl-j>':
+                            util.clear_screen()
+                            print_quiz_table(question, answers, input_[1], final_color, game_level=level)
+                            util.stop_sound()
+                            if util.game_language == util.Language.HUNGARIAN.name:
+                                play_marked_sound(input_[1], level)
+                            util.play_sound("marked", 0)
+                            time.sleep(2)
+                            if util.game_language == util.Language.HUNGARIAN.name:
+                                util.play_sound(selected_lets_see_sound, 0)
+                                time.sleep(3)
+                            return input_[1]
+                        if user_input not in input_:
+                            break
         if not out_of_game:
             if user_input == b'a' or user_input == "a":
                 return "a"
@@ -1250,39 +1168,19 @@ def handle_user_input(question: str, answers: dict, level=0, final_color="orange
             return "esc"
 
 
-def handle_fastest_fingers_first_input(question: str, answers: dict, level: int, selected: str,
-                                       final_color="orange") -> str:
+def handle_fastest_fingers_first_input(question: str, answers: dict, level: int, selected: str, final_color="orange") -> str:
     select_text = language_dictionary[game_language].quiz.select_answer_out
     while True:
         user_input = get_user_input()
+        user_inputs = [[b'a', "a"], [b'b', "b"], [b'c', "c"], [b'd', "d"]]
 
-        if user_input == b'a' or user_input == "a":
-            util.clear_screen()
-            print_fastest_fingers_table(question, answers, selected + "a", final_color, game_level=level,
-                                        quizmaster=True, prizes=False)
-            print("\n\n   " + fg.grey + select_text + fg.rs)
-            return "a"
-
-        if user_input == b'b' or user_input == "b":
-            util.clear_screen()
-            print_fastest_fingers_table(question, answers, selected + "b", final_color, game_level=level,
-                                        quizmaster=True, prizes=False)
-            print("\n\n   " + fg.grey + select_text + fg.rs)
-            return "b"
-
-        if user_input == b'c' or user_input == "c":
-            util.clear_screen()
-            print_fastest_fingers_table(question, answers, selected + "c", final_color, game_level=level,
-                                        quizmaster=True, prizes=False)
-            print("\n\n   " + fg.grey + select_text + fg.rs)
-            return "c"
-
-        if user_input == b'd' or user_input == "d":
-            util.clear_screen()
-            print_fastest_fingers_table(question, answers, selected + "d", final_color, game_level=level,
-                                        quizmaster=True, prizes=False)
-            print("\n\n   " + fg.grey + select_text + fg.rs)
-            return "d"
+        for input_ in user_inputs:
+            if user_input == input_[0] or user_input == input_[1]:
+                util.clear_screen()
+                print_fastest_fingers_table(question, answers, selected + input_[1], final_color, game_level=level,
+                                            quizmaster=True, prizes=False)
+                print("\n\n   " + fg.grey + select_text + fg.rs)
+                return input_[1]
 
         if user_input == b'\x1b' or user_input == '<ESC>':
             return "esc"
