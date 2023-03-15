@@ -1083,7 +1083,7 @@ def handle_user_input(question: str, answers: dict, level=0, final_color="orange
                             util.stop_sound()
                             if util.game_language == util.Language.HUNGARIAN.name:
                                 play_marked_sound(input_[1], level)
-                            util.play_sound("marked", 0)
+                            util.play_sound("marked", 0, general=True)
                             time.sleep(2)
                             if util.game_language == util.Language.HUNGARIAN.name:
                                 util.play_sound(selected_lets_see_sound, 0)
