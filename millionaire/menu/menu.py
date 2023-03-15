@@ -3,7 +3,6 @@ import os
 import sys
 import time
 import json
-import threading
 import keyboard
 from sty import Style, RgbFg, fg, bg, rs
 import millionaire.quiz_game.quiz_game as quiz
@@ -15,67 +14,144 @@ bg.orange = bg(255, 150, 50)
 language_dictionary = util.language_dictionary
 default_width = 40
 screen_distance = 60
-
+bg.dark_blue = bg(0, 0, 155)
+bg.darkest_blue = bg(42, 45, 112)
 
 def intro():
-    bg.purple = bg(148, 0, 211)
-    util.clear_screen()
     if util.game_language == util.Language.HUNGARIAN.name:
         util.play_sound("intro", 0, volume=1)
+
     else:
         util.play_sound("intro", 0)
 
-    width = 48
-    i = 0
-    if util.game_language == util.Language.HUNGARIAN.name:
-        text_millionaire = bg.rs + fg.white + "   M     I     L     L     I     O     M     O     S    " + bg.rs + fg.rs
-        text_who = "  LEGYEN   ÖN   IS  "
-        text_who2 = "   LEGYEN   ÖN  IS "
-    else:
-        text_millionaire = bg.rs + fg.white + "  M    I    L    L    I    O    N    A    I    R    E   " + bg.rs + fg.rs
-        text_who = " WHO WANTS  TO BE A "
-        text_who2 = " WHO WANTS TO BE A "
+    bg.light_blue = bg(96,180,225)
+    bg.deep_purple = bg(30, 0, 60)
+    bg.blue = bg.darkest_blue
 
-    for i in range(width):
-        line = ""
-        if i < width / 3:
-            len_spaces = int(width / 3) - i
-            if i == 0 or i == 1:
-                line = bg.purple + ((2 * (int(width / 3)) + i * 2) + 4) * "X"
-            elif i == 12:
-                line = bg.blue + fg.blue + int(
-                    (2 * (int(width / 3)) + i * 2) / 3) * "X" + fg.rs + bg.rs + text_who + bg.blue + fg.blue + int(
-                    (2 * (int(width / 3)) + i * 2) / 3) * "X"
-            else:
-                line = bg.blue + fg.blue + (2 * (int(width / 3)) + i * 2) * "X"
-        elif i < width - width / 3:
-            len_spaces = 0
-            if i == width / 2:
-                line = bg.blue + fg.blue + int(width / 10) * "X" + int(
-                    ((width - int(width / 3)) - len(
-                        text_millionaire)) / 2) * " " + fg.rs + bg.rs + text_millionaire + bg.blue + fg.blue + int(
-                    ((width - int(width / 3)) - len(text_millionaire)) / 2) * " " + int(width / 10) * "X"
-            else:
-                line = bg.blue + fg.blue + (width - int(width / 3)) * "X" + (width - int(width / 3)) * "X" + bg.rs
-        else:
-            len_spaces = i - (width - int(width / 3)) - 1
-            if i == 36:
-                line = bg.blue + fg.blue + int((width * 2 - (i - (width - (
-                    int(width / 3)) - 1)) - i) / 3) * "X" + fg.rs + bg.rs + text_who2 + bg.blue + fg.blue + int(
-                    (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) / 3) * "X"
-            elif i == 46 or i == 47:
-                line = bg.purple + ((width * 2 - (i - (width - (int(width / 3)) - 1)) - i) + 4) * "X" + bg.rs
-            else:
-                line = bg.blue + fg.blue + (width * 2 - (i - (width - (int(width / 3)) - 1)) - i) * "X"
-        if i not in [0, 1, 46, 47]:
-            print(
-                bg.rs + fg.rs + len_spaces * " " + bg.purple + fg.purple + "XX" + bg.rs + line + bg.purple + fg.purple + line[
-                                                                                                                         -2:] + bg.rs)
-        else:
-            print(len_spaces * " " + fg.purple + line + bg.rs + fg.rs)
+    text_count = 0
 
-        time.sleep(0.1)
-        i += 1
+    first_text = language_dictionary[util.game_language].menu.side_title_first_part
+    second_text = language_dictionary[util.game_language].menu.side_title_second_part
+    millionaire_lines = language_dictionary[util.game_language].menu.millionaire_lines
+
+    pixels_in_line = 0
+    pixels_per_line = []
+
+    diameter = 40
+
+    # You must account for the loops being zero-based, but the quotient of the diameter / 2 being
+    # one-based. If you use the exact radius, you will be short one column and one row.
+    offset_radius = (diameter / 2) - 0.5
+    util.clear_screen()
+
+    points = list([] for sd in range(diameter))
+    util.clear_screen()
+    for i in range(diameter):
+        for j in range(diameter):
+
+            x = i - offset_radius
+            y = j - offset_radius
+
+            if x * x + y * y <= offset_radius * offset_radius + 1:
+                line = 'X'
+                end = '..'
+                pixels_in_line += 1
+            else:
+                line = ' '
+                end = '  '
+            points[j].append(line + end)
+        pixels_per_line.append(pixels_in_line)
+        pixels_in_line = 0
+
+    for point in range(len(points)):
+
+        current_line = "".join(points[point])
+        line = "".join(points[point])
+        first_index = line.find("X")
+        last_index = line.rfind(".")
+
+        line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[last_index:]
+
+        color = bg.blue
+        if point < 12:
+            if point == 8:
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "   " + first_text[
+                    -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                    first_index:last_index] + bg.blue +"    " +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
+                        second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                         last_index:]
+            elif point == 9:
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  " " + first_text[
+                    -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                    first_index:last_index] + bg.blue +"      " +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
+                        second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                         last_index:]
+            elif point == 11:
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "   " + first_text[
+                    -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                    first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
+                        second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                         last_index:]
+            else:
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[-point] + "   "  + bg.rs + bg.white + " "  +  bg.blue + " " + bg.rs +bg.light_blue + "  " + bg.rs + line[ first_index:last_index] + bg.blue + "   " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + second_text[point] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[last_index:]
+        if point == 15:
+            millionaire_lines[0] = millionaire_lines[0].replace(" ", color + " " + bg.rs)
+            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[0] + line2[205:]
+        if point == 16:
+            millionaire_lines[1] = millionaire_lines[1].replace(" ", color + " " + bg.rs)
+            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[1] + line2[205:]
+        if point == 17:
+            millionaire_lines[2] = millionaire_lines[2].replace(" ", color + " " + bg.rs)
+            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[2] + line2[205:]
+        if point == 18:
+            millionaire_lines[3] = millionaire_lines[3].replace(" ", color + " " + bg.rs)
+            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[3] + line2[205:]
+        if point == 19:
+            millionaire_lines[4] = millionaire_lines[4].replace(" ", color + " " + bg.rs)
+            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[4] + line2[205:]
+        if point == 20:
+            millionaire_lines[5] = millionaire_lines[5].replace(" ", color + " " + bg.rs)
+            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[5] + line2[205:]
+        if point == 21:
+            millionaire_lines[6] = millionaire_lines[6].replace(" ", color + " " + bg.rs)
+            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[6] + line2[205:]
+        if point == 22:
+            millionaire_lines[7] = millionaire_lines[7].replace(" ", color + " " + bg.rs)
+            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[7] + line2[205:]
+        if point == 23:
+            millionaire_lines[8] = millionaire_lines[8].replace(" ", color + " " + bg.rs)
+            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[8] + line2[205:]
+        if point == 24:
+            millionaire_lines[9] = millionaire_lines[9].replace(" ", color + " " + bg.rs)
+            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[9] + line2[205:]
+        if point == 25:
+            millionaire_lines[10] = millionaire_lines[10].replace(" ", color + " " + bg.rs)
+            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[10] + line2[205:]
+        if point > 25 and point < 37:
+            if point == 30:
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "  " + first_text[
+                    text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                    first_index:last_index] + bg.blue +"    " +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
+                        second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                         last_index:]
+            elif point == 31:
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "    " + first_text[
+                    text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                    first_index:last_index] + bg.blue +"" +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
+                        second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                         last_index:]
+            else:
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[text_count] + "   "  + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[ first_index:last_index] + bg.blue + " " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + second_text[-text_count] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[last_index:]
+            text_count += 1
+        line2 = line2.replace("X", bg.blue + " " + bg.rs)
+        line2 = line2.replace(".", bg.blue + " " + bg.rs)
+        line2 = line2.replace("X", bg.black + " " + bg.rs)
+        line2 = line2.replace("|", bg.white + " " + bg.rs)
+
+
+        line3 = "".join(line2)
+
+        print(line3)
 
     timeout = 15
     start_time = time.time()
@@ -94,59 +170,6 @@ def intro():
         util.stop_sound()
         return
     else:
-        return
-
-
-def old_intro():
-    util.clear_screen()
-    if util.game_language == util.Language.HUNGARIAN.name:
-        util.play_sound("intro", 0, volume=1)
-    else:
-        util.play_sound("intro", 0)
-    file = (util.open_file("intro_" + str(util.game_language).lower(), 'r'))
-
-    first_line = threading.Timer(6.0, print_intro_lines, args=(file[0][0], ""))
-    second_line = threading.Timer(9.0, print_intro_lines, args=(file[3][0], "purple"))
-    third_line = threading.Timer(11.0, print_intro_lines, args=(file[1][0], ""))
-    fourth_line = threading.Timer(13.0, print_intro_lines, args=(file[2][0], ""))
-
-    first_line.start()
-    second_line.start()
-    third_line.start()
-    fourth_line.start()
-
-    timeout = 15
-    startTime = time.time()
-    inp = None
-
-    print("\n" * default_width + screen_distance * "   " + language_dictionary[util.game_language].menu.skip_prompt)
-    time.sleep(1)
-    util.clear_screen()
-    while True:
-        # TODO: only works on win
-        if msvcrt.kbhit():
-            inp = msvcrt.getch()
-            break
-        elif time.time() - startTime > timeout:
-            break
-
-    if inp:
-        threading.Timer.cancel(first_line)
-        threading.Timer.cancel(second_line)
-        threading.Timer.cancel(third_line)
-        threading.Timer.cancel(fourth_line)
-        util.stop_sound()
-        return
-    else:
-        return
-
-
-def print_intro_lines(text: "", text_color: ""):
-    if text_color == "purple":
-        print(fg.purple + text + fg.rs)
-        return
-    else:
-        print(text)
         return
 
 
@@ -214,12 +237,10 @@ def select_help():
 def select_credits():
     util.clear_screen()
     file = (util.open_file("credits_" + str(util.game_language).lower(), 'r'))
+    title_lines = language_dictionary[util.game_language].menu.credits_title_lines
     print("\n" + fg.purple + rs.italic)
-    print("   $$$$   $$$$  $  $     $     $  $$$$$  $$   $     $$$     $  $$$$  $$$$$")
-    print("   $  $   $  $  $  $     $     $  $   $  $$   $     $ $     $  $  $  $")
-    print("   $   $$    $  $  $     $     $  $   $  $ $  $    $   $    $  $  $  $$$$")
-    print("   $         $  $  $     $     $  $   $  $  $ $   $$$$$$$   $  $$$   $")
-    print("   $         $  $  $$$$  $$$$  $  $$$$$  $   $$  $       $  $  $  $  $$$$$")
+    for line in title_lines:
+        print(line)
     print("\n" + fg.rs)
 
     for line in file:
@@ -229,24 +250,13 @@ def select_credits():
 
 
 def select_scores():
+    title_lines = language_dictionary[util.game_language].menu.scores_title_lines
     util.clear_screen()
     print("\n" + fg.purple + rs.italic)
-    if util.game_language == util.Language.HUNGARIAN.name:
-        print("\n" + fg.purple + rs.italic)
-        print("   $$$$$$$$$$$  $$$$$$$$$$   $$      $  $$$$$$$$  $$$$$$$$$$  $       $$")
-        print("   $         $  $        $   $ $$    $     $      $        $  $     $$")
-        print("   $$$$$$$$$$$  $        $   $   $$  $     $      $        $  $$$$$$")
-        print("   $            $        $   $    $$ $     $      $        $  $     $$")
-        print("   $            $$$$$$$$$$   $     $$$     $      $$$$$$$$$$  $       $$")
-        print("\n" + fg.rs)
-    else:
-        print("\n" + fg.purple + rs.italic)
-        print("   $$$$$  $$$$   $$$$$$   $$$$    $$$$  $$$$$$")
-        print("   $      $      $    $   $   $   $     $")
-        print("   $$$$$  $      $    $   $ $$    $$$$  $$$$$")
-        print("       $  $      $    $   $   $   $         $")
-        print("   $$$$$  $$$$$  $$$$$$   $    $  $$$$  $$$$$")
-        print("\n" + fg.rs)
+    for line in title_lines:
+        print(line)
+    print("\n" + fg.rs)
+
     if os.path.isfile("scores.json"):
         f = open("scores.json")
         data = json.load(f)
