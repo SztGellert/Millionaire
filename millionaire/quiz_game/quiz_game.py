@@ -538,30 +538,30 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
                         answer_values[list(answers_).index(i)] = bg.orange + fg.black + " " + \
                                                                  list(answers_.items())[index][
                                                                      0].upper() + ": " + answers_[i] + " " * (
-                                                                             number_of_spaces - len(
-                                                                         list(answers_.items())[index][
-                                                                             1])) + fg.rs + bg.rs
+                                                                         number_of_spaces - len(
+                                                                     list(answers_.items())[index][
+                                                                         1])) + fg.rs + bg.rs
                     if color == "green":
                         answer_values[list(answers_).index(i)] = bg.green + fg.black + " " + \
                                                                  list(answers_.items())[index][
                                                                      0].upper() + ": " + answers_[i] + " " * (
-                                                                             number_of_spaces - len(
-                                                                         list(answers_.items())[index][
-                                                                             1])) + fg.rs + bg.rs
+                                                                         number_of_spaces - len(
+                                                                     list(answers_.items())[index][
+                                                                         1])) + fg.rs + bg.rs
                     if color == "blue":
                         answer_values[list(answers_).index(i)] = bg.blue + fg.black + " " + \
                                                                  list(answers_.items())[index][
                                                                      0].upper() + ": " + answers_[i] + " " * (
-                                                                             number_of_spaces - len(
-                                                                         list(answers_.items())[index][
-                                                                             1])) + fg.rs + bg.rs
+                                                                         number_of_spaces - len(
+                                                                     list(answers_.items())[index][
+                                                                         1])) + fg.rs + bg.rs
                     if color == "li_grey":
                         answer_values[list(answers_).index(i)] = bg.li_grey + fg.black + " " + \
                                                                  list(answers_.items())[index][
                                                                      0].upper() + ": " + answers_[i] + " " * (
-                                                                             number_of_spaces - len(
-                                                                         list(answers_.items())[index][
-                                                                             1])) + fg.rs + bg.rs
+                                                                         number_of_spaces - len(
+                                                                     list(answers_.items())[index][
+                                                                         1])) + fg.rs + bg.rs
                 elif correct_answer != "" and i == correct_answer:
                     answer_values[list(answers_).index(i)] = bg.green + fg.black + " " + list(answers_.items())[index][
                         0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(
@@ -766,7 +766,7 @@ def print_quizmaster_with_prizes(level: int):
             else:
                 if len(prizes) - index in [5, 10, 15]:
                     print(line[0] + " " * missing_space + "| " + round_number + "   " + prizes_[index][0] + " " * (
-                                help_length - box_space) + "|")
+                            help_length - box_space) + "|")
                 else:
                     print(line[0] + " " * missing_space + "| " + round_number + "   " + fg.orange + prizes_[index][
                         0] + fg.rs + " " * (help_length - box_space) + "|")
@@ -1036,8 +1036,9 @@ def show_game_structure():
         util.clear_screen()
 
 
-def print_helps():
-    helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
+def print_helps(helps=None):
+    if helps is None:
+        helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
     separator = fg.blue + "|" + fg.rs
     print(fg.blue + 31 * "-" + fg.rs)
     print(separator + helps[0] + separator + helps[1] + separator + helps[2] + separator)
@@ -1045,30 +1046,20 @@ def print_helps():
 
 
 def list_helps():
-    helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
-    separator = fg.blue + "|" + fg.rs
-    print(fg.blue + 31 * "-" + fg.rs)
-    print(separator + bg.orange + fg.black + helps[0] + fg.rs + bg.rs + separator + helps[1] + separator + helps[
-        2] + separator)
-    print(fg.blue + 31 * "-" + fg.rs)
-    print("\n\n")
-    print_prizes()
-    time.sleep(1.3)
-    util.clear_screen()
-    print(fg.blue + 31 * "-" + fg.rs)
-    print(separator + helps[0] + separator + bg.orange + fg.black + helps[1] + fg.rs + bg.rs + separator + helps[
-        2] + separator)
-    print(fg.blue + 31 * "-" + fg.rs)
-    print("\n\n")
-    print_prizes()
-    time.sleep(1.3)
-    util.clear_screen()
-    print(fg.blue + 31 * "-" + fg.rs)
-    print(separator + helps[0] + separator + helps[
-        1] + separator + bg.orange + fg.black + "  ☻ ☻ ☻  " + fg.rs + bg.rs + separator)
-    print(fg.blue + 31 * "-" + fg.rs)
-    print("\n\n")
-    print_prizes()
+    halving_ = " 50 : 50 "
+    telephone_ = "     \_] "
+    audience_ = "  ☺ ☺ ☺  "
+    helps_ = [[bg.orange + fg.black + halving_ + fg.rs + bg.rs, telephone_, audience_],
+              [halving_, bg.orange + fg.black + telephone_ + fg.rs + bg.rs, audience_],
+              [halving_, telephone_, bg.orange + fg.black + "  ☻ ☻ ☻  " + fg.rs + bg.rs]]
+
+    for help_ in helps_:
+        print_helps(help_)
+        print("\n\n")
+        print_prizes()
+        if helps_.index(help_) < 2:
+            time.sleep(1.3)
+            util.clear_screen()
 
 
 def print_prizes():
@@ -1101,7 +1092,8 @@ def play_marked_sound(choise: str, level: int):
         time.sleep(1)
 
 
-def handle_user_input(question: str, answers: dict, level=0, final_color="orange", out_of_game=False, help=False) -> str:
+def handle_user_input(question: str, answers: dict, level=0, final_color="orange", out_of_game=False,
+                      help=False) -> str:
     select_text = language_dictionary[game_language].quiz.select_answer
     if out_of_game:
         select_text = language_dictionary[game_language].quiz.select_answer_out
@@ -1168,7 +1160,8 @@ def handle_user_input(question: str, answers: dict, level=0, final_color="orange
             return "esc"
 
 
-def handle_fastest_fingers_first_input(question: str, answers: dict, level: int, selected: str, final_color="orange") -> str:
+def handle_fastest_fingers_first_input(question: str, answers: dict, level: int, selected: str,
+                                       final_color="orange") -> str:
     select_text = language_dictionary[game_language].quiz.select_answer_out
     while True:
         user_input = get_user_input()
