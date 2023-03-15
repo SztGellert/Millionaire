@@ -2,6 +2,8 @@
     "en": "Angol",
     "hu": "Magyar",
     "menu": {
+        "side_title_first_part": " ♦ LEGYEN   ",
+        "side_title_second_part": "  ÖN   IS  ♦",
         "title_first_line": " ♦      L E G Y E N     Ö N    I S      ♦",
         "title_second_line": "     M   I   L   L   I   O   M   O   S",
         "return_prompt": "Nyomja meg az ESCAPE-t a menübe való visszatéréshez...",
@@ -24,7 +26,30 @@
             "score": "Pontszám",
             "time":  "Idő"
         },
-        "question_difficulty_levels": ["Mind","Könnyű", "Közepes", "Nehéz"]
+        "question_difficulty_levels": ["Mind","Könnyű", "Közepes", "Nehéz"],
+        "millionaire_lines": [" XXXXX   XXXXX XXX XXX    XXX    XXX XXXXXXXXX XXXXX   XXXXX XXXXXXXXX XXXXXXXX ",
+                              " X|||XX XX|||X X|X X|X    X|X    X|X X|||||||X X|||XX XX|||X X|||||||X X||||||X ",
+                              " X||||XXX||||X X|X X|X    X|X    X|X X|XXXXX|X X||||XXX||||X X|XXXXX|X X||XXXXX ",
+                              " X|XXX|X|XXX|X X|X X|X    X|X    X|X X|X   X|X X|XXX|X|XXX|X X|X   X|X X||X     ",
+                              " X|X XX|XX X|X X|X X|X    X|X    X|X X|X   X|X X|X XX|XX X|X X|X   X|X X||XXXXX ",
+                              " X|X  XXX  X|X X|X X|X    X|X    X|X X|X   X|X X|X  XXX  X|X X|X   X|X X||||||X ",
+                              " X|X       X|X X|X X|X    X|X    X|X X|X   X|X X|X       X|X X|X   X|X XXXXX||X ",
+                              " X|X       X|X X|X X|X    X|X    X|X X|X   X|X X|X       X|X X|X   X|X     X||X ",
+                              " X|X       X|X X|X X|XXXX X|XXXX X|X X|XXXXX|X X|X       X|X X|XXXXX|X XXXXX||X ",
+                              " X|X       X|X X|X X||||X X||||X X|X X|||||||X X|X       X|X X|||||||X X||||||X ",
+                              " XXX       XXX XXX XXXXXX XXXXXX XXX XXXXXXXXX XXX       XXX XXXXXXXXX XXXXXXXX "
+        ],
+        "credits_title_lines":     ["   $$$$   $$$$  $  $     $     $  $$$$$  $$$$   $$$$ $$$$$ $$$$$",
+                                    "   $  $   $  $  $  $     $     $  $   $  $  $   $  $ $   $ $    ",
+                                    "   $   $$    $  $  $     $     $  $   $  $   $$    $ $   $ $$$$$",
+                                    "   $         $  $  $     $     $  $   $  $         $ $   $     $",
+                                    "   $         $  $  $$$$  $$$$  $  $$$$$  $         $ $$$$$ $$$$$"
+        ],
+        "scores_title_lines":          ["   $$$$$$$$$$$  $$$$$$$$$$   $$      $  $$$$$$$$  $$$$$$$$$$  $       $$",
+                                        "   $         $  $        $   $ $$    $     $      $        $  $     $$  ",
+                                        "   $$$$$$$$$$$  $        $   $   $$  $     $      $        $  $$$$$$    ",
+                                        "   $            $        $   $    $$ $     $      $        $  $     $$  ",
+                                        "   $            $$$$$$$$$$   $     $$$     $      $$$$$$$$$$  $       $$"]
     },
     "quiz": {
         "player_name_prompt": "Hogyan szólíthatom? ",
