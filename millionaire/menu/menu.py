@@ -395,7 +395,7 @@ def select_settings():
 def update_settings_file():
     filename = "settings.json"
     content = {"language": util.game_language, "topic": util.question_topics, "difficulty": util.question_difficulty,
-               "volume": util.system_volume}
+               "volume": util.system_volume, "quizmaster_attitude": util.quizmaster_attitude}
     with open(filename, "w", encoding="UTF-8") as outfile:
         json.dump(content, outfile)
 
