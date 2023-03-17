@@ -103,12 +103,12 @@ def play():
         print_quiz_table(question, shuffled_answers, game_level=i)
         play_music(i)
         print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
-        answer = handle_user_input(question, shuffled_answers, level=i)
+        correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
+        correct_answer_value = question_lines[i][1]
+        answer = handle_user_input(question, shuffled_answers, correct_answer_key, level=i)
         if answer == "esc":
             quit_game(score, player_name, question_topics)
             return
-        correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
-        correct_answer_value = question_lines[i][1]
         util.stop_sound()
         while answer not in list(answers.keys()):
             if answer == "t":
@@ -117,7 +117,7 @@ def play():
                 if util.game_language == util.Language.HUNGARIAN.name:
                     util.play_sound("music_off", 0)
                 print("\n\n  ", fg.grey + language_dictionary[game_language].quiz.select_answer_out + fg.rs)
-                answer = handle_user_input(question, shuffled_answers, level=i, final_color="blue", out_of_game=True)
+                answer = handle_user_input(question, shuffled_answers,  correct_answer_key, level=i, final_color="blue", out_of_game=True)
                 if answer == "esc":
                     quit_game(score, player_name, question_topics)
                     return
@@ -161,7 +161,7 @@ def play():
                 print_quiz_table(question, shuffled_answers, game_level=i)
                 help_functions = {"halving": halving, "telephone": telephone_help, "audience": audience_help}
                 print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.help_selection + fg.rs)
-                help_input = handle_user_input(question, shuffled_answers, level=i, help=True)
+                help_input = handle_user_input(question, shuffled_answers,  correct_answer_key, level=i, help=True)
                 if help_input == "esc":
                     quit_game(score, player_name, question_topics)
                     return
@@ -190,7 +190,7 @@ def play():
                                 print("  " + language_dictionary[game_language].quiz.phone_help_disabled)
                 play_music(i)
                 print("\n\n  ", fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
-                answer = handle_user_input(question, shuffled_answers, level=i)
+                answer = handle_user_input(question, shuffled_answers,  correct_answer_key, level=i)
                 time.sleep(2)
         util.clear_screen()
         is_correct = check_answer(answer, correct_answer_key)
@@ -815,7 +815,7 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
 
 def telephone_help(question: str, answers: {}, correct_answer: str):
     print("\n   " + language_dictionary[game_language].quiz.phone_prompt)
-    phone = handle_user_input(question, answers, help=True)
+    phone = handle_user_input(question, answers,  correct_answer, help=True)
     call_text_files = ["mum_phone_" + str(game_language).lower(),
                        "dad_phone_" + str(game_language).lower(),
                        "teacher_phone_" + str(game_language).lower(),
@@ -1048,9 +1048,29 @@ def play_marked_sound(choise: str, level: int):
         time.sleep(1)
 
 
-def handle_user_input(question: str, answers: dict, level=0, final_color="orange", out_of_game=False,
+def get_sound_list(attitude: str) -> {}:
+    correct_sounds = ["you_came_for_money", "dont_sigh_yet", "hurry_up", "dont_let_me_speak", "dont_listen_to_me", "whatever_you_say_wow", "that_was_fast", "what_you_say_will_be"]
+    bad_sounds = ["i_wont_help_more", "calm", "look_at_my_eyes", "dont_want_to_say_dummy", "nooo", "dont_be_impatient"]
+
+    if attitude == util.QuizMasterAttitude.FRIENDLY.name:
+        return {"correct_sounds" : correct_sounds, "bad_sounds": bad_sounds}
+    elif attitude == util.QuizMasterAttitude.HOSTILE.name:
+        return {"correct_sounds" : correct_sounds, "bad_sounds": bad_sounds}
+    elif attitude == util.QuizMasterAttitude.NEUTRAL.name:
+        return {"correct_sounds" : correct_sounds, "bad_sounds": bad_sounds}
+    else:
+        return {}
+
+
+
+
+def handle_user_input(question: str, answers: dict, correct_answer: str, level=0, final_color="orange", out_of_game=False,
                       help=False) -> str:
     select_text = language_dictionary[game_language].quiz.select_answer
+    sound_list_dict = get_sound_list(util.quizmaster_attitude)
+
+    bad_sounds = sound_list_dict['bad_sounds']
+    correct_sounds = sound_list_dict['correct_sounds']
     if out_of_game:
         select_text = language_dictionary[game_language].quiz.select_answer_out
     if util.game_language == util.Language.HUNGARIAN.name:
@@ -1065,14 +1085,19 @@ def handle_user_input(question: str, answers: dict, level=0, final_color="orange
             for input_ in user_inputs:
                 if user_input == input_[0] or user_input == input_[1]:
                     if util.game_language == util.Language.HUNGARIAN.name:
-                        selected_final_sound = random.choice(final_sounds)
+                        if input_[1] == correct_answer:
+                            selected_sound = random.choice(correct_sounds)
+                        else:
+                            selected_sound = random.choice(bad_sounds)
+                        #selected_final_sound = random.choice(final_sounds)
                         selected_lets_see_sound = random.choice(lets_see_sounds)
                     util.clear_screen()
                     print_quiz_table(question, answers, game_level=level, selected=input_[1], color="li_grey")
                     print("\n\n   " + fg.grey + select_text + fg.rs)
                     util.stop_sound()
                     if util.game_language == util.Language.HUNGARIAN.name:
-                        util.play_sound(selected_final_sound, 0, timer=True)
+                        util.play_sound(selected_sound , 0, timer=True)
+                        #util.play_sound(selected_final_sound, 0, timer=True)
                     if not out_of_game:
                         play_music(level)
                     while True:
@@ -1092,7 +1117,15 @@ def handle_user_input(question: str, answers: dict, level=0, final_color="orange
                         if user_input not in input_:
                             break
                             
-        if not out_of_game:
+            if not out_of_game:
+                if user_input == b'h' or user_input == "h":
+                    return "h"
+                if user_input == b's' or user_input == "s":
+                    return "h"
+            if user_input == b'\x1b' or user_input == '<ESC>':
+                return "esc"
+
+        else:
             if user_input == b'a' or user_input == "a":
                 return "a"
             if user_input == b'd' or user_input == "d":
@@ -1113,8 +1146,8 @@ def handle_user_input(question: str, answers: dict, level=0, final_color="orange
                 return "h"
             if user_input == b'y' or user_input == "y":
                 return "y"
-        if user_input == b'\x1b' or user_input == '<ESC>':
-            return "esc"
+            if user_input == b'\x1b' or user_input == '<ESC>':
+                return "esc"
 
 
 def handle_fastest_fingers_first_input(question: str, answers: dict, level: int, selected: str,
