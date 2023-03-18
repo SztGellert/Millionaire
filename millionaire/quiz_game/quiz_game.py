@@ -1074,17 +1074,16 @@ def get_sound_list(attitude: str) -> {}:
 def handle_user_input(question: str, answers: dict, correct_answer: str, level=0, final_color="orange", out_of_game=False,
                       help=False) -> str:
     select_text = language_dictionary[game_language].quiz.select_answer
-    sound_list_dict = get_sound_list(util.quizmaster_attitude)
 
-    bad_sounds = sound_list_dict['bad_sounds']
-    correct_sounds = sound_list_dict['correct_sounds']
+    if util.game_language == util.Language.HUNGARIAN.name:
+        sound_list_dict = get_sound_list(util.quizmaster_attitude)
+        bad_sounds = sound_list_dict['bad_sounds']
+        correct_sounds = sound_list_dict['correct_sounds']
+        lets_see_sounds = ["lets_see", "lets_see_1", "lets_see_2", "lets_see_3", "here_we_go_lets_see_i_told_you"]
+
     if out_of_game:
         select_text = language_dictionary[game_language].quiz.select_answer_out
-    if util.game_language == util.Language.HUNGARIAN.name:
-        final_sounds = ["final"]
-        for i in range(18):
-            final_sounds.append("final_" + str(i + 1))
-        lets_see_sounds = ["lets_see", "lets_see_1", "lets_see_2", "lets_see_3", "here_we_go_lets_see_i_told_you"]
+
     while True:
         user_input = get_user_input()
         if not help:
@@ -1096,7 +1095,6 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
                             selected_sound = random.choice(correct_sounds)
                         else:
                             selected_sound = random.choice(bad_sounds)
-                        #selected_final_sound = random.choice(final_sounds)
                         selected_lets_see_sound = random.choice(lets_see_sounds)
                     util.clear_screen()
                     print_quiz_table(question, answers, game_level=level, selected=input_[1], color="li_grey")
@@ -1104,7 +1102,6 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
                     util.stop_sound()
                     if util.game_language == util.Language.HUNGARIAN.name:
                         util.play_sound(selected_sound , 0, timer=True)
-                        #util.play_sound(selected_final_sound, 0, timer=True)
                     if not out_of_game:
                         play_music(level)
                     while True:
