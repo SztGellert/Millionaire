@@ -12,6 +12,7 @@
                          "Full Screen <F11>",
                          "Question types",
                          "Question difficulty",
+                         "Quizmaster attitude",
                          "Restore Settings",
                          "Back"],
         "skip_prompt": "Press any key to skip game intro...",
@@ -25,6 +26,7 @@
             "time":  "Time"
         },
         "question_difficulty_levels": ["All","Easy", "Medium", "Hard"],
+        "quizmaster_attitudes": ["None","Friendly", "Neutral", "Hostile"],
         "millionaire_lines": [
                              "XXXX   XXXX XXX XXX    XXX    XXX XXXXXXXXX XXXX  XXX XXXXXXX XXX XXXXXX  XXXXXX",
                              "X||XX XX||X X|X X|X    X|X    X|X X|||||||X X||X  X|X X|||||X X|X X||||XX X||||X",

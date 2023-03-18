@@ -12,6 +12,7 @@
                      "Teljes képernyő <F11>",
                      "Kérdés témakörök",
                      "Kérdés nehézség ",
+                     "Kvízmester hozzáállása",
                      "Alapértelmezett beállítások",
                      "Vissza"],
         "skip_prompt": "Nyomjon meg egy gombot az intro kihagyásához..",
@@ -27,6 +28,7 @@
             "time":  "Idő"
         },
         "question_difficulty_levels": ["Mind","Könnyű", "Közepes", "Nehéz"],
+        "quizmaster_attitudes": ["Nincs","Barátságos", "Közömbös", "Ellenséges"],
         "millionaire_lines": [" XXXXX   XXXXX XXX XXX    XXX    XXX XXXXXXXXX XXXXX   XXXXX XXXXXXXXX XXXXXXXX ",
                               " X|||XX XX|||X X|X X|X    X|X    X|X X|||||||X X|||XX XX|||X X|||||||X X||||||X ",
                               " X||||XXX||||X X|X X|X    X|X    X|X X|XXXXX|X X||||XXX||||X X|XXXXX|X X||XXXXX ",

@@ -41,6 +41,13 @@ class Difficulty(Enum):
     HARD = 3
 
 
+class QuizMasterAttitude(Enum):
+    NONE = 0
+    FRIENDLY = 1
+    NEUTRAL = 2
+    HOSTILE = 3
+
+
 available_languages = [item.name for item in Language]
 game_language = Language.ENGLISH.name
 question_difficulty = Difficulty.ALL.name
@@ -49,6 +56,8 @@ language_dictionary = {}
 topics = [topic.name for topic in Topics]
 difficulty_levels = [level.name for level in Difficulty]
 system_volume = True
+quizmaster_attitude = QuizMasterAttitude.NEUTRAL.name
+quizmaster_attitudes = [attitude.name for attitude in QuizMasterAttitude]
 
 
 def init():
@@ -62,6 +71,7 @@ def init_settings(selected_lang: str, reset_settings=False):
     global language_dictionary
     global question_difficulty
     global system_volume
+    global quizmaster_attitude
 
     if os.path.isfile("settings.json") and reset_settings == False:
         file_path = "settings.json"
@@ -70,6 +80,7 @@ def init_settings(selected_lang: str, reset_settings=False):
             global game_language
             game_language = data["language"]
             question_difficulty = data["difficulty"]
+            quizmaster_attitude = data["quizmaster_attitude"]
             for lang in available_languages:
                 lang_dict = read_json_dict(lang)
                 language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
@@ -84,6 +95,7 @@ def init_settings(selected_lang: str, reset_settings=False):
             game_language = selected_lang
             question_difficulty = Difficulty.ALL.name
             question_topics = Topics.ALL.name
+            quizmaster_attitude = QuizMasterAttitude.NEUTRAL.name
             system_volume = True
 
 
@@ -103,6 +115,11 @@ def set_question_topics(selected_topic: str):
 def set_question_difficulty(level: str):
     global question_difficulty
     question_difficulty = level
+
+
+def set_quizmaster_attitude(difficulty: str):
+    global quizmaster_attitude
+    quizmaster_attitude = difficulty
 
 
 def clear_screen():

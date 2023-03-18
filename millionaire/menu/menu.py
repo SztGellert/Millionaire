@@ -385,8 +385,16 @@ def select_settings():
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=4)
             start_index = 4
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[5]:
-            util.init_settings(util.Language.ENGLISH.name, reset_settings=True)
+            quizmaster_attitudes = language_dictionary[util.game_language].menu.quizmaster_attitudes
+            show_options(language_dictionary[util.game_language].menu.quizmaster_attitudes, 20, util.quizmaster_attitudes.index(util.quizmaster_attitude))
+            chosen_attitude_option = get_user_input(quizmaster_attitudes, util.quizmaster_attitudes, 20,
+                                                util.quizmaster_attitudes.index(util.quizmaster_attitude), False)
+            util.set_quizmaster_attitude(util.quizmaster_attitudes[util.quizmaster_attitudes.index(chosen_attitude_option)])
+            show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=5)
             start_index = 5
+        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[6]:
+            util.init_settings(util.Language.ENGLISH.name, reset_settings=True)
+            start_index = 6
         else:
             update_settings_file()
             return
@@ -395,7 +403,7 @@ def select_settings():
 def update_settings_file():
     filename = "settings.json"
     content = {"language": util.game_language, "topic": util.question_topics, "difficulty": util.question_difficulty,
-               "volume": util.system_volume}
+               "volume": util.system_volume, "quizmaster_attitude": util.quizmaster_attitude}
     with open(filename, "w", encoding="UTF-8") as outfile:
         json.dump(content, outfile)
 
