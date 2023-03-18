@@ -1049,15 +1049,22 @@ def play_marked_sound(choise: str, level: int):
 
 
 def get_sound_list(attitude: str) -> {}:
-    correct_sounds = ["you_came_for_money", "dont_sigh_yet", "hurry_up", "dont_let_me_speak", "dont_listen_to_me", "whatever_you_say_wow", "that_was_fast", "what_you_say_will_be"]
-    bad_sounds = ["i_wont_help_more", "calm", "look_at_my_eyes", "dont_want_to_say_dummy", "nooo", "dont_be_impatient"]
+    correct_sounds = ["you_came_for_money", "dont_sigh_yet", "hurry_up", "dont_let_me_speak", "dont_listen_to_me", "whatever_you_say_wow", "that_was_fast", "what_you_say_will_be", "watch_out_more_im_not_always_evil", "you_may_feel_im_hurrying", "final_or"]
+    bad_sounds = ["i_wont_help_more", "calm", "look_at_my_eyes", "dont_want_to_say_dummy", "nooo", "dont_be_impatient", "so_you_gonna_poke", "but_i_helped_you"]
+    other_sounds = ['be_careful_is_it_final', "in_this_show_i_have_to_ask_is_it_final", "i_must_ask_is_it_final", "final_or_final",
+                    "take_that_as_final", "last_one_final", "take_the_risk,", "i_dont_help_more_if_you_wish_we_mark", "pay_attention_to_the_quizmaster", "so_what_to_do",
+                    "you_see_clueless"]
 
     if attitude == util.QuizMasterAttitude.FRIENDLY.name:
-        return {"correct_sounds" : correct_sounds, "bad_sounds": bad_sounds}
-    elif attitude == util.QuizMasterAttitude.HOSTILE.name:
+        correct_sounds = correct_sounds.append(other_sounds[:2])
+        bad_sounds = bad_sounds.append(other_sounds[:2])
         return {"correct_sounds" : correct_sounds, "bad_sounds": bad_sounds}
     elif attitude == util.QuizMasterAttitude.NEUTRAL.name:
+        correct_sounds = correct_sounds.append(other_sounds)
+        bad_sounds = bad_sounds.append(other_sounds)
         return {"correct_sounds" : correct_sounds, "bad_sounds": bad_sounds}
+    elif attitude == util.QuizMasterAttitude.HOSTILE.name:
+        return {"correct_sounds" : other_sounds, "bad_sounds": other_sounds}
     else:
         return {}
 
@@ -1077,7 +1084,7 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
         final_sounds = ["final"]
         for i in range(18):
             final_sounds.append("final_" + str(i + 1))
-        lets_see_sounds = ["lets_see", "lets_see_1", "lets_see_2", "lets_see_3"]
+        lets_see_sounds = ["lets_see", "lets_see_1", "lets_see_2", "lets_see_3", "here_we_go_lets_see_i_told_you"]
     while True:
         user_input = get_user_input()
         if not help:
