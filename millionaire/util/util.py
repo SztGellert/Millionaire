@@ -57,6 +57,7 @@ topics = [topic.name for topic in Topics]
 difficulty_levels = [level.name for level in Difficulty]
 system_volume = True
 quizmaster_attitude = QuizMasterAttitude.NEUTRAL.name
+quizmaster_attitudes = [attitude.name for attitude in QuizMasterAttitude]
 
 
 def init():
@@ -114,6 +115,11 @@ def set_question_topics(selected_topic: str):
 def set_question_difficulty(level: str):
     global question_difficulty
     question_difficulty = level
+
+
+def set_quizmaster_attitude(difficulty: str):
+    global quizmaster_attitude
+    quizmaster_attitude = difficulty
 
 
 def clear_screen():

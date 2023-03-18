@@ -1056,17 +1056,19 @@ def get_sound_list(attitude: str) -> {}:
                     "you_see_clueless"]
 
     if attitude == util.QuizMasterAttitude.FRIENDLY.name:
-        correct_sounds = correct_sounds.append(other_sounds[:2])
-        bad_sounds = bad_sounds.append(other_sounds[:2])
+        for i in range(2):
+            correct_sounds.append(other_sounds[i])
+            bad_sounds.append(other_sounds[i])
         return {"correct_sounds" : correct_sounds, "bad_sounds": bad_sounds}
     elif attitude == util.QuizMasterAttitude.NEUTRAL.name:
-        correct_sounds = correct_sounds.append(other_sounds)
-        bad_sounds = bad_sounds.append(other_sounds)
+        for sound in other_sounds:
+            correct_sounds.append(sound)
+            bad_sounds.append(sound)
         return {"correct_sounds" : correct_sounds, "bad_sounds": bad_sounds}
     elif attitude == util.QuizMasterAttitude.HOSTILE.name:
         return {"correct_sounds" : other_sounds, "bad_sounds": other_sounds}
     else:
-        return {}
+        return {"correct_sounds" : [], "bad_sounds": []}
 
 
 
@@ -1091,16 +1093,17 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
             for input_ in user_inputs:
                 if user_input == input_[0] or user_input == input_[1]:
                     if util.game_language == util.Language.HUNGARIAN.name:
-                        if input_[1] == correct_answer:
-                            selected_sound = random.choice(correct_sounds)
-                        else:
-                            selected_sound = random.choice(bad_sounds)
+                        if util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
+                            if input_[1] == correct_answer:
+                                selected_sound = random.choice(correct_sounds)
+                            else:
+                                selected_sound = random.choice(bad_sounds)
                         selected_lets_see_sound = random.choice(lets_see_sounds)
                     util.clear_screen()
                     print_quiz_table(question, answers, game_level=level, selected=input_[1], color="li_grey")
                     print("\n\n   " + fg.grey + select_text + fg.rs)
                     util.stop_sound()
-                    if util.game_language == util.Language.HUNGARIAN.name:
+                    if util.game_language == util.Language.HUNGARIAN.name and util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
                         util.play_sound(selected_sound , 0, timer=True)
                     if not out_of_game:
                         play_music(level)
