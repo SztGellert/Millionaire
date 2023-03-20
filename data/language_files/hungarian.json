@@ -69,6 +69,7 @@
         "telephone_help": "Telefonos segítség",
         "halving_help": "Felezés",
         "help_selection": "Válasszon a lehetőségek közül: 'k' a közönséghez, 't' a telefonhoz, 'f' hogy felezze a kérdéseket!",
+        "helps_disabled": "Nincs több segítsége.",
         "audience_help_disabled": "Már használta a közönség segítségét.",
         "halving_help_disabled": "Már használta a felezést.",
         "phone_help_disabled": "Már használta a telefonos segítséget.",
