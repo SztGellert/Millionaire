@@ -225,8 +225,15 @@ def play():
             if i < 14:
                 util.play_sound("correct_answer", 0, general=True)
                 util.clear_screen()
+                for k in range(5):
+                    print_quiz_table(question, shuffled_answers, answer, "green", "", game_level=i)
+                    time.sleep(0.12)
+                    util.clear_screen()
+                    print_quiz_table(question, shuffled_answers, answer, "orange", "", game_level=i)
+                    time.sleep(0.12)
+                    util.clear_screen()
                 print_quiz_table(question, shuffled_answers, answer, "green", game_level=i)
-                time.sleep(2)
+                time.sleep(1.5)
                 util.clear_screen()
                 if len(question) % 2 == 0:
                     question = question + " "
@@ -676,8 +683,8 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
                             number_of_spaces - len(list(answers_.items())[i][1]))
 
             print(" ◄|" + answer_values[0] + "|►━◄|" + answer_values[1] + "|►")
-            print("   " + "‾" * (number_of_spaces + 5) + "     " + "‾" * (number_of_spaces + 4))
-            print("   " + "_" * (number_of_spaces + 5) + "     " + "_" * (number_of_spaces + 4))
+            print("   " + "‾" * (number_of_spaces + 4) + "     " + "‾" * (number_of_spaces + 4))
+            print("   " + "_" * (number_of_spaces + 4) + "     " + "_" * (number_of_spaces + 4))
             print(" ◄|" + answer_values[2] + "|►━◄|" + answer_values[3] + "|►")
             print("   " + "‾" * (number_of_spaces + 4) + "     " + "‾" * (number_of_spaces + 4))
 
