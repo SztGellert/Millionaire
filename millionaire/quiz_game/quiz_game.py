@@ -153,46 +153,47 @@ def play():
                 util.clear_screen()
                 return
             if answer == "h" or "s":
-                if list(help_types.values()).count(True) == len(
-                        help_types) and game_language == util.Language.HUNGARIAN.name:
-                    util.play_sound("still_have_all_helps", 0, timer=True)
+                if game_language == util.Language.HUNGARIAN.name:
+                    play_help_sounds(help_types)
                     play_music(i)
-                util.clear_screen()
-                print_quiz_table(question, shuffled_answers, game_level=i)
-                help_functions = {"halving": halving, "telephone": telephone_help, "audience": audience_help}
-                print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.help_selection + fg.rs)
-                help_input = handle_user_input(question, shuffled_answers,  correct_answer_key, level=i, help=True)
-                if help_input == "esc":
-                    quit_game(score, player_name, question_topics)
-                    return
-                for x in range(len(help_types)):
-                    if help_input == list(help_types)[x][0]:
-                        if help_types[list(help_types)[x]]:
-                            if list(help_types)[x] == "halving":
-                                shuffled_answers = list(help_functions.values())[x](question, shuffled_answers,
-                                                                                    correct_answer_value)
-                                for a in range(len(answer_list)):
-                                    answer_list[a] = list(shuffled_answers.values())[a]
-                                print_quiz_table(question, shuffled_answers, game_level=i)
-                                time.sleep(2)
-                            elif list(help_types)[x] == "audience":
-                                audience_help(question, shuffled_answers, correct_answer_value, game_level=i)
+                if list(help_types.values()).count(True) != 0:
+                    util.clear_screen()
+                    print_quiz_table(question, shuffled_answers, game_level=i)
+                    help_functions = {"halving": halving, "telephone": telephone_help, "audience": audience_help}
+                    print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.help_selection + fg.rs)
+                    help_input = handle_user_input(question, shuffled_answers,  correct_answer_key, level=i, help=True)
+                    if help_input == "esc":
+                        quit_game(score, player_name, question_topics)
+                        return
+                    for x in range(len(help_types)):
+                        if help_input == list(help_types)[x][0]:
+                            if help_types[list(help_types)[x]]:
+                                if list(help_types)[x] == "halving":
+                                    shuffled_answers = list(help_functions.values())[x](question, shuffled_answers,
+                                                                                        correct_answer_value)
+                                    for a in range(len(answer_list)):
+                                        answer_list[a] = list(shuffled_answers.values())[a]
+                                    print_quiz_table(question, shuffled_answers, game_level=i)
+                                    time.sleep(2)
+                                elif list(help_types)[x] == "audience":
+                                    audience_help(question, shuffled_answers, correct_answer_value, game_level=i)
+                                else:
+                                    list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
+                                help_types[list(help_types)[x]] = False
+                                break
                             else:
-                                list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
-                            help_types[list(help_types)[x]] = False
-                            break
-                        else:
-                            if list(help_types)[x] == "audience":
-                                print("  " + language_dictionary[game_language].quiz.audience_help_disabled)
-                            elif list(help_types)[x] == "halving":
-                                print("  " + language_dictionary[game_language].quiz.halving_help_disabled)
-                            else:
-                                print("  " + language_dictionary[game_language].quiz.phone_help_disabled)
-                play_music(i)
-                print("\n\n  ", fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
+                                if list(help_types)[x] == "audience":
+                                    print("  " + language_dictionary[game_language].quiz.audience_help_disabled)
+                                elif list(help_types)[x] == "halving":
+                                    print("  " + language_dictionary[game_language].quiz.halving_help_disabled)
+                                else:
+                                    print("  " + language_dictionary[game_language].quiz.phone_help_disabled)
+                    play_music(i)
+                    print("\n\n  ", fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
                 answer = handle_user_input(question, shuffled_answers,  correct_answer_key, level=i)
-                time.sleep(2)
-        util.clear_screen()
+                if answer in ["a", "b", "c", "d"]:
+                    time.sleep(2)
+                    util.clear_screen()
         is_correct = check_answer(answer, correct_answer_key)
         if is_correct:
             score += 1
@@ -258,6 +259,34 @@ def play():
     quit_game(score, player_name, question_topics)
 
     return
+
+
+def play_help_sounds(help_types: {}):
+    sound_file = ""
+    help_assets = ["you_still_have_help","you_have_helps_if_unsure","you_still_have_helps_dont_worry"]
+
+    if list(help_types.values()).count(True) == len(
+            help_types):
+        all_help_sounds = ["you_still_have_three_helps", "still_have_all_helps"]
+        sound_file = random.choice(all_help_sounds)
+    elif list(help_types.values()).count(True) == len(
+            help_types)-1:
+        if help_types["telephone"] and help_types["audience"]:
+            sound_file = "you_still_have_two_helps_phone_audience"
+    elif list(help_types.values()).count(True) == len(
+            help_types)-2:
+        if help_types["telephone"]:
+            help_assets.append("you_have_a_phone_help_left")
+            help_assets.append("you_have_a_phone_but_make_you_mad")
+            sound_file = random.choice(help_assets)
+        else:
+            sound_file = "you_still_have_one_help"
+            help_assets.append(sound_file)
+            sound_file = random.choice(help_assets)
+    else:
+        sound_file = "no_more_helps"
+
+    util.play_sound(sound_file, 0, timer=True)
 
 
 def fastest_finger_first():
