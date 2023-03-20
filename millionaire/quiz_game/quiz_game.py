@@ -100,10 +100,10 @@ def play():
         answer_list = list(answers.values())
         random.shuffle(answer_list)
         shuffled_answers = dict(zip(answers, answer_list))
-        print_quiz_table("", {"a": "", "b": "", "c": "", "d": ""}, game_level=i)
+        print_quiz_table("", {"a": "", "b": "", "c": "", "d": ""}, game_level=i, show_answers=False)
         play_question_prologue(i)
         util.clear_screen()
-        print_quiz_table(question, {"a": "", "b": "", "c": "", "d": ""}, game_level=i)
+        print_quiz_table(question, {"a": "", "b": "", "c": "", "d": ""}, game_level=i, show_answers=False)
         play_music(i)
         time.sleep(2)
         answer_list_fill = ["","","",""]
@@ -527,7 +527,7 @@ def divide_answer(answer: str, number_of_parts: float) -> list:
 
 
 def print_quiz_table(question: str, answers_: {}, selected="", color="", correct_answer="", game_level=0,
-                     quizmaster=True, prizes=True):
+                     quizmaster=True, prizes=True, show_answers=True):
     colors_ = {
         "orange":  bg.orange,
         "green":   bg.green,
@@ -562,92 +562,93 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
     print(" ◄  " + question + " " * spaces_after_question + "   ►")
     print("  \\" + "_" * (table_length) + "/")
     print("\n")
-    if len(longest_string) > number_of_spaces:
-        print("   " + "_" * (number_of_spaces + 3) + "     " + "_" * (number_of_spaces + 5))
-        number_of_spaces = number_of_spaces + 7
-        number_of_parts = len(longest_string) / number_of_spaces
-        if type(number_of_parts) == float:
-            number_of_parts += 1
-        answer_list_a = divide_answer(answer_values[0], number_of_parts)
-        answer_list_b = divide_answer(answer_values[1], number_of_parts)
-        answer_list_c = divide_answer(answer_values[2], number_of_parts)
-        answer_list_d = divide_answer(answer_values[3], number_of_parts)
-        answers_lists = [answer_list_a, answer_list_b, answer_list_c, answer_list_d]
-        longest_string_divided = int(number_of_parts)
-        answer = ""
-        index = 0
-        for i in range(4):
-            if i == 0 or i == 2:
-                for j in range(longest_string_divided + 1):
-                    if j == 0:
-                        first_string = " " + list(answers_.items())[i][j].upper() + ": " + answers_lists[index][j]
-                        second_string = " " + list(answers_.items())[i + 1][j].upper() + ": " + \
-                                        answers_lists[index + 1][j]
-                    else:
-                        first_string = " " * 3 + answers_lists[index][j]
-                        second_string = " " * 3 + answers_lists[index + 1][j]
-                    first_spaces = number_of_spaces - len(first_string) - 4
-                    second_spaces = number_of_spaces - len(second_string) - 4
-                    first_string = first_string + " " * first_spaces
-                    second_string = second_string + " " * second_spaces
-                    if selected != "":
-                        for answer_ in answers_:
-                            if correct_answer != "" and correct_answer == list(answers_.keys())[index]:
-                                first_string = bg.green + fg.black + first_string + fg.rs + bg.rs
-                            if correct_answer != "" and correct_answer == list(answers_.keys())[index + 1]:
-                                second_string = bg.green + fg.black + second_string + fg.rs + bg.rs
-                            if list(answers_.keys())[index] == selected:
-                                for bg_color in colors_:
-                                    if color == bg_color:
-                                        first_string = colors_[color] + fg.black + first_string + fg.rs + bg.rs
-                            if list(answers_.keys())[index + 1] == selected:
-                                for bg_color in colors_:
-                                    if color == bg_color:
-                                        second_string = colors_[color] + fg.black + second_string + fg.rs + bg.rs
-
-                    answer = answer + " ◄|" + first_string + "|►━◄|" + second_string + "  |►"
-                    if j < longest_string_divided:
-                        answer = answer + "\n"
-            if i == 0:
-                answer = answer + "\n" + "   " + "‾" * (number_of_spaces - 4) + "     " + "‾" * (number_of_spaces - 2) + \
-                         "\n" + "   " + "_" * (number_of_spaces - 4) + "     " + "_" * (number_of_spaces - 2) + "\n"
-            index += 1
-        print(answer)
-        print("   " + "‾" * (number_of_spaces - 4) + "     " + "‾" * (number_of_spaces - 2))
-    else:
-        print("   " + "_" * (number_of_spaces + 4) + "     " + "_" * (number_of_spaces + 4))
-        if selected != "":
+    if show_answers:
+        if len(longest_string) > number_of_spaces:
+            print("   " + "_" * (number_of_spaces + 3) + "     " + "_" * (number_of_spaces + 5))
+            number_of_spaces = number_of_spaces + 7
+            number_of_parts = len(longest_string) / number_of_spaces
+            if type(number_of_parts) == float:
+                number_of_parts += 1
+            answer_list_a = divide_answer(answer_values[0], number_of_parts)
+            answer_list_b = divide_answer(answer_values[1], number_of_parts)
+            answer_list_c = divide_answer(answer_values[2], number_of_parts)
+            answer_list_d = divide_answer(answer_values[3], number_of_parts)
+            answers_lists = [answer_list_a, answer_list_b, answer_list_c, answer_list_d]
+            longest_string_divided = int(number_of_parts)
+            answer = ""
             index = 0
-            for i in answers_:
-                if i == selected:
-                    for bg_color in colors_:
-                        if color == bg_color:
-                            answer_values[list(answers_).index(i)] = colors_[color] + fg.black + " " + \
-                                                                     list(answers_.items())[index][
-                                                                         0].upper() + ": " + answers_[i] + " " * (
-                                                                             number_of_spaces - len(
-                                                                         list(answers_.items())[index][
-                                                                             1])) + fg.rs + bg.rs
-                elif correct_answer != "" and i == correct_answer:
-                    answer_values[list(answers_).index(i)] = bg.green + fg.black + " " + list(answers_.items())[index][
-                        0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(
-                        list(answers_.items())[index][1])) + fg.rs + bg.rs
-                else:
-                    answer_values[list(answers_).index(i)] = " " + list(answers_.items())[index][0].upper() + ": " + \
-                                                             answers_[
-                                                                 i] + " " * (number_of_spaces - len(
-                        list(answers_.items())[index][1]))
-                index += 1
-        else:
-            for i in range(len(answers_)):
-                answer_values[i] = " " + list(answers_.items())[i][0].upper() + ": " + answer_values[i] + " " * (
-                        number_of_spaces - len(list(answers_.items())[i][1]))
+            for i in range(4):
+                if i == 0 or i == 2:
+                    for j in range(longest_string_divided + 1):
+                        if j == 0:
+                            first_string = fg.orange + "♦" + list(answers_.items())[i][j].upper() + ": " + fg.rs + answers_lists[index][j]
+                            second_string = fg.orange +"♦" + list(answers_.items())[i + 1][j].upper() + ": " + fg.rs + \
+                                            answers_lists[index + 1][j]
+                        else:
+                            first_string = " " * 3 + answers_lists[index][j]
+                            second_string = " " * 3 + answers_lists[index + 1][j]
+                        first_spaces = number_of_spaces - len(first_string) - 4
+                        second_spaces = number_of_spaces - len(second_string) - 4
+                        first_string = first_string + " " * first_spaces
+                        second_string = second_string + " " * second_spaces
+                        if selected != "":
+                            for answer_ in answers_:
+                                if correct_answer != "" and correct_answer == list(answers_.keys())[index]:
+                                    first_string = bg.green + fg.black + first_string + fg.rs + bg.rs
+                                if correct_answer != "" and correct_answer == list(answers_.keys())[index + 1]:
+                                    second_string = bg.green + fg.black + second_string + fg.rs + bg.rs
+                                if list(answers_.keys())[index] == selected:
+                                    for bg_color in colors_:
+                                        if color == bg_color:
+                                            first_string = colors_[color] + fg.black + first_string + fg.rs + bg.rs
+                                if list(answers_.keys())[index + 1] == selected:
+                                    for bg_color in colors_:
+                                        if color == bg_color:
+                                            second_string = colors_[color] + fg.black + second_string + fg.rs + bg.rs
 
-        print(" ◄|" + answer_values[0] + "|►━◄|" + answer_values[1] + "|►")
-        print("   " + "‾" * (number_of_spaces + 4) + "     " + "‾" * (number_of_spaces + 4))
-        print("   " + "_" * (number_of_spaces + 4) + "     " + "_" * (number_of_spaces + 4))
-        print(" ◄|" + answer_values[2] + "|►━◄|" + answer_values[3] + "|►")
-        print("   " + "‾" * (number_of_spaces + 4) + "     " + "‾" * (number_of_spaces + 4))
+                        answer = answer + " ◄|" + first_string + "|►━◄|" + second_string + "  |►"
+                        if j < longest_string_divided:
+                            answer = answer + "\n"
+                if i == 0:
+                    answer = answer + "\n" + "   " + "‾" * (number_of_spaces - 4) + "     " + "‾" * (number_of_spaces - 2) + \
+                             "\n" + "   " + "_" * (number_of_spaces - 4) + "     " + "_" * (number_of_spaces - 2) + "\n"
+                index += 1
+            print(answer)
+            print("   " + "‾" * (number_of_spaces - 4) + "     " + "‾" * (number_of_spaces - 2))
+        else:
+            print("   " + "_" * (number_of_spaces + 4) + "     " + "_" * (number_of_spaces + 4))
+            if selected != "":
+                index = 0
+                for i in answers_:
+                    if i == selected:
+                        for bg_color in colors_:
+                            if color == bg_color:
+                                answer_values[list(answers_).index(i)] = colors_[color] + fg.black + "♦" + \
+                                                                         list(answers_.items())[index][
+                                                                             0].upper() + ": " + answers_[i] + " " * (
+                                                                                 number_of_spaces - len(
+                                                                             list(answers_.items())[index][
+                                                                                 1])) + fg.rs + bg.rs
+                    elif correct_answer != "" and i == correct_answer:
+                        answer_values[list(answers_).index(i)] = bg.green + fg.black + "♦" + list(answers_.items())[index][
+                            0].upper() + ": " + answers_[i] + " " * (number_of_spaces - len(
+                            list(answers_.items())[index][1])) + fg.rs + bg.rs
+                    else:
+                        answer_values[list(answers_).index(i)] = fg.orange + "♦"  + list(answers_.items())[index][0].upper() + ": " + fg.rs + \
+                                                                 answers_[
+                                                                     i] + " " * (number_of_spaces - len(
+                            list(answers_.items())[index][1]))
+                    index += 1
+            else:
+                for i in range(len(answers_)):
+                    answer_values[i] = fg.orange + "♦" + list(answers_.items())[i][0].upper() + ": " + fg.rs + answer_values[i] + " " * (
+                            number_of_spaces - len(list(answers_.items())[i][1]))
+
+            print(" ◄|" + answer_values[0] + "|►━◄|" + answer_values[1] + "|►")
+            print("   " + "‾" * (number_of_spaces + 4) + "     " + "‾" * (number_of_spaces + 4))
+            print("   " + "_" * (number_of_spaces + 4) + "     " + "_" * (number_of_spaces + 4))
+            print(" ◄|" + answer_values[2] + "|►━◄|" + answer_values[3] + "|►")
+            print("   " + "‾" * (number_of_spaces + 4) + "     " + "‾" * (number_of_spaces + 4))
 
 
 def print_fastest_fingers_table(question: str, answers_: {}, selected="", color="", correct_answer="", game_level=0,
