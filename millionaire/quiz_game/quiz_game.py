@@ -100,8 +100,18 @@ def play():
         answer_list = list(answers.values())
         random.shuffle(answer_list)
         shuffled_answers = dict(zip(answers, answer_list))
-        print_quiz_table(question, shuffled_answers, game_level=i)
+        print_quiz_table("", {"a": "", "b": "", "c": "", "d": ""}, game_level=i)
+        play_question_prologue(i)
+        util.clear_screen()
+        print_quiz_table(question, {"a": "", "b": "", "c": "", "d": ""}, game_level=i)
         play_music(i)
+        time.sleep(2)
+        answer_list_fill = ["","","",""]
+        for j in range(4):
+            util.clear_screen()
+            answer_list_fill[j] = answer_list[j]
+            print_quiz_table(question, {"a": answer_list_fill[0], "b": answer_list_fill[1], "c": answer_list_fill[2], "d": answer_list_fill[3]}, game_level=i)
+            time.sleep(1)
         print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
         correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
         correct_answer_value = question_lines[i][1]
@@ -274,6 +284,40 @@ def play():
     quit_game(score, player_name, question_topics)
 
     return
+
+
+def play_question_prologue(level: int):
+    sounds_list = [
+        ["here_is_the_first_question_one", "here_is_the_first_question_two", "here_is_the_first_question_three"],
+        ["here_is_the_second_question_one"],
+        ["here_is_the_third_question_one", "here_is_the_third_question_two", "here_is_the_third_question_three"],
+        ["here_is_the_fourth_question_one", "here_is_the_fourth_question_two", "here_is_the_fourth_question_three"],
+        ["here_is_the_fifth_question_one", "here_is_the_fifth_question_two"],
+        ["here_is_the_sixth_question_one", "here_is_the_sixth_question_two", "here_is_the_sixth_question_three", "here_is_the_sixth_question_four", "here_is_the_sixth_question_five"],
+        ["here_is_the_seventh_question_one", "here_is_the_seventh_question_two", "here_is_the_seventh_question_three", "here_is_the_seventh_question_four"],
+        ["here_is_the_eighths_question_one", "here_is_the_eighthsquestion_two", "here_is_the_eighths_question_three", "here_is_the_eighths_question_four", "here_is_the_eighths_question_five", "here_is_the_eighths_question_six"],
+        ["here_is_the_nineth_question_one", "here_is_the_nineth_question_two", "here_is_the_nineth_question_three"],
+        ["here_is_the_tenth_question_one", "here_is_the_tenth_question_two", "here_is_the_tenth_question_three"],
+        ["here_is_the_eleventh_question_one", "here_is_the_eleventh_question_two", "here_is_the_eleventh_question_three"],
+        ["here_is_the_twelfth_question_one", "here_is_the_twelfth_question_two", "here_is_the_twelfth_question_three"],
+        ["here_is_the_thirteenth_question_one", "here_is_the_thirteenth_question_two"],
+        ["here_is_the_fourteenth_question_one"]
+    ]
+
+    if level == 7:
+        if list(help_types.values()).count(True) == len(
+                help_types)-2 and help_types["telephone"]:
+            sounds_list[7].append("here_is_the_eighths_question_with_phone")
+    if level == 8:
+        if list(help_types.values()).count(True) == len(
+                help_types)-1:
+            sounds_list[8].append("here_is_the_nineth_question_two_with_two_helps")
+        if list(help_types.values()).count(True) == len(
+                help_types):
+            sounds_list[8].append("here_is_the_nineth_question_with_three_helps")
+
+    sound_file = random.choice(sounds_list[level])
+    util.play_sound(sound_file, 0, timer=True)
 
 
 def play_help_sounds(help_types: {}):

@@ -357,7 +357,7 @@ Milyen SI-egységben van kifejezve a Planck-állandó?;Joule másodperc;Henry vo
 Melyik félvezető elem képes az elektronikus jelek kapcsolására vagy erősítésére?;Tranzisztor;Kondenzátor;Anód;Ellenállás;fizika;könnyű
 Mit módosít a tápegységben lévő transzformátor?;Feszültség;Hullámforma;Kapacitás;Ellenállás;fizika;könnyű
 Melyik technológia a legújabb?;Lézer;Atombomba;Televízió;Kodachrome;fizika;könnyű
-Mit jelent az "L" a LASER-ben?;Light;Large;Large;Low;fizika;könnyű
+Mit jelent az "L" a LASER-ben?;Light;Large;Long;Low;fizika;könnyű
 Melyik elmélet írja le univerzumunk kezdetét?;Ősrobbanás;Szupernova;Speciális relativitáselmélet;Szabványmodell;fizika;könnyű
 Minek az eredményeképpen keletkezik Radiokarbon a légkörben?;Gyors neutronok és a légkörben jelenlévő nitrogénatommagok ütközése;A nap ultraibolya fényének a légköri oxigénre gyakorolt hatása;A napsugárzás, különösen a kozmikus sugarak hatása a légkörben lévő szén-dioxidra. légkör;Villámkisülés a légkörben;fizika;nehéz
 Könnyebb lejtős úton felfelé görgetni egy követ, mint függőlegesen felfelé emelni, mert?;Egy kő gördítésekor végzett munka kevesebb, mint az emelésénél;Mindkettőben azonos, de hengerlésnél kisebb a munkavégzés aránya;A kő felemelésével végzett munka egyenlő a hengerítéssel;A hengerezéssel végzett munka több, mint az emeléssel;fizika;könnyű

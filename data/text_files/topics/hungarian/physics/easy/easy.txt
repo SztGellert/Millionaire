@@ -5,7 +5,7 @@ Mikor lesz napfogyatkozás?;Ha a Hold a nap és a föld között van;Ha a nap a 
 A tengeralattjáróból a víz felett lévő tárgyak megtekintésére a következő eszközt használják:;Periszkóp;Kaleidoszkóp;Spektroszkóp;Teleszkóp
 Melyik félvezető elem képes az elektronikus jelek kapcsolására vagy erősítésére?;Tranzisztor;Kondenzátor;Anód;Ellenállás
 Melyik technológia a legújabb?;Lézer;Atombomba;Televízió;Kodachrome
-Mit jelent az "L" a LASER-ben?;Light;Large;Large;Low
+Mit jelent az "L" a LASER-ben?;Light;Large;Long;Low
 Melyik elmélet írja le univerzumunk kezdetét?;Ősrobbanás;Szupernova;Speciális relativitáselmélet;Szabványmodell
 Könnyebb lejtős úton felfelé görgetni egy követ, mint függőlegesen felfelé emelni, mert?;Egy kő gördítésekor végzett munka kevesebb, mint az emelésénél;Mindkettőben azonos, de hengerlésnél kisebb a munkavégzés aránya;A kő felemelésével végzett munka egyenlő a hengerítéssel;A hengerezéssel végzett munka több, mint az emeléssel
 A szifon nem fog működni, ha?;A folyadék szintje a két edényben azonos magasságban van;A folyadék sűrűsége a két edényben egyenlő;Mindkét szárának hossza nem egyenlő;A folyadékok hőmérséklete az edényben két edény ugyanaz
