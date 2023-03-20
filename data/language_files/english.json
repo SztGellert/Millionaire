@@ -69,6 +69,7 @@
         "telephone_help": "Telephone",
         "halving_help": "Halving",
         "help_selection": "Choose help: 'a' for audience, 't' for telephone, 'h' for halving!",
+        "helps_disabled": "You don't have any help lines.",
         "audience_help_disabled": "You have already used the audience's help.",
         "halving_help_disabled": "You have already used the halving.",
         "phone_help_disabled": "You have already used the phone help.",

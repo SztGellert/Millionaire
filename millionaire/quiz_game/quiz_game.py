@@ -111,13 +111,17 @@ def play():
             return
         util.stop_sound()
         while answer not in list(answers.keys()):
+            if answer == "esc":
+                quit_game(score, player_name, question_topics)
+                return
             if answer == "t":
                 util.clear_screen()
                 print_quiz_table(question, shuffled_answers, game_level=i)
                 if util.game_language == util.Language.HUNGARIAN.name:
                     util.play_sound("music_off", 0)
                 print("\n\n  ", fg.grey + language_dictionary[game_language].quiz.select_answer_out + fg.rs)
-                answer = handle_user_input(question, shuffled_answers,  correct_answer_key, level=i, final_color="blue", out_of_game=True)
+                answer = handle_user_input(question, shuffled_answers, correct_answer_key, level=i, final_color="blue",
+                                           out_of_game=True)
                 if answer == "esc":
                     quit_game(score, player_name, question_topics)
                     return
@@ -152,11 +156,12 @@ def play():
                 quit_game(score, player_name, question_topics)
                 util.clear_screen()
                 return
+
             if answer == "h" or "s":
-                if game_language == util.Language.HUNGARIAN.name:
-                    play_help_sounds(help_types)
-                    play_music(i)
                 if list(help_types.values()).count(True) != 0:
+                    if game_language == util.Language.HUNGARIAN.name:
+                        play_help_sounds(help_types)
+                        play_music(i)
                     util.clear_screen()
                     print_quiz_table(question, shuffled_answers, game_level=i)
                     help_functions = {"halving": halving, "telephone": telephone_help, "audience": audience_help}
@@ -190,10 +195,20 @@ def play():
                                     print("  " + language_dictionary[game_language].quiz.phone_help_disabled)
                     play_music(i)
                     print("\n\n  ", fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
-                answer = handle_user_input(question, shuffled_answers,  correct_answer_key, level=i)
-                if answer in ["a", "b", "c", "d"]:
+                    if help_input == "esc":
+                        quit_game(score, player_name, question_topics)
+                        return
+                    answer = handle_user_input(question, shuffled_answers,  correct_answer_key, level=i)
                     time.sleep(2)
                     util.clear_screen()
+                else:
+                    play_help_sounds(help_types)
+                    play_music(i)
+                    util.clear_screen()
+                    print_quiz_table(question, shuffled_answers, game_level=i)
+                    print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.helps_disabled + fg.rs)
+                    print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
+                    answer = handle_user_input(question, shuffled_answers, correct_answer_key, level=i)
         is_correct = check_answer(answer, correct_answer_key)
         if is_correct:
             score += 1
@@ -1158,6 +1173,10 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
                     return "h"
                 if user_input == b's' or user_input == "s":
                     return "h"
+                if user_input == b'k' or user_input == "k":
+                    return "t"
+                if user_input == b't' or user_input == "t":
+                    return "t"
             if user_input == b'\x1b' or user_input == '<ESC>':
                 return "esc"
 
