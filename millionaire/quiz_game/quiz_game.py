@@ -269,6 +269,13 @@ def play():
         else:
             util.play_sound("bad_answer", 0, general=True)
             util.clear_screen()
+            for k in range(5):
+                print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key, game_level=i)
+                time.sleep(0.2)
+                util.clear_screen()
+                print_quiz_table(question, shuffled_answers, answer, "orange", game_level=i)
+                time.sleep(0.2)
+                util.clear_screen()
             print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key,
                              game_level=i)
             time.sleep(2)
