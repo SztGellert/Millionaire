@@ -101,7 +101,10 @@ def play():
         random.shuffle(answer_list)
         shuffled_answers = dict(zip(answers, answer_list))
         print_quiz_table("", {"a": "", "b": "", "c": "", "d": ""}, game_level=i, show_answers=False)
-        play_question_prologue(i)
+        if i in [0, 6, 8]:
+            play_question_intro(i)
+        if util.game_language == util.Language.HUNGARIAN.name:
+            play_question_prologue(i)
         util.clear_screen()
         print_quiz_table(question, {"a": "", "b": "", "c": "", "d": ""}, game_level=i, show_answers=False)
         play_music(i)
@@ -223,7 +226,10 @@ def play():
         if is_correct:
             score += 1
             if i < 14:
-                util.play_sound("correct_answer", 0, general=True)
+                if i == 5:
+                    util.play_sound("sixth_correct_answer", 0, general=True)
+                else:
+                    util.play_sound("correct_answer", 0, general=True)
                 util.clear_screen()
                 for k in range(5):
                     print_quiz_table(question, shuffled_answers, answer, "green", "", game_level=i)
@@ -332,6 +338,18 @@ def play_question_prologue(level: int):
 
     sound_file = random.choice(sounds_list[level])
     util.play_sound(sound_file, 0, timer=True)
+
+
+def play_question_intro(level: int):
+    sound_file = ""
+    if level == 0:
+        sound_file = "before_question"
+    if level == 6:
+        sound_file = "before_seventh_question"
+    elif level == 8:
+        sound_file = "before_nineth_question"
+
+    util.play_sound(sound_file, 0, timer=True, general=True)
 
 
 def play_help_sounds(help_types: {}):
@@ -1249,8 +1267,12 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
                             util.stop_sound()
                             if util.game_language == util.Language.HUNGARIAN.name:
                                 play_marked_sound(input_[1], level)
-                            util.play_sound("marked", 0, general=True)
-                            time.sleep(2)
+                            if level > 4 and level < 11:
+                                util.play_sound("marked_after_sixth", 0, general=True)
+                                time.sleep(2)
+                            if level > 10:
+                                util.play_sound("marked_after_eleventh", 0, general=True)
+                                time.sleep(2)
                             if util.game_language == util.Language.HUNGARIAN.name:
                                 util.play_sound(selected_lets_see_sound, 0)
                                 time.sleep(3)
