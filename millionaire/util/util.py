@@ -1,3 +1,4 @@
+import glob
 import json
 import os
 import pathlib
@@ -129,11 +130,15 @@ def clear_screen():
         os.system('cls')
 
 
-def play_sound(filename, starting_time, file_type="wav", volume=0.07, fading_time=0, timer=False, general=False):
-    if not general:
-        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
-    else:
+def play_sound(filename, starting_time, file_type="wav", volume=0.07, fading_time=0, timer=False, general=False, random=False):
+
+    if general:
         file_path = get_data_path() + "/sound_files/general/"  + filename + "." + file_type
+    elif random:
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/random/" + filename + "." + file_type
+    else:
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
+
 
     if system_volume:
         pygame.mixer.music.load(file_path)
@@ -142,6 +147,11 @@ def play_sound(filename, starting_time, file_type="wav", volume=0.07, fading_tim
         if timer == True:
             a = pygame.mixer.Sound(file_path)
             time.sleep(a.get_length())
+
+
+def play_sound_object(file: pygame.mixer.Sound):
+    file.set_volume(0.1)
+    file.play()
 
 
 def play_background_music(filename, starting_time, volume=0.07):
@@ -174,6 +184,15 @@ def open_file(filename: str, mode: str, separator=",", filepath="/text_files/", 
             list_of_file.append(line)
     return list_of_file
 
+
+def init_random_sounds() -> []:
+    sounds = []
+    file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/random/" + "/*.wav"
+
+    for sound_file in glob.glob(file_path):
+        sounds.append(pygame.mixer.Sound(sound_file))
+
+    return sounds
 
 def pause_music():
     if system_volume:

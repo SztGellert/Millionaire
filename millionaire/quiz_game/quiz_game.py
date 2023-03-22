@@ -28,6 +28,8 @@ def play():
     question_difficulty = util.question_difficulty
     global help_types
     help_types = {"halving": True, "telephone": True, "audience": True}
+    global random_sounds
+    random_sounds = util.init_random_sounds()
     question_lines = []
     question_lines_easy = []
     question_lines_medium = []
@@ -118,6 +120,8 @@ def play():
         print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
         correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
         correct_answer_value = question_lines[i][1]
+        if util.game_language == util.Language.HUNGARIAN.name:
+            play_random_quizmaster_sound(i)
         answer = handle_user_input(question, shuffled_answers, correct_answer_key, level=i)
         if answer == "esc":
             quit_game(score, player_name, question_topics)
@@ -231,7 +235,7 @@ def play():
                 else:
                     util.play_sound("correct_answer", 0, general=True)
                 util.clear_screen()
-                for k in range(5):
+                for k in range(4):
                     print_quiz_table(question, shuffled_answers, answer, "green", "", game_level=i)
                     time.sleep(0.12)
                     util.clear_screen()
@@ -275,12 +279,12 @@ def play():
         else:
             util.play_sound("bad_answer", 0, general=True)
             util.clear_screen()
-            for k in range(5):
+            for k in range(4):
                 print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key, game_level=i)
-                time.sleep(0.2)
+                time.sleep(0.12)
                 util.clear_screen()
                 print_quiz_table(question, shuffled_answers, answer, "orange", game_level=i)
-                time.sleep(0.2)
+                time.sleep(0.12)
                 util.clear_screen()
             print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key,
                              game_level=i)
@@ -304,6 +308,14 @@ def play():
     quit_game(score, player_name, question_topics)
 
     return
+
+
+def play_random_quizmaster_sound(level: int):
+    util.pause_music()
+    global random_sounds
+    sound_file = random.choice(random_sounds)
+    util.play_sound_object(sound_file)
+    play_music(level)
 
 
 def play_question_prologue(level: int):
@@ -1223,8 +1235,6 @@ def get_sound_list(attitude: str) -> {}:
         return {"correct_sounds" : [], "bad_sounds": []}
 
 
-
-
 def handle_user_input(question: str, answers: dict, correct_answer: str, level=0, final_color="orange", out_of_game=False,
                       help=False) -> str:
     select_text = language_dictionary[game_language].quiz.select_answer
@@ -1346,6 +1356,7 @@ def get_user_input() -> bytes:
 
 
 def quit_game(score: int, name, topic):
+    util.play_sound("exit_epilogue", 0)
     if score > 0:
         write_content_to_file("scores.json",
                               {"user": name, "topic": topic, "score": score, "time": time.ctime(time.time())})
