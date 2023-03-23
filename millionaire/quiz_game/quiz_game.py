@@ -347,19 +347,24 @@ def thread_random(level: int, selected="", last_one="", working=True):
 
         if selected == "a":
             for thread in a_threads:
-                thread.start()
+                if not thread.finished.is_set():
+                    thread.start()
         elif selected == "b":
             for thread in b_threads:
-                thread.start()
+                if not thread.finished.is_set():
+                    thread.start()
         elif selected == "c":
             for thread in c_threads:
-                thread.start()
+                if not thread.finished.is_set():
+                    thread.start()
         elif selected == "d":
             for thread in d_threads:
-                thread.start()
+                if not thread.finished.is_set():
+                    thread.start()
         else:
             for thread in base_threads:
-                thread.start()
+                if not thread.finished.is_set():
+                    thread.start()
 
     else:
         threads_lists = [base_threads, a_threads, b_threads, c_threads, d_threads]
@@ -1375,7 +1380,8 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
                             if util.game_language == util.Language.HUNGARIAN.name:
                                 util.play_sound(selected_lets_see_sound, 0)
                                 time.sleep(3)
-                            last_input = input_[1]
+                            #last_input = input_[1]
+                            thread_random(level, working=False)
                             return input_[1]
                         if user_input not in input_:
                             break
