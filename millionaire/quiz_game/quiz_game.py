@@ -6,6 +6,7 @@ from sty import Style, RgbFg, fg, bg, rs
 import millionaire.menu.menu as menu
 import millionaire.util.util as util
 import millionaire.menu.helpers as helpers
+import threading
 
 operating_system = os.name
 fg.purple = Style(RgbFg(148, 0, 211))
@@ -17,9 +18,14 @@ language_dictionary = util.language_dictionary
 table_length = 113
 game_levels = 15
 screen_distance = 60
-
+threads = []
 
 def play():
+    global base_threads
+    global a_threads
+    global b_threads
+    global c_threads
+    global d_threads
     global game_language, question_lines_easy, question_lines_medium, question_lines_hard
     game_language = util.game_language
     global question_topics
@@ -89,6 +95,7 @@ def play():
         util.play_sound("start", 0)
     show_game_structure()
     for i in range(game_levels):
+        init_threads(i)
         if question_difficulty == util.Difficulty.ALL.name:
             if i < 5:
                 question_lines = question_lines_easy
@@ -121,12 +128,12 @@ def play():
         correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
         correct_answer_value = question_lines[i][1]
         if util.game_language == util.Language.HUNGARIAN.name:
-            play_random_quizmaster_sound(i)
+            thread_random(i, last_one="base")
         answer = handle_user_input(question, shuffled_answers, correct_answer_key, level=i)
         if answer == "esc":
             quit_game(score, player_name, question_topics)
             return
-        util.stop_sound()
+        util.pause_music()
         while answer not in list(answers.keys()):
             if answer == "esc":
                 quit_game(score, player_name, question_topics)
@@ -177,8 +184,9 @@ def play():
             if answer == "h" or "s":
                 if list(help_types.values()).count(True) != 0:
                     if game_language == util.Language.HUNGARIAN.name:
+                        util.pause_music()
                         play_help_sounds(help_types)
-                        play_music(i)
+                        util.continue_music()
                     util.clear_screen()
                     print_quiz_table(question, shuffled_answers, game_level=i)
                     help_functions = {"halving": halving, "telephone": telephone_help, "audience": audience_help}
@@ -310,12 +318,63 @@ def play():
     return
 
 
+def thread_random(level: int, selected="", last_one="", working=True):
+    global base_threads
+    global a_threads
+    global b_threads
+    global c_threads
+    global d_threads
+
+
+    if working == True:
+        if last_one == "a":
+            for thread in a_threads:
+                thread.cancel()
+        elif last_one == "b":
+            for thread in b_threads:
+                thread.cancel()
+        elif last_one == "c":
+            for thread in c_threads:
+                thread.cancel()
+        elif last_one == "d":
+            for thread in d_threads:
+                thread.cancel()
+        elif last_one == "base":
+            pass
+        else:
+            for thread in base_threads:
+                thread.cancel()
+
+        if selected == "a":
+            for thread in a_threads:
+                thread.start()
+        elif selected == "b":
+            for thread in b_threads:
+                thread.start()
+        elif selected == "c":
+            for thread in c_threads:
+                thread.start()
+        elif selected == "d":
+            for thread in d_threads:
+                thread.start()
+        else:
+            for thread in base_threads:
+                thread.start()
+
+    else:
+        threads_lists = [base_threads, a_threads, b_threads, c_threads, d_threads]
+        for list in threads_lists:
+            for thread in list:
+                thread.cancel()
+
+
+
 def play_random_quizmaster_sound(level: int):
     util.pause_music()
     global random_sounds
     sound_file = random.choice(random_sounds)
     util.play_sound_object(sound_file)
-    play_music(level)
+    util.continue_music()
 
 
 def play_question_prologue(level: int):
@@ -468,6 +527,34 @@ def fastest_finger_first():
     quit_game(score, player_name, question_topics)
 
     return
+
+
+def init_threads(level: int):
+    global base_threads
+    global a_threads
+    global b_threads
+    global c_threads
+    global d_threads
+
+    base_threads = []
+    a_threads = []
+    b_threads = []
+    c_threads = []
+    d_threads = []
+    if level > 0:
+        thread_random(level, working=False)
+    lists = [base_threads, a_threads, b_threads, c_threads, d_threads]
+    for i in range(5):
+        t1 = threading.Timer(15.0 * 1, play_random_quizmaster_sound, args=(i,))
+        t2 = threading.Timer(15.0 * 2, play_random_quizmaster_sound, args=(i,))
+        t3 = threading.Timer(15.0 * 3, play_random_quizmaster_sound, args=(i,))
+        t4 = threading.Timer(15.0 * 4, play_random_quizmaster_sound, args=(i,))
+        lists[i] = [t1, t2, t3, t4]
+    base_threads = lists[0]
+    a_threads = lists[1]
+    b_threads = lists[2]
+    c_threads = lists[3]
+    d_threads = lists[4]
 
 
 def get_dictionary_key_by_value(dictionary: {}, value: str) -> str:
@@ -1238,7 +1325,7 @@ def get_sound_list(attitude: str) -> {}:
 def handle_user_input(question: str, answers: dict, correct_answer: str, level=0, final_color="orange", out_of_game=False,
                       help=False) -> str:
     select_text = language_dictionary[game_language].quiz.select_answer
-
+    last_input = ""
     if util.game_language == util.Language.HUNGARIAN.name:
         sound_list_dict = get_sound_list(util.quizmaster_attitude)
         bad_sounds = sound_list_dict['bad_sounds']
@@ -1255,6 +1342,7 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
             for input_ in user_inputs:
                 if user_input == input_[0] or user_input == input_[1]:
                     if util.game_language == util.Language.HUNGARIAN.name:
+                        thread_random(level, selected=input_[1], last_one=last_input)
                         if util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
                             if input_[1] == correct_answer:
                                 selected_sound = random.choice(correct_sounds)
@@ -1264,17 +1352,18 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
                     util.clear_screen()
                     print_quiz_table(question, answers, game_level=level, selected=input_[1], color="li_grey")
                     print("\n\n   " + fg.grey + select_text + fg.rs)
-                    util.stop_sound()
+                    util.pause_music()
                     if util.game_language == util.Language.HUNGARIAN.name and util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
                         util.play_sound(selected_sound , 0, timer=True)
                     if not out_of_game:
-                        play_music(level)
+                        util.continue_music()
+                    last_input = input_[1]
                     while True:
                         user_input = get_user_input()
                         if user_input == b'\r' or user_input == '<Ctrl-j>':
                             util.clear_screen()
                             print_quiz_table(question, answers, input_[1], final_color, game_level=level)
-                            util.stop_sound()
+                            util.pause_music()
                             if util.game_language == util.Language.HUNGARIAN.name:
                                 play_marked_sound(input_[1], level)
                             if level > 4 and level < 11:
@@ -1286,6 +1375,7 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
                             if util.game_language == util.Language.HUNGARIAN.name:
                                 util.play_sound(selected_lets_see_sound, 0)
                                 time.sleep(3)
+                            last_input = input_[1]
                             return input_[1]
                         if user_input not in input_:
                             break
@@ -1356,6 +1446,8 @@ def get_user_input() -> bytes:
 
 
 def quit_game(score: int, name, topic):
+    thread_random(score, working=False)
+    util.stop_music()
     util.play_sound("exit_epilogue", 0)
     if score > 0:
         write_content_to_file("scores.json",

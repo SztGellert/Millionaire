@@ -141,12 +141,20 @@ def play_sound(filename, starting_time, file_type="wav", volume=0.07, fading_tim
 
 
     if system_volume:
-        pygame.mixer.music.load(file_path)
-        pygame.mixer.music.set_volume(volume)
-        pygame.mixer.music.play(0, starting_time, fade_ms=fading_time)
+        sound = pygame.mixer.Sound(file_path)
+        sound.play()
+
         if timer == True:
-            a = pygame.mixer.Sound(file_path)
-            time.sleep(a.get_length())
+            #a = pygame.mixer.Sound(file_path)
+
+            time.sleep(sound.get_length())
+        #else:
+            #sound = pygame.mixer.Sound(file_path)
+            #pygame.mixer.music.load(file_path)
+            #pygame.mixer.music.set_volume(volume)
+            #pygame.mixer.music.play(0, starting_time, fade_ms=fading_time)
+        #sound.play()
+
 
 
 def play_sound_object(file: pygame.mixer.Sound):
@@ -205,6 +213,11 @@ def continue_music():
 
 
 def stop_sound():
+    if system_volume:
+        pygame.mixer.stop()
+
+
+def stop_music():
     if system_volume:
         pygame.mixer.music.stop()
 
