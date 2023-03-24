@@ -175,7 +175,7 @@ def play():
                         print_prizes_with_quizmaster(0, nullprize=True)
                     print(fg.red + "\n   " + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
                     if util.game_language == util.Language.HUNGARIAN.name:
-                        util.play_sound("so_sorry", 0, dir="out_of_game")
+                        util.play_sound("so_sorry", 0, dir="out_of_game", timer=True)
                     time.sleep(1)
                 quit_game(score, player_name, question_topics)
                 util.clear_screen()
@@ -1004,6 +1004,12 @@ def print_quizmaster():
 
 
 def audience_help(question, answers: {}, correct_value: str, game_level):
+    if util.game_language == util.Language.HUNGARIAN.name:
+        audience_prolouges = ["audience_isnt_calm", "dear_audience_your_time", "then_ask_audience", "believe_audience",
+                              "no_audience", "audience_intro_1", "audience_intro_2", "audience_intro_3", "audience_intro_4",
+                              "audience_intro_5", "audience_intro_6"]
+        prolouge = random.choice(audience_prolouges)
+        util.play_sound(prolouge, 0, dir="audience", timer=True)
     len_al = 45
     percent_color = bg(200, 35, 254)
     answers_list = list(answers.keys())
@@ -1072,6 +1078,11 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
             i += 1
         else:
             util.play_sound("audience_end", 0, general=True)
+            time.sleep(1)
+            if util.game_language == util.Language.HUNGARIAN.name:
+                audience_after_sounds = ["after_audience", "after_audience_2"]
+                after_sound = random.choice(audience_after_sounds)
+                util.play_sound(after_sound, 0, dir="audience", timer=True)
 
 
 def telephone_help(question: str, answers: {}, correct_answer: str):
