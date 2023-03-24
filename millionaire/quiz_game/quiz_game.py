@@ -347,23 +347,23 @@ def thread_random(level: int, selected="", last_one="", working=True):
 
         if selected == "a":
             for thread in a_threads:
-                if not thread.finished.is_set():
+                if not thread.finished:
                     thread.start()
         elif selected == "b":
             for thread in b_threads:
-                if not thread.finished.is_set():
+                if not thread.finished:
                     thread.start()
         elif selected == "c":
             for thread in c_threads:
-                if not thread.finished.is_set():
+                if not thread.finished:
                     thread.start()
         elif selected == "d":
             for thread in d_threads:
-                if not thread.finished.is_set():
+                if not thread.finished:
                     thread.start()
         else:
             for thread in base_threads:
-                if not thread.finished.is_set():
+                if not thread.finished:
                     thread.start()
 
     else:
@@ -434,24 +434,29 @@ def play_help_sounds(help_types: {}):
 
     if list(help_types.values()).count(True) == len(
             help_types):
-        all_help_sounds = ["you_still_have_three_helps", "still_have_all_helps"]
+        all_help_sounds = ["you_still_have_three_helps", "still_have_all_helps", "yet_having_three_helps", "still_have_three_helps_2", "three_helps_stay", "still_have_3_lifelines"]
         sound_file = random.choice(all_help_sounds)
     elif list(help_types.values()).count(True) == len(
             help_types)-1:
+        two_help_sounds = ["and_still_have_two_helps", "still_have_two_helps_i_take_it"]
         if help_types["telephone"] and help_types["audience"]:
-            sound_file = "you_still_have_two_helps_phone_audience"
+            two_help_sounds.append("you_still_have_two_helps_phone_audience")
+        sound_file = random.choice(two_help_sounds)
     elif list(help_types.values()).count(True) == len(
             help_types)-2:
+        help_assets.append("you_waste_a_lot")
         if help_types["telephone"]:
-            help_assets.append("you_have_a_phone_help_left")
-            help_assets.append("you_have_a_phone_but_make_you_mad")
-            sound_file = random.choice(help_assets)
+            phone_left_sounds = ["you_have_a_phone_help_left",  "you_have_a_phone_but_make_you_mad"]
+            for sound in phone_left_sounds:
+                help_assets.append(sound)
         else:
-            sound_file = "you_still_have_one_help"
-            help_assets.append(sound_file)
-            sound_file = random.choice(help_assets)
+            one_help_sounds = ["oh_god_got_one_help", "you_still_have_one_help", "whatever_you_say_theres_1_help"]
+            for sound in one_help_sounds:
+                help_assets.append(sound)
+        sound_file = random.choice(help_assets)
     else:
-        sound_file = "no_more_helps"
+        no_help_sounds = ["no_more_helps", "without_help", "sorry_no_more_helps", "since_lost_helps", "fighting_without_helps", "but_no_more_helps"]
+        sound_file = random.choice(no_help_sounds)
 
     util.play_sound(sound_file, 0, dir="help", timer=True)
 
