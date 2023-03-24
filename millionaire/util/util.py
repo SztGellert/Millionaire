@@ -130,12 +130,12 @@ def clear_screen():
         os.system('cls')
 
 
-def play_sound(filename, starting_time, file_type="wav", volume=0.07, fading_time=0, timer=False, general=False, random=False):
+def play_sound(filename, starting_time, file_type="wav", dir="", volume=0.07, fading_time=0, timer=False, general=False):
 
     if general:
         file_path = get_data_path() + "/sound_files/general/"  + filename + "." + file_type
-    elif random:
-        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/random/" + filename + "." + file_type
+    elif dir != "":
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + dir + "/" + filename + "." + file_type
     else:
         file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
 
