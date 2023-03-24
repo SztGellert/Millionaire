@@ -205,6 +205,10 @@ def play():
                                         answer_list[a] = list(shuffled_answers.values())[a]
                                     print_quiz_table(question, shuffled_answers, game_level=i)
                                     time.sleep(2)
+                                    if util.game_language == util.Language.HUNGARIAN.name:
+                                        after_halving_sounds = ["after_halving", "after_halving_2", "after_halving_3", "your_guess_stayed", "you_have_fifty_percent", "im_not_surprised"]
+                                        sound = random.choice(after_halving_sounds)
+                                        util.play_sound(sound, 0, dir="halving", timer=True)
                                 elif list(help_types)[x] == "audience":
                                     audience_help(question, shuffled_answers, correct_answer_value, game_level=i)
                                 else:
@@ -434,7 +438,7 @@ def play_help_sounds(help_types: {}):
 
     if list(help_types.values()).count(True) == len(
             help_types):
-        all_help_sounds = ["you_still_have_three_helps", "still_have_all_helps", "yet_having_three_helps", "still_have_three_helps_2", "three_helps_stay", "still_have_3_lifelines"]
+        all_help_sounds = ["you_still_have_three_helps", "still_have_all_helps", "yet_having_three_helps", "still_have_three_helps_2", "still_have_3_lifelines"]
         sound_file = random.choice(all_help_sounds)
     elif list(help_types.values()).count(True) == len(
             help_types)-1:
@@ -584,9 +588,13 @@ def show_prize(round_number: int) -> str:
 
 def halving(question: str, answers: {}, correct_answer: str) -> dict:
     if util.game_language == util.Language.HUNGARIAN.name:
-        util.play_sound("lets_take_two", 0, dir="halving")
-    util.clear_screen()
+        before_halving_sounds = ["before_halving", "before_halving_2", "before_halving_3", "before_halving_4",
+                                "before_halving_5", "before_halving_6", "halv", "lets_even_half", "lets_halv", "lets_see_which_two", "lets_take_two",
+                                 "lets_take_two_1", "lets_take_two_2", "lets_take_two_3", "two_of_four"]
+        sound = random.choice(before_halving_sounds)
+        util.play_sound(sound, 0, dir="halving", timer=True)
     time.sleep(2)
+    util.clear_screen()
     util.play_sound("halving", 0, general=True)
     halved_answers = calculate_halved_answers(answers, correct_answer)
     return halved_answers
@@ -1005,10 +1013,21 @@ def print_quizmaster():
 
 def audience_help(question, answers: {}, correct_value: str, game_level):
     if util.game_language == util.Language.HUNGARIAN.name:
-        audience_prolouges = ["audience_isnt_calm", "dear_audience_your_time", "then_ask_audience", "believe_audience",
-                              "no_audience", "audience_intro_1", "audience_intro_2", "audience_intro_3", "audience_intro_4",
-                              "audience_intro_5", "audience_intro_6"]
-        prolouge = random.choice(audience_prolouges)
+        options = []
+        for key in answers:
+            if answers[key] != "":
+                options.append(key)
+        if options == ["a", "b"]:
+            prolouge = "audience_a_b"
+        elif options == ["a", "c"]:
+            prolouge = "audience_a_b"
+        elif ptions == ["c", "d"]:
+            prolouge = "audience_c_d"
+        else:
+            audience_prolouges = ["audience_isnt_calm", "then_ask_audience",
+                                  "no_audience", "audience_intro","audience_intro_1", "audience_intro_2", "audience_intro_3", "audience_intro_4",
+                                  "audience_intro_5", "audience_intro_6"]
+            prolouge = random.choice(audience_prolouges)
         util.play_sound(prolouge, 0, dir="audience", timer=True)
     len_al = 45
     percent_color = bg(200, 35, 254)
@@ -1080,12 +1099,16 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
             util.play_sound("audience_end", 0, general=True)
             time.sleep(1)
             if util.game_language == util.Language.HUNGARIAN.name:
-                audience_after_sounds = ["after_audience", "after_audience_2"]
+                audience_after_sounds = ["after_audience", "after_audience_2", "audience_false", "you_disagree_audience", "weights_a_lot", "believe_audience", "audience_random"]
                 after_sound = random.choice(audience_after_sounds)
                 util.play_sound(after_sound, 0, dir="audience", timer=True)
 
 
 def telephone_help(question: str, answers: {}, correct_answer: str):
+    if util.game_language == util.Language.HUNGARIAN.name:
+        before_phone_sounds = ["if_you_want_phone_then_i_agree",  "i_didnt_want_to_advise_phone", "we_dont_phone", "phone_broke", "we_dont_phone_two"]
+        before_sound = random.choice(before_phone_sounds)
+        util.play_sound(before_sound, 0, dir="phone", timer=True)
     print("\n   " + language_dictionary[game_language].quiz.phone_prompt)
     phone = handle_user_input(question, answers,  correct_answer, help=True)
     call_text_files = ["mum_phone_" + str(game_language).lower(),
@@ -1094,6 +1117,9 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
                        "yoda_master_phone_" + str(game_language).lower()
                        ]
     conversation = ""
+    if util.game_language == util.Language.HUNGARIAN.name:
+        dial_sound = "colleagues_are_dialing"
+        util.play_sound(dial_sound, 0, dir="phone", timer=True)
     for i in range(len(call_text_files)):
         if phone.lower() == call_text_files[i][0]:
             conversation = (util.open_file(call_text_files[i], 'r', separator=";"))
@@ -1146,6 +1172,9 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
             i += 1
     util.play_sound('phone_call_ends', 0, general=True)
     time.sleep(5)
+    if util.game_language == util.Language.HUNGARIAN.name:
+        after_sound = "over_30_secs"
+        util.play_sound(after_sound, 0, dir="phone", timer=True)
     print("\n   " + language_dictionary[game_language].quiz.call_duration, int(now - then),
           language_dictionary[game_language].quiz.call_seconds)
     util.stop_sound()
