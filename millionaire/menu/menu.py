@@ -19,7 +19,7 @@ bg.darkest_blue = bg(42, 45, 112)
 
 def intro():
     if util.game_language == util.Language.HUNGARIAN.name:
-        util.play_sound("intro", 0, volume=1)
+        util.play_sound("intro", 0, dir="intro", volume=1)
 
     else:
         util.play_sound("intro", 0)

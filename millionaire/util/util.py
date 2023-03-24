@@ -1,3 +1,4 @@
+import glob
 import json
 import os
 import pathlib
@@ -129,19 +130,36 @@ def clear_screen():
         os.system('cls')
 
 
-def play_sound(filename, starting_time, file_type="wav", volume=0.07, fading_time=0, timer=False, general=False):
-    if not general:
-        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
-    else:
+def play_sound(filename, starting_time, file_type="wav", dir="", volume=0.07, fading_time=0, timer=False, general=False):
+
+    if general:
         file_path = get_data_path() + "/sound_files/general/"  + filename + "." + file_type
+    elif dir != "":
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + dir + "/" + filename + "." + file_type
+    else:
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
+
 
     if system_volume:
-        pygame.mixer.music.load(file_path)
-        pygame.mixer.music.set_volume(volume)
-        pygame.mixer.music.play(0, starting_time, fade_ms=fading_time)
+        sound = pygame.mixer.Sound(file_path)
+        sound.play()
+
         if timer == True:
-            a = pygame.mixer.Sound(file_path)
-            time.sleep(a.get_length())
+            #a = pygame.mixer.Sound(file_path)
+
+            time.sleep(sound.get_length())
+        #else:
+            #sound = pygame.mixer.Sound(file_path)
+            #pygame.mixer.music.load(file_path)
+            #pygame.mixer.music.set_volume(volume)
+            #pygame.mixer.music.play(0, starting_time, fade_ms=fading_time)
+        #sound.play()
+
+
+
+def play_sound_object(file: pygame.mixer.Sound):
+    file.set_volume(0.1)
+    file.play()
 
 
 def play_background_music(filename, starting_time, volume=0.07):
@@ -175,6 +193,15 @@ def open_file(filename: str, mode: str, separator=",", filepath="/text_files/", 
     return list_of_file
 
 
+def init_random_sounds() -> []:
+    sounds = []
+    file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/random/" + "/*.wav"
+
+    for sound_file in glob.glob(file_path):
+        sounds.append(pygame.mixer.Sound(sound_file))
+
+    return sounds
+
 def pause_music():
     if system_volume:
         pygame.mixer.music.pause()
@@ -186,6 +213,11 @@ def continue_music():
 
 
 def stop_sound():
+    if system_volume:
+        pygame.mixer.stop()
+
+
+def stop_music():
     if system_volume:
         pygame.mixer.music.stop()
 

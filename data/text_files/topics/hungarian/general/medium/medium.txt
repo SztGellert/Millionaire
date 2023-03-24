@@ -1,5 +1,5 @@
 Ki a jelenlegi házigazdája a "The Tonight Show?"-nak?;Jimmy Fallon;Oprah Winfrey;Anne Curry;Bob Barker
-Mennyi a szolgálati ideje az Egyesült Államok elnökének?;4 years;1 year;10 years;20 years
+Mennyi a szolgálati ideje az Egyesült Államok elnökének?;4 év;1 év;10 év;20 év
 Melyik játék szerepelt a klasszikus "WarGames" filmben?;Tic-Tac-Toe;Checkers;Tower of Hanoi;Nim
 Melyik Walt Disney első filmje?;Hófehérke és a hét törpe;Dumbó;Fantázia;Pinokkió
 Minek a tudománya az Entomológia?;Rovarok;Emberi viselkedés;A technikai és tudományos terminológiák eredete;Kőzetek kialakulása
