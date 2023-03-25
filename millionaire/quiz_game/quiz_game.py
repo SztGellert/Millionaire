@@ -260,14 +260,10 @@ def play():
                 if len(question) % 2 == 0:
                     question = question + " "
                 if i == 4:
-                    print("\n" + " " * 20 + fg.yellow + language_dictionary[
-                        game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     util.play_sound("won_hundred_bucks", 0, general=True)
                     print_prizes_with_quizmaster(i)
                     time.sleep(7)
                 elif i == 9:
-                    print("\n" + " " * 20 + fg.yellow + language_dictionary[
-                        game_language].quiz.guaranteed_prize + show_prize(i) + fg.rs)
                     if util.game_language == util.Language.HUNGARIAN.name:
                         util.play_sound("now_comes_hard_part", 0, dir="random")
                     print_prizes_with_quizmaster(i)
