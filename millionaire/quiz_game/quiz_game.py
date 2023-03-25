@@ -131,12 +131,12 @@ def play():
             thread_random(i, last_one="base")
         answer = handle_user_input(question, shuffled_answers, correct_answer_key, level=i)
         if answer == "esc":
-            quit_game(score, player_name, question_topics)
+            quit_quiz(score, player_name, question_topics)
             return
         util.pause_music()
         while answer not in list(answers.keys()):
             if answer == "esc":
-                quit_game(score, player_name, question_topics)
+                quit_quiz(score, player_name, question_topics)
                 return
             if answer == "t":
                 util.clear_screen()
@@ -147,7 +147,7 @@ def play():
                 answer = handle_user_input(question, shuffled_answers, correct_answer_key, level=i, final_color="blue",
                                            out_of_game=True)
                 if answer == "esc":
-                    quit_game(score, player_name, question_topics)
+                    quit_quiz(score, player_name, question_topics)
                     return
                 is_correct = check_answer(answer, correct_answer_key)
                 if is_correct:
@@ -177,7 +177,7 @@ def play():
                     if util.game_language == util.Language.HUNGARIAN.name:
                         util.play_sound("so_sorry", 0, dir="out_of_game", timer=True)
                     time.sleep(1)
-                quit_game(score, player_name, question_topics)
+                quit_quiz(score, player_name, question_topics)
                 util.clear_screen()
                 return
 
@@ -193,7 +193,7 @@ def play():
                     print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.help_selection + fg.rs)
                     help_input = handle_user_input(question, shuffled_answers,  correct_answer_key, level=i, help=True)
                     if help_input == "esc":
-                        quit_game(score, player_name, question_topics)
+                        quit_quiz(score, player_name, question_topics)
                         return
                     for x in range(len(help_types)):
                         if help_input == list(help_types)[x][0]:
@@ -225,7 +225,7 @@ def play():
                     play_music(i)
                     print("\n\n  ", fg.grey + language_dictionary[game_language].quiz.select_answer + fg.rs)
                     if help_input == "esc":
-                        quit_game(score, player_name, question_topics)
+                        quit_quiz(score, player_name, question_topics)
                         return
                     answer = handle_user_input(question, shuffled_answers,  correct_answer_key, level=i)
                     time.sleep(2)
@@ -287,7 +287,7 @@ def play():
                     i) + " !" + fg.rs)
                 util.play_sound("winning_theme", 0, general=True)
                 time.sleep(35)
-                quit_game(score, player_name, question_topics)
+                quit_quiz(score, player_name, question_topics)
         else:
             util.play_sound("bad_answer", 0, general=True)
             util.clear_screen()
@@ -312,12 +312,12 @@ def play():
             else:
                 print_prizes_with_quizmaster(0, nullprize=True)
             print("\n   " + fg.orange + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
-            quit_game(score, player_name, question_topics)
+            quit_quiz(score, player_name, question_topics)
             util.clear_screen()
 
             return
         util.clear_screen()
-    quit_game(score, player_name, question_topics)
+    quit_quiz(score, player_name, question_topics)
 
     return
 
@@ -541,7 +541,7 @@ def fastest_finger_first():
     for i in range(4):
         answer = handle_fastest_fingers_first_input(question, shuffled_answers, 0, total_answer)
         if answer == "esc":
-            quit_game(0, player_name, question_topics)
+            quit_fastest_fingers()
             return
         total_answer += answer
     correct_answer_keys = question_lines[0][5]
@@ -569,10 +569,10 @@ def fastest_finger_first():
         util.play_sound("fastest_fingers_bad", 0, general=True)
         util.clear_screen()
         print("\n   " + fg.orange + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
-        quit_game(score, player_name, question_topics)
+        quit_fastest_fingers()
         return
 
-    quit_game(score, player_name, question_topics)
+    quit_fastest_fingers()
 
     return
 
@@ -1533,7 +1533,7 @@ def get_user_input() -> bytes:
     return user_input
 
 
-def quit_game(score: int, name, topic):
+def quit_quiz(score: int, name, topic):
     thread_random(score, working=False)
     util.play_sound("time_end_horn", 0, general=True, timer=True)
     util.stop_music()
@@ -1542,5 +1542,10 @@ def quit_game(score: int, name, topic):
     if score > 0:
         write_content_to_file("scores.json",
                               {"user": name, "topic": topic, "score": score, "time": time.ctime(time.time())})
+    menu.return_prompt()
+    util.stop_sound()
+
+
+def quit_fastest_fingers():
     menu.return_prompt()
     util.stop_sound()
