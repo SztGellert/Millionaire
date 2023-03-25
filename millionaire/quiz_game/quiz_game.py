@@ -328,7 +328,7 @@ def thread_random(level: int, selected="", last_one="", working=True):
     global b_threads
     global c_threads
     global d_threads
-
+    global threads
 
     if working == True:
         if last_one == "a":
@@ -351,30 +351,64 @@ def thread_random(level: int, selected="", last_one="", working=True):
 
         if selected == "a":
             for thread in a_threads:
-                if not thread.finished:
+                if not thread.finished.is_set():
                     thread.start()
+                else:
+                    a_threads = []
+                    for i in range (4):
+                        a_threads.append(threading.Timer(15.0 * (i+1), play_random_quizmaster_sound, args=(level,)))
+                    for thread_ in a_threads:
+                        thread_.start()
+                    return
         elif selected == "b":
             for thread in b_threads:
-                if not thread.finished:
+                if not thread.finished.is_set():
                     thread.start()
+                else:
+                    b_threads = []
+                    for i in range(4):
+                        b_threads.append(threading.Timer(15.0 * (i + 1), play_random_quizmaster_sound, args=(level,)))
+                    for thread_ in b_threads:
+                        thread_.start()
+                    return
         elif selected == "c":
             for thread in c_threads:
-                if not thread.finished:
+                if not thread.finished.is_set():
                     thread.start()
+                else:
+                    c_threads = []
+                    for i in range(4):
+                        c_threads.append(threading.Timer(15.0 * (i + 1), play_random_quizmaster_sound, args=(level,)))
+                    for thread_ in c_threads:
+                        thread_.start()
+                    return
         elif selected == "d":
             for thread in d_threads:
-                if not thread.finished:
+                if not thread.finished.is_set():
                     thread.start()
+                else:
+                    d_threads = []
+                    for i in range(4):
+                        d_threads.append(threading.Timer(15.0 * (i + 1), play_random_quizmaster_sound, args=(level,)))
+                    for thread_ in d_threads:
+                        thread_.start()
+                    return
         else:
             for thread in base_threads:
-                if not thread.finished:
+                if not thread.finished.is_set():
                     thread.start()
+                else:
+                    base_threads = []
+                    for i in range(4):
+                        base_threads.append(threading.Timer(15.0 * (i + 1), play_random_quizmaster_sound, args=(level,)))
+                    for thread_ in base_threads:
+                        thread_.start()
+                    return
 
     else:
-        threads_lists = [base_threads, a_threads, b_threads, c_threads, d_threads]
-        for list in threads_lists:
+        for list in threads:
             for thread in list:
-                thread.cancel()
+                    thread.cancel()
 
 
 
@@ -542,33 +576,29 @@ def fastest_finger_first():
 
     return
 
-
 def init_threads(level: int):
     global base_threads
     global a_threads
     global b_threads
     global c_threads
     global d_threads
+    global threads
 
-    base_threads = []
-    a_threads = []
-    b_threads = []
-    c_threads = []
-    d_threads = []
     if level > 0:
         thread_random(level, working=False)
-    lists = [base_threads, a_threads, b_threads, c_threads, d_threads]
+    threads = []
+
     for i in range(5):
-        t1 = threading.Timer(15.0 * 1, play_random_quizmaster_sound, args=(i,))
-        t2 = threading.Timer(15.0 * 2, play_random_quizmaster_sound, args=(i,))
-        t3 = threading.Timer(15.0 * 3, play_random_quizmaster_sound, args=(i,))
-        t4 = threading.Timer(15.0 * 4, play_random_quizmaster_sound, args=(i,))
-        lists[i] = [t1, t2, t3, t4]
-    base_threads = lists[0]
-    a_threads = lists[1]
-    b_threads = lists[2]
-    c_threads = lists[3]
-    d_threads = lists[4]
+        options = []
+        for j in range(4):
+            options.append(threading.Timer(15.0 * (j+1), play_random_quizmaster_sound, args =  (level,)))
+        threads.append(options)
+
+    base_threads = threads[0]
+    a_threads = threads[1]
+    b_threads = threads[2]
+    c_threads = threads[3]
+    d_threads = threads[4]
 
 
 def get_dictionary_key_by_value(dictionary: {}, value: str) -> str:
@@ -1209,13 +1239,17 @@ def print_prizes_with_quizmaster(level: int, nullprize=False, special_text="", b
 def show_game_structure():
     import time, msvcrt
     # TODO: only works on win
-
     timeout = 2
     startTime = time.time()
     inp = None
     print(language_dictionary[util.game_language].quiz.skip_prompt)
     while True:
         if msvcrt.kbhit():
+            global game_language
+            if game_language == util.Language.HUNGARIAN.name:
+                millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
+                sound = random.choice(millionaire_sounds)
+                util.play_sound(sound, 0, dir="intro")
             inp = msvcrt.getch()
             break
         elif time.time() - startTime > timeout:
@@ -1501,8 +1535,10 @@ def get_user_input() -> bytes:
 
 def quit_game(score: int, name, topic):
     thread_random(score, working=False)
+    util.play_sound("time_end_horn", 0, general=True, timer=True)
     util.stop_music()
-    util.play_sound("exit_epilogue", 0, dir="out_of_game")
+    if game_language == util.Language.HUNGARIAN.name:
+        util.play_sound("exit_epilogue", 0, dir="out_of_game")
     if score > 0:
         write_content_to_file("scores.json",
                               {"user": name, "topic": topic, "score": score, "time": time.ctime(time.time())})
