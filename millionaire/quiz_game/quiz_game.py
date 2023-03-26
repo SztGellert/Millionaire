@@ -1085,7 +1085,7 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
             prolouge = "audience_a_b"
         elif options == ["a", "c"]:
             prolouge = "audience_a_b"
-        elif ptions == ["c", "d"]:
+        elif options == ["c", "d"]:
             prolouge = "audience_c_d"
         else:
             audience_prolouges = ["audience_isnt_calm", "then_ask_audience",
@@ -1407,9 +1407,27 @@ def play_music(round: int):
         util.play_background_music(str(round), 0)
 
 
-def play_marked_sound(choise: str, level: int):
+def play_marked_sound(choise: str, level: int, last_one=""):
     sounds = []
 
+    for answer in ["a", "b", "c", "d"]:
+        if choise == answer:
+            if choise == last_one and level > 0:
+                sounds.append("mark_" + choise + "_again")
+            else:
+                sounds.append("mark_" + choise)
+                sounds.append("mark_" + choise + "_1")
+                sounds.append("mark_" + choise + "_2")
+                if choise == "b":
+                    sounds.append("poke_b")
+                if choise in ["b", "d"]:
+                    sounds.append("mark_" + choise + "_3")
+                    sounds.append("mark_" + choise + "_4")
+
+    sound = random.choice(sounds)
+    util.play_sound(sound, 0, dir="mark", timer=True)
+
+    sounds = []
     if level == 7:
         sounds = ["lets_see_500", "lets_see_500_1"]
     elif level == 8:
@@ -1428,8 +1446,8 @@ def play_marked_sound(choise: str, level: int):
 
 
 def get_sound_list(attitude: str) -> {}:
-    correct_sounds = ["you_came_for_money", "dont_sigh_yet", "hurry_up", "dont_let_me_speak", "dont_listen_to_me", "whatever_you_say_wow", "that_was_fast", "what_you_say_will_be", "watch_out_more_im_not_always_evil", "you_may_feel_im_hurrying", "final_or"]
-    bad_sounds = ["i_wont_help_more", "calm", "look_at_my_eyes", "dont_want_to_say_dummy", "nooo", "dont_be_impatient", "so_you_gonna_poke", "but_i_helped_you"]
+    correct_sounds = ["you_must_mark", "you_came_for_money", "dont_sigh_yet", "hurry_up", "dont_let_me_speak", "dont_listen_to_me", "whatever_you_say_wow", "that_was_fast", "what_you_say_will_be", "watch_out_more_im_not_always_evil", "you_may_feel_im_hurrying", "final_or"]
+    bad_sounds = ["you_mark_anyways", "i_wont_help_more", "calm", "look_at_my_eyes", "dont_want_to_say_dummy", "nooo", "dont_be_impatient", "so_you_gonna_poke", "but_i_helped_you"]
     other_sounds = ['be_careful_is_it_final', "in_this_show_i_have_to_ask_is_it_final", "i_must_ask_is_it_final", "final_or_final",
                     "take_that_as_final", "last_one_final", "take_the_risk", "i_dont_help_more_if_you_wish_we_mark", "pay_attention_to_the_quizmaster", "so_what_to_do",
                     "you_see_clueless"]
@@ -1498,7 +1516,7 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
                             if not out_of_game:
                                 util.pause_music()
                             if util.game_language == util.Language.HUNGARIAN.name and not out_of_game:
-                                play_marked_sound(input_[1], level)
+                                play_marked_sound(input_[1], level, last_one=last_input)
                             return input_[1]
                         if user_input not in input_:
                             break
