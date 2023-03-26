@@ -142,13 +142,13 @@ def play():
                 util.clear_screen()
                 print_quiz_table(question, shuffled_answers, game_level=i)
                 if util.game_language == util.Language.HUNGARIAN.name:
+                    thread_random(score, working=False)
                     music_off_sounds = ["music_off", "lower_music"]
                     sound = random.choice(music_off_sounds)
                     if i > 8:
                         sound = "stop_at_finish"
                     util.play_sound(sound, 0, dir="out_of_game", timer=True)
                     util.stop_music()
-                    thread_random(score, working=False)
                     out_of_game_sounds = ["and_then_out_of_game", "acknowledge_it_out_of_game", "out_of_game", "out_of_game_2", "out_of_game_say_letter"]
                     sound = random.choice(out_of_game_sounds)
                     util.play_sound(sound, 0, dir="out_of_game")
@@ -170,6 +170,7 @@ def play():
                     else:
                         print_prizes_with_quizmaster(level=i, nullprize=True)
                     print(fg.orange + "\n   " + language_dictionary[game_language].quiz.correct_answer_out + fg.rs)
+                    util.play_sound("claps", 0, general=True, timer=True)
                 else:
                     if game_language == util.Language.HUNGARIAN.name:
                         util.play_sound("good_to_stop", 0, dir="out_of_game", timer=True)
@@ -189,6 +190,7 @@ def play():
                         sound = random.choice(sorry_sounds)
                         util.play_sound(sound, 0, dir="out_of_game", timer=True)
                     time.sleep(1)
+                    util.play_sound("claps", 0, general=True, timer=True)
                 quit_quiz(score, player_name, question_topics)
                 util.clear_screen()
                 return
@@ -197,6 +199,7 @@ def play():
                 if list(help_types.values()).count(True) != 0:
                     if game_language == util.Language.HUNGARIAN.name:
                         util.pause_music()
+                        thread_random(score, working=False)
                         play_help_sounds(help_types)
                         util.continue_music()
                     util.clear_screen()
@@ -283,6 +286,7 @@ def play():
                         util.play_sound("now_comes_hard_part", 0, dir="random")
                 else:
                     print_prizes_with_quizmaster(i)
+                    util.play_sound("claps", 0, general=True, timer=True)
                     time.sleep(2)
             else:
                 if util.game_language == util.Language.HUNGARIAN.name:
@@ -314,6 +318,7 @@ def play():
             if game_language == util.Language.HUNGARIAN.name:
                 util.play_sound("so_sorry", 0, dir="out_of_game", timer = True)
                 time.sleep(1)
+                util.play_sound("claps", 0, general=True, timer=True)
             util.clear_screen()
             if i > 9:
                 print_prizes_with_quizmaster(9)
@@ -1211,8 +1216,11 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
     for i in range(len(call_text_files)):
         if phone.lower() == call_text_files[i][0]:
             conversation = (util.open_file(call_text_files[i], 'r', separator=";"))
-            util.play_sound("phone_ring", 0, general=True)
-            time.sleep(2)
+            if phone.lower() == "t":
+                util.play_sound("teacher", 0, dir="phone", timer=True)
+            else:
+                util.play_sound("phone_ring", 0, general=True)
+                time.sleep(2)
             util.play_sound("phone_call", 0, general=True)
     len_al = 45
     util.clear_screen()
@@ -1289,9 +1297,9 @@ def print_prizes_with_quizmaster(level: int, nullprize=False, special_text="", b
         print("\r")
     for line in util.open_file("quizmaster", "r", ";", "/text_files/", strip=False):
         print(line[0])
-    print("  /" + "‾" * (table_length) + "\\")
+    print("  /" + bg_color + "‾" * (table_length) + bg.rs + "\\")
     print(" ◄ " + bg_color + fg.orange + number_of_spaces * " " + prize + fg.rs + " " * number_of_spaces + bg.rs + " ►")
-    print("  \\" + "_" * (table_length) + "/")
+    print("  \\" + bg_color +  "_" * (table_length) +  bg.rs +"/")
 
 
 def show_game_structure():
