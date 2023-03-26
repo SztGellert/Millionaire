@@ -1,5 +1,5 @@
 A hang intenzitásának van?;objektív létezése;szubjektív létezése;nincs létezése;szubjektív és objektív létezés egyaránt
-Mik a bolgyók?;fénytelen égitestek;csillag körül keringő fényes égitestek;fényes és pislákoló égitestek;fényes égitestek, amelyek nem pislákolnak
+Mik a bolygók?;fénytelen égitestek;csillag körül keringő fényes égitestek;fényes és pislákoló égitestek;fényes égitestek, amelyek nem pislákolnak
 Miért kapta Hermann Scheer (Németország) 1999-ben a "Right Livelihood Award" díjat?;A napenergia világszintű népszerűsítéséért végzett fáradhatatlan munkájáért;A diktátorok büntetlenségének megszüntetésére irányuló hosszú távú erőfeszítéseiért;Megmutatta, hogy a biogazdálkodás kulcsfontosságú mind a környezeti fenntarthatóság, mind az élelmezésbiztonság szempontjából;Egyik sem
 A Földről a Hold felé kilőtt rakéta szökési sebessége az a sebesség, amellyel megszabadulhat a...?;A Föld gravitációs vonzása;A Hold gravitációs vonzása;A Föld forgásából adódó centrális erő;A légkör nyomása
 Ki volt Gabriel Daniel Fahrenheit?;A fentiek mindegyike;Német fizikus;Kifejlesztette a higanyhőmérőt 1714-ben;Kidolgozta a hőmérsékleti skálát

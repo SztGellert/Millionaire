@@ -112,7 +112,7 @@ def play():
         print_quiz_table("", {"a": "", "b": "", "c": "", "d": ""}, game_level=i, show_answers=False)
         if i in [0, 6, 8]:
             play_question_intro(i)
-        if util.game_language == util.Language.HUNGARIAN.name:
+        if util.game_language == util.Language.HUNGARIAN.name and i < 14:
             play_question_prologue(i)
         util.clear_screen()
         print_quiz_table(question, {"a": "", "b": "", "c": "", "d": ""}, game_level=i, show_answers=False)
@@ -267,21 +267,20 @@ def play():
                     time.sleep(0.12)
                     util.clear_screen()
                 print_quiz_table(question, shuffled_answers, answer, "green", game_level=i)
-                if util.game_language == util.Language.HUNGARIAN.name:
-                    play_prize_sound(i)
-                time.sleep(1.5)
                 util.clear_screen()
                 if len(question) % 2 == 0:
                     question = question + " "
+                if util.game_language == util.Language.HUNGARIAN.name:
+                    play_prize_sound(i)
                 if i == 4:
-                    util.play_sound("won_hundred_bucks", 0, general=True)
                     print_prizes_with_quizmaster(i)
+                    util.play_sound("won_hundred_bucks", 0, general=True)
                     time.sleep(7)
                 elif i == 9:
-                    if util.game_language == util.Language.HUNGARIAN.name:
-                        util.play_sound("now_comes_hard_part", 0, dir="random")
                     print_prizes_with_quizmaster(i)
                     time.sleep(3)
+                    if util.game_language == util.Language.HUNGARIAN.name:
+                        util.play_sound("now_comes_hard_part", 0, dir="random")
                 else:
                     print_prizes_with_quizmaster(i)
                     time.sleep(2)
@@ -306,7 +305,7 @@ def play():
                 print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key, game_level=i)
                 time.sleep(0.12)
                 util.clear_screen()
-                print_quiz_table(question, shuffled_answers, answer, "orange", game_level=i)
+                print_quiz_table(question, shuffled_answers,answer, "orange", game_level=i)
                 time.sleep(0.12)
                 util.clear_screen()
             print_quiz_table(question, shuffled_answers, answer, "orange", correct_answer=correct_answer_key,
@@ -460,14 +459,14 @@ def play_question_prologue(level: int):
         ["here_is_the_second_question_one"],
         ["here_is_the_third_question_one", "here_is_the_third_question_two", "here_is_the_third_question_three"],
         ["here_is_the_fourth_question_one", "here_is_the_fourth_question_two", "here_is_the_fourth_question_three"],
-        ["here_is_the_fifth_question_one", "here_is_the_fifth_question_two"],
-        ["here_is_the_sixth_question_one", "here_is_the_sixth_question_two", "here_is_the_sixth_question_three", "here_is_the_sixth_question_four", "here_is_the_sixth_question_five"],
+        ["here_is_the_fifth_question_one", "here_is_the_fifth_question_two", "here_is_the_fifth_question_three"],
+        ["here_is_the_sixth_question_one", "here_is_the_sixth_question_two", "here_is_the_sixth_question_three", "here_is_the_sixth_question_four", "here_is_the_sixth_question_five", "here_is_the_sixth_question_six"],
         ["here_is_the_seventh_question_one", "here_is_the_seventh_question_two", "here_is_the_seventh_question_three", "here_is_the_seventh_question_four"],
         ["here_is_the_eighths_question_one", "here_is_the_eighthsquestion_two", "here_is_the_eighths_question_three", "here_is_the_eighths_question_four", "here_is_the_eighths_question_five", "here_is_the_eighths_question_six"],
         ["here_is_the_nineth_question_one", "here_is_the_nineth_question_two", "here_is_the_nineth_question_three"],
         ["here_is_the_tenth_question_one", "here_is_the_tenth_question_two", "here_is_the_tenth_question_three"],
         ["here_is_the_eleventh_question_one", "here_is_the_eleventh_question_two", "here_is_the_eleventh_question_three"],
-        ["here_is_the_twelfth_question_one", "here_is_the_twelfth_question_two", "here_is_the_twelfth_question_three"],
+        ["here_is_the_twelfth_question_one", "here_is_the_twelfth_question_two", "here_is_the_twelfth_question_three", "here_is_the_twelfth_question_four"],
         ["here_is_the_thirteenth_question_one", "here_is_the_thirteenth_question_two"],
         ["here_is_the_fourteenth_question_one"]
     ]
@@ -486,6 +485,31 @@ def play_question_prologue(level: int):
 
     sound_file = random.choice(sounds_list[level])
     util.play_sound(sound_file, 0, dir="question_prologue", timer=True)
+
+    chance = random.randrange(0, 10)
+    if chance > 7:
+        if level == 3:
+                util.play_sound("at_4", 0, dir="question_prologue", timer=True)
+        elif level == 4:
+                util.play_sound("at_5", 0, dir="question_prologue", timer=True)
+        elif level == 5:
+                util.play_sound("at_6", 0, dir="question_prologue", timer=True)
+        elif level == 6:
+                util.play_sound("at_7", 0, dir="question_prologue", timer=True)
+        elif level == 7:
+                util.play_sound("at_8", 0, dir="question_prologue", timer=True)
+        elif level == 8:
+            util.play_sound("at_9", 0, dir="question_prologue", timer=True)
+        elif level == 9:
+                util.play_sound("at_10", 0, dir="question_prologue", timer=True)
+        elif level == 10:
+                util.play_sound("at_11", 0, dir="question_prologue", timer=True)
+        elif level == 11:
+                util.play_sound("at_12", 0, dir="question_prologue", timer=True)
+        elif level == 12:
+                util.play_sound("at_13", 0, dir="question_prologue", timer=True)
+        else:
+            pass
 
 
 def play_question_intro(level: int):
@@ -1283,7 +1307,7 @@ def show_game_structure():
             if game_language == util.Language.HUNGARIAN.name:
                 millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
                 sound = random.choice(millionaire_sounds)
-                util.play_sound(sound, 0, dir="intro")
+                util.play_sound(sound, 0, dir="intro", timer=True)
             inp = msvcrt.getch()
             break
         elif time.time() - startTime > timeout:
@@ -1434,7 +1458,7 @@ def play_marked_sound(choise: str, level: int, last_one=""):
         sounds = ["lets_see_800", "lets_see_800_2"]
     elif level == 10:
         sounds = ["lets_see_3_million", "lets_see_3_million_2", "lets_see_3_million_3"]
-    elif level == 12:
+    elif level == 13:
         sounds = ["lets_see_10_million"]
     else:
         sounds = ["lets_see"]
