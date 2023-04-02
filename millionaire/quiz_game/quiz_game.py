@@ -20,6 +20,7 @@ game_levels = 15
 screen_distance = 60
 threads = []
 
+
 def play():
     global base_threads
     global a_threads
@@ -89,6 +90,16 @@ def play():
     random.shuffle(question_lines_medium)
     random.shuffle(question_lines_hard)
     player_name = input(" " * screen_distance + language_dictionary[game_language].quiz.player_name_prompt)
+    player = "player"
+    if game_language == util.Language.HUNGARIAN.name:
+        for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
+            if player_name.lower() == name[:-4]:
+                player = player_name
+        util.play_sound("dear", 0, dir="intro", timer=True)
+        util.play_sound(player, 0, dir="players", timer=True)
+        millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
+        sound = random.choice(millionaire_sounds)
+        util.play_sound(sound, 0, dir="intro", timer=True)
     score = 0
     util.clear_screen()
     if game_language == util.Language.ENGLISH:
@@ -227,7 +238,7 @@ def play():
                                 elif list(help_types)[x] == "audience":
                                     audience_help(question, shuffled_answers, correct_answer_value, game_level=i)
                                 else:
-                                    list(help_functions.values())[x](question, shuffled_answers, correct_answer_value)
+                                    list(help_functions.values())[x](question, shuffled_answers, correct_answer_value, player)
                                 help_types[list(help_types)[x]] = False
                                 break
                             else:
@@ -1197,7 +1208,7 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
                 util.play_sound(after_sound, 0, dir="audience", timer=True)
 
 
-def telephone_help(question: str, answers: {}, correct_answer: str):
+def telephone_help(question: str, answers: {}, correct_answer: str, player_name: str):
     if util.game_language == util.Language.HUNGARIAN.name:
         before_phone_sounds = ["if_you_want_phone_then_i_agree",  "i_didnt_want_to_advise_phone", "we_dont_phone", "phone_broke", "we_dont_phone_two"]
         before_sound = random.choice(before_phone_sounds)
@@ -1217,7 +1228,10 @@ def telephone_help(question: str, answers: {}, correct_answer: str):
         if phone.lower() == call_text_files[i][0]:
             conversation = (util.open_file(call_text_files[i], 'r', separator=";"))
             if phone.lower() == "t":
-                util.play_sound("teacher", 0, dir="phone", timer=True)
+                util.play_sound("teacher_first_part", 0, dir="phone", timer=True)
+                util.play_sound(player_name, 0, dir="players", timer=True)
+                util.play_sound("teacher_second_part", 0, dir="phone", timer=True)
+
             else:
                 util.play_sound("phone_ring", 0, general=True)
                 time.sleep(2)
@@ -1312,10 +1326,6 @@ def show_game_structure():
     while True:
         if msvcrt.kbhit():
             global game_language
-            if game_language == util.Language.HUNGARIAN.name:
-                millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
-                sound = random.choice(millionaire_sounds)
-                util.play_sound(sound, 0, dir="intro", timer=True)
             inp = msvcrt.getch()
             break
         elif time.time() - startTime > timeout:
@@ -1535,12 +1545,13 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
                     if util.game_language == util.Language.HUNGARIAN.name and util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
                         if selected_sound.find("mark") != -1 or selected_sound.find("final") != -1:
                             sound_dir ="mark"
-                        util.play_sound(selected_sound, 0, dir=sound_dir, timer=True)
+                        util.play_sound(selected_sound, 0, dir=sound_dir)
                     if not out_of_game:
                         util.continue_music()
                     last_input = input_[1]
                     while True:
                         user_input = get_user_input()
+                        util.stop_sound()
                         if user_input == b'\r' or user_input == '<Ctrl-j>':
                             thread_random(level, working=False)
                             util.clear_screen()
@@ -1552,7 +1563,7 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
                             return input_[1]
                         if user_input not in input_:
                             break
-                            
+
             if not out_of_game:
                 if user_input == b'h' or user_input == "h":
                     return "h"
