@@ -345,7 +345,6 @@ def play():
     return
 
 
-
 def display_winning():
     util.play_sound("winning_theme", 0, general=True)
     print("\n" + " " * 20 + fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(
@@ -376,7 +375,6 @@ def display_winning():
         # You must account for the loops being zero-based, but the quotient of the diameter / 2 being
         # one-based. If you use the exact radius, you will be short one column and one row.
         offset_radius = (diameter / 2) - 0.5
-        #util.clear_screen()
 
         points = list([] for sd in range(diameter))
         util.clear_screen()
@@ -501,7 +499,7 @@ def display_winning():
             14) + " !" + fg.rs)
 
         time.sleep(1)
-    #time.sleep(35)
+
 
 def play_prize_sound(level: int):
     if level in [4, 7, 9, 11, 12]:
@@ -967,7 +965,14 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
         else:
             print_quizmaster()
     print("  /" + "‾" * (table_length) + "\\")
-    print(" ◄  " + question + " " * spaces_after_question + "   ►")
+    if len(question) < basic_question_length:
+        first_spaces = int(spaces_after_question / 2)
+        second_spaces = int(spaces_after_question / 2)
+        if len(question) % 2 != 0 and len(question) > 0:
+            second_spaces = first_spaces + 1
+        print(" ◄  " + " " * first_spaces + question + " " * second_spaces + "   ►")
+    else:
+        print(" ◄  " + question + " " * spaces_after_question + "   ►")
     print("  \\" + "_" * (table_length) + "/")
     print("\n")
     if show_answers:
