@@ -308,7 +308,8 @@ def play():
                 time.sleep(1)
                 util.clear_screen()
                 display_winning()
-                quit_quiz(score, player_name, question_topics)
+                quit_quiz(score, player_name, question_topics, end=True)
+                return
         else:
             thread_random(i, working=False)
             util.play_sound("bad_answer", 0, general=True)
@@ -345,7 +346,6 @@ def play():
     return
 
 
-
 def display_winning():
     util.play_sound("winning_theme", 0, general=True)
     print("\n" + " " * 20 + fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(
@@ -376,7 +376,6 @@ def display_winning():
         # You must account for the loops being zero-based, but the quotient of the diameter / 2 being
         # one-based. If you use the exact radius, you will be short one column and one row.
         offset_radius = (diameter / 2) - 0.5
-        #util.clear_screen()
 
         points = list([] for sd in range(diameter))
         util.clear_screen()
@@ -501,7 +500,7 @@ def display_winning():
             14) + " !" + fg.rs)
 
         time.sleep(1)
-    #time.sleep(35)
+
 
 def play_prize_sound(level: int):
     if level in [4, 7, 9, 11, 12]:
@@ -967,7 +966,14 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
         else:
             print_quizmaster()
     print("  /" + "‾" * (table_length) + "\\")
-    print(" ◄  " + question + " " * spaces_after_question + "   ►")
+    if len(question) < basic_question_length:
+        first_spaces = int(spaces_after_question / 2)
+        second_spaces = int(spaces_after_question / 2)
+        if len(question) % 2 != 0 and len(question) > 0:
+            second_spaces = first_spaces + 1
+        print(" ◄  " + " " * first_spaces + question + " " * second_spaces + "   ►")
+    else:
+        print(" ◄  " + question + " " * spaces_after_question + "   ►")
     print("  \\" + "_" * (table_length) + "/")
     print("\n")
     if show_answers:
@@ -1784,16 +1790,20 @@ def get_user_input() -> bytes:
     return user_input
 
 
-def quit_quiz(score: int, name, topic):
+def quit_quiz(score: int, name: str, topic, end=False):
     thread_random(score, working=False)
-    util.play_sound("time_end_horn", 0, general=True, timer=True)
-    util.stop_music()
-    if game_language == util.Language.HUNGARIAN.name:
-        exit_sounds = ["exit_epilogue", "delay", "what_a_game_it_was", "how_ugly_sound_it_has"]
-        if score < 5:
-            exit_sounds.append("this_not_ended_well")
-        sound = random.choice(exit_sounds)
-        util.play_sound(sound, 0, dir="out_of_game")
+    if not end:
+        util.play_sound("time_end_horn", 0, general=True, timer=True)
+        util.stop_music()
+        if game_language == util.Language.HUNGARIAN.name:
+            exit_sounds = ["exit_epilogue", "delay", "what_a_game_it_was", "how_ugly_sound_it_has"]
+            if score < 5:
+                exit_sounds.append("this_not_ended_well")
+            sound = random.choice(exit_sounds)
+            util.play_sound(sound, 0, dir="out_of_game")
+    else:
+        util.play_sound("what_a_game_it_was", 0, dir="out_of_game")
+
     if score > 0:
         write_content_to_file("scores.json",
                               {"user": name, "topic": topic, "score": score, "time": time.ctime(time.time())})
