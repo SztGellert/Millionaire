@@ -307,10 +307,7 @@ def play():
                     print_prizes_with_quizmaster(i)
                 time.sleep(1)
                 util.clear_screen()
-                print("\n" + " " * 20 + fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(
-                    i) + " !" + fg.rs)
-                util.play_sound("winning_theme", 0, general=True)
-                time.sleep(35)
+                display_winning()
                 quit_quiz(score, player_name, question_topics)
         else:
             thread_random(i, working=False)
@@ -347,6 +344,164 @@ def play():
 
     return
 
+
+
+def display_winning():
+    util.play_sound("winning_theme", 0, general=True)
+    print("\n" + " " * 20 + fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(
+        14) + " !" + fg.rs)
+    for i in range(22):
+        win_color = bg.blue
+        millionaire_lines = language_dictionary[util.game_language].menu.millionaire_lines
+        if i % 2 == 0:
+            win_color = bg.yellow
+            millionaire_lines = language_dictionary[util.game_language].menu.millionaire_winning
+
+        util.clear_screen()
+
+        bg.light_blue = bg(96, 180, 225)
+        bg.deep_purple = bg(30, 0, 60)
+        bg.blue = bg.darkest_blue
+
+        text_count = 0
+
+        first_text = language_dictionary[util.game_language].menu.side_title_first_part
+        second_text = language_dictionary[util.game_language].menu.side_title_second_part
+
+        pixels_in_line = 0
+        pixels_per_line = []
+
+        diameter = 40
+
+        # You must account for the loops being zero-based, but the quotient of the diameter / 2 being
+        # one-based. If you use the exact radius, you will be short one column and one row.
+        offset_radius = (diameter / 2) - 0.5
+        #util.clear_screen()
+
+        points = list([] for sd in range(diameter))
+        util.clear_screen()
+        for i in range(diameter):
+            for j in range(diameter):
+
+                x = i - offset_radius
+                y = j - offset_radius
+
+                if x * x + y * y <= offset_radius * offset_radius + 1:
+                    line = 'X'
+                    end = '..'
+                    pixels_in_line += 1
+                else:
+                    line = ' '
+                    end = '  '
+                points[j].append(line + end)
+            pixels_per_line.append(pixels_in_line)
+            pixels_in_line = 0
+
+        for point in range(len(points)):
+
+            current_line = "".join(points[point])
+            line = "".join(points[point])
+            first_index = line.find("X")
+            last_index = line.rfind(".")
+
+            line2 = line[
+                    :first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                                                                               first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                                                                                                                                                                                                                                                                                    last_index:]
+
+            color = win_color
+            if point < 12:
+                if point == 8:
+                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
+                        -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                          first_index:last_index] + bg.blue + "    " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
+                            second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                         last_index:]
+                elif point == 9:
+                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + " " + first_text[
+                        -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                          first_index:last_index] + bg.blue + "      " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
+                            second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                         last_index:]
+                elif point == 11:
+                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
+                        -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                          first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
+                            second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                         last_index:]
+                else:
+                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
+                        -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                          first_index:last_index] + bg.blue + "   " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
+                            second_text[point] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                        last_index:]
+            if point == 15:
+                millionaire_lines[0] = millionaire_lines[0].replace(" ", color + " " + bg.rs)
+                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[0] + line2[205:]
+            if point == 16:
+                millionaire_lines[1] = millionaire_lines[1].replace(" ", color + " " + bg.rs)
+                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[1] + line2[205:]
+            if point == 17:
+                millionaire_lines[2] = millionaire_lines[2].replace(" ", color + " " + bg.rs)
+                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[2] + line2[205:]
+            if point == 18:
+                millionaire_lines[3] = millionaire_lines[3].replace(" ", color + " " + bg.rs)
+                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[3] + line2[205:]
+            if point == 19:
+                millionaire_lines[4] = millionaire_lines[4].replace(" ", color + " " + bg.rs)
+                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[4] + line2[205:]
+            if point == 20:
+                millionaire_lines[5] = millionaire_lines[5].replace(" ", color + " " + bg.rs)
+                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[5] + line2[205:]
+            if point == 21:
+                millionaire_lines[6] = millionaire_lines[6].replace(" ", color + " " + bg.rs)
+                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[6] + line2[205:]
+            if point == 22:
+                millionaire_lines[7] = millionaire_lines[7].replace(" ", color + " " + bg.rs)
+                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[7] + line2[205:]
+            if point == 23:
+                millionaire_lines[8] = millionaire_lines[8].replace(" ", color + " " + bg.rs)
+                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[8] + line2[205:]
+            if point == 24:
+                millionaire_lines[9] = millionaire_lines[9].replace(" ", color + " " + bg.rs)
+                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[9] + line2[205:]
+            if point == 25:
+                millionaire_lines[10] = millionaire_lines[10].replace(" ", color + " " + bg.rs)
+                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[10] + line2[205:]
+            if point > 25 and point < 37:
+                if point == 30:
+                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "  " + first_text[
+                        text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                            first_index:last_index] + bg.blue + "    " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
+                            second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                                last_index:]
+                elif point == 31:
+                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "    " + first_text[
+                        text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                            first_index:last_index] + bg.blue + "" + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
+                            second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                                last_index:]
+                else:
+                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
+                        text_count] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                              first_index:last_index] + bg.blue + " " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
+                            second_text[-text_count] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                              last_index:]
+                text_count += 1
+            line2 = line2.replace("X", win_color + " " + bg.rs)
+            line2 = line2.replace(".", win_color + " " + bg.rs)
+            line2 = line2.replace("X", bg.black + " " + bg.rs)
+            line2 = line2.replace("|", bg.white + " " + bg.rs)
+
+            line3 = "".join(line2)
+
+            print(line3)
+
+        print("\n\n\n" + " " * 53 + fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(
+            14) + " !" + fg.rs)
+
+        time.sleep(1)
+    #time.sleep(35)
 
 def play_prize_sound(level: int):
     if level in [4, 7, 9, 11, 12]:
