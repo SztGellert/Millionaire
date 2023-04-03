@@ -19,7 +19,10 @@ table_length = 113
 game_levels = 15
 screen_distance = 60
 threads = []
-
+skin_color = bg(225, 196, 196)
+hair = bg(143, 143, 143)
+nose = bg(225, 185, 185)
+mouth = bg(214, 173, 173)
 
 def play():
     global base_threads
@@ -102,8 +105,6 @@ def play():
         util.play_sound(sound, 0, dir="intro", timer=True)
     score = 0
     util.clear_screen()
-    if game_language == util.Language.ENGLISH:
-        util.play_sound("start", 0)
     show_game_structure()
     for i in range(game_levels):
         init_threads(i)
@@ -1238,12 +1239,19 @@ def print_quizmaster_with_prizes(level: int):
     help_length = len(helps[0] + helps[1] + helps[2]) + 2
     print(" " * 87 + " " + help_length * "_")
     print(" " * 87 + "|" + (help_length - 2) * " " + "  |")
-    print(" " * 87 + "|" + helps_[0] + helps_[1] + helps_[2] + "  |")
+    print(" " * 87 + "|  " + helps_[0] + helps_[1] + helps_[2] + "|")
     print(" " * 87 + "|" + help_length * "_" + "|")
 
+
     for line in util.open_file("quizmaster", "r", ";", "/text_files/", strip=False):
+        len_line = len(line[0])
+
+        new= str(line[0]).replace("B", bg.white + " " + bg.rs).replace("S", skin_color + " " + bg.rs).replace("H", hair + " " + bg.rs).replace("G", skin_color + fg.black + "▬" + fg.rs + bg.rs).replace("B", bg.grey + " " + bg.rs).replace("C", bg.li_grey + " " + bg.rs).replace("D", bg.da_grey + " " + bg.rs).replace("◙", skin_color + fg.li_blue + "◙" + fg.rs + bg.rs).replace("M", mouth + "-" + bg.rs).replace("T", bg.blue + " " + bg.rs).replace("N", nose + " " + bg.rs).replace("U", skin_color + "▬" + bg.rs).replace("L", skin_color + "▬" + bg.rs).replace("R", skin_color + "▌" + bg.rs).replace("V", nose + fg.black + "▬" + fg.rs + bg.rs)
+
+        line[0] = new
+
         if index < len(prizes):
-            missing_space = len_al - len(line[0])
+            missing_space = len_al - len_line
             round_number = str(len(prizes) - index)
             if len(prizes) - index < 10:
                 round_number = " " + round_number
@@ -1273,7 +1281,8 @@ def print_quizmaster_with_prizes(level: int):
 
 def print_quizmaster():
     for line in util.open_file("quizmaster", "r", ";", "/text_files/", strip=False):
-        print(line[0])
+        new= str(line[0]).replace("B", bg.white + " " + bg.rs).replace("S", skin_color + " " + bg.rs).replace("H", hair + " " + bg.rs).replace("G", skin_color + fg.black + "▬" + fg.rs + bg.rs).replace("B", bg.grey + " " + bg.rs).replace("C", bg.li_grey + " " + bg.rs).replace("D", bg.da_grey + " " + bg.rs).replace("◙", skin_color + fg.li_blue + "◙" + fg.rs + bg.rs).replace("M", mouth + "-" + bg.rs).replace("T", bg.blue + " " + bg.rs).replace("N", nose + " " + bg.rs).replace("U", skin_color + "▬" + bg.rs).replace("L", skin_color + "▬" + bg.rs).replace("R", skin_color + "▌" + bg.rs).replace("V", nose + fg.black + "▬" + fg.rs + bg.rs)
+        print(new)
 
 
 def audience_help(question, answers: {}, correct_value: str, game_level):
@@ -1320,6 +1329,16 @@ def audience_help(question, answers: {}, correct_value: str, game_level):
         for line in util.open_file("quizmaster", "r", ";", "/text_files/", strip=False):
             percentages = ""
             missing_space = len_al - len(line[0])
+            new = str(line[0]).replace("B", bg.white + " " + bg.rs).replace("S", skin_color + " " + bg.rs).replace("H",
+                                                                                                                   hair + " " + bg.rs).replace(
+                "G", skin_color + fg.black + "▬" + fg.rs + bg.rs).replace("B", bg.grey + " " + bg.rs).replace("C",
+                                                                                                              bg.li_grey + " " + bg.rs).replace(
+                "D", bg.da_grey + " " + bg.rs).replace("◙", skin_color + fg.li_blue + "◙" + fg.rs + bg.rs).replace("M",
+                                                                                                                   mouth + "-" + bg.rs).replace(
+                "T", bg.blue + " " + bg.rs).replace("N", nose + " " + bg.rs).replace("U",
+                                                                                     skin_color + "▬" + bg.rs).replace(
+                "L", skin_color + "▬" + bg.rs).replace("R", skin_color + "▌" + bg.rs).replace("V", nose + fg.black + "▬" + fg.rs + bg.rs)
+            line[0] = new
             if index == 0:
                 print(line[0] + " " * (missing_space + 1) + "_" * (len_window - 1))
             elif index == 1:
@@ -1406,8 +1425,17 @@ def telephone_help(question: str, answers: {}, correct_answer: str, player_name:
     for i in range(30):
         index = 0
         for line in util.open_file("quizmaster", "r", ";", "/text_files/", strip=False):
-
+            new = str(line[0]).replace("B", bg.white + " " + bg.rs).replace("S", skin_color + " " + bg.rs).replace("H",
+                                                                                                                   hair + " " + bg.rs).replace(
+                "G", skin_color + fg.black + "▬" + fg.rs + bg.rs).replace("B", bg.grey + " " + bg.rs).replace("C",
+                                                                                                              bg.li_grey + " " + bg.rs).replace(
+                "D", bg.da_grey + " " + bg.rs).replace("◙", skin_color + fg.li_blue + "◙" + fg.rs + bg.rs).replace("M",
+                                                                                                                   mouth + "-" + bg.rs).replace(
+                "T", bg.blue + " " + bg.rs).replace("N", nose + " " + bg.rs).replace("U",
+                                                                                     skin_color + "▬" + bg.rs).replace(
+                "L", skin_color + "▬" + bg.rs).replace("R", skin_color + "▌" + bg.rs).replace("V", nose + fg.black + "▬" + fg.rs + bg.rs)
             missing_space = len_al - len(line[0])
+            line[0] = new
             if index == 0:
                 print("\n\n\n\n" + line[0] + " " * (missing_space + 1) + "_" * (len_window - 1))
             elif index == 1:
@@ -1471,7 +1499,16 @@ def print_prizes_with_quizmaster(level: int, nullprize=False, special_text="", b
     for i in range(4):
         print("\r")
     for line in util.open_file("quizmaster", "r", ";", "/text_files/", strip=False):
-        print(line[0])
+        new = str(line[0]).replace("B", bg.white + " " + bg.rs).replace("S", skin_color + " " + bg.rs).replace("H",
+                                                                                                               hair + " " + bg.rs).replace(
+            "G", skin_color + fg.black + "▬" + fg.rs + bg.rs).replace("B", bg.grey + " " + bg.rs).replace("C",
+                                                                                                          bg.li_grey + " " + bg.rs).replace(
+            "D", bg.da_grey + " " + bg.rs).replace("◙", skin_color + fg.li_blue + "◙" + fg.rs + bg.rs).replace("M",
+                                                                                                               mouth + "-" + bg.rs).replace(
+            "T", bg.blue + " " + bg.rs).replace("N", nose + " " + bg.rs).replace("U",
+                                                                                 skin_color + "▬" + bg.rs).replace(
+            "L", skin_color + "▬" + bg.rs).replace("R", skin_color + "▌" + bg.rs).replace("V", nose + fg.black + "▬" + fg.rs + bg.rs)
+        print(new)
     print("  /" + bg_color + "‾" * (table_length) + bg.rs + "\\")
     print(" ◄ " + bg_color + fg.orange + number_of_spaces * " " + prize + fg.rs + " " * number_of_spaces + bg.rs + " ►")
     print("  \\" + bg_color +  "_" * (table_length) +  bg.rs +"/")
@@ -1560,7 +1597,7 @@ def show_game_structure():
         print_helps()
         print("\n\n")
         print_prizes()
-        time.sleep(4)
+        util.play_sound("start", 0, timer=True)
         util.clear_screen()
 
 
