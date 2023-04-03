@@ -308,7 +308,8 @@ def play():
                 time.sleep(1)
                 util.clear_screen()
                 display_winning()
-                quit_quiz(score, player_name, question_topics)
+                quit_quiz(score, player_name, question_topics, end=True)
+                return
         else:
             thread_random(i, working=False)
             util.play_sound("bad_answer", 0, general=True)
@@ -1789,16 +1790,20 @@ def get_user_input() -> bytes:
     return user_input
 
 
-def quit_quiz(score: int, name, topic):
+def quit_quiz(score: int, name: str, topic, end=False):
     thread_random(score, working=False)
-    util.play_sound("time_end_horn", 0, general=True, timer=True)
-    util.stop_music()
-    if game_language == util.Language.HUNGARIAN.name:
-        exit_sounds = ["exit_epilogue", "delay", "what_a_game_it_was", "how_ugly_sound_it_has"]
-        if score < 5:
-            exit_sounds.append("this_not_ended_well")
-        sound = random.choice(exit_sounds)
-        util.play_sound(sound, 0, dir="out_of_game")
+    if not end:
+        util.play_sound("time_end_horn", 0, general=True, timer=True)
+        util.stop_music()
+        if game_language == util.Language.HUNGARIAN.name:
+            exit_sounds = ["exit_epilogue", "delay", "what_a_game_it_was", "how_ugly_sound_it_has"]
+            if score < 5:
+                exit_sounds.append("this_not_ended_well")
+            sound = random.choice(exit_sounds)
+            util.play_sound(sound, 0, dir="out_of_game")
+    else:
+        util.play_sound("what_a_game_it_was", 0, dir="out_of_game")
+
     if score > 0:
         write_content_to_file("scores.json",
                               {"user": name, "topic": topic, "score": score, "time": time.ctime(time.time())})
