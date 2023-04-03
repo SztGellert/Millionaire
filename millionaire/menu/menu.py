@@ -201,8 +201,8 @@ def show_title():
 
 def show_options(options: list, max_options_length: int, chosen_option=0):
     show_title()
-    fore_string = "| "
-    after_string = " |"
+    fore_string = "|"
+    after_string = "|"
     line_length = max_options_length
     option_length = max_options_length
     for i in range(len(options)):
