@@ -40,6 +40,19 @@
                              "X|X     X|X X|X X||||X X||||X X|X X|||||||X X|X  X||X X|X X|X X|X X|X X|X X||||X",
                              "XXX     XXX XXX XXXXXX XXXXXX XXX XXXXXXXXX XXX   XXX XXX XXX XXX XXX  XXX XXXXX"
         ],
+        "millionaire_winning": [
+                              "         XXX||X     XXX     XXXXXX XXXXXX XXXXXX XXXXXX   XXXXXX XXXXXX        ",
+                              "         XX|XX|     X|X     X||||X X||||X X||||X   X||||X X||||X X||||X        ",
+                              "         XX|XX|     ||X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
+                              "         XX|XX     |||X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
+                              "         XX|XX      X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
+                              "         X|||XXX    X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
+                              "         XX|XX      X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
+                              "         XX|XX      X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
+                              "         XX|X||     X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
+                              "         ||||XX|    X|X |   X||||X X||||X X||||X | X||||X X||||X X||||X        ",
+                              "         XXXXX      XXX X   XXXXXX XXXXXX XXXXXX X XXXXXX XXXXXX XXXXXX        "
+        ],
         "credits_title_lines":     ["   $$$$   $$$$  $  $     $     $  $$$$$  $$   $     $$$     $  $$$$  $$$$$",
                                     "   $  $   $  $  $  $     $     $  $   $  $$   $     $ $     $  $  $  $",
                                     "   $   $$    $  $  $     $     $  $   $  $ $  $    $   $    $  $  $  $$$$",

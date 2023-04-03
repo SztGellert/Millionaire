@@ -352,8 +352,11 @@ def display_winning():
         14) + " !" + fg.rs)
     for i in range(22):
         win_color = bg.blue
+        millionaire_lines = language_dictionary[util.game_language].menu.millionaire_lines
         if i % 2 == 0:
             win_color = bg.yellow
+            millionaire_lines = language_dictionary[util.game_language].menu.millionaire_winning
+
         util.clear_screen()
 
         bg.light_blue = bg(96, 180, 225)
@@ -364,7 +367,6 @@ def display_winning():
 
         first_text = language_dictionary[util.game_language].menu.side_title_first_part
         second_text = language_dictionary[util.game_language].menu.side_title_second_part
-        millionaire_lines = language_dictionary[util.game_language].menu.millionaire_lines
 
         pixels_in_line = 0
         pixels_per_line = []
