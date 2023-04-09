@@ -7,6 +7,8 @@ import millionaire.menu.menu as menu
 import millionaire.util.util as util
 import millionaire.menu.helpers as helpers
 import threading
+import pygame
+
 
 operating_system = os.name
 fg.purple = Style(RgbFg(148, 0, 211))
@@ -24,7 +26,148 @@ hair = bg(143, 143, 143)
 nose = bg(225, 185, 185)
 mouth = bg(214, 173, 173)
 
+
 def play():
+    game_active = True
+    pygame.init()
+    screen = pygame.display.set_mode((800, 400))
+    pygame.display.set_caption('Runner')
+    clock = pygame.time.Clock()
+    test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
+    #sky_surface = pygame.image.load('graphics/Sky.png')
+    #ground_surface = pygame.image.load('graphics/ground.png').convert_alpha()
+
+    #player_walk_1 = pygame.image.load('graphics/Player/player_walk_1.png').convert_alpha()
+    #player_walk_2 = pygame.image.load('graphics/Player/player_walk_2.png').convert_alpha()
+    #player_walk = [player_walk_1, player_walk_2]
+    #player_index = 0
+    #player_jump = pygame.image.load('graphics/Player/jump.png').convert_alpha()
+
+    #player_surf = player_walk[player_index]
+    #start_time = 0
+
+    #bg_music = pygame.mixer.Sound('audio/music.wav')
+    #bg_music.play(loops=-1)
+
+    #player_rect = player_surf.get_rect(midbottom=(80, 300))
+
+    #snail_frame_1 = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
+    #snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
+    #snail_frames = [snail_frame_1, snail_frame_2]
+    #snail_frame_index = 0
+    #snail_surf = snail_frames[snail_frame_index]
+
+    #fly_frame_1 = pygame.image.load('graphics/fly/fly1.png').convert_alpha()
+    #fly_frame_2 = pygame.image.load('graphics/fly/fly2.png').convert_alpha()
+    #fly_frames = [fly_frame_1, fly_frame_2]
+    #fly_frame_index = 0
+    #fly_surf = fly_frames[fly_frame_index]
+
+    #player_stand = pygame.image.load('graphics/Player/player_stand.png').convert_alpha()
+    #player_stand = pygame.transform.rotozoom(player_stand, 0, 2)
+    #player_stand_rect = player_stand.get_rect(center=(400, 200))
+
+    #game_name = test_font.render('Pixel Runner', False, (111, 196, 169))
+    #game_name_rect = game_name.get_rect(center=(400, 80))
+
+    #game_msg = test_font.render('Press space to run', False, (111, 196, 169))
+    #game_msg_rect = game_name.get_rect(center=(350, 340))
+
+    #obstacle_timer = pygame.USEREVENT + 1
+    #pygame.time.set_timer(obstacle_timer, 1400)
+
+    #obstacle_rect_list = []
+
+    #player_gravity = 0
+    #score = 0
+
+    #player = pygame.sprite.GroupSingle()
+    #player.add(Player())
+
+    #obstacle_group = pygame.sprite.Group()
+
+    #snail_animation_timer = pygame.USEREVENT + 2
+    #pygame.time.set_timer(snail_animation_timer, 500)
+
+    #fly_animation_timer = pygame.USEREVENT + 3
+    #pygame.time.set_timer(fly_animation_timer, 200)
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            if game_active:
+                pass
+                #   mouse_pos = pygame.mouse.get_pos()
+                #   if player_rect.collidepoint(mouse_pos):
+                #    print(pygame.mouse.get_pressed())
+                # if event.type == pygame.MOUSEMOTION:
+                #    if player_rect.collidepoint(event.pos):
+                #         print("col")
+                # keys = pygame.key.get_pressed()
+                # if event.type == pygame.KEYDOWN:
+                #     if event.key == pygame.K_SPACE and player_rect.bottom >= 300:
+                #         player_gravity = -20
+
+            else:
+                pass
+                #if event.type == pygame.KEYDOWN:
+                    #if event.key == pygame.K_SPACE:
+                        #game_active = True
+                        #start_time = int(pygame.time.get_ticks() / 1000)
+            if game_active:
+                pass
+                #if event.type == obstacle_timer:
+                #    obstacle_group.add(Obstacle(random.choice(['fly', 'snail', 'snail', 'snail'])))
+                #if event.type == snail_animation_timer:
+                #   if snail_frame_index == 0:
+                #        snail_frame_index = 1
+                #    else:
+                #        snail_frame_index = 0
+                #    snail_surf = snail_frames[snail_frame_index]
+
+                # if event.type == fly_animation_timer:
+                #    if fly_frame_index == 0:
+                #        fly_frame_index = 1
+                #   else:
+                #        fly_frame_index = 0
+        #    fly_surf = fly_frames[fly_frame_index]
+
+        if game_active:
+            pass
+            #screen.blit(sky_surface, (0, 0))
+            #screen.blit(ground_surface, (0, 300))
+            #score = display_score()
+
+            #player.draw(screen)
+            #player.update()
+
+            #obstacle_group.draw(screen)
+            #obstacle_group.update()
+
+            #game_active = collision_sprite()
+        else:
+            screen.fill((94, 129, 162))
+            #screen.blit(player_stand, player_stand_rect)
+            #player_rect.midbottom = (80, 300)
+            #player_gravity = 0
+            #obstacle_rect_list.clear()
+            #score_msg = test_font.render(f'Your score: {score}', False, (111, 196, 169))
+            #score_msg_rect = score_msg.get_rect(center=(400, 350))
+            #screen.blit(game_name, game_name_rect)
+
+            #if score == 0:
+            #    screen.blit(game_msg, game_msg_rect)
+            #else:
+            #    screen.blit(score_msg, score_msg_rect)
+
+        pygame.display.update()
+
+        clock.tick(60)
+
+    '''
+
     global base_threads
     global a_threads
     global b_threads
@@ -345,7 +488,7 @@ def play():
     quit_quiz(score, player_name, question_topics)
 
     return
-
+    '''
 
 def display_winning():
     util.play_sound("winning_theme", 0, general=True)
