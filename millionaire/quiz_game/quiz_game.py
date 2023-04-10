@@ -150,7 +150,6 @@ def play():
                 if event.type == pygame.MOUSEMOTION:
                     for obstacle in obstacle_group:
                         if obstacle.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
-                            print(obstacle.type)
                             if obstacle.type != "b":
                                 game_active = False
                 # keys = pygame.key.get_pressed()
@@ -171,7 +170,6 @@ def play():
                 texts = ['How tall is the Eiffel tower?', "250 m", "300 m", " 350 m", "400 m"]
                 for index in range(len(sprite_group)):
                     obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
-                    print(obstacle_group)
 
         if game_active:
             screen.blit(sky_surface,  (0, 0))
