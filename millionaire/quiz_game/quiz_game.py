@@ -107,177 +107,8 @@ class Obstacle(pygame.sprite.Sprite):
         #if self.rect.x <= -100:
         self.kill()
 
-def play():
-    game_active = True
-    pygame.init()
-    screen = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption('Runner')
-    clock = pygame.time.Clock()
-    test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
-    sky_surface = pygame.image.load('./data/graphics/background.jpg').convert_alpha()
-    ground_surface = pygame.image.load('./data/graphics/background.jpg').convert_alpha()
 
-    #start_time = 0
-
-    #game_name = test_font.render('Pixel Runner', False, (111, 196, 169))
-    #game_name_rect = game_name.get_rect(center=(400, 80))
-
-    #game_msg = test_font.render('Press space to run', False, (111, 196, 169))
-    #game_msg_rect = game_name.get_rect(center=(350, 340))
-
-    #obstacle_timer = pygame.USEREVENT + 1
-    #pygame.time.set_timer(obstacle_timer, 1400)
-
-    #score = 0
-
-    #player = pygame.sprite.GroupSingle()
-    #player.add(Player())
-
-    obstacle_group = pygame.sprite.Group()
-
-    #snail_animation_timer = pygame.USEREVENT + 2
-    #pygame.time.set_timer(snail_animation_timer, 500)
-
-    #fly_animation_timer = pygame.USEREVENT + 3
-    #pygame.time.set_timer(fly_animation_timer, 200)
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
-            if game_active:
-                if event.type == pygame.MOUSEMOTION:
-                    for obstacle in obstacle_group:
-                        if obstacle.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
-                            if obstacle.type != "b":
-                                game_active = False
-                # keys = pygame.key.get_pressed()
-                # if event.type == pygame.KEYDOWN:
-                #     if event.key == pygame.K_SPACE and player_rect.bottom >= 300:
-                #         player_gravity = -20
-
-            else:
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE:
-                        game_active = True
-                        #start_time = int(pygame.time.get_ticks() / 1000)
-            if game_active:
-
-                #if event.type == obstacle_timer:
-                obstacle_group = pygame.sprite.Group()
-                sprite_group = ['question', "a", "b", "c", "d"]
-                texts = ['How tall is the Eiffel tower?', "250 m", "300 m", " 350 m", "400 m"]
-                for index in range(len(sprite_group)):
-                    obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
-
-        if game_active:
-            screen.blit(sky_surface,  (0, 0))
-            #score = display_score()
-            obstacle_group.draw(screen)
-            #obstacle_group.update()
-
-            #game_active = collision_sprite()
-        else:
-            screen.fill((94, 129, 162))
-            #screen.blit(player_stand, player_stand_rect)
-            #obstacle_rect_list.clear()
-            #score_msg = test_font.render(f'Your score: {score}', False, (111, 196, 169))
-            #score_msg_rect = score_msg.get_rect(center=(400, 350))
-            #screen.blit(game_name, game_name_rect)
-
-            #if score == 0:
-            #    screen.blit(game_msg, game_msg_rect)
-            #else:
-            #    screen.blit(score_msg, score_msg_rect)
-
-        pygame.display.update()
-
-        clock.tick(60)
-
-    '''
-
-    global base_threads
-    global a_threads
-    global b_threads
-    global c_threads
-    global d_threads
-    global game_language, question_lines_easy, question_lines_medium, question_lines_hard
-    game_language = util.game_language
-    global question_topics
-    question_topics = util.question_topics
-    global question_difficulty
-    question_difficulty = util.question_difficulty
-    global help_types
-    help_types = {"halving": True, "telephone": True, "audience": True}
-    global random_sounds
-    random_sounds = util.init_random_sounds()
-    question_lines = []
-    question_lines_easy = []
-    question_lines_medium = []
-    question_lines_hard = []
-    if question_topics == util.Topics.ALL.name:
-        for topic in util.Topics:
-            if topic.name != util.Topics.ALL.name and question_difficulty != util.Difficulty.ALL.name:
-                for level in util.Difficulty:
-                    if question_difficulty == level.name:
-                        for line in util.open_file(str(level.name).lower(), "r", ";",
-                                                   "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                                       topic.name).lower() + "/" + str(level.name).lower() + "/"):
-                            question_lines.append(line)
-            else:
-                if topic.name != util.Topics.ALL.name:
-                    for line in util.open_file(str(util.Difficulty.EASY.name).lower(), "r", ";",
-                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                                   topic.name).lower() + "/" + str(
-                                                   util.Difficulty.EASY.name).lower() + "/"):
-                        question_lines_easy.append(line)
-                    for line in util.open_file(str(util.Difficulty.MEDIUM.name).lower(), "r", ";",
-                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                                   topic.name).lower() + "/" + str(
-                                                   util.Difficulty.MEDIUM.name).lower() + "/"):
-                        question_lines_medium.append(line)
-                    for line in util.open_file(str(util.Difficulty.HARD.name).lower(), "r", ";",
-                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                                   topic.name).lower() + "/" + str(
-                                                   util.Difficulty.HARD.name).lower() + "/"):
-                        question_lines_hard.append(line)
-    else:
-        for level in util.Difficulty:
-            if question_difficulty == level.name and level.name != util.Difficulty.ALL.name:
-                for line in util.open_file(str(level.name).lower(), "r", ";",
-                                           "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                               question_topics).lower() + "/" + str(level.name).lower() + "/"):
-                    question_lines.append(line)
-            else:
-                if level.name != util.Difficulty.ALL.name:
-                    for line in util.open_file(str(util.Difficulty(level).name).lower(), "r", ";",
-                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                                   question_topics).lower() + "/" + str(level.name).lower() + "/"):
-                        if level.name == util.Difficulty.EASY.name:
-                            question_lines_easy.append(line)
-                        if level.name == util.Difficulty.MEDIUM.name:
-                            question_lines_medium.append(line)
-                        if level.name == util.Difficulty.HARD.name:
-                            question_lines_hard.append(line)
-    random.shuffle(question_lines)
-    random.shuffle(question_lines_easy)
-    random.shuffle(question_lines_medium)
-    random.shuffle(question_lines_hard)
-    player_name = input(" " * screen_distance + language_dictionary[game_language].quiz.player_name_prompt)
-    player = "player"
-    if game_language == util.Language.HUNGARIAN.name:
-        for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
-            if player_name.lower() == name[:-4]:
-                player = player_name
-        util.play_sound("dear", 0, dir="intro", timer=True)
-        util.play_sound(player, 0, dir="players", timer=True)
-        millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
-        sound = random.choice(millionaire_sounds)
-        util.play_sound(sound, 0, dir="intro", timer=True)
-    score = 0
-    util.clear_screen()
-    show_game_structure()
+def old_code():
     for i in range(game_levels):
         init_threads(i)
         if question_difficulty == util.Difficulty.ALL.name:
@@ -516,8 +347,195 @@ def play():
         util.clear_screen()
     quit_quiz(score, player_name, question_topics)
 
-    return
-    '''
+
+def play():
+    global base_threads
+    global a_threads
+    global b_threads
+    global c_threads
+    global d_threads
+    global game_language, question_lines_easy, question_lines_medium, question_lines_hard
+    game_language = util.game_language
+    global question_topics
+    question_topics = util.question_topics
+    global question_difficulty
+    question_difficulty = util.question_difficulty
+    global help_types
+    help_types = {"halving": True, "telephone": True, "audience": True}
+    global random_sounds
+    random_sounds = util.init_random_sounds()
+    question_lines = []
+    question_lines_easy = []
+    question_lines_medium = []
+    question_lines_hard = []
+    if question_topics == util.Topics.ALL.name:
+        for topic in util.Topics:
+            if topic.name != util.Topics.ALL.name and question_difficulty != util.Difficulty.ALL.name:
+                for level in util.Difficulty:
+                    if question_difficulty == level.name:
+                        for line in util.open_file(str(level.name).lower(), "r", ";",
+                                                   "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                                       topic.name).lower() + "/" + str(level.name).lower() + "/"):
+                            question_lines.append(line)
+            else:
+                if topic.name != util.Topics.ALL.name:
+                    for line in util.open_file(str(util.Difficulty.EASY.name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                                   topic.name).lower() + "/" + str(
+                                                   util.Difficulty.EASY.name).lower() + "/"):
+                        question_lines_easy.append(line)
+                    for line in util.open_file(str(util.Difficulty.MEDIUM.name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                                   topic.name).lower() + "/" + str(
+                                                   util.Difficulty.MEDIUM.name).lower() + "/"):
+                        question_lines_medium.append(line)
+                    for line in util.open_file(str(util.Difficulty.HARD.name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                                   topic.name).lower() + "/" + str(
+                                                   util.Difficulty.HARD.name).lower() + "/"):
+                        question_lines_hard.append(line)
+    else:
+        for level in util.Difficulty:
+            if question_difficulty == level.name and level.name != util.Difficulty.ALL.name:
+                for line in util.open_file(str(level.name).lower(), "r", ";",
+                                           "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                               question_topics).lower() + "/" + str(level.name).lower() + "/"):
+                    question_lines.append(line)
+            else:
+                if level.name != util.Difficulty.ALL.name:
+                    for line in util.open_file(str(util.Difficulty(level).name).lower(), "r", ";",
+                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
+                                                   question_topics).lower() + "/" + str(level.name).lower() + "/"):
+                        if level.name == util.Difficulty.EASY.name:
+                            question_lines_easy.append(line)
+                        if level.name == util.Difficulty.MEDIUM.name:
+                            question_lines_medium.append(line)
+                        if level.name == util.Difficulty.HARD.name:
+                            question_lines_hard.append(line)
+    random.shuffle(question_lines)
+    random.shuffle(question_lines_easy)
+    random.shuffle(question_lines_medium)
+    random.shuffle(question_lines_hard)
+    #player_name = input(" " * screen_distance + language_dictionary[game_language].quiz.player_name_prompt)
+    player_name = ""
+    player = "player"
+    if game_language == util.Language.HUNGARIAN.name:
+        for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
+            if player_name.lower() == name[:-4]:
+                player = player_name
+        util.play_sound("dear", 0, dir="intro", timer=True)
+        util.play_sound(player, 0, dir="players", timer=True)
+        millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
+        sound = random.choice(millionaire_sounds)
+        util.play_sound(sound, 0, dir="intro", timer=True)
+    score = 0
+    #util.clear_screen()
+    #show_game_structure()
+
+
+    game_active = True
+    pygame.init()
+    screen = pygame.display.set_mode((800, 600))
+    pygame.display.set_caption('Runner')
+    clock = pygame.time.Clock()
+    test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
+    sky_surface = pygame.image.load('./data/graphics/background.jpg').convert_alpha()
+    ground_surface = pygame.image.load('./data/graphics/background.jpg').convert_alpha()
+
+    #start_time = 0
+
+    #game_name = test_font.render('Pixel Runner', False, (111, 196, 169))
+    #game_name_rect = game_name.get_rect(center=(400, 80))
+
+    #game_msg = test_font.render('Press space to run', False, (111, 196, 169))
+    #game_msg_rect = game_name.get_rect(center=(350, 340))
+
+    #obstacle_timer = pygame.USEREVENT + 1
+    #pygame.time.set_timer(obstacle_timer, 1400)
+
+    #score = 0
+
+    #player = pygame.sprite.GroupSingle()
+    #player.add(Player())
+
+    obstacle_group = pygame.sprite.Group()
+
+    #snail_animation_timer = pygame.USEREVENT + 2
+    #pygame.time.set_timer(snail_animation_timer, 500)
+
+    #fly_animation_timer = pygame.USEREVENT + 3
+    #pygame.time.set_timer(fly_animation_timer, 200)
+
+    i = 0
+    init_threads(i)
+    if question_difficulty == util.Difficulty.ALL.name:
+        if i < 5:
+            question_lines = question_lines_easy
+        elif i < 10:
+            question_lines = question_lines_medium
+        else:
+            question_lines = question_lines_hard
+    question = question_lines[i][0]
+    answers = {"a": question_lines[i][1], "b": question_lines[i][2], "c": question_lines[i][3],
+               "d": question_lines[i][4]}
+    answer_list = list(answers.values())
+    random.shuffle(answer_list)
+    shuffled_answers = dict(zip(answers, answer_list))
+    correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[i][1])
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            if game_active:
+                if event.type == pygame.MOUSEMOTION:
+                    for obstacle in obstacle_group:
+                        if obstacle.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
+                            if obstacle.type != correct_answer_key:
+                                game_active = False
+                # keys = pygame.key.get_pressed()
+                # if event.type == pygame.KEYDOWN:
+                #     if event.key == pygame.K_SPACE and player_rect.bottom >= 300:
+                #         player_gravity = -20
+
+            else:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        game_active = True
+                        #start_time = int(pygame.time.get_ticks() / 1000)
+            if game_active:
+                #if event.type == obstacle_timer:
+                obstacle_group = pygame.sprite.Group()
+                sprite_group = ['question', "a", "b", "c", "d"]
+                texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
+                for index in range(len(sprite_group)):
+                    obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
+
+        if game_active:
+            screen.blit(sky_surface,  (0, 0))
+            #score = display_score()
+            obstacle_group.draw(screen)
+            #obstacle_group.update()
+
+            #game_active = collision_sprite()
+        else:
+            screen.fill((94, 129, 162))
+            #screen.blit(player_stand, player_stand_rect)
+            #obstacle_rect_list.clear()
+            #score_msg = test_font.render(f'Your score: {score}', False, (111, 196, 169))
+            #score_msg_rect = score_msg.get_rect(center=(400, 350))
+            #screen.blit(game_name, game_name_rect)
+
+            #if score == 0:
+            #    screen.blit(game_msg, game_msg_rect)
+            #else:
+            #    screen.blit(score_msg, score_msg_rect)
+
+        pygame.display.update()
+
+        clock.tick(60)
+
 
 def display_winning():
     util.play_sound("winning_theme", 0, general=True)
