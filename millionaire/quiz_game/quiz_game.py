@@ -47,20 +47,20 @@ class Obstacle(pygame.sprite.Sprite):
 
             #pygame.display.flip()
             text = f"{str(type).upper()}: {text}"
-            self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            self.frame = pygame.image.load('./data/graphics/option.png').convert()
             #snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
             #self.frame = [snail_frame_1, snail_frame_2]
             x_pos = 200
-            y_pos = 300
+            y_pos = 515
 
         elif type == "b":
             text = f"{str(type).upper()}: {text}"
 
-            self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            self.frame = pygame.image.load('./data/graphics/option.png').convert()
             #snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
             #self.frame = [snail_frame_1, snail_frame_2]
             x_pos = 600
-            y_pos = 300
+            y_pos = 515
         elif type == "c":
             text = f"{str(type).upper()}: {text}"
 
@@ -68,7 +68,7 @@ class Obstacle(pygame.sprite.Sprite):
             #snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
             #self.frame = [snail_frame_1, snail_frame_2]
             x_pos = 200
-            y_pos = 350
+            y_pos = 565
         elif type == "d":
             text = f"{str(type).upper()}: {text}"
 
@@ -76,14 +76,14 @@ class Obstacle(pygame.sprite.Sprite):
             #snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
             #self.frame = [snail_frame_1, snail_frame_2]
             x_pos = 600
-            y_pos = 350
+            y_pos = 565
 
         else:
             self.frame = pygame.image.load('./data/graphics/question.png').convert_alpha()
             # fly_frame_2 = pygame.image.load('graphics/fly/fly2.png').convert_alpha()
             # self.frames = [fly_frame_1, fly_frame_2]
             x_pos = 400
-            y_pos = 200
+            y_pos = 455
 
         #self.animation_index = 0
         self.type = type
@@ -98,10 +98,10 @@ class Obstacle(pygame.sprite.Sprite):
     #    if self.animation_index >= len(self.frames): self.animation_index = 0
     #    self.image = self.frames[int(self.animation_index)]
 
-    def update(self):
+    #def update(self):
         #self.animation_state()
-        self.rect.x -= 6
-        self.destroy()
+        #self.rect.x -= 6
+        #self.destroy()
 
     def destroy(self):
         #if self.rect.x <= -100:
@@ -110,12 +110,12 @@ class Obstacle(pygame.sprite.Sprite):
 def play():
     game_active = True
     pygame.init()
-    screen = pygame.display.set_mode((800, 400))
+    screen = pygame.display.set_mode((800, 600))
     pygame.display.set_caption('Runner')
     clock = pygame.time.Clock()
     test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
-    #sky_surface = pygame.image.load('graphics/Sky.png')
-    #ground_surface = pygame.image.load('graphics/ground.png').convert_alpha()
+    sky_surface = pygame.image.load('./data/graphics/background.jpg').convert_alpha()
+    ground_surface = pygame.image.load('./data/graphics/background.jpg').convert_alpha()
 
     #player_walk_1 = pygame.image.load('graphics/Player/player_walk_1.png').convert_alpha()
     #player_walk_2 = pygame.image.load('graphics/Player/player_walk_2.png').convert_alpha()
@@ -200,13 +200,14 @@ def play():
                         #game_active = True
                         #start_time = int(pygame.time.get_ticks() / 1000)
             if game_active:
-                pass
-                #if event.type == obstacle_timer:
 
+                #if event.type == obstacle_timer:
+                obstacle_group = pygame.sprite.Group()
                 sprite_group = ['question', "a", "b", "c", "d"]
                 texts = ['How tall is the Eiffel tower?', "250 m", "300 m", " 350 m", "400 m"]
                 for index in range(len(sprite_group)):
                     obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
+                    print(obstacle_group)
                 #if event.type == snail_animation_timer:
                 #   if snail_frame_index == 0:
                 #        snail_frame_index = 1
@@ -222,8 +223,9 @@ def play():
         #    fly_surf = fly_frames[fly_frame_index]
 
         if game_active:
-            pass
-            #screen.blit(sky_surface, (0, 0))
+            screen.blit(sky_surface,  (0, 0))
+            #screen.blit(ground_surface,  (1000, 0))
+
             #screen.blit(ground_surface, (0, 300))
             #score = display_score()
 
@@ -231,7 +233,7 @@ def play():
             #player.update()
 
             obstacle_group.draw(screen)
-            obstacle_group.update()
+            #obstacle_group.update()
 
             #game_active = collision_sprite()
         else:
@@ -249,6 +251,7 @@ def play():
             #else:
             #    screen.blit(score_msg, score_msg_rect)
 
+    #pygame.display.flip()
         pygame.display.update()
 
         clock.tick(60)
