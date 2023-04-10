@@ -86,6 +86,7 @@ class Obstacle(pygame.sprite.Sprite):
             y_pos = 200
 
         #self.animation_index = 0
+        self.type = type
         text = font.render(text, True, (255, 0, 0))
         self.image = self.frame
         self.image.blit(text, [30,0])
@@ -180,10 +181,13 @@ def play():
                 #pass
                 mouse_pos = pygame.mouse.get_pos()
                 #if player_rect.collidepoint(mouse_pos):
-                print(pygame.mouse.get_pressed())
-                # if event.type == pygame.MOUSEMOTION:
-                #    if player_rect.collidepoint(event.pos):
-                #         print("col")
+                #print(pygame.mouse.get_pressed())
+                if event.type == pygame.MOUSEMOTION:
+                    for obstacle in obstacle_group:
+                        if obstacle.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
+                            print(obstacle.type)
+                            if obstacle.type != "b":
+                                game_active = False
                 # keys = pygame.key.get_pressed()
                 # if event.type == pygame.KEYDOWN:
                 #     if event.key == pygame.K_SPACE and player_rect.bottom >= 300:
