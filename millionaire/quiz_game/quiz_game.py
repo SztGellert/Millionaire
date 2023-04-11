@@ -438,7 +438,6 @@ def start_game():
 
 def game_loop(level: int, question_array: {}):
     out_of_game = False
-    player = ""
     last_input = ""
     global random_sounds
     global game_active
@@ -449,8 +448,6 @@ def game_loop(level: int, question_array: {}):
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
 
-    score_msg = test_font.render(f'Your name: {player}', False, (111, 196, 169))
-    score_msg_rect = score_msg.get_rect(center=(400, 350))
     if level in [0, 6, 8]:
         play_question_intro(level)
     if util.game_language == util.Language.HUNGARIAN.name and level < 14:
