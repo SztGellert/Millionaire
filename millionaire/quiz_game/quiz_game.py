@@ -426,17 +426,18 @@ def play():
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
     obstacle_group = pygame.sprite.Group()
-    #sprite_group = ['question', "a", "b", "c", "d"]
-    #texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
-    #for index in range(len(sprite_group)):
-    #   obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
 
 
     start_game()
     is_active = True
+    i=0
     for i in range(game_levels):
-        if is_active:
+         if i > 0:
+            play_correct_sounds(i)
+         if is_active:
             is_active = game_loop(i, question_lines)
+    if i < 14:
+        play_incorrect_sounds(i)
 
 
 def start_game():
@@ -486,6 +487,8 @@ def game_loop(level: int, question_array: {}):
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
     pygame.time.set_timer(pygame.USEREVENT, 1000)
+    pygame.time.set_timer(pygame.USEREVENT+1, 1000)
+    start_ticks = 0
     counter = 3
     sprite_group = ['question', "a", "b", "c", "d"]
     selected = ""
@@ -502,110 +505,41 @@ def game_loop(level: int, question_array: {}):
                 if event.key == pygame.K_SPACE:
                     game_active = True
                     # start_time = int(pygame.time.get_ticks() / 1000)
-            if event.type == pygame.USEREVENT and selected != "":
+            if event.type == pygame.USEREVENT and selected != "" and type != "mark":
+                start_ticks = pygame.time.get_ticks()  # starter tick
                 counter -= 1
-                if counter > 1:
+                if counter < 1:
+                    play_select_sounds(level, selected,last_input,out_of_game)
                     type = "mark"
             if game_active:
-                #selected = ""
-                #if event.type == pygame.MOUSEMOTION:
-                    #pass
-                    #for obstacle in obstacle_group:
-                        #if obstacle.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
-                        #    selected = obstacle.type
-                            #select_text = language_dictionary[game_language].quiz.select_answer
-                            ##ound_dir = ""
-                            #if util.game_language == util.Language.HUNGARIAN.name:
-                            #    sound_list_dict = get_sound_list(util.quizmaster_attitude)
-                            #    bad_sounds = sound_list_dict['bad_sounds']
-                           #     correct_sounds = sound_list_dict['correct_sounds']
-
-                            ##if out_of_game:
-                             #   select_text = language_dictionary[game_language].quiz.select_answer_out
-
-                            #while True:
-                                #user_input = get_user_input()
-                                #if not help:
-                                    #user_inputs = [[b'a', "a"], [b'b', "b"], [b'c', "c"], [b'd', "d"]]
-                                    #for input_ in user_inputs:
-                                    #    if user_input == input_[0] or user_input == input_[1]:
-                            #if util.game_language == util.Language.HUNGARIAN.name:
-                            #    sound_dir = "random"
-                                #thread_random(level, selected=selected, last_one=last_input)
-                            #    if util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
-                           #         if selected == correct_answer_key:
-                           #             selected_sound = random.choice(correct_sounds)
-                            #        else:
-                           #             selected_sound = random.choice(bad_sounds)
-                            #util.clear_screen()
-                            #print_quiz_table(question, answers, game_level=level, selected=input_[1],
-                            #                 color="li_grey")
-                            #print("\n\n   " + fg.grey + select_text + fg.rs)
-                            #if not out_of_game:
-                            #    util.pause_music()
-                            #if util.game_language == util.Language.HUNGARIAN.name and util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
-                           #     if selected_sound.find("mark") != -1 or selected_sound.find(
-                            #            "final") != -1:
-                            #        sound_dir = "mark"
-                           #     util.play_sound(selected_sound, 0, dir=sound_dir)
-                            #if not out_of_game:
-                            #    util.continue_music()
-                            #last_input = selected
-                            #while True:
-                                #user_input = get_user_input()
                 if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
                     if dbclock.tick() < DOUBLECLICKTIME:
-                        #for obstacle in obstacle_group:
-                            #selected = ""
                             for ob in obstacle_group.sprites():
-                                #if ob.type == selected:
                                 if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
-                                    #ob.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
                                     selected = ob.type
-
-                                    #obstacle_group.remove(obstacle)
-
-                                    #obstacle_group.add(Obstacle(obstacle.type, obstacle.text, marked=True))
-                                    #obstacle.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
-                                    #self.frame = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
-                                    #obstacle_group.draw(screen)
-                                    #obstac#le_group.draw(screen)
-                                    #ob.update()
-                                    #break
-
-
-
             else:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         game_active = True
-            #if game_active:
-                #sprite_group = ['question', "a", "b", "c", "d"]
-                #
-                #texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
-                #for index in range(len(sprite_group)):
-                #    obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
-                #obstacle_group.draw(screen)
-                #obstacle_group.update()
-
         if game_active:
             screen.blit(sky_surface, (0, 0))
             obstacle_group.draw(screen)
-            #time.sleep(1)
-            #if selected != "":
-            #    break
             obstacle_group.update(selected, correct_answer_key, type)
-
-
-
-
+            if type == "mark":
+                seconds = (pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
+                if seconds > 7:  # if more than 10 seconds close the game
+                    return True
         else:
             screen.fill((94, 129, 162))
 
         pygame.display.update()
         clock.tick(60)
 
-    return True
+
+
+
+
+def play_select_sounds(level:int, selected="", last_input = "", out_of_game = False):
     util.stop_sound()
     # if user_input == b'\r' or user_input == '<Ctrl-j>':
     # thread_random(level, working=False)
@@ -619,74 +553,50 @@ def game_loop(level: int, question_array: {}):
         play_marked_sound(selected, level, last_one=last_input)
         time.sleep(2)
     # return input_[1]
-    last_input = selected
     # if user_input not in input_:
     #    break
 
-    if selected != correct_answer_key:
 
-        thread_random(level, working=False)
-        util.play_sound("bad_answer", 0, general=True)
-        time.sleep(2)
-        if game_language == util.Language.HUNGARIAN.name:
-            util.play_sound("so_sorry", 0, dir="out_of_game", timer=True)
-            time.sleep(1)
-            util.play_sound("claps", 0, general=True, timer=True)
-        # quit_quiz(score, player_name, question_topics)
+def play_incorrect_sounds(level:int):
+    thread_random(level, working=False)
+    util.play_sound("bad_answer", 0, general=True)
+    time.sleep(2)
+    if game_language == util.Language.HUNGARIAN.name:
+        util.play_sound("so_sorry", 0, dir="out_of_game", timer=True)
+        time.sleep(1)
+        util.play_sound("claps", 0, general=True, timer=True)
+    # quit_quiz(score, player_name, question_topics)
 
-        print(correct_answer_key)
-        game_active = False
-        return False
-    else:
-        return True
-        for ob in obstacle_group.sprites():
-            if selected:
-                ob.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
-                selected = ob.type
-
-                # obstacle_group.remove(obstacle)
-
-                # obstacle_group.add(Obstacle(obstacle.type, obstacle.text, marked=True))
-                # obstacle.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
-                # self.frame = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
-                # obstacle_group.draw(screen)
-                obstacle_group.draw(screen)
-                # ob.update()
-                break
-        # score += 1
-        if level < 14:
-            if level == 5:
-                util.play_sound("sixth_correct_answer", 0, general=True)
-            else:
-                util.play_sound("correct_answer", 0, general=True)
-            if util.game_language == util.Language.HUNGARIAN.name:
-                play_prize_sound(level)
-            if level == 4:
-                # print_prizes_with_quizmaster(i)
-                util.play_sound("won_hundred_bucks", 0, general=True)
-                time.sleep(7)
-            elif level == 9:
-                # print_prizes_with_quizmaster(i)
-                time.sleep(3)
-                if util.game_language == util.Language.HUNGARIAN.name:
-                    util.play_sound("now_comes_hard_part", 0, dir="random")
-            else:
-                # print_prizes_with_quizmaster(i)
-                util.play_sound("claps", 0, general=True, timer=True)
-                time.sleep(2)
+def play_correct_sounds(level: int):
+    if level < 14:
+        if level == 5:
+            util.play_sound("sixth_correct_answer", 0, general=True)
         else:
+            util.play_sound("correct_answer", 0, general=True)
+        if util.game_language == util.Language.HUNGARIAN.name:
+            play_prize_sound(level)
+        if level == 4:
+            # print_prizes_with_quizmaster(i)
+            util.play_sound("won_hundred_bucks", 0, general=True)
+            time.sleep(7)
+        elif level == 9:
+            # print_prizes_with_quizmaster(i)
+            time.sleep(3)
             if util.game_language == util.Language.HUNGARIAN.name:
-                util.play_sound("after_marking", 0, dir="lets_see")
-                time.sleep(4)
-                util.play_sound("great_logic", 0, dir="correct")
-                # print_prizes_with_quizmaster(i)
-            time.sleep(1)
-            # display_winning()
-            # quit_quiz(score, player_name, question_topics, end=True)
-
-
-        level += 1
-        return True
+                util.play_sound("now_comes_hard_part", 0, dir="random")
+        else:
+            # print_prizes_with_quizmaster(i)
+            util.play_sound("claps", 0, general=True, timer=True)
+            time.sleep(2)
+    else:
+        if util.game_language == util.Language.HUNGARIAN.name:
+            util.play_sound("after_marking", 0, dir="lets_see")
+            time.sleep(4)
+            util.play_sound("great_logic", 0, dir="correct")
+            # print_prizes_with_quizmaster(i)
+        time.sleep(1)
+        # display_winning()
+        # quit_quiz(score, player_name, question_topics, end=True)
 
 
 def display_winning():
