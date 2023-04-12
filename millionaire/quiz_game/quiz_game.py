@@ -31,7 +31,9 @@ class Obstacle(pygame.sprite.Sprite):
         super().__init__()
 
         font = pygame.font.SysFont('Sans', 25)
-        self.player_jump = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+        self.correct_option = pygame.image.load('./data/graphics/option_correct.png').convert_alpha()
+
+        self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
         if type == "a":
             # sprite = pygame.sprite.Sprite()
             # sprite.image = image
@@ -46,7 +48,7 @@ class Obstacle(pygame.sprite.Sprite):
             # pygame.display.flip()
             text = f"{str(type).upper()}: {text}"
             self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
-            self.player_jump = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+            self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
 
             # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
             # self.frame = [snail_frame_1, snail_frame_2]
@@ -108,14 +110,24 @@ class Obstacle(pygame.sprite.Sprite):
         #self.rect.y += self.gravity
         #if self.rect.bottom >= 300: self.rect.bottom = 300
 
-    def update(self):
-        self.player_input()
-        self.apply_gravity()
+    def update(self, selected, correct, tpye_="select"):
+        if tpye_ == "select":
+            if selected == self.type:
+                self.image = self.selected_option
+                self.image.blit(self.text, [30, 0])
+                #self.rect = self.image.get_rect(center=(x_pos, y_pos))
+        else:
+            if correct == self.type:
+                self.image = self.correct_option
+                self.image.blit(self.text, [30, 0])
+
+        #self.player_input()
+        #self.apply_gravity()
         #self.animation_state()
 
     def animation_state(self):
         #if self.rect.bottom < 300:
-        self.image = self.player_jump
+        self.image = self.selected_option
        # else:
             #self.player_index += 0.1
             #if self.player_index >= len(self.player_walk): self.player_index = 0
@@ -473,8 +485,11 @@ def game_loop(level: int, question_array: {}):
     correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[level][1])
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
+    pygame.time.set_timer(pygame.USEREVENT, 1000)
+    counter = 3
     sprite_group = ['question', "a", "b", "c", "d"]
     selected = ""
+    type= "select"
     texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
     for index in range(len(sprite_group)):
         obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
@@ -487,8 +502,12 @@ def game_loop(level: int, question_array: {}):
                 if event.key == pygame.K_SPACE:
                     game_active = True
                     # start_time = int(pygame.time.get_ticks() / 1000)
+            if event.type == pygame.USEREVENT and selected != "":
+                counter -= 1
+                if counter > 1:
+                    type = "mark"
             if game_active:
-                selected = ""
+                #selected = ""
                 #if event.type == pygame.MOUSEMOTION:
                     #pass
                     #for obstacle in obstacle_group:
@@ -537,10 +556,11 @@ def game_loop(level: int, question_array: {}):
                 if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
                     if dbclock.tick() < DOUBLECLICKTIME:
                         #for obstacle in obstacle_group:
-                            selected = ""
+                            #selected = ""
                             for ob in obstacle_group.sprites():
+                                #if ob.type == selected:
                                 if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
-                                    ob.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+                                    #ob.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
                                     selected = ob.type
 
                                     #obstacle_group.remove(obstacle)
@@ -549,9 +569,9 @@ def game_loop(level: int, question_array: {}):
                                     #obstacle.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
                                     #self.frame = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
                                     #obstacle_group.draw(screen)
-                                    obstacle_group.draw(screen)
+                                    #obstac#le_group.draw(screen)
                                     #ob.update()
-                                    break
+                                    #break
 
 
 
@@ -571,10 +591,13 @@ def game_loop(level: int, question_array: {}):
         if game_active:
             screen.blit(sky_surface, (0, 0))
             obstacle_group.draw(screen)
-            time.sleep(1)
-            if selected != "":
-                break
-            #obstacle_group.update()
+            #time.sleep(1)
+            #if selected != "":
+            #    break
+            obstacle_group.update(selected, correct_answer_key, type)
+
+
+
 
         else:
             screen.fill((94, 129, 162))
@@ -582,6 +605,7 @@ def game_loop(level: int, question_array: {}):
         pygame.display.update()
         clock.tick(60)
 
+    return True
     util.stop_sound()
     # if user_input == b'\r' or user_input == '<Ctrl-j>':
     # thread_random(level, working=False)
@@ -614,7 +638,21 @@ def game_loop(level: int, question_array: {}):
         game_active = False
         return False
     else:
+        return True
+        for ob in obstacle_group.sprites():
+            if selected:
+                ob.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+                selected = ob.type
 
+                # obstacle_group.remove(obstacle)
+
+                # obstacle_group.add(Obstacle(obstacle.type, obstacle.text, marked=True))
+                # obstacle.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+                # self.frame = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+                # obstacle_group.draw(screen)
+                obstacle_group.draw(screen)
+                # ob.update()
+                break
         # score += 1
         if level < 14:
             if level == 5:
@@ -645,6 +683,7 @@ def game_loop(level: int, question_array: {}):
             time.sleep(1)
             # display_winning()
             # quit_quiz(score, player_name, question_topics, end=True)
+
 
         level += 1
         return True
