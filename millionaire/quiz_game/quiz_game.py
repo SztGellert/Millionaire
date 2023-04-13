@@ -24,6 +24,7 @@ skin_color = bg(225, 196, 196)
 hair = bg(143, 143, 143)
 nose = bg(225, 185, 185)
 mouth = bg(214, 173, 173)
+help_types = {"halving": True, "telephone": True, "audience": True}
 
 
 class Obstacle(pygame.sprite.Sprite):
@@ -111,6 +112,7 @@ class Obstacle(pygame.sprite.Sprite):
         #if self.rect.bottom >= 300: self.rect.bottom = 300
 
     def update(self, selected, correct, tpye_="select"):
+
         if tpye_ == "select":
             if selected == self.type:
                 self.image = self.selected_option
@@ -132,6 +134,139 @@ class Obstacle(pygame.sprite.Sprite):
             #self.player_index += 0.1
             #if self.player_index >= len(self.player_walk): self.player_index = 0
             #self.image = self.player_walk[int(self.player_index)]
+
+
+class Prizes(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+
+        font = pygame.font.SysFont('Sans', 25)
+
+        self.frame = pygame.image.load('./data/graphics/prizes.png').convert_alpha()
+        # fly_frame_2 = pygame.image.load('graphics/fly/fly2.png').convert_alpha()
+        # self.frames = [fly_frame_1, fly_frame_2]
+        x_pos = 650
+        y_pos = 210
+
+        # self.animation_index = 0
+        #self.type = type
+        #self.text = font.render(text, True, (255, 255, 255))
+        self.image = self.frame
+        #self.image.blit(self.text, [30, 0])
+        self.rect = self.image.get_rect(center=(x_pos, y_pos))
+
+
+    def update(self):
+      pass
+
+
+        #if tpye_ == "select":
+        #    if selected == self.type:
+        #        self.image = self.selected_option
+        #        self.image.blit(self.text, [30, 0])
+        #        #self.rect = self.image.get_rect(center=(x_pos, y_pos))
+       # else:
+        #    if correct == self.type:
+        #        self.image = self.correct_option
+        #        self.image.blit(self.text, [30, 0])
+
+        #self.player_input()
+        #self.apply_gravity()
+        #self.animation_state()
+
+    def animation_state(self):
+        pass
+
+
+class Help(pygame.sprite.Sprite):
+    def __init__(self, type):
+        super().__init__()
+
+        font = pygame.font.SysFont('Sans', 25)
+        self.correct_option = pygame.image.load('./data/graphics/option_correct.png').convert_alpha()
+
+        self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+        if type == "halving":
+            # sprite = pygame.sprite.Sprite()
+            # sprite.image = image
+            # sprite.rect = image.get_rect()
+
+            # sprite.image.blit(text, sprite.rect)
+
+            # group = pygame.sprite.Group()
+            # group.add(sprite)
+            # group.draw(screen)
+
+            # pygame.display.flip()
+            self.frame = pygame.image.load('./data/graphics/halving.png').convert_alpha()
+
+            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
+            # self.frame = [snail_frame_1, snail_frame_2]
+            x_pos = 520
+            y_pos =35
+
+        elif type == "telephone":
+
+            self.frame = pygame.image.load('./data/graphics/telephone.png').convert_alpha()
+            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
+            # self.frame = [snail_frame_1, snail_frame_2]
+            x_pos = 630
+            y_pos = 35
+        else:
+            self.frame = pygame.image.load('./data/graphics/audience.png').convert_alpha()
+            # fly_frame_2 = pygame.image.load('graphics/fly/fly2.png').convert_alpha()
+            # self.frames = [fly_frame_1, fly_frame_2]
+            x_pos = 740
+            y_pos = 35
+
+
+        # self.animation_index = 0
+        self.type = type
+        self.image = self.frame
+        self.rect = self.image.get_rect(center=(x_pos, y_pos))
+
+    def player_input(self):
+        if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
+            global help_types
+            help_types[self.type] = False
+
+
+    def update(self):
+        global help_types
+        first_line= [(20, 28), (68, 62)]
+        second_line = [ (75, 25), (25, 60)]
+        width = 3
+        color = (255, 0, 0)
+
+        if help_types["halving"] == False and self.type =="halving":
+            pygame.draw.line(self.image, color, first_line[0], first_line[1], width=width)
+            pygame.draw.line(self.image, color, second_line[0], second_line[1], width=width)
+        if help_types["telephone"] == False  and self.type =="telephone":
+            pygame.draw.line(self.image, color, first_line[0], first_line[1], width=width)
+            pygame.draw.line(self.image, color, second_line[0], second_line[1], width=width)
+
+        if help_types["audience"] == False  and self.type =="audience":
+            pygame.draw.line(self.image, color, first_line[0], first_line[1], width=width)
+            pygame.draw.line(self.image, color, second_line[0], second_line[1], width=width)
+
+        self.player_input()
+
+    #if tpye_ == "select":
+        #    if selected == self.type:
+        #        self.image = self.selected_option
+        #        self.image.blit(self.text, [30, 0])
+        #        #self.rect = self.image.get_rect(center=(x_pos, y_pos))
+       # else:
+        #    if correct == self.type:
+        #        self.image = self.correct_option
+        #        self.image.blit(self.text, [30, 0])
+
+        #self.player_input()
+        #self.apply_gravity()
+        #self.animation_state()
+
+    def animation_state(self):
+        pass
 
 
 def init_threads(level: int):
@@ -331,6 +466,8 @@ def play():
     question_difficulty = util.question_difficulty
     global help_types
     help_types = {"halving": True, "telephone": True, "audience": True}
+    global help_group
+    help_group =  pygame.sprite.Group()
     global random_sounds
     random_sounds = util.init_random_sounds()
     question_lines = []
@@ -408,7 +545,8 @@ def play():
     # score = 0
     global obstacle_group
     obstacle_group = pygame.sprite.Group()
-
+    global prizes_table
+    prizes_table = pygame.sprite.GroupSingle()
     game_levels = 15
     level = 0
     init_threads(level)
@@ -428,7 +566,7 @@ def play():
     obstacle_group = pygame.sprite.Group()
 
 
-    start_game()
+    #start_game()
     is_active = True
     i=0
     for i in range(game_levels):
@@ -478,11 +616,11 @@ def game_loop(level: int, question_array: {}):
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
 
-    if level in [0, 6, 8]:
-        play_question_intro(level)
-    if util.game_language == util.Language.HUNGARIAN.name and level < 14:
-        play_question_prologue(level)
-    play_music(level)
+    #if level in [0, 6, 8]:
+    #    play_question_intro(level)
+    #if util.game_language == util.Language.HUNGARIAN.name and level < 14:
+    #    play_question_prologue(level)
+    #play_music(level)
     correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[level][1])
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
@@ -496,6 +634,18 @@ def game_loop(level: int, question_array: {}):
     texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
     for index in range(len(sprite_group)):
         obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
+
+    #prizes = ['question', "a", "b", "c", "d"]
+    #selected = ""
+    #type = "select"
+    #texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
+    #for index in range(len(sprite_group)):
+
+    #prizes_table.add(Prizes())
+    help_sprites = ['halving', "telephone", "audience"]
+    for index in range(len(help_sprites)):
+        help_group.add(Help(help_sprites[index]))
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -525,6 +675,10 @@ def game_loop(level: int, question_array: {}):
             screen.blit(sky_surface, (0, 0))
             obstacle_group.draw(screen)
             obstacle_group.update(selected, correct_answer_key, type)
+            #prizes_table.draw(screen)
+            #prizes_table.update()
+            help_group.draw(screen)
+            help_group.update()
             if type == "mark":
                 seconds = (pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
                 if seconds > 7:  # if more than 10 seconds close the game
