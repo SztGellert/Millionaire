@@ -8,6 +8,8 @@ from sty import Style, RgbFg, fg, bg, rs
 import millionaire.quiz_game.quiz_game as quiz
 import millionaire.util.util as util
 import millionaire.menu.helpers as helpers
+import pygame
+
 
 fg.purple = Style(RgbFg(148, 0, 211))
 bg.orange = bg(255, 150, 50)
@@ -464,6 +466,304 @@ def get_user_input(option_list: [], values_list: [], max_option_length: int, sta
             if user_input == b'\r' or user_input == '<Ctrl-j>':
                 return values_list[i]
 
+
+class MenuOption(pygame.sprite.Sprite):
+
+    def __init__(self, type, text, order):
+        super().__init__()
+
+        #self.correct_option = pygame.image.load('./data/graphics/option_correct.png').convert_alpha()
+        #self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+        # print(self.get_is_active())
+
+        #self.is_active = self.get_is_active()
+
+        #if type != "question":
+        #    if self.is_active:
+        #        text = f"{str(type).upper()}: {text}"
+        #    else:
+        #        print(self.is_active)
+        #        text = f"{str(type).upper()}: "
+#
+        #if type == "a":
+        #    print(self.is_active)
+
+            # sprite = pygame.sprite.Sprite()
+            # sprite.image = image
+            # sprite.rect = image.get_rect()
+
+            # sprite.image.blit(text, sprite.rect)
+
+            # group = pygame.sprite.Group()
+            # group.add(sprite)
+            # group.draw(screen)
+
+            # pygame.display.flip()
+            #self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            #self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+
+            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
+            # self.frame = [snail_frame_1, snail_frame_2]
+            #x_pos = 200
+            #y_pos = 515
+
+        #elif type == "b":
+
+            #self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
+            # self.frame = [snail_frame_1, snail_frame_2]
+            #x_pos = 600
+            #y_pos = 515
+
+        #elif type == "c":
+
+            #elf.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
+            # self.frame = [snail_frame_1, snail_frame_2]
+            #x_pos = 200
+            #y_pos = 565
+        #elif type == "d":
+
+            #self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
+            # self.frame = [snail_frame_1, snail_frame_2]
+            #x_pos = 600
+            #y_pos = 565
+
+        #else:
+            #text = f"{text}"
+            #self.frame = pygame.image.load('./data/graphics/question.png').convert_alpha()
+            # fly_frame_2 = pygame.image.load('graphics/fly/fly2.png').convert_alpha()
+            # self.frames = [fly_frame_1, fly_frame_2]
+            #x_pos = 400
+            #y_pos = 455
+
+        # self.animation_index = 0
+        x_pos = 400
+        y_pos = 445 + (order*35)
+
+
+        self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+        font = pygame.font.SysFont('Sans', 25)
+        self.type = type
+        self.text = font.render(text, True, (255, 255, 255))
+        self.image = self.frame
+        self.image.blit(self.text, [30, 0])
+        self.rect = self.image.get_rect(center=(x_pos, y_pos))
+
+
+
+    def get_is_active(self):
+        if hasattr(self, 'is_active'):
+            return self.is_active
+        else:
+            return True
+
+    def set_is_active(self):
+        self.is_active = True
+
+    def unset_is_active(self):
+        self.is_active = False
+
+
+    def player_input(self):
+        if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
+            print(self.type)
+            if self.type == "play":
+                quiz.play()
+            if self.type == "exit":
+                pygame.quit()
+                exit()
+            if self.type == "options":
+                global options
+                options = True
+            if self.type=="Language selection":
+                print(self.type, "yes")
+                global lang_selection
+                lang_selection = True
+            #self.animation_state()
+
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_SPACE] and self.rect.bottom >= 300:
+            self.gravity = -20
+            self.jump_sound.play()
+
+    def apply_gravity(self):
+        pass
+        # self.gravity += 1
+        # self.rect.y += self.gravity
+        # if self.rect.bottom >= 300: self.rect.bottom = 300
+
+    def update(self):
+
+        self.player_input()
+        #self.is_active = self.get_is_active()
+        #if not self.is_active:
+        #    self.kill()
+
+        #if tpye_ == "select":
+        #    if selected == self.type:
+        #        self.image = self.selected_option
+        #        self.image.blit(self.text, [30, 0])
+       #         # self.rect = self.image.get_rect(center=(x_pos, y_pos))
+#
+        #else:
+        #    if correct == self.type:
+        #        self.image = self.correct_option
+        #        self.image.blit(self.text, [30, 0])
+
+        # print(self.type)
+        # print(self.is_active)
+
+        # self.player_input()
+        # self.apply_gravity()
+        # self.animation_state()
+
+    def animation_state(self):
+        pass
+        # if self.rect.bottom < 300:
+        #self.image = self.selected_option
+
+    # else:
+    # self.player_index += 0.1
+    # if self.player_index >= len(self.player_walk): self.player_index = 0
+    # self.image = self.player_walk[int(self.player_index)]
+
+
+def main():
+
+    pygame.init()
+
+    dbclock = pygame.time.Clock()
+    DOUBLECLICKTIME = 500
+    pygame.time.set_timer(pygame.USEREVENT, 1000)
+    pygame.time.set_timer(pygame.USEREVENT + 1, 1000)
+    pygame.time.set_timer(pygame.USEREVENT + 2, 1000)
+
+    game_active = True
+    global screen
+    screen = pygame.display.set_mode((800, 600))
+    pygame.display.set_caption('Runner')
+    global clock
+    clock = pygame.time.Clock()
+    global test_font
+    test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
+    global sky_surface
+
+    sky_surface = pygame.image.load('./data/graphics/background_.png').convert_alpha()
+    settings_option_group = pygame.sprite.Group()
+    start_ticks = 0
+    counter = 3
+    sprite_group = ['play', "intro", "credits", "options", "exit"]
+    selected = ""
+    type = "select"
+    menu_option_group = pygame.sprite.Group()
+    texts = ["Play", "Intro", "Credits", "Options", "Exit"]
+    for index in range(len(sprite_group)):
+        menu_option_group.add(MenuOption(sprite_group[index], texts[index], index))
+    settings= ["Language selection", "Disable/Enable Sound",
+                                  "Full Screen",
+                                  "Question types",
+                                  "Question difficulty",
+                                  "Quizmaster attitude",
+                                  "Restore Settings",
+                                  "Back"]
+    for index in range(len(settings)):
+        settings_option_group.add(MenuOption(settings[index], settings[index], index))
+    langs = util.available_languages
+    lang_group = pygame.sprite.Group()
+
+    for index in range(len(langs)):
+        lang_group.add(MenuOption(langs[index], langs[index], index))
+    # for ob in obstacle_group.sprites():
+    #   ob.set_is_active()
+    # prizes = ['question', "a", "b", "c", "d"]
+    # selected = ""
+    # type = "select"
+    # texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
+    # for index in range(len(sprite_group)):
+
+    # prizes_table.add(Prizes())
+    global options, lang_selection
+    options= False
+    lang_selection = False
+    while True:
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            #if event.type == pygame.KEYDOWN:
+            #    if event.key == pygame.K_SPACE:
+            #        game_active = True
+            #        # start_time = int(pygame.time.get_ticks() / 1000)
+            #if event.type == pygame.USEREVENT and selected != "" and type != "mark":
+            #    counter -= 1
+           #     if counter < 1:
+            #        play_select_sounds(level, selected, last_input, out_of_game)
+            #        type = "mark"
+            #if event.type == mark_event:
+            #    mark_seconds -= 1
+#
+            #if event.type == after_halving_event:
+            #    halving_time -= 1
+            #    if halving_time < 1:
+             #       after_halving_sounds = ["after_halving", "after_halving_2", "after_halving_3",
+            #                                "your_guess_stayed", "you_have_fifty_percent",
+            #                                "im_not_surprised"]
+            #        sound = random.choice(after_halving_sounds)
+            #        util.play_sound(sound, 0, dir="halving", timer=True)
+            #        after_halving_event = 0
+#
+            #if game_active:
+                #if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
+                #    if dbclock.tick() < DOUBLECLICKTIME:
+                #        for ob in menu_option_group.sprites():
+                #            if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
+                 #               selected = ob.type
+            #else:
+            #    if event.type == pygame.KEYDOWN:
+            #        if event.key == pygame.K_SPACE:
+            #            game_active = True
+        #if game_active:
+
+        screen.blit(sky_surface, (0, -20))
+
+        if options:
+
+
+            if lang_selection:
+                screen.fill((0,0,0))
+
+                lang_group.draw(screen)
+                lang_group.update()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    lang_selection = False
+
+            else:
+                settings_option_group.draw(screen)
+                settings_option_group.update()
+        # prizes_table.draw(screen)
+        # prizes_table.update()
+        #help_group.draw(screen)
+        #help_group.update(correct_answer_key)
+        #if type == "mark":
+       #     if mark_seconds < 1:
+       #         if selected == correct_answer_key:
+       #             play_correct_sounds(level)
+       #             return True
+       #         else:
+        #            play_incorrect_sounds(level)
+        #            return False
+        #else:
+        #    screen.fill((94, 129, 162))
+        else:
+            menu_option_group.draw(screen)
+            menu_option_group.update()
+        pygame.display.update()
+        clock.tick(60)
 
 def handle_main_menu():
     start_index = 0
