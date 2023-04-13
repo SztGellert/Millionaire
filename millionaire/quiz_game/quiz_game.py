@@ -29,15 +29,13 @@ help_types = {"halving": True, "telephone": True, "audience": True}
 
 class Obstacle(pygame.sprite.Sprite):
 
-
-
     def __init__(self, type, text):
         super().__init__()
 
         font = pygame.font.SysFont('Sans', 25)
         self.correct_option = pygame.image.load('./data/graphics/option_correct.png').convert_alpha()
         self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
-        #print(self.get_is_active())
+        # print(self.get_is_active())
 
         self.is_active = self.get_is_active()
         if type != "question":
@@ -119,8 +117,6 @@ class Obstacle(pygame.sprite.Sprite):
     def unset_is_active(self):
         self.is_active = False
 
-
-
     def player_input(self):
         if pygame.mouse.get_pressed()[0]:
             self.animation_state()
@@ -132,9 +128,9 @@ class Obstacle(pygame.sprite.Sprite):
 
     def apply_gravity(self):
         pass
-        #self.gravity += 1
-        #self.rect.y += self.gravity
-        #if self.rect.bottom >= 300: self.rect.bottom = 300
+        # self.gravity += 1
+        # self.rect.y += self.gravity
+        # if self.rect.bottom >= 300: self.rect.bottom = 300
 
     def update(self, selected, correct, tpye_="select"):
         self.is_active = self.get_is_active()
@@ -145,26 +141,27 @@ class Obstacle(pygame.sprite.Sprite):
             if selected == self.type:
                 self.image = self.selected_option
                 self.image.blit(self.text, [30, 0])
-                #self.rect = self.image.get_rect(center=(x_pos, y_pos))
+                # self.rect = self.image.get_rect(center=(x_pos, y_pos))
+
         else:
             if correct == self.type:
                 self.image = self.correct_option
                 self.image.blit(self.text, [30, 0])
 
-        #print(self.type)
-        #print(self.is_active)
+        # print(self.type)
+        # print(self.is_active)
 
-        #self.player_input()
-        #self.apply_gravity()
-        #self.animation_state()
+        # self.player_input()
+        # self.apply_gravity()
+        # self.animation_state()
 
     def animation_state(self):
-        #if self.rect.bottom < 300:
+        # if self.rect.bottom < 300:
         self.image = self.selected_option
-       # else:
-            #self.player_index += 0.1
-            #if self.player_index >= len(self.player_walk): self.player_index = 0
-            #self.image = self.player_walk[int(self.player_index)]
+    # else:
+    # self.player_index += 0.1
+    # if self.player_index >= len(self.player_walk): self.player_index = 0
+    # self.image = self.player_walk[int(self.player_index)]
 
 
 class Prizes(pygame.sprite.Sprite):
@@ -180,30 +177,28 @@ class Prizes(pygame.sprite.Sprite):
         y_pos = 210
 
         # self.animation_index = 0
-        #self.type = type
-        #self.text = font.render(text, True, (255, 255, 255))
+        # self.type = type
+        # self.text = font.render(text, True, (255, 255, 255))
         self.image = self.frame
-        #self.image.blit(self.text, [30, 0])
+        # self.image.blit(self.text, [30, 0])
         self.rect = self.image.get_rect(center=(x_pos, y_pos))
 
-
     def update(self):
-      pass
+        pass
 
-
-        #if tpye_ == "select":
+        # if tpye_ == "select":
         #    if selected == self.type:
         #        self.image = self.selected_option
         #        self.image.blit(self.text, [30, 0])
         #        #self.rect = self.image.get_rect(center=(x_pos, y_pos))
-       # else:
+        # else:
         #    if correct == self.type:
         #        self.image = self.correct_option
         #        self.image.blit(self.text, [30, 0])
 
-        #self.player_input()
-        #self.apply_gravity()
-        #self.animation_state()
+        # self.player_input()
+        # self.apply_gravity()
+        # self.animation_state()
 
     def animation_state(self):
         pass
@@ -234,7 +229,7 @@ class Help(pygame.sprite.Sprite):
             # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
             # self.frame = [snail_frame_1, snail_frame_2]
             x_pos = 520
-            y_pos =35
+            y_pos = 35
 
         elif type == "telephone":
 
@@ -250,7 +245,6 @@ class Help(pygame.sprite.Sprite):
             x_pos = 740
             y_pos = 35
 
-
         # self.animation_index = 0
         self.type = type
         self.image = self.frame
@@ -260,55 +254,292 @@ class Help(pygame.sprite.Sprite):
         if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
             help_types[self.type] = False
             if self.type == "halving":
-                #global obstacle_group
-                choises = ["a", "b", "c", "d"]
-                choises.remove(correct_answer)
-                choises.remove(random.choice(choises))
-                for ob in obstacle_group.sprites():
-                    if ob.type in choises:
-                        #print(ob.type)
-                        ob.unset_is_active()
-
-
+                self.halving(correct_answer)
+            elif self.type == "telephone":
+                self.phone(correct_answer)
+            else:
+                self.audience(correct_answer)
 
     def update(self, correct_answer: ""):
         global help_types
-        first_line= [(20, 28), (68, 62)]
-        second_line = [ (75, 25), (25, 60)]
+        first_line = [(20, 28), (68, 62)]
+        second_line = [(75, 25), (25, 60)]
         width = 3
         color = (255, 0, 0)
 
-        if help_types["halving"] == False and self.type =="halving":
+        if help_types["halving"] == False and self.type == "halving":
             pygame.draw.line(self.image, color, first_line[0], first_line[1], width=width)
             pygame.draw.line(self.image, color, second_line[0], second_line[1], width=width)
-        if help_types["telephone"] == False  and self.type =="telephone":
-            pygame.draw.line(self.image, color, first_line[0], first_line[1], width=width)
-            pygame.draw.line(self.image, color, second_line[0], second_line[1], width=width)
-
-        if help_types["audience"] == False  and self.type =="audience":
+        if help_types["telephone"] == False and self.type == "telephone":
             pygame.draw.line(self.image, color, first_line[0], first_line[1], width=width)
             pygame.draw.line(self.image, color, second_line[0], second_line[1], width=width)
 
+        if help_types["audience"] == False and self.type == "audience":
+            pygame.draw.line(self.image, color, first_line[0], first_line[1], width=width)
+            pygame.draw.line(self.image, color, second_line[0], second_line[1], width=width)
 
         if help_types[self.type]:
             self.player_input(correct_answer)
 
-        def halving(self):
-            pass
+    def halving(self, correct_answer):
+        # global obstacle_group
+        choises = ["a", "b", "c", "d"]
+        choises.remove(correct_answer)
+        choises.remove(random.choice(choises))
+        for ob in obstacle_group.sprites():
+            if ob.type in choises:
+                # print(ob.type)
+                ob.unset_is_active()
+        halving_before_sounds()
+        global after_halving_event
+        after_halving_event = pygame.USEREVENT + 1
 
-    #if tpye_ == "select":
-        #    if selected == self.type:
-        #        self.image = self.selected_option
-        #        self.image.blit(self.text, [30, 0])
-        #        #self.rect = self.image.get_rect(center=(x_pos, y_pos))
-       # else:
-        #    if correct == self.type:
-        #        self.image = self.correct_option
-        #        self.image.blit(self.text, [30, 0])
+    def phone(self, correct_answer):
+        global player
+        if util.game_language == util.Language.HUNGARIAN.name:
+            before_phone_sounds = ["if_you_want_phone_then_i_agree", "i_didnt_want_to_advise_phone", "we_dont_phone",
+                                   "phone_broke", "we_dont_phone_two"]
+            before_sound = random.choice(before_phone_sounds)
+            util.play_sound(before_sound, 0, dir="phone", timer=True)
+        #print("\n   " + language_dictionary[game_language].quiz.phone_prompt)
+        #phone = handle_user_input(question, answers, correct_answer, help=True)
+        #call_text_files = ["mum_phone_" + str(game_language).lower(),
+        #                   "dad_phone_" + str(game_language).lower(),
+        #                   "teacher_phone_" + str(game_language).lower(),
+        #                   "yoda_master_phone_" + str(game_language).lower()
+        #                   ]
+        conversation = ""
+        if util.game_language == util.Language.HUNGARIAN.name:
+            dial_sound = "colleagues_are_dialing"
+            util.play_sound(dial_sound, 0, dir="phone", timer=True)
+        #for i in range(len(call_text_files)):
+        #    if phone.lower() == call_text_files[i][0]:
+        #        conversation = (util.open_file(call_text_files[i], 'r', separator=";"))
+        #        if phone.lower() == "t":
+        util.play_sound("teacher_first_part", 0, dir="phone", timer=True)
+        util.play_sound(player, 0, dir="players", timer=True)
+        util.play_sound("teacher_second_part", 0, dir="phone", timer=True)
+        #
+        #        else:
+        ##            util.play_sound("phone_ring", 0, general=True)
+        #            time.sleep(2)
+        #        util.play_sound("phone_call", 0, general=True)
+        #len_al = 45
+        #util.clear_screen()
+        #len_window = 5
+        #then = time.time()
+        #text = ""
+        #now = 0.0
+        #for i in range(30):
+        #    index = 0
+       #     for line in util.open_file("quizmaster", "r", ";", "/text_files/", strip=False):
+        #        new = str(line[0]).replace("B", bg.white + " " + bg.rs).replace("S", skin_color + " " + bg.rs).replace(
+         #           "H",
+          #          hair + " " + bg.rs).replace(
+           #         "G", skin_color + fg.black + "▬" + fg.rs + bg.rs).replace("B", bg.grey + " " + bg.rs).replace("C",
+            #                                                                                                      bg.li_grey + " " + bg.rs).replace(
+             #       "D", bg.da_grey + " " + bg.rs).replace("◙", skin_color + fg.li_blue + "◙" + fg.rs + bg.rs).replace(
+              #      "M",
+               #    mouth + "-" + bg.rs).replace(
+                #    "T", bg.blue + " " + bg.rs).replace("N", nose + " " + bg.rs).replace("U",
+                 #                                                                        skin_color + "▬" + bg.rs).replace(
+                #    "L", skin_color + "▬" + bg.rs).replace("R", skin_color + "▌" + bg.rs).replace("V",
+                #                                                                                  nose + fg.black + "▬" + fg.rs + bg.rs)
+                #missing_space = len_al - len(line[0])
+                #line[0] = new
+                #if index == 0:
+                #    print("\n\n\n\n" + line[0] + " " * (missing_space + 1) + "_" * (len_window - 1))
+                #elif index == 1:
+                #    print(line[0] + " " * missing_space + "|" + (len_window - 1) * " " + "|")
+                #else:
+                #    if index == 2:
+                #        now = time.time()
+                #        print(line[0] + " " * (missing_space) + "| " + fg.orange + str(
+                #            30 - int(now - then)) + fg.rs + " |")
+                #        print(line[0] + " " * (missing_space) + "|" + "_" * (len_window - 1) + "|")
+                #    else:
+                #        print(line[0])
+                #index += 1
+            #print_quiz_table(question, answers, quizmaster=False)
+            #if i == 0:
+            #    text = "  " + text + "\n" + "   " + conversation[0][0] + " \n" + "   " + question + " " + ", ".join(
+            #        list(answers.values()))
+            #elif i == len(conversation) - 1:
+            #    if phone == "y":
+            #        text = "  " + text + "\n" + "   " + conversation[5][0] + " " + correct_answer.upper()
+            #    else:
+            #        text = "  " + text + "\n" + "   " + conversation[4][0] + " " + correct_answer.upper()
+            #    print(text)
+            #    break
+            #elif i == len(conversation) - 2:
+            #   time.sleep(2)
+            #    text = text + "\n" + "   " + conversation[i][0]
+            #else:
+            #    text = text + "\n" + "   " + conversation[i][0]
+            #print(text)
+            #time.sleep(2)
+            #if i < 30:
+            #    util.clear_screen()
+            #    i += 1
+        util.play_sound('phone_call_ends', 0, general=True)
+        time.sleep(5)
+        if util.game_language == util.Language.HUNGARIAN.name:
+            after_sound = "over_30_secs"
+            util.play_sound(after_sound, 0, dir="phone", timer=True)
+       # print("\n   " + language_dictionary[game_language].quiz.call_duration, int(now - then),
+       #       language_dictionary[game_language].quiz.call_seconds)
+        util.stop_sound()
+        util.play_sound("mark_" + correct_answer, 0, dir="mark")
 
-        #self.player_input()
-        #self.apply_gravity()
-        #self.animation_state()
+    def audience(self, correct_answer):
+        options = ""
+        answers = {}
+        if util.game_language == util.Language.HUNGARIAN.name:
+            options = []
+            for key in answers:
+                if answers[key] != "":
+                    options.append(key)
+            if options == ["a", "b"]:
+                prolouge = "audience_a_b"
+            elif options == ["a", "c"]:
+                prolouge = "audience_a_b"
+            elif options == ["c", "d"]:
+                prolouge = "audience_c_d"
+            else:
+                audience_prolouges = ["audience_isnt_calm", "then_ask_audience",
+                                      "no_audience", "audience_intro", "audience_intro_1", "audience_intro_2",
+                                      "audience_intro_3", "audience_intro_4",
+                                      "audience_intro_5", "audience_intro_6"]
+                prolouge = random.choice(audience_prolouges)
+            util.play_sound(prolouge, 0, dir="audience", timer=True)
+        #len_al = 45
+        #percent_color = bg(200, 35, 254)
+        answers_list = list(answers.keys())
+        if util.game_language == util.Language.HUNGARIAN.name:
+            util.play_sound("push_your_buttons", 0, dir="audience")
+            time.sleep(2)
+        else:
+            util.play_sound("audience", 0, general=True)
+        #lutil.clear_screen()
+        #llen_window = 21
+
+        #answers_list = list(answers.keys())
+
+        #chances_dict = {}
+
+
+        #chances_dict[correct_answer] = random.randrange(40, 89)
+        correct_string = str(correct_answer).capitalize() + ":" + str(random.randrange(40, 89)) + " %"
+
+        #answers_list.pop(answers_list.index(correct_answer))
+        #if list(answers.values()).count("") == 2:
+        #    for k in range(len(list(answers.keys())) - 1):
+        #        if list(answers.values())[k] != "":
+        #            chances_dict[answers_list[k]] = 100 - sum(chances_dict.values())
+        #        else:
+        #            chances_dict[answers_list[k]] = 0
+
+
+
+
+        #lfor i in range(len(answers_list)):
+        #l    answers_list = list(answers.keys())
+        #l    chances = get_chances(answers, correct_value)
+        #l    string_value = ""
+        #l    values = []
+        #l    for key, value in sorted(chances.items()):
+        #l        values.append(round(value / 10))
+        #l         next_value = str(value)
+        #l        if len(next_value) == 1:
+        #l            next_value = next_value + " "
+        #lstring_value = string_value + " " + next_value + "% "
+        #l     index = 0
+        #l    for line in util.open_file("quizmaster", "r", ";", "/text_files/", strip=False):
+        # percentages = ""
+        # missing_space = len_al - len(line[0])
+        #new = str(line[0]).replace("B", bg.white + " " + bg.rs).replace("S", skin_color + " " + bg.rs).replace(
+        #    "H",
+        #    hair + " " + bg.rs).replace(
+        #    "G", skin_color + fg.black + "▬" + fg.rs + bg.rs).replace("B", bg.grey + " " + bg.rs).replace("C",
+        #                                                                                                  bg.li_grey + " " + bg.rs).replace(
+        #     "D", bg.da_grey + " " + bg.rs).replace("◙", skin_color + fg.li_blue + "◙" + fg.rs + bg.rs).replace(
+        #     "M",
+        #     mouth + "-" + bg.rs).replace(
+        #     "T", bg.blue + " " + bg.rs).replace("N", nose + " " + bg.rs).replace("U",
+        #                                                                         skin_color + "▬" + bg.rs).replace(
+        #    "L", skin_color + "▬" + bg.rs).replace("R", skin_color + "▌" + bg.rs).replace("V",
+        #                                                                                  nose + fg.black + "▬" + fg.rs + bg.rs)
+        #  line[0] = new
+        #  if index == 0:
+        #     print(line[0] + " " * (missing_space + 1) + "_" * (len_window - 1))
+        # elif index == 1:
+        #     print(line[0] + " " * missing_space + "|" + string_value + "|")
+        # elif index == 2:
+        #     print(line[0] + " " * missing_space + "|" + (len_window - 1) * " " + "|")
+        # else:
+        #   if index < 13:
+        #   for j in range(10):
+        #  if j == (index - 3):
+        #    if values[0] >= 10 - j:
+        # percentages = percentages + percent_color + "   " + bg.rs + "  "
+        #     else:
+        #  percentages = percentages + "     "
+        #      if values[1] >= 10 - j:
+        #    percentages = percentages + percent_color + "   " + bg.rs + "  "
+        #  else:
+        #          percentages = percentages + "     "
+        #if values[2] >= 10 - j:
+        #    percentages = percentages + percent_color + "   " + bg.rs + "  "
+        # else:
+        # percentages = percentages + "     "
+        #if values[3] >= 10 - j:
+        #  percentages = percentages + percent_color + "   " + bg.rs
+        #else:
+        #percentages = percentages + "   "
+        # print(line[0] + " " * (missing_space) + "| " + percentages + " |")
+        #elif index == 13:
+        #print(line[0] + " " * (
+        #   missing_space) + "|" + fg.orange + rs.dim_bold + "  A ♦  B ♦  C ♦  D " + fg.rs + " |")
+        #elif index == 14:
+        #print(line[0] + " " * (missing_space + 1) + "‾" * (len_window - 1))
+        #        else:
+        #           print(line[0])
+        #l    index += 1
+        #l print_quiz_table(question, answers, game_level=game_level, quizmaster=False)
+        time.sleep(1)
+        #lif i < len(answers_list) - 1:
+        #l    util.clear_screen()
+        #l    i += 1
+        #lelse:
+        util.play_sound("audience_end", 0, general=True)
+        time.sleep(1)
+
+        font = pygame.font.SysFont('Sans', 25)
+        self.text = font.render(correct_string, True, (255, 255, 255))
+        self.image.blit(self.text, [30, 0])
+
+        if util.game_language == util.Language.HUNGARIAN.name:
+            audience_after_sounds = ["after_audience", "after_audience_2", "audience_false",
+                                     "you_disagree_audience", "weights_a_lot", "believe_audience",
+                                     "audience_random"]
+            after_sound = random.choice(audience_after_sounds)
+            util.play_sound(after_sound, 0, dir="audience", timer=True)
+
+
+
+    # if tpye_ == "select":
+    #    if selected == self.type:
+    #        self.image = self.selected_option
+    #        self.image.blit(self.text, [30, 0])
+    #        #self.rect = self.image.get_rect(center=(x_pos, y_pos))
+    # else:
+    #    if correct == self.type:
+    #        self.image = self.correct_option
+    #        self.image.blit(self.text, [30, 0])
+
+    # self.player_input()
+    # self.apply_gravity()
+    # self.animation_state()
 
     def animation_state(self):
         pass
@@ -490,9 +721,6 @@ def old_code():
     quit_quiz(score, player_name, question_topics)
 
 
-
-
-
 def play():
     global game_language
     global question_lines
@@ -512,7 +740,7 @@ def play():
     global help_types
     help_types = {"halving": True, "telephone": True, "audience": True}
     global help_group
-    help_group =  pygame.sprite.Group()
+    help_group = pygame.sprite.Group()
     global random_sounds
     random_sounds = util.init_random_sounds()
     question_lines = []
@@ -609,18 +837,15 @@ def play():
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
     obstacle_group = pygame.sprite.Group()
+    # global after_halving_event
+    # after_halving_event = True
 
-
-    #start_game()
+    start_game()
     is_active = True
-    i=0
+    i = 0
     for i in range(game_levels):
-         if i > 0:
-            play_correct_sounds(i)
-         if is_active:
+        if is_active:
             is_active = game_loop(i, question_lines)
-    if i < 14:
-        play_incorrect_sounds(i)
 
 
 def start_game():
@@ -634,7 +859,8 @@ def start_game():
                 pygame.quit()
                 exit()
             if event.type == pygame.KEYDOWN:
-                if event.key not in [pygame.K_RETURN, pygame.K_SPACE, pygame.K_KP_ENTER, pygame.K_ESCAPE, pygame.KMOD_CTRL]:
+                if event.key not in [pygame.K_RETURN, pygame.K_SPACE, pygame.K_KP_ENTER, pygame.K_ESCAPE,
+                                     pygame.KMOD_CTRL]:
                     player += pygame.key.name(event.key)
                 else:
                     return
@@ -642,7 +868,8 @@ def start_game():
                 pass
 
             display_ = pygame.sprite.GroupSingle()
-            display_.add(Obstacle('question', f'{language_dictionary[game_language].quiz.player_name_prompt} {player.capitalize()}'))
+            display_.add(Obstacle('question',
+                                  f'{language_dictionary[game_language].quiz.player_name_prompt} {player.capitalize()}'))
             display_.draw(screen)
 
         pygame.display.update()
@@ -650,11 +877,11 @@ def start_game():
 
 
 def game_loop(level: int, question_array: {}):
-
     out_of_game = False
     last_input = ""
     global random_sounds
     global game_active
+    global after_halving_event
     question = question_array[level][0]
     answers = {"a": question_array[level][1], "b": question_array[level][2], "c": question_array[level][3],
                "d": question_array[level][4]}
@@ -662,39 +889,50 @@ def game_loop(level: int, question_array: {}):
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
 
-    #if level in [0, 6, 8]:
+    # if level in [0, 6, 8]:
     #    play_question_intro(level)
-    #if util.game_language == util.Language.HUNGARIAN.name and level < 14:
+    # if util.game_language == util.Language.HUNGARIAN.name and level < 14:
     #    play_question_prologue(level)
-    #play_music(level)
+    # play_music(level)
     correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[level][1])
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
     pygame.time.set_timer(pygame.USEREVENT, 1000)
-    pygame.time.set_timer(pygame.USEREVENT+1, 1000)
+    pygame.time.set_timer(pygame.USEREVENT + 1, 1000)
+    pygame.time.set_timer(pygame.USEREVENT + 2, 1000)
+
     start_ticks = 0
     counter = 3
     sprite_group = ['question', "a", "b", "c", "d"]
     selected = ""
-    type= "select"
+    type = "select"
     texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
     for index in range(len(sprite_group)):
         obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
-    #for ob in obstacle_group.sprites():
+    # for ob in obstacle_group.sprites():
     #   ob.set_is_active()
-    #prizes = ['question', "a", "b", "c", "d"]
-    #selected = ""
-    #type = "select"
-    #texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
-    #for index in range(len(sprite_group)):
+    # prizes = ['question', "a", "b", "c", "d"]
+    # selected = ""
+    # type = "select"
+    # texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
+    # for index in range(len(sprite_group)):
 
-    #prizes_table.add(Prizes())
+    # prizes_table.add(Prizes())
     help_sprites = ['halving', "telephone", "audience"]
     for index in range(len(help_sprites)):
         help_group.add(Help(help_sprites[index]))
+    halving_time = 6
+    after_halving = True
+    global after_halving_event
+    after_halving_event = 0
+    mark_seconds = 5
+    global mark_event
+    mark_event = 0
 
     while True:
         for event in pygame.event.get():
+            print(event.type)
+
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
@@ -703,17 +941,29 @@ def game_loop(level: int, question_array: {}):
                     game_active = True
                     # start_time = int(pygame.time.get_ticks() / 1000)
             if event.type == pygame.USEREVENT and selected != "" and type != "mark":
-                start_ticks = pygame.time.get_ticks()  # starter tick
                 counter -= 1
                 if counter < 1:
-                    play_select_sounds(level, selected,last_input,out_of_game)
+                    play_select_sounds(level, selected, last_input, out_of_game)
                     type = "mark"
+            if event.type == mark_event:
+                mark_seconds -= 1
+
+            if event.type == after_halving_event:
+                halving_time -= 1
+                if halving_time < 1:
+                    after_halving_sounds = ["after_halving", "after_halving_2", "after_halving_3",
+                                            "your_guess_stayed", "you_have_fifty_percent",
+                                            "im_not_surprised"]
+                    sound = random.choice(after_halving_sounds)
+                    util.play_sound(sound, 0, dir="halving", timer=True)
+                    after_halving_event = 0
+
             if game_active:
                 if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
                     if dbclock.tick() < DOUBLECLICKTIME:
-                            for ob in obstacle_group.sprites():
-                                if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
-                                    selected = ob.type
+                        for ob in obstacle_group.sprites():
+                            if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
+                                selected = ob.type
             else:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
@@ -721,16 +971,20 @@ def game_loop(level: int, question_array: {}):
         if game_active:
             screen.blit(sky_surface, (0, 0))
 
-            #prizes_table.draw(screen)
-            #prizes_table.update()
+            # prizes_table.draw(screen)
+            # prizes_table.update()
             help_group.draw(screen)
             help_group.update(correct_answer_key)
             obstacle_group.draw(screen)
             obstacle_group.update(selected, correct_answer_key, type)
             if type == "mark":
-                seconds = (pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
-                if seconds > 7:  # if more than 10 seconds close the game
-                    return True
+                if mark_seconds < 1:
+                    if selected == correct_answer_key:
+                        play_correct_sounds(level)
+                        return True
+                    else:
+                        play_incorrect_sounds(level)
+                        return False
         else:
             screen.fill((94, 129, 162))
 
@@ -738,10 +992,7 @@ def game_loop(level: int, question_array: {}):
         clock.tick(60)
 
 
-
-
-
-def play_select_sounds(level:int, selected="", last_input = "", out_of_game = False):
+def play_select_sounds(level: int, selected="", last_input="", out_of_game=False):
     util.stop_sound()
     # if user_input == b'\r' or user_input == '<Ctrl-j>':
     # thread_random(level, working=False)
@@ -753,13 +1004,16 @@ def play_select_sounds(level:int, selected="", last_input = "", out_of_game = Fa
     if util.game_language == util.Language.HUNGARIAN.name:
         # and not out_of_game:
         play_marked_sound(selected, level, last_one=last_input)
-        time.sleep(2)
+    global mark_event
+    mark_event = pygame.USEREVENT + 2
+
+    # time.sleep(2)
     # return input_[1]
     # if user_input not in input_:
     #    break
 
 
-def play_incorrect_sounds(level:int):
+def play_incorrect_sounds(level: int):
     thread_random(level, working=False)
     util.play_sound("bad_answer", 0, general=True)
     time.sleep(2)
@@ -768,6 +1022,7 @@ def play_incorrect_sounds(level:int):
         time.sleep(1)
         util.play_sound("claps", 0, general=True, timer=True)
     # quit_quiz(score, player_name, question_topics)
+
 
 def play_correct_sounds(level: int):
     if level < 14:
@@ -1271,7 +1526,7 @@ def show_prize(round_number: int) -> str:
     return prizes[round_number][0]
 
 
-def halving(question: str, answers: {}, correct_answer: str) -> dict:
+def halving_before_sounds() -> dict:
     if util.game_language == util.Language.HUNGARIAN.name:
         before_halving_sounds = ["before_halving", "before_halving_2", "before_halving_3", "before_halving_4",
                                  "before_halving_5", "before_halving_6", "halv", "lets_even_half", "lets_halv",
@@ -1280,10 +1535,10 @@ def halving(question: str, answers: {}, correct_answer: str) -> dict:
         sound = random.choice(before_halving_sounds)
         util.play_sound(sound, 0, dir="halving", timer=True)
     time.sleep(2)
-    #util.clear_screen()
+    # util.clear_screen()
     util.play_sound("halving", 0, general=True)
-    halved_answers = calculate_halved_answers(answers, correct_answer)
-    return halved_answers
+    # halved_answers = calculate_halved_answers(answers, correct_answer)
+    # return halved_answers
 
 
 def calculate_halved_answers(answers: {}, correct_answer: str) -> {}:
@@ -1486,7 +1741,7 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
                             answer = answer + "\n"
                 if i == 0:
                     answer = answer + "\n" + "   " + "‾" * (number_of_spaces - 3) + "     " + "‾" * (
-                                number_of_spaces - 3) + \
+                            number_of_spaces - 3) + \
                              "\n" + "   " + "_" * (number_of_spaces - 3) + "     " + "_" * (number_of_spaces - 3) + "\n"
                 index += 1
             print(answer)
@@ -1510,8 +1765,8 @@ def print_quiz_table(question: str, answers_: {}, selected="", color="", correct
                         answer_values[list(answers_).index(i)] = bg.green + "♦" + fg.black + \
                                                                  list(answers_.items())[index][
                                                                      0].upper() + ": " + fg.rs + answers_[i] + " " * (
-                                                                             number_of_spaces - len(
-                                                                         list(answers_.items())[index][1])) + bg.rs
+                                                                         number_of_spaces - len(
+                                                                     list(answers_.items())[index][1])) + bg.rs
                     else:
                         answer_values[list(answers_).index(i)] = fg.orange + "♦" + list(answers_.items())[index][
                             0].upper() + ": " + fg.rs + \
