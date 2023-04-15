@@ -469,7 +469,7 @@ def get_user_input(option_list: [], values_list: [], max_option_length: int, sta
 
 class MenuOption(pygame.sprite.Sprite):
 
-    def __init__(self, type, text, order):
+    def __init__(self, type, text, order, base_height):
         super().__init__()
 
         #self.correct_option = pygame.image.load('./data/graphics/option_correct.png').convert_alpha()
@@ -540,7 +540,7 @@ class MenuOption(pygame.sprite.Sprite):
 
         # self.animation_index = 0
         x_pos = 400
-        y_pos = 445 + (order*35)
+        y_pos = base_height + (order*35)
 
 
         self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
@@ -581,6 +581,11 @@ class MenuOption(pygame.sprite.Sprite):
                 print(self.type, "yes")
                 global lang_selection
                 lang_selection = True
+            if self.type in [util.Language.HUNGARIAN.name, util.Language.ENGLISH.name]:
+                util.set_game_language(self.type)
+            if self.type == "Back":
+                options = False
+
             #self.animation_state()
 
 
@@ -660,22 +665,24 @@ def main():
     type = "select"
     menu_option_group = pygame.sprite.Group()
     texts = ["Play", "Intro", "Credits", "Options", "Exit"]
+    main_menu_base_y = 445
     for index in range(len(sprite_group)):
-        menu_option_group.add(MenuOption(sprite_group[index], texts[index], index))
+        menu_option_group.add(MenuOption(sprite_group[index], texts[index], index, main_menu_base_y))
     settings= ["Language selection", "Disable/Enable Sound",
-                                  "Full Screen",
                                   "Question types",
                                   "Question difficulty",
                                   "Quizmaster attitude",
                                   "Restore Settings",
                                   "Back"]
+    settings_menu_base_y = 245
+
     for index in range(len(settings)):
-        settings_option_group.add(MenuOption(settings[index], settings[index], index))
+        settings_option_group.add(MenuOption(settings[index], settings[index], index, settings_menu_base_y))
     langs = util.available_languages
     lang_group = pygame.sprite.Group()
 
     for index in range(len(langs)):
-        lang_group.add(MenuOption(langs[index], langs[index], index))
+        lang_group.add(MenuOption(langs[index], langs[index], index, main_menu_base_y))
     # for ob in obstacle_group.sprites():
     #   ob.set_is_active()
     # prizes = ['question', "a", "b", "c", "d"]
@@ -732,7 +739,6 @@ def main():
 
         if options:
 
-
             if lang_selection:
                 screen.fill((0,0,0))
 
@@ -743,6 +749,8 @@ def main():
                     lang_selection = False
 
             else:
+                screen.fill((0,0,0))
+
                 settings_option_group.draw(screen)
                 settings_option_group.update()
         # prizes_table.draw(screen)
@@ -760,8 +768,12 @@ def main():
         #else:
         #    screen.fill((94, 129, 162))
         else:
+            screen.fill((0, 0, 0))
+            screen.blit(sky_surface, (0, -20))
+
             menu_option_group.draw(screen)
             menu_option_group.update()
+
         pygame.display.update()
         clock.tick(60)
 
