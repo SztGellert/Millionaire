@@ -480,19 +480,29 @@ def get_user_input(option_list: [], values_list: [], max_option_length: int, sta
 
 class MenuOption(pygame.sprite.Sprite):
 
-    def __init__(self, type, text, order, base_height):
+    def __init__(self, type, order, base_height):
         super().__init__()
 
         x_pos = 400
         y_pos = base_height + (order * 35)
 
         self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
-        font = pygame.font.SysFont('Sans', 25)
+        self.font = pygame.font.SysFont('Sans', 25)
         self.type = type
-        self.text = font.render(text, True, (255, 255, 255))
+        self.text_color = (255, 255, 255)
+        if type== "main_menu_option":
+            text = language_dictionary[util.game_language].menu.main_menu_options[order]
+        elif type == "settings_menu_option":
+            text = language_dictionary[util.game_language].menu.settings_menu_options[order]
+        else:
+            text = [language_dictionary[util.game_language].en,language_dictionary[util.game_language].hu][order]
+        self.name = text
+        self.text = self.font.render(text, True, (255, 255, 255))
         self.image = self.frame
         self.image.blit(self.text, [30, 0])
         self.rect = self.image.get_rect(center=(x_pos, y_pos))
+        self.lang = util.game_language
+        self.order = order
 
     def get_is_active(self):
         if hasattr(self, 'is_active'):
@@ -507,28 +517,56 @@ class MenuOption(pygame.sprite.Sprite):
         self.is_active = False
 
     def player_input(self):
+        if self.rect.collidepoint((pygame.mouse.get_pos())):
+            self.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+            self.image.blit(self.text, [30, 0])
+        else:
+            self.image = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            self.image.blit(self.text, [30, 0])
+
         if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
-            print(self.type)
-            if self.type == "play":
+            if self.name == language_dictionary[util.game_language].menu.main_menu_options[0]:
                 quiz.play()
-            if self.type == "exit":
+            if self.name == language_dictionary[util.game_language].menu.main_menu_options[-1]:
                 pygame.quit()
                 exit()
-            if self.type == "options":
-                print("YES")
+            if self.name == language_dictionary[util.game_language].menu.main_menu_options[3]:
                 global options
                 options = True
-                print(options)
-            if self.type == "Language selection":
+            if self.name == language_dictionary[util.game_language].menu.settings_menu_options[0]:
                 global lang_selection
                 lang_selection = True
-            if self.type in [util.Language.HUNGARIAN.name, util.Language.ENGLISH.name]:
-                util.set_game_language(self.type)
-            if self.type == "Back":
+            if self.name in [language_dictionary[util.game_language].en,language_dictionary[util.game_language].hu]:
+                if self.name == language_dictionary[util.game_language].hu:
+                    util.set_game_language(util.Language.HUNGARIAN.name)
+                else:
+                    util.set_game_language(util.Language.ENGLISH.name)
+                lang_selection = False
+
+            if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-1]:
                 options = False
 
+
     def update(self):
+        if self.lang != util.game_language:
+            if self.type == "main_menu_option":
+                text = language_dictionary[util.game_language].menu.main_menu_options[self.order]
+            elif self.type == "settings_menu_option":
+                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+            elif self.type == "language_option":
+                langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu]
+                text = langs[self.order]
+            else:
+                text = ""
+
+            self.text = self.font.render(text, True, (255, 255, 255))
+            self.lang = util.game_language
+            self.name = text
+
         self.player_input()
+
+
+
 
 
 def main():
@@ -545,28 +583,26 @@ def main():
     global sky_surface
 
     sky_surface = pygame.image.load('./data/graphics/background_.png').convert_alpha()
+    sky_surface_rect = sky_surface.get_rect(midtop=(400, 20))
+    subsurface = sky_surface.subsurface(0,0,800,400)
+
     settings_option_group = pygame.sprite.Group()
-    sprite_group = ['play', "intro", "credits", "options", "exit"]
+    sprite_group = ['play', "fastest_fingers_first", "intro", "options", "credits", "scores",  "exit"]
     menu_option_group = pygame.sprite.Group()
-    texts = ["Play", "Intro", "Credits", "Options", "Exit"]
-    main_menu_base_y = 445
+    texts = language_dictionary[util.game_language].menu.main_menu_options
+    main_menu_base_y = 375
     for index in range(len(sprite_group)):
-        menu_option_group.add(MenuOption(sprite_group[index], texts[index], index, main_menu_base_y))
-    settings = ["Language selection", "Disable/Enable Sound",
-                "Question types",
-                "Question difficulty",
-                "Quizmaster attitude",
-                "Restore Settings",
-                "Back"]
+        menu_option_group.add(MenuOption("main_menu_option", index, main_menu_base_y))
+
     settings_menu_base_y = 245
 
-    for index in range(len(settings)):
-        settings_option_group.add(MenuOption(settings[index], settings[index], index, settings_menu_base_y))
+    for index in range(len(language_dictionary[util.game_language].menu.settings_menu_options)):
+        settings_option_group.add(MenuOption("settings_menu_option", index, settings_menu_base_y))
     langs = util.available_languages
     lang_group = pygame.sprite.Group()
 
     for index in range(len(langs)):
-        lang_group.add(MenuOption(langs[index], langs[index], index, main_menu_base_y))
+        lang_group.add(MenuOption("language_option", index, main_menu_base_y))
     global options, lang_selection
     options = False
     lang_selection = False
@@ -576,8 +612,8 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
+        screen.blit(subsurface, (0, -20), sky_surface_rect)
 
-        screen.blit(sky_surface, (0, -20))
         if options:
 
             if lang_selection:
@@ -586,8 +622,8 @@ def main():
                 lang_group.draw(screen)
                 lang_group.update()
 
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    lang_selection = False
+                #if event.type == pygame.MOUSEBUTTONDOWN:
+                #    lang_selection = False
 
             else:
                 screen.fill((0, 0, 0))
@@ -595,9 +631,10 @@ def main():
                 settings_option_group.draw(screen)
                 settings_option_group.update()
 
+
         else:
             screen.fill((0, 0, 0))
-            screen.blit(sky_surface, (0, -20))
+            screen.blit(subsurface, (0, -20), sky_surface_rect)
 
             menu_option_group.draw(screen)
             menu_option_group.update()

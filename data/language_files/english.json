@@ -9,7 +9,6 @@
         "return_prompt": "press ESC for main menu..",
         "settings_menu_options": ["Language selection",
                          "Disable/Enable Sound",
-                         "Full Screen <F11>",
                          "Question types",
                          "Question difficulty",
                          "Quizmaster attitude",

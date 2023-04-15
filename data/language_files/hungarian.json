@@ -9,7 +9,6 @@
         "return_prompt": "Nyomja meg az ESCAPE-t a menübe való visszatéréshez...",
         "settings_menu_options": ["Nyelv kiválasztása",
                      "Hangok ki/bekapcsolása",
-                     "Teljes képernyő <F11>",
                      "Kérdés témakörök",
                      "Kérdés nehézség ",
                      "Kvízmester hozzáállása",
