@@ -10,7 +10,6 @@ import millionaire.util.util as util
 import millionaire.menu.helpers as helpers
 import pygame
 
-
 fg.purple = Style(RgbFg(148, 0, 211))
 bg.orange = bg(255, 150, 50)
 language_dictionary = util.language_dictionary
@@ -19,6 +18,7 @@ screen_distance = 60
 bg.dark_blue = bg(0, 0, 155)
 bg.darkest_blue = bg(42, 45, 112)
 
+
 def intro():
     if util.game_language == util.Language.HUNGARIAN.name:
         util.play_sound("intro", 0, dir="intro", volume=1)
@@ -26,7 +26,7 @@ def intro():
     else:
         util.play_sound("intro", 0)
 
-    bg.light_blue = bg(96,180,225)
+    bg.light_blue = bg(96, 180, 225)
     bg.deep_purple = bg(30, 0, 60)
     bg.blue = bg.darkest_blue
 
@@ -72,84 +72,93 @@ def intro():
         first_index = line.find("X")
         last_index = line.rfind(".")
 
-        line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[last_index:]
+        line2 = line[
+                :first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                                                                           first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                                                                                                                                                                                                                                                                                last_index:]
 
         color = bg.blue
         if point < 12:
             if point == 8:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "   " + first_text[
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
                     -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                    first_index:last_index] + bg.blue +"    " +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
+                                                                                                                      first_index:last_index] + bg.blue + "    " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
                         second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
+                                                                                                     last_index:]
             elif point == 9:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  " " + first_text[
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + " " + first_text[
                     -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                    first_index:last_index] + bg.blue +"      " +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
+                                                                                                                      first_index:last_index] + bg.blue + "      " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
                         second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
+                                                                                                     last_index:]
             elif point == 11:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "   " + first_text[
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
                     -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                    first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
+                                                                                                                      first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
                         second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
+                                                                                                     last_index:]
             else:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[-point] + "   "  + bg.rs + bg.white + " "  +  bg.blue + " " + bg.rs +bg.light_blue + "  " + bg.rs + line[ first_index:last_index] + bg.blue + "   " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + second_text[point] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[last_index:]
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
+                    -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                      first_index:last_index] + bg.blue + "   " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
+                        second_text[point] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[last_index:]
         if point == 15:
             millionaire_lines[0] = millionaire_lines[0].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[0] + line2[205:]
+            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[0] + line2[205:]
         if point == 16:
             millionaire_lines[1] = millionaire_lines[1].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[1] + line2[205:]
+            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[1] + line2[205:]
         if point == 17:
             millionaire_lines[2] = millionaire_lines[2].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[2] + line2[205:]
+            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[2] + line2[205:]
         if point == 18:
             millionaire_lines[3] = millionaire_lines[3].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[3] + line2[205:]
+            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[3] + line2[205:]
         if point == 19:
             millionaire_lines[4] = millionaire_lines[4].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[4] + line2[205:]
+            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[4] + line2[205:]
         if point == 20:
             millionaire_lines[5] = millionaire_lines[5].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[5] + line2[205:]
+            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[5] + line2[205:]
         if point == 21:
             millionaire_lines[6] = millionaire_lines[6].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[6] + line2[205:]
+            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[6] + line2[205:]
         if point == 22:
             millionaire_lines[7] = millionaire_lines[7].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[7] + line2[205:]
+            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[7] + line2[205:]
         if point == 23:
             millionaire_lines[8] = millionaire_lines[8].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[8] + line2[205:]
+            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[8] + line2[205:]
         if point == 24:
             millionaire_lines[9] = millionaire_lines[9].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[9] + line2[205:]
+            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[9] + line2[205:]
         if point == 25:
             millionaire_lines[10] = millionaire_lines[10].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[10] + line2[205:]
+            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[10] + line2[205:]
         if point > 25 and point < 37:
             if point == 30:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "  " + first_text[
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "  " + first_text[
                     text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                    first_index:last_index] + bg.blue +"    " +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
+                                                                                                                        first_index:last_index] + bg.blue + "    " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
                         second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
+                                                                                                            last_index:]
             elif point == 31:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "    " + first_text[
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "    " + first_text[
                     text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                    first_index:last_index] + bg.blue +"" +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
+                                                                                                                        first_index:last_index] + bg.blue + "" + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
                         second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
+                                                                                                            last_index:]
             else:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[text_count] + "   "  + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[ first_index:last_index] + bg.blue + " " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + second_text[-text_count] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[last_index:]
+                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
+                    text_count] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
+                                                                                                                          first_index:last_index] + bg.blue + " " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
+                        second_text[-text_count] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
+                                                                                                          last_index:]
             text_count += 1
         line2 = line2.replace("X", bg.blue + " " + bg.rs)
         line2 = line2.replace(".", bg.blue + " " + bg.rs)
         line2 = line2.replace("X", bg.black + " " + bg.rs)
         line2 = line2.replace("|", bg.white + " " + bg.rs)
-
 
         line3 = "".join(line2)
 
@@ -295,7 +304,7 @@ def select_scores():
                   1] + score_space * " " + fg.rs + " | " + fg.orange +
               language_dictionary[util.game_language].menu.scores[2] + fg.rs + " | " + fg.orange +
               language_dictionary[util.game_language].menu.scores[3] + (
-                          24 - len(language_dictionary[util.game_language].menu.scores[3])) * " " + fg.rs + " |")
+                      24 - len(language_dictionary[util.game_language].menu.scores[3])) * " " + fg.rs + " |")
         print("   " + "‾" * table_len)
         print("   " + "—" * table_len)
 
@@ -388,10 +397,12 @@ def select_settings():
             start_index = 4
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[5]:
             quizmaster_attitudes = language_dictionary[util.game_language].menu.quizmaster_attitudes
-            show_options(language_dictionary[util.game_language].menu.quizmaster_attitudes, 20, util.quizmaster_attitudes.index(util.quizmaster_attitude))
+            show_options(language_dictionary[util.game_language].menu.quizmaster_attitudes, 20,
+                         util.quizmaster_attitudes.index(util.quizmaster_attitude))
             chosen_attitude_option = get_user_input(quizmaster_attitudes, util.quizmaster_attitudes, 20,
-                                                util.quizmaster_attitudes.index(util.quizmaster_attitude), False)
-            util.set_quizmaster_attitude(util.quizmaster_attitudes[util.quizmaster_attitudes.index(chosen_attitude_option)])
+                                                    util.quizmaster_attitudes.index(util.quizmaster_attitude), False)
+            util.set_quizmaster_attitude(
+                util.quizmaster_attitudes[util.quizmaster_attitudes.index(chosen_attitude_option)])
             show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=5)
             start_index = 5
         elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[6]:
@@ -472,76 +483,8 @@ class MenuOption(pygame.sprite.Sprite):
     def __init__(self, type, text, order, base_height):
         super().__init__()
 
-        #self.correct_option = pygame.image.load('./data/graphics/option_correct.png').convert_alpha()
-        #self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
-        # print(self.get_is_active())
-
-        #self.is_active = self.get_is_active()
-
-        #if type != "question":
-        #    if self.is_active:
-        #        text = f"{str(type).upper()}: {text}"
-        #    else:
-        #        print(self.is_active)
-        #        text = f"{str(type).upper()}: "
-#
-        #if type == "a":
-        #    print(self.is_active)
-
-            # sprite = pygame.sprite.Sprite()
-            # sprite.image = image
-            # sprite.rect = image.get_rect()
-
-            # sprite.image.blit(text, sprite.rect)
-
-            # group = pygame.sprite.Group()
-            # group.add(sprite)
-            # group.draw(screen)
-
-            # pygame.display.flip()
-            #self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
-            #self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
-
-            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
-            # self.frame = [snail_frame_1, snail_frame_2]
-            #x_pos = 200
-            #y_pos = 515
-
-        #elif type == "b":
-
-            #self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
-            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
-            # self.frame = [snail_frame_1, snail_frame_2]
-            #x_pos = 600
-            #y_pos = 515
-
-        #elif type == "c":
-
-            #elf.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
-            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
-            # self.frame = [snail_frame_1, snail_frame_2]
-            #x_pos = 200
-            #y_pos = 565
-        #elif type == "d":
-
-            #self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
-            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
-            # self.frame = [snail_frame_1, snail_frame_2]
-            #x_pos = 600
-            #y_pos = 565
-
-        #else:
-            #text = f"{text}"
-            #self.frame = pygame.image.load('./data/graphics/question.png').convert_alpha()
-            # fly_frame_2 = pygame.image.load('graphics/fly/fly2.png').convert_alpha()
-            # self.frames = [fly_frame_1, fly_frame_2]
-            #x_pos = 400
-            #y_pos = 455
-
-        # self.animation_index = 0
         x_pos = 400
-        y_pos = base_height + (order*35)
-
+        y_pos = base_height + (order * 35)
 
         self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
         font = pygame.font.SysFont('Sans', 25)
@@ -550,8 +493,6 @@ class MenuOption(pygame.sprite.Sprite):
         self.image = self.frame
         self.image.blit(self.text, [30, 0])
         self.rect = self.image.get_rect(center=(x_pos, y_pos))
-
-
 
     def get_is_active(self):
         if hasattr(self, 'is_active'):
@@ -565,7 +506,6 @@ class MenuOption(pygame.sprite.Sprite):
     def unset_is_active(self):
         self.is_active = False
 
-
     def player_input(self):
         if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
             print(self.type)
@@ -575,10 +515,11 @@ class MenuOption(pygame.sprite.Sprite):
                 pygame.quit()
                 exit()
             if self.type == "options":
+                print("YES")
                 global options
                 options = True
-            if self.type=="Language selection":
-                print(self.type, "yes")
+                print(options)
+            if self.type == "Language selection":
                 global lang_selection
                 lang_selection = True
             if self.type in [util.Language.HUNGARIAN.name, util.Language.ENGLISH.name]:
@@ -586,94 +527,37 @@ class MenuOption(pygame.sprite.Sprite):
             if self.type == "Back":
                 options = False
 
-            #self.animation_state()
-
-
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] and self.rect.bottom >= 300:
-            self.gravity = -20
-            self.jump_sound.play()
-
-    def apply_gravity(self):
-        pass
-        # self.gravity += 1
-        # self.rect.y += self.gravity
-        # if self.rect.bottom >= 300: self.rect.bottom = 300
-
     def update(self):
-
         self.player_input()
-        #self.is_active = self.get_is_active()
-        #if not self.is_active:
-        #    self.kill()
-
-        #if tpye_ == "select":
-        #    if selected == self.type:
-        #        self.image = self.selected_option
-        #        self.image.blit(self.text, [30, 0])
-       #         # self.rect = self.image.get_rect(center=(x_pos, y_pos))
-#
-        #else:
-        #    if correct == self.type:
-        #        self.image = self.correct_option
-        #        self.image.blit(self.text, [30, 0])
-
-        # print(self.type)
-        # print(self.is_active)
-
-        # self.player_input()
-        # self.apply_gravity()
-        # self.animation_state()
-
-    def animation_state(self):
-        pass
-        # if self.rect.bottom < 300:
-        #self.image = self.selected_option
-
-    # else:
-    # self.player_index += 0.1
-    # if self.player_index >= len(self.player_walk): self.player_index = 0
-    # self.image = self.player_walk[int(self.player_index)]
 
 
 def main():
-
     pygame.init()
-
-    dbclock = pygame.time.Clock()
-    DOUBLECLICKTIME = 500
     pygame.time.set_timer(pygame.USEREVENT, 1000)
     pygame.time.set_timer(pygame.USEREVENT + 1, 1000)
     pygame.time.set_timer(pygame.USEREVENT + 2, 1000)
 
-    game_active = True
     global screen
     screen = pygame.display.set_mode((800, 600))
     pygame.display.set_caption('Runner')
     global clock
     clock = pygame.time.Clock()
-    global test_font
-    test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
     global sky_surface
 
     sky_surface = pygame.image.load('./data/graphics/background_.png').convert_alpha()
     settings_option_group = pygame.sprite.Group()
-    start_ticks = 0
-    counter = 3
     sprite_group = ['play', "intro", "credits", "options", "exit"]
-    selected = ""
-    type = "select"
     menu_option_group = pygame.sprite.Group()
     texts = ["Play", "Intro", "Credits", "Options", "Exit"]
     main_menu_base_y = 445
     for index in range(len(sprite_group)):
         menu_option_group.add(MenuOption(sprite_group[index], texts[index], index, main_menu_base_y))
-    settings= ["Language selection", "Disable/Enable Sound",
-                                  "Question types",
-                                  "Question difficulty",
-                                  "Quizmaster attitude",
-                                  "Restore Settings",
-                                  "Back"]
+    settings = ["Language selection", "Disable/Enable Sound",
+                "Question types",
+                "Question difficulty",
+                "Quizmaster attitude",
+                "Restore Settings",
+                "Back"]
     settings_menu_base_y = 245
 
     for index in range(len(settings)):
@@ -683,17 +567,8 @@ def main():
 
     for index in range(len(langs)):
         lang_group.add(MenuOption(langs[index], langs[index], index, main_menu_base_y))
-    # for ob in obstacle_group.sprites():
-    #   ob.set_is_active()
-    # prizes = ['question', "a", "b", "c", "d"]
-    # selected = ""
-    # type = "select"
-    # texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
-    # for index in range(len(sprite_group)):
-
-    # prizes_table.add(Prizes())
     global options, lang_selection
-    options= False
+    options = False
     lang_selection = False
     while True:
         for event in pygame.event.get():
@@ -701,46 +576,12 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-            #if event.type == pygame.KEYDOWN:
-            #    if event.key == pygame.K_SPACE:
-            #        game_active = True
-            #        # start_time = int(pygame.time.get_ticks() / 1000)
-            #if event.type == pygame.USEREVENT and selected != "" and type != "mark":
-            #    counter -= 1
-           #     if counter < 1:
-            #        play_select_sounds(level, selected, last_input, out_of_game)
-            #        type = "mark"
-            #if event.type == mark_event:
-            #    mark_seconds -= 1
-#
-            #if event.type == after_halving_event:
-            #    halving_time -= 1
-            #    if halving_time < 1:
-             #       after_halving_sounds = ["after_halving", "after_halving_2", "after_halving_3",
-            #                                "your_guess_stayed", "you_have_fifty_percent",
-            #                                "im_not_surprised"]
-            #        sound = random.choice(after_halving_sounds)
-            #        util.play_sound(sound, 0, dir="halving", timer=True)
-            #        after_halving_event = 0
-#
-            #if game_active:
-                #if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
-                #    if dbclock.tick() < DOUBLECLICKTIME:
-                #        for ob in menu_option_group.sprites():
-                #            if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
-                 #               selected = ob.type
-            #else:
-            #    if event.type == pygame.KEYDOWN:
-            #        if event.key == pygame.K_SPACE:
-            #            game_active = True
-        #if game_active:
 
         screen.blit(sky_surface, (0, -20))
-
         if options:
 
             if lang_selection:
-                screen.fill((0,0,0))
+                screen.fill((0, 0, 0))
 
                 lang_group.draw(screen)
                 lang_group.update()
@@ -749,24 +590,11 @@ def main():
                     lang_selection = False
 
             else:
-                screen.fill((0,0,0))
+                screen.fill((0, 0, 0))
 
                 settings_option_group.draw(screen)
                 settings_option_group.update()
-        # prizes_table.draw(screen)
-        # prizes_table.update()
-        #help_group.draw(screen)
-        #help_group.update(correct_answer_key)
-        #if type == "mark":
-       #     if mark_seconds < 1:
-       #         if selected == correct_answer_key:
-       #             play_correct_sounds(level)
-       #             return True
-       #         else:
-        #            play_incorrect_sounds(level)
-        #            return False
-        #else:
-        #    screen.fill((94, 129, 162))
+
         else:
             screen.fill((0, 0, 0))
             screen.blit(sky_surface, (0, -20))
@@ -776,6 +604,7 @@ def main():
 
         pygame.display.update()
         clock.tick(60)
+
 
 def handle_main_menu():
     start_index = 0
