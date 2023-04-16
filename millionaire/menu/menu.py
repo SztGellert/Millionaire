@@ -536,6 +536,11 @@ class MenuOption(pygame.sprite.Sprite):
             if self.name == language_dictionary[util.game_language].menu.settings_menu_options[0]:
                 global lang_selection
                 lang_selection = True
+            if self.name == language_dictionary[util.game_language].menu.settings_menu_options[1]:
+                if util.system_volume:
+                    util.system_volume = False
+                else:
+                    util.system_volume = True
             if self.name in [language_dictionary[util.game_language].en,language_dictionary[util.game_language].hu]:
                 if self.name == language_dictionary[util.game_language].hu:
                     util.set_game_language(util.Language.HUNGARIAN.name)
