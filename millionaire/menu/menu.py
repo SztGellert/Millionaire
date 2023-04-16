@@ -340,77 +340,6 @@ def select_scores():
     return_prompt()
 
 
-def select_settings():
-    start_index = 0
-    util.clear_screen()
-    show_options(language_dictionary[util.game_language].menu.settings_menu_options, default_width)
-    while True:
-        chosen_option = get_user_input(language_dictionary[util.game_language].menu.settings_menu_options,
-                                       language_dictionary[util.game_language].menu.settings_menu_options,
-                                       default_width, start_index)
-        if chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[0]:
-            langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu]
-            show_options(langs, 20, util.available_languages.index(util.game_language))
-            chosen_lang_option = get_user_input(langs, util.available_languages, 20,
-                                                util.available_languages.index(util.game_language), False)
-            util.set_game_language(util.available_languages[util.available_languages.index(chosen_lang_option)])
-            show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
-            start_index = 0
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[1]:
-            if util.system_volume:
-                util.system_volume = False
-            else:
-                util.system_volume = True
-            show_options(language_dictionary[util.game_language].menu.settings_menu_options, default_width,
-                         chosen_option=1)
-            start_index = 1
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[2]:
-            if os.name == "nt":
-                keyboard.press('f11')
-            start_index = 2
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[3]:
-            show_options(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width,
-                         util.topics.index(util.question_topics))
-            chosen_question_topic = get_user_input(
-                language_dictionary[util.game_language].menu.settings_menu_question_topics, util.topics, default_width,
-                util.topics.index(util.question_topics), False)
-            util.set_question_topics(chosen_question_topic)
-            show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=3)
-            start_index = 3
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[4]:
-            if util.question_difficulty != util.Difficulty.ALL.name:
-                show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20,
-                             util.difficulty_levels.index(util.question_difficulty))
-                chosen_difficulty_option = get_user_input(
-                    language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels, 20,
-                    util.difficulty_levels.index(util.question_difficulty), False)
-            else:
-                show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20)
-                chosen_difficulty_option = get_user_input(
-                    language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels, 20,
-                    0, False)
-            if chosen_difficulty_option != language_dictionary[util.game_language].menu.question_difficulty_levels[0]:
-                util.set_question_difficulty(chosen_difficulty_option)
-            else:
-                util.set_question_difficulty(util.Difficulty.ALL.name)
-            show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=4)
-            start_index = 4
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[5]:
-            quizmaster_attitudes = language_dictionary[util.game_language].menu.quizmaster_attitudes
-            show_options(language_dictionary[util.game_language].menu.quizmaster_attitudes, 20,
-                         util.quizmaster_attitudes.index(util.quizmaster_attitude))
-            chosen_attitude_option = get_user_input(quizmaster_attitudes, util.quizmaster_attitudes, 20,
-                                                    util.quizmaster_attitudes.index(util.quizmaster_attitude), False)
-            util.set_quizmaster_attitude(
-                util.quizmaster_attitudes[util.quizmaster_attitudes.index(chosen_attitude_option)])
-            show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=5)
-            start_index = 5
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[6]:
-            util.init_settings(util.Language.ENGLISH.name, reset_settings=True)
-            start_index = 6
-        else:
-            update_settings_file()
-            return
 
 
 def update_settings_file():
@@ -548,8 +477,60 @@ class MenuOption(pygame.sprite.Sprite):
                     util.set_game_language(util.Language.ENGLISH.name)
                 lang_selection = False
 
+            if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-5]:
+                pass
+                #show_options(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width,
+                #             util.topics.index(util.question_topics))
+                #chosen_question_topic = get_user_input(
+                #    language_dictionary[util.game_language].menu.settings_menu_question_topics, util.topics,
+                #    default_width,
+                #    util.topics.index(util.question_topics), False)
+                #util.set_question_topics(chosen_question_topic)
+                #show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=3)
+
+            if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-4]:
+                pass
+                #if util.question_difficulty != util.Difficulty.ALL.name:
+                    #show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20,
+                    #             util.difficulty_levels.index(util.question_difficulty))
+                    #chosen_difficulty_option = get_user_input(
+                    #    language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels,
+                    #    20,
+                    #    util.difficulty_levels.index(util.question_difficulty), False)
+                #else:
+                #    show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20)
+                #    chosen_difficulty_option = get_user_input(
+                #        language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels,
+                #        20,
+                #        0, False)
+                #if chosen_difficulty_option != language_dictionary[util.game_language].menu.question_difficulty_levels[
+                #    0]:
+                #    util.set_question_difficulty(chosen_difficulty_option)
+                #else:
+                #    util.set_question_difficulty(util.Difficulty.ALL.name)
+                #show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=4)
+
+            if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-3]:
+                pass
+                #quizmaster_attitudes = language_dictionary[util.game_language].menu.quizmaster_attitudes
+                #show_options(language_dictionary[util.game_language].menu.quizmaster_attitudes, 20,
+                #             util.quizmaster_attitudes.index(util.quizmaster_attitude))
+                #chosen_attitude_option = get_user_input(quizmaster_attitudes, util.quizmaster_attitudes, 20,
+                #                                        util.quizmaster_attitudes.index(util.quizmaster_attitude),
+                #                                        False)
+                #util.set_quizmaster_attitude(
+                #    util.quizmaster_attitudes[util.quizmaster_attitudes.index(chosen_attitude_option)])
+                #show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=5)
+
+            if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-2]:
+                util.init_settings(util.Language.ENGLISH.name, reset_settings=True)
+
             if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-1]:
                 options = False
+                update_settings_file()
+
+
+
 
 
     def update(self):
@@ -646,44 +627,3 @@ def main():
 
         pygame.display.update()
         clock.tick(60)
-
-
-def handle_main_menu():
-    start_index = 0
-    options_length = default_width
-    show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length)
-    while True:
-        chosen_option = get_user_input(language_dictionary[util.game_language].menu.main_menu_options,
-                                       language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                                       start_index)
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[0]:
-            quiz.play()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length)
-            start_index = 0
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[1]:
-            quiz.fastest_finger_first()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                         chosen_option=1)
-            start_index = 1
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[2]:
-            select_help()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                         chosen_option=2)
-            start_index = 2
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[3]:
-            select_settings()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                         chosen_option=3)
-            start_index = 3
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[4]:
-            select_credits()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                         chosen_option=4)
-            start_index = 4
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[5]:
-            select_scores()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                         chosen_option=5)
-            start_index = 5
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[6]:
-            select_exit()
