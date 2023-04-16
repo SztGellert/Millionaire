@@ -423,8 +423,17 @@ class MenuOption(pygame.sprite.Sprite):
             text = language_dictionary[util.game_language].menu.main_menu_options[order]
         elif type == "settings_menu_option":
             text = language_dictionary[util.game_language].menu.settings_menu_options[order]
-        else:
+        elif type =="topic_option":
+            text = language_dictionary[util.game_language].menu.settings_menu_question_topics[order]
+        elif type == "question_difficulty_option":
+            text = language_dictionary[util.game_language].menu.question_difficulty_levels[order]
+        elif type == "quizmaster_attitude_option":
+            text = language_dictionary[util.game_language].menu.quizmaster_attitudes[order]
+        elif type == "language_option":
             text = [language_dictionary[util.game_language].en,language_dictionary[util.game_language].hu][order]
+        else:
+            text = ""
+
         self.name = text
         self.text = self.font.render(text, True, (255, 255, 255))
         self.image = self.frame
@@ -478,49 +487,44 @@ class MenuOption(pygame.sprite.Sprite):
                 lang_selection = False
 
             if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-5]:
-                pass
-                #show_options(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width,
-                #             util.topics.index(util.question_topics))
-                #chosen_question_topic = get_user_input(
-                #    language_dictionary[util.game_language].menu.settings_menu_question_topics, util.topics,
-                #    default_width,
-                #    util.topics.index(util.question_topics), False)
-                #util.set_question_topics(chosen_question_topic)
-                #show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=3)
+
+                global topics
+                topics = True
+
 
             if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-4]:
-                pass
-                #if util.question_difficulty != util.Difficulty.ALL.name:
-                    #show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20,
-                    #             util.difficulty_levels.index(util.question_difficulty))
-                    #chosen_difficulty_option = get_user_input(
-                    #    language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels,
-                    #    20,
-                    #    util.difficulty_levels.index(util.question_difficulty), False)
-                #else:
-                #    show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20)
-                #    chosen_difficulty_option = get_user_input(
-                #        language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels,
-                #        20,
-                #        0, False)
-                #if chosen_difficulty_option != language_dictionary[util.game_language].menu.question_difficulty_levels[
-                #    0]:
-                #    util.set_question_difficulty(chosen_difficulty_option)
-                #else:
-                #    util.set_question_difficulty(util.Difficulty.ALL.name)
-                #show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=4)
+                global difficulties
+                difficulties = True
+
 
             if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-3]:
-                pass
-                #quizmaster_attitudes = language_dictionary[util.game_language].menu.quizmaster_attitudes
-                #show_options(language_dictionary[util.game_language].menu.quizmaster_attitudes, 20,
-                #             util.quizmaster_attitudes.index(util.quizmaster_attitude))
-                #chosen_attitude_option = get_user_input(quizmaster_attitudes, util.quizmaster_attitudes, 20,
-                #                                        util.quizmaster_attitudes.index(util.quizmaster_attitude),
-                #                                        False)
-                #util.set_quizmaster_attitude(
-                #    util.quizmaster_attitudes[util.quizmaster_attitudes.index(chosen_attitude_option)])
-                #show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=5)
+                global attitudes
+                attitudes = True
+            if self.name in language_dictionary[util.game_language].menu.settings_menu_question_topics:
+
+                if util.question_topics != self.name:
+                    util.set_question_topics(self.name)
+                print(util.question_topics)
+                topics = False
+
+            if self.name in language_dictionary[util.game_language].menu.question_difficulty_levels:
+                if util.difficulty_levels != self.name:
+                    if self.name != language_dictionary[util.game_language].menu.question_difficulty_levels[0]:
+                        util.set_question_difficulty(self.name)
+                    else:
+                        util.set_question_difficulty(util.Difficulty.ALL.name)
+                print(util.question_difficulty)
+                difficulties = False
+
+
+            if self.name in language_dictionary[util.game_language].menu.quizmaster_attitudes:
+                if util.quizmaster_attitudes != self.name:
+                    util.set_quizmaster_attitude(self.name)
+                print(util.quizmaster_attitudes)
+                attitudes = False
+
+
+
 
             if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-2]:
                 util.init_settings(util.Language.ENGLISH.name, reset_settings=True)
@@ -572,27 +576,34 @@ def main():
     sky_surface_rect = sky_surface.get_rect(midtop=(400, 20))
     subsurface = sky_surface.subsurface(0,0,800,400)
 
-    settings_option_group = pygame.sprite.Group()
-    sprite_group = ['play', "fastest_fingers_first", "intro", "options", "credits", "scores",  "exit"]
-    menu_option_group = pygame.sprite.Group()
-    texts = language_dictionary[util.game_language].menu.main_menu_options
     main_menu_base_y = 375
-    for index in range(len(sprite_group)):
-        menu_option_group.add(MenuOption("main_menu_option", index, main_menu_base_y))
+
+    menu_option_group = sprite_group_init(language_dictionary[util.game_language].menu.main_menu_options, "main_menu_option", main_menu_base_y)
 
     settings_menu_base_y = 245
+    topic_menu_base_y = 75
 
-    for index in range(len(language_dictionary[util.game_language].menu.settings_menu_options)):
-        settings_option_group.add(MenuOption("settings_menu_option", index, settings_menu_base_y))
-    langs = util.available_languages
-    lang_group = pygame.sprite.Group()
+    settings_option_group = sprite_group_init(language_dictionary[util.game_language].menu.settings_menu_options, "settings_menu_option", settings_menu_base_y)
 
-    for index in range(len(langs)):
-        lang_group.add(MenuOption("language_option", index, main_menu_base_y))
-    global options, lang_selection
+    lang_group = sprite_group_init(util.available_languages, "language_option", settings_menu_base_y)
+
+    topic_group = sprite_group_init(language_dictionary[util.game_language].menu.settings_menu_question_topics, "topic_option", topic_menu_base_y)
+    question_difficulty_group = sprite_group_init(language_dictionary[util.game_language].menu.question_difficulty_levels, "question_difficulty_option", settings_menu_base_y)
+    quizmaster_attitude_group = sprite_group_init(language_dictionary[util.game_language].menu.quizmaster_attitudes, "quizmaster_attitude_option", settings_menu_base_y)
+
+
+    global options, lang_selection, topics, difficulties, attitudes
     options = False
     lang_selection = False
+    topics = False
+    difficulties = False
+    attitudes = False
+
+    sprite_group_flags = [options, lang_selection, topics, difficulties, attitudes]
+    sprite_groups = [settings_option_group, lang_group, topic_group, question_difficulty_group, quizmaster_attitude_group]
+
     while True:
+
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
@@ -608,8 +619,25 @@ def main():
                 lang_group.draw(screen)
                 lang_group.update()
 
-                #if event.type == pygame.MOUSEBUTTONDOWN:
+                # if event.type == pygame.MOUSEBUTTONDOWN:
                 #    lang_selection = False
+            elif topics:
+                screen.fill((0, 0, 0))
+
+                topic_group.draw(screen)
+                topic_group.update()
+
+            elif difficulties:
+                screen.fill((0, 0, 0))
+
+                question_difficulty_group.draw(screen)
+                question_difficulty_group.update()
+
+            elif attitudes:
+                screen.fill((0, 0, 0))
+
+                quizmaster_attitude_group.draw(screen)
+                quizmaster_attitude_group.update()
 
             else:
                 screen.fill((0, 0, 0))
@@ -627,3 +655,13 @@ def main():
 
         pygame.display.update()
         clock.tick(60)
+
+
+def sprite_group_init(sprite_group: list, sprite_group_type: str, y_height: int):
+
+    sprit_group_instance = pygame.sprite.Group()
+
+    for index in range(len(sprite_group)):
+        sprit_group_instance.add(MenuOption(sprite_group_type, index, y_height))
+
+    return sprit_group_instance
