@@ -20,19 +20,19 @@ class Language(Enum):
 class Topics(Enum):
     ALL = 0
     GENERAL = 1
-    HISTORY = 3
-    GEOGRAPHY = 4
-    PHYSICS = 5
-    CHEMISTRY = 6
-    BIOLOGY = 7
-    MATHEMATICS = 8
-    ARTS = 9
-    LITERATURE = 10
-    MUSIC = 11
-    GASTRONOMY = 12
-    ECONOMY = 13
-    SPORTS = 14
-    ORIGINAL = 15
+    HISTORY = 2
+    GEOGRAPHY = 3
+    PHYSICS = 4
+    CHEMISTRY = 5
+    BIOLOGY = 6
+    MATHEMATICS = 7
+    ARTS = 8
+    LITERATURE = 9
+    MUSIC = 10
+    GASTRONOMY = 11
+    ECONOMY = 12
+    SPORTS = 13
+    ORIGINAL = 14
 
 
 class Difficulty(Enum):

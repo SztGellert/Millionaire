@@ -503,9 +503,8 @@ class MenuOption(pygame.sprite.Sprite):
                 attitudes = True
             if self.name in language_dictionary[util.game_language].menu.settings_menu_question_topics:
 
-                if util.question_topics != self.name:
-                    util.set_question_topics(self.name)
-                print(util.question_topics)
+                if util.question_topics != str(list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(self.name)).lower():
+                    util.set_question_topics(util.Topics(list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(self.name)).name)
                 topics = False
 
             if self.name in language_dictionary[util.game_language].menu.question_difficulty_levels:

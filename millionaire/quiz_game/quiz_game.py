@@ -207,7 +207,7 @@ class Help(pygame.sprite.Sprite):
         after_halving_event = pygame.USEREVENT + 1
 
     def phone(self, correct_answer):
-        global player
+        global player_in_game
         if util.game_language == util.Language.HUNGARIAN.name:
             before_phone_sounds = ["if_you_want_phone_then_i_agree", "i_didnt_want_to_advise_phone", "we_dont_phone",
                                    "phone_broke", "we_dont_phone_two"]
@@ -229,7 +229,7 @@ class Help(pygame.sprite.Sprite):
         #        conversation = (util.open_file(call_text_files[i], 'r', separator=";"))
         #        if phone.lower() == "t":
         util.play_sound("teacher_first_part", 0, dir="phone", timer=True)
-        util.play_sound(player, 0, dir="players", timer=True)
+        util.play_sound(player_in_game, 0, dir="players", timer=True)
         util.play_sound("teacher_second_part", 0, dir="phone", timer=True)
         #
         #        else:
@@ -707,8 +707,7 @@ def play():
     random.shuffle(question_lines_easy)
     random.shuffle(question_lines_medium)
     random.shuffle(question_lines_hard)
-    player_name = ""
-    player = "player"
+
 
     score = 0
     # show_game_structure()
@@ -751,8 +750,19 @@ def play():
     obstacle_group = pygame.sprite.Group()
     # global after_halving_event
     # after_halving_event = True
-
+    global player, player_in_game
+    player = "player"
+    player_in_game = "player"
     start_game()
+    if game_language == util.Language.HUNGARIAN.name:
+        for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
+            if player.lower() == name[:-4]:
+                player_in_game = player.lower()
+        util.play_sound("dear", 0, dir="intro", timer=True)
+        util.play_sound(player_in_game, 0, dir="players", timer=True)
+        millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
+        sound = random.choice(millionaire_sounds)
+        util.play_sound(sound, 0, dir="intro", timer=True)
     is_active = True
     i = 0
     for i in range(game_levels):
@@ -801,11 +811,11 @@ def game_loop(level: int, question_array: {}):
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
 
-    # if level in [0, 6, 8]:
-    #    play_question_intro(level)
-    # if util.game_language == util.Language.HUNGARIAN.name and level < 14:
-    #    play_question_prologue(level)
-    # play_music(level)
+    if level in [0, 6, 8]:
+        play_question_intro(level)
+    if util.game_language == util.Language.HUNGARIAN.name and level < 14:
+        play_question_prologue(level)
+        play_music(level)
     correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[level][1])
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
@@ -843,8 +853,6 @@ def game_loop(level: int, question_array: {}):
 
     while True:
         for event in pygame.event.get():
-            print(event.type)
-
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
