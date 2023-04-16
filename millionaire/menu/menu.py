@@ -432,6 +432,7 @@ class MenuOption(pygame.sprite.Sprite):
         elif type == "language_option":
             text = [language_dictionary[util.game_language].en,language_dictionary[util.game_language].hu][order]
         else:
+            print(type)
             text = ""
 
         self.name = text

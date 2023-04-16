@@ -35,70 +35,48 @@ class Obstacle(pygame.sprite.Sprite):
         font = pygame.font.SysFont('Sans', 25)
         self.correct_option = pygame.image.load('./data/graphics/option_correct.png').convert_alpha()
         self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
-        # print(self.get_is_active())
 
         self.is_active = self.get_is_active()
         if type != "question":
             if self.is_active:
                 text = f"{str(type).upper()}: {text}"
             else:
-                print(self.is_active)
                 text = f"{str(type).upper()}: "
 
         if type == "a":
-            print(self.is_active)
-
-            # sprite = pygame.sprite.Sprite()
-            # sprite.image = image
-            # sprite.rect = image.get_rect()
-
-            # sprite.image.blit(text, sprite.rect)
-
-            # group = pygame.sprite.Group()
-            # group.add(sprite)
-            # group.draw(screen)
-
-            # pygame.display.flip()
             self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
-            self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
 
-            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
-            # self.frame = [snail_frame_1, snail_frame_2]
             x_pos = 200
             y_pos = 515
 
         elif type == "b":
 
             self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
-            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
-            # self.frame = [snail_frame_1, snail_frame_2]
+
             x_pos = 600
             y_pos = 515
 
         elif type == "c":
 
             self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
-            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
-            # self.frame = [snail_frame_1, snail_frame_2]
+
             x_pos = 200
             y_pos = 565
+
         elif type == "d":
 
             self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
-            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
-            # self.frame = [snail_frame_1, snail_frame_2]
+
             x_pos = 600
             y_pos = 565
 
         else:
             text = f"{text}"
             self.frame = pygame.image.load('./data/graphics/question.png').convert_alpha()
-            # fly_frame_2 = pygame.image.load('graphics/fly/fly2.png').convert_alpha()
-            # self.frames = [fly_frame_1, fly_frame_2]
+
             x_pos = 400
             y_pos = 455
 
-        # self.animation_index = 0
         self.type = type
         self.text = font.render(text, True, (255, 255, 255))
         self.image = self.frame
@@ -121,16 +99,6 @@ class Obstacle(pygame.sprite.Sprite):
         if pygame.mouse.get_pressed()[0]:
             self.animation_state()
 
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] and self.rect.bottom >= 300:
-            self.gravity = -20
-            self.jump_sound.play()
-
-    def apply_gravity(self):
-        pass
-        # self.gravity += 1
-        # self.rect.y += self.gravity
-        # if self.rect.bottom >= 300: self.rect.bottom = 300
 
     def update(self, selected, correct, tpye_="select"):
         self.is_active = self.get_is_active()
@@ -141,64 +109,30 @@ class Obstacle(pygame.sprite.Sprite):
             if selected == self.type:
                 self.image = self.selected_option
                 self.image.blit(self.text, [30, 0])
-                # self.rect = self.image.get_rect(center=(x_pos, y_pos))
 
         else:
             if correct == self.type:
                 self.image = self.correct_option
                 self.image.blit(self.text, [30, 0])
 
-        # print(self.type)
-        # print(self.is_active)
-
-        # self.player_input()
-        # self.apply_gravity()
-        # self.animation_state()
 
     def animation_state(self):
-        # if self.rect.bottom < 300:
         self.image = self.selected_option
-    # else:
-    # self.player_index += 0.1
-    # if self.player_index >= len(self.player_walk): self.player_index = 0
-    # self.image = self.player_walk[int(self.player_index)]
 
 
 class Prizes(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
 
-        font = pygame.font.SysFont('Sans', 25)
-
         self.frame = pygame.image.load('./data/graphics/prizes.png').convert_alpha()
-        # fly_frame_2 = pygame.image.load('graphics/fly/fly2.png').convert_alpha()
-        # self.frames = [fly_frame_1, fly_frame_2]
         x_pos = 650
         y_pos = 210
 
-        # self.animation_index = 0
-        # self.type = type
-        # self.text = font.render(text, True, (255, 255, 255))
         self.image = self.frame
-        # self.image.blit(self.text, [30, 0])
         self.rect = self.image.get_rect(center=(x_pos, y_pos))
 
     def update(self):
         pass
-
-        # if tpye_ == "select":
-        #    if selected == self.type:
-        #        self.image = self.selected_option
-        #        self.image.blit(self.text, [30, 0])
-        #        #self.rect = self.image.get_rect(center=(x_pos, y_pos))
-        # else:
-        #    if correct == self.type:
-        #        self.image = self.correct_option
-        #        self.image.blit(self.text, [30, 0])
-
-        # self.player_input()
-        # self.apply_gravity()
-        # self.animation_state()
 
     def animation_state(self):
         pass
@@ -213,39 +147,19 @@ class Help(pygame.sprite.Sprite):
 
         self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
         if type == "halving":
-            # sprite = pygame.sprite.Sprite()
-            # sprite.image = image
-            # sprite.rect = image.get_rect()
-
-            # sprite.image.blit(text, sprite.rect)
-
-            # group = pygame.sprite.Group()
-            # group.add(sprite)
-            # group.draw(screen)
-
-            # pygame.display.flip()
             self.frame = pygame.image.load('./data/graphics/halving.png').convert_alpha()
-
-            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
-            # self.frame = [snail_frame_1, snail_frame_2]
             x_pos = 520
             y_pos = 35
 
         elif type == "telephone":
-
             self.frame = pygame.image.load('./data/graphics/telephone.png').convert_alpha()
-            # snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
-            # self.frame = [snail_frame_1, snail_frame_2]
             x_pos = 630
             y_pos = 35
         else:
             self.frame = pygame.image.load('./data/graphics/audience.png').convert_alpha()
-            # fly_frame_2 = pygame.image.load('graphics/fly/fly2.png').convert_alpha()
-            # self.frames = [fly_frame_1, fly_frame_2]
             x_pos = 740
             y_pos = 35
 
-        # self.animation_index = 0
         self.type = type
         self.image = self.frame
         self.rect = self.image.get_rect(center=(x_pos, y_pos))
@@ -282,13 +196,11 @@ class Help(pygame.sprite.Sprite):
             self.player_input(correct_answer)
 
     def halving(self, correct_answer):
-        # global obstacle_group
         choises = ["a", "b", "c", "d"]
         choises.remove(correct_answer)
         choises.remove(random.choice(choises))
         for ob in obstacle_group.sprites():
             if ob.type in choises:
-                # print(ob.type)
                 ob.unset_is_active()
         halving_before_sounds()
         global after_halving_event
