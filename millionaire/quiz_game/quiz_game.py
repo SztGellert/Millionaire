@@ -209,6 +209,11 @@ class Help(pygame.sprite.Sprite):
                 type = "pre_marked"
                 global selected
                 selected = correct_answer
+                chance = random.randint(0,10)
+                answers = ["a", "b", "c", "d"]
+                answers.remove(correct_answer)
+                if chance == 0:
+                    selected = random.choice(answers)
 
             else:
                 self.audience(correct_answer)
