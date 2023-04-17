@@ -35,6 +35,7 @@ class Obstacle(pygame.sprite.Sprite):
         font = pygame.font.SysFont('Sans', 25)
         self.correct_option = pygame.image.load('./data/graphics/option_correct.png').convert_alpha()
         self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+        self.pre_marked_option = pygame.image.load('./data/graphics/option_pre_marked.png').convert_alpha()
 
         self.is_active = self.get_is_active()
         if type != "question":
@@ -100,21 +101,29 @@ class Obstacle(pygame.sprite.Sprite):
             self.animation_state()
 
 
-    def update(self, selected, correct, tpye_="select"):
+    def update(self, selected_, correct, type_="select"):
         self.is_active = self.get_is_active()
         if not self.is_active:
             self.kill()
-
-        if tpye_ == "select":
-            if selected == self.type:
+        if type_ == "select":
+            if selected_ == self.type:
                 self.image = self.selected_option
                 self.image.blit(self.text, [30, 0])
 
-        else:
+        elif type_ == "mark":
             if correct == self.type:
                 self.image = self.correct_option
                 self.image.blit(self.text, [30, 0])
-
+        elif type_ == "pre_marked":
+            if selected_ == self.type:
+                self.image = self.pre_marked_option
+                self.image.blit(self.text, [30, 0])
+                global type
+                type = "select"
+                global selected
+                selected = ""
+        else:
+            pass
 
     def animation_state(self):
         self.image = self.selected_option
@@ -193,9 +202,13 @@ class Help(pygame.sprite.Sprite):
                 for ob in help_group.sprites():
                     if ob.type in ["teacher", "chewbacca", "random"]:
                         help_group.remove(ob)
-                #self.phone(correct_answer, ob.type)
+                self.phone(correct_answer, self.type)
                 phone_select = False
                 help_types["telephone"] = False
+                global type
+                type = "pre_marked"
+                global selected
+                selected = correct_answer
 
             else:
                 self.audience(correct_answer)
@@ -342,7 +355,6 @@ class Help(pygame.sprite.Sprite):
        # print("\n   " + language_dictionary[game_language].quiz.call_duration, int(now - then),
        #       language_dictionary[game_language].quiz.call_seconds)
         util.stop_sound()
-        util.play_sound("mark_" + correct_answer, 0, dir="mark")
 
 
     def audience(self, correct_answer):
@@ -869,7 +881,9 @@ def game_loop(level: int, question_array: {}):
     start_ticks = 0
     counter = 3
     sprite_group = ['question', "a", "b", "c", "d"]
+    global selected
     selected = ""
+    global type
     type = "select"
     texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
     for index in range(len(sprite_group)):
@@ -910,7 +924,7 @@ def game_loop(level: int, question_array: {}):
                 if event.key == pygame.K_SPACE:
                     game_active = True
                     # start_time = int(pygame.time.get_ticks() / 1000)
-            if event.type == pygame.USEREVENT and selected != "" and type != "mark":
+            if event.type == pygame.USEREVENT and selected != "" and type == "select":
                 counter -= 1
                 if counter < 1:
                     play_select_sounds(level, selected, last_input, out_of_game)
@@ -957,6 +971,8 @@ def game_loop(level: int, question_array: {}):
 
             help_group.draw(screen)
             help_group.update(correct_answer_key)
+            print(type)
+            print(selected)
             obstacle_group.draw(screen)
             obstacle_group.update(selected, correct_answer_key, type)
             if type == "mark":
