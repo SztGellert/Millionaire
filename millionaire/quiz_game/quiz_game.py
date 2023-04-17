@@ -164,6 +164,10 @@ class Help(pygame.sprite.Sprite):
             self.frame = pygame.image.load('./data/graphics/chewbacca.png').convert_alpha()
             x_pos = 520
             y_pos = 135
+        elif type == "random":
+            self.frame = pygame.image.load('./data/graphics/random.png').convert_alpha()
+            x_pos = 740
+            y_pos = 135
         else:
             self.frame = pygame.image.load('./data/graphics/audience.png').convert_alpha()
             x_pos = 740
@@ -185,13 +189,11 @@ class Help(pygame.sprite.Sprite):
                 global phone_select
                 phone_select = True
 
-            elif self.type == "teacher" or self.type == "chewbacca":
+            elif self.type in ["teacher", "chewbacca", "random"]:
                 for ob in help_group.sprites():
-                    if ob.type == "teacher":
+                    if ob.type in ["teacher", "chewbacca", "random"]:
                         help_group.remove(ob)
-                    if ob.type == "chewbacca":
-                        help_group.remove(ob)
-                self.phone(correct_answer, ob.type)
+                #self.phone(correct_answer, ob.type)
                 phone_select = False
                 help_types["telephone"] = False
 
@@ -206,7 +208,7 @@ class Help(pygame.sprite.Sprite):
         width = 3
         color = (255, 0, 0)
 
-        if self.type not in ["teacher", "chewbacca"]:
+        if self.type not in ["teacher", "chewbacca", "random"]:
             if help_types["halving"] == False and self.type == "halving":
                 pygame.draw.line(self.image, color, first_line[0], first_line[1], width=width)
                 pygame.draw.line(self.image, color, second_line[0], second_line[1], width=width)
@@ -266,6 +268,9 @@ class Help(pygame.sprite.Sprite):
             util.play_sound("teacher_second_part", 0, dir="phone", timer=True)
         if target == "chewbacca":
             util.play_sound("chewbacca", 0, dir="phone", timer=True)
+        if target == "random":
+            util.play_sound("weekly_seven", 0, dir="phone", timer=True)
+
 
         #
         #        else:
@@ -945,6 +950,8 @@ def game_loop(level: int, question_array: {}):
             if phone_select:
                 help_group.add(Help("teacher"))
                 help_group.add(Help("chewbacca"))
+                help_group.add(Help("random"))
+
                 phone_select = False
 
 
