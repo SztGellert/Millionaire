@@ -156,6 +156,45 @@ def play_sound(filename, starting_time, file_type="wav", dir="", volume=0.07, fa
         #sound.play()
 
 
+def play_background_sound(filename, starting_time, file_type="wav", dir="", volume=0.07, fading_time=0, timer=False, general=False):
+
+    if general:
+        file_path = get_data_path() + "/sound_files/general/"  + filename + "." + file_type
+    elif dir != "":
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + dir + "/" + filename + "." + file_type
+    else:
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
+
+
+    if system_volume:
+        pygame.mixer.music.load(file_path)
+        pygame.mixer.music.play()
+
+            #a = pygame.mixer.Sound(file_path)
+
+        #else:
+            #sound = pygame.mixer.Sound(file_path)
+            #pygame.mixer.music.load(file_path)
+            #pygame.mixer.music.set_volume(volume)
+            #pygame.mixer.music.play(0, starting_time, fade_ms=fading_time)
+        #sound.play()
+
+
+
+def get_sound_length(filename, file_type="wav", dir="", general=False) -> int:
+
+    if general:
+        file_path = get_data_path() + "/sound_files/general/"  + filename + "." + file_type
+    elif dir != "":
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + dir + "/" + filename + "." + file_type
+    else:
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
+
+    sound = pygame.mixer.Sound(file_path)
+    return sound.get_length()
+
+
+
 
 def play_sound_object(file: pygame.mixer.Sound):
     file.set_volume(0.2)
