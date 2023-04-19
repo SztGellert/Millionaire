@@ -232,6 +232,7 @@ class Help(pygame.sprite.Sprite):
                 global audience_event
                 audience_event = pygame.USEREVENT + 4
                 help_types[self.type] = False
+                util.play_sound("audience", 0, general=True)
 
     def update(self, correct_answer: ""):
         global help_types
@@ -1003,8 +1004,6 @@ def game_loop(level: int, question_array: {}):
             if event.type == audience_event:
                 if audience_seconds > 0:
                     audience_seconds -= 1
-                    #util.play_sound("audience_end", 0, general=True)
-                    #time.sleep(1)
 
                     answer_keys = ["a", "b", "c", "d"]
                     audience_res = {}
@@ -1048,6 +1047,11 @@ def game_loop(level: int, question_array: {}):
                     #                             "audience_random"]
                     #    after_sound = random.choice(audience_after_sounds)
                     #    util.play_sound(after_sound, 0, dir="audience", timer=True)
+                else:
+                    pass
+                    #util.play_sound("audience_end", 0, general=True, timer=True)
+                    #audience_seconds = -1
+                    # time.sleep(1)
 
             if game_active:
                 if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
@@ -1113,9 +1117,7 @@ def game_loop(level: int, question_array: {}):
 
                     answers = ["a", "b", "c", "d"]
                     for key in answers:
-                        print(audience_res)
                         if key in audience_res and audience_res[key] != 0:
-                            print(key)
                             line = [(x_pos, y_pos), (x_pos, y_pos- table_length/10*(audience_res[key]/10))]
                             pygame.draw.line(screen, color, line[0], line[1], width=width)
                         x_pos += 50
