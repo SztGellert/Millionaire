@@ -139,13 +139,11 @@ def play_sound(filename, starting_time, file_type="wav", dir="", volume=0.07, fa
     else:
         file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
 
-
     if system_volume:
         sound = pygame.mixer.Sound(file_path)
         sound.play()
 
         if timer == True:
-            #a = pygame.mixer.Sound(file_path)
 
             time.sleep(sound.get_length())
         #else:

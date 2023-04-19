@@ -200,7 +200,6 @@ class Help(pygame.sprite.Sprite):
 
             elif self.type == "telephone":
                 self.phone_prologue()
-
                 global phone_select
                 phone_select = True
 
@@ -208,7 +207,7 @@ class Help(pygame.sprite.Sprite):
                 for ob in help_group.sprites():
                     if ob.type in ["teacher", "chewbacca", "random"]:
                         help_group.remove(ob)
-                self.phone_dial()
+                #self.phone_dial()
                 self.phone(correct_answer, self.type)
                 global phone_event
                 phone_event = pygame.USEREVENT + 4
@@ -915,6 +914,7 @@ def game_loop(level: int, question_array: {}):
     pygame.time.set_timer(pygame.USEREVENT + 3, 1000)
     pygame.time.set_timer(pygame.USEREVENT + 4, 1000)
 
+
     start_ticks = 0
     counter = 3
     sprite_group = ['question', "a", "b", "c", "d"]
@@ -954,7 +954,6 @@ def game_loop(level: int, question_array: {}):
     global phone_event
     phone_event = 0
     phone_seconds = 30
-
     global call_duration
     call_duration = 0
 
@@ -988,10 +987,11 @@ def game_loop(level: int, question_array: {}):
                 #screen.blit(teacher, (0, 0))
                 #phone_selec
                 #phone_selection_event = 0
+            
+
             if event.type == phone_event:
                 if len(help_group) == 3:
                     help_group.add(Help("clock"))
-
                 if phone_seconds > 0 and phone_seconds > 30-call_duration:
                     phone_seconds -= 1
                 else:
@@ -1049,6 +1049,12 @@ def game_loop(level: int, question_array: {}):
 
         pygame.display.update()
         clock.tick(60)
+
+
+def phone_dial():
+    if util.game_language == util.Language.HUNGARIAN.name:
+        dial_sound = "colleagues_are_dialing"
+        util.play_sound(dial_sound, 0, dir="phone", timer=True)
 
 
 def play_select_sounds(level: int, selected="", last_input="", out_of_game=False):
