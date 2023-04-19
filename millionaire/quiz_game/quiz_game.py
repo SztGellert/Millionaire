@@ -177,6 +177,10 @@ class Help(pygame.sprite.Sprite):
             self.frame = pygame.image.load('./data/graphics/clock.png').convert_alpha()
             x_pos = 630
             y_pos = 135
+        elif type == "audience_table":
+            self.frame = pygame.image.load('./data/graphics/audience_table.png').convert_alpha()
+            x_pos = 630
+            y_pos = 235
         elif type == "random":
             self.frame = pygame.image.load('./data/graphics/random.png').convert_alpha()
             x_pos = 740
@@ -225,6 +229,8 @@ class Help(pygame.sprite.Sprite):
 
             else:
                 self.audience(correct_answer)
+                global audience_event
+                audience_event = pygame.USEREVENT + 4
                 help_types[self.type] = False
 
     def update(self, correct_answer: ""):
@@ -234,7 +240,7 @@ class Help(pygame.sprite.Sprite):
         width = 3
         color = (255, 0, 0)
 
-        if self.type not in ["teacher", "chewbacca", "random", "clock"]:
+        if self.type not in ["teacher", "chewbacca", "random", "clock", "audience_table"]:
             if help_types["halving"] == False and self.type == "halving":
                 pygame.draw.line(self.image, color, first_line[0], first_line[1], width=width)
                 pygame.draw.line(self.image, color, second_line[0], second_line[1], width=width)
@@ -412,13 +418,14 @@ class Help(pygame.sprite.Sprite):
                                       "audience_intro_3", "audience_intro_4",
                                       "audience_intro_5", "audience_intro_6"]
                 prolouge = random.choice(audience_prolouges)
-            util.play_sound(prolouge, 0, dir="audience", timer=True)
+            #util.play_sound(prolouge, 0, dir="audience", timer=True)
         #len_al = 45
         #percent_color = bg(200, 35, 254)
         answers_list = list(answers.keys())
         if util.game_language == util.Language.HUNGARIAN.name:
-            util.play_sound("push_your_buttons", 0, dir="audience")
-            time.sleep(2)
+            pass
+            #util.play_sound("push_your_buttons", 0, dir="audience")
+            #time.sleep(2)
         else:
             util.play_sound("audience", 0, general=True)
         #lutil.clear_screen()
@@ -507,24 +514,7 @@ class Help(pygame.sprite.Sprite):
         #           print(line[0])
         #l    index += 1
         #l print_quiz_table(question, answers, game_level=game_level, quizmaster=False)
-        time.sleep(1)
-        #lif i < len(answers_list) - 1:
-        #l    util.clear_screen()
-        #l    i += 1
-        #lelse:
-        util.play_sound("audience_end", 0, general=True)
-        time.sleep(1)
 
-        font = pygame.font.SysFont('Sans', 25)
-        self.text = font.render(correct_string, True, (255, 255, 255))
-        self.image.blit(self.text, [30, 0])
-
-        if util.game_language == util.Language.HUNGARIAN.name:
-            audience_after_sounds = ["after_audience", "after_audience_2", "audience_false",
-                                     "you_disagree_audience", "weights_a_lot", "believe_audience",
-                                     "audience_random"]
-            after_sound = random.choice(audience_after_sounds)
-            util.play_sound(after_sound, 0, dir="audience", timer=True)
 
 
 
@@ -956,7 +946,11 @@ def game_loop(level: int, question_array: {}):
     phone_seconds = 30
     global call_duration
     call_duration = 0
-
+    global audience_event
+    audience_event = 0
+    audience_text = ""
+    audience_seconds = 4
+    audience_res = {}
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -999,6 +993,83 @@ def game_loop(level: int, question_array: {}):
                     util.play_sound("phone_call_return", 0, general=True, timer=True)
                     phone_event = 0
 
+            if event.type == audience_event:
+                if audience_seconds > 0:
+                    audience_seconds -= 1
+                    #time.sleep(1)
+                    # lif i < len(answers_list) - 1:
+                    # l    util.clear_screen()
+                    # l    i += 1
+                    # lelse:
+                    #util.play_sound("audience_end", 0, general=True)
+                    #time.sleep(1)
+
+                    #font = pygame.font.SysFont('Sans', 25)
+                    #self.text = font.render(correct_string, True, (255, 255, 255))
+                    #self.image.blit(self.text, [30, 0])
+                    #print(100 - sum(audience_res))
+                    answer_keys = ["a", "b", "c", "d"]
+                    audience_res = {}
+                    first = random.randrange(40, 89)
+                    audience_res[correct_answer_key] = first
+                    answer_keys.remove(correct_answer_key)
+
+                    second = random.randrange(0, 100 - sum(audience_res.values()))
+                    next = random.choice(answer_keys)
+                    audience_res[next] = second
+                    answer_keys.remove(next)
+
+                    third = random.randrange(0, 100 - sum(audience_res.values()))
+                    next = random.choice(answer_keys)
+                    audience_res[next] = third
+                    answer_keys.remove(next)
+
+                    fourth = 100 - sum(audience_res.values())
+                    next = random.choice(answer_keys)
+                    audience_res[next] = fourth
+                    answer_keys.remove(next)
+
+                    audience_res = dict(sorted(audience_res.items()))
+
+                    audience_text = f"{audience_res['a']}% {audience_res['b']}% {audience_res['c']}% {audience_res['d']}% "
+
+
+                    #audience_res.append(random.randrange(40, 89))
+
+                    #audience_res.append(random.randrange(0, 100 - sum(audience_res)))
+
+                    #audience_res.append(random.randrange(0, 100 - sum(audience_res)))
+                    #audience_res.append(100 - sum(audience_res))
+
+
+                    #if util.game_language == util.Language.HUNGARIAN.name:
+                    #    audience_after_sounds = ["after_audience", "after_audience_2", "audience_false",
+                    #                             "you_disagree_audience", "weights_a_lot", "believe_audience",
+                    #                             "audience_random"]
+                    #    after_sound = random.choice(audience_after_sounds)
+                    #    util.play_sound(after_sound, 0, dir="audience", timer=True)
+
+                    #answers_list = list(answers.keys())
+                    #chances_dict = {}
+                    #correct_answer = get_dictionary_key_by_value(answers, correct_value)
+                    #chances_dict[correct_answer] = random.randrange(40, 89)
+                    #answers_list.pop(answers_list.index(correct_answer))
+                    #if list(answers.values()).count("") == 2:
+                    #    for k in range(len(list(answers.keys())) - 1):
+                    #        if list(answers.values())[k] != "":
+                    #            chances_dict[answers_list[k]] = 100 - sum(chances_dict.values())
+                    #        else:
+                    #            chances_dict[answers_list[k]] = 0
+                    #    return chances_dict
+
+                    #for k in range(len(answers_list)):
+                    #    if k == len(answers_list) - 1:
+                    #        chances_dict[answers_list[k]] = 100 - sum(chances_dict.values())
+                    #    else:
+                    #        chances_dict[answers_list[k]] = random.randrange(0, 100 - sum(chances_dict.values()))
+
+                    #return chances_dict
+
             if game_active:
                 if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
                     if dbclock.tick() < DOUBLECLICKTIME:
@@ -1021,6 +1092,9 @@ def game_loop(level: int, question_array: {}):
                 help_group.add(Help("random"))
 
                 phone_select = False
+            if audience_event:
+                help_group.add(Help("audience_table"))
+
 
 
             help_group.draw(screen)
@@ -1028,6 +1102,7 @@ def game_loop(level: int, question_array: {}):
             obstacle_group.draw(screen)
             obstacle_group.update(selected, correct_answer_key, type)
             if type == "mark":
+                audience_event = 0
                 if mark_seconds < 1:
                     if selected == correct_answer_key:
                         play_correct_sounds(level)
@@ -1042,6 +1117,31 @@ def game_loop(level: int, question_array: {}):
                 game_message = font.render(str(phone_seconds), True, (255, 255, 255))
                 game_message_rect = game_message.get_rect(center=(x_pos, y_pos))
                 screen.blit(game_message, game_message_rect)
+            if audience_event != 0:
+                x_pos = 635
+                y_pos = 95
+                if audience_res != {}:
+                    font = pygame.font.SysFont('Sans', 31, bold=True)
+                    game_message = font.render(audience_text, True, (255, 255, 255))
+                    game_message_rect = game_message.get_rect(center=(x_pos, y_pos))
+                    screen.blit(game_message, game_message_rect)
+
+                    x_pos = 555
+                    y_pos = 365
+                    constant = 105
+                    lines = []
+                    width = 25
+                    color = (92, 175, 255)
+                    table_length = 240
+
+
+                    for key in audience_res:
+                        if audience_res[key] != 0:
+                            line = [(x_pos, y_pos), (x_pos, y_pos- table_length/10*(audience_res[key]/10))]
+                            pygame.draw.line(screen, color, line[0], line[1], width=width)
+                        x_pos += 50
+
+
 
 
         else:
