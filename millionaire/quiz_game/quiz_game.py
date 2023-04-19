@@ -795,7 +795,9 @@ def play():
     pygame.init()
     global screen
     screen = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption('Runner')
+    pygame.display.set_caption(language_dictionary[util.game_language].title)
+    millioniareIcon = pygame.image.load('./data/graphics/loim.png')
+    pygame.display.set_icon(millioniareIcon)
     global clock
     clock = pygame.time.Clock()
     global test_font
