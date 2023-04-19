@@ -1003,51 +1003,44 @@ def game_loop(level: int, question_array: {}):
             if event.type == audience_event:
                 if audience_seconds > 0:
                     audience_seconds -= 1
-                    #time.sleep(1)
-                    # lif i < len(answers_list) - 1:
-                    # l    util.clear_screen()
-                    # l    i += 1
-                    # lelse:
                     #util.play_sound("audience_end", 0, general=True)
                     #time.sleep(1)
 
-                    #font = pygame.font.SysFont('Sans', 25)
-                    #self.text = font.render(correct_string, True, (255, 255, 255))
-                    #self.image.blit(self.text, [30, 0])
-                    #print(100 - sum(audience_res))
                     answer_keys = ["a", "b", "c", "d"]
                     audience_res = {}
                     first = random.randrange(40, 89)
                     audience_res[correct_answer_key] = first
                     answer_keys.remove(correct_answer_key)
+                    if len(obstacle_group) == 5:
 
-                    second = random.randrange(0, 100 - sum(audience_res.values()))
-                    next = random.choice(answer_keys)
-                    audience_res[next] = second
-                    answer_keys.remove(next)
+                        second = random.randrange(0, 100 - sum(audience_res.values()))
+                        next = random.choice(answer_keys)
+                        audience_res[next] = second
+                        answer_keys.remove(next)
 
-                    third = random.randrange(0, 100 - sum(audience_res.values()))
-                    next = random.choice(answer_keys)
-                    audience_res[next] = third
-                    answer_keys.remove(next)
-
-                    fourth = 100 - sum(audience_res.values())
-                    next = random.choice(answer_keys)
-                    audience_res[next] = fourth
-                    answer_keys.remove(next)
+                        third = random.randrange(0, 100 - sum(audience_res.values()))
+                        next = random.choice(answer_keys)
+                        audience_res[next] = third
+                        answer_keys.remove(next)
+                        fourth = 100 - sum(audience_res.values())
+                        next = answer_keys[0]
+                        audience_res[next] = fourth
+                        answer_keys.remove(next)
+                    else:
+                        for ob in obstacle_group.sprites():
+                            if ob.type != correct_answer_key:
+                                next = ob.type
+                        fourth = 100 - sum(audience_res.values())
+                        audience_res[next] = fourth
 
                     audience_res = dict(sorted(audience_res.items()))
-
-                    audience_text = f"{audience_res['a']}% {audience_res['b']}% {audience_res['c']}% {audience_res['d']}% "
-
-
-                    #audience_res.append(random.randrange(40, 89))
-
-                    #audience_res.append(random.randrange(0, 100 - sum(audience_res)))
-
-                    #audience_res.append(random.randrange(0, 100 - sum(audience_res)))
-                    #audience_res.append(100 - sum(audience_res))
-
+                    answer_keys = ["a", "b", "c", "d"]
+                    audience_text = ""
+                    for key in answer_keys:
+                        if key in audience_res:
+                            audience_text += f"{audience_res[key]}% "
+                        else:
+                            audience_text += "   "
 
                     #if util.game_language == util.Language.HUNGARIAN.name:
                     #    audience_after_sounds = ["after_audience", "after_audience_2", "audience_false",
@@ -1055,27 +1048,6 @@ def game_loop(level: int, question_array: {}):
                     #                             "audience_random"]
                     #    after_sound = random.choice(audience_after_sounds)
                     #    util.play_sound(after_sound, 0, dir="audience", timer=True)
-
-                    #answers_list = list(answers.keys())
-                    #chances_dict = {}
-                    #correct_answer = get_dictionary_key_by_value(answers, correct_value)
-                    #chances_dict[correct_answer] = random.randrange(40, 89)
-                    #answers_list.pop(answers_list.index(correct_answer))
-                    #if list(answers.values()).count("") == 2:
-                    #    for k in range(len(list(answers.keys())) - 1):
-                    #        if list(answers.values())[k] != "":
-                    #            chances_dict[answers_list[k]] = 100 - sum(chances_dict.values())
-                    #        else:
-                    #            chances_dict[answers_list[k]] = 0
-                    #    return chances_dict
-
-                    #for k in range(len(answers_list)):
-                    #    if k == len(answers_list) - 1:
-                    #        chances_dict[answers_list[k]] = 100 - sum(chances_dict.values())
-                    #    else:
-                    #        chances_dict[answers_list[k]] = random.randrange(0, 100 - sum(chances_dict.values()))
-
-                    #return chances_dict
 
             if game_active:
                 if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
@@ -1139,9 +1111,11 @@ def game_loop(level: int, question_array: {}):
                     color = (92, 175, 255)
                     table_length = 240
 
-
-                    for key in audience_res:
-                        if audience_res[key] != 0:
+                    answers = ["a", "b", "c", "d"]
+                    for key in answers:
+                        print(audience_res)
+                        if key in audience_res and audience_res[key] != 0:
+                            print(key)
                             line = [(x_pos, y_pos), (x_pos, y_pos- table_length/10*(audience_res[key]/10))]
                             pygame.draw.line(screen, color, line[0], line[1], width=width)
                         x_pos += 50
