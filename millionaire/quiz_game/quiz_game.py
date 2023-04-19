@@ -963,6 +963,11 @@ def game_loop(level: int, question_array: {}):
                     game_active = True
                     # start_time = int(pygame.time.get_ticks() / 1000)
             if event.type == pygame.USEREVENT and selected != "" and type == "select":
+                if audience_event != 0:
+                    audience_event = 0
+                    for ob in help_group.sprites():
+                        if ob.type == "audience_table":
+                            help_group.remove(ob)
                 counter -= 1
                 if counter < 1:
                     play_select_sounds(level, selected, last_input, out_of_game)
@@ -1097,14 +1102,7 @@ def game_loop(level: int, question_array: {}):
             if audience_event:
                 help_group.add(Help("audience_table"))
 
-
-
-            help_group.draw(screen)
-            help_group.update(correct_answer_key)
-            obstacle_group.draw(screen)
-            obstacle_group.update(selected, correct_answer_key, type)
             if type == "mark":
-                audience_event = 0
                 if mark_seconds < 1:
                     if selected == correct_answer_key:
                         play_correct_sounds(level)
@@ -1112,6 +1110,11 @@ def game_loop(level: int, question_array: {}):
                     else:
                         play_incorrect_sounds(level)
                         return False
+
+            help_group.draw(screen)
+            help_group.update(correct_answer_key)
+            obstacle_group.draw(screen)
+            obstacle_group.update(selected, correct_answer_key, type)
             if phone_event != 0:
                 x_pos = 630
                 y_pos = 135
@@ -1123,7 +1126,7 @@ def game_loop(level: int, question_array: {}):
                 x_pos = 635
                 y_pos = 95
                 if audience_res != {}:
-                    font = pygame.font.SysFont('Sans', 31, bold=True)
+                    font = pygame.font.SysFont('Sans', 31)
                     game_message = font.render(audience_text, True, (255, 255, 255))
                     game_message_rect = game_message.get_rect(center=(x_pos, y_pos))
                     screen.blit(game_message, game_message_rect)
