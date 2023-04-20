@@ -207,8 +207,8 @@ class Help(pygame.sprite.Sprite):
             if self.type == "halving":
                 self.halving(correct_answer)
                 help_types[self.type] = False
-            elif self.type == "telephone" and len(help_group) == 3:
-                # self.phone_prologue()
+            elif self.type == "telephone":
+                self.phone_prologue()
                 global phone_select
                 phone_select = True
 
@@ -262,31 +262,34 @@ class Help(pygame.sprite.Sprite):
                         else:
                             self.audience()
                         help_types["audience"] = False
+
         else:
-            if help_types["telephone"]:
-                self.player_input(correct_answer)
-                if phone_event != 0 and self.is_dialed == True:
-                    # if intro_duration < 1:
-                    for ob in help_group.sprites():
-                        if ob.type in ["teacher", "chewbacca", "random"]:
-                            help_group.remove(ob)
-
-                    self.phone(correct_answer, self.type)
-                    phone_select = False
-                    help_types["telephone"] = False
-                    global type
-                    type = "pre_marked"
-                    global selected
-                    selected = correct_answer
-                    chance = random.randint(0, 10)
-                    answers = ["a", "b", "c", "d"]
-                    answers.remove(correct_answer)
-                    if chance == 0:
-                        selected = random.choice(answers)
-
             if self.type == "clock":
                 if phone_event == 0:
                     self.kill()
+            elif self.type == "audience_table":
+                pass
+            else:
+                if help_types["telephone"]:
+                    self.player_input(correct_answer)
+                    if phone_event != 0 and self.is_dialed == True:
+                        # if intro_duration < 1:
+                        for ob in help_group.sprites():
+                            if ob.type in ["teacher", "chewbacca", "random"]:
+                                help_group.remove(ob)
+
+                        self.phone()
+                        phone_select = False
+                        help_types["telephone"] = False
+                        global type
+                        type = "pre_marked"
+                        global selected
+                        selected = correct_answer
+                        chance = random.randint(0, 10)
+                        answers = ["a", "b", "c", "d"]
+                        answers.remove(correct_answer)
+                        if chance == 0:
+                            selected = random.choice(answers)
 
     def halving(self, correct_answer):
         choises = ["a", "b", "c", "d"]
@@ -341,35 +344,27 @@ class Help(pygame.sprite.Sprite):
     def phone_intro(self) -> int:
         target = self.type
         if target == "teacher":
-            util.play_sound("teacher_first_part", 0, dir="phone", timer=True)
-            util.play_sound(player_in_game, 0, dir="players", timer=True)
-            util.play_sound("teacher_second_part", 0, dir="phone", timer=True)
-            return util.get_sound_length("teacher_second_part", dir="phone")
-
+            util.play_sound("teacher_intro", 0, dir="phone")
+            return util.get_sound_length("teacher_intro", dir="phone")
         if target == "chewbacca":
-            # util.play_sound("chewbacca_intro", 0, dir="phone")
-            # return util.get_sound_length("chewbacca_intro", dir="phone")
-            return 5
-            # util.play_sound("chewbacca", 0, dir="phone")
-            # call_duration = util.get_sound_length("chewbacca", dir="phone")
-            # util.play_background_sound("phone_call", 0, general=True)
+            util.play_sound("chewbacca_intro", 0, dir="phone")
+            return util.get_sound_length("chewbacca_intro", dir="phone")
         if target == "random":
-            util.play_sound("weekly_seven", 0, dir="phone")
-            return util.get_sound_length("weekly_seven", dir="phone")
+            util.play_sound("weekly_seven_intro", 0, dir="phone")
+            return util.get_sound_length("weekly_seven_intro", dir="phone")
 
-    def phone(self, target: str):
+    def phone(self):
         global call_duration
-        if target == "teacher":
-            util.play_sound("teacher_first_part", 0, dir="phone", timer=True)
-            util.play_sound(player_in_game, 0, dir="players", timer=True)
-            util.play_sound("teacher_second_part", 0, dir="phone", timer=True)
-        if target == "chewbacca":
-            # util.play_sound("chewbacca_intro", 0, dir="phone", timer=True)
+        if self.type == "teacher":
+            util.play_sound("teacher", 0, dir="phone", timer=True)
+            call_duration = util.get_sound_length("teacher", dir="phone")
+        if self.type  == "chewbacca":
             util.play_sound("chewbacca", 0, dir="phone")
             call_duration = util.get_sound_length("chewbacca", dir="phone")
             util.play_background_sound("phone_call", 0, general=True)
-        if target == "random":
+        if self.type  == "random":
             util.play_sound("weekly_seven", 0, dir="phone")
+            call_duration = util.get_sound_length("weekly_seven", dir="phone")
 
     def audience(self):
         util.play_sound("audience", 0, general=True)
