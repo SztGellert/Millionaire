@@ -72,6 +72,9 @@ class Obstacle(pygame.sprite.Sprite):
             y_pos = 565
 
         else:
+            if len(text) > 55:
+                font = pygame.font.SysFont('Sans', 18)
+
             text = f"{text}"
             self.frame = pygame.image.load('./data/graphics/question.png').convert_alpha()
 
@@ -558,10 +561,6 @@ def play():
     random.shuffle(question_lines_easy)
     random.shuffle(question_lines_medium)
     random.shuffle(question_lines_hard)
-
-    score = 0
-    # show_game_structure()
-
     game_active = True
     pygame.init()
     global screen
@@ -574,11 +573,7 @@ def play():
     global test_font
     test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
     global sky_surface
-
     sky_surface = pygame.image.load('./data/graphics/background.jpg').convert_alpha()
-
-    # start_time = 0
-    # score = 0
     global obstacle_group
     obstacle_group = pygame.sprite.Group()
     global prizes_table
@@ -600,21 +595,19 @@ def play():
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
     obstacle_group = pygame.sprite.Group()
-    # global after_halving_event
-    # after_halving_event = True
     global player, player_in_game
     player = "player"
     player_in_game = "player"
-    # start_game()
-    # if game_language == util.Language.HUNGARIAN.name:
-    #    for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
-    #        if player.lower() == name[:-4]:
-    #            player_in_game = player.lower()
-    #    util.play_sound("dear", 0, dir="intro", timer=True)
-    #    util.play_sound(player_in_game, 0, dir="players", timer=True)
-    #    millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
-    #    sound = random.choice(millionaire_sounds)
-    #    util.play_sound(sound, 0, dir="intro", timer=True)
+    start_game()
+    if game_language == util.Language.HUNGARIAN.name:
+        for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
+            if player.lower() == name[:-4]:
+                player_in_game = player.lower()
+        util.play_sound("dear", 0, dir="intro", timer=True)
+        util.play_sound(player_in_game, 0, dir="players", timer=True)
+        millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
+        sound = random.choice(millionaire_sounds)
+        util.play_sound(sound, 0, dir="intro", timer=True)
     is_active = True
     i = 0
     for i in range(game_levels):
@@ -663,11 +656,11 @@ def game_loop(level: int, question_array: {}):
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
 
-    # if level in [0, 6, 8]:
-    #    play_question_intro(level)
-    # if util.game_language == util.Language.HUNGARIAN.name and level < 14:
-    #    play_question_prologue(level)
-    #    play_music(level)
+    if level in [0, 6, 8]:
+        play_question_intro(level)
+    if util.game_language == util.Language.HUNGARIAN.name and level < 14:
+        play_question_prologue(level)
+        play_music(level)
     correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[level][1])
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
@@ -681,7 +674,6 @@ def game_loop(level: int, question_array: {}):
     pygame.time.set_timer(pygame.USEREVENT + 6, 1000)  # PHONE INTRO EVENT
     pygame.time.set_timer(pygame.USEREVENT + 7, 1000)  # AUDIENCE INTRO EVENT
 
-    start_ticks = 0
     counter = 3
     sprite_group = ['question', "a", "b", "c", "d"]
     global selected
@@ -691,22 +683,12 @@ def game_loop(level: int, question_array: {}):
     texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
     for index in range(len(sprite_group)):
         obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
-    # for ob in obstacle_group.sprites():
-    #   ob.set_is_active()
-    # prizes = ['question', "a", "b", "c", "d"]
-    # selected = ""
-    # type = "select"
-    # texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
-    # for index in range(len(sprite_group)):
-
-    # prizes_table.add(Prizes())
     global help_group
 
     help_sprites = ['halving', "telephone", "audience"]
     for index in range(len(help_sprites)):
         help_group.add(Help(help_sprites[index]))
     halving_time = 6
-    after_halving = True
     global after_halving_event
     after_halving_event = 0
     mark_seconds = 5
@@ -739,8 +721,6 @@ def game_loop(level: int, question_array: {}):
     intro_duration = 0
     clock_added = False
     audience_table_added = False
-    i = 0
-    p = 0
     global audience_intro_event
     audience_intro_event = 0
     global audience_intro_duration
@@ -778,8 +758,6 @@ def game_loop(level: int, question_array: {}):
                 if len(help_group) == 3 and not clock_added:
                     help_group.add(Help("clock"))
                     clock_added = True
-                    i += 1
-
                 if phone_seconds > 0 and phone_seconds > 30 - call_duration:
                     phone_seconds -= 1
                 else:
