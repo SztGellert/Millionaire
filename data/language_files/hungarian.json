@@ -89,6 +89,11 @@
         "allowed_letters_error": "Hiba! Csak az alábbi karakterek: ",
         "allowed": " engedélyezettek!",
         "call_duration": "Hívás időtartam: ",
-        "call_seconds": " mp\\ 30mp"
+        "call_seconds": " mp\\ 30mp",
+        "menu": {
+            "resume": "Folytatás",
+            "out_of_game": "Játékon kívüli válasz",
+            "exit": "Kilépés"
+        }
     }
 }

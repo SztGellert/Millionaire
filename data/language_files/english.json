@@ -90,6 +90,11 @@
         "allowed_letters_error": "Error! Only letters: ",
         "allowed": " allowed!",
         "call_duration": "Call Duration: ",
-        "call_seconds": " seconds\\ 30s"
+        "call_seconds": " seconds\\ 30s",
+        "menu": {
+            "resume": "Resume",
+            "out_of_game": "Out of game answer",
+            "exit": "Exit"
+          }
     }
 }

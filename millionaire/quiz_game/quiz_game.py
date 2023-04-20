@@ -403,6 +403,97 @@ class Help(pygame.sprite.Sprite):
         util.play_sound("audience", 0, general=True)
 
 
+class MenuOption(pygame.sprite.Sprite):
+
+    def __init__(self, type, order, base_height):
+        super().__init__()
+
+        x_pos = 400
+        y_pos = base_height + (order * 35)
+
+        self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+        self.font = pygame.font.SysFont('Sans', 25)
+        self.type = type
+        self.text_color = (255, 255, 255)
+        if type== "resume":
+            text = language_dictionary[util.game_language].quiz.menu[order]
+        elif type == "out_of_game":
+            text = language_dictionary[util.game_language].quiz.menu[order]
+        elif type =="exit":
+            text = language_dictionary[util.game_language].quiz.menu[order]
+        elif type == "question_difficulty_option":
+            text = language_dictionary[util.game_language].menu.question_difficulty_levels[order]
+        elif type == "quizmaster_attitude_option":
+            text = language_dictionary[util.game_language].menu.quizmaster_attitudes[order]
+        elif type == "language_option":
+            text = [language_dictionary[util.game_language].en,language_dictionary[util.game_language].hu][order]
+        else:
+            print(type)
+            text = ""
+
+        self.name = text
+        self.text = self.font.render(text, True, (255, 255, 255))
+        self.image = self.frame
+        self.image.blit(self.text, [30, 0])
+        self.rect = self.image.get_rect(center=(x_pos, y_pos))
+        self.lang = util.game_language
+        self.order = order
+
+    def get_is_active(self):
+        if hasattr(self, 'is_active'):
+            return self.is_active
+        else:
+            return True
+
+    def set_is_active(self):
+        self.is_active = True
+
+    def unset_is_active(self):
+        self.is_active = False
+
+    def player_input(self):
+        if self.rect.collidepoint((pygame.mouse.get_pos())):
+            self.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+            self.image.blit(self.text, [30, 0])
+        else:
+            self.image = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            self.image.blit(self.text, [30, 0])
+
+
+        if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
+            global game_active
+
+            if self.name == language_dictionary[util.game_language].quiz.menu[0]:
+                game_active = True
+            if self.name == language_dictionary[util.game_language].quiz.menu[1]:
+                global out_of_game
+                out_of_game = True
+                game_active = True
+
+            if self.name == language_dictionary[util.game_language].quiz.menu[-1]:
+                global exit
+                exit = True
+
+
+    def update(self):
+        if self.lang != util.game_language:
+            if self.type == "resume":
+                text = language_dictionary[util.game_language].quiz.menu[self.order]
+            elif self.type == "out_of_game":
+                text = language_dictionary[util.game_language].quiz.menu[self.order]
+            elif self.type == "exit":
+                text = language_dictionary[util.game_language].quiz.menu[self.order]
+            else:
+                text = ""
+
+            self.text = self.font.render(text, True, (255, 255, 255))
+            self.lang = util.game_language
+            self.name = text
+
+        self.player_input()
+
+
+
 def init_threads(level: int):
     global base_threads
     global a_threads
@@ -442,79 +533,65 @@ def get_dictionary_key_by_value(dictionary: {}, value: str) -> str:
             return choice
 
 
-def old_code():
-    return
-    correct_answer_value = question_lines[i][1]
-    if util.game_language == util.Language.HUNGARIAN.name:
-        thread_random(i, last_one="base")
-    answer = handle_user_input(question, shuffled_answers, correct_answer_key, level=i)
-    if answer == "esc":
-        quit_quiz(score, player_name, question_topics)
-        return
+def answer_out_of_game(level):
+
+    #if util.game_language == util.Language.HUNGARIAN.name:
+    #    thread_random(i, last_one="base")
+
     util.pause_music()
-    while answer not in list(answers.keys()):
-        if answer == "esc":
-            quit_quiz(score, player_name, question_topics)
-            return
-        if answer == "t":
+    if util.game_language == util.Language.HUNGARIAN.name:
+        #thread_random(score, working=False)
+        music_off_sounds = ["music_off", "lower_music"]
+        sound = random.choice(music_off_sounds)
+        if level > 8:
+            sound = "stop_at_finish"
+        util.play_sound(sound, 0, dir="out_of_game", timer=True)
+        util.stop_music()
+        out_of_game_sounds = ["and_then_out_of_game", "acknowledge_it_out_of_game", "out_of_game",
+                              "out_of_game_2", "out_of_game_say_letter"]
+        sound = random.choice(out_of_game_sounds)
+        util.play_sound(sound, 0, dir="out_of_game")
+
+        '''
+        is_correct = check_answer(answer, correct_answer_key)
+        if is_correct:
             util.clear_screen()
-            print_quiz_table(question, shuffled_answers, game_level=i)
-            if util.game_language == util.Language.HUNGARIAN.name:
-                thread_random(score, working=False)
-                music_off_sounds = ["music_off", "lower_music"]
-                sound = random.choice(music_off_sounds)
-                if i > 8:
-                    sound = "stop_at_finish"
-                util.play_sound(sound, 0, dir="out_of_game", timer=True)
-                util.stop_music()
-                out_of_game_sounds = ["and_then_out_of_game", "acknowledge_it_out_of_game", "out_of_game",
-                                      "out_of_game_2", "out_of_game_say_letter"]
-                sound = random.choice(out_of_game_sounds)
-                util.play_sound(sound, 0, dir="out_of_game")
-            print("\n\n  ", fg.grey + language_dictionary[game_language].quiz.select_answer_out + fg.rs)
-            answer = handle_user_input(question, shuffled_answers, correct_answer_key, level=i, final_color="blue",
-                                       out_of_game=True)
-            if answer == "esc":
-                quit_quiz(score, player_name, question_topics)
-                return
-            is_correct = check_answer(answer, correct_answer_key)
-            if is_correct:
-                util.clear_screen()
-                print_quiz_table(question, shuffled_answers, answer, "green", "", game_level=i)
-                time.sleep(2)
-                if game_language == util.Language.HUNGARIAN.name:
-                    util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
-                if i > 0:
-                    print_prizes_with_quizmaster(level=i - 1)
-                else:
-                    print_prizes_with_quizmaster(level=i, nullprize=True)
-                print(fg.orange + "\n   " + language_dictionary[game_language].quiz.correct_answer_out + fg.rs)
-                util.play_sound("claps", 0, general=True, timer=True)
+            print_quiz_table(question, shuffled_answers, answer, "green", "", game_level=i)
+            time.sleep(2)
+            if game_language == util.Language.HUNGARIAN.name:
+                util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
+            if i > 0:
+                print_prizes_with_quizmaster(level=i - 1)
             else:
-                if game_language == util.Language.HUNGARIAN.name:
-                    util.play_sound("good_to_stop", 0, dir="out_of_game", timer=True)
-                util.clear_screen()
-                print_quiz_table(question, shuffled_answers, answer, "blue", correct_answer=correct_answer_key,
-                                 game_level=i)
-                time.sleep(2)
-                if i > 9:
-                    print_prizes_with_quizmaster(9)
-                elif i > 4:
-                    print_prizes_with_quizmaster(4)
-                else:
-                    print_prizes_with_quizmaster(0, nullprize=True)
-                print(fg.red + "\n   " + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
-                if util.game_language == util.Language.HUNGARIAN.name:
-                    sorry_sounds = ["so_sorry", "terribly_sorry"]
-                    sound = random.choice(sorry_sounds)
-                    util.play_sound(sound, 0, dir="out_of_game", timer=True)
-                time.sleep(1)
-                util.play_sound("claps", 0, general=True, timer=True)
-            quit_quiz(score, player_name, question_topics)
+                print_prizes_with_quizmaster(level=i, nullprize=True)
+            print(fg.orange + "\n   " + language_dictionary[game_language].quiz.correct_answer_out + fg.rs)
+            util.play_sound("claps", 0, general=True, timer=True)
+        else:
+            if game_language == util.Language.HUNGARIAN.name:
+                util.play_sound("good_to_stop", 0, dir="out_of_game", timer=True)
             util.clear_screen()
-            return
+            print_quiz_table(question, shuffled_answers, answer, "blue", correct_answer=correct_answer_key,
+                             game_level=i)
+            time.sleep(2)
+            if i > 9:
+                print_prizes_with_quizmaster(9)
+            elif i > 4:
+                print_prizes_with_quizmaster(4)
+            else:
+                print_prizes_with_quizmaster(0, nullprize=True)
+            print(fg.red + "\n   " + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
+            if util.game_language == util.Language.HUNGARIAN.name:
+                sorry_sounds = ["so_sorry", "terribly_sorry"]
+                sound = random.choice(sorry_sounds)
+                util.play_sound(sound, 0, dir="out_of_game", timer=True)
+            time.sleep(1)
+            util.play_sound("claps", 0, general=True, timer=True)
+        quit_quiz(score, player_name, question_topics)
+        util.clear_screen()
+        return
     return
     quit_quiz(score, player_name, question_topics)
+    '''
 
 
 def play():
@@ -608,6 +685,9 @@ def play():
     obstacle_group = pygame.sprite.Group()
     global prizes_table
     prizes_table = pygame.sprite.GroupSingle()
+    global in_game_menu_bg
+    in_game_menu_bg = pygame.image.load('./data/graphics/in_game_menu_bg.jpg').convert_alpha()
+
 
 
     game_levels = 15
@@ -630,6 +710,7 @@ def play():
     global player, player_in_game
     player = "player"
     player_in_game = "player"
+    '''
     start_game()
     if game_language == util.Language.HUNGARIAN.name:
         for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
@@ -640,6 +721,7 @@ def play():
         millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
         sound = random.choice(millionaire_sounds)
         util.play_sound(sound, 0, dir="intro", timer=True)
+    '''
     is_active = True
     i = 0
     for i in range(game_levels):
@@ -676,6 +758,7 @@ def start_game():
 
 
 def game_loop(level: int, question_array: {}):
+    global out_of_game
     out_of_game = False
     last_input = ""
     global random_sounds
@@ -687,12 +770,13 @@ def game_loop(level: int, question_array: {}):
     answer_list = list(answers.values())
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
-
+    '''
     if level in [0, 6, 8]:
         play_question_intro(level)
     if util.game_language == util.Language.HUNGARIAN.name and level < 14:
         play_question_prologue(level)
         play_music(level)
+    '''
     correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[level][1])
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
@@ -761,14 +845,23 @@ def game_loop(level: int, question_array: {}):
     prize_group = pygame.sprite.GroupSingle()
     prize_seconds = 3
     prize_event = 0
+    menu_group = pygame.sprite.Group()
+    menu_group.add(MenuOption("resume", 0, 135))
+    menu_group.add(MenuOption("out_of_game", 1, 135))
+    menu_group.add(MenuOption("exit", 2, 135))
+    global exit
+    exit = False
+    out_of_game_started = False
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    game_active = True
+                if event.key == pygame.K_ESCAPE:
+                    print(game_active)
+                    game_active = False
+                    print(game_active)
             if event.type == pygame.USEREVENT and selected != "" and type == "select":
                 if audience_event != 0:
                     audience_event = 0
@@ -882,9 +975,14 @@ def game_loop(level: int, question_array: {}):
 
             else:
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE:
-                        game_active = True
+                    if event.key == pygame.K_ESCAPE:
+                        game_active = False
         if game_active:
+            util.continue_music()
+            if out_of_game and not out_of_game_started:
+                answer_out_of_game(level)
+                out_of_game_started = True
+
             screen.blit(sky_surface, (0, 0))
 
             # prizes_table.draw(screen)
@@ -906,8 +1004,10 @@ def game_loop(level: int, question_array: {}):
                         if prize_event != 0:
                             if prize_seconds > 0:
                                 prize_seconds -= 1
-                            if prize_seconds == 0:
+                            if prize_seconds == 0 and not out_of_game:
                                 return True
+                            else:
+                                return False
                     else:
                         if prize_seconds == 3 and len(prize_group) == 0:
 
@@ -930,7 +1030,6 @@ def game_loop(level: int, question_array: {}):
                 screen.blit(sky_surface, (0, 0))
                 prize_group.draw(screen)
                 prize_group.update(selected, correct_answer_key)
-            # print(phone_event)
             if phone_event != 0:
                 x_pos = 630
                 y_pos = 135
@@ -964,9 +1063,14 @@ def game_loop(level: int, question_array: {}):
 
 
 
-
         else:
-            screen.fill((94, 129, 162))
+            screen.fill((0, 0, 0))
+            screen.blit(in_game_menu_bg,  (0, 0))
+            util.pause_music()
+            menu_group.draw(screen)
+            menu_group.update()
+
+            if exit: return False
 
         pygame.display.update()
         clock.tick(60)
