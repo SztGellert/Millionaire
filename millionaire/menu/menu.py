@@ -412,7 +412,7 @@ class MenuOption(pygame.sprite.Sprite):
     def __init__(self, type, order, base_height):
         super().__init__()
 
-        x_pos = 400
+        x_pos = 200
         y_pos = base_height + (order * 35)
 
         self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
@@ -576,9 +576,9 @@ def main():
     clock = pygame.time.Clock()
     global sky_surface
 
-    sky_surface = pygame.image.load('./data/graphics/background_.png').convert_alpha()
-    sky_surface_rect = sky_surface.get_rect(midtop=(400, 20))
-    subsurface = sky_surface.subsurface(0,0,800,400)
+    sky_surface = pygame.image.load('./data/graphics/menu_bg.jpg').convert_alpha()
+    #sky_surface_rect = sky_surface.get_rect(midtop=(400, 20))
+    #subsurface = sky_surface.subsurface(0,0,800,400)
 
     main_menu_base_y = 375
 
@@ -613,7 +613,8 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-        screen.blit(subsurface, (0, -20), sky_surface_rect)
+        #screen.blit(subsurface, (0, -20), sky_surface_rect)
+        screen.blit(sky_surface, (0, 0))
 
         if options:
 
@@ -652,7 +653,8 @@ def main():
 
         else:
             screen.fill((0, 0, 0))
-            screen.blit(subsurface, (0, -20), sky_surface_rect)
+            #screen.blit(subsurface, (0, -20), sky_surface_rect)
+            screen.blit(sky_surface, (0, 0))
 
             menu_option_group.draw(screen)
             menu_option_group.update()
