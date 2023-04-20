@@ -31,18 +31,24 @@ class Obstacle(pygame.sprite.Sprite):
 
     def __init__(self, type, text):
         super().__init__()
-
-        font = pygame.font.SysFont('Sans', 25)
+        text_size = 25
         self.correct_option = pygame.image.load('./data/graphics/option_correct.png').convert_alpha()
         self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
         self.pre_marked_option = pygame.image.load('./data/graphics/option_pre_marked.png').convert_alpha()
+        text_x = 30
+        text_y = 0
 
         self.is_active = self.get_is_active()
-        if type != "question":
+        if type not in ["question", "prize"]:
             if self.is_active:
                 text = f"{str(type).upper()}: {text}"
             else:
                 text = f"{str(type).upper()}: "
+
+            if len(text) > 34:
+                text_y = 5
+
+                text_size = 18
 
         if type == "a":
             self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
@@ -72,20 +78,43 @@ class Obstacle(pygame.sprite.Sprite):
             y_pos = 565
 
         else:
-
             text = f"{text}"
-            self.frame = pygame.image.load('./data/graphics/question.png').convert_alpha()
 
-            x_pos = 400
-            y_pos = 455
+            if type == "prize":
+                self.frame = pygame.image.load('./data/graphics/prize.png').convert_alpha()
 
-        if len(text) > 55:
-            font = pygame.font.SysFont('Sans', 18)
+                x_pos = 400
+                y_pos = 455
+            else:
+
+                self.frame = pygame.image.load('./data/graphics/question.png').convert_alpha()
+
+                x_pos = 400
+                y_pos = 455
+                if len(text) > 55:
+                    text_size = 18
+
+        font = pygame.font.SysFont('Sans', text_size)
+        color = (255, 255, 255)
+        if type == "prize":
+            text_size = 33
+            font = pygame.font.SysFont('Sans', text_size, bold=True)
+            color = (245, 148, 41)
+
+        self.text = font.render(text, True, color)
 
         self.type = type
-        self.text = font.render(text, True, (255, 255, 255))
         self.image = self.frame
-        self.image.blit(self.text, [30, 0])
+        if type == "prize":
+            text_x = 330
+            text_y = 7
+        if type == "question":
+
+            text_y = 8
+            if len(text) < 55:
+                text_x += ((55 - len(text))*7.5)
+
+        self.image.blit(self.text, [text_x, text_y])
         self.rect = self.image.get_rect(center=(x_pos, y_pos))
 
     def get_is_active(self):
@@ -579,6 +608,8 @@ def play():
     obstacle_group = pygame.sprite.Group()
     global prizes_table
     prizes_table = pygame.sprite.GroupSingle()
+
+
     game_levels = 15
     level = 0
     init_threads(level)
@@ -674,6 +705,7 @@ def game_loop(level: int, question_array: {}):
     pygame.time.set_timer(pygame.USEREVENT + 5, 1000)  # DIAL EVENT
     pygame.time.set_timer(pygame.USEREVENT + 6, 1000)  # PHONE INTRO EVENT
     pygame.time.set_timer(pygame.USEREVENT + 7, 1000)  # AUDIENCE INTRO EVENT
+    pygame.time.set_timer(pygame.USEREVENT + 8, 1000)  # PRIZE EVENT
 
     counter = 3
     sprite_group = ['question', "a", "b", "c", "d"]
@@ -726,6 +758,9 @@ def game_loop(level: int, question_array: {}):
     audience_intro_event = 0
     global audience_intro_duration
     audience_intro_duration = 0
+    prize_group = pygame.sprite.GroupSingle()
+    prize_seconds = 3
+    prize_event = 0
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -865,16 +900,36 @@ def game_loop(level: int, question_array: {}):
             if type == "mark":
                 if mark_seconds < 1:
                     if selected == correct_answer_key:
-                        play_correct_sounds(level)
-                        return True
+                        if prize_seconds == 3 and len(prize_group) == 0:
+                            play_correct_sounds(level)
+                            prize_group.add(Obstacle("prize", get_prize(level)))
+                        if prize_event != 0:
+                            if prize_seconds > 0:
+                                prize_seconds -= 1
+                            if prize_seconds == 0:
+                                return True
                     else:
-                        play_incorrect_sounds(level)
-                        return False
+                        if prize_seconds == 3 and len(prize_group) == 0:
 
+                            play_incorrect_sounds(level)
+                            prize_group.add(Obstacle("prize", get_prize(level)))
+                        if prize_event != 0:
+                            if prize_seconds > 0:
+                                prize_seconds -= 1
+                            if prize_seconds == 0:
+                                return False
+                    prize_group.draw(screen)
+                    prize_group.update(selected, correct_answer_key)
+                    prize_event = pygame.USEREVENT + 9
             help_group.draw(screen)
             help_group.update(correct_answer_key)
             obstacle_group.draw(screen)
             obstacle_group.update(selected, correct_answer_key, type)
+            if prize_event != 0:
+                screen.fill((0, 0, 0))
+                screen.blit(sky_surface, (0, 0))
+                prize_group.draw(screen)
+                prize_group.update(selected, correct_answer_key)
             # print(phone_event)
             if phone_event != 0:
                 x_pos = 630
@@ -974,8 +1029,8 @@ def play_correct_sounds(level: int):
                 util.play_sound("now_comes_hard_part", 0, dir="random")
         else:
             # print_prizes_with_quizmaster(i)
-            util.play_sound("claps", 0, general=True, timer=True)
-            time.sleep(2)
+            util.play_sound("claps", 0, general=True)
+            #time.sleep(2)
     else:
         if util.game_language == util.Language.HUNGARIAN.name:
             util.play_sound("after_marking", 0, dir="lets_see")
@@ -1452,7 +1507,7 @@ def check_answer(answer: str, correct_answer: str) -> bool:
     return answer == correct_answer
 
 
-def show_prize(round_number: int) -> str:
+def get_prize(round_number: int) -> str:
     prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
     return prizes[round_number][0]
 

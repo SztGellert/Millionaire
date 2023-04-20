@@ -4,7 +4,7 @@ Egészítse ki a híres novella címét! "Mario és a ..";Varázsló;Varázshegy
 Mit neveztek régen indóháznak?;Vasútállomást;Telefonközpontot;Kékfestőműhelyt;Az automobil motorját
 Ki rendezte a Titanic című 1997-ben készült filmet?;James Cameron;Ron Howard;Steven Spielberg;Richard Donner
 Mi a gépjárművek tengelykapcsolójának ismert neve?;Kuplung;Gyertya;Porlasztó;Akkumulátor
-Melyik város nevezetes az ókor legnagyobb ismert könyvtárát?;Alexandria;Knosszosz;Büblosz;Milétosz
+Melyik város nevezetes az ókor legnagyobb ismert könyvtáról?;Alexandria;Knosszosz;Büblosz;Milétosz
 Milyen a "szomszéd nője" Jack Lemmon és Walter Matthau filmjének címe szerint?;Mindig zöldebb;Mindig szőkébb;Mindig teltebb;Mélyebb dekoltázsú
 Milyen királyságnak nevezik a rövid idejig tartó hatalmat?;Pünkösdi;Húsvéti;Újévi;Karácsonyi
 Milyen gazdasági társulás nevét vette fel egy magyar rockegyüttes a 80-as években?;KFT;TSZ;GMK;ÁFÉSZ
