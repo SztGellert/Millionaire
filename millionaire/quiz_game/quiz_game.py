@@ -72,14 +72,15 @@ class Obstacle(pygame.sprite.Sprite):
             y_pos = 565
 
         else:
-            if len(text) > 55:
-                font = pygame.font.SysFont('Sans', 18)
 
             text = f"{text}"
             self.frame = pygame.image.load('./data/graphics/question.png').convert_alpha()
 
             x_pos = 400
             y_pos = 455
+
+        if len(text) > 55:
+            font = pygame.font.SysFont('Sans', 18)
 
         self.type = type
         self.text = font.render(text, True, (255, 255, 255))
