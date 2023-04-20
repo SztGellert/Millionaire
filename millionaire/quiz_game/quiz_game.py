@@ -97,7 +97,7 @@ class Obstacle(pygame.sprite.Sprite):
         self.is_active = False
 
     def player_input(self):
-        if pygame.mouse.get_pressed()[0]:
+        if pygame.mouse.get_pressed()[0] and self.type != 'question':
             self.animation_state()
 
     def update(self, selected_, correct, type_="select"):
@@ -772,7 +772,7 @@ def game_loop(level: int, question_array: {}):
                                             "your_guess_stayed", "you_have_fifty_percent",
                                             "im_not_surprised"]
                     sound = random.choice(after_halving_sounds)
-                    util.play_sound(sound, 0, dir="halving", timer=True)
+                    util.play_sound(sound, 0, dir="halving")
                     after_halving_event = 0
             if event.type == phone_event:
                 if len(help_group) == 3 and not clock_added:
@@ -862,8 +862,9 @@ def game_loop(level: int, question_array: {}):
                 if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
                     if dbclock.tick() < DOUBLECLICKTIME:
                         for ob in obstacle_group.sprites():
-                            if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
-                                selected = ob.type
+                            if ob.type != 'question':
+                                if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
+                                    selected = ob.type
 
             else:
                 if event.type == pygame.KEYDOWN:
