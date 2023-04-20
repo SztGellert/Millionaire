@@ -165,14 +165,18 @@ class Help(pygame.sprite.Sprite):
             self.frame = pygame.image.load('./data/graphics/telephone.png').convert_alpha()
             x_pos = 630
             y_pos = 35
+
         elif type == "teacher":
             self.frame = pygame.image.load('./data/graphics/teacher.png').convert_alpha()
             x_pos = 630
             y_pos = 135
+            self.is_dialed = False
+
         elif type == "chewbacca":
             self.frame = pygame.image.load('./data/graphics/chewbacca.png').convert_alpha()
             x_pos = 520
             y_pos = 135
+            self.is_dialed = False
         elif type == "clock":
             self.frame = pygame.image.load('./data/graphics/clock.png').convert_alpha()
             x_pos = 630
@@ -185,6 +189,8 @@ class Help(pygame.sprite.Sprite):
             self.frame = pygame.image.load('./data/graphics/random.png').convert_alpha()
             x_pos = 740
             y_pos = 135
+            self.is_dialed = False
+
         else:
             self.frame = pygame.image.load('./data/graphics/audience.png').convert_alpha()
             x_pos = 740
@@ -198,44 +204,47 @@ class Help(pygame.sprite.Sprite):
         if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
             global help_types
             global help_group
+
             if self.type == "halving":
                 self.halving(correct_answer)
                 help_types[self.type] = False
-
-            elif self.type == "telephone":
-                self.phone_prologue()
+            elif self.type == "telephone" and len(help_group) == 3:
+                #self.phone_prologue()
                 global phone_select
                 phone_select = True
 
             elif self.type in ["teacher", "chewbacca", "random"]:
-                for ob in help_group.sprites():
-                    if ob.type in ["teacher", "chewbacca", "random"]:
-                        help_group.remove(ob)
-                #self.phone_dial()
-                self.phone(correct_answer, self.type)
-                global phone_event
-                phone_event = pygame.USEREVENT + 4
-                phone_select = False
-                help_types["telephone"] = False
-                global type
-                type = "pre_marked"
-                global selected
-                selected = correct_answer
-                chance = random.randint(0,10)
-                answers = ["a", "b", "c", "d"]
-                answers.remove(correct_answer)
-                if chance == 0:
-                    selected = random.choice(answers)
 
-            else:
+                global phone_event
+                global dial_event
+                global intro_duration
+                print(self.type)
+                print(self.is_dialed)
+                print(dial_event)
+
+
+                if self.is_dialed == False:
+                    dial_event = pygame.USEREVENT + 5
+                    self.is_dialed = True
+                elif dial_event != 0:
+                    self.phone_dial()
+                    intro_duration = self.phone_intro()
+
+
+
+            elif self.type == "audience":
                 self.audience(correct_answer)
                 global audience_event
                 audience_event = pygame.USEREVENT + 4
                 help_types[self.type] = False
                 util.play_sound("audience", 0, general=True)
+            else:
+                pass
 
     def update(self, correct_answer: ""):
         global help_types
+        global phone_event
+
         first_line = [(20, 28), (68, 62)]
         second_line = [(75, 25), (25, 60)]
         width = 3
@@ -258,9 +267,26 @@ class Help(pygame.sprite.Sprite):
         else:
             if help_types["telephone"]:
                 self.player_input(correct_answer)
+                if phone_event != 0 and self.is_dialed == True:
+                    # if intro_duration < 1:
+                    for ob in help_group.sprites():
+                        if ob.type in ["teacher", "chewbacca", "random"]:
+                            help_group.remove(ob)
+
+                    self.phone(correct_answer, self.type)
+                    phone_select = False
+                    help_types["telephone"] = False
+                    global type
+                    type = "pre_marked"
+                    global selected
+                    selected = correct_answer
+                    chance = random.randint(0, 10)
+                    answers = ["a", "b", "c", "d"]
+                    answers.remove(correct_answer)
+                    if chance == 0:
+                        selected = random.choice(answers)
 
             if self.type == "clock":
-                global phone_event
                 if phone_event == 0:
                     self.kill()
 
@@ -290,6 +316,26 @@ class Help(pygame.sprite.Sprite):
         if util.game_language == util.Language.HUNGARIAN.name:
             dial_sound = "colleagues_are_dialing"
             util.play_sound(dial_sound, 0, dir="phone", timer=True)
+
+
+    def phone_intro(self) -> int:
+        target = self.type
+        if target == "teacher":
+            util.play_sound("teacher_first_part", 0, dir="phone", timer=True)
+            util.play_sound(player_in_game, 0, dir="players", timer=True)
+            util.play_sound("teacher_second_part", 0, dir="phone", timer=True)
+            return util.get_sound_length("teacher_second_part", dir="phone")
+
+        if target == "chewbacca":
+            #util.play_sound("chewbacca_intro", 0, dir="phone")
+            #return util.get_sound_length("chewbacca_intro", dir="phone")
+            return 5
+            #util.play_sound("chewbacca", 0, dir="phone")
+            #call_duration = util.get_sound_length("chewbacca", dir="phone")
+            #util.play_background_sound("phone_call", 0, general=True)
+        if target == "random":
+            util.play_sound("weekly_seven", 0, dir="phone")
+            return util.get_sound_length("weekly_seven", dir="phone")
 
     def phone(self, correct_answer, target: str):
         global call_duration
@@ -906,6 +952,8 @@ def game_loop(level: int, question_array: {}):
     pygame.time.set_timer(pygame.USEREVENT + 2, 1000)
     pygame.time.set_timer(pygame.USEREVENT + 3, 1000)
     pygame.time.set_timer(pygame.USEREVENT + 4, 1000)
+    pygame.time.set_timer(pygame.USEREVENT + 5, 1000)
+    pygame.time.set_timer(pygame.USEREVENT + 6, 1000)
 
 
     start_ticks = 0
@@ -954,8 +1002,21 @@ def game_loop(level: int, question_array: {}):
     audience_text = ""
     audience_seconds = 4
     audience_res = {}
+    global dial_event
+    dial_event = 0
+    dial_seconds = 2
+    global phone_intro_event
+    global intro_duration
+    phone_intro_event = 0
+    intro_duration = 0
+    clock_added = False
+    audience_table_added = False
+    i = 0
+    p = 0
     while True:
         for event in pygame.event.get():
+            print(phone_event)
+
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
@@ -992,15 +1053,43 @@ def game_loop(level: int, question_array: {}):
             
 
             if event.type == phone_event:
-                if len(help_group) == 3:
+                p += 1
+                #print(phone_seconds)
+                #print(call_duration)
+                #print("helps:" + str(len(help_group)))
+                #print( 30-call_duration)
+                #print(phone_seconds)
+                #print(call_duration)
+                #for ob in help_group.sprites():
+                #    print(ob.type)
+                #print("END")
+                if len(help_group) == 3 and not clock_added:
                     help_group.add(Help("clock"))
+                    clock_added = True
+                    i += 1
+
                 if phone_seconds > 0 and phone_seconds > 30-call_duration:
                     phone_seconds -= 1
                 else:
                     util.stop_music()
-                    util.play_sound("phone_call_return", 0, general=True, timer=True)
+                    util.play_sound("phone_call_return", 0, general=True)
                     phone_event = 0
 
+            if event.type == dial_event:
+                if dial_seconds > 0:
+                    dial_seconds -= 1
+                if dial_seconds < 1 and phone_event == 0:
+                    print("SET")
+                    phone_intro_event = pygame.USEREVENT + 6
+                    dial_event = 0
+
+            if event.type == phone_intro_event:
+                if intro_duration > 0:
+                    intro_duration -= 1
+
+                else:
+                    phone_event = pygame.USEREVENT + 4
+                    phone_intro_event = 0
             if event.type == audience_event:
                 if audience_seconds > 0:
                     audience_seconds -= 1
@@ -1073,11 +1162,10 @@ def game_loop(level: int, question_array: {}):
                 help_group.add(Help("teacher"))
                 help_group.add(Help("chewbacca"))
                 help_group.add(Help("random"))
-
                 phone_select = False
-            if audience_event:
+            if audience_event and not audience_table_added:
                 help_group.add(Help("audience_table"))
-
+                audience_table_added = True
             if type == "mark":
                 if mark_seconds < 1:
                     if selected == correct_answer_key:
@@ -1091,6 +1179,7 @@ def game_loop(level: int, question_array: {}):
             help_group.update(correct_answer_key)
             obstacle_group.draw(screen)
             obstacle_group.update(selected, correct_answer_key, type)
+            #print(phone_event)
             if phone_event != 0:
                 x_pos = 630
                 y_pos = 135
