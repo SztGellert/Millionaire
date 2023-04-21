@@ -535,12 +535,8 @@ def get_dictionary_key_by_value(dictionary: {}, value: str) -> str:
 
 def answer_out_of_game(level):
 
-    #if util.game_language == util.Language.HUNGARIAN.name:
-    #    thread_random(i, last_one="base")
-
     util.pause_music()
     if util.game_language == util.Language.HUNGARIAN.name:
-        #thread_random(score, working=False)
         music_off_sounds = ["music_off", "lower_music"]
         sound = random.choice(music_off_sounds)
         if level > 8:
@@ -551,47 +547,6 @@ def answer_out_of_game(level):
                               "out_of_game_2", "out_of_game_say_letter"]
         sound = random.choice(out_of_game_sounds)
         util.play_sound(sound, 0, dir="out_of_game")
-
-        '''
-        is_correct = check_answer(answer, correct_answer_key)
-        if is_correct:
-            util.clear_screen()
-            print_quiz_table(question, shuffled_answers, answer, "green", "", game_level=i)
-            time.sleep(2)
-            if game_language == util.Language.HUNGARIAN.name:
-                util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
-            if i > 0:
-                print_prizes_with_quizmaster(level=i - 1)
-            else:
-                print_prizes_with_quizmaster(level=i, nullprize=True)
-            print(fg.orange + "\n   " + language_dictionary[game_language].quiz.correct_answer_out + fg.rs)
-            util.play_sound("claps", 0, general=True, timer=True)
-        else:
-            if game_language == util.Language.HUNGARIAN.name:
-                util.play_sound("good_to_stop", 0, dir="out_of_game", timer=True)
-            util.clear_screen()
-            print_quiz_table(question, shuffled_answers, answer, "blue", correct_answer=correct_answer_key,
-                             game_level=i)
-            time.sleep(2)
-            if i > 9:
-                print_prizes_with_quizmaster(9)
-            elif i > 4:
-                print_prizes_with_quizmaster(4)
-            else:
-                print_prizes_with_quizmaster(0, nullprize=True)
-            print(fg.red + "\n   " + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
-            if util.game_language == util.Language.HUNGARIAN.name:
-                sorry_sounds = ["so_sorry", "terribly_sorry"]
-                sound = random.choice(sorry_sounds)
-                util.play_sound(sound, 0, dir="out_of_game", timer=True)
-            time.sleep(1)
-            util.play_sound("claps", 0, general=True, timer=True)
-        quit_quiz(score, player_name, question_topics)
-        util.clear_screen()
-        return
-    return
-    quit_quiz(score, player_name, question_topics)
-    '''
 
 
 def play():
@@ -770,6 +725,7 @@ def game_loop(level: int, question_array: {}):
     answer_list = list(answers.values())
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
+
     '''
     if level in [0, 6, 8]:
         play_question_intro(level)
@@ -859,9 +815,7 @@ def game_loop(level: int, question_array: {}):
                 exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    print(game_active)
                     game_active = False
-                    print(game_active)
             if event.type == pygame.USEREVENT and selected != "" and type == "select":
                 if audience_event != 0:
                     audience_event = 0
@@ -963,7 +917,10 @@ def game_loop(level: int, question_array: {}):
                                                  "audience_random"]
                         after_sound = random.choice(audience_after_sounds)
                         util.play_sound(after_sound, 0, dir="audience", timer=True)
-                    # time.sleep(1)
+
+            if event.type == prize_event:
+                if prize_seconds > 0:
+                    prize_seconds -= 1
 
             if game_active:
                 if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
@@ -995,32 +952,48 @@ def game_loop(level: int, question_array: {}):
             if audience_event and not audience_table_added:
                 help_group.add(Help("audience_table"))
                 audience_table_added = True
+
             if type == "mark":
                 if mark_seconds < 1:
                     if selected == correct_answer_key:
                         if prize_seconds == 3 and len(prize_group) == 0:
-                            play_correct_sounds(level)
+                            if not out_of_game:
+                                play_correct_sounds(level)
                             prize_group.add(Obstacle("prize", get_prize(level)))
                         if prize_event != 0:
-                            if prize_seconds > 0:
-                                prize_seconds -= 1
-                            if prize_seconds == 0 and not out_of_game:
-                                return True
-                            else:
-                                return False
+                            if prize_seconds == 0:
+                                if out_of_game:
+                                    if game_language == util.Language.HUNGARIAN.name:
+                                        util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
+                                    util.play_sound("claps", 0, general=True, timer=True)
+                                    return False
+                                else:
+                                    return True
                     else:
                         if prize_seconds == 3 and len(prize_group) == 0:
-
-                            play_incorrect_sounds(level)
-                            prize_group.add(Obstacle("prize", get_prize(level)))
+                            if not out_of_game:
+                                play_incorrect_sounds(level)
+                            prize_group.add(Obstacle("prize", get_prize(level, correct_answer=False)))
                         if prize_event != 0:
-                            if prize_seconds > 0:
-                                prize_seconds -= 1
-                            if prize_seconds == 0:
+                            if prize_seconds == 0 and not out_of_game:
                                 return False
-                    prize_group.draw(screen)
-                    prize_group.update(selected, correct_answer_key)
-                    prize_event = pygame.USEREVENT + 9
+                            else:
+                                if game_language == util.Language.HUNGARIAN.name:
+                                    util.play_sound("good_to_stop", 0, dir="out_of_game", timer=True)
+                                util.clear_screen()
+                                time.sleep(2)
+                                if util.game_language == util.Language.HUNGARIAN.name:
+                                    sorry_sounds = ["so_sorry", "terribly_sorry"]
+                                    sound = random.choice(sorry_sounds)
+                                    util.play_sound(sound, 0, dir="out_of_game", timer=True)
+                                time.sleep(1)
+                                util.play_sound("claps", 0, general=True, timer=True)
+                                return False
+
+                    #prize_group.draw(screen)
+                    #prize_group.update(selected, correct_answer_key)
+                    prize_event = pygame.USEREVENT + 8
+                    print(prize_seconds)
             help_group.draw(screen)
             help_group.update(correct_answer_key)
             obstacle_group.draw(screen)
@@ -1611,9 +1584,32 @@ def check_answer(answer: str, correct_answer: str) -> bool:
     return answer == correct_answer
 
 
-def get_prize(round_number: int) -> str:
+def get_prize(round_number: int, correct_answer = True) -> str:
+    global out_of_game
+
     prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
-    return prizes[round_number][0]
+
+    if out_of_game:
+        if round_number>0:
+            return prizes[round_number-1][0]
+        else:
+            if util.game_language == util.Language.HUNGARIAN.name:
+                return "0 Ft"
+            else:
+                return "£0"
+    else:
+        if not correct_answer:
+            if round_number > 9:
+                return prizes[9][0]
+            elif round_number > 4:
+                return prizes[4][0]
+            else:
+                if util.game_language == util.Language.HUNGARIAN.name:
+                    return "0 Ft"
+                else:
+                    return "£0"
+        else:
+            return prizes[round_number][0]
 
 
 def halving_before_sounds() -> dict:
