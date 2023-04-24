@@ -346,7 +346,6 @@ class MenuOption(pygame.sprite.Sprite):
                 lang_selection = False
 
             if self.name in language_dictionary[util.game_language].menu.settings_menu_question_topics:
-                print(self.name)
                 if util.question_topics != str(
                         list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(
                                 self.name)).lower():
@@ -358,14 +357,15 @@ class MenuOption(pygame.sprite.Sprite):
             if self.name in language_dictionary[util.game_language].menu.question_difficulty_levels:
                 if util.difficulty_levels != self.name:
                     if self.name != language_dictionary[util.game_language].menu.question_difficulty_levels[0]:
-                        util.set_question_difficulty(self.name)
+                        util.set_question_difficulty(util.Difficulty(language_dictionary[util.game_language].menu.question_difficulty_levels.index(self.name)).name)
                     else:
                         util.set_question_difficulty(util.Difficulty.ALL.name)
                 difficulties = False
 
             if self.name in language_dictionary[util.game_language].menu.quizmaster_attitudes:
                 if util.quizmaster_attitudes != self.name:
-                    util.set_quizmaster_attitude(self.name)
+                    util.set_quizmaster_attitude(util.QuizMasterAttitude(
+                        language_dictionary[util.game_language].menu.quizmaster_attitudes.index(self.name)).name)
                 attitudes = False
 
     def update(self):
@@ -399,6 +399,7 @@ class MenuOption(pygame.sprite.Sprite):
                 text = language_dictionary[util.game_language].topic + ": " + list(language_dictionary[util.game_language].menu.settings_menu_question_topics)[util.Topics[util.question_topics].value]
 
             elif self.order == 4:
+                print(util.question_difficulty)
                 text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + list(language_dictionary[util.game_language].menu.question_difficulty_levels)[util.Difficulty[util.question_difficulty].value]
 
             elif self.order == 5:

@@ -19,7 +19,7 @@
                          "Question types",
                          "Question difficulty",
                          "Quizmaster attitude",
-                         "Restore Settings",
+                         "Default Settings",
                          "Back"],
         "skip_prompt": "Press any key to skip game intro...",
         "main_menu_options" : ["Play", "Fastest Fingers First","Tutorial", "Settings", "Credits","Scores", "Exit"],

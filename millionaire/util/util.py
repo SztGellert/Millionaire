@@ -275,16 +275,8 @@ def custom_dictionary_decoder(dict1):
 
 
 def default_settings() -> bool:
-    global game_language
-    global question_topics
-    global language_dictionary
-    global question_difficulty
-    global system_volume
-    global quizmaster_attitude
-    global full_screen
-
     if game_language == Language.ENGLISH.name and question_topics == Topics.ALL.name \
-            and question_difficulty == Difficulty.ALL.name and system_volume == True and quizmaster_attitude == QuizMasterAttitude.FRIENDLY.name and full_screen == False:
+            and question_difficulty == Difficulty.ALL.name and system_volume == True and quizmaster_attitude == QuizMasterAttitude.NEUTRAL.name and full_screen == False:
         return True
 
     return False
