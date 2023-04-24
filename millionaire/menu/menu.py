@@ -183,12 +183,12 @@ class MenuOption(pygame.sprite.Sprite):
 
             if order == 0:
                 if util.game_language[:2].lower() == "hu":
-                    text = language_dictionary[util.game_language].language + ": " + language_dictionary[util.game_language].hu
-                    self.name = language_dictionary[util.game_language].language
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0]+ ": " + language_dictionary[util.game_language].hu
+                    self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
 
                 else:
-                    text = language_dictionary[util.game_language].language + ": " + language_dictionary[util.game_language].en
-                    self.name = language_dictionary[util.game_language].language
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0]+ ": " + language_dictionary[util.game_language].en
+                    self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
 
             elif order == 1:
                 self.name = language_dictionary[util.game_language].menu.settings_menu_options[1]
@@ -288,6 +288,7 @@ class MenuOption(pygame.sprite.Sprite):
             self.image.blit(self.text, [self.text_x, self.text_y])
 
         if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
+            print(self.name)
             import time
             time.sleep(0.2)
             if self.name in language_dictionary[util.game_language].menu.main_menu_options:
@@ -369,16 +370,18 @@ class MenuOption(pygame.sprite.Sprite):
                 attitudes = False
 
     def update(self):
-        #if self.lang != util.game_language:
         if self.type == "main_menu_option":
             text = language_dictionary[util.game_language].menu.main_menu_options[self.order]
+            self.name = text
         elif self.type == "settings_menu_option":
             if self.order == 0:
                 if util.game_language[:2].lower() == "hu":
-                    text = language_dictionary[util.game_language].language + ": " + language_dictionary[util.game_language].hu
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + language_dictionary[util.game_language].hu
+                    self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
 
                 else:
-                    text = language_dictionary[util.game_language].language + ": " + language_dictionary[util.game_language].en
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + language_dictionary[util.game_language].en
+                    self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
 
             elif self.order == 1:
                 text = language_dictionary[util.game_language].sounds + ": "
@@ -386,6 +389,7 @@ class MenuOption(pygame.sprite.Sprite):
                     text += language_dictionary[util.game_language].true
                 else:
                     text += language_dictionary[util.game_language].false
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
 
 
             elif self.order == 2:
@@ -394,16 +398,19 @@ class MenuOption(pygame.sprite.Sprite):
                     text += language_dictionary[util.game_language].true
                 else:
                     text += language_dictionary[util.game_language].false
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
 
             elif self.order == 3:
                 text = language_dictionary[util.game_language].topic + ": " + list(language_dictionary[util.game_language].menu.settings_menu_question_topics)[util.Topics[util.question_topics].value]
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
 
             elif self.order == 4:
-                print(util.question_difficulty)
                 text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + list(language_dictionary[util.game_language].menu.question_difficulty_levels)[util.Difficulty[util.question_difficulty].value]
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
 
             elif self.order == 5:
                 text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + list(language_dictionary[util.game_language].menu.quizmaster_attitudes)[util.QuizMasterAttitude[util.quizmaster_attitude].value]
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
 
             elif self.order == 6:
                 text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": "
@@ -411,15 +418,16 @@ class MenuOption(pygame.sprite.Sprite):
                     text += language_dictionary[util.game_language].true
                 else:
                     text += language_dictionary[util.game_language].false
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+
             else:
                 text = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
-
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
         elif self.type == "topic_option":
             text = language_dictionary[util.game_language].menu.settings_menu_question_topics[self.order]
             self.name = text
 
         elif self.type == "question_difficulty_option":
-
             text = language_dictionary[util.game_language].menu.question_difficulty_levels[self.order]
             self.name = text
 
@@ -427,17 +435,15 @@ class MenuOption(pygame.sprite.Sprite):
             text = language_dictionary[util.game_language].menu.quizmaster_attitudes[self.order]
             self.name = text
 
-            #text = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
         elif self.type == "language_option":
             langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu]
             text = langs[self.order]
+            self.name = langs[self.order]
         else:
             text = ""
 
         self.text = self.font.render(text, True, (255, 255, 255))
         self.lang = util.game_language
-            #self.name = text
-
         self.player_input()
 
 

@@ -13,7 +13,7 @@
         "title_first_line": " ♦      L E G Y E N     Ö N    I S      ♦",
         "title_second_line": "     M   I   L   L   I   O   M   O   S",
         "return_prompt": "Nyomja meg az ESCAPE-t a menübe való visszatéréshez...",
-        "settings_menu_options": ["Nyelv kiválasztása",
+        "settings_menu_options": ["Nyelv",
                      "Hangok ki/bekapcsolása",
                      "Teljes Képernyő",
                      "Kérdés témakörök",
