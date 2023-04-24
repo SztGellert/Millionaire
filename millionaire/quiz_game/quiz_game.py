@@ -720,7 +720,6 @@ def play():
             question_lines = question_lines_hard
     answers = {"a": question_lines[level][1], "b": question_lines[level][2], "c": question_lines[level][3],
                "d": question_lines[level][4]}
-    question = ""
     answer_list = list(answers.values())
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
@@ -728,7 +727,7 @@ def play():
     global player, player_in_game
     player = "player"
     player_in_game = "player"
-    '''
+    # DEBUG COMMENT HERE
     start_game()
     if game_language == util.Language.HUNGARIAN.name:
         for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
@@ -739,7 +738,7 @@ def play():
         millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
         sound = random.choice(millionaire_sounds)
         util.play_sound(sound, 0, dir="intro", timer=True)
-    '''
+
     is_active = True
     for i in range(game_levels):
         if i < game_levels:
@@ -778,7 +777,6 @@ def start_game():
 
 
 def game_loop(level: int, question_array: {}):
-    level = 14
     global out_of_game
     out_of_game = False
     last_input = ""
@@ -786,8 +784,6 @@ def game_loop(level: int, question_array: {}):
     global game_active
     global after_halving_event
 
-    #question_array[level][0] = "ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD"
-    #print(len(question_array[level][0]))
     question = question_array[level][0]
     answers = {"a": question_array[level][1], "b": question_array[level][2], "c": question_array[level][3],
                "d": question_array[level][4]}
@@ -795,13 +791,13 @@ def game_loop(level: int, question_array: {}):
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
 
-    '''
+    # DEBUG COMMENT HERE
     if level in [0, 6, 8]:
         play_question_intro(level)
     if util.game_language == util.Language.HUNGARIAN.name and level < 14:
         play_question_prologue(level)
         play_music(level)
-    '''
+
     correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[level][1])
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
