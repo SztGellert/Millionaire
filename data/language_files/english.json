@@ -64,5 +64,21 @@
             "out_of_game": "Out of game answer",
             "exit": "Exit"
           }
+    },
+    "tutorial": {
+        "text_list": ["This is the Guide of The Helpless Gooses' Millionare game.",
+        "This game is based on the TV show \"Who wants to be a Millionaire?\".",
+        "You will get 15 questions in a random order and you have to choose the correct answer out of 4.",
+        "How it works / instructions:",
+        "You have to type for every question: a / b / c / d",
+        "You have 3 kinds of helps:",
+        "Audience's help Telephone help Halving the questions by the computer",
+        "You earn guaranteed prize after the 5th correct answer. ",
+        "You earn guaranteed prize after the 10th correct answer.",
+        "You earn guaranteed prize after the 15th correct answer.",
+        "You can also make a guess out of the game to win guaranteed prizes.",
+        "And you win the game of course if you've guessed all the answers correct.",
+        "Please enjoy! Best wishes from the Gooses!"
+        ]
     }
 }

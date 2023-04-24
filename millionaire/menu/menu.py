@@ -294,6 +294,8 @@ class MenuOption(pygame.sprite.Sprite):
             if self.name in language_dictionary[util.game_language].menu.main_menu_options:
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[0]:
                     quiz.play()
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[2]:
+                    tutorial()
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[3]:
                     global options
                     options = True
@@ -565,6 +567,104 @@ def main():
         pygame.display.update()
         clock.tick(60)
 
+
+def tutorial():
+    pygame.init()
+    pygame.time.set_timer(pygame.USEREVENT, 1000)
+
+    global screen
+    if util.full_screen:
+        screen = pygame.display.set_mode((1366, 768), pygame.SCALED)
+    else:
+        screen = pygame.display.set_mode((1366, 768))
+
+    pygame.display.set_caption(language_dictionary[util.game_language].title)
+
+    millioniareIcon = pygame.image.load('./data/graphics/loim.png')
+    pygame.display.set_icon(millioniareIcon)
+
+    global clock
+    clock = pygame.time.Clock()
+    global sky_surface
+
+    sky_surface = pygame.image.load('./data/graphics/menu_bg.jpg').convert_alpha()
+    settings_surface =  pygame.image.load('./data/graphics/settings_menu_bg.png').convert_alpha()
+    # sky_surface_rect = sky_surface.get_rect(midtop=(400, 20))
+    # subsurface = sky_surface.subsurface(0,0,800,400)
+
+    main_menu_base_y = 475
+
+    menu_option_group = sprite_group_init(language_dictionary[util.game_language].menu.main_menu_options,
+                                          "main_menu_option", main_menu_base_y)
+
+    settings_menu_base_y = 245
+    topic_menu_base_y = 75
+
+    settings_group = []
+    for option in language_dictionary[util.game_language].menu.settings_menu_options:
+        settings_group.append(option)
+
+
+    settings_option_group = sprite_group_init(settings_group,
+                                              "settings_menu_option", settings_menu_base_y)
+
+
+    lang_group = sprite_group_init(util.available_languages, "language_option", settings_menu_base_y)
+
+    topic_group = sprite_group_init(language_dictionary[util.game_language].menu.settings_menu_question_topics,
+                                    "topic_option", topic_menu_base_y)
+    question_difficulty_group = sprite_group_init(
+        language_dictionary[util.game_language].menu.question_difficulty_levels, "question_difficulty_option",
+        settings_menu_base_y)
+    quizmaster_attitude_group = sprite_group_init(language_dictionary[util.game_language].menu.quizmaster_attitudes,
+                                                  "quizmaster_attitude_option", settings_menu_base_y)
+
+    global options, lang_selection, topics, difficulties, attitudes
+    options = False
+    lang_selection = False
+    topics = False
+    difficulties = False
+    attitudes = False
+
+    sprite_group_flags = [options, lang_selection, topics, difficulties, attitudes]
+    sprite_groups = [settings_option_group, lang_group, topic_group, question_difficulty_group,
+                     quizmaster_attitude_group]
+
+    while True:
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            if event.type == pygame.KEYDOWN:
+                return
+        # screen.blit(subsurface, (0, -20), sky_surface_rect)
+        #screen.blit(sky_surface, (0, 0))
+        screen.fill((7, 24, 173))
+
+        #frame = pygame.image.load('./data/graphics/settings_option.png').convert_alpha()
+
+        #screen.blit(settings_surface, (0,0))
+        font = pygame.font.SysFont('Sans', 25)
+        y = 50
+        for line in language_dictionary[util.game_language].tutorial.text_list:
+            text = font.render(line, True, (255, 148, 83))
+
+            screen.blit(text, [200, y])
+            y += 50
+        #image.blit(text, [0, 0])
+
+
+            #screen.fill((0, 0, 0))
+            # screen.blit(subsurface, (0, -20), sky_surface_rect)
+            #screen.blit(sky_surface, (0, 0))
+
+            #menu_option_group.draw(screen)
+            #menu_option_group.update()
+
+        pygame.display.update()
+        clock.tick(60)
 
 def sprite_group_init(sprite_group: list, sprite_group_type: str, y_height: int):
     sprit_group_instance = pygame.sprite.Group()
