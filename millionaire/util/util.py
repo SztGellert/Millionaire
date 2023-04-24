@@ -10,7 +10,8 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
 import pygame
 
 operating_system = os.name
-
+resolution = (1366, 768)
+full_screen = False
 
 class Language(Enum):
     ENGLISH = 0
@@ -73,6 +74,7 @@ def init_settings(selected_lang: str, reset_settings=False):
     global question_difficulty
     global system_volume
     global quizmaster_attitude
+    global full_screen
 
     if os.path.isfile("settings.json") and reset_settings == False:
         file_path = "settings.json"

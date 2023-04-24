@@ -10,6 +10,7 @@
         "return_prompt": "press ESC for main menu..",
         "settings_menu_options": ["Language selection",
                          "Disable/Enable Sound",
+                         "Full screen",
                          "Question types",
                          "Question difficulty",
                          "Quizmaster attitude",
@@ -26,45 +27,7 @@
             "time":  "Time"
         },
         "question_difficulty_levels": ["All","Easy", "Medium", "Hard"],
-        "quizmaster_attitudes": ["None","Friendly", "Neutral", "Hostile"],
-        "millionaire_lines": [
-                             "XXXX   XXXX XXX XXX    XXX    XXX XXXXXXXXX XXXX  XXX XXXXXXX XXX XXXXXX  XXXXXX",
-                             "X||XX XX||X X|X X|X    X|X    X|X X|||||||X X||X  X|X X|||||X X|X X||||XX X||||X",
-                             "X|||XXX|||X X|X X|X    X|X    X|X X|XXXXX|X X||X  X|X X|XXX|X X|X X|X X|X X|X   ",
-                             "X|XX|||XX|X X|X X|X    X|X    X|X X|X   X|X X|X|X X|X X|X X|X X|X X|X X|X X|XXXX",
-                             "X|X X|X X|X X|X X|X    X|X    X|X X|X   X|X X|X|X X|X X|XXX|  X|X X||||X  X||||X",
-                             "X|X  X  X|X X|X X|X    X|X    X|X X|X   X|X X|X | X|X X|||||X X|X X|X X|X X|XXXX",
-                             "X|X     X|X X|X X|X    X|X    X|X X|X   X|X X|X ||X|X X|XXX|X X|X X|X X|X X|X   ",
-                             "X|X     X|X X|X X|X    X|X    X|X X|X   X|X X|X X|X|X X|X X|X X|X X|X X|X X|X   ",
-                             "X|X     X|X X|X X|XXXX X|XXXX X|X X|XXXXX|X X|X X|X|X X|XXX|X X|X X|X X|X X|XXXX",
-                             "X|X     X|X X|X X||||X X||||X X|X X|||||||X X|X  X||X X|X X|X X|X X|X X|X X||||X",
-                             "XXX     XXX XXX XXXXXX XXXXXX XXX XXXXXXXXX XXX   XXX XXX XXX XXX XXX  XXX XXXXX"
-        ],
-        "millionaire_winning": [
-                              "         XXX||X     XXX     XXXXXX XXXXXX XXXXXX XXXXXX   XXXXXX XXXXXX        ",
-                              "         XX|XX|     X|X     X||||X X||||X X||||X   X||||X X||||X X||||X        ",
-                              "         XX|XX|     ||X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         XX|XX     |||X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         XX|XX      X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         X|||XXX    X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         XX|XX      X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         XX|XX      X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         XX|X||     X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         ||||XX|    X|X |   X||||X X||||X X||||X | X||||X X||||X X||||X        ",
-                              "         XXXXX      XXX X   XXXXXX XXXXXX XXXXXX X XXXXXX XXXXXX XXXXXX        "
-        ],
-        "credits_title_lines":     ["   $$$$   $$$$  $  $     $     $  $$$$$  $$   $     $$$     $  $$$$  $$$$$",
-                                    "   $  $   $  $  $  $     $     $  $   $  $$   $     $ $     $  $  $  $",
-                                    "   $   $$    $  $  $     $     $  $   $  $ $  $    $   $    $  $  $  $$$$",
-                                    "   $         $  $  $     $     $  $   $  $  $ $   $$$$$$$   $  $$$   $",
-                                    "   $         $  $  $$$$  $$$$  $  $$$$$  $   $$  $       $  $  $  $  $$$$$"
-        ],
-        "scores_title_lines":    ["   $$$$$  $$$$   $$$$$$   $$$$    $$$$  $$$$$",
-                                  "   $      $      $    $   $   $   $     $",
-                                  "   $$$$$  $      $    $   $ $$    $$$$  $$$$$",
-                                  "       $  $      $    $   $   $   $         $",
-                                  "   $$$$$  $$$$$  $$$$$$   $    $  $$$$  $$$$$"
-        ]
+        "quizmaster_attitudes": ["None","Friendly", "Neutral", "Hostile"]
     },
     "quiz": {
         "player_name_prompt": "How can I call you? ",

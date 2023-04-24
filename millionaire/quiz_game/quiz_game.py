@@ -31,74 +31,92 @@ class Obstacle(pygame.sprite.Sprite):
 
     def __init__(self, type, text):
         super().__init__()
-        text_size = 25
+        self.text_size = 33
         self.correct_option = pygame.image.load('./data/graphics/option_correct.png').convert_alpha()
         self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
         self.pre_marked_option = pygame.image.load('./data/graphics/option_pre_marked.png').convert_alpha()
-        text_x = 30
-        text_y = 0
+        self.text_x = 110
+        self.text_y = 20
+
+        # size 33 max 24 length text y 20 cd:15
+        # size 25 max 32 length text y 25 cd:20
+        # size 18 max 44 length y 30 cd: 25
+
 
         self.is_active = self.get_is_active()
         if type not in ["question", "prize"]:
-            if self.is_active:
-                text = f"{str(type).upper()}: {text}"
+            if not self.is_active:
+                text = ""
+
+            if len(text) > 32:
+                self.text_size = 18
+                self.text_y = 30
+            elif len(text) > 24:
+                self.text_size = 25
+                self.text_y = 25
             else:
-                text = f"{str(type).upper()}: "
+                self.text_size = 33
+                self.text_y = 20
 
-            if len(text) > 34:
-                text_y = 5
-
-                text_size = 18
 
         if type == "a":
-            self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            self.text_x = 165
 
-            x_pos = 200
-            y_pos = 515
+            self.frame = pygame.image.load('./data/graphics/option_a.png').convert_alpha()
+            self.selected_option = pygame.image.load('./data/graphics/option_a_marked.png').convert_alpha()
+
+            x_pos = 342
+            y_pos = 643
 
         elif type == "b":
 
-            self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            self.frame = pygame.image.load('./data/graphics/option_b.png').convert_alpha()
+            self.selected_option = pygame.image.load('./data/graphics/option_b_marked.png').convert_alpha()
 
-            x_pos = 600
-            y_pos = 515
+            x_pos = 1021
+            y_pos = 643
 
         elif type == "c":
+            self.text_x = 165
+            self.text_y = self.text_y - 5
 
-            self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            self.frame = pygame.image.load('./data/graphics/option_c.png').convert_alpha()
+            self.selected_option = pygame.image.load('./data/graphics/option_c_marked.png').convert_alpha()
 
-            x_pos = 200
-            y_pos = 565
+            x_pos = 342
+            y_pos = 719
 
         elif type == "d":
+            self.text_x = 115
+            self.text_y = self.text_y - 5
 
-            self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            self.frame = pygame.image.load('./data/graphics/option_d.png').convert_alpha()
+            self.selected_option = pygame.image.load('./data/graphics/option_d_marked.png').convert_alpha()
 
-            x_pos = 600
-            y_pos = 565
+            x_pos = 1022
+            y_pos = 719
 
         else:
-            text = f"{text}"
+
 
             if type == "prize":
-                self.frame = pygame.image.load('./data/graphics/prize.png').convert_alpha()
+                self.frame = pygame.image.load('./data/graphics/prize_.png').convert_alpha()
 
-                x_pos = 400
-                y_pos = 455
+                x_pos = 683
+                y_pos = 555
             else:
 
                 self.frame = pygame.image.load('./data/graphics/question.png').convert_alpha()
 
-                x_pos = 400
-                y_pos = 455
-                if len(text) > 55:
-                    text_size = 18
+                x_pos = 683
+                y_pos = 555
 
-        font = pygame.font.SysFont('Sans', text_size)
+
+        font = pygame.font.SysFont('Sans', self.text_size)
         color = (255, 255, 255)
         if type == "prize":
-            text_size = 33
-            font = pygame.font.SysFont('Sans', text_size, bold=True)
+            self.text_size = 33
+            font = pygame.font.SysFont('Sans', self.text_size, bold=True)
             color = (245, 148, 41)
 
         self.text = font.render(text, True, color)
@@ -106,15 +124,52 @@ class Obstacle(pygame.sprite.Sprite):
         self.type = type
         self.image = self.frame
         if type == "prize":
-            text_x = 330
-            text_y = 7
+            width = 1366
+
+            font = pygame.font.SysFont('Sans', 56, bold=True)
+
+            self.text_1 = font.render(text, True, color)
+            text_rect_1 = self.text_1.get_rect(center=(width / 2, 48))
+            self.image.blit(self.text_1, text_rect_1)
         if type == "question":
+            print(len(text))
+            self.text_y = 8
+            #if len(text) < 55:
+            #text_x += ((90 - len(text))*7.5)
+            width = 1366
+            #text_rect = self.text.get_rect(center=(width / 2, 45))
+            #print(text_rect.width)
+            delimiter = 86
+            if len(text) > delimiter:
+                if len(text) > 2 * delimiter:
+                    font = pygame.font.SysFont('Sans', 18)
+                    delimiter = 110
 
-            text_y = 8
-            if len(text) < 55:
-                text_x += ((55 - len(text))*7.5)
+                # draw text
+                #font = pygame.font.Font(None, 25)
+                #text = font.render("You win!", True, BLACK)
+                #text_rect = text.get_rect(center=(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2))
+                #screen.blit(text, text_rect
+                self.text_1 = font.render(text[:delimiter], True, color)
+                text_rect_1 = self.text_1.get_rect(center=(width / 2, 35))
+                self.image.blit(self.text_1, text_rect_1)
 
-        self.image.blit(self.text, [text_x, text_y])
+
+                self.text_2 = font.render(text[delimiter:], True, color)
+                text_rect_2 = self.text_2.get_rect(center=(width / 2, 70))
+                self.image.blit(self.text_2, text_rect_2)
+
+            else:
+                #self.text_size = 18
+                text_rect = self.text.get_rect(center=(width / 2, 45))
+
+                self.image.blit(self.text, text_rect)
+            self.rect = self.image.get_rect(center=(x_pos, y_pos))
+
+
+
+        if type not in ["question", "prize"]:
+            self.image.blit(self.text, [self.text_x, self.text_y])
         self.rect = self.image.get_rect(center=(x_pos, y_pos))
 
     def get_is_active(self):
@@ -140,16 +195,18 @@ class Obstacle(pygame.sprite.Sprite):
         if type_ == "select":
             if selected_ == self.type:
                 self.image = self.selected_option
-                self.image.blit(self.text, [30, 0])
+                self.image.blit(self.text, [self.text_x, self.text_y])
 
         elif type_ == "mark":
             if correct == self.type:
                 self.image = self.correct_option
-                self.image.blit(self.text, [30, 0])
+                self.correct_option = pygame.image.load('./data/graphics/option_' + self.type  + '_won.png').convert_alpha()
+                self.image = self.correct_option
+                self.image.blit(self.text, [self.text_x, self.text_y])
         elif type_ == "pre_marked":
             if selected_ == self.type:
                 self.image = self.pre_marked_option
-                self.image.blit(self.text, [30, 0])
+                self.image.blit(self.text, [self.text_x, self.text_y])
                 global type
                 type = "select"
                 global selected
@@ -190,42 +247,42 @@ class Help(pygame.sprite.Sprite):
 
         if type == "halving":
             self.frame = pygame.image.load('./data/graphics/halving.png').convert_alpha()
-            x_pos = 520
+            x_pos = 1020
             y_pos = 35
 
         elif type == "telephone":
             self.frame = pygame.image.load('./data/graphics/telephone.png').convert_alpha()
-            x_pos = 630
+            x_pos = 1130
             y_pos = 35
 
         elif type == "teacher":
             self.frame = pygame.image.load('./data/graphics/teacher.png').convert_alpha()
-            x_pos = 630
+            x_pos = 1130
             y_pos = 135
             self.is_dialed = False
 
         elif type == "chewbacca":
             self.frame = pygame.image.load('./data/graphics/chewbacca.png').convert_alpha()
-            x_pos = 520
+            x_pos = 1020
             y_pos = 135
             self.is_dialed = False
         elif type == "clock":
             self.frame = pygame.image.load('./data/graphics/clock.png').convert_alpha()
-            x_pos = 630
+            x_pos = 1130
             y_pos = 135
         elif type == "audience_table":
             self.frame = pygame.image.load('./data/graphics/audience_table.png').convert_alpha()
-            x_pos = 630
+            x_pos = 1130
             y_pos = 235
         elif type == "random":
             self.frame = pygame.image.load('./data/graphics/random.png').convert_alpha()
-            x_pos = 740
+            x_pos = 1240
             y_pos = 135
             self.is_dialed = False
 
         else:
             self.frame = pygame.image.load('./data/graphics/audience.png').convert_alpha()
-            x_pos = 740
+            x_pos = 1240
             y_pos = 35
             self.is_consumed = False
 
@@ -471,8 +528,8 @@ class MenuOption(pygame.sprite.Sprite):
                 game_active = True
 
             if self.name == language_dictionary[util.game_language].quiz.menu[-1]:
-                global exit
-                exit = True
+                global exit_game
+                exit_game = True
 
 
     def update(self):
@@ -626,7 +683,13 @@ def play():
     game_active = True
     pygame.init()
     global screen
-    screen = pygame.display.set_mode((800, 600))
+    #screen = pygame.display.set_mode((1024, 768))
+    # pygame.FULLSCREEN
+    if util.full_screen:
+        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
+    else:
+        screen = pygame.display.set_mode((1366, 768))
+
     pygame.display.set_caption(language_dictionary[util.game_language].title)
     millioniareIcon = pygame.image.load('./data/graphics/loim.png')
     pygame.display.set_icon(millioniareIcon)
@@ -635,7 +698,7 @@ def play():
     global test_font
     test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
     global sky_surface
-    sky_surface = pygame.image.load('./data/graphics/background.jpg').convert_alpha()
+    sky_surface = pygame.image.load('./data/graphics/bg.jpg').convert_alpha()
     global obstacle_group
     obstacle_group = pygame.sprite.Group()
     global prizes_table
@@ -719,6 +782,9 @@ def game_loop(level: int, question_array: {}):
     global random_sounds
     global game_active
     global after_halving_event
+
+    #question_array[level][0] = "ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD"
+    #print(len(question_array[level][0]))
     question = question_array[level][0]
     answers = {"a": question_array[level][1], "b": question_array[level][2], "c": question_array[level][3],
                "d": question_array[level][4]}
@@ -799,14 +865,14 @@ def game_loop(level: int, question_array: {}):
     global audience_intro_duration
     audience_intro_duration = 0
     prize_group = pygame.sprite.GroupSingle()
-    prize_seconds = 3
+    prize_seconds = 5
     prize_event = 0
     menu_group = pygame.sprite.Group()
     menu_group.add(MenuOption("resume", 0, 135))
     menu_group.add(MenuOption("out_of_game", 1, 135))
     menu_group.add(MenuOption("exit", 2, 135))
-    global exit
-    exit = False
+    global exit_game
+    exit_game = False
     out_of_game_started = False
     while True:
         for event in pygame.event.get():
@@ -1043,7 +1109,7 @@ def game_loop(level: int, question_array: {}):
             menu_group.draw(screen)
             menu_group.update()
 
-            if exit: return False
+            if exit_game: return False
 
         pygame.display.update()
         clock.tick(60)
@@ -1115,164 +1181,9 @@ def play_correct_sounds(level: int):
             util.play_sound("great_logic", 0, dir="correct")
             # print_prizes_with_quizmaster(i)
         time.sleep(1)
-        # display_winning()
+        util.play_sound("winning_theme", 0, general=True)
         # quit_quiz(score, player_name, question_topics, end=True)
 
-
-def display_winning():
-    util.play_sound("winning_theme", 0, general=True)
-    print("\n" + " " * 20 + fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(
-        14) + " !" + fg.rs)
-    for i in range(22):
-        win_color = bg.blue
-        millionaire_lines = language_dictionary[util.game_language].menu.millionaire_lines
-        if i % 2 == 0:
-            win_color = bg.yellow
-            millionaire_lines = language_dictionary[util.game_language].menu.millionaire_winning
-
-        util.clear_screen()
-
-        bg.light_blue = bg(96, 180, 225)
-        bg.deep_purple = bg(30, 0, 60)
-        bg.blue = bg.darkest_blue
-
-        text_count = 0
-
-        first_text = language_dictionary[util.game_language].menu.side_title_first_part
-        second_text = language_dictionary[util.game_language].menu.side_title_second_part
-
-        pixels_in_line = 0
-        pixels_per_line = []
-
-        diameter = 40
-
-        # You must account for the loops being zero-based, but the quotient of the diameter / 2 being
-        # one-based. If you use the exact radius, you will be short one column and one row.
-        offset_radius = (diameter / 2) - 0.5
-
-        points = list([] for sd in range(diameter))
-        util.clear_screen()
-        for i in range(diameter):
-            for j in range(diameter):
-
-                x = i - offset_radius
-                y = j - offset_radius
-
-                if x * x + y * y <= offset_radius * offset_radius + 1:
-                    line = 'X'
-                    end = '..'
-                    pixels_in_line += 1
-                else:
-                    line = ' '
-                    end = '  '
-                points[j].append(line + end)
-            pixels_per_line.append(pixels_in_line)
-            pixels_in_line = 0
-
-        for point in range(len(points)):
-
-            current_line = "".join(points[point])
-            line = "".join(points[point])
-            first_index = line.find("X")
-            last_index = line.rfind(".")
-
-            line2 = line[
-                    :first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                                                                               first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                                                                                                                                                                                                                                                                                    last_index:]
-
-            color = win_color
-            if point < 12:
-                if point == 8:
-                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
-                        -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                          first_index:last_index] + bg.blue + "    " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
-                            second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
-                elif point == 9:
-                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + " " + first_text[
-                        -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                          first_index:last_index] + bg.blue + "      " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
-                            second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
-                elif point == 11:
-                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
-                        -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                          first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
-                            second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
-                else:
-                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
-                        -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                          first_index:last_index] + bg.blue + "   " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
-                            second_text[point] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                        last_index:]
-            if point == 15:
-                millionaire_lines[0] = millionaire_lines[0].replace(" ", color + " " + bg.rs)
-                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[0] + line2[205:]
-            if point == 16:
-                millionaire_lines[1] = millionaire_lines[1].replace(" ", color + " " + bg.rs)
-                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[1] + line2[205:]
-            if point == 17:
-                millionaire_lines[2] = millionaire_lines[2].replace(" ", color + " " + bg.rs)
-                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[2] + line2[205:]
-            if point == 18:
-                millionaire_lines[3] = millionaire_lines[3].replace(" ", color + " " + bg.rs)
-                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[3] + line2[205:]
-            if point == 19:
-                millionaire_lines[4] = millionaire_lines[4].replace(" ", color + " " + bg.rs)
-                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[4] + line2[205:]
-            if point == 20:
-                millionaire_lines[5] = millionaire_lines[5].replace(" ", color + " " + bg.rs)
-                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[5] + line2[205:]
-            if point == 21:
-                millionaire_lines[6] = millionaire_lines[6].replace(" ", color + " " + bg.rs)
-                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[6] + line2[205:]
-            if point == 22:
-                millionaire_lines[7] = millionaire_lines[7].replace(" ", color + " " + bg.rs)
-                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[7] + line2[205:]
-            if point == 23:
-                millionaire_lines[8] = millionaire_lines[8].replace(" ", color + " " + bg.rs)
-                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[8] + line2[205:]
-            if point == 24:
-                millionaire_lines[9] = millionaire_lines[9].replace(" ", color + " " + bg.rs)
-                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[9] + line2[205:]
-            if point == 25:
-                millionaire_lines[10] = millionaire_lines[10].replace(" ", color + " " + bg.rs)
-                line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[10] + line2[205:]
-            if point > 25 and point < 37:
-                if point == 30:
-                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "  " + first_text[
-                        text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                            first_index:last_index] + bg.blue + "    " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
-                            second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                                last_index:]
-                elif point == 31:
-                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "    " + first_text[
-                        text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                            first_index:last_index] + bg.blue + "" + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
-                            second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                                last_index:]
-                else:
-                    line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
-                        text_count] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                              first_index:last_index] + bg.blue + " " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
-                            second_text[-text_count] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                              last_index:]
-                text_count += 1
-            line2 = line2.replace("X", win_color + " " + bg.rs)
-            line2 = line2.replace(".", win_color + " " + bg.rs)
-            line2 = line2.replace("X", bg.black + " " + bg.rs)
-            line2 = line2.replace("|", bg.white + " " + bg.rs)
-
-            line3 = "".join(line2)
-
-            print(line3)
-
-        print("\n\n\n" + " " * 53 + fg.purple + language_dictionary[game_language].quiz.won_prize + show_prize(
-            14) + " !" + fg.rs)
-
-        time.sleep(1)
 
 
 def play_prize_sound(level: int):
