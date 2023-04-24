@@ -465,7 +465,7 @@ class MenuOption(pygame.sprite.Sprite):
     def __init__(self, type, order, base_height):
         super().__init__()
 
-        x_pos = 400
+        x_pos = 685
         y_pos = base_height + (order * 35)
 
         self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
@@ -868,9 +868,9 @@ def game_loop(level: int, question_array: {}):
     prize_seconds = 5
     prize_event = 0
     menu_group = pygame.sprite.Group()
-    menu_group.add(MenuOption("resume", 0, 135))
-    menu_group.add(MenuOption("out_of_game", 1, 135))
-    menu_group.add(MenuOption("exit", 2, 135))
+    menu_group.add(MenuOption("resume", 0, 300))
+    menu_group.add(MenuOption("out_of_game", 1, 300))
+    menu_group.add(MenuOption("exit", 2, 300))
     global exit_game
     exit_game = False
     out_of_game_started = False
@@ -1059,7 +1059,6 @@ def game_loop(level: int, question_array: {}):
                     #prize_group.draw(screen)
                     #prize_group.update(selected, correct_answer_key)
                     prize_event = pygame.USEREVENT + 8
-                    print(prize_seconds)
             help_group.draw(screen)
             help_group.update(correct_answer_key)
             obstacle_group.draw(screen)
