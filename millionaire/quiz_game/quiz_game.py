@@ -741,10 +741,12 @@ def play():
         util.play_sound(sound, 0, dir="intro", timer=True)
     '''
     is_active = True
-    i = 0
     for i in range(game_levels):
-        if is_active:
-            is_active = game_loop(i, question_lines)
+        if i < game_levels:
+            if is_active:
+                is_active = game_loop(i, question_lines)
+
+        return
 
 
 def start_game():
@@ -776,6 +778,7 @@ def start_game():
 
 
 def game_loop(level: int, question_array: {}):
+    level = 14
     global out_of_game
     out_of_game = False
     last_input = ""
@@ -865,7 +868,10 @@ def game_loop(level: int, question_array: {}):
     global audience_intro_duration
     audience_intro_duration = 0
     prize_group = pygame.sprite.GroupSingle()
-    prize_seconds = 5
+    if level < 14:
+        prize_seconds = 5
+    else:
+        prize_seconds = 35
     prize_event = 0
     menu_group = pygame.sprite.Group()
     menu_group.add(MenuOption("resume", 0, 300))
@@ -985,7 +991,7 @@ def game_loop(level: int, question_array: {}):
                         util.play_sound(after_sound, 0, dir="audience", timer=True)
 
             if event.type == prize_event:
-                if prize_seconds > 0:
+                if  prize_seconds > 0:
                     prize_seconds -= 1
 
             if game_active:
@@ -1022,19 +1028,34 @@ def game_loop(level: int, question_array: {}):
             if type == "mark":
                 if mark_seconds < 1:
                     if selected == correct_answer_key:
-                        if prize_seconds == 3 and len(prize_group) == 0:
-                            if not out_of_game:
-                                play_correct_sounds(level)
-                            prize_group.add(Obstacle("prize", get_prize(level)))
-                        if prize_event != 0:
-                            if prize_seconds == 0:
-                                if out_of_game:
-                                    if game_language == util.Language.HUNGARIAN.name:
-                                        util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
-                                    util.play_sound("claps", 0, general=True, timer=True)
-                                    return False
-                                else:
-                                    return True
+                        if level < 14:
+                            if prize_seconds == 3 and len(prize_group) == 0:
+                                if not out_of_game:
+                                    play_correct_sounds(level)
+                                prize_group.add(Obstacle("prize", get_prize(level)))
+                            if prize_event != 0:
+                                if prize_seconds == 0:
+                                    if out_of_game:
+                                        if game_language == util.Language.HUNGARIAN.name:
+                                            util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
+                                        util.play_sound("claps", 0, general=True, timer=True)
+                                        return False
+                                    else:
+                                        return True
+                        else:
+                            if prize_seconds == 33 and len(prize_group) == 0:
+                                if not out_of_game:
+                                    play_correct_sounds(level)
+                                prize_group.add(Obstacle("prize", get_prize(level)))
+                            if prize_event != 0:
+                                if prize_seconds == 0:
+                                    if out_of_game:
+                                        if game_language == util.Language.HUNGARIAN.name:
+                                            util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
+                                        util.play_sound("claps", 0, general=True, timer=True)
+                                        return False
+                                    else:
+                                        return True
                     else:
                         if prize_seconds == 3 and len(prize_group) == 0:
                             if not out_of_game:
