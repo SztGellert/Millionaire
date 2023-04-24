@@ -1,14 +1,12 @@
-import msvcrt
+import json
 import os
 import sys
-import time
-import json
-import keyboard
+
+import pygame
 from sty import Style, RgbFg, fg, bg, rs
+
 import millionaire.quiz_game.quiz_game as quiz
 import millionaire.util.util as util
-import millionaire.menu.helpers as helpers
-import pygame
 
 fg.purple = Style(RgbFg(148, 0, 211))
 bg.orange = bg(255, 150, 50)
@@ -22,178 +20,8 @@ bg.darkest_blue = bg(42, 45, 112)
 def intro():
     if util.game_language == util.Language.HUNGARIAN.name:
         util.play_sound("intro", 0, dir="intro", volume=1)
-
     else:
         util.play_sound("intro", 0)
-
-    bg.light_blue = bg(96, 180, 225)
-    bg.deep_purple = bg(30, 0, 60)
-    bg.blue = bg.darkest_blue
-
-    text_count = 0
-
-    first_text = language_dictionary[util.game_language].menu.side_title_first_part
-    second_text = language_dictionary[util.game_language].menu.side_title_second_part
-    millionaire_lines = language_dictionary[util.game_language].menu.millionaire_lines
-
-    pixels_in_line = 0
-    pixels_per_line = []
-
-    diameter = 40
-
-    # You must account for the loops being zero-based, but the quotient of the diameter / 2 being
-    # one-based. If you use the exact radius, you will be short one column and one row.
-    offset_radius = (diameter / 2) - 0.5
-    util.clear_screen()
-
-    points = list([] for sd in range(diameter))
-    util.clear_screen()
-    for i in range(diameter):
-        for j in range(diameter):
-
-            x = i - offset_radius
-            y = j - offset_radius
-
-            if x * x + y * y <= offset_radius * offset_radius + 1:
-                line = 'X'
-                end = '..'
-                pixels_in_line += 1
-            else:
-                line = ' '
-                end = '  '
-            points[j].append(line + end)
-        pixels_per_line.append(pixels_in_line)
-        pixels_in_line = 0
-
-    for point in range(len(points)):
-
-        current_line = "".join(points[point])
-        line = "".join(points[point])
-        first_index = line.find("X")
-        last_index = line.rfind(".")
-
-        line2 = line[
-                :first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                                                                           first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                                                                                                                                                                                                                                                                                last_index:]
-
-        color = bg.blue
-        if point < 12:
-            if point == 8:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
-                    -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                      first_index:last_index] + bg.blue + "    " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
-                        second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                     last_index:]
-            elif point == 9:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + " " + first_text[
-                    -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                      first_index:last_index] + bg.blue + "      " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
-                        second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                     last_index:]
-            elif point == 11:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
-                    -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                      first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
-                        second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                     last_index:]
-            else:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
-                    -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                      first_index:last_index] + bg.blue + "   " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
-                        second_text[point] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[last_index:]
-        if point == 15:
-            millionaire_lines[0] = millionaire_lines[0].replace(" ", color + " " + bg.rs)
-            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[0] + line2[205:]
-        if point == 16:
-            millionaire_lines[1] = millionaire_lines[1].replace(" ", color + " " + bg.rs)
-            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[1] + line2[205:]
-        if point == 17:
-            millionaire_lines[2] = millionaire_lines[2].replace(" ", color + " " + bg.rs)
-            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[2] + line2[205:]
-        if point == 18:
-            millionaire_lines[3] = millionaire_lines[3].replace(" ", color + " " + bg.rs)
-            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[3] + line2[205:]
-        if point == 19:
-            millionaire_lines[4] = millionaire_lines[4].replace(" ", color + " " + bg.rs)
-            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[4] + line2[205:]
-        if point == 20:
-            millionaire_lines[5] = millionaire_lines[5].replace(" ", color + " " + bg.rs)
-            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[5] + line2[205:]
-        if point == 21:
-            millionaire_lines[6] = millionaire_lines[6].replace(" ", color + " " + bg.rs)
-            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[6] + line2[205:]
-        if point == 22:
-            millionaire_lines[7] = millionaire_lines[7].replace(" ", color + " " + bg.rs)
-            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[7] + line2[205:]
-        if point == 23:
-            millionaire_lines[8] = millionaire_lines[8].replace(" ", color + " " + bg.rs)
-            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[8] + line2[205:]
-        if point == 24:
-            millionaire_lines[9] = millionaire_lines[9].replace(" ", color + " " + bg.rs)
-            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[9] + line2[205:]
-        if point == 25:
-            millionaire_lines[10] = millionaire_lines[10].replace(" ", color + " " + bg.rs)
-            line2 = line2[:115] + bg.rs + line2[115:125] + bg.rs + millionaire_lines[10] + line2[205:]
-        if point > 25 and point < 37:
-            if point == 30:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "  " + first_text[
-                    text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                        first_index:last_index] + bg.blue + "    " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
-                        second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                            last_index:]
-            elif point == 31:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "    " + first_text[
-                    text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                        first_index:last_index] + bg.blue + "" + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
-                        second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                            last_index:]
-            else:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[
-                    text_count] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                          first_index:last_index] + bg.blue + " " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
-                        second_text[-text_count] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                          last_index:]
-            text_count += 1
-        line2 = line2.replace("X", bg.blue + " " + bg.rs)
-        line2 = line2.replace(".", bg.blue + " " + bg.rs)
-        line2 = line2.replace("X", bg.black + " " + bg.rs)
-        line2 = line2.replace("|", bg.white + " " + bg.rs)
-
-        line3 = "".join(line2)
-
-        print(line3)
-
-    timeout = 15
-    start_time = time.time()
-    inp = None
-
-    print(screen_distance * "   " + language_dictionary[util.game_language].menu.skip_prompt)
-    while True:
-        # TODO: only works on win
-        if msvcrt.kbhit():
-            inp = msvcrt.getch()
-            break
-        elif time.time() - start_time > timeout:
-            break
-
-    if inp:
-        util.stop_sound()
-        return
-    else:
-        return
-
-
-def user_pressed_space():
-    if util.operating_system == "posix":
-        user_input = helpers.return_user_input_linux()
-    else:
-        user_input = helpers.return_user_input_windows()
-    if user_input not in [b' ', '<SPACE>']:
-        return
-
-    util.stop_sound()
-    return
 
 
 def show_title():
@@ -210,30 +38,6 @@ def show_title():
     print(screen_distance * " " + "=" * line_length + "\n\n")
 
 
-def show_options(options: list, max_options_length: int, chosen_option=0):
-    show_title()
-    fore_string = "|"
-    after_string = "|"
-    line_length = max_options_length
-    option_length = max_options_length
-    for i in range(len(options)):
-        option = options[i]
-        number_of_spaces = int((option_length - len(options[i]) - len(fore_string) - len(after_string)) / 2)
-        if len(option) % 2 != 0:
-            option = option + " "
-        print(screen_distance * " " + "  " + "_" * line_length)
-        if i == chosen_option:
-            string_to_print = "  " + fore_string + bg.orange + number_of_spaces * " " + fg.black + option + fg.rs + number_of_spaces * " " + bg.rs + after_string
-        else:
-            string_to_print = "  " + fore_string + number_of_spaces * " " + option + number_of_spaces * " " + after_string
-        print(screen_distance * " " + string_to_print)
-        print(screen_distance * " " + "  " + "‾" * line_length + "\n")
-
-
-def select_exit():
-    sys.exit(0)
-
-
 def select_help():
     quiz.show_game_structure()
     util.clear_screen()
@@ -242,7 +46,6 @@ def select_help():
     for line in file:
         print("   " + line[0])
     print("\n")
-    return_prompt()
 
 
 def select_credits():
@@ -257,7 +60,6 @@ def select_credits():
     for line in file:
         print("   " + line[0])
     print("\n")
-    return_prompt()
 
 
 def select_scores():
@@ -337,7 +139,6 @@ def select_scores():
         f.close()
     else:
         print("\n\n   " + language_dictionary[util.game_language].menu.empty_scores)
-    return_prompt()
 
 
 def update_settings_file():
@@ -348,96 +149,113 @@ def update_settings_file():
         json.dump(content, outfile)
 
 
-def return_prompt():
-    esc_keys = [b'\x1b', '<ESC>']
-    print(fg.grey + "\n\n   " + language_dictionary[util.game_language].menu.return_prompt + fg.rs)
-    if util.operating_system == "posix":
-        user_input = helpers.return_user_input_linux()
-    else:
-        user_input = helpers.return_user_input_windows()
-    while user_input not in esc_keys:
-        if util.operating_system == "posix":
-            user_input = helpers.return_user_input_linux()
-        else:
-            user_input = helpers.return_user_input_windows()
-        if user_input in esc_keys:
-            return
-
-
-def get_user_input(option_list: [], values_list: [], max_option_length: int, start_index=0, esc=True) -> str:
-    i = start_index
-    while True:
-        if util.operating_system == "posix":
-            user_input = helpers.return_user_input_linux()
-        else:
-            user_input = helpers.return_user_input_windows()
-        first_char = user_input
-        # escape
-        if first_char == b'\x1b' or first_char == '<ESC>':
-            if esc == True:
-                return values_list[-1]
-            else:
-                return values_list[start_index]
-        # enter
-        if first_char == b'\r' or first_char == '<Ctrl-j>':
-            return values_list[i]
-        # up
-        if first_char == b'H' or first_char == '<UP>':
-            if i == 0:
-                i = len(option_list) - 1
-                show_options(option_list, max_option_length, len(option_list) - 1)
-            else:
-                i -= 1
-                show_options(option_list, max_option_length, i)
-            # enter
-            if user_input == b'\r' or user_input == '<Ctrl-j>':
-                return values_list[i]
-        # down
-        if first_char == b'P' or first_char == '<DOWN>':
-            if i == len(option_list) - 1:
-                i = 0
-                show_options(option_list, max_option_length)
-            else:
-                i += 1
-                show_options(option_list, max_option_length, i)
-            # enter
-            if user_input == b'\r' or user_input == '<Ctrl-j>':
-                return values_list[i]
-
-
 class MenuOption(pygame.sprite.Sprite):
 
     def __init__(self, type, order, base_height):
         super().__init__()
 
-        x_pos = 200
+        x_pos = 0
         y_pos = base_height + (order * 35)
 
-        self.frame = pygame.image.load('./data/graphics/option.png').convert_alpha()
+        self.frame = pygame.image.load('./data/graphics/settings_option.png').convert_alpha()
         self.font = pygame.font.SysFont('Sans', 25)
         self.type = type
         self.text_color = (255, 255, 255)
+        self.text_x = 30
+        self.text_y = 0
         if type == "main_menu_option":
             text = language_dictionary[util.game_language].menu.main_menu_options[order]
+            self.name = text
+
         elif type == "settings_menu_option":
-            text = language_dictionary[util.game_language].menu.settings_menu_options[order]
+            self.text_x = 50
+            self.text_y = 5
+
+            #if len(language_dictionary[util.game_language].menu.settings_menu_options) > order:
+
+                #text = language_dictionary[util.game_language].menu.settings_menu_options[order]
+               # self.name = text
+
+            #else:
+            x_pos = 0
+            base_height = 545
+            y_pos = base_height + ((order-8) * 45)
+
+            if order == 0:
+                if util.game_language[:2].lower() == "hu":
+                    text = language_dictionary[util.game_language].language + ": " + language_dictionary[util.game_language].hu
+                    self.name = language_dictionary[util.game_language].language
+
+                else:
+                    text = language_dictionary[util.game_language].language + ": " + language_dictionary[util.game_language].en
+                    self.name = language_dictionary[util.game_language].language
+
+            elif order == 1:
+                self.name = language_dictionary[util.game_language].sounds
+
+                text = language_dictionary[util.game_language].sounds + ": "
+                if util.system_volume:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+
+            elif order == 2:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[2] + ": "
+                if util.system_volume:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[2]
+
+            elif order == 3:
+                text = language_dictionary[util.game_language].topic + ": " + str(util.question_topics)
+                self.name = language_dictionary[util.game_language].topic
+
+            elif order == 4:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[4] + ": " + str(util.question_difficulty)
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[4]
+
+            elif order == 5:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[5] + ": " + str(util.quizmaster_attitude)
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[5]
+
+
+            elif order == 6:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[-2] + ": "
+                if util.system_volume:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[-2]
+            else:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[-1]
+                self.name = text
+
         elif type == "topic_option":
             text = language_dictionary[util.game_language].menu.settings_menu_question_topics[order]
+            self.name = text
+
         elif type == "question_difficulty_option":
             text = language_dictionary[util.game_language].menu.question_difficulty_levels[order]
+            self.name = text
+
         elif type == "quizmaster_attitude_option":
             text = language_dictionary[util.game_language].menu.quizmaster_attitudes[order]
+            self.name = text
+
         elif type == "language_option":
             text = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu][order]
+            self.name = text
+
         else:
             print(type)
             text = ""
 
-        self.name = text
         self.text = self.font.render(text, True, (255, 255, 255))
         self.image = self.frame
-        self.image.blit(self.text, [50, 0])
-        self.rect = self.image.get_rect(center=(x_pos, y_pos))
+        self.image.blit(self.text, [self.text_x, self.text_y])
+        self.rect = self.image.get_rect(topleft=(x_pos, y_pos))
         self.lang = util.game_language
         self.order = order
 
@@ -455,11 +273,19 @@ class MenuOption(pygame.sprite.Sprite):
 
     def player_input(self):
         if self.rect.collidepoint((pygame.mouse.get_pos())):
-            self.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
-            self.image.blit(self.text, [30, 0])
+            if self.type == "settings_menu_option":
+                self.image = pygame.image.load('./data/graphics/settings_option_marked.png').convert_alpha()
+            else:
+                self.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+            self.image.blit(self.text, [self.text_x, self.text_y])
+
+
         else:
-            self.image = pygame.image.load('./data/graphics/option.png').convert_alpha()
-            self.image.blit(self.text, [30, 0])
+            if self.type == "settings_menu_option":
+                self.image = pygame.image.load('./data/graphics/settings_option.png').convert_alpha()
+            else:
+                self.image = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            self.image.blit(self.text, [self.text_x, self.text_y])
 
         if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
 
@@ -542,20 +368,57 @@ class MenuOption(pygame.sprite.Sprite):
                 attitudes = False
 
     def update(self):
-        if self.lang != util.game_language:
-            if self.type == "main_menu_option":
-                text = language_dictionary[util.game_language].menu.main_menu_options[self.order]
-            elif self.type == "settings_menu_option":
-                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
-            elif self.type == "language_option":
-                langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu]
-                text = langs[self.order]
-            else:
-                text = ""
+        #if self.lang != util.game_language:
+        if self.type == "main_menu_option":
+            text = language_dictionary[util.game_language].menu.main_menu_options[self.order]
+        elif self.type == "settings_menu_option":
+            print(self.order)
+            if self.order == 0:
+                if util.game_language[:2].lower() == "hu":
+                    text = language_dictionary[util.game_language].language + ": " + language_dictionary[util.game_language].hu
 
-            self.text = self.font.render(text, True, (255, 255, 255))
-            self.lang = util.game_language
-            self.name = text
+                else:
+                    text = language_dictionary[util.game_language].language + ": " + language_dictionary[util.game_language].en
+
+            elif self.order == 1:
+                text = language_dictionary[util.game_language].sounds + ": "
+                if util.system_volume:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+
+
+            elif self.order == 2:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[2] + ": "
+                if util.system_volume:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+
+            elif self.order == 3:
+                text = language_dictionary[util.game_language].topic + ": " + str(util.question_topics)
+
+            elif self.order == 4:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + str(util.question_difficulty)
+            elif self.order == 5:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + str(util.quizmaster_attitude)
+            elif self.order == 6:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + str(util.default_settings())
+            else:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+
+
+            #text = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+        elif self.type == "language_option":
+            langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu]
+            text = langs[self.order]
+        else:
+            text = ""
+            print(text)
+
+        self.text = self.font.render(text, True, (255, 255, 255))
+        self.lang = util.game_language
+            #self.name = text
 
         self.player_input()
 
@@ -597,8 +460,14 @@ def main():
     settings_menu_base_y = 245
     topic_menu_base_y = 75
 
-    settings_option_group = sprite_group_init(language_dictionary[util.game_language].menu.settings_menu_options,
+    settings_group = []
+    for option in language_dictionary[util.game_language].menu.settings_menu_options:
+        settings_group.append(option)
+
+
+    settings_option_group = sprite_group_init(settings_group,
                                               "settings_menu_option", settings_menu_base_y)
+
 
     lang_group = sprite_group_init(util.available_languages, "language_option", settings_menu_base_y)
 

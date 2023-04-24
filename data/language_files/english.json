@@ -2,6 +2,11 @@
     "en": "English",
     "hu": "Hungarian",
     "title": "Millionaire",
+    "language": "Nyelv",
+    "sounds": "Sounds",
+    "topic": "Topic",
+    "true": "ON",
+    "false": "OFF",
     "menu": {
         "side_title_first_part": " ♦WHO WANTS ",
         "side_title_second_part": "  TO BE A  ♦",
