@@ -300,10 +300,12 @@ class MenuOption(pygame.sprite.Sprite):
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[0]:
                     quiz.play()
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[2]:
-                    tutorial()
+                    text_screen("tutorial")
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[3]:
                     global options
                     options = True
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[4]:
+                    text_screen("credits")
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[-1]:
                     pygame.quit()
                     exit()
@@ -580,7 +582,7 @@ def main():
         clock.tick(60)
 
 
-def tutorial():
+def text_screen(screen_type: str):
     pygame.init()
     pygame.time.set_timer(pygame.USEREVENT, 1000)
 
@@ -601,51 +603,13 @@ def tutorial():
 
     sky_surface = pygame.image.load('./data/graphics/menu_bg.jpg').convert_alpha()
     settings_surface =  pygame.image.load('./data/graphics/settings_menu_bg.png').convert_alpha()
-    # sky_surface_rect = sky_surface.get_rect(midtop=(400, 20))
-    # subsurface = sky_surface.subsurface(0,0,800,400)
 
-    main_menu_base_y = 475
-
-    menu_option_group = sprite_group_init(language_dictionary[util.game_language].menu.main_menu_options,
-                                          "main_menu_option", main_menu_base_y)
-
-    settings_menu_base_y = 245
-    topic_menu_base_y = 75
-
-    settings_group = []
-    for option in language_dictionary[util.game_language].menu.settings_menu_options:
-        settings_group.append(option)
-
-
-    settings_option_group = sprite_group_init(settings_group,
-                                              "settings_menu_option", settings_menu_base_y)
-
-
-    lang_group = sprite_group_init(util.available_languages, "language_option", settings_menu_base_y)
-
-    topic_group = sprite_group_init(language_dictionary[util.game_language].menu.settings_menu_question_topics,
-                                    "topic_option", topic_menu_base_y)
-    question_difficulty_group = sprite_group_init(
-        language_dictionary[util.game_language].menu.question_difficulty_levels, "question_difficulty_option",
-        settings_menu_base_y)
-    quizmaster_attitude_group = sprite_group_init(language_dictionary[util.game_language].menu.quizmaster_attitudes,
-                                                  "quizmaster_attitude_option", settings_menu_base_y)
-
-    global options, lang_selection, topics, difficulties, attitudes, screen_active
-    options = False
-    lang_selection = False
-    topics = False
-    difficulties = False
-    attitudes = False
+    global screen_active
     screen_active = True
-    sprite_group_flags = [options, lang_selection, topics, difficulties, attitudes]
-    sprite_groups = [settings_option_group, lang_group, topic_group, question_difficulty_group,
-                     quizmaster_attitude_group]
     tutorial_group = sprite_group_init([language_dictionary[util.game_language].menu.settings_menu_options[-1]], "tutorial_option", 700)
+
     while True:
-
         for event in pygame.event.get():
-
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
@@ -660,7 +624,13 @@ def tutorial():
         #screen.blit(settings_surface, (0,0))
         font = pygame.font.SysFont('Sans', 25)
         y = 20
-        for line in language_dictionary[util.game_language].tutorial.text_list:
+        text_array = []
+        if screen_type == "tutorial":
+            text_array = language_dictionary[util.game_language].tutorial.text_list
+        else:
+            text_array = language_dictionary[util.game_language].credits.text_list
+
+        for line in text_array:
             text = font.render(line, True, (255, 148, 0))
 
             screen.blit(text, [200, y])

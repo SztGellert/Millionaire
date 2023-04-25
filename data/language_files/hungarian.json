@@ -116,5 +116,17 @@
         "Természetesen játékon kívül is válaszolhat hogy a garantált nyereményeit hazavihesse.  Nyer:",
         "ha minden kérdésre helyesen válaszol.",
         "Jó szórakozást! Sok síkert kíván a Gooses csapata!"]
+    },
+    "credits": {
+        "text_list": ["Ez a stáblista oldala a Helpless Gooses csapat Milliomos játékának.",
+            "Ezt a játékot Sztankovszky Gellért fejlesztette tovább a",
+            "Helpless Gooses csapat egyik heti projektfeladatából.",
+            "Önszórakoztatás és python programozás gyakorlásának",
+            "céljából indult újra ez a kvíz projekt.",
+            "Ossza meg a játékot és a véleményét!",
+            "Köszönöm hogy elolvasta!",
+            "https://github.com/SztGellert",
+            "Jó szórakozást kívánok!"
+        ]
     }
 }
