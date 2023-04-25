@@ -1,21 +1,10 @@
 import json
 import os
-import sys
-
 import pygame
-from sty import Style, RgbFg, fg, bg, rs
-
 import millionaire.quiz_game.quiz_game as quiz
 import millionaire.util.util as util
 
-fg.purple = Style(RgbFg(148, 0, 211))
-bg.orange = bg(255, 150, 50)
 language_dictionary = util.language_dictionary
-default_width = 40
-screen_distance = 60
-bg.dark_blue = bg(0, 0, 155)
-bg.darkest_blue = bg(42, 45, 112)
-
 
 def intro():
     if util.game_language == util.Language.HUNGARIAN.name:
@@ -24,28 +13,8 @@ def intro():
         util.play_sound("intro", 0)
 
 
-def show_title():
-    line_length = default_width + 3
-    util.clear_screen()
-    print(screen_distance * " " + "=" * line_length)
-    print(screen_distance * " " + fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
-    print(screen_distance * " " + "=" * line_length)
-    print(screen_distance * " " + fg.yellow + "|" * line_length + fg.rs)
-    print(screen_distance * " " + fg.purple + language_dictionary[util.game_language].menu.title_second_line + fg.rs)
-    print(screen_distance * " " + fg.yellow + "|" * line_length + fg.rs)
-    print(screen_distance * " " + "=" * line_length)
-    print(screen_distance * " " + fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
-    print(screen_distance * " " + "=" * line_length + "\n\n")
-
-
 def select_help():
     quiz.show_game_structure()
-    util.clear_screen()
-    file = (util.open_file("tutorial_" + str(util.game_language).lower(), 'r'))
-    print("\n")
-    for line in file:
-        print("   " + line[0])
-    print("\n")
 
 
 def update_settings_file():
@@ -78,12 +47,6 @@ class MenuOption(pygame.sprite.Sprite):
             self.text_x = 50
             self.text_y = 5
 
-            #if len(language_dictionary[util.game_language].menu.settings_menu_options) > order:
-
-                #text = language_dictionary[util.game_language].menu.settings_menu_options[order]
-               # self.name = text
-
-            #else:
             x_pos = 0
             base_height = 545
             y_pos = base_height + ((order-8) * 45)
@@ -396,7 +359,6 @@ def main():
     # screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN) NATIVE
     # screen = pygame.display.set_mode((1024, 768), pygame.FULLSCREEN) SET RESOLUTION
 
-
     pygame.display.set_caption(language_dictionary[util.game_language].title)
 
     millioniareIcon = pygame.image.load('./data/graphics/loim.png')
@@ -404,12 +366,10 @@ def main():
 
     global clock
     clock = pygame.time.Clock()
-    global sky_surface
+    global main_menu_bg_surf
 
-    sky_surface = pygame.image.load('./data/graphics/menu_bg.jpg').convert_alpha()
-    settings_surface =  pygame.image.load('./data/graphics/settings_menu_bg.png').convert_alpha()
-    # sky_surface_rect = sky_surface.get_rect(midtop=(400, 20))
-    # subsurface = sky_surface.subsurface(0,0,800,400)
+    main_menu_bg_surf = pygame.image.load('./data/graphics/menu_bg.jpg').convert_alpha()
+    settings_menu_bg_surf =  pygame.image.load('./data/graphics/settings_menu_bg.png').convert_alpha()
 
     main_menu_base_y = 475
 
@@ -423,10 +383,8 @@ def main():
     for option in language_dictionary[util.game_language].menu.settings_menu_options:
         settings_group.append(option)
 
-
     settings_option_group = sprite_group_init(settings_group,
                                               "settings_menu_option", settings_menu_base_y)
-
 
     lang_group = sprite_group_init(util.available_languages, "language_option", settings_menu_base_y)
 
@@ -456,18 +414,15 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-        # screen.blit(subsurface, (0, -20), sky_surface_rect)
-        screen.blit(sky_surface, (0, 0))
+        screen.blit(main_menu_bg_surf, (0, 0))
 
         if options:
-            screen.blit(settings_surface, (0,0))
+            screen.blit(settings_menu_bg_surf, (0,0))
             if lang_selection:
 
                 lang_group.draw(screen)
                 lang_group.update()
 
-                # if event.type == pygame.MOUSEBUTTONDOWN:
-                #    lang_selection = False
             elif topics:
 
                 topic_group.draw(screen)
@@ -491,8 +446,7 @@ def main():
 
         else:
             screen.fill((0, 0, 0))
-            # screen.blit(subsurface, (0, -20), sky_surface_rect)
-            screen.blit(sky_surface, (0, 0))
+            screen.blit(main_menu_bg_surf, (0, 0))
 
             menu_option_group.draw(screen)
             menu_option_group.update()
