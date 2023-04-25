@@ -518,10 +518,6 @@ def text_screen(screen_type: str):
 
     global clock
     clock = pygame.time.Clock()
-    global sky_surface
-
-    sky_surface = pygame.image.load('./data/graphics/menu_bg.jpg').convert_alpha()
-    settings_surface =  pygame.image.load('./data/graphics/settings_menu_bg.png').convert_alpha()
 
     global screen_active
     screen_active = True
@@ -536,13 +532,8 @@ def text_screen(screen_type: str):
                 exit()
             if event.type == pygame.KEYDOWN or not screen_active:
                 return
-        # screen.blit(subsurface, (0, -20), sky_surface_rect)
-        #screen.blit(sky_surface, (0, 0))
         screen.fill((7, 24, 173))
 
-        #frame = pygame.image.load('./data/graphics/settings_option.png').convert_alpha()
-
-        #screen.blit(settings_surface, (0,0))
         y = 20
 
         if screen_type in ["tutorial", "credits"]:
@@ -565,8 +556,6 @@ def text_screen(screen_type: str):
 
             if os.path.isfile("scores.json"):
                 showed_text = ""
-                #rect = pygame.Rect(10, 10, 800, 800)
-                #rect_draw = pygame.draw.rect(screen, (255, 148, 0), pygame.Rect(10, 10, 800, 800), width=0)
                 f = open("scores.json")
                 data = json.load(f)
                 scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)
@@ -581,86 +570,25 @@ def text_screen(screen_type: str):
                         scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[((scores_paging-1)*15):(scores_paging*15)]
                         showed_text = str(((scores_paging-1)*15)+1) + " - " + str(scores_paging*15)
                 elif len(scores_sorted) < scores_paging*15 and len(scores_sorted) > ((scores_paging-1)*15):
-                    print(len(scores_sorted))
-                    print((scores_paging-1)*15)
                     showed_text = str(((scores_paging - 1) * 15)+1) + " - " + str(len(scores_sorted))
                     scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[
                                     ((scores_paging - 1) * 15):(scores_paging * 15)]
                 else:
                     scores_paging = 1
 
-                len_val = 0
-                len_player = 0
-                index = 0
                 i = 0
-
                 for item in scores_sorted:
                     screen_x = 0
                     for k, v in item.items():
                         if k == "topic":
                             v = list(language_dictionary[util.game_language].menu.settings_menu_question_topics)[util.Topics[v].value]
-                            #v = util.Topics(list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(v)).name
-                        if i == 0:
-                            pass
-                            #if len(v) > len_player:
-                            #    len_player = len(v)
-                        #if i == 1:
-                        #    index = list(
-                       #         language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
-                       #         str(v).capitalize())
-                        #    if len(language_dictionary[util.game_language].menu.settings_menu_question_topics[
-                        #               index]) > len_val:
-                        #        len_val = len(
-                        #            language_dictionary[util.game_language].menu.settings_menu_question_topics[index])
-
-                        text = font.render(str(k) + ": " + str(v), True,
-                                           (255, 148, 0))
+                        text = font.render(str(k) + ": " + str(v), True, (255, 148, 0))
                         screen.blit(text, [screen_x, 0+ (i*25)])
 
                         screen_x += 200
 
                     i += 1
-
-
-                        #language_dictionary[util.game_language].menu.scores[3]
-
-
-                for item in scores_sorted:
-                    i = 0
-                    for k, v in item.items():
-                        if i == 0:
-                            if len(v) > len_player:
-                                pass
-                                #print("   " + "| " + v + " " * (len(v) - len_player), end=" | ")
-                            else:
-                                pass
-                                #print("   " + "| " + v + " " * (len_player - len(v)), end=" | ")
-                        if i == 1:
-                            pass
-                            index = list(
-                                language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
-                                str(v).capitalize())
-                            #print(
-                            #    language_dictionary[util.game_language].menu.settings_menu_question_topics[index] +
-                            #     (len_val - len(
-                             #       language_dictionary[util.game_language].menu.settings_menu_question_topics[
-                             #           index])) * " ",
-                             #   end=" | ")
-                        if i == 2:
-                            pass
-                            #print(
-                            #    str(v) + " " * (
-                            #                len(language_dictionary[util.game_language].menu.scores[1]) - len(str(v)) + 1),
-                            #    end=" | ")
-                        if i == 3:
-                            pass
-                            #print(v, end=" | ")
-
-                        i += 1
-
-                    #print("\n" + "   " + "—" * table_len)
                 f.close()
-
 
                 text = font.render(language_dictionary[util.game_language].showed + ": " + showed_text, True, (255, 148, 0))
                 screen.blit(text, [668, 450])
@@ -668,9 +596,6 @@ def text_screen(screen_type: str):
                 text = font.render(language_dictionary[util.game_language].menu.empty_scores, True, (255, 148, 0))
                 screen.blit(text, [0, 0])
 
-            #screen.fill((0, 0, 0))
-            # screen.blit(subsurface, (0, -20), sky_surface_rect)
-            #screen.blit(sky_surface, (0, 0))
 
         tutorial_group.draw(screen)
         tutorial_group.update()
