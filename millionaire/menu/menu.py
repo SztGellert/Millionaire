@@ -48,99 +48,6 @@ def select_help():
     print("\n")
 
 
-def select_credits():
-    util.clear_screen()
-    file = (util.open_file("credits_" + str(util.game_language).lower(), 'r'))
-    title_lines = language_dictionary[util.game_language].menu.credits_title_lines
-    print("\n" + fg.purple + rs.italic)
-    for line in title_lines:
-        print(line)
-    print("\n" + fg.rs)
-
-    for line in file:
-        print("   " + line[0])
-    print("\n")
-
-
-def select_scores():
-    title_lines = language_dictionary[util.game_language].menu.scores_title_lines
-    util.clear_screen()
-    print("\n" + fg.purple + rs.italic)
-    for line in title_lines:
-        print(line)
-    print("\n" + fg.rs)
-
-    if os.path.isfile("scores.json"):
-        f = open("scores.json")
-        data = json.load(f)
-        scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)
-        len_val = 0
-        len_player = 0
-        index = 0
-        for item in scores_sorted:
-            i = 0
-            for k, v in item.items():
-                if i == 0:
-                    if len(v) > len_player:
-                        len_player = len(v)
-                if i == 1:
-                    index = list(
-                        language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
-                        str(v).capitalize())
-                    if len(language_dictionary[util.game_language].menu.settings_menu_question_topics[index]) > len_val:
-                        len_val = len(language_dictionary[util.game_language].menu.settings_menu_question_topics[index])
-                i += 1
-        if len_val > len(language_dictionary[util.game_language].menu.scores[1]):
-            score_space = len_val - len(language_dictionary[util.game_language].menu.scores[1])
-        else:
-            score_space = len(language_dictionary[util.game_language].menu.scores[1]) - len_val
-
-        table_len = len(language_dictionary[util.game_language].menu.scores[0] +
-                        language_dictionary[util.game_language].menu.scores[1] +
-                        language_dictionary[util.game_language].menu.scores[2] +
-                        language_dictionary[util.game_language].menu.scores[3]) + \
-                    score_space + 24 - len(language_dictionary[util.game_language].menu.scores[3]) + 13
-        print("   " + "_" * table_len)
-        print("   " + "| " + fg.orange + language_dictionary[util.game_language].menu.scores[
-            0] + fg.rs + " | " + fg.orange + language_dictionary[util.game_language].menu.scores[
-                  1] + score_space * " " + fg.rs + " | " + fg.orange +
-              language_dictionary[util.game_language].menu.scores[2] + fg.rs + " | " + fg.orange +
-              language_dictionary[util.game_language].menu.scores[3] + (
-                      24 - len(language_dictionary[util.game_language].menu.scores[3])) * " " + fg.rs + " |")
-        print("   " + "‾" * table_len)
-        print("   " + "—" * table_len)
-
-        for item in scores_sorted:
-            i = 0
-            for k, v in item.items():
-                if i == 0:
-                    if len(v) > len_player:
-                        print("   " + "| " + v + " " * (len(v) - len_player), end=" | ")
-                    else:
-                        print("   " + "| " + v + " " * (len_player - len(v)), end=" | ")
-                if i == 1:
-                    index = list(
-                        language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
-                        str(v).capitalize())
-                    print(
-                        language_dictionary[util.game_language].menu.settings_menu_question_topics[index] +
-                        (len_val - len(
-                            language_dictionary[util.game_language].menu.settings_menu_question_topics[index])) * " ",
-                        end=" | ")
-                if i == 2:
-                    print(
-                        str(v) + " " * (len(language_dictionary[util.game_language].menu.scores[1]) - len(str(v)) + 1),
-                        end=" | ")
-                if i == 3:
-                    print(v, end=" | ")
-
-                i += 1
-            print("\n" + "   " + "—" * table_len)
-        f.close()
-    else:
-        print("\n\n   " + language_dictionary[util.game_language].menu.empty_scores)
-
-
 def update_settings_file():
     filename = "settings.json"
     content = {"language": util.game_language, "topic": util.question_topics, "difficulty": util.question_difficulty,
@@ -252,7 +159,9 @@ class MenuOption(pygame.sprite.Sprite):
         elif type == "tutorial_option":
             text = language_dictionary[util.game_language].menu.settings_menu_options[-1]
             self.name = text
-
+        elif type == "scores_paging":
+            text = language_dictionary[util.game_language].next_page
+            self.name = text
 
         else:
             text = ""
@@ -306,6 +215,8 @@ class MenuOption(pygame.sprite.Sprite):
                     options = True
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[4]:
                     text_screen("credits")
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[5]:
+                    text_screen("scores")
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[-1]:
                     pygame.quit()
                     exit()
@@ -350,6 +261,10 @@ class MenuOption(pygame.sprite.Sprite):
                     else:
                         options = False
                         update_settings_file()
+
+            elif self.name == language_dictionary[util.game_language].next_page:
+                global scores_paging
+                scores_paging += 1
 
             if self.name in [language_dictionary[util.game_language].en,
                              language_dictionary[util.game_language].hu]:
@@ -455,6 +370,10 @@ class MenuOption(pygame.sprite.Sprite):
         elif self.type == "tutorial_option":
             text = language_dictionary[util.game_language].menu.settings_menu_options[-1]
             self.name = text
+        elif self.type == "scores_paging":
+
+            text = language_dictionary[util.game_language].next_page
+            self.name = text
         else:
             text = ""
 
@@ -471,7 +390,7 @@ def main():
 
     global screen
     if util.full_screen:
-        screen = pygame.display.set_mode((1366, 768), pygame.SCALED)
+        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
     else:
         screen = pygame.display.set_mode((1366, 768))
     # screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN) NATIVE
@@ -588,7 +507,7 @@ def text_screen(screen_type: str):
 
     global screen
     if util.full_screen:
-        screen = pygame.display.set_mode((1366, 768), pygame.SCALED)
+        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
     else:
         screen = pygame.display.set_mode((1366, 768))
 
@@ -607,7 +526,9 @@ def text_screen(screen_type: str):
     global screen_active
     screen_active = True
     tutorial_group = sprite_group_init([language_dictionary[util.game_language].menu.settings_menu_options[-1]], "tutorial_option", 700)
-
+    is_added = False
+    global scores_paging
+    scores_paging = 1
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -622,21 +543,130 @@ def text_screen(screen_type: str):
         #frame = pygame.image.load('./data/graphics/settings_option.png').convert_alpha()
 
         #screen.blit(settings_surface, (0,0))
-        font = pygame.font.SysFont('Sans', 25)
         y = 20
-        text_array = []
-        if screen_type == "tutorial":
-            text_array = language_dictionary[util.game_language].tutorial.text_list
+
+        if screen_type in ["tutorial", "credits"]:
+            font = pygame.font.SysFont('Sans', 25)
+
+            text_array = []
+            if screen_type == "tutorial":
+                text_array = language_dictionary[util.game_language].tutorial.text_list
+            else:
+                text_array = language_dictionary[util.game_language].credits.text_list
+
+            for line in text_array:
+                text = font.render(line, True, (255, 148, 0))
+
+                screen.blit(text, [200, y])
+                y += 50
+
         else:
-            text_array = language_dictionary[util.game_language].credits.text_list
+            font = pygame.font.SysFont('Sans', 18)
 
-        for line in text_array:
-            text = font.render(line, True, (255, 148, 0))
+            if os.path.isfile("scores.json"):
+                showed_text = ""
+                #rect = pygame.Rect(10, 10, 800, 800)
+                #rect_draw = pygame.draw.rect(screen, (255, 148, 0), pygame.Rect(10, 10, 800, 800), width=0)
+                f = open("scores.json")
+                data = json.load(f)
+                scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)
+                if len(scores_sorted) > 15 and not is_added:
+                    tutorial_group.add(MenuOption("scores_paging", 0, 500))
+                    is_added = True
+                if len(scores_sorted) >= scores_paging*15:
+                    if scores_paging == 0:
+                        scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[:15]
+                        showed_text = "1 - 15"
+                    else:
+                        scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[((scores_paging-1)*15):(scores_paging*15)]
+                        showed_text = str(((scores_paging-1)*15)+1) + " - " + str(scores_paging*15)
+                elif len(scores_sorted) < scores_paging*15 and len(scores_sorted) > ((scores_paging-1)*15):
+                    print(len(scores_sorted))
+                    print((scores_paging-1)*15)
+                    showed_text = str(((scores_paging - 1) * 15)+1) + " - " + str(len(scores_sorted))
+                    scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[
+                                    ((scores_paging - 1) * 15):(scores_paging * 15)]
+                else:
+                    scores_paging = 1
 
-            screen.blit(text, [200, y])
-            y += 50
-        #image.blit(text, [0, 0])
+                len_val = 0
+                len_player = 0
+                index = 0
+                i = 0
 
+                for item in scores_sorted:
+                    screen_x = 0
+                    for k, v in item.items():
+                        if k == "topic":
+                            v = list(language_dictionary[util.game_language].menu.settings_menu_question_topics)[util.Topics[v].value]
+                            #v = util.Topics(list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(v)).name
+                        if i == 0:
+                            pass
+                            #if len(v) > len_player:
+                            #    len_player = len(v)
+                        #if i == 1:
+                        #    index = list(
+                       #         language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
+                       #         str(v).capitalize())
+                        #    if len(language_dictionary[util.game_language].menu.settings_menu_question_topics[
+                        #               index]) > len_val:
+                        #        len_val = len(
+                        #            language_dictionary[util.game_language].menu.settings_menu_question_topics[index])
+
+                        text = font.render(str(k) + ": " + str(v), True,
+                                           (255, 148, 0))
+                        screen.blit(text, [screen_x, 0+ (i*25)])
+
+                        screen_x += 200
+
+                    i += 1
+
+
+                        #language_dictionary[util.game_language].menu.scores[3]
+
+
+                for item in scores_sorted:
+                    i = 0
+                    for k, v in item.items():
+                        if i == 0:
+                            if len(v) > len_player:
+                                pass
+                                #print("   " + "| " + v + " " * (len(v) - len_player), end=" | ")
+                            else:
+                                pass
+                                #print("   " + "| " + v + " " * (len_player - len(v)), end=" | ")
+                        if i == 1:
+                            pass
+                            index = list(
+                                language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
+                                str(v).capitalize())
+                            #print(
+                            #    language_dictionary[util.game_language].menu.settings_menu_question_topics[index] +
+                            #     (len_val - len(
+                             #       language_dictionary[util.game_language].menu.settings_menu_question_topics[
+                             #           index])) * " ",
+                             #   end=" | ")
+                        if i == 2:
+                            pass
+                            #print(
+                            #    str(v) + " " * (
+                            #                len(language_dictionary[util.game_language].menu.scores[1]) - len(str(v)) + 1),
+                            #    end=" | ")
+                        if i == 3:
+                            pass
+                            #print(v, end=" | ")
+
+                        i += 1
+
+                    #print("\n" + "   " + "—" * table_len)
+                f.close()
+
+
+                text = font.render(language_dictionary[util.game_language].showed + ": " + showed_text, True, (255, 148, 0))
+                screen.blit(text, [668, 450])
+            else:
+                text = font.render(language_dictionary[util.game_language].menu.empty_scores, True, (255, 148, 0))
+                screen.blit(text, [0, 0])
 
             #screen.fill((0, 0, 0))
             # screen.blit(subsurface, (0, -20), sky_surface_rect)
