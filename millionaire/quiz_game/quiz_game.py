@@ -739,13 +739,22 @@ def play():
         sound = random.choice(millionaire_sounds)
         util.play_sound(sound, 0, dir="intro", timer=True)
 
+    score = 0
     is_active = True
+    end = False
     for i in range(game_levels):
+        print("I" + str(i))
+        if i > 0 and is_active:
+            score += 1
+        if i == 14:
+            end = True
         if i < game_levels:
             if is_active:
                 is_active = game_loop(i, question_lines)
+            else: break
 
-        return
+    quit_quiz(score, player, question_topics, end)
+    return
 
 
 def start_game():
@@ -1050,6 +1059,7 @@ def game_loop(level: int, question_array: {}):
                                             util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
                                         util.play_sound("claps", 0, general=True, timer=True)
                                         return False
+
                                     else:
                                         return True
                     else:
@@ -2575,7 +2585,6 @@ def quit_quiz(score: int, name: str, topic, end=False):
     if score > 0:
         write_content_to_file("scores.json",
                               {"user": name, "topic": topic, "score": score, "time": time.ctime(time.time())})
-    menu.return_prompt()
     util.stop_sound()
 
 
