@@ -10,6 +10,8 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
 import pygame
 
 operating_system = os.name
+resolution = (1366, 768)
+full_screen = False
 
 
 class Language(Enum):
@@ -20,19 +22,19 @@ class Language(Enum):
 class Topics(Enum):
     ALL = 0
     GENERAL = 1
-    HISTORY = 3
-    GEOGRAPHY = 4
-    PHYSICS = 5
-    CHEMISTRY = 6
-    BIOLOGY = 7
-    MATHEMATICS = 8
-    ARTS = 9
-    LITERATURE = 10
-    MUSIC = 11
-    GASTRONOMY = 12
-    ECONOMY = 13
-    SPORTS = 14
-    ORIGINAL = 15
+    HISTORY = 2
+    GEOGRAPHY = 3
+    PHYSICS = 4
+    CHEMISTRY = 5
+    BIOLOGY = 6
+    MATHEMATICS = 7
+    ARTS = 8
+    LITERATURE = 9
+    MUSIC = 10
+    GASTRONOMY = 11
+    ECONOMY = 12
+    SPORTS = 13
+    ORIGINAL = 14
 
 
 class Difficulty(Enum):
@@ -73,6 +75,7 @@ def init_settings(selected_lang: str, reset_settings=False):
     global question_difficulty
     global system_volume
     global quizmaster_attitude
+    global full_screen
 
     if os.path.isfile("settings.json") and reset_settings == False:
         file_path = "settings.json"
@@ -130,31 +133,65 @@ def clear_screen():
         os.system('cls')
 
 
-def play_sound(filename, starting_time, file_type="wav", dir="", volume=0.07, fading_time=0, timer=False, general=False):
-
+def play_sound(filename, starting_time, file_type="wav", dir="", volume=0.07, fading_time=0, timer=False,
+               general=False):
     if general:
-        file_path = get_data_path() + "/sound_files/general/"  + filename + "." + file_type
+        file_path = get_data_path() + "/sound_files/general/" + filename + "." + file_type
     elif dir != "":
-        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + dir + "/" + filename + "." + file_type
+        file_path = get_data_path() + "/sound_files/" + str(
+            game_language).lower() + "/" + dir + "/" + filename + "." + file_type
     else:
         file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
-
 
     if system_volume:
         sound = pygame.mixer.Sound(file_path)
         sound.play()
 
         if timer == True:
-            #a = pygame.mixer.Sound(file_path)
-
             time.sleep(sound.get_length())
-        #else:
-            #sound = pygame.mixer.Sound(file_path)
-            #pygame.mixer.music.load(file_path)
-            #pygame.mixer.music.set_volume(volume)
-            #pygame.mixer.music.play(0, starting_time, fade_ms=fading_time)
-        #sound.play()
+        # else:
+        # sound = pygame.mixer.Sound(file_path)
+        # pygame.mixer.music.load(file_path)
+        # pygame.mixer.music.set_volume(volume)
+        # pygame.mixer.music.play(0, starting_time, fade_ms=fading_time)
+        # sound.play()
 
+
+def play_background_sound(filename, starting_time, file_type="wav", dir="", volume=0.07, fading_time=0, timer=False,
+                          general=False):
+    if general:
+        file_path = get_data_path() + "/sound_files/general/" + filename + "." + file_type
+    elif dir != "":
+        file_path = get_data_path() + "/sound_files/" + str(
+            game_language).lower() + "/" + dir + "/" + filename + "." + file_type
+    else:
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
+
+    if system_volume:
+        pygame.mixer.music.load(file_path)
+        pygame.mixer.music.play()
+
+        # a = pygame.mixer.Sound(file_path)
+
+        # else:
+        # sound = pygame.mixer.Sound(file_path)
+        # pygame.mixer.music.load(file_path)
+        # pygame.mixer.music.set_volume(volume)
+        # pygame.mixer.music.play(0, starting_time, fade_ms=fading_time)
+        # sound.play()
+
+
+def get_sound_length(filename, file_type="wav", dir="", general=False) -> int:
+    if general:
+        file_path = get_data_path() + "/sound_files/general/" + filename + "." + file_type
+    elif dir != "":
+        file_path = get_data_path() + "/sound_files/" + str(
+            game_language).lower() + "/" + dir + "/" + filename + "." + file_type
+    else:
+        file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
+
+    sound = pygame.mixer.Sound(file_path)
+    return sound.get_length()
 
 
 def play_sound_object(file: pygame.mixer.Sound):
@@ -202,6 +239,7 @@ def init_random_sounds() -> []:
 
     return sounds
 
+
 def pause_music():
     if system_volume:
         pygame.mixer.music.pause()
@@ -234,3 +272,11 @@ def custom_dictionary_decoder(dict1):
         if type(value) is dict:
             dict1[key] = custom_dictionary_decoder(value)
     return namedtuple('X', dict1.keys())(*dict1.values())
+
+
+def default_settings() -> bool:
+    if game_language == Language.ENGLISH.name and question_topics == Topics.ALL.name \
+            and question_difficulty == Difficulty.ALL.name and system_volume == True and quizmaster_attitude == QuizMasterAttitude.NEUTRAL.name and full_screen == False:
+        return True
+
+    return False

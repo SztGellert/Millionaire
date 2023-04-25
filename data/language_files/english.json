@@ -1,76 +1,82 @@
 {
     "en": "English",
     "hu": "Hungarian",
+    "title": "Millionaire",
+    "language": "Nyelv",
+    "sounds": "Sounds",
+    "topic": "Topic",
+    "true": "ON",
+    "false": "OFF",
+    "next_page": "Next page",
+    "showed": "Showed",
     "menu": {
         "side_title_first_part": " ♦WHO WANTS ",
         "side_title_second_part": "  TO BE A  ♦",
         "title_first_line": " ♦  W H O    W A N T S   T O   B E   A  ♦",
         "title_second_line": "     M  I  L  L  I  O  N  A  I  R  E",
         "return_prompt": "press ESC for main menu..",
-        "settings_menu_options": ["Language selection",
-                         "Disable/Enable Sound",
-                         "Full Screen <F11>",
-                         "Question types",
-                         "Question difficulty",
-                         "Quizmaster attitude",
-                         "Restore Settings",
-                         "Back"],
+        "settings_menu_options": [
+            "Language",
+            "Disable/Enable Sound",
+            "Full screen",
+            "Question types",
+            "Question difficulty",
+            "Quizmaster attitude",
+            "Default Settings",
+            "Back"
+        ],
         "skip_prompt": "Press any key to skip game intro...",
-        "main_menu_options" : ["Play", "Fastest Fingers First","Tutorial", "Settings", "Credits","Scores", "Exit"],
-        "settings_menu_question_topics": ["All","General","History", "Geography","Physics","Chemistry","Biology","Mathematics","Arts","Literature","Music","Gastronomy","Economy","Sports", "Original"],
+        "main_menu_options": [
+            "Play",
+            "Fastest Fingers First",
+            "Tutorial",
+            "Settings",
+            "Credits",
+            "Scores",
+            "Exit"
+        ],
+        "settings_menu_question_topics": [
+            "All",
+            "General",
+            "History",
+            "Geography",
+            "Physics",
+            "Chemistry",
+            "Biology",
+            "Mathematics",
+            "Arts",
+            "Literature",
+            "Music",
+            "Gastronomy",
+            "Economy",
+            "Sports",
+            "Original"
+        ],
         "empty_scores": "First you need to play a game to achieve some points!",
         "scores": {
-            "user":  "Player",
+            "user": "Player",
             "topic": "Topic",
             "score": "Score",
-            "time":  "Time"
+            "time": "Time"
         },
-        "question_difficulty_levels": ["All","Easy", "Medium", "Hard"],
-        "quizmaster_attitudes": ["None","Friendly", "Neutral", "Hostile"],
-        "millionaire_lines": [
-                             "XXXX   XXXX XXX XXX    XXX    XXX XXXXXXXXX XXXX  XXX XXXXXXX XXX XXXXXX  XXXXXX",
-                             "X||XX XX||X X|X X|X    X|X    X|X X|||||||X X||X  X|X X|||||X X|X X||||XX X||||X",
-                             "X|||XXX|||X X|X X|X    X|X    X|X X|XXXXX|X X||X  X|X X|XXX|X X|X X|X X|X X|X   ",
-                             "X|XX|||XX|X X|X X|X    X|X    X|X X|X   X|X X|X|X X|X X|X X|X X|X X|X X|X X|XXXX",
-                             "X|X X|X X|X X|X X|X    X|X    X|X X|X   X|X X|X|X X|X X|XXX|  X|X X||||X  X||||X",
-                             "X|X  X  X|X X|X X|X    X|X    X|X X|X   X|X X|X | X|X X|||||X X|X X|X X|X X|XXXX",
-                             "X|X     X|X X|X X|X    X|X    X|X X|X   X|X X|X ||X|X X|XXX|X X|X X|X X|X X|X   ",
-                             "X|X     X|X X|X X|X    X|X    X|X X|X   X|X X|X X|X|X X|X X|X X|X X|X X|X X|X   ",
-                             "X|X     X|X X|X X|XXXX X|XXXX X|X X|XXXXX|X X|X X|X|X X|XXX|X X|X X|X X|X X|XXXX",
-                             "X|X     X|X X|X X||||X X||||X X|X X|||||||X X|X  X||X X|X X|X X|X X|X X|X X||||X",
-                             "XXX     XXX XXX XXXXXX XXXXXX XXX XXXXXXXXX XXX   XXX XXX XXX XXX XXX  XXX XXXXX"
+        "question_difficulty_levels": [
+            "All",
+            "Easy",
+            "Medium",
+            "Hard"
         ],
-        "millionaire_winning": [
-                              "         XXX||X     XXX     XXXXXX XXXXXX XXXXXX XXXXXX   XXXXXX XXXXXX        ",
-                              "         XX|XX|     X|X     X||||X X||||X X||||X   X||||X X||||X X||||X        ",
-                              "         XX|XX|     ||X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         XX|XX     |||X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         XX|XX      X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         X|||XXX    X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         XX|XX      X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         XX|XX      X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         XX|X||     X|X     X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X        ",
-                              "         ||||XX|    X|X |   X||||X X||||X X||||X | X||||X X||||X X||||X        ",
-                              "         XXXXX      XXX X   XXXXXX XXXXXX XXXXXX X XXXXXX XXXXXX XXXXXX        "
-        ],
-        "credits_title_lines":     ["   $$$$   $$$$  $  $     $     $  $$$$$  $$   $     $$$     $  $$$$  $$$$$",
-                                    "   $  $   $  $  $  $     $     $  $   $  $$   $     $ $     $  $  $  $",
-                                    "   $   $$    $  $  $     $     $  $   $  $ $  $    $   $    $  $  $  $$$$",
-                                    "   $         $  $  $     $     $  $   $  $  $ $   $$$$$$$   $  $$$   $",
-                                    "   $         $  $  $$$$  $$$$  $  $$$$$  $   $$  $       $  $  $  $  $$$$$"
-        ],
-        "scores_title_lines":    ["   $$$$$  $$$$   $$$$$$   $$$$    $$$$  $$$$$",
-                                  "   $      $      $    $   $   $   $     $",
-                                  "   $$$$$  $      $    $   $ $$    $$$$  $$$$$",
-                                  "       $  $      $    $   $   $   $         $",
-                                  "   $$$$$  $$$$$  $$$$$$   $    $  $$$$  $$$$$"
+        "quizmaster_attitudes": [
+            "None",
+            "Friendly",
+            "Neutral",
+            "Hostile"
         ]
     },
     "quiz": {
         "player_name_prompt": "How can I call you? ",
         "skip_prompt": "Press any key to skip game introduction... ",
-        "select_answer":"Select the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help!",
-        "selected_answer":"Your answer: ",
+        "select_answer": "Select the correct answer ('a','b','c','d'), 't' for guessing out of game or 'h' for help!",
+        "selected_answer": "Your answer: ",
         "select_answer_out": "Select the correct answer ('a','b','c','d') ! ",
         "correct_answer": "Well Done!",
         "correct_answer_out": "Correct answer! Better luck next time!",
@@ -90,6 +96,41 @@
         "allowed_letters_error": "Error! Only letters: ",
         "allowed": " allowed!",
         "call_duration": "Call Duration: ",
-        "call_seconds": " seconds\\ 30s"
+        "call_seconds": " seconds\\ 30s",
+        "menu": {
+            "resume": "Resume",
+            "out_of_game": "Out of game answer",
+            "exit": "Exit"
+        }
+    },
+    "tutorial": {
+        "text_list": [
+            "This is the Guide of The Helpless Gooses' Millionare game.",
+            "This game is based on the TV show \"Who wants to be a Millionaire?\".",
+            "You will get 15 questions in a random order and you have to choose the correct answer out of 4.",
+            "How it works / instructions:",
+            "You have to type for every question: a / b / c / d",
+            "You have 3 kinds of helps:",
+            "Audience's help Telephone help Halving the questions by the computer",
+            "If you choose an incorrect answer you will instantly lose the game.",
+            "The prize that you bring home depends on your performance.",
+            "You earn guaranteed prize after the 5th correct answer. ",
+            "You earn guaranteed prize after the 10th correct answer.",
+            "You earn guaranteed prize after the 15th correct answer.",
+            "You can also make a guess out of the game to win guaranteed prizes.",
+            "And you win the game of course if you've guessed all the answers correct.",
+            "Please enjoy! Best wishes from the Gooses!"
+        ]
+    },
+    "credits": {
+        "text_list": [
+            "This is the Credits page of The Helpless Gooses' Millionare game.",
+            "This game is developed by Gellert Sztankovszky based on a team work week of the Helpless Gooses Team.",
+            "The aim of this development is self-entertainment and learning python/programming.",
+            "Feel free to share the game and leave review!",
+            "Big thanks for reading!",
+            "https://github.com/SztGellert",
+            "Enjoy!"
+        ]
     }
 }

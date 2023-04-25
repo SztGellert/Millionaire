@@ -8,7 +8,7 @@ Az alábbi hangszerek közül melyikről ismert Lizzo?;Fuvola;Hárfa;Gitár;Okar
 Mi a neve Beethoven 14. zongoraszonátájának?;Holdfény-szonáta;Napfény-szonáta;Vénusz-szonáta;Sundance-szonáta
 Milyen hangszeren játszik egy zenekar koncertmestere (vezetője)?;Hegedű;Tuba;Kürt;Cselló
 Celine Dion "My Heart Will Go On" slágere melyik híres film betétdala?;Titanic;Az oroszlánkirály;Frozen;Good Will Hunting
-Melyik előadót ismerik Slim Shady néven is?;Enimem;Tech N9ne;Jay-Z;Lil Wayne
+Melyik előadót ismerik Slim Shady néven is?;Eminem;Tech N9ne;Jay-Z;Lil Wayne
 2017-ben Luis Fonsi és Daddy Yankee 47 országban vezették a listát, melyik dallal?;Despacito;Macarena;Oye Como va;Bailando
 Melyik kubai-amerikai énekessel állt össze Shawn Mendes a „Señorita” című számban?;Camila Cabello;Shakira;Luis Fonsi;Paco de Lucia
 Ki minden idők legkelendőbb női előadója?;Madonna;Katy Perry;Whitney Houston;Celine Dion

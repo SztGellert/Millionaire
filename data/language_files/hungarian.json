@@ -1,75 +1,82 @@
 {
     "en": "Angol",
     "hu": "Magyar",
+    "title": "Milliomos",
+    "language": "Nyelv",
+    "sounds": "Hangok",
+    "topic": "Témakör",
+    "true": "BE",
+    "false": "KI",
+    "next_page": "Következő oldal",
+    "showed": "Megjelenítve",
     "menu": {
         "side_title_first_part": " ♦ LEGYEN   ",
         "side_title_second_part": "  ÖN   IS  ♦",
         "title_first_line": " ♦      L E G Y E N     Ö N    I S      ♦",
         "title_second_line": "     M   I   L   L   I   O   M   O   S",
         "return_prompt": "Nyomja meg az ESCAPE-t a menübe való visszatéréshez...",
-        "settings_menu_options": ["Nyelv kiválasztása",
-                     "Hangok ki/bekapcsolása",
-                     "Teljes képernyő <F11>",
-                     "Kérdés témakörök",
-                     "Kérdés nehézség ",
-                     "Kvízmester hozzáállása",
-                     "Alapértelmezett beállítások",
-                     "Vissza"],
+        "settings_menu_options": [
+            "Nyelv",
+            "Hangok ki/bekapcsolása",
+            "Teljes Képernyő",
+            "Kérdés témakörök",
+            "Kérdés nehézség",
+            "Kvízmester hozzáállása",
+            "Alapértelmezett beállítások",
+            "Vissza"
+        ],
         "skip_prompt": "Nyomjon meg egy gombot az intro kihagyásához..",
         "main_menu_options": [
-            "Játék", "Sorkérdés","Útmutató", "Beállítások","Stáblista","Pontszámok", "Kilépés"
+            "Játék",
+            "Sorkérdés",
+            "Útmutató",
+            "Beállítások",
+            "Stáblista",
+            "Pontszámok",
+            "Kilépés"
         ],
-        "settings_menu_question_topics": ["Mind","Általános","Történelem", "Földrajz","Fizika","Kémia","Biológia","Matematika","Művészet","Irodalom","Zene","Gasztronómia","Közgazdaságtan","Sport", "Eredeti"],
+        "settings_menu_question_topics": [
+            "Mind",
+            "Általános",
+            "Történelem",
+            "Földrajz",
+            "Fizika",
+            "Kémia",
+            "Biológia",
+            "Matematika",
+            "Művészet",
+            "Irodalom",
+            "Zene",
+            "Gasztronómia",
+            "Közgazdaságtan",
+            "Sport",
+            "Eredeti"
+        ],
         "empty_scores": "Indítson egy kvízjátékot hogy pontokat szerezzen!",
         "scores": {
-            "user":  "Játékos",
+            "user": "Játékos",
             "topic": "Témakör",
             "score": "Pontszám",
-            "time":  "Idő"
+            "time": "Idő"
         },
-        "question_difficulty_levels": ["Mind","Könnyű", "Közepes", "Nehéz"],
-        "quizmaster_attitudes": ["Nincs","Barátságos", "Közömbös", "Ellenséges"],
-        "millionaire_lines": [" XXXXX   XXXXX XXX XXX    XXX    XXX XXXXXXXXX XXXXX   XXXXX XXXXXXXXX XXXXXXXX ",
-                              " X|||XX XX|||X X|X X|X    X|X    X|X X|||||||X X|||XX XX|||X X|||||||X X||||||X ",
-                              " X||||XXX||||X X|X X|X    X|X    X|X X|XXXXX|X X||||XXX||||X X|XXXXX|X X||XXXXX ",
-                              " X|XXX|X|XXX|X X|X X|X    X|X    X|X X|X   X|X X|XXX|X|XXX|X X|X   X|X X||X     ",
-                              " X|X XX|XX X|X X|X X|X    X|X    X|X X|X   X|X X|X XX|XX X|X X|X   X|X X||XXXXX ",
-                              " X|X  XXX  X|X X|X X|X    X|X    X|X X|X   X|X X|X  XXX  X|X X|X   X|X X||||||X ",
-                              " X|X       X|X X|X X|X    X|X    X|X X|X   X|X X|X       X|X X|X   X|X XXXXX||X ",
-                              " X|X       X|X X|X X|X    X|X    X|X X|X   X|X X|X       X|X X|X   X|X     X||X ",
-                              " X|X       X|X X|X X|XXXX X|XXXX X|X X|XXXXX|X X|X       X|X X|XXXXX|X XXXXX||X ",
-                              " X|X       X|X X|X X||||X X||||X X|X X|||||||X X|X       X|X X|||||||X X||||||X ",
-                              " XXX       XXX XXX XXXXXX XXXXXX XXX XXXXXXXXX XXX       XXX XXXXXXXXX XXXXXXXX "
+        "question_difficulty_levels": [
+            "Mind",
+            "Könnyű",
+            "Közepes",
+            "Nehéz"
         ],
-      "millionaire_winning": [" XX       XXXXXX   XXXXXX XXXXXX XXXXXX   XXXXXX XXXXXX XXXXXX   XXXXX  XXXXXXX ",
-                              " X|       X||||X   X||||X X||||X X||||X   X||||X X||||X X||||X   X||||  ||||||| ",
-                              " X|       X|  |X   X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X   X|        |X   ",
-                              " X|  |X   X|  |X   X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X   X|        |X   ",
-                              " X||||X   X|  |X   X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X   X|||      |X   ",
-                              " XXXX|X   X|  |X   X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X   X|XX      |X   ",
-                              "     |X   X|  |X   X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X   X|        |X   ",
-                              "     |X   X|  |X   X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X   X|        |X   ",
-                              "     |X   X|  |X   X|  |X X|  |X X|  |X   X|  |X X|  |X X|  |X   X|        |X   ",
-                              "     |X   X||||X | X||||X X||||X X||||X | X||||X X||||X X||||X   X|        |X   ",
-                              "     XX   XXXXXX X XXXXXX XXXXXX XXXXXX X XXXXXX XXXXXX XXXXXX   XX        XX   "
-      ],
-        "credits_title_lines":     ["   $$$$   $$$$  $  $     $     $  $$$$$  $$$$   $$$$ $$$$$ $$$$$",
-                                    "   $  $   $  $  $  $     $     $  $   $  $  $   $  $ $   $ $    ",
-                                    "   $   $$    $  $  $     $     $  $   $  $   $$    $ $   $ $$$$$",
-                                    "   $         $  $  $     $     $  $   $  $         $ $   $     $",
-                                    "   $         $  $  $$$$  $$$$  $  $$$$$  $         $ $$$$$ $$$$$"
-        ],
-        "scores_title_lines":          ["   $$$$$$$$$$$  $$$$$$$$$$   $$      $  $$$$$$$$  $$$$$$$$$$  $       $$",
-                                        "   $         $  $        $   $ $$    $     $      $        $  $     $$  ",
-                                        "   $$$$$$$$$$$  $        $   $   $$  $     $      $        $  $$$$$$    ",
-                                        "   $            $        $   $    $$ $     $      $        $  $     $$  ",
-                                        "   $            $$$$$$$$$$   $     $$$     $      $$$$$$$$$$  $       $$"]
+        "quizmaster_attitudes": [
+            "Nincs",
+            "Barátságos",
+            "Közömbös",
+            "Ellenséges"
+        ]
     },
     "quiz": {
         "player_name_prompt": "Hogyan szólíthatom? ",
         "skip_prompt": "Nyomjon meg egy gombot a bemutató kihagyásához..",
-        "select_answer":"Válassza ki a helyes válasz betűjelét, 'k' a játékon kívüli válaszadáshoz, 's' ha segítséget szeretne!",
-        "selected_answer":"Az ön válasza: ",
+        "select_answer": "Válassza ki a helyes válasz betűjelét, 'k' a játékon kívüli válaszadáshoz, 's' ha segítséget szeretne!",
+        "selected_answer": "Az ön válasza: ",
         "select_answer_out": "Válassza ki a helyes válasz betűjelét! ",
         "correct_answer": "Szép volt!",
         "correct_answer_out": "Helyes válasz! Több szerencsét a következő alkalommal!",
@@ -89,6 +96,39 @@
         "allowed_letters_error": "Hiba! Csak az alábbi karakterek: ",
         "allowed": " engedélyezettek!",
         "call_duration": "Hívás időtartam: ",
-        "call_seconds": " mp\\ 30mp"
+        "call_seconds": " mp\\ 30mp",
+        "menu": {
+            "resume": "Folytatás",
+            "out_of_game": "Játékon kívüli válasz",
+            "exit": "Kilépés"
+        }
+    },
+    "tutorial": {
+        "text_list": ["Ez a Helpless Gooses' csapat Milliomos játékának útmutatója.",
+        "Ez a játék a \"Legyen Ön is Milliomos\" tv műsor alapjn készült.",
+        "15 kérdésből áll véletlenszerű sorrendben és 4 válaszlehetőség közül kell a helyes választ kiválasztania.",
+        "Hogy működik / instrukciók:",
+        "Minden kérdésre a / b / c / d -t kell nyomni",
+        "3 segítségre van lehetőség:",
+        "Közönség segítségen kívül a telefon és a számítógép általi felezés. Ha rosszul válaszol egyből vége a játéknak.",
+        "A nyeremény amit hazavihet a teljesítménytől függ.",
+        "Garantált nyeremény az 5. helyes válasz után. ",
+        "Garantált nyeremény az 10. helyes válasz után.",
+        " Garantált nyeremény az 15. helyes válasz után.",
+        "Természetesen játékon kívül is válaszolhat hogy a garantált nyereményeit hazavihesse.  Nyer:",
+        "ha minden kérdésre helyesen válaszol.",
+        "Jó szórakozást! Sok síkert kíván a Gooses csapata!"]
+    },
+    "credits": {
+        "text_list": ["Ez a stáblista oldala a Helpless Gooses csapat Milliomos játékának.",
+            "Ezt a játékot Sztankovszky Gellért fejlesztette tovább a",
+            "Helpless Gooses csapat egyik heti projektfeladatából.",
+            "Önszórakoztatás és python programozás gyakorlásának",
+            "céljából indult újra ez a kvíz projekt.",
+            "Ossza meg a játékot és a véleményét!",
+            "Köszönöm hogy elolvasta!",
+            "https://github.com/SztGellert",
+            "Jó szórakozást kívánok!"
+        ]
     }
 }

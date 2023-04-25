@@ -1,403 +1,20 @@
-import msvcrt
-import os
-import sys
-import time
 import json
-import keyboard
-from sty import Style, RgbFg, fg, bg, rs
+import os
+import pygame
 import millionaire.quiz_game.quiz_game as quiz
 import millionaire.util.util as util
-import millionaire.menu.helpers as helpers
 
-fg.purple = Style(RgbFg(148, 0, 211))
-bg.orange = bg(255, 150, 50)
 language_dictionary = util.language_dictionary
-default_width = 40
-screen_distance = 60
-bg.dark_blue = bg(0, 0, 155)
-bg.darkest_blue = bg(42, 45, 112)
 
 def intro():
     if util.game_language == util.Language.HUNGARIAN.name:
         util.play_sound("intro", 0, dir="intro", volume=1)
-
     else:
         util.play_sound("intro", 0)
-
-    bg.light_blue = bg(96,180,225)
-    bg.deep_purple = bg(30, 0, 60)
-    bg.blue = bg.darkest_blue
-
-    text_count = 0
-
-    first_text = language_dictionary[util.game_language].menu.side_title_first_part
-    second_text = language_dictionary[util.game_language].menu.side_title_second_part
-    millionaire_lines = language_dictionary[util.game_language].menu.millionaire_lines
-
-    pixels_in_line = 0
-    pixels_per_line = []
-
-    diameter = 40
-
-    # You must account for the loops being zero-based, but the quotient of the diameter / 2 being
-    # one-based. If you use the exact radius, you will be short one column and one row.
-    offset_radius = (diameter / 2) - 0.5
-    util.clear_screen()
-
-    points = list([] for sd in range(diameter))
-    util.clear_screen()
-    for i in range(diameter):
-        for j in range(diameter):
-
-            x = i - offset_radius
-            y = j - offset_radius
-
-            if x * x + y * y <= offset_radius * offset_radius + 1:
-                line = 'X'
-                end = '..'
-                pixels_in_line += 1
-            else:
-                line = ' '
-                end = '  '
-            points[j].append(line + end)
-        pixels_per_line.append(pixels_in_line)
-        pixels_in_line = 0
-
-    for point in range(len(points)):
-
-        current_line = "".join(points[point])
-        line = "".join(points[point])
-        first_index = line.find("X")
-        last_index = line.rfind(".")
-
-        line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "       " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[last_index:]
-
-        color = bg.blue
-        if point < 12:
-            if point == 8:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "   " + first_text[
-                    -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                    first_index:last_index] + bg.blue +"    " +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
-                        second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
-            elif point == 9:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  " " + first_text[
-                    -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                    first_index:last_index] + bg.blue +"      " +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
-                        second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
-            elif point == 11:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "   " + first_text[
-                    -point] + "   " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                    first_index:last_index] + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "  " + \
-                        second_text[point] + "    " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
-            else:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[-point] + "   "  + bg.rs + bg.white + " "  +  bg.blue + " " + bg.rs +bg.light_blue + "  " + bg.rs + line[ first_index:last_index] + bg.blue + "   " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + second_text[point] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[last_index:]
-        if point == 15:
-            millionaire_lines[0] = millionaire_lines[0].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[0] + line2[205:]
-        if point == 16:
-            millionaire_lines[1] = millionaire_lines[1].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[1] + line2[205:]
-        if point == 17:
-            millionaire_lines[2] = millionaire_lines[2].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[2] + line2[205:]
-        if point == 18:
-            millionaire_lines[3] = millionaire_lines[3].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[3] + line2[205:]
-        if point == 19:
-            millionaire_lines[4] = millionaire_lines[4].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[4] + line2[205:]
-        if point == 20:
-            millionaire_lines[5] = millionaire_lines[5].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[5] + line2[205:]
-        if point == 21:
-            millionaire_lines[6] = millionaire_lines[6].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[6] + line2[205:]
-        if point == 22:
-            millionaire_lines[7] = millionaire_lines[7].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[7] + line2[205:]
-        if point == 23:
-            millionaire_lines[8] = millionaire_lines[8].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[8] + line2[205:]
-        if point == 24:
-            millionaire_lines[9] = millionaire_lines[9].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[9] + line2[205:]
-        if point == 25:
-            millionaire_lines[10] = millionaire_lines[10].replace(" ", color + " " + bg.rs)
-            line2=line2[:115]  + bg.rs + line2[115:125] + bg.rs + millionaire_lines[10] + line2[205:]
-        if point > 25 and point < 37:
-            if point == 30:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "  " + first_text[
-                    text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                    first_index:last_index] + bg.blue +"    " +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
-                        second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
-            elif point == 31:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple +  "    " + first_text[
-                    text_count] + " " + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[
-                                                                                                                    first_index:last_index] + bg.blue +"" +bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + \
-                        second_text[-text_count] + "     " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[
-                                                                                                         last_index:]
-            else:
-                line2 = line[:first_index] + bg.light_blue + " " + bg.rs + bg.deep_purple + "   " + first_text[text_count] + "   "  + bg.rs + bg.white + " " + bg.blue + " " + bg.rs + bg.light_blue + "  " + bg.rs + line[ first_index:last_index] + bg.blue + " " + bg.rs + bg.light_blue + " " + bg.rs + bg.blue + " " + bg.rs + bg.white + " " + bg.rs + bg.deep_purple + "   " + second_text[-text_count] + "   " + bg.rs + bg.light_blue + "  " + bg.rs + bg.rs + line[last_index:]
-            text_count += 1
-        line2 = line2.replace("X", bg.blue + " " + bg.rs)
-        line2 = line2.replace(".", bg.blue + " " + bg.rs)
-        line2 = line2.replace("X", bg.black + " " + bg.rs)
-        line2 = line2.replace("|", bg.white + " " + bg.rs)
-
-
-        line3 = "".join(line2)
-
-        print(line3)
-
-    timeout = 15
-    start_time = time.time()
-    inp = None
-
-    print(screen_distance * "   " + language_dictionary[util.game_language].menu.skip_prompt)
-    while True:
-        # TODO: only works on win
-        if msvcrt.kbhit():
-            inp = msvcrt.getch()
-            break
-        elif time.time() - start_time > timeout:
-            break
-
-    if inp:
-        util.stop_sound()
-        return
-    else:
-        return
-
-
-def user_pressed_space():
-    if util.operating_system == "posix":
-        user_input = helpers.return_user_input_linux()
-    else:
-        user_input = helpers.return_user_input_windows()
-    if user_input not in [b' ', '<SPACE>']:
-        return
-
-    util.stop_sound()
-    return
-
-
-def show_title():
-    line_length = default_width + 3
-    util.clear_screen()
-    print(screen_distance * " " + "=" * line_length)
-    print(screen_distance * " " + fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
-    print(screen_distance * " " + "=" * line_length)
-    print(screen_distance * " " + fg.yellow + "|" * line_length + fg.rs)
-    print(screen_distance * " " + fg.purple + language_dictionary[util.game_language].menu.title_second_line + fg.rs)
-    print(screen_distance * " " + fg.yellow + "|" * line_length + fg.rs)
-    print(screen_distance * " " + "=" * line_length)
-    print(screen_distance * " " + fg.purple + language_dictionary[util.game_language].menu.title_first_line + fg.rs)
-    print(screen_distance * " " + "=" * line_length + "\n\n")
-
-
-def show_options(options: list, max_options_length: int, chosen_option=0):
-    show_title()
-    fore_string = "|"
-    after_string = "|"
-    line_length = max_options_length
-    option_length = max_options_length
-    for i in range(len(options)):
-        option = options[i]
-        number_of_spaces = int((option_length - len(options[i]) - len(fore_string) - len(after_string)) / 2)
-        if len(option) % 2 != 0:
-            option = option + " "
-        print(screen_distance * " " + "  " + "_" * line_length)
-        if i == chosen_option:
-            string_to_print = "  " + fore_string + bg.orange + number_of_spaces * " " + fg.black + option + fg.rs + number_of_spaces * " " + bg.rs + after_string
-        else:
-            string_to_print = "  " + fore_string + number_of_spaces * " " + option + number_of_spaces * " " + after_string
-        print(screen_distance * " " + string_to_print)
-        print(screen_distance * " " + "  " + "‾" * line_length + "\n")
-
-
-def select_exit():
-    sys.exit(0)
 
 
 def select_help():
     quiz.show_game_structure()
-    util.clear_screen()
-    file = (util.open_file("tutorial_" + str(util.game_language).lower(), 'r'))
-    print("\n")
-    for line in file:
-        print("   " + line[0])
-    print("\n")
-    return_prompt()
-
-
-def select_credits():
-    util.clear_screen()
-    file = (util.open_file("credits_" + str(util.game_language).lower(), 'r'))
-    title_lines = language_dictionary[util.game_language].menu.credits_title_lines
-    print("\n" + fg.purple + rs.italic)
-    for line in title_lines:
-        print(line)
-    print("\n" + fg.rs)
-
-    for line in file:
-        print("   " + line[0])
-    print("\n")
-    return_prompt()
-
-
-def select_scores():
-    title_lines = language_dictionary[util.game_language].menu.scores_title_lines
-    util.clear_screen()
-    print("\n" + fg.purple + rs.italic)
-    for line in title_lines:
-        print(line)
-    print("\n" + fg.rs)
-
-    if os.path.isfile("scores.json"):
-        f = open("scores.json")
-        data = json.load(f)
-        scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)
-        len_val = 0
-        len_player = 0
-        index = 0
-        for item in scores_sorted:
-            i = 0
-            for k, v in item.items():
-                if i == 0:
-                    if len(v) > len_player:
-                        len_player = len(v)
-                if i == 1:
-                    index = list(
-                        language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
-                        str(v).capitalize())
-                    if len(language_dictionary[util.game_language].menu.settings_menu_question_topics[index]) > len_val:
-                        len_val = len(language_dictionary[util.game_language].menu.settings_menu_question_topics[index])
-                i += 1
-        if len_val > len(language_dictionary[util.game_language].menu.scores[1]):
-            score_space = len_val - len(language_dictionary[util.game_language].menu.scores[1])
-        else:
-            score_space = len(language_dictionary[util.game_language].menu.scores[1]) - len_val
-
-        table_len = len(language_dictionary[util.game_language].menu.scores[0] +
-                        language_dictionary[util.game_language].menu.scores[1] +
-                        language_dictionary[util.game_language].menu.scores[2] +
-                        language_dictionary[util.game_language].menu.scores[3]) + \
-                    score_space + 24 - len(language_dictionary[util.game_language].menu.scores[3]) + 13
-        print("   " + "_" * table_len)
-        print("   " + "| " + fg.orange + language_dictionary[util.game_language].menu.scores[
-            0] + fg.rs + " | " + fg.orange + language_dictionary[util.game_language].menu.scores[
-                  1] + score_space * " " + fg.rs + " | " + fg.orange +
-              language_dictionary[util.game_language].menu.scores[2] + fg.rs + " | " + fg.orange +
-              language_dictionary[util.game_language].menu.scores[3] + (
-                          24 - len(language_dictionary[util.game_language].menu.scores[3])) * " " + fg.rs + " |")
-        print("   " + "‾" * table_len)
-        print("   " + "—" * table_len)
-
-        for item in scores_sorted:
-            i = 0
-            for k, v in item.items():
-                if i == 0:
-                    if len(v) > len_player:
-                        print("   " + "| " + v + " " * (len(v) - len_player), end=" | ")
-                    else:
-                        print("   " + "| " + v + " " * (len_player - len(v)), end=" | ")
-                if i == 1:
-                    index = list(
-                        language_dictionary[util.Language.ENGLISH.name].menu.settings_menu_question_topics).index(
-                        str(v).capitalize())
-                    print(
-                        language_dictionary[util.game_language].menu.settings_menu_question_topics[index] +
-                        (len_val - len(
-                            language_dictionary[util.game_language].menu.settings_menu_question_topics[index])) * " ",
-                        end=" | ")
-                if i == 2:
-                    print(
-                        str(v) + " " * (len(language_dictionary[util.game_language].menu.scores[1]) - len(str(v)) + 1),
-                        end=" | ")
-                if i == 3:
-                    print(v, end=" | ")
-
-                i += 1
-            print("\n" + "   " + "—" * table_len)
-        f.close()
-    else:
-        print("\n\n   " + language_dictionary[util.game_language].menu.empty_scores)
-    return_prompt()
-
-
-def select_settings():
-    start_index = 0
-    util.clear_screen()
-    show_options(language_dictionary[util.game_language].menu.settings_menu_options, default_width)
-    while True:
-        chosen_option = get_user_input(language_dictionary[util.game_language].menu.settings_menu_options,
-                                       language_dictionary[util.game_language].menu.settings_menu_options,
-                                       default_width, start_index)
-        if chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[0]:
-            langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu]
-            show_options(langs, 20, util.available_languages.index(util.game_language))
-            chosen_lang_option = get_user_input(langs, util.available_languages, 20,
-                                                util.available_languages.index(util.game_language), False)
-            util.set_game_language(util.available_languages[util.available_languages.index(chosen_lang_option)])
-            show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40)
-            start_index = 0
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[1]:
-            if util.system_volume:
-                util.system_volume = False
-            else:
-                util.system_volume = True
-            show_options(language_dictionary[util.game_language].menu.settings_menu_options, default_width,
-                         chosen_option=1)
-            start_index = 1
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[2]:
-            if os.name == "nt":
-                keyboard.press('f11')
-            start_index = 2
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[3]:
-            show_options(language_dictionary[util.game_language].menu.settings_menu_question_topics, default_width,
-                         util.topics.index(util.question_topics))
-            chosen_question_topic = get_user_input(
-                language_dictionary[util.game_language].menu.settings_menu_question_topics, util.topics, default_width,
-                util.topics.index(util.question_topics), False)
-            util.set_question_topics(chosen_question_topic)
-            show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=3)
-            start_index = 3
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[4]:
-            if util.question_difficulty != util.Difficulty.ALL.name:
-                show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20,
-                             util.difficulty_levels.index(util.question_difficulty))
-                chosen_difficulty_option = get_user_input(
-                    language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels, 20,
-                    util.difficulty_levels.index(util.question_difficulty), False)
-            else:
-                show_options(language_dictionary[util.game_language].menu.question_difficulty_levels, 20)
-                chosen_difficulty_option = get_user_input(
-                    language_dictionary[util.game_language].menu.question_difficulty_levels, util.difficulty_levels, 20,
-                    0, False)
-            if chosen_difficulty_option != language_dictionary[util.game_language].menu.question_difficulty_levels[0]:
-                util.set_question_difficulty(chosen_difficulty_option)
-            else:
-                util.set_question_difficulty(util.Difficulty.ALL.name)
-            show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=4)
-            start_index = 4
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[5]:
-            quizmaster_attitudes = language_dictionary[util.game_language].menu.quizmaster_attitudes
-            show_options(language_dictionary[util.game_language].menu.quizmaster_attitudes, 20, util.quizmaster_attitudes.index(util.quizmaster_attitude))
-            chosen_attitude_option = get_user_input(quizmaster_attitudes, util.quizmaster_attitudes, 20,
-                                                util.quizmaster_attitudes.index(util.quizmaster_attitude), False)
-            util.set_quizmaster_attitude(util.quizmaster_attitudes[util.quizmaster_attitudes.index(chosen_attitude_option)])
-            show_options(language_dictionary[util.game_language].menu.settings_menu_options, 40, chosen_option=5)
-            start_index = 5
-        elif chosen_option == language_dictionary[util.game_language].menu.settings_menu_options[6]:
-            util.init_settings(util.Language.ENGLISH.name, reset_settings=True)
-            start_index = 6
-        else:
-            update_settings_file()
-            return
 
 
 def update_settings_file():
@@ -408,99 +25,543 @@ def update_settings_file():
         json.dump(content, outfile)
 
 
-def return_prompt():
-    esc_keys = [b'\x1b', '<ESC>']
-    print(fg.grey + "\n\n   " + language_dictionary[util.game_language].menu.return_prompt + fg.rs)
-    if util.operating_system == "posix":
-        user_input = helpers.return_user_input_linux()
+class MenuOption(pygame.sprite.Sprite):
+
+    def __init__(self, type, order, base_height):
+        super().__init__()
+
+        x_pos = 0
+        y_pos = base_height + (order * 35)
+
+        self.frame = pygame.image.load('./data/graphics/settings_option.png').convert_alpha()
+        self.font = pygame.font.SysFont('Sans', 25)
+        self.type = type
+        self.text_color = (255, 255, 255)
+        self.text_x = 30
+        self.text_y = 0
+        if type == "main_menu_option":
+            text = language_dictionary[util.game_language].menu.main_menu_options[order]
+            self.name = text
+
+        elif type == "settings_menu_option":
+            self.text_x = 50
+            self.text_y = 5
+
+            x_pos = 0
+            base_height = 545
+            y_pos = base_height + ((order-8) * 45)
+
+            if order == 0:
+                if util.game_language[:2].lower() == "hu":
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0]+ ": " + language_dictionary[util.game_language].hu
+                    self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
+
+                else:
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0]+ ": " + language_dictionary[util.game_language].en
+                    self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
+
+            elif order == 1:
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[1]
+
+                text = language_dictionary[util.game_language].sounds + ": "
+                if util.system_volume:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+
+            elif order == 2:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[2] + ": "
+                if util.full_screen:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[2]
+
+            elif order == 3:
+                text = language_dictionary[util.game_language].topic + ": " + str(util.question_topics)
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[3]
+
+            elif order == 4:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[4] + ": " + str(util.question_difficulty)
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[4]
+
+            elif order == 5:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[5] + ": " + str(util.quizmaster_attitude)
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[5]
+
+
+            elif order == 6:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[-2] + ": "
+                if util.system_volume:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[-2]
+            else:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[-1]
+                self.name = text
+
+        elif type == "topic_option":
+            text = language_dictionary[util.game_language].menu.settings_menu_question_topics[order]
+            self.name = text
+
+        elif type == "question_difficulty_option":
+            text = language_dictionary[util.game_language].menu.question_difficulty_levels[order]
+            self.name = text
+
+        elif type == "quizmaster_attitude_option":
+            text = language_dictionary[util.game_language].menu.quizmaster_attitudes[order]
+            self.name = text
+
+        elif type == "language_option":
+            text = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu][order]
+            self.name = text
+
+        elif type == "tutorial_option":
+            text = language_dictionary[util.game_language].menu.settings_menu_options[-1]
+            self.name = text
+        elif type == "scores_paging":
+            text = language_dictionary[util.game_language].next_page
+            self.name = text
+
+        else:
+            text = ""
+
+        self.text = self.font.render(text, True, (255, 255, 255))
+        self.image = self.frame
+        self.image.blit(self.text, [self.text_x, self.text_y])
+        self.rect = self.image.get_rect(topleft=(x_pos, y_pos))
+        self.lang = util.game_language
+        self.order = order
+
+    def get_is_active(self):
+        if hasattr(self, 'is_active'):
+            return self.is_active
+        else:
+            return True
+
+    def set_is_active(self):
+        self.is_active = True
+
+    def unset_is_active(self):
+        self.is_active = False
+
+    def player_input(self):
+        if self.rect.collidepoint((pygame.mouse.get_pos())):
+            if self.type == "settings_menu_option":
+                self.image = pygame.image.load('./data/graphics/settings_option_marked.png').convert_alpha()
+            else:
+                self.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+            self.image.blit(self.text, [self.text_x, self.text_y])
+
+
+        else:
+            if self.type == "settings_menu_option":
+                self.image = pygame.image.load('./data/graphics/settings_option.png').convert_alpha()
+            else:
+                self.image = pygame.image.load('./data/graphics/option.png').convert_alpha()
+            self.image.blit(self.text, [self.text_x, self.text_y])
+
+        if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
+            print(self.name)
+            import time
+            time.sleep(0.2)
+            if self.name in language_dictionary[util.game_language].menu.main_menu_options:
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[0]:
+                    quiz.play()
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[2]:
+                    text_screen("tutorial")
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[3]:
+                    global options
+                    options = True
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[4]:
+                    text_screen("credits")
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[5]:
+                    text_screen("scores")
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[-1]:
+                    pygame.quit()
+                    exit()
+
+            if self.name in language_dictionary[util.game_language].menu.settings_menu_options:
+
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[0]:
+                    global lang_selection
+                    lang_selection = True
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[1]:
+                    if util.system_volume:
+                        util.system_volume = False
+                    else:
+                        util.system_volume = True
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[2]:
+                    global screen
+
+                    if util.full_screen:
+                        util.full_screen = False
+                        screen = pygame.display.set_mode((1366, 768))
+                    else:
+                        util.full_screen = True
+                        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[3]:
+                    global topics
+                    topics = True
+
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[4]:
+                    global difficulties
+                    difficulties = True
+
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[5]:
+                    global attitudes
+                    attitudes = True
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-2]:
+                    util.init_settings(util.Language.ENGLISH.name, reset_settings=True)
+
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-1]:
+                    if self.type == "tutorial_option":
+                        global screen_active
+                        screen_active = False
+                    else:
+                        options = False
+                        update_settings_file()
+
+            elif self.name == language_dictionary[util.game_language].next_page:
+                global scores_paging
+                scores_paging += 1
+
+            if self.name in [language_dictionary[util.game_language].en,
+                             language_dictionary[util.game_language].hu]:
+                if self.name == language_dictionary[util.game_language].hu:
+                    util.set_game_language(util.Language.HUNGARIAN.name)
+                else:
+                    util.set_game_language(util.Language.ENGLISH.name)
+                lang_selection = False
+
+            if self.name in language_dictionary[util.game_language].menu.settings_menu_question_topics:
+                if util.question_topics != str(
+                        list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(
+                                self.name)).lower():
+                    util.set_question_topics(util.Topics(
+                        list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(
+                            self.name)).name)
+                topics = False
+
+            if self.name in language_dictionary[util.game_language].menu.question_difficulty_levels:
+                if util.difficulty_levels != self.name:
+                    if self.name != language_dictionary[util.game_language].menu.question_difficulty_levels[0]:
+                        util.set_question_difficulty(util.Difficulty(language_dictionary[util.game_language].menu.question_difficulty_levels.index(self.name)).name)
+                    else:
+                        util.set_question_difficulty(util.Difficulty.ALL.name)
+                difficulties = False
+
+            if self.name in language_dictionary[util.game_language].menu.quizmaster_attitudes:
+                if util.quizmaster_attitudes != self.name:
+                    util.set_quizmaster_attitude(util.QuizMasterAttitude(
+                        language_dictionary[util.game_language].menu.quizmaster_attitudes.index(self.name)).name)
+                attitudes = False
+
+    def update(self):
+        if self.type == "main_menu_option":
+            text = language_dictionary[util.game_language].menu.main_menu_options[self.order]
+            self.name = text
+        elif self.type == "settings_menu_option":
+            if self.order == 0:
+                if util.game_language[:2].lower() == "hu":
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + language_dictionary[util.game_language].hu
+                    self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
+
+                else:
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + language_dictionary[util.game_language].en
+                    self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
+
+            elif self.order == 1:
+                text = language_dictionary[util.game_language].sounds + ": "
+                if util.system_volume:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+
+
+            elif self.order == 2:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[2] + ": "
+                if util.full_screen:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+
+            elif self.order == 3:
+                text = language_dictionary[util.game_language].topic + ": " + list(language_dictionary[util.game_language].menu.settings_menu_question_topics)[util.Topics[util.question_topics].value]
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+
+            elif self.order == 4:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + list(language_dictionary[util.game_language].menu.question_difficulty_levels)[util.Difficulty[util.question_difficulty].value]
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+
+            elif self.order == 5:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + list(language_dictionary[util.game_language].menu.quizmaster_attitudes)[util.QuizMasterAttitude[util.quizmaster_attitude].value]
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+
+            elif self.order == 6:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": "
+                if util.default_settings():
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+
+            else:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+                self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+        elif self.type == "topic_option":
+            text = language_dictionary[util.game_language].menu.settings_menu_question_topics[self.order]
+            self.name = text
+
+        elif self.type == "question_difficulty_option":
+            text = language_dictionary[util.game_language].menu.question_difficulty_levels[self.order]
+            self.name = text
+
+        elif self.type == "quizmaster_attitude_option":
+            text = language_dictionary[util.game_language].menu.quizmaster_attitudes[self.order]
+            self.name = text
+
+        elif self.type == "language_option":
+            langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu]
+            text = langs[self.order]
+            self.name = langs[self.order]
+        elif self.type == "tutorial_option":
+            text = language_dictionary[util.game_language].menu.settings_menu_options[-1]
+            self.name = text
+        elif self.type == "scores_paging":
+
+            text = language_dictionary[util.game_language].next_page
+            self.name = text
+        else:
+            text = ""
+
+        self.text = self.font.render(text, True, (255, 255, 255))
+        self.lang = util.game_language
+        self.player_input()
+
+
+def main():
+    pygame.init()
+    pygame.time.set_timer(pygame.USEREVENT, 1000)
+    pygame.time.set_timer(pygame.USEREVENT + 1, 1000)
+    pygame.time.set_timer(pygame.USEREVENT + 2, 1000)
+
+    global screen
+    if util.full_screen:
+        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
     else:
-        user_input = helpers.return_user_input_windows()
-    while user_input not in esc_keys:
-        if util.operating_system == "posix":
-            user_input = helpers.return_user_input_linux()
-        else:
-            user_input = helpers.return_user_input_windows()
-        if user_input in esc_keys:
-            return
+        screen = pygame.display.set_mode((1366, 768))
+    # screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN) NATIVE
+    # screen = pygame.display.set_mode((1024, 768), pygame.FULLSCREEN) SET RESOLUTION
 
+    pygame.display.set_caption(language_dictionary[util.game_language].title)
 
-def get_user_input(option_list: [], values_list: [], max_option_length: int, start_index=0, esc=True) -> str:
-    i = start_index
+    millioniareIcon = pygame.image.load('./data/graphics/loim.png')
+    pygame.display.set_icon(millioniareIcon)
+
+    global clock
+    clock = pygame.time.Clock()
+    global main_menu_bg_surf
+
+    main_menu_bg_surf = pygame.image.load('./data/graphics/menu_bg.jpg').convert_alpha()
+    settings_menu_bg_surf =  pygame.image.load('./data/graphics/settings_menu_bg.png').convert_alpha()
+
+    main_menu_base_y = 475
+
+    menu_option_group = sprite_group_init(language_dictionary[util.game_language].menu.main_menu_options,
+                                          "main_menu_option", main_menu_base_y)
+
+    settings_menu_base_y = 245
+    topic_menu_base_y = 75
+
+    settings_group = []
+    for option in language_dictionary[util.game_language].menu.settings_menu_options:
+        settings_group.append(option)
+
+    settings_option_group = sprite_group_init(settings_group,
+                                              "settings_menu_option", settings_menu_base_y)
+
+    lang_group = sprite_group_init(util.available_languages, "language_option", settings_menu_base_y)
+
+    topic_group = sprite_group_init(language_dictionary[util.game_language].menu.settings_menu_question_topics,
+                                    "topic_option", topic_menu_base_y)
+    question_difficulty_group = sprite_group_init(
+        language_dictionary[util.game_language].menu.question_difficulty_levels, "question_difficulty_option",
+        settings_menu_base_y)
+    quizmaster_attitude_group = sprite_group_init(language_dictionary[util.game_language].menu.quizmaster_attitudes,
+                                                  "quizmaster_attitude_option", settings_menu_base_y)
+
+    global options, lang_selection, topics, difficulties, attitudes
+    options = False
+    lang_selection = False
+    topics = False
+    difficulties = False
+    attitudes = False
+
+    sprite_group_flags = [options, lang_selection, topics, difficulties, attitudes]
+    sprite_groups = [settings_option_group, lang_group, topic_group, question_difficulty_group,
+                     quizmaster_attitude_group]
+
     while True:
-        if util.operating_system == "posix":
-            user_input = helpers.return_user_input_linux()
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+        screen.blit(main_menu_bg_surf, (0, 0))
+
+        if options:
+            screen.blit(settings_menu_bg_surf, (0,0))
+            if lang_selection:
+
+                lang_group.draw(screen)
+                lang_group.update()
+
+            elif topics:
+
+                topic_group.draw(screen)
+                topic_group.update()
+
+            elif difficulties:
+
+                question_difficulty_group.draw(screen)
+                question_difficulty_group.update()
+
+            elif attitudes:
+
+                quizmaster_attitude_group.draw(screen)
+                quizmaster_attitude_group.update()
+
+            else:
+
+                settings_option_group.draw(screen)
+                settings_option_group.update()
+
+
         else:
-            user_input = helpers.return_user_input_windows()
-        first_char = user_input
-        # escape
-        if first_char == b'\x1b' or first_char == '<ESC>':
-            if esc == True:
-                return values_list[-1]
+            screen.fill((0, 0, 0))
+            screen.blit(main_menu_bg_surf, (0, 0))
+
+            menu_option_group.draw(screen)
+            menu_option_group.update()
+
+        pygame.display.update()
+        clock.tick(60)
+
+
+def text_screen(screen_type: str):
+    pygame.init()
+    pygame.time.set_timer(pygame.USEREVENT, 1000)
+
+    global screen
+    if util.full_screen:
+        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
+    else:
+        screen = pygame.display.set_mode((1366, 768))
+
+    pygame.display.set_caption(language_dictionary[util.game_language].title)
+
+    millioniareIcon = pygame.image.load('./data/graphics/loim.png')
+    pygame.display.set_icon(millioniareIcon)
+
+    global clock
+    clock = pygame.time.Clock()
+
+    global screen_active
+    screen_active = True
+    tutorial_group = sprite_group_init([language_dictionary[util.game_language].menu.settings_menu_options[-1]], "tutorial_option", 700)
+    is_added = False
+    global scores_paging
+    scores_paging = 1
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            if event.type == pygame.KEYDOWN or not screen_active:
+                return
+        screen.fill((7, 24, 173))
+
+        y = 20
+
+        if screen_type in ["tutorial", "credits"]:
+            font = pygame.font.SysFont('Sans', 25)
+
+            text_array = []
+            if screen_type == "tutorial":
+                text_array = language_dictionary[util.game_language].tutorial.text_list
             else:
-                return values_list[start_index]
-        # enter
-        if first_char == b'\r' or first_char == '<Ctrl-j>':
-            return values_list[i]
-        # up
-        if first_char == b'H' or first_char == '<UP>':
-            if i == 0:
-                i = len(option_list) - 1
-                show_options(option_list, max_option_length, len(option_list) - 1)
-            else:
-                i -= 1
-                show_options(option_list, max_option_length, i)
-            # enter
-            if user_input == b'\r' or user_input == '<Ctrl-j>':
-                return values_list[i]
-        # down
-        if first_char == b'P' or first_char == '<DOWN>':
-            if i == len(option_list) - 1:
+                text_array = language_dictionary[util.game_language].credits.text_list
+
+            for line in text_array:
+                text = font.render(line, True, (255, 148, 0))
+
+                screen.blit(text, [200, y])
+                y += 50
+
+        else:
+            font = pygame.font.SysFont('Sans', 18)
+
+            if os.path.isfile("scores.json"):
+                showed_text = ""
+                f = open("scores.json")
+                data = json.load(f)
+                scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)
+                if len(scores_sorted) > 15 and not is_added:
+                    tutorial_group.add(MenuOption("scores_paging", 0, 500))
+                    is_added = True
+                if len(scores_sorted) >= scores_paging*15:
+                    if scores_paging == 0:
+                        scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[:15]
+                        showed_text = "1 - 15"
+                    else:
+                        scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[((scores_paging-1)*15):(scores_paging*15)]
+                        showed_text = str(((scores_paging-1)*15)+1) + " - " + str(scores_paging*15)
+                elif len(scores_sorted) < scores_paging*15 and len(scores_sorted) > ((scores_paging-1)*15):
+                    showed_text = str(((scores_paging - 1) * 15)+1) + " - " + str(len(scores_sorted))
+                    scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[
+                                    ((scores_paging - 1) * 15):(scores_paging * 15)]
+                else:
+                    scores_paging = 1
+
                 i = 0
-                show_options(option_list, max_option_length)
+                for item in scores_sorted:
+                    screen_x = 0
+                    for k, v in item.items():
+                        if k == "topic":
+                            v = list(language_dictionary[util.game_language].menu.settings_menu_question_topics)[util.Topics[v].value]
+                        text = font.render(str(k) + ": " + str(v), True, (255, 148, 0))
+                        screen.blit(text, [screen_x, 0+ (i*25)])
+
+                        screen_x += 200
+
+                    i += 1
+                f.close()
+
+                text = font.render(language_dictionary[util.game_language].showed + ": " + showed_text, True, (255, 148, 0))
+                screen.blit(text, [668, 450])
             else:
-                i += 1
-                show_options(option_list, max_option_length, i)
-            # enter
-            if user_input == b'\r' or user_input == '<Ctrl-j>':
-                return values_list[i]
+                text = font.render(language_dictionary[util.game_language].menu.empty_scores, True, (255, 148, 0))
+                screen.blit(text, [0, 0])
 
 
-def handle_main_menu():
-    start_index = 0
-    options_length = default_width
-    show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length)
-    while True:
-        chosen_option = get_user_input(language_dictionary[util.game_language].menu.main_menu_options,
-                                       language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                                       start_index)
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[0]:
-            quiz.play()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length)
-            start_index = 0
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[1]:
-            quiz.fastest_finger_first()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                         chosen_option=1)
-            start_index = 1
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[2]:
-            select_help()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                         chosen_option=2)
-            start_index = 2
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[3]:
-            select_settings()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                         chosen_option=3)
-            start_index = 3
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[4]:
-            select_credits()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                         chosen_option=4)
-            start_index = 4
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[5]:
-            select_scores()
-            show_options(language_dictionary[util.game_language].menu.main_menu_options, options_length,
-                         chosen_option=5)
-            start_index = 5
-        if chosen_option == language_dictionary[util.game_language].menu.main_menu_options[6]:
-            select_exit()
+        tutorial_group.draw(screen)
+        tutorial_group.update()
+
+
+        pygame.display.update()
+        clock.tick(60)
+
+def sprite_group_init(sprite_group: list, sprite_group_type: str, y_height: int):
+    sprit_group_instance = pygame.sprite.Group()
+
+    for index in range(len(sprite_group)):
+        sprit_group_instance.add(MenuOption(sprite_group_type, index, y_height))
+
+    return sprit_group_instance

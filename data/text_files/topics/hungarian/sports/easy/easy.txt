@@ -13,6 +13,6 @@ Ki Varga Dániel vízilabdázó öccse?;Varga Dénes;Varga Dávid;Varga Bence;Va
 Hány játékos van egy baseballcsapatban?;9 játékos;11 játékos;13 játékos;5 játékos
 Melyik Kanada két nemzeti sportága?;Lacrosse és jégkorong;Dzsúdó és Szumóbirkózás;Golf és Baseball;Crickett és Lovaspóló
 Melyik sportágban lenne touchdownod?;Amerikai foci;Baseball;Kosárlabda;Rögbi
-Melyik csapatban játszott Michael Jordan karrierje nagy részét?;Chicago Bulls;Atlanta Hawks;Charlotte Hornets;Indiana Pacers
+Melyik csapatban játszott Michael Jordan karrierje nagy részében?;Chicago Bulls;Atlanta Hawks;Charlotte Hornets;Indiana Pacers
 Az alábbiak közül melyik nem vízi sport?;Siklóernyőzés;Sziklaugrás;Széllovaglás;Evezés
 Melyik országnak van a legtöbb olimpiai aranyérme úszásban?;USA;Egyesült Királyság;Kína;Ausztrália
