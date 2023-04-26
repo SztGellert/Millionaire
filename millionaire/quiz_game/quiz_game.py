@@ -217,8 +217,13 @@ class Prizes(pygame.sprite.Sprite):
         if game_level > 2:
 
             global prize_table_seconds
+
             if prize_table_seconds > 3:
-                self.image  = pygame.image.load('./data/graphics/question_' + str(game_level) +'_prize.png').convert_alpha()
+                if game_level == 3:
+                    self.image = pygame.image.load(
+                        './data/graphics/question_' + str(game_level + 1) + '_prize.png').convert_alpha()
+                else:
+                    self.image  = pygame.image.load('./data/graphics/question_' + str(game_level) +'_prize.png').convert_alpha()
             else:
                 self.image = pygame.image.load('./data/graphics/question_' + str(game_level+1) +'_prize.png').convert_alpha()
 
@@ -715,7 +720,7 @@ def play():
     player = "player"
     player_in_game = "player"
     # DEBUG COMMENT HERE
-    '''
+
     start_game()
     if game_language == util.Language.HUNGARIAN.name:
         for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
@@ -726,14 +731,13 @@ def play():
         millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
         sound = random.choice(millionaire_sounds)
         util.play_sound(sound, 0, dir="intro", timer=True)
-    '''
+
 
     global game_level
     score = 0
     is_active = True
     end = False
     for i in range(game_levels):
-        i += 6
         game_level = i
 
         if i > 0 and is_active:
@@ -869,7 +873,7 @@ def game_loop(level: int, question_array: {}):
     if level < 14:
         prize_seconds = 5
     else:
-        prize_seconds = 35
+        prize_seconds = 40
     prize_event = 0
     menu_group = pygame.sprite.Group()
     menu_group.add(MenuOption("resume", 0, 300))
@@ -1871,7 +1875,7 @@ def get_user_input() -> bytes:
 
 
 def quit_quiz(score: int, name: str, topic, end=False):
-    thread_random(score, working=False)
+    #thread_random(score, working=False)
     if not end:
         util.play_sound("time_end_horn", 0, general=True, timer=True)
         util.stop_music()
@@ -1883,6 +1887,7 @@ def quit_quiz(score: int, name: str, topic, end=False):
             util.play_sound(sound, 0, dir="out_of_game")
     else:
         util.play_sound("what_a_game_it_was", 0, dir="out_of_game")
+        util.stop_music()
 
     if score > 0:
         write_content_to_file("scores.json",
