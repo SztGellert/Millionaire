@@ -31,6 +31,7 @@ class TableElement(pygame.sprite.Sprite):
         self.text_y = 20
 
         self.base_text = text
+        self.correct_option: pygame.Surface
 
         # size 33 max 24 length text y 20 cd:15
         # size 25 max 32 length text y 25 cd:20
@@ -186,7 +187,6 @@ class TableElement(pygame.sprite.Sprite):
 
         elif type_ == "mark":
             if correct == self.type:
-                self.image = self.correct_option
                 self.correct_option = pygame.image.load(
                     './data/graphics/option_' + self.type + '_won.png').convert_alpha()
                 self.image = self.correct_option
@@ -1004,15 +1004,19 @@ def game_loop(level: int, question_array: {}):
                         else:
                             audience_text += "   "
 
-                if audience_seconds == 0:
+                elif audience_seconds == 0:
                     util.play_sound("audience_end", 0, general=True, timer=True)
-                    audience_seconds = -1
                     if util.game_language == util.Language.HUNGARIAN.name:
                         audience_after_sounds = ["after_audience", "after_audience_2", "audience_false",
                                                  "you_disagree_audience", "weights_a_lot", "believe_audience",
                                                  "audience_random"]
                         after_sound = random.choice(audience_after_sounds)
                         util.play_sound(after_sound, 0, dir="audience", timer=True)
+                    audience_seconds = -1
+                else:
+                    pass
+
+
 
             if event.type == prize_event:
                 if prize_seconds > 0:
@@ -1130,15 +1134,15 @@ def game_loop(level: int, question_array: {}):
                     game_message_rect = game_message.get_rect(center=(x_pos, y_pos))
                     screen.blit(game_message, game_message_rect)
                 if audience_event != 0:
-                    x_pos = 635
+                    x_pos = 1140
                     y_pos = 95
                     if audience_res != {}:
-                        font = pygame.font.SysFont('Sans', 31)
+                        font = pygame.font.SysFont('Sans', 30)
                         game_message = font.render(audience_text, True, (255, 255, 255))
                         game_message_rect = game_message.get_rect(center=(x_pos, y_pos))
                         screen.blit(game_message, game_message_rect)
 
-                        x_pos = 555
+                        x_pos = 1055
                         y_pos = 365
                         width = 25
                         color = (92, 175, 255)
