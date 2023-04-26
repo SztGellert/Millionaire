@@ -22,16 +22,15 @@ threads = []
 help_types = {"halving": True, "telephone": True, "audience": True}
 
 
-class Obstacle(pygame.sprite.Sprite):
+class TableElement(pygame.sprite.Sprite):
 
     def __init__(self, type, text):
         super().__init__()
         self.text_size = 33
-        self.correct_option = pygame.image.load('./data/graphics/option_correct.png').convert_alpha()
-        self.selected_option = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
-        self.pre_marked_option = pygame.image.load('./data/graphics/option_pre_marked.png').convert_alpha()
         self.text_x = 110
         self.text_y = 20
+
+        self.base_text = text
 
         # size 33 max 24 length text y 20 cd:15
         # size 25 max 32 length text y 25 cd:20
@@ -57,6 +56,7 @@ class Obstacle(pygame.sprite.Sprite):
 
             self.frame = pygame.image.load('./data/graphics/option_a.png').convert_alpha()
             self.selected_option = pygame.image.load('./data/graphics/option_a_marked.png').convert_alpha()
+            self.pre_marked_option = pygame.image.load( './data/graphics/option_a_pre_marked.png').convert_alpha()
 
             x_pos = 342
             y_pos = 643
@@ -65,6 +65,7 @@ class Obstacle(pygame.sprite.Sprite):
 
             self.frame = pygame.image.load('./data/graphics/option_b.png').convert_alpha()
             self.selected_option = pygame.image.load('./data/graphics/option_b_marked.png').convert_alpha()
+            self.pre_marked_option = pygame.image.load( './data/graphics/option_b_pre_marked.png').convert_alpha()
 
             x_pos = 1021
             y_pos = 643
@@ -75,6 +76,7 @@ class Obstacle(pygame.sprite.Sprite):
 
             self.frame = pygame.image.load('./data/graphics/option_c.png').convert_alpha()
             self.selected_option = pygame.image.load('./data/graphics/option_c_marked.png').convert_alpha()
+            self.pre_marked_option = pygame.image.load( './data/graphics/option_c_pre_marked.png').convert_alpha()
 
             x_pos = 342
             y_pos = 719
@@ -85,6 +87,7 @@ class Obstacle(pygame.sprite.Sprite):
 
             self.frame = pygame.image.load('./data/graphics/option_d.png').convert_alpha()
             self.selected_option = pygame.image.load('./data/graphics/option_d_marked.png').convert_alpha()
+            self.pre_marked_option = pygame.image.load( './data/graphics/option_d_pre_marked.png').convert_alpha()
 
             x_pos = 1022
             y_pos = 719
@@ -170,6 +173,9 @@ class Obstacle(pygame.sprite.Sprite):
             self.animation_state()
 
     def update(self, selected_, correct, type_="select"):
+        global selected
+        global  type
+
         self.is_active = self.get_is_active()
         if not self.is_active:
             self.kill()
@@ -189,12 +195,28 @@ class Obstacle(pygame.sprite.Sprite):
             if selected_ == self.type:
                 self.image = self.pre_marked_option
                 self.image.blit(self.text, [self.text_x, self.text_y])
-                global type
                 type = "select"
-                global selected
                 selected = ""
         else:
-            pass
+
+            if type_ == "fastest_fingers_select":
+                global fastest_fingers_result
+                global fastest_fingers_mark_event
+                if self.type != "question" and selected != "":
+                    if self.type == selected and self.type not in fastest_fingers_result:
+                        self.image = self.selected_option
+                        fastest_fingers_result += selected
+                        font = pygame.font.SysFont('Sans', self.text_size)
+                        color = (255, 255, 255)
+                        self.text = font.render(str(len(fastest_fingers_result)) + ": " + self.base_text, True, color)
+                        self.image.blit(self.text, [self.text_x, self.text_y])
+                    print(len(fastest_fingers_result))
+                    if len(fastest_fingers_result) == 4:
+                        fastest_fingers_mark_event = pygame.USEREVENT + 1
+                        type = "fastest_fingers_mark"
+
+
+
 
     def animation_state(self):
         self.image = self.selected_option
@@ -204,7 +226,7 @@ class Prizes(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
 
-        self.frame = pygame.image.load('./data/graphics/prizes_base.png').convert_alpha()
+        self.frame = pygame.image.load('./data/graphics/question_0_prize.png').convert_alpha()
         x_pos = 1150
         y_pos = 380
 
@@ -213,19 +235,12 @@ class Prizes(pygame.sprite.Sprite):
 
     def update(self):
         global game_level
+        global prize_table_seconds
 
-        if game_level > 2:
-
-            global prize_table_seconds
-
-            if prize_table_seconds > 3:
-                if game_level == 3:
-                    self.image = pygame.image.load(
-                        './data/graphics/question_' + str(game_level + 1) + '_prize.png').convert_alpha()
-                else:
-                    self.image  = pygame.image.load('./data/graphics/question_' + str(game_level) +'_prize.png').convert_alpha()
-            else:
-                self.image = pygame.image.load('./data/graphics/question_' + str(game_level+1) +'_prize.png').convert_alpha()
+        if prize_table_seconds > 3:
+            self.image  = pygame.image.load('./data/graphics/question_' + str(game_level) +'_prize.png').convert_alpha()
+        else:
+            self.image = pygame.image.load('./data/graphics/question_' + str(game_level+1) +'_prize.png').convert_alpha()
 
 
 
@@ -245,29 +260,29 @@ class Help(pygame.sprite.Sprite):
 
         if type == "halving":
             self.frame = pygame.image.load('./data/graphics/halving.png').convert_alpha()
-            x_pos = 1020
-            y_pos = 35
+            x_pos = 1003
+            y_pos = 80
 
         elif type == "telephone":
             self.frame = pygame.image.load('./data/graphics/telephone.png').convert_alpha()
-            x_pos = 1130
-            y_pos = 35
+            x_pos = 1121
+            y_pos = 80
 
         elif type == "teacher":
             self.frame = pygame.image.load('./data/graphics/teacher.png').convert_alpha()
-            x_pos = 1130
-            y_pos = 135
+            x_pos = 1121
+            y_pos = 160
             self.is_dialed = False
 
         elif type == "chewbacca":
             self.frame = pygame.image.load('./data/graphics/chewbacca.png').convert_alpha()
-            x_pos = 1020
-            y_pos = 135
+            x_pos = 1003
+            y_pos = 160
             self.is_dialed = False
         elif type == "clock":
             self.frame = pygame.image.load('./data/graphics/clock.png').convert_alpha()
             x_pos = 1130
-            y_pos = 135
+            y_pos = 160
         elif type == "audience_table":
             self.frame = pygame.image.load('./data/graphics/audience_table.png').convert_alpha()
             x_pos = 1130
@@ -275,13 +290,13 @@ class Help(pygame.sprite.Sprite):
         elif type == "random":
             self.frame = pygame.image.load('./data/graphics/random.png').convert_alpha()
             x_pos = 1240
-            y_pos = 135
+            y_pos = 160
             self.is_dialed = False
 
         else:
             self.frame = pygame.image.load('./data/graphics/audience.png').convert_alpha()
             x_pos = 1240
-            y_pos = 35
+            y_pos = 80
             self.is_consumed = False
 
         self.type = type
@@ -324,10 +339,10 @@ class Help(pygame.sprite.Sprite):
         global help_types
         global phone_event
 
-        first_line = [(20, 28), (68, 62)]
-        second_line = [(75, 25), (25, 60)]
-        width = 3
-        color = (255, 0, 0)
+        first_line = [(22, 32), (98, 82)]
+        second_line = [(100, 30), (30, 82)]
+        width = 11
+        color = (207, 16, 26)
 
         if self.type not in ["teacher", "chewbacca", "random", "clock", "audience_table"]:
             if help_types["halving"] == False and self.type == "halving":
@@ -720,7 +735,7 @@ def play():
     player = "player"
     player_in_game = "player"
     # DEBUG COMMENT HERE
-
+    '''
     start_game()
     if game_language == util.Language.HUNGARIAN.name:
         for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
@@ -731,7 +746,7 @@ def play():
         millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
         sound = random.choice(millionaire_sounds)
         util.play_sound(sound, 0, dir="intro", timer=True)
-
+     '''
 
     global game_level
     score = 0
@@ -773,7 +788,7 @@ def start_game():
                 pass
 
             display_ = pygame.sprite.GroupSingle()
-            display_.add(Obstacle('question',
+            display_.add(TableElement('question',
                                   f'{language_dictionary[game_language].quiz.player_name_prompt} {player.capitalize()}'))
             display_.draw(screen)
 
@@ -795,14 +810,14 @@ def game_loop(level: int, question_array: {}):
     answer_list = list(answers.values())
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
-
+    '''
     # DEBUG COMMENT HERE
     if level in [0, 6, 8]:
         play_question_intro(level)
     if util.game_language == util.Language.HUNGARIAN.name and level < 14:
         play_question_prologue(level)
         play_music(level)
-
+    '''
     correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[level][1])
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
@@ -826,7 +841,7 @@ def game_loop(level: int, question_array: {}):
     type = "select"
     texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
     for index in range(len(sprite_group)):
-        obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
+        obstacle_group.add(TableElement(sprite_group[index], texts[index]))
     global help_group
 
     help_sprites = ['halving', "telephone", "audience"]
@@ -873,7 +888,7 @@ def game_loop(level: int, question_array: {}):
     if level < 14:
         prize_seconds = 5
     else:
-        prize_seconds = 40
+        prize_seconds = 45
     prize_event = 0
     menu_group = pygame.sprite.Group()
     menu_group.add(MenuOption("resume", 0, 300))
@@ -1031,6 +1046,8 @@ def game_loop(level: int, question_array: {}):
             if prize_table_event != 0:
                 prizes_table.draw(screen)
                 prizes_table.update()
+                help_group.draw(screen)
+                help_group.update(correct_answer_key)
             else:
                 if phone_select:
                     help_group.add(Help("teacher"))
@@ -1048,7 +1065,7 @@ def game_loop(level: int, question_array: {}):
                                 if prize_seconds == 3 and len(prize_group) == 0:
                                     if not out_of_game:
                                         play_correct_sounds(level)
-                                    prize_group.add(Obstacle("prize", get_prize(level)))
+                                    prize_group.add(TableElement("prize", get_prize(level)))
                                 if prize_event != 0:
                                     if prize_seconds == 0:
                                         if out_of_game:
@@ -1062,7 +1079,7 @@ def game_loop(level: int, question_array: {}):
                                 if prize_seconds == 33 and len(prize_group) == 0:
                                     if not out_of_game:
                                         play_correct_sounds(level)
-                                    prize_group.add(Obstacle("prize", get_prize(level)))
+                                    prize_group.add(TableElement("prize", get_prize(level)))
                                 if prize_event != 0:
                                     if prize_seconds == 0:
                                         if out_of_game:
@@ -1077,7 +1094,7 @@ def game_loop(level: int, question_array: {}):
                             if prize_seconds == 3 and len(prize_group) == 0:
                                 if not out_of_game:
                                     play_incorrect_sounds(level)
-                                prize_group.add(Obstacle("prize", get_prize(level, correct_answer=False)))
+                                prize_group.add(TableElement("prize", get_prize(level, correct_answer=False)))
                             if prize_event != 0:
                                 if prize_seconds == 0 and not out_of_game:
                                     return False
@@ -1426,32 +1443,6 @@ def play_help_sounds(help_types: {}):
 
 def fastest_finger_first():
 
-    '''
-    end = time.time()
-    is_correct = check_answer(total_answer, correct_answer_keys)
-    util.stop_sound()
-
-    if game_language == util.Language.HUNGARIAN.name:
-        if os.path.isfile("./data/sound_files/hungarian/fastest_fingers" + correct_answer_keys + ".wav"):
-            util.play_sound(correct_answer_keys, 0)
-        time.sleep(1)
-        util.play_sound("lets_see_who_is_correct", 0, dir="fastest_fingers")
-
-    time.sleep(2)
-
-    if is_correct:
-        util.play_sound("fastest_fingers_correct", 0, general=True)
-        #print_prizes_with_quizmaster(0, False, special_text="♦ " + player_name + " : " + str(end - start)[:5] + " ♦",
-        #                             bg_color=bg.green)
-        time.sleep(2)
-        util.play_sound("fastest_fingers_win", 0, general=True)
-    else:
-        util.play_sound("fastest_fingers_bad", 0, general=True)
-        quit_fastest_fingers()
-        return
-
-    quit_fastest_fingers()
-    '''
 
     global game_language, question_lines_easy, question_lines_medium, question_lines_hard
     game_language = util.game_language
@@ -1475,7 +1466,7 @@ def fastest_finger_first():
     answers = {"a": question_lines[0][1], "b": question_lines[0][2], "c": question_lines[0][3],
                "d": question_lines[0][4]}
     answer_list = list(answers.values())
-    random.shuffle(answer_list)
+    #random.shuffle(answer_list)
     # shuffled_answers = dict(zip(answers, answer_list))
     shuffled_answers = answers
     if game_language == util.Language.HUNGARIAN.name:
@@ -1502,11 +1493,11 @@ def fastest_finger_first():
     global selected
     selected = ""
     global type
-    type = "select"
+    type = "fastest_fingers_select"
     texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
     obstacle_group = pygame.sprite.Group()
     for index in range(len(sprite_group)):
-        obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
+        obstacle_group.add(TableElement(sprite_group[index], texts[index]))
     global help_group
 
     mark_seconds = 5
@@ -1540,6 +1531,13 @@ def fastest_finger_first():
 
     sky_surface = pygame.image.load('./data/graphics/bg.jpg').convert_alpha()
 
+    global fastest_fingers_result
+    global fastest_fingers_mark_event
+
+    fastest_fingers_mark_event = 0
+    fastest_fingers_result = ""
+
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -1553,7 +1551,7 @@ def fastest_finger_first():
                 if counter < 1:
                     play_select_sounds(level, selected, last_input, out_of_game)
                     type = "mark"
-            if event.type == mark_event:
+            if event.type == fastest_fingers_mark_event:
                 mark_seconds -= 1
 
             if event.type == prize_event:
@@ -1561,7 +1559,7 @@ def fastest_finger_first():
                     prize_seconds -= 1
 
             if game_active:
-                if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
+                if event.type == pygame.MOUSEBUTTONDOWN:
                     if dbclock.tick() < DOUBLECLICKTIME:
                         for ob in obstacle_group.sprites():
                             if ob.type != 'question':
@@ -1577,58 +1575,39 @@ def fastest_finger_first():
 
             screen.blit(sky_surface, (0, 0))
 
-            if type == "mark":
+            if type == "fastest_fingers_mark":
                 if mark_seconds < 1:
-                    if selected == correct_answer_key:
-                        if level < 14:
-                            if prize_seconds == 3 and len(prize_group) == 0:
-                                if not out_of_game:
-                                    play_correct_sounds(level)
-                                prize_group.add(Obstacle("prize", get_prize(level)))
-                            if prize_event != 0:
-                                if prize_seconds == 0:
-                                    if out_of_game:
-                                        if game_language == util.Language.HUNGARIAN.name:
-                                            util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
-                                        util.play_sound("claps", 0, general=True, timer=True)
-                                        return False
-                                    else:
-                                        return True
-                        else:
-                            if prize_seconds == 33 and len(prize_group) == 0:
-                                if not out_of_game:
-                                    play_correct_sounds(level)
-                                prize_group.add(Obstacle("prize", get_prize(level)))
-                            if prize_event != 0:
-                                if prize_seconds == 0:
-                                    if out_of_game:
-                                        if game_language == util.Language.HUNGARIAN.name:
-                                            util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
-                                        util.play_sound("claps", 0, general=True, timer=True)
-                                        return False
 
-                                    else:
-                                        return True
+                    end = time.time()
+                    util.stop_sound()
+
+                    if game_language == util.Language.HUNGARIAN.name:
+                        if os.path.isfile(
+                                "./data/sound_files/hungarian/fastest_fingers" + correct_answer_keys + ".wav"):
+                            util.play_sound(correct_answer_keys, 0)
+                        time.sleep(1)
+                        util.play_sound("lets_see_who_is_correct", 0, dir="fastest_fingers")
+
+                    time.sleep(2)
+                    print(fastest_fingers_result)
+                    print(correct_answer_keys)
+                    if fastest_fingers_result == correct_answer_keys:
+
+
+                        util.play_sound("fastest_fingers_correct", 0, general=True)
+                        # print_prizes_with_quizmaster(0, False, special_text="♦ " + player_name + " : " + str(end - start)[:5] + " ♦",
+                        #                             bg_color=bg.green)
+                        time.sleep(2)
+                        util.play_sound("fastest_fingers_win", 0, general=True)
+                        time.sleep(15)
+
+
                     else:
-                        if prize_seconds == 3 and len(prize_group) == 0:
-                            if not out_of_game:
-                                play_incorrect_sounds(level)
-                            prize_group.add(Obstacle("prize", get_prize(level, correct_answer=False)))
-                        if prize_event != 0:
-                            if prize_seconds == 0 and not out_of_game:
-                                return False
-                            else:
-                                if game_language == util.Language.HUNGARIAN.name:
-                                    util.play_sound("good_to_stop", 0, dir="out_of_game", timer=True)
-                                util.clear_screen()
-                                time.sleep(2)
-                                if util.game_language == util.Language.HUNGARIAN.name:
-                                    sorry_sounds = ["so_sorry", "terribly_sorry"]
-                                    sound = random.choice(sorry_sounds)
-                                    util.play_sound(sound, 0, dir="out_of_game", timer=True)
-                                time.sleep(1)
-                                util.play_sound("claps", 0, general=True, timer=True)
-                                return False
+                        util.play_sound("fastest_fingers_bad", 0, general=True)
+                        time.sleep(2)
+
+                    quit_fastest_fingers()
+                    return
 
 
                         #prize_event = pygame.USEREVENT + 8
