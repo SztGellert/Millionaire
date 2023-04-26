@@ -1504,6 +1504,7 @@ def fastest_finger_first():
     global type
     type = "select"
     texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
+    obstacle_group = pygame.sprite.Group()
     for index in range(len(sprite_group)):
         obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
     global help_group
@@ -1513,19 +1514,31 @@ def fastest_finger_first():
     mark_event = 0
 
     prize_group = pygame.sprite.GroupSingle()
-    if level < 14:
-        prize_seconds = 5
-    else:
-        prize_seconds = 40
+
+    prize_seconds = 5
+
     prize_event = 0
     menu_group = pygame.sprite.Group()
 
     menu_group.add(MenuOption("resume", 0, 300))
     menu_group.add(MenuOption("exit", 2, 300))
 
-    prizes_table.add(Prizes())
+    clock = pygame.time.Clock()
+
     global exit_game
     exit_game = False
+
+    game_active = True
+
+    global screen
+    # screen = pygame.display.set_mode((1024, 768))
+    # pygame.FULLSCREEN
+    if util.full_screen:
+        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
+    else:
+        screen = pygame.display.set_mode((1366, 768))
+
+    sky_surface = pygame.image.load('./data/graphics/bg.jpg').convert_alpha()
 
     while True:
         for event in pygame.event.get():
@@ -1619,13 +1632,13 @@ def fastest_finger_first():
 
 
                         #prize_event = pygame.USEREVENT + 8
-                obstacle_group.draw(screen)
-                obstacle_group.update(selected, correct_answer_key, type)
-                if prize_event != 0:
-                    screen.fill((0, 0, 0))
-                    screen.blit(sky_surface, (0, 0))
-                    prize_group.draw(screen)
-                    prize_group.update(selected, correct_answer_key)
+            obstacle_group.draw(screen)
+            obstacle_group.update(selected, correct_answer_keys, type)
+            if prize_event != 0:
+                screen.fill((0, 0, 0))
+                screen.blit(sky_surface, (0, 0))
+                prize_group.draw(screen)
+                prize_group.update(selected, correct_answer_keys)
 
 
         else:
