@@ -1425,14 +1425,40 @@ def play_help_sounds(help_types: {}):
 
 
 def fastest_finger_first():
+
+    '''
+    end = time.time()
+    is_correct = check_answer(total_answer, correct_answer_keys)
+    util.stop_sound()
+
+    if game_language == util.Language.HUNGARIAN.name:
+        if os.path.isfile("./data/sound_files/hungarian/fastest_fingers" + correct_answer_keys + ".wav"):
+            util.play_sound(correct_answer_keys, 0)
+        time.sleep(1)
+        util.play_sound("lets_see_who_is_correct", 0, dir="fastest_fingers")
+
+    time.sleep(2)
+
+    if is_correct:
+        util.play_sound("fastest_fingers_correct", 0, general=True)
+        #print_prizes_with_quizmaster(0, False, special_text="♦ " + player_name + " : " + str(end - start)[:5] + " ♦",
+        #                             bg_color=bg.green)
+        time.sleep(2)
+        util.play_sound("fastest_fingers_win", 0, general=True)
+    else:
+        util.play_sound("fastest_fingers_bad", 0, general=True)
+        quit_fastest_fingers()
+        return
+
+    quit_fastest_fingers()
+    '''
+
     global game_language, question_lines_easy, question_lines_medium, question_lines_hard
     game_language = util.game_language
     global question_topics
     question_topics = util.question_topics
     global question_difficulty
     question_difficulty = util.question_difficulty
-    global help_types
-    help_types = {"halving": True, "telephone": True, "audience": True}
     question_lines = []
     question_lines_easy = []
     question_lines_medium = []
@@ -1441,8 +1467,6 @@ def fastest_finger_first():
                                "/text_files/fastest_fingers_first/" + str(game_language).lower() + "/"):
         question_lines.append(line)
     random.shuffle(question_lines)
-    player_name = input(" " * screen_distance + language_dictionary[game_language].quiz.player_name_prompt)
-    score = 0
     total_answer = ""
     util.clear_screen()
     if game_language == util.Language.ENGLISH:
@@ -1454,52 +1478,167 @@ def fastest_finger_first():
     random.shuffle(answer_list)
     # shuffled_answers = dict(zip(answers, answer_list))
     shuffled_answers = answers
-    print_quizmaster()
     if game_language == util.Language.HUNGARIAN.name:
         util.play_sound("lets_look_at_the_fastest_fingers_question", 0, dir="fastest_fingers")
         time.sleep(2)
     start = time.time()
-    util.clear_screen()
-    print_fastest_fingers_table(question, shuffled_answers, game_level=0, quizmaster=True, prizes=False)
-    util.play_sound("fastest_fingers_first", 0, general=True)
-    print("\n\n   " + fg.grey + language_dictionary[game_language].quiz.select_answer_out + fg.rs)
-    for i in range(4):
-        answer = handle_fastest_fingers_first_input(question, shuffled_answers, 0, total_answer)
-        if answer == "esc":
-            quit_fastest_fingers()
-            return
-        total_answer += answer
+
+    # total_answer += answer
+
     correct_answer_keys = question_lines[0][5]
-    util.clear_screen()
-    end = time.time()
-    is_correct = check_answer(total_answer, correct_answer_keys)
-    util.stop_sound()
-    print_fastest_fingers_table(question, answers, total_answer, "orange", game_level=0, quizmaster=True, prizes=False)
-    if game_language == util.Language.HUNGARIAN.name:
-        if os.path.isfile("./data/sound_files/hungarian/fastest_fingers" + correct_answer_keys + ".wav"):
-            util.play_sound(correct_answer_keys, 0)
-        time.sleep(1)
-        util.play_sound("lets_see_who_is_correct", 0, dir="fastest_fingers")
-    time.sleep(2)
-    if is_correct:
-        util.play_sound("fastest_fingers_correct", 0, general=True)
-        util.clear_screen()
-        if len(question) % 2 == 0:
-            question = question + " "
-        print_prizes_with_quizmaster(0, False, special_text="♦ " + player_name + " : " + str(end - start)[:5] + " ♦",
-                                     bg_color=bg.green)
-        time.sleep(2)
-        util.play_sound("fastest_fingers_win", 0, general=True)
+
+    global game_active
+
+
+    dbclock = pygame.time.Clock()
+    DOUBLECLICKTIME = 500
+
+    pygame.time.set_timer(pygame.USEREVENT, 1000)  # SELECT EVENT
+    pygame.time.set_timer(pygame.USEREVENT + 1, 1000)  # MARK EVENT
+    pygame.time.set_timer(pygame.USEREVENT + 2, 1000)  # PRIZE EVENT
+
+    counter = 3
+    sprite_group = ['question', "a", "b", "c", "d"]
+    global selected
+    selected = ""
+    global type
+    type = "select"
+    texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
+    for index in range(len(sprite_group)):
+        obstacle_group.add(Obstacle(sprite_group[index], texts[index]))
+    global help_group
+
+    mark_seconds = 5
+    global mark_event
+    mark_event = 0
+
+    prize_group = pygame.sprite.GroupSingle()
+    if level < 14:
+        prize_seconds = 5
     else:
-        util.play_sound("fastest_fingers_bad", 0, general=True)
-        util.clear_screen()
-        print("\n   " + fg.orange + language_dictionary[game_language].quiz.incorrect_answer + fg.rs)
-        quit_fastest_fingers()
-        return
+        prize_seconds = 40
+    prize_event = 0
+    menu_group = pygame.sprite.Group()
 
-    quit_fastest_fingers()
+    menu_group.add(MenuOption("resume", 0, 300))
+    menu_group.add(MenuOption("exit", 2, 300))
 
-    return
+    prizes_table.add(Prizes())
+    global exit_game
+    exit_game = False
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    game_active = False
+            if event.type == pygame.USEREVENT and selected != "" and type == "select":
+                counter -= 1
+                if counter < 1:
+                    play_select_sounds(level, selected, last_input, out_of_game)
+                    type = "mark"
+            if event.type == mark_event:
+                mark_seconds -= 1
+
+            if event.type == prize_event:
+                if prize_seconds > 0:
+                    prize_seconds -= 1
+
+            if game_active:
+                if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
+                    if dbclock.tick() < DOUBLECLICKTIME:
+                        for ob in obstacle_group.sprites():
+                            if ob.type != 'question':
+                                if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
+                                    selected = ob.type
+
+            else:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        game_active = False
+        if game_active:
+            util.continue_music()
+
+            screen.blit(sky_surface, (0, 0))
+
+            if type == "mark":
+                if mark_seconds < 1:
+                    if selected == correct_answer_key:
+                        if level < 14:
+                            if prize_seconds == 3 and len(prize_group) == 0:
+                                if not out_of_game:
+                                    play_correct_sounds(level)
+                                prize_group.add(Obstacle("prize", get_prize(level)))
+                            if prize_event != 0:
+                                if prize_seconds == 0:
+                                    if out_of_game:
+                                        if game_language == util.Language.HUNGARIAN.name:
+                                            util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
+                                        util.play_sound("claps", 0, general=True, timer=True)
+                                        return False
+                                    else:
+                                        return True
+                        else:
+                            if prize_seconds == 33 and len(prize_group) == 0:
+                                if not out_of_game:
+                                    play_correct_sounds(level)
+                                prize_group.add(Obstacle("prize", get_prize(level)))
+                            if prize_event != 0:
+                                if prize_seconds == 0:
+                                    if out_of_game:
+                                        if game_language == util.Language.HUNGARIAN.name:
+                                            util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
+                                        util.play_sound("claps", 0, general=True, timer=True)
+                                        return False
+
+                                    else:
+                                        return True
+                    else:
+                        if prize_seconds == 3 and len(prize_group) == 0:
+                            if not out_of_game:
+                                play_incorrect_sounds(level)
+                            prize_group.add(Obstacle("prize", get_prize(level, correct_answer=False)))
+                        if prize_event != 0:
+                            if prize_seconds == 0 and not out_of_game:
+                                return False
+                            else:
+                                if game_language == util.Language.HUNGARIAN.name:
+                                    util.play_sound("good_to_stop", 0, dir="out_of_game", timer=True)
+                                util.clear_screen()
+                                time.sleep(2)
+                                if util.game_language == util.Language.HUNGARIAN.name:
+                                    sorry_sounds = ["so_sorry", "terribly_sorry"]
+                                    sound = random.choice(sorry_sounds)
+                                    util.play_sound(sound, 0, dir="out_of_game", timer=True)
+                                time.sleep(1)
+                                util.play_sound("claps", 0, general=True, timer=True)
+                                return False
+
+
+                        #prize_event = pygame.USEREVENT + 8
+                obstacle_group.draw(screen)
+                obstacle_group.update(selected, correct_answer_key, type)
+                if prize_event != 0:
+                    screen.fill((0, 0, 0))
+                    screen.blit(sky_surface, (0, 0))
+                    prize_group.draw(screen)
+                    prize_group.update(selected, correct_answer_key)
+
+
+        else:
+            screen.fill((0, 0, 0))
+            screen.blit(in_game_menu_bg, (0, 0))
+            util.pause_music()
+            menu_group.draw(screen)
+            menu_group.update()
+
+            if exit_game: return False
+
+        pygame.display.update()
+        clock.tick(60)
 
 
 def get_prize(round_number: int, correct_answer=True) -> str:
@@ -1640,45 +1779,6 @@ def show_game_structure():
         print_prizes()
         util.play_sound("start", 0, timer=True)
         util.clear_screen()
-
-
-def print_helps(helps=None):
-    if helps is None:
-        helps = [" 50 : 50 ", "     \_] ", "  ☺ ☺ ☺  "]
-    separator = fg.blue + "|" + fg.rs
-    print(fg.blue + 31 * "-" + fg.rs)
-    print(separator + helps[0] + separator + helps[1] + separator + helps[2] + separator)
-    print(fg.blue + 31 * "-" + fg.rs)
-
-
-def list_helps():
-    halving_ = " 50 : 50 "
-    telephone_ = "     \_] "
-    audience_ = "  ☺ ☺ ☺  "
-    helps_ = [[bg.orange + fg.black + halving_ + fg.rs + bg.rs, telephone_, audience_],
-              [halving_, bg.orange + fg.black + telephone_ + fg.rs + bg.rs, audience_],
-              [halving_, telephone_, bg.orange + fg.black + "  ☻ ☻ ☻  " + fg.rs + bg.rs]]
-
-    for help_ in helps_:
-        print_helps(help_)
-        print("\n\n")
-        print_prizes()
-        if helps_.index(help_) < 2:
-            time.sleep(1.3)
-            util.clear_screen()
-
-
-def print_prizes():
-    game_language = util.game_language
-    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
-    for i in range(len(prizes)):
-        round_number = str(len(prizes) - i)
-        if len(prizes) - i < 10:
-            round_number = " " + round_number
-        if i == 5 or i == 10 or i == 0:
-            print(round_number + " " + prizes[::-1][i][0])
-        else:
-            print(round_number + " " + fg.orange + prizes[::-1][i][0] + fg.rs)
 
 
 def play_music(round: int):
@@ -1846,34 +1946,6 @@ def handle_user_input(question: str, answers: dict, correct_answer: str, level=0
                 return "esc"
 
 
-def handle_fastest_fingers_first_input(question: str, answers: dict, level: int, selected: str,
-                                       final_color="orange") -> str:
-    select_text = language_dictionary[game_language].quiz.select_answer_out
-    while True:
-        user_input = get_user_input()
-        user_inputs = [[b'a', "a"], [b'b', "b"], [b'c', "c"], [b'd', "d"]]
-
-        for input_ in user_inputs:
-            if user_input == input_[0] or user_input == input_[1]:
-                util.clear_screen()
-                print_fastest_fingers_table(question, answers, selected + input_[1], final_color, game_level=level,
-                                            quizmaster=True, prizes=False)
-                print("\n\n   " + fg.grey + select_text + fg.rs)
-                return input_[1]
-
-        if user_input == b'\x1b' or user_input == '<ESC>':
-            return "esc"
-
-
-def get_user_input() -> bytes:
-    if util.operating_system == "posix":
-        user_input = helpers.return_user_input_linux()
-    else:
-        user_input = helpers.return_user_input_windows()
-
-    return user_input
-
-
 def quit_quiz(score: int, name: str, topic, end=False):
     #thread_random(score, working=False)
     if not end:
@@ -1896,5 +1968,4 @@ def quit_quiz(score: int, name: str, topic, end=False):
 
 
 def quit_fastest_fingers():
-    menu.return_prompt()
     util.stop_sound()
