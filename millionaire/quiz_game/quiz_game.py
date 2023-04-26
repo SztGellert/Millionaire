@@ -1123,8 +1123,8 @@ def game_loop(level: int, question_array: {}):
                     prize_group.draw(screen)
                     prize_group.update(selected, correct_answer_key)
                 if phone_event != 0:
-                    x_pos = 630
-                    y_pos = 135
+                    x_pos = 1130
+                    y_pos = 160
                     font = pygame.font.SysFont('Sans', 33, bold=True)
                     game_message = font.render(str(phone_seconds), True, (255, 255, 255))
                     game_message_rect = game_message.get_rect(center=(x_pos, y_pos))
