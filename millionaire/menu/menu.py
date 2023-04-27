@@ -226,6 +226,8 @@ class MenuOption(pygame.sprite.Sprite):
 
                 if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-1]:
                     if self.type == "tutorial_option":
+                        util.stop_sound()
+
                         global screen_active
                         screen_active = False
                     else:
