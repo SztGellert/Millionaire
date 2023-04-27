@@ -1206,6 +1206,209 @@ def game_loop(level: int, question_array: {}):
         clock.tick(60)
 
 
+def show_game_structure():
+    '''
+    import time, msvcrt
+    # TODO: only works on win
+    timshow_gameout = 2
+    startTime = time.time()
+    inp = None
+    print(language_dictionary[util.game_language].quiz.skip_prompt)
+    while True:
+        if msvcrt.kbhit():
+            global game_language
+            inp = msvcrt.getch()
+            break
+        elif time.time() - startTime > timeout:
+            break
+    util.clear_screen()
+    if inp:
+        return
+
+    game_language = util.game_language
+    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
+    if game_language == util.Language.HUNGARIAN.name:
+        util.play_sound("prizes_description", 0, dir="intro")
+        print_helps()
+        print("\n\n")
+        for i in range(len(prizes)):
+            for j in range(len(prizes)):
+                round_number = str(len(prizes) - j)
+                if len(prizes) - j < 10:
+                    round_number = " " + round_number
+                if i == len(prizes) - j - 1:
+                    print(round_number + " ♦ " + bg.orange + fg.black + prizes[::-1][j][0] + fg.rs + bg.rs)
+                else:
+                    if j == 5 or j == 10 or j == 0:
+                        print(round_number + " ♦ " + prizes[::-1][j][0])
+                    else:
+                        print(round_number + " ♦ " + fg.orange + prizes[::-1][j][0] + fg.rs)
+            if os.name == "nt":
+                time.sleep(0.3)
+            else:
+                time.sleep(0.4)
+            if i != 14:
+                util.clear_screen()
+                print_helps()
+                print("\n\n")
+        if os.name == "posix":
+            time.sleep(2)
+        else:
+            time.sleep(0.7)
+        util.clear_screen()
+        print_helps()
+        print("\n\n")
+        for a in range(2):
+            for b in range(len(prizes)):
+                round_number = str(len(prizes) - b)
+                if len(prizes) - b < 10:
+                    round_number = " " + round_number
+                if a == 0 and b == 10 or a == 1 and b == 5:
+                    print(round_number + " ♦ " + bg.orange + fg.black + prizes[::-1][b][0] + fg.rs + bg.rs)
+                else:
+                    if b == 0 or b == 5 or b == 10:
+                        print(round_number + " ♦ " + prizes[::-1][b][0])
+                    else:
+                        print(round_number + " ♦ " + fg.orange + prizes[::-1][b][0] + fg.rs)
+            time.sleep(1)
+            if a == 1 and os.name == "nt":
+                time.sleep(0.4)
+            util.clear_screen()
+            print_helps()
+            print("\n\n")
+        util.play_sound("help_modules", 0, dir="intro")
+        util.clear_screen()
+        list_helps()
+        time.sleep(3)
+        util.clear_screen()
+        print_helps()
+        print("\n\n")
+        print_prizes()
+        util.play_sound("prologue_end", 0, dir="intro", timer=True)
+        util.clear_screen()
+    else:
+        print_helps()
+        print("\n\n")
+        print_prizes()
+        util.play_sound("start", 0, timer=True)
+        util.clear_screen()
+    '''
+
+    global clock
+    clock = pygame.time.Clock()
+
+    global screen
+    # screen = pygame.display.set_mode((1024, 768))
+    # pygame.FULLSCREEN
+    if util.full_screen:
+        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
+    else:
+        screen = pygame.display.set_mode((1366, 768))
+
+    global game_active
+    dbclock = pygame.time.Clock()
+    DOUBLECLICKTIME = 500
+
+    pygame.time.set_timer(pygame.USEREVENT, 400)  #
+    pygame.time.set_timer(pygame.USEREVENT + 1, 1000)  #
+    pygame.time.set_timer(pygame.USEREVENT + 2, 1000)  #
+
+    counter = 3
+
+    menu_group = pygame.sprite.Group()
+    menu_group.add(MenuOption("resume", 0, 300))
+    menu_group.add(MenuOption("exit", 1, 300))
+    game_active = True
+
+    global exit_game
+    exit_game = True
+
+    prizes_event = pygame.USEREVENT
+    print(util.get_sound_length("prizes_description", dir="intro"))
+    prize_seconds = util.get_sound_length("prizes_description", dir="intro")
+    prize = 0
+    current_prize = pygame.image.load('./data/graphics/question_0_prize.png').convert_alpha()
+    x_pos = 920
+    y_pos = 0
+
+    sky_surface = pygame.image.load('./data/graphics/bg.jpg').convert_alpha()
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    game_active = False
+
+
+            if event.type == prizes_event:
+                if prize_seconds == util.get_sound_length("prizes_description", dir="intro"):
+                    util.play_sound("prizes_description", 0, dir="intro")
+                prize_seconds -= 1
+                if prize < 16:
+                    current_prize = pygame.image.load('./data/graphics/question_' + str(prize) + '_prize.png').convert_alpha()
+                elif prize == 17:
+                    current_prize = pygame.image.load('./data/graphics/question_' + str(5) + '_prize.png').convert_alpha()
+                elif prize == 19:
+                    current_prize = pygame.image.load(
+                        './data/graphics/question_' + str(10) + '_prize.png').convert_alpha()
+                elif prize == 21:
+                    util.play_sound("help_modules", 0, dir="intro")
+                    current_prize = pygame.image.load(
+                        './data/graphics/halving_desc.png').convert_alpha()
+                    time.sleep(1)
+
+                elif prize == 23:
+                    current_prize = pygame.image.load(
+                        './data/graphics/telephone_desc.png').convert_alpha()
+                    time.sleep(1)
+
+                elif prize == 26:
+                    current_prize = pygame.image.load(
+                        './data/graphics/audience_desc.png').convert_alpha()
+                    time.sleep(1)
+
+                elif prize == 30:
+                    current_prize = pygame.image.load('./data/graphics/question_0_prize.png').convert_alpha()
+
+                    util.play_sound("prologue_end", 0, dir="intro", timer=True)
+                elif prize == 33:
+                    return
+
+
+                else:
+                    pass
+                    #current_prize = pygame.image.load('./data/graphics/question_0_prize.png').convert_alpha()
+                prize += 1
+
+            if game_active:
+                pass
+
+            else:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        game_active = False
+        if game_active:
+
+            screen.blit(sky_surface, (0, 0))
+            screen.blit(current_prize, (x_pos , y_pos))
+
+
+        else:
+            screen.fill((0, 0, 0))
+            screen.blit(in_game_menu_bg, (0, 0))
+            util.pause_music()
+            menu_group.draw(screen)
+            menu_group.update()
+
+            if exit_game: return False
+
+        pygame.display.update()
+        clock.tick(60)
+
+
 def phone_dial():
     if util.game_language == util.Language.HUNGARIAN.name:
         dial_sound = "colleagues_are_dialing"
@@ -1792,93 +1995,6 @@ def write_content_to_file(filename: str, content: {}):
     else:
         with open(filename, "w", encoding="UTF-8") as outfile:
             json.dump([content], outfile)
-
-
-def show_game_structure():
-    import time, msvcrt
-    # TODO: only works on win
-    timeout = 2
-    startTime = time.time()
-    inp = None
-    print(language_dictionary[util.game_language].quiz.skip_prompt)
-    while True:
-        if msvcrt.kbhit():
-            global game_language
-            inp = msvcrt.getch()
-            break
-        elif time.time() - startTime > timeout:
-            break
-    util.clear_screen()
-    if inp:
-        return
-
-    game_language = util.game_language
-    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
-    if game_language == util.Language.HUNGARIAN.name:
-        util.play_sound("prizes_description", 0, dir="intro")
-        print_helps()
-        print("\n\n")
-        for i in range(len(prizes)):
-            for j in range(len(prizes)):
-                round_number = str(len(prizes) - j)
-                if len(prizes) - j < 10:
-                    round_number = " " + round_number
-                if i == len(prizes) - j - 1:
-                    print(round_number + " ♦ " + bg.orange + fg.black + prizes[::-1][j][0] + fg.rs + bg.rs)
-                else:
-                    if j == 5 or j == 10 or j == 0:
-                        print(round_number + " ♦ " + prizes[::-1][j][0])
-                    else:
-                        print(round_number + " ♦ " + fg.orange + prizes[::-1][j][0] + fg.rs)
-            if os.name == "nt":
-                time.sleep(0.3)
-            else:
-                time.sleep(0.4)
-            if i != 14:
-                util.clear_screen()
-                print_helps()
-                print("\n\n")
-        if os.name == "posix":
-            time.sleep(2)
-        else:
-            time.sleep(0.7)
-        util.clear_screen()
-        print_helps()
-        print("\n\n")
-        for a in range(2):
-            for b in range(len(prizes)):
-                round_number = str(len(prizes) - b)
-                if len(prizes) - b < 10:
-                    round_number = " " + round_number
-                if a == 0 and b == 10 or a == 1 and b == 5:
-                    print(round_number + " ♦ " + bg.orange + fg.black + prizes[::-1][b][0] + fg.rs + bg.rs)
-                else:
-                    if b == 0 or b == 5 or b == 10:
-                        print(round_number + " ♦ " + prizes[::-1][b][0])
-                    else:
-                        print(round_number + " ♦ " + fg.orange + prizes[::-1][b][0] + fg.rs)
-            time.sleep(1)
-            if a == 1 and os.name == "nt":
-                time.sleep(0.4)
-            util.clear_screen()
-            print_helps()
-            print("\n\n")
-        util.play_sound("help_modules", 0, dir="intro")
-        util.clear_screen()
-        list_helps()
-        time.sleep(3)
-        util.clear_screen()
-        print_helps()
-        print("\n\n")
-        print_prizes()
-        util.play_sound("prologue_end", 0, dir="intro", timer=True)
-        util.clear_screen()
-    else:
-        print_helps()
-        print("\n\n")
-        print_prizes()
-        util.play_sound("start", 0, timer=True)
-        util.clear_screen()
 
 
 def play_music(round: int):
