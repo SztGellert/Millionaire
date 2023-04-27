@@ -424,6 +424,8 @@ class Help(pygame.sprite.Sprite):
                 prolouge = random.choice(audience_prolouges)
             util.play_sound(prolouge, 0, dir="audience")
             return util.get_sound_length(prolouge, dir="audience")
+        else:
+            return 0
 
     def audience_start(self):
         if util.game_language == util.Language.HUNGARIAN.name:
@@ -445,28 +447,37 @@ class Help(pygame.sprite.Sprite):
 
     def phone_intro(self) -> int:
         target = self.type
-        if target == "teacher":
-            util.play_sound("teacher_intro", 0, dir="phone")
-            return util.get_sound_length("teacher_intro", dir="phone")
-        if target == "chewbacca":
-            util.play_sound("chewbacca_intro", 0, dir="phone")
-            return util.get_sound_length("chewbacca_intro", dir="phone")
-        if target == "random":
-            util.play_sound("weekly_seven_intro", 0, dir="phone")
-            return util.get_sound_length("weekly_seven_intro", dir="phone")
+        if util.game_language == util.Language.HUNGARIAN.name:
+
+            if target == "teacher":
+                util.play_sound("teacher_intro", 0, dir="phone")
+                return util.get_sound_length("teacher_intro", dir="phone")
+            if target == "chewbacca":
+                util.play_sound("chewbacca_intro", 0, dir="phone")
+                return util.get_sound_length("chewbacca_intro", dir="phone")
+            if target == "random":
+                util.play_sound("weekly_seven_intro", 0, dir="phone")
+                return util.get_sound_length("weekly_seven_intro", dir="phone")
+        else:
+            return 0
 
     def phone(self):
         global call_duration
-        if self.type == "teacher":
-            util.play_sound("teacher", 0, dir="phone", timer=True)
-            call_duration = util.get_sound_length("teacher", dir="phone")
-        if self.type == "chewbacca":
-            util.play_sound("chewbacca", 0, dir="phone")
-            call_duration = util.get_sound_length("chewbacca", dir="phone")
+        if util.game_language == util.Language.HUNGARIAN.name:
+
+            if self.type == "teacher":
+                util.play_sound("teacher", 0, dir="phone", timer=True)
+                call_duration = util.get_sound_length("teacher", dir="phone")
+            if self.type == "chewbacca":
+                util.play_sound("chewbacca", 0, dir="phone")
+                call_duration = util.get_sound_length("chewbacca", dir="phone")
+                util.play_background_sound("phone_call", 0, general=True)
+            if self.type == "random":
+                util.play_sound("weekly_seven", 0, dir="phone")
+                call_duration = util.get_sound_length("weekly_seven", dir="phone")
+        else:
+            call_duration = 15
             util.play_background_sound("phone_call", 0, general=True)
-        if self.type == "random":
-            util.play_sound("weekly_seven", 0, dir="phone")
-            call_duration = util.get_sound_length("weekly_seven", dir="phone")
 
     def audience(self):
         util.play_sound("audience", 0, general=True)
@@ -970,7 +981,8 @@ def game_loop(level: int, question_array: {}):
                                             "your_guess_stayed", "you_have_fifty_percent",
                                             "im_not_surprised"]
                     sound = random.choice(after_halving_sounds)
-                    util.play_sound(sound, 0, dir="halving")
+                    if util.game_language == util.Language.HUNGARIAN.name:
+                        util.play_sound(sound, 0, dir="halving")
                     after_halving_event = 0
             if event.type == phone_event:
                 if len(help_group) == 3 and not clock_added:
@@ -1293,6 +1305,7 @@ def show_game_structure():
         util.play_sound("start", 0, timer=True)
         util.clear_screen()
     '''
+    in_game_menu_bg = pygame.image.load('./data/graphics/in_game_menu_bg.jpg').convert_alpha()
 
     global clock
     clock = pygame.time.Clock()
@@ -1324,8 +1337,11 @@ def show_game_structure():
     exit_game = True
 
     prizes_event = pygame.USEREVENT
-    print(util.get_sound_length("prizes_description", dir="intro"))
-    prize_seconds = util.get_sound_length("prizes_description", dir="intro")
+    if util.game_language == util.Language.HUNGARIAN.name:
+        prize_seconds = util.get_sound_length("prizes_description", dir="intro")
+    else:
+        prize_seconds = util.get_sound_length("start")
+
     prize = 0
     current_prize = pygame.image.load('./data/graphics/question_0_prize.png').convert_alpha()
     x_pos = 920
@@ -1344,8 +1360,15 @@ def show_game_structure():
 
 
             if event.type == prizes_event:
-                if prize_seconds == util.get_sound_length("prizes_description", dir="intro"):
-                    util.play_sound("prizes_description", 0, dir="intro")
+
+                if util.game_language == util.Language.HUNGARIAN.name:
+
+                    if prize_seconds == util.get_sound_length("prizes_description", dir="intro"):
+                        util.play_sound("prizes_description", 0, dir="intro")
+                else:
+                    if prize_seconds == util.get_sound_length("start"):
+                        util.play_sound("start", 0)
+
                 prize_seconds -= 1
                 if prize < 16:
                     current_prize = pygame.image.load('./data/graphics/question_' + str(prize) + '_prize.png').convert_alpha()
@@ -1355,7 +1378,9 @@ def show_game_structure():
                     current_prize = pygame.image.load(
                         './data/graphics/question_' + str(10) + '_prize.png').convert_alpha()
                 elif prize == 21:
-                    util.play_sound("help_modules", 0, dir="intro")
+                    if util.game_language == util.Language.HUNGARIAN.name:
+
+                        util.play_sound("help_modules", 0, dir="intro")
                     current_prize = pygame.image.load(
                         './data/graphics/halving_desc.png').convert_alpha()
                     time.sleep(1)
@@ -1372,8 +1397,8 @@ def show_game_structure():
 
                 elif prize == 30:
                     current_prize = pygame.image.load('./data/graphics/question_0_prize.png').convert_alpha()
-
-                    util.play_sound("prologue_end", 0, dir="intro", timer=True)
+                    if util.game_language == util.Language.HUNGARIAN.name:
+                        util.play_sound("prologue_end", 0, dir="intro", timer=True)
                 elif prize == 33:
                     return
 
@@ -1701,7 +1726,7 @@ def fastest_fingers_first():
 
     global player
     player = "player"
-    #start_game()
+    start_game()
     global game_language, question_lines_easy, question_lines_medium, question_lines_hard
     game_language = util.game_language
     global question_topics
@@ -1716,8 +1741,6 @@ def fastest_fingers_first():
                                "/text_files/fastest_fingers_first/" + str(game_language).lower() + "/"):
         question_lines.append(line)
     random.shuffle(question_lines)
-    total_answer = ""
-    util.clear_screen()
     if game_language == util.Language.ENGLISH:
         util.play_sound("start", 0)
     question = question_lines[0][0]
@@ -1730,16 +1753,13 @@ def fastest_fingers_first():
     if game_language == util.Language.HUNGARIAN.name:
         util.play_sound("lets_look_at_the_fastest_fingers_question", 0, dir="fastest_fingers")
         time.sleep(2)
-        util.play_sound("fastest_fingers_first", 0, general=True)
+    util.play_sound("fastest_fingers_first", 0, general=True)
 
     start = time.time()
-
-    # total_answer += answer
 
     correct_answer_keys = question_lines[0][5]
 
     global game_active
-
 
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
@@ -1780,8 +1800,6 @@ def fastest_fingers_first():
     exit_game = False
 
     game_active = True
-
-
 
     sky_surface = pygame.image.load('./data/graphics/bg.jpg').convert_alpha()
     fastest_result_bg = pygame.image.load('./data/graphics/fastest_result_bg.png').convert_alpha()
