@@ -182,6 +182,8 @@ def play_background_sound(filename, starting_time, file_type="wav", dir="", volu
 
 
 def get_sound_length(filename, file_type="wav", dir="", general=False) -> int:
+
+
     if general:
         file_path = get_data_path() + "/sound_files/general/" + filename + "." + file_type
     elif dir != "":

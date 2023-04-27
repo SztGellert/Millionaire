@@ -170,10 +170,14 @@ class MenuOption(pygame.sprite.Sprite):
             time.sleep(0.2)
             if self.name in language_dictionary[util.game_language].menu.main_menu_options:
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[0]:
+                    util.stop_sound()
                     quiz.play()
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[1]:
+                    util.stop_sound()
                     quiz.fastest_fingers_first()
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[2]:
+                    util.stop_sound()
+                    quiz.show_game_structure()
                     text_screen("tutorial")
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[3]:
                     global options
@@ -183,6 +187,7 @@ class MenuOption(pygame.sprite.Sprite):
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[5]:
                     text_screen("scores")
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[-1]:
+                    util.stop_sound()
                     pygame.quit()
                     exit()
 
@@ -221,6 +226,8 @@ class MenuOption(pygame.sprite.Sprite):
 
                 if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-1]:
                     if self.type == "tutorial_option":
+                        util.stop_sound()
+
                         global screen_active
                         screen_active = False
                     else:
