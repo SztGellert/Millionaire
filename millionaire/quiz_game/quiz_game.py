@@ -2,21 +2,12 @@ import os
 import random
 import json
 import time
-from sty import Style, RgbFg, fg, bg, rs
-import millionaire.menu.menu as menu
 import millionaire.util.util as util
-import millionaire.menu.helpers as helpers
 import threading
 import pygame
 
-operating_system = os.name
-fg.purple = Style(RgbFg(148, 0, 211))
-fg.orange = Style(RgbFg(255, 150, 50))
-fg.green = Style(RgbFg(0, 255, 0))
-bg.orange = bg(255, 150, 50)
 languages = util.available_languages
 language_dictionary = util.language_dictionary
-table_length = 113
 game_levels = 15
 threads = []
 help_types = {"halving": True, "telephone": True, "audience": True}
@@ -785,7 +776,7 @@ def play():
     player = "player"
     player_in_game = "player"
     # DEBUG COMMENT HERE
-    '''
+
     start_game()
     if game_language == util.Language.HUNGARIAN.name:
         for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
@@ -796,7 +787,7 @@ def play():
         millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
         sound = random.choice(millionaire_sounds)
         util.play_sound(sound, 0, dir="intro", timer=True)
-     '''
+
 
     global game_level
     score = 0
@@ -860,14 +851,14 @@ def game_loop(level: int, question_array: {}):
     answer_list = list(answers.values())
     random.shuffle(answer_list)
     shuffled_answers = dict(zip(answers, answer_list))
-    '''
+
     # DEBUG COMMENT HERE
     if level in [0, 6, 8]:
         play_question_intro(level)
     if util.game_language == util.Language.HUNGARIAN.name and level < 14:
         play_question_prologue(level)
         play_music(level)
-    '''
+
     correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[level][1])
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
