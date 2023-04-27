@@ -31,6 +31,7 @@ class TableElement(pygame.sprite.Sprite):
         self.text_y = 20
 
         self.base_text = text
+        self.correct_option: pygame.Surface
 
         # size 33 max 24 length text y 20 cd:15
         # size 25 max 32 length text y 25 cd:20
@@ -186,7 +187,6 @@ class TableElement(pygame.sprite.Sprite):
 
         elif type_ == "mark":
             if correct == self.type:
-                self.image = self.correct_option
                 self.correct_option = pygame.image.load(
                     './data/graphics/option_' + self.type + '_won.png').convert_alpha()
                 self.image = self.correct_option
@@ -210,7 +210,6 @@ class TableElement(pygame.sprite.Sprite):
                         color = (255, 255, 255)
                         self.text = font.render(str(len(fastest_fingers_result)) + ": " + self.base_text, True, color)
                         self.image.blit(self.text, [self.text_x, self.text_y])
-                    print(len(fastest_fingers_result))
                     if len(fastest_fingers_result) == 4:
                         fastest_fingers_mark_event = pygame.USEREVENT + 1
                         type = "fastest_fingers_mark"
@@ -561,6 +560,46 @@ class MenuOption(pygame.sprite.Sprite):
         self.player_input()
 
 
+class FastestFingersResult(pygame.sprite.Sprite):
+
+    def __init__(self, type, text, order):
+        super().__init__()
+
+        x_pos = 1023
+        y_pos = 482
+
+        y_pos = y_pos + (order*68)
+
+
+        self.frame = pygame.image.load('./data/graphics/fastest_' + type + '.png').convert_alpha()
+        self.font = pygame.font.SysFont('Sans', 33)
+        self.type = type
+        self.text_color = (255, 255, 255)
+
+        self.name = text
+        self.text = self.font.render(text, True, (255, 255, 255))
+        self.image = self.frame
+        self.image.blit(self.text, [110, 15])
+        self.rect = self.image.get_rect(center=(x_pos, y_pos))
+        self.lang = util.game_language
+        self.order = order
+
+    def get_is_active(self):
+        if hasattr(self, 'is_active'):
+            return self.is_active
+        else:
+            return True
+
+    def set_is_active(self):
+        self.is_active = True
+
+    def unset_is_active(self):
+        self.is_active = False
+
+    def update(self):
+        pass
+
+
 def init_threads(level: int):
     global base_threads
     global a_threads
@@ -789,7 +828,7 @@ def start_game():
 
             display_ = pygame.sprite.GroupSingle()
             display_.add(TableElement('question',
-                                  f'{language_dictionary[game_language].quiz.player_name_prompt} {player.capitalize()}'))
+                                  f'{language_dictionary[util.game_language].quiz.player_name_prompt} {player.capitalize()}'))
             display_.draw(screen)
 
         pygame.display.update()
@@ -1004,15 +1043,19 @@ def game_loop(level: int, question_array: {}):
                         else:
                             audience_text += "   "
 
-                if audience_seconds == 0:
+                elif audience_seconds == 0:
                     util.play_sound("audience_end", 0, general=True, timer=True)
-                    audience_seconds = -1
                     if util.game_language == util.Language.HUNGARIAN.name:
                         audience_after_sounds = ["after_audience", "after_audience_2", "audience_false",
                                                  "you_disagree_audience", "weights_a_lot", "believe_audience",
                                                  "audience_random"]
                         after_sound = random.choice(audience_after_sounds)
                         util.play_sound(after_sound, 0, dir="audience", timer=True)
+                    audience_seconds = -1
+                else:
+                    pass
+
+
 
             if event.type == prize_event:
                 if prize_seconds > 0:
@@ -1123,22 +1166,22 @@ def game_loop(level: int, question_array: {}):
                     prize_group.draw(screen)
                     prize_group.update(selected, correct_answer_key)
                 if phone_event != 0:
-                    x_pos = 630
-                    y_pos = 135
+                    x_pos = 1130
+                    y_pos = 160
                     font = pygame.font.SysFont('Sans', 33, bold=True)
                     game_message = font.render(str(phone_seconds), True, (255, 255, 255))
                     game_message_rect = game_message.get_rect(center=(x_pos, y_pos))
                     screen.blit(game_message, game_message_rect)
                 if audience_event != 0:
-                    x_pos = 635
+                    x_pos = 1140
                     y_pos = 95
                     if audience_res != {}:
-                        font = pygame.font.SysFont('Sans', 31)
+                        font = pygame.font.SysFont('Sans', 30)
                         game_message = font.render(audience_text, True, (255, 255, 255))
                         game_message_rect = game_message.get_rect(center=(x_pos, y_pos))
                         screen.blit(game_message, game_message_rect)
 
-                        x_pos = 555
+                        x_pos = 1055
                         y_pos = 365
                         width = 25
                         color = (92, 175, 255)
@@ -1441,9 +1484,21 @@ def play_help_sounds(help_types: {}):
     util.play_sound(sound_file, 0, dir="help", timer=True)
 
 
-def fastest_finger_first():
+def fastest_fingers_first():
+    global clock
+    clock = pygame.time.Clock()
 
+    global screen
+    # screen = pygame.display.set_mode((1024, 768))
+    # pygame.FULLSCREEN
+    if util.full_screen:
+        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
+    else:
+        screen = pygame.display.set_mode((1366, 768))
 
+    global player
+    player = "player"
+    #start_game()
     global game_language, question_lines_easy, question_lines_medium, question_lines_hard
     game_language = util.game_language
     global question_topics
@@ -1472,6 +1527,8 @@ def fastest_finger_first():
     if game_language == util.Language.HUNGARIAN.name:
         util.play_sound("lets_look_at_the_fastest_fingers_question", 0, dir="fastest_fingers")
         time.sleep(2)
+        util.play_sound("fastest_fingers_first", 0, general=True)
+
     start = time.time()
 
     # total_answer += answer
@@ -1486,7 +1543,8 @@ def fastest_finger_first():
 
     pygame.time.set_timer(pygame.USEREVENT, 1000)  # SELECT EVENT
     pygame.time.set_timer(pygame.USEREVENT + 1, 1000)  # MARK EVENT
-    pygame.time.set_timer(pygame.USEREVENT + 2, 1000)  # PRIZE EVENT
+    pygame.time.set_timer(pygame.USEREVENT + 2, 1000)  # RESULT EVENT
+    pygame.time.set_timer(pygame.USEREVENT + 3, 1000)  # PRIZE EVENT
 
     counter = 3
     sprite_group = ['question', "a", "b", "c", "d"]
@@ -1514,28 +1572,31 @@ def fastest_finger_first():
     menu_group.add(MenuOption("resume", 0, 300))
     menu_group.add(MenuOption("exit", 2, 300))
 
-    clock = pygame.time.Clock()
 
     global exit_game
     exit_game = False
 
     game_active = True
 
-    global screen
-    # screen = pygame.display.set_mode((1024, 768))
-    # pygame.FULLSCREEN
-    if util.full_screen:
-        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
-    else:
-        screen = pygame.display.set_mode((1366, 768))
+
 
     sky_surface = pygame.image.load('./data/graphics/bg.jpg').convert_alpha()
+    fastest_result_bg = pygame.image.load('./data/graphics/fastest_result_bg.png').convert_alpha()
+
 
     global fastest_fingers_result
     global fastest_fingers_mark_event
 
     fastest_fingers_mark_event = 0
     fastest_fingers_result = ""
+
+    in_game_menu_bg = pygame.image.load('./data/graphics/in_game_menu_bg.jpg').convert_alpha()
+
+    result_group = pygame.sprite.Group()
+    for i in range(4):
+        result_group.add(FastestFingersResult(question_lines[0][5][i], answers[question_lines[0][5][i]], i))
+    result_event = 0
+    result_seconds = 5
 
 
     while True:
@@ -1558,6 +1619,11 @@ def fastest_finger_first():
                 if prize_seconds > 0:
                     prize_seconds -= 1
 
+            if  time.time() - start > 28:
+                type = "fastest_fingers_mark"
+                fastest_fingers_mark_event = pygame.USEREVENT + 1
+                mark_seconds = 0
+
             if game_active:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if dbclock.tick() < DOUBLECLICKTIME:
@@ -1577,8 +1643,20 @@ def fastest_finger_first():
 
             if type == "fastest_fingers_mark":
                 if mark_seconds < 1:
-
                     end = time.time()
+
+                    for ob in obstacle_group.sprites():
+                        obstacle_group.remove(ob)
+
+                    obstacle_group.add(TableElement('fastest_fingers_result', str(player).capitalize() + " : " + str(end - start)[:5]))
+                    for ob in obstacle_group.sprites():
+                        ob.image = pygame.image.load('./data/graphics/fastest_fingers_win.png').convert_alpha()
+                        font = pygame.font.SysFont('Sans', 33)
+                        text = font.render(str(player).capitalize() + " : " + str(end - start)[:5], True, (255, 255, 255))
+                        text_rect_1 = text.get_rect(center=(1366 / 2, 48))
+
+                        ob.image.blit(text, text_rect_1)
+
                     util.stop_sound()
 
                     if game_language == util.Language.HUNGARIAN.name:
@@ -1588,16 +1666,46 @@ def fastest_finger_first():
                         time.sleep(1)
                         util.play_sound("lets_see_who_is_correct", 0, dir="fastest_fingers")
 
-                    time.sleep(2)
-                    print(fastest_fingers_result)
-                    print(correct_answer_keys)
+                    #time.sleep(2)
+                    result_event = pygame.USEREVENT + 2
+                    screen.blit(fastest_result_bg, (0, 0))
+                    result_group.draw(screen)
+                    result_group.update()
+
+                    font = pygame.font.SysFont('Sans', 25)
+
+                    if len(question) > 42:
+                        text_1 = font.render(question[:42], True, (255, 255, 255))
+                        text_rect_1= text_1.get_rect(center=(1000, 48))
+                        screen.blit(text_1, text_rect_1)
+
+                        text_2 = font.render(question[42:], True, (255, 255, 255))
+                        text_rect_2 = text_2.get_rect(center=(1000, 68))
+                        screen.blit(text_2, text_rect_2)
+                    else:
+                        text = font.render(question, True, (255, 255, 255))
+                        text_rect_1 = text.get_rect(center=(1000, 48))
+                        screen.blit(text, text_rect_1)
+                    pygame.display.update()
+                    time.sleep(result_seconds)
+
                     if fastest_fingers_result == correct_answer_keys:
 
 
                         util.play_sound("fastest_fingers_correct", 0, general=True)
-                        # print_prizes_with_quizmaster(0, False, special_text="♦ " + player_name + " : " + str(end - start)[:5] + " ♦",
-                        #                             bg_color=bg.green)
                         time.sleep(2)
+                        player_in_game = "player"
+                        if game_language == util.Language.HUNGARIAN.name:
+                            for name in os.listdir(
+                                    util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
+                                if player.lower() == name[:-4]:
+                                    player_in_game = player.lower()
+                            util.play_sound(player_in_game, 0, dir="players", timer=True)
+
+                        obstacle_group.draw(screen)
+                        obstacle_group.update(selected, correct_answer_keys, type)
+                        pygame.display.update()
+
                         util.play_sound("fastest_fingers_win", 0, general=True)
                         time.sleep(15)
 

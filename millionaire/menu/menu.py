@@ -172,7 +172,7 @@ class MenuOption(pygame.sprite.Sprite):
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[0]:
                     quiz.play()
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[1]:
-                    quiz.fastest_finger_first()
+                    quiz.fastest_fingers_first()
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[2]:
                     text_screen("tutorial")
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[3]:
