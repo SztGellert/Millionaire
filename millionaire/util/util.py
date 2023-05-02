@@ -65,7 +65,10 @@ quizmaster_attitudes = [attitude.name for attitude in QuizMasterAttitude]
 
 def init():
     pygame.mixer.init()
+    pygame.mixer.set_num_channels(8)
+
     init_settings(game_language)
+
 
 
 def init_settings(selected_lang: str, reset_settings=False):
@@ -144,8 +147,10 @@ def play_sound(filename, starting_time, file_type="wav", dir="", volume=0.07, fa
         file_path = get_data_path() + "/sound_files/" + str(game_language).lower() + "/" + filename + "." + file_type
 
     if system_volume:
+
+        voice = pygame.mixer.Channel(5)
         sound = pygame.mixer.Sound(file_path)
-        sound.play()
+        voice.play(sound)
 
         if timer == True:
             time.sleep(sound.get_length())
@@ -179,6 +184,15 @@ def play_background_sound(filename, starting_time, file_type="wav", dir="", volu
         # pygame.mixer.music.set_volume(volume)
         # pygame.mixer.music.play(0, starting_time, fade_ms=fading_time)
         # sound.play()
+
+
+def get_sound_channel_availability() -> bool:
+    voice = pygame.mixer.Channel(5)
+
+    if voice.get_busy():
+        return False
+
+    return True
 
 
 def get_sound_length(filename, file_type="wav", dir="", general=False) -> int:

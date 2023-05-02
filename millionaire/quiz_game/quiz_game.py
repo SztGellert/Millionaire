@@ -598,31 +598,6 @@ class FastestFingersResult(pygame.sprite.Sprite):
         pass
 
 
-def init_threads(level: int):
-    global base_threads
-    global a_threads
-    global b_threads
-    global c_threads
-    global d_threads
-    global threads
-
-    if level > 0:
-        thread_random(level, working=False)
-    threads = []
-
-    for i in range(5):
-        options = []
-        for j in range(4):
-            options.append(threading.Timer(15.0 * (j + 1), play_random_quizmaster_sound, args=(level,)))
-        threads.append(options)
-
-    base_threads = threads[0]
-    a_threads = threads[1]
-    b_threads = threads[2]
-    c_threads = threads[3]
-    d_threads = threads[4]
-
-
 def play_random_quizmaster_sound(level: int):
     util.pause_music()
     global random_sounds
@@ -752,7 +727,6 @@ def play():
 
     game_levels = 15
     level = 0
-    init_threads(level)
     if question_difficulty == util.Difficulty.ALL.name:
         if level < 5:
             question_lines = question_lines_easy
@@ -866,6 +840,7 @@ def game_loop(level: int, question_array: {}):
     pygame.time.set_timer(pygame.USEREVENT + 7, 1000)  # AUDIENCE INTRO EVENT
     pygame.time.set_timer(pygame.USEREVENT + 8, 1000)  # PRIZE EVENT
     pygame.time.set_timer(pygame.USEREVENT + 9, 1000)  # PRIZE TABLE EVENT
+    pygame.time.set_timer(pygame.USEREVENT + 10, 15000) # random sound event
 
     global counter
     counter = 3
@@ -940,6 +915,8 @@ def game_loop(level: int, question_array: {}):
     global prize_table_seconds
 
     prize_table_seconds = 5
+
+    random_sound_event = pygame.USEREVENT + 10
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -1063,6 +1040,11 @@ def game_loop(level: int, question_array: {}):
                 if prize_table_seconds == 0:
                     prize_table_event = 0
 
+            if event.type == random_sound_event:
+                if util.get_sound_channel_availability:
+                    play_random_quizmaster_sound(level)
+
+
             if game_active:
                 if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
                     if dbclock.tick() < DOUBLECLICKTIME:
@@ -1070,6 +1052,32 @@ def game_loop(level: int, question_array: {}):
                             if ob.type != 'question':
                                 if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
                                     selected = ob.type
+                    else:
+                        util.stop_sound()
+                        last_input = ""
+                        sound_dir = ""
+                        if util.game_language == util.Language.HUNGARIAN.name:
+                            sound_list_dict = get_sound_list(util.quizmaster_attitude)
+                            bad_sounds = sound_list_dict['bad_sounds']
+                            correct_sounds = sound_list_dict['correct_sounds']
+
+                        if util.game_language == util.Language.HUNGARIAN.name:
+                            sound_dir = "random"
+                        for ob in obstacle_group.sprites():
+                            if ob.type != 'question':
+                                if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
+                                    clicked_option = ob.type
+                                    if util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
+                                        if clicked_option == correct_answer_key:
+                                            selected_sound = random.choice(correct_sounds)
+                                        else:
+                                            selected_sound = random.choice(bad_sounds)
+                                        # if not out_of_game:
+                                        #    util.pause_music()
+                                        if util.game_language == util.Language.HUNGARIAN.name and util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
+                                            if selected_sound.find("mark") != -1 or selected_sound.find("final") != -1:
+                                                sound_dir = "mark"
+                                        util.play_sound(selected_sound, 0, dir=sound_dir)
 
             else:
                 if event.type == pygame.KEYDOWN:
@@ -1388,114 +1396,6 @@ def play_correct_sounds(level: int):
 def play_prize_sound(level: int):
     if level in [4, 7, 9, 11, 12]:
         util.play_sound("level_" + str(level), 0, dir="prize")
-
-
-def thread_random(level: int, selected="", last_one="", working=True):
-    global base_threads
-    global a_threads
-    global b_threads
-    global c_threads
-    global d_threads
-    global threads
-
-    if working == True:
-        if last_one == "a":
-            for thread in a_threads:
-                thread.cancel()
-        elif last_one == "b":
-            for thread in b_threads:
-                thread.cancel()
-        elif last_one == "c":
-            for thread in c_threads:
-                thread.cancel()
-        elif last_one == "d":
-            for thread in d_threads:
-                thread.cancel()
-        elif last_one == "base":
-            pass
-        else:
-            for thread in base_threads:
-                thread.cancel()
-
-        if selected == "a":
-            for thread in a_threads:
-                if not thread.finished.is_set():
-                    thread.start()
-
-                else:
-                    a_threads = []
-                    threads[1] = []
-                    for i in range(4):
-                        a_threads.append(threading.Timer(15.0 * (i + 1), play_random_quizmaster_sound, args=(level,)))
-                    for thread_ in a_threads:
-                        thread_.start()
-                    threads[1] = a_threads
-                    return
-        elif selected == "b":
-            for thread in b_threads:
-                if not thread.finished.is_set():
-                    thread.start()
-                else:
-                    b_threads = []
-                    threads[2] = []
-
-                    for i in range(4):
-                        b_threads.append(threading.Timer(15.0 * (i + 1), play_random_quizmaster_sound, args=(level,)))
-                    for thread_ in b_threads:
-                        thread_.start()
-                    threads[2] = b_threads
-
-                    return
-        elif selected == "c":
-            for thread in c_threads:
-                if not thread.finished.is_set():
-                    thread.start()
-
-                else:
-                    c_threads = []
-                    threads[3] = []
-
-                    for i in range(4):
-                        c_threads.append(threading.Timer(15.0 * (i + 1), play_random_quizmaster_sound, args=(level,)))
-                    for thread_ in c_threads:
-                        thread_.start()
-                    threads[3] = c_threads
-
-                    return
-        elif selected == "d":
-            for thread in d_threads:
-                if not thread.finished.is_set():
-                    thread.start()
-                else:
-                    d_threads = []
-                    threads[4] = []
-
-                    for i in range(4):
-                        d_threads.append(threading.Timer(15.0 * (i + 1), play_random_quizmaster_sound, args=(level,)))
-                    for thread_ in d_threads:
-                        thread_.start()
-                    threads[4] = d_threads
-
-                    return
-        else:
-            for thread in base_threads:
-                if not thread.finished.is_set():
-                    thread.start()
-                else:
-                    base_threads = []
-                    threads[0] = []
-                    for i in range(4):
-                        base_threads.append(
-                            threading.Timer(15.0 * (i + 1), play_random_quizmaster_sound, args=(level,)))
-                    for thread_ in base_threads:
-                        thread_.start()
-                    threads[0] = base_threads
-                    return
-
-    else:
-        for list in threads:
-            for thread in list:
-                thread.cancel()
 
 
 def play_question_prologue(level: int):
@@ -1988,100 +1888,7 @@ def get_sound_list(attitude: str) -> {}:
         return {"correct_sounds": [], "bad_sounds": []}
 
 
-def handle_user_input(question: str, answers: dict, correct_answer: str, level=0, final_color="orange",
-                      out_of_game=False,
-                      help=False) -> str:
-    select_text = language_dictionary[game_language].quiz.select_answer
-    last_input = ""
-    sound_dir = ""
-    if util.game_language == util.Language.HUNGARIAN.name:
-        sound_list_dict = get_sound_list(util.quizmaster_attitude)
-        bad_sounds = sound_list_dict['bad_sounds']
-        correct_sounds = sound_list_dict['correct_sounds']
-
-    if out_of_game:
-        select_text = language_dictionary[game_language].quiz.select_answer_out
-
-    while True:
-        user_input = get_user_input()
-        if not help:
-            user_inputs = [[b'a', "a"], [b'b', "b"], [b'c', "c"], [b'd', "d"]]
-            for input_ in user_inputs:
-                if user_input == input_[0] or user_input == input_[1]:
-                    if util.game_language == util.Language.HUNGARIAN.name:
-                        sound_dir = "random"
-                        thread_random(level, selected=input_[1], last_one=last_input)
-                        if util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
-                            if input_[1] == correct_answer:
-                                selected_sound = random.choice(correct_sounds)
-                            else:
-                                selected_sound = random.choice(bad_sounds)
-                    util.clear_screen()
-                    print_quiz_table(question, answers, game_level=level, selected=input_[1], color="li_grey")
-                    print("\n\n   " + fg.grey + select_text + fg.rs)
-                    if not out_of_game:
-                        util.pause_music()
-                    if util.game_language == util.Language.HUNGARIAN.name and util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
-                        if selected_sound.find("mark") != -1 or selected_sound.find("final") != -1:
-                            sound_dir = "mark"
-                        util.play_sound(selected_sound, 0, dir=sound_dir)
-                    if not out_of_game:
-                        util.continue_music()
-                    last_input = input_[1]
-                    while True:
-                        user_input = get_user_input()
-                        util.stop_sound()
-                        if user_input == b'\r' or user_input == '<Ctrl-j>':
-                            thread_random(level, working=False)
-                            util.clear_screen()
-                            print_quiz_table(question, answers, input_[1], final_color, game_level=level)
-                            if not out_of_game:
-                                util.pause_music()
-                            if util.game_language == util.Language.HUNGARIAN.name and not out_of_game:
-                                play_marked_sound(input_[1], level, last_one=last_input)
-                            return input_[1]
-                        if user_input not in input_:
-                            break
-
-            if not out_of_game:
-                if user_input == b'h' or user_input == "h":
-                    return "h"
-                if user_input == b's' or user_input == "s":
-                    return "h"
-                if user_input == b'k' or user_input == "k":
-                    return "t"
-                if user_input == b't' or user_input == "t":
-                    return "t"
-            if user_input == b'\x1b' or user_input == '<ESC>':
-                return "esc"
-
-        else:
-            if user_input == b'a' or user_input == "a":
-                return "a"
-            if user_input == b'd' or user_input == "d":
-                return "d"
-            if user_input == b'f' or user_input == "f":
-                return "h"
-            if user_input == b'm' or user_input == "m":
-                return "m"
-            if user_input == b'p' or user_input == "p":
-                return "d"
-            if user_input == b't' or user_input == "t":
-                return "t"
-            if user_input == b'k' or user_input == "k":
-                return "a"
-            if user_input == b'h' or user_input == "h":
-                return "h"
-            if user_input == b's' or user_input == "s":
-                return "h"
-            if user_input == b'y' or user_input == "y":
-                return "y"
-            if user_input == b'\x1b' or user_input == '<ESC>':
-                return "esc"
-
-
 def quit_quiz(score: int, name: str, topic, end=False):
-    # thread_random(score, working=False)
     if not end:
         util.play_sound("time_end_horn", 0, general=True, timer=True)
         util.stop_music()
