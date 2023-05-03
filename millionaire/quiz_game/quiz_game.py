@@ -324,6 +324,8 @@ class Help(pygame.sprite.Sprite):
         global help_types
         global phone_event
         global help_group
+        global phone_intro_event
+        global intro_duration
 
         first_line = [(22, 32), (98, 82)]
         second_line = [(100, 30), (30, 82)]
@@ -362,11 +364,11 @@ class Help(pygame.sprite.Sprite):
                 if help_types["telephone"]:
                     self.player_input(correct_answer)
 
-                    if self.is_dialed:
+                    if phone_intro_event == 0 and self.is_dialed and intro_duration <= 0:
                         for ob in help_group.sprites():
                             if ob.type in ["teacher", "chewbacca", "random"]:
                                 help_group.remove(ob)
-
+                        print(phone_intro_event)
                         self.phone()
                         phone_select = False
                         help_types["telephone"] = False
@@ -381,6 +383,7 @@ class Help(pygame.sprite.Sprite):
                             selected = random.choice(answers)
 
     def halving(self, correct_answer):
+        global obstacle_group
         choises = ["a", "b", "c", "d"]
         choises.remove(correct_answer)
         choises.remove(random.choice(choises))
@@ -428,9 +431,11 @@ class Help(pygame.sprite.Sprite):
             util.play_sound(before_sound, 0, dir="phone", timer=True)
 
     def phone_dial(self):
+        global dial_seconds
         if util.game_language == util.Language.HUNGARIAN.name:
             dial_sound = "colleagues_are_dialing"
             util.play_sound(dial_sound, 0, dir="phone", timer=True)
+            dial_seconds = util.get_sound_length(dial_sound, dir = "phone")
 
     def phone_intro(self) -> int:
         target = self.type
@@ -849,6 +854,7 @@ def game_loop(level: int, question_array: {}):
     global type
     type = "select"
     texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
+    global obstacle_group
     obstacle_group = pygame.sprite.Group()
     for index in range(len(sprite_group)):
         obstacle_group.add(TableElement(sprite_group[index], texts[index]))
@@ -882,6 +888,7 @@ def game_loop(level: int, question_array: {}):
         audience_seconds = 4
     audience_res = {}
     global dial_event
+    global dial_seconds
     dial_event = 0
     dial_seconds = 2
     global phone_intro_event
@@ -916,15 +923,16 @@ def game_loop(level: int, question_array: {}):
     prize_table_seconds = 5
 
     random_sound_event = pygame.USEREVENT + 10
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-            if event.type == pygame.KEYDOWN:
+            elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     game_active = False
-            if event.type == pygame.USEREVENT and selected != "" and type == "select":
+            elif event.type == pygame.USEREVENT and selected != "" and type == "select":
                 if audience_event != 0:
                     audience_event = 0
                     for ob in help_group.sprites():
@@ -934,9 +942,9 @@ def game_loop(level: int, question_array: {}):
                 if counter < 1:
                     play_select_sounds(level, selected, last_input, out_of_game)
                     type = "mark"
-            if event.type == mark_event:
+            elif event.type == mark_event:
                 mark_seconds -= 1
-            if event.type == after_halving_event:
+            elif event.type == after_halving_event:
                 halving_time -= 1
                 if halving_time < 1:
                     after_halving_sounds = ["after_halving", "after_halving_2", "after_halving_3",
@@ -946,7 +954,8 @@ def game_loop(level: int, question_array: {}):
                     if util.game_language == util.Language.HUNGARIAN.name:
                         util.play_sound(sound, 0, dir="halving")
                     after_halving_event = 0
-            if event.type == phone_event:
+            elif event.type == phone_event:
+
                 if len(help_group) == 3 and not clock_added:
                     help_group.add(Help("clock"))
                     clock_added = True
@@ -958,7 +967,7 @@ def game_loop(level: int, question_array: {}):
                     phone_event = 0
 
 
-            if event.type == dial_event:
+            elif event.type == dial_event:
                 if audience_event != 0:
                     audience_event = 0
                     for ob in help_group.sprites():
@@ -970,20 +979,20 @@ def game_loop(level: int, question_array: {}):
                     phone_intro_event = pygame.USEREVENT + 6
                     dial_event = 0
 
-            if event.type == phone_intro_event:
+            elif event.type == phone_intro_event:
                 if intro_duration > 0:
                     intro_duration -= 1
 
                 else:
                     phone_event = pygame.USEREVENT + 3
                     phone_intro_event = 0
-            if event.type == audience_intro_event:
+            elif event.type == audience_intro_event:
                 if audience_intro_duration > 0:
                     audience_intro_duration -= 1
                 if audience_intro_duration < 1:
                     audience_event = pygame.USEREVENT + 4
                     audience_intro_event = 0
-            if event.type == audience_event:
+            elif event.type == audience_event:
                 if audience_seconds > 0:
                     audience_seconds -= 1
 
@@ -1035,21 +1044,23 @@ def game_loop(level: int, question_array: {}):
                 else:
                     pass
 
-            if event.type == prize_event:
+            elif event.type == prize_event:
                 if prize_seconds > 0:
                     prize_seconds -= 1
 
-            if event.type == prize_table_event:
+            elif event.type == prize_table_event:
                 if prize_table_seconds > 0:
                     prize_table_seconds -= 1
                 if prize_table_seconds == 0:
                     prize_table_event = 0
 
-            if event.type == random_sound_event:
-                if util.get_sound_channel_availability:
-                    play_random_quizmaster_sound(level)
-
-
+            else:
+                if event.type == random_sound_event:
+                    event_list = [phone_event, audience_event, after_halving_event, phone_selection_event, mark_event, prize_event, dial_event, phone_intro_event, audience_intro_event]
+                    active_events = list(filter(lambda x: x > 0, event_list))
+                    if len(active_events) == 0:
+                        if util.get_sound_channel_availability and util.game_language == util.Language.HUNGARIAN.name:
+                            play_random_quizmaster_sound(level)
 
             if game_active:
                 if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
