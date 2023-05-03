@@ -1,6 +1,9 @@
 import json
 import os
+import time
+
 import pygame
+
 import millionaire.quiz_game.quiz_game as quiz
 import millionaire.util.util as util
 
@@ -155,8 +158,6 @@ class MenuOption(pygame.sprite.Sprite):
             else:
                 self.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
             self.image.blit(self.text, [self.text_x, self.text_y])
-
-
         else:
             if self.type == "settings_menu_option":
                 self.image = pygame.image.load('./data/graphics/settings_option.png').convert_alpha()
@@ -165,8 +166,6 @@ class MenuOption(pygame.sprite.Sprite):
             self.image.blit(self.text, [self.text_x, self.text_y])
 
         if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
-            print(self.name)
-            import time
             time.sleep(0.2)
             if self.name in language_dictionary[util.game_language].menu.main_menu_options:
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[0]:

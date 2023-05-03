@@ -1186,18 +1186,21 @@ def game_loop(level: int, question_array: {}):
                 if phone_event != 0:
                     screen.fill((0, 0, 0))
 
+
                     x_pos = 1121
                     y_pos = 180
                     font = pygame.font.SysFont('Sans', 41)
                     game_message = font.render(str(phone_seconds), True, (255, 255, 255))
                     game_message_rect = game_message.get_rect(center=(x_pos, y_pos))
+                    clock_surf = pygame.image.load('./data/graphics/clock.png').convert_alpha()
+                    clock_rect = clock_surf.get_rect(center=(x_pos, y_pos))
+                    screen.blit(clock_surf, clock_rect)
                     screen.blit(game_message, game_message_rect)
 
                     r = 37
                     for i in range((30- phone_seconds)* int(361/30), 361):
                         pygame.draw.circle(screen, (236, 155, 47),
                                            (int(r * cos(radians(i-90)) + x_pos), int(r * sin(radians(i-90)) + y_pos)), 3)
-                    help_group.remove(screen)
 
                 if audience_event != 0:
 
