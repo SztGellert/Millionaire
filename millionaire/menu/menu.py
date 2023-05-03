@@ -378,11 +378,14 @@ def main():
     global main_menu_bg_surf
 
     if util.game_language == util.Language.HUNGARIAN.name:
-        main_menu_bg_surf = pygame.image.load('./data/graphics/menu_bg.jpg').convert_alpha()
+        main_menu_bg_surf = pygame.image.load('./data/graphics/menu_bg_hu.jpg').convert_alpha()
     else:
-        main_menu_bg_surf = pygame.image.load('./data/graphics/menu_bg_eng.png').convert_alpha()
+        main_menu_bg_surf = pygame.image.load('./data/graphics/menu_bg_en.png').convert_alpha()
 
-    settings_menu_bg_surf =  pygame.image.load('./data/graphics/settings_menu_bg.png').convert_alpha()
+    if util.game_language == util.Language.HUNGARIAN.name:
+        settings_menu_bg_surf = pygame.image.load('./data/graphics/settings_menu_bg_hu.png').convert_alpha()
+    else:
+        settings_menu_bg_surf = pygame.image.load('./data/graphics/settings_menu_bg_en.png').convert_alpha()
 
     main_menu_base_y = 475
 
@@ -430,6 +433,10 @@ def main():
         screen.blit(main_menu_bg_surf, (0, 0))
 
         if options:
+            if util.game_language == util.Language.HUNGARIAN.name:
+                settings_menu_bg_surf = pygame.image.load('./data/graphics/settings_menu_bg_hu.png').convert_alpha()
+            else:
+                settings_menu_bg_surf = pygame.image.load('./data/graphics/settings_menu_bg_en.png').convert_alpha()
             screen.blit(settings_menu_bg_surf, (0,0))
             if lang_selection:
 
@@ -459,6 +466,11 @@ def main():
 
         else:
             screen.fill((0, 0, 0))
+            if util.game_language == util.Language.HUNGARIAN.name:
+                main_menu_bg_surf = pygame.image.load('./data/graphics/menu_bg_hu.jpg').convert_alpha()
+            else:
+                main_menu_bg_surf = pygame.image.load('./data/graphics/menu_bg_en.png').convert_alpha()
+
             screen.blit(main_menu_bg_surf, (0, 0))
 
             menu_option_group.draw(screen)
