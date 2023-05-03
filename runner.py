@@ -6,7 +6,7 @@ from millionaire.util import util
 
 def main():
     util.init()
-    #menu.intro()
+    menu.intro()
     menu.main()
 
 if __name__ == "__main__":
