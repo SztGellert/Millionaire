@@ -377,7 +377,11 @@ def main():
     clock = pygame.time.Clock()
     global main_menu_bg_surf
 
-    main_menu_bg_surf = pygame.image.load('./data/graphics/menu_bg.jpg').convert_alpha()
+    if util.game_language == util.Language.HUNGARIAN.name:
+        main_menu_bg_surf = pygame.image.load('./data/graphics/menu_bg.jpg').convert_alpha()
+    else:
+        main_menu_bg_surf = pygame.image.load('./data/graphics/menu_bg_eng.png').convert_alpha()
+
     settings_menu_bg_surf =  pygame.image.load('./data/graphics/settings_menu_bg.png').convert_alpha()
 
     main_menu_base_y = 475

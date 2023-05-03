@@ -3,8 +3,8 @@ import random
 import json
 import time
 import millionaire.util.util as util
-import threading
 import pygame
+from math import sin, cos, radians
 
 languages = util.available_languages
 language_dictionary = util.language_dictionary
@@ -271,7 +271,7 @@ class Help(pygame.sprite.Sprite):
         elif type == "audience_table":
             self.frame = pygame.image.load('./data/graphics/audience_table.png').convert_alpha()
             x_pos = 1130
-            y_pos = 235
+            y_pos = 290
         elif type == "random":
             self.frame = pygame.image.load('./data/graphics/random.png').convert_alpha()
             x_pos = 1240
@@ -466,6 +466,7 @@ class Help(pygame.sprite.Sprite):
         else:
             call_duration = 15
             util.play_background_sound("phone_call", 0, general=True)
+        call_duration = 30
 
     def audience(self):
         util.play_sound("audience", 0, general=True)
@@ -718,8 +719,8 @@ def play():
     clock = pygame.time.Clock()
     global test_font
     test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
-    global sky_surface
-    sky_surface = pygame.image.load('./data/graphics/bg.jpg').convert_alpha()
+    global in_game_bg
+    in_game_bg = pygame.image.load('./data/graphics/bg.jpg').convert_alpha()
     global prizes_table
     prizes_table = pygame.sprite.GroupSingle()
     global in_game_menu_bg
@@ -958,7 +959,13 @@ def game_loop(level: int, question_array: {}):
                     util.play_sound("phone_call_return", 0, general=True)
                     phone_event = 0
 
+
             if event.type == dial_event:
+                if audience_event != 0:
+                    audience_event = 0
+                    for ob in help_group.sprites():
+                        if ob.type == "audience_table":
+                            help_group.remove(ob)
                 if dial_seconds > 0:
                     dial_seconds -= 1
                 if dial_seconds < 1 and phone_event == 0:
@@ -1045,6 +1052,7 @@ def game_loop(level: int, question_array: {}):
                     play_random_quizmaster_sound(level)
 
 
+
             if game_active:
                 if event.type == pygame.MOUSEBUTTONDOWN and selected == "":
                     if dbclock.tick() < DOUBLECLICKTIME:
@@ -1089,7 +1097,7 @@ def game_loop(level: int, question_array: {}):
                 answer_out_of_game(level)
                 out_of_game_started = True
 
-            screen.blit(sky_surface, (0, 0))
+            screen.blit(in_game_bg, (0, 0))
             if prize_table_event != 0:
                 prizes_table.draw(screen)
                 prizes_table.update()
@@ -1160,23 +1168,32 @@ def game_loop(level: int, question_array: {}):
                         prize_event = pygame.USEREVENT + 8
                 help_group.draw(screen)
                 help_group.update(correct_answer_key)
-                obstacle_group.draw(screen)
-                obstacle_group.update(selected, correct_answer_key, type)
+
                 if prize_event != 0:
                     screen.fill((0, 0, 0))
-                    screen.blit(sky_surface, (0, 0))
+                    screen.blit(in_game_bg, (0, 0))
                     prize_group.draw(screen)
                     prize_group.update(selected, correct_answer_key)
                 if phone_event != 0:
+                    screen.fill((0, 0, 0))
+
                     x_pos = 1121
                     y_pos = 180
-                    font = pygame.font.SysFont('Sans', 33, bold=True)
+                    font = pygame.font.SysFont('Sans', 41)
                     game_message = font.render(str(phone_seconds), True, (255, 255, 255))
                     game_message_rect = game_message.get_rect(center=(x_pos, y_pos))
                     screen.blit(game_message, game_message_rect)
+
+                    r = 37
+                    for i in range((30- phone_seconds)* int(361/30), 361):
+                        pygame.draw.circle(screen, (236, 155, 47),
+                                           (int(r * cos(radians(i-90)) + x_pos), int(r * sin(radians(i-90)) + y_pos)), 3)
+                    help_group.remove(screen)
+
                 if audience_event != 0:
+
                     x_pos = 1140
-                    y_pos = 95
+                    y_pos = 150
                     if audience_res != {}:
                         font = pygame.font.SysFont('Sans', 30)
                         game_message = font.render(audience_text, True, (255, 255, 255))
@@ -1184,7 +1201,7 @@ def game_loop(level: int, question_array: {}):
                         screen.blit(game_message, game_message_rect)
 
                         x_pos = 1055
-                        y_pos = 365
+                        y_pos = 420
                         width = 25
                         color = (92, 175, 255)
                         table_length = 240
@@ -1194,6 +1211,8 @@ def game_loop(level: int, question_array: {}):
                                 line = [(x_pos, y_pos), (x_pos, y_pos - table_length / 10 * (audience_res[key] / 10))]
                                 pygame.draw.line(screen, color, line[0], line[1], width=width)
                             x_pos += 50
+                obstacle_group.draw(screen)
+                obstacle_group.update(selected, correct_answer_key, type)
 
         else:
             screen.fill((0, 0, 0))
