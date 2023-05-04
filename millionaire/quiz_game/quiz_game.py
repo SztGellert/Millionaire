@@ -722,8 +722,7 @@ def play():
     clock = pygame.time.Clock()
     global test_font
     test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
-    global in_game_bg
-    in_game_bg = pygame.image.load('./data/graphics/bg.jpg').convert_alpha()
+
     global prizes_table
     prizes_table = pygame.sprite.GroupSingle()
     global in_game_menu_bg
@@ -808,6 +807,15 @@ def start_game():
 
 
 def game_loop(level: int, question_array: {}):
+
+    global in_game_bg
+    if level < 5:
+        in_game_bg = pygame.image.load('./data/graphics/bg_easy.jpg').convert_alpha()
+    elif level < 9:
+        in_game_bg = pygame.image.load('./data/graphics/bg_medium.jpg').convert_alpha()
+    else:
+        in_game_bg = pygame.image.load('./data/graphics/bg_hard.jpg').convert_alpha()
+
     global out_of_game
     out_of_game = False
     last_input = ""
@@ -923,6 +931,7 @@ def game_loop(level: int, question_array: {}):
     prize_table_seconds = 5
 
     random_sound_event = pygame.USEREVENT + 10
+
 
     while True:
         for event in pygame.event.get():
