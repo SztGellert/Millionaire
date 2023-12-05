@@ -1,10 +1,13 @@
+import json
 import os
 import random
-import json
 import time
-import millionaire.util.util as util
-import pygame
 from math import sin, cos, radians
+
+import pygame
+import requests
+
+import millionaire.util.util as util
 
 languages = util.available_languages
 language_dictionary = util.language_dictionary
@@ -435,7 +438,7 @@ class Help(pygame.sprite.Sprite):
         if util.game_language == util.Language.HUNGARIAN.name:
             dial_sound = "colleagues_are_dialing"
             util.play_sound(dial_sound, 0, dir="phone", timer=True)
-            dial_seconds = util.get_sound_length(dial_sound, dir = "phone")
+            dial_seconds = util.get_sound_length(dial_sound, dir="phone")
 
     def phone_intro(self) -> int:
         target = self.type
@@ -653,58 +656,31 @@ def play():
     help_group = pygame.sprite.Group()
     global random_sounds
     random_sounds = util.init_random_sounds()
-    question_lines = []
-    question_lines_easy = []
-    question_lines_medium = []
-    question_lines_hard = []
+
+    topic = question_topics
+    difficulty = question_difficulty
     if question_topics == util.Topics.ALL.name:
-        for topic in util.Topics:
-            if topic.name != util.Topics.ALL.name and question_difficulty != util.Difficulty.ALL.name:
-                for level in util.Difficulty:
-                    if question_difficulty == level.name:
-                        for line in util.open_file(str(level.name).lower(), "r", ";",
-                                                   "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                                       topic.name).lower() + "/" + str(level.name).lower() + "/"):
-                            question_lines.append(line)
-            else:
-                if topic.name != util.Topics.ALL.name:
-                    for line in util.open_file(str(util.Difficulty.EASY.name).lower(), "r", ";",
-                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                                   topic.name).lower() + "/" + str(
-                                                   util.Difficulty.EASY.name).lower() + "/"):
-                        question_lines_easy.append(line)
-                    for line in util.open_file(str(util.Difficulty.MEDIUM.name).lower(), "r", ";",
-                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                                   topic.name).lower() + "/" + str(
-                                                   util.Difficulty.MEDIUM.name).lower() + "/"):
-                        question_lines_medium.append(line)
-                    for line in util.open_file(str(util.Difficulty.HARD.name).lower(), "r", ";",
-                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                                   topic.name).lower() + "/" + str(
-                                                   util.Difficulty.HARD.name).lower() + "/"):
-                        question_lines_hard.append(line)
-    else:
-        for level in util.Difficulty:
-            if question_difficulty == level.name and level.name != util.Difficulty.ALL.name:
-                for line in util.open_file(str(level.name).lower(), "r", ";",
-                                           "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                               question_topics).lower() + "/" + str(level.name).lower() + "/"):
-                    question_lines.append(line)
-            else:
-                if level.name != util.Difficulty.ALL.name:
-                    for line in util.open_file(str(util.Difficulty(level).name).lower(), "r", ";",
-                                               "/text_files/topics/" + str(game_language).lower() + "/" + str(
-                                                   question_topics).lower() + "/" + str(level.name).lower() + "/"):
-                        if level.name == util.Difficulty.EASY.name:
-                            question_lines_easy.append(line)
-                        if level.name == util.Difficulty.MEDIUM.name:
-                            question_lines_medium.append(line)
-                        if level.name == util.Difficulty.HARD.name:
-                            question_lines_hard.append(line)
+        topic = ""
+    if question_difficulty == util.Difficulty.ALL.name:
+        difficulty = ""
+
+    data = requests.get(
+        'https://yi4tfqk2xmyzsgt72ojur5bk6q0mjtnw.lambda-url.eu-north-1.on.aws?topic=' + topic.lower() + '&difficulty=' + difficulty.lower())
+
+    question_lines = []
+    for i in range(15):
+        question_lines.append([data.json()[i]['value'], data.json()[i]['answers'][0], data.json()[i]['answers'][1],
+                               data.json()[i]['answers'][2], data.json()[i]['answers'][3]])
+
+    question_lines_easy = question_lines[:5]
+    question_lines_medium = question_lines[5:10]
+    question_lines_hard = question_lines[10:]
+
     random.shuffle(question_lines)
     random.shuffle(question_lines_easy)
     random.shuffle(question_lines_medium)
     random.shuffle(question_lines_hard)
+
     game_active = True
     pygame.init()
     global screen
@@ -807,7 +783,6 @@ def start_game():
 
 
 def game_loop(level: int, question_array: {}):
-
     global in_game_bg
     if level < 5:
         in_game_bg = pygame.image.load('./data/graphics/bg_easy.jpg').convert_alpha()
@@ -852,7 +827,7 @@ def game_loop(level: int, question_array: {}):
     pygame.time.set_timer(pygame.USEREVENT + 7, 1000)  # AUDIENCE INTRO EVENT
     pygame.time.set_timer(pygame.USEREVENT + 8, 1000)  # PRIZE EVENT
     pygame.time.set_timer(pygame.USEREVENT + 9, 1000)  # PRIZE TABLE EVENT
-    pygame.time.set_timer(pygame.USEREVENT + 10, 15000) # random sound event
+    pygame.time.set_timer(pygame.USEREVENT + 10, 15000)  # random sound event
 
     global counter
     counter = 3
@@ -931,7 +906,6 @@ def game_loop(level: int, question_array: {}):
     prize_table_seconds = 5
 
     random_sound_event = pygame.USEREVENT + 10
-
 
     while True:
         for event in pygame.event.get():
@@ -1065,7 +1039,8 @@ def game_loop(level: int, question_array: {}):
 
             else:
                 if event.type == random_sound_event:
-                    event_list = [phone_event, audience_event, after_halving_event, phone_selection_event, mark_event, prize_event, dial_event, phone_intro_event, audience_intro_event]
+                    event_list = [phone_event, audience_event, after_halving_event, phone_selection_event, mark_event,
+                                  prize_event, dial_event, phone_intro_event, audience_intro_event]
                     active_events = list(filter(lambda x: x > 0, event_list))
                     if len(active_events) == 0:
                         if util.get_sound_channel_availability and util.game_language == util.Language.HUNGARIAN.name:
@@ -1195,7 +1170,6 @@ def game_loop(level: int, question_array: {}):
                 if phone_event != 0:
                     screen.fill((0, 0, 0))
 
-
                     x_pos = 1121
                     y_pos = 180
                     font = pygame.font.SysFont('Sans', 41)
@@ -1207,9 +1181,10 @@ def game_loop(level: int, question_array: {}):
                     screen.blit(game_message, game_message_rect)
 
                     r = 37
-                    for i in range((30- phone_seconds)* int(361/30), 361):
+                    for i in range((30 - phone_seconds) * int(361 / 30), 361):
                         pygame.draw.circle(screen, (236, 155, 47),
-                                           (int(r * cos(radians(i-90)) + x_pos), int(r * sin(radians(i-90)) + y_pos)), 3)
+                                           (int(r * cos(radians(i - 90)) + x_pos),
+                                            int(r * sin(radians(i - 90)) + y_pos)), 3)
 
                 if audience_event != 0:
 
@@ -1388,7 +1363,6 @@ def play_select_sounds(level: int, selected="", last_input="", out_of_game=False
     global mark_seconds
     global counter
     util.stop_sound()
-    # thread_random(level, working=False)
     if not out_of_game:
         util.pause_music()
     if util.game_language == util.Language.HUNGARIAN.name:
@@ -1399,7 +1373,6 @@ def play_select_sounds(level: int, selected="", last_input="", out_of_game=False
 
 
 def play_incorrect_sounds(level: int):
-    thread_random(level, working=False)
     util.play_sound("bad_answer", 0, general=True)
     time.sleep(2)
     if game_language == util.Language.HUNGARIAN.name:
