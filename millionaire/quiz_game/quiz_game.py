@@ -668,18 +668,13 @@ def play():
         'https://yi4tfqk2xmyzsgt72ojur5bk6q0mjtnw.lambda-url.eu-north-1.on.aws?topic=' + topic.lower() + '&difficulty=' + difficulty.lower())
 
     question_lines = []
+
     for i in range(15):
-        question_lines.append([data.json()[i]['value'], data.json()[i]['answers'][0], data.json()[i]['answers'][1],
-                               data.json()[i]['answers'][2], data.json()[i]['answers'][3]])
+        question_lines.append([data.json()[i][game_language[:2].lower()]['text'], data.json()[i][game_language[:2].lower()]['answers'][0], data.json()[i][game_language[:2].lower()]['answers'][1],
+                               data.json()[i][game_language[:2].lower()]['answers'][2], data.json()[i][game_language[:2].lower()]['answers'][3]])
 
-    question_lines_easy = question_lines[:5]
-    question_lines_medium = question_lines[5:10]
-    question_lines_hard = question_lines[10:]
-
-    random.shuffle(question_lines)
-    random.shuffle(question_lines_easy)
-    random.shuffle(question_lines_medium)
-    random.shuffle(question_lines_hard)
+    if len(question_lines) != 15:
+        return
 
     game_active = True
     pygame.init()
@@ -706,13 +701,6 @@ def play():
 
     game_levels = 15
     level = 0
-    if question_difficulty == util.Difficulty.ALL.name:
-        if level < 5:
-            question_lines = question_lines_easy
-        elif level < 10:
-            question_lines = question_lines_medium
-        else:
-            question_lines = question_lines_hard
     answers = {"a": question_lines[level][1], "b": question_lines[level][2], "c": question_lines[level][3],
                "d": question_lines[level][4]}
     answer_list = list(answers.values())
@@ -1068,7 +1056,7 @@ def game_loop(level: int, question_array: {}):
                             if ob.type != 'question':
                                 if ob.rect.collidepoint(event.pos) and pygame.mouse.get_pressed()[0]:
                                     clicked_option = ob.type
-                                    if util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name:
+                                    if util.quizmaster_attitude != util.QuizMasterAttitude.NONE.name and util.game_language == util.Language.HUNGARIAN.name:
                                         if clicked_option == correct_answer_key:
                                             selected_sound = random.choice(correct_sounds)
                                         else:
@@ -1266,7 +1254,7 @@ def show_game_structure():
     x_pos = 920
     y_pos = 0
 
-    sky_surface = pygame.image.load('./data/graphics/bg.jpg').convert_alpha()
+    sky_surface = pygame.image.load('./data/graphics/bg_medium.jpg').convert_alpha()
 
     while True:
         for event in pygame.event.get():
@@ -1611,7 +1599,7 @@ def fastest_fingers_first():
 
     game_active = True
 
-    sky_surface = pygame.image.load('./data/graphics/bg.jpg').convert_alpha()
+    sky_surface = pygame.image.load('./data/graphics/bg_medium.jpg').convert_alpha()
     fastest_result_bg = pygame.image.load('./data/graphics/fastest_result_bg.png').convert_alpha()
 
     global fastest_fingers_result

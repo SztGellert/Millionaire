@@ -16,7 +16,8 @@ full_screen = False
 
 class Language(Enum):
     ENGLISH = 0
-    HUNGARIAN = 1
+    DEUTSCH = 1
+    HUNGARIAN = 2
 
 
 class Topics(Enum):
@@ -107,6 +108,7 @@ def init_settings(selected_lang: str, reset_settings=False):
 
 
 def set_game_language(selected_lang: str):
+    print(selected_lang)
     global game_language
     for lang in available_languages:
         lang_dict = read_json_dict(selected_lang)
