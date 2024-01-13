@@ -1,0 +1,137 @@
+{
+  "en": "Englisch",
+  "de": "Deutsch",
+  "hu": "Ungarisch",
+  "title": "Millionär",
+  "language": "Nyelv",
+  "sounds": "Geräusche",
+  "topic": "Thema",
+  "true": "AN",
+  "false": "AUS",
+  "next_page": "Nächste Seite",
+  "showed": "Gezeigt",
+  "menu": {
+    "side_title_first_part": " ♦WER WILL ",
+    "side_title_second_part": "  EIN ♦ SEIN",
+    "title_first_line": " ♦ W O W A N T S T O B E A ♦",
+    "title_second_line": "     M I L L I O N A I R E",
+    "return_prompt": "Drücken Sie ESC für das Hauptmenü.",
+    "settings_menu_options": [
+      "Sprache",
+      "Ton deaktivieren/aktivieren",
+      "Ganzer Bildschirm",
+      "Fragetypen",
+      "Schwierigkeitsgrad der Frage",
+      "Quizmaster-Einstellung",
+      "Standardeinstellungen",
+      "Zurück"
+    ],
+    "skip_prompt": "Drücken Sie eine beliebige Taste, um die Spieleinführung zu überspringen ...",
+    "main_menu_options": [
+      "Spielen",
+      "Schnellste Finger zuerst",
+      "Lernprogramm",
+      "Einstellungen",
+      "Credits",
+      "Partituren",
+      "Ausfahrt"
+    ],
+    "settings_menu_question_topics": [
+      "Alle",
+      "Allgemein",
+      "Geschichte",
+      "Erdkunde",
+      "Physik",
+      "Chemie",
+      "Biologie",
+      "Mathematik",
+      "Kunst",
+      "Literatur",
+      "Musik",
+      "Gastronomie",
+      "Wirtschaft",
+      "Sport",
+      "Original"
+    ],
+    "empty_scores": "Zuerst müssen Sie ein Spiel spielen, um einige Punkte zu erreichen!",
+    "scores": {
+      "user": "Spieler",
+      "topic": "Thema",
+      "score": "Punktzahl",
+      "time": "Zeit"
+    },
+    "question_difficulty_levels": [
+      "Alle",
+      "Einfach",
+      "Mittel",
+      "Hart"
+    ],
+    "quizmaster_attitudes": [
+      "Keiner",
+      "Freundlich",
+      "Neutral",
+      "Feindselig"
+    ]
+  },
+  "quiz": {
+    "player_name_prompt": "Wie kann ich dich anrufen? ",
+    "skip_prompt": "Drücken Sie eine beliebige Taste, um die Spieleinführung zu überspringen ... ",
+    "select_answer": "Wählen Sie die richtige Antwort („a“, „b“, „c“, „d“), „t“ zum Raten außerhalb des Spiels oder „h“ für Hilfe!",
+    "selected_answer": "Deine Antwort: ",
+    "select_answer_out": "Wählen Sie die richtige Antwort ('a','b','c','d')! ",
+    "correct_answer": "Gut gemacht!",
+    "correct_answer_out": "Korrekte Antwort! ",
+    "incorrect_answer": "Falsche Antwort! ",
+    "guaranteed_prize": "Sie haben garantiert ",
+    "won_prize": "Glückwunsch!!  ",
+    "help": "helfen",
+    "audience_help": "Publikum",
+    "telephone_help": "Telefon",
+    "halving_help": "Halbierung",
+    "help_selection": "Wählen Sie Hilfe: „a“ für Publikum, „t“ für Telefon, „h“ für Halbierung!",
+    "helps_disabled": "Sie haben keine Hotlines.",
+    "audience_help_disabled": "Sie haben die Hilfe des Publikums bereits in Anspruch genommen.",
+    "halving_help_disabled": "Sie haben die Halbierung bereits genutzt.",
+    "phone_help_disabled": "Sie haben die telefonische Hilfe bereits genutzt.",
+    "phone_prompt": "Wen möchten Sie anrufen?\n\n    ",
+    "allowed_letters_error": "Fehler!  ",
+    "allowed": " erlaubt!",
+    "call_duration": "Gesprächsdauer: ",
+    "call_seconds": " Sekunden\\ 30s",
+    "menu": {
+      "resume": "Wieder aufnehmen",
+      "out_of_game": "Antwort außerhalb des Spiels",
+      "exit": "Ausfahrt"
+    }
+  },
+  "tutorial": {
+    "text_list": [
+      "Dies ist der Leitfaden zum Millionare-Spiel von The Helpless Gooses.",
+      "Dieses Spiel basiert auf der TV-Show „Wer wird Millionär?“.",
+      "Sie erhalten 15 Fragen in zufälliger Reihenfolge und müssen aus 4 die richtige Antwort auswählen.",
+      "So funktioniert es / Anleitung:",
+      "Sie müssen für jede Frage Folgendes eingeben: a / b / c / d",
+      "Es gibt 3 Arten von Hilfen:",
+      "Hilfe des Publikums Telefonhilfe Halbierung der Fragen durch den Computer",
+      "Wenn Sie eine falsche Antwort wählen, verlieren Sie das Spiel sofort.",
+      "Der Preis, den Sie mit nach Hause nehmen, hängt von Ihrer Leistung ab.",
+      "Nach der 5. richtigen Antwort erhalten Sie einen garantierten Preis. ",
+      "Nach der 10. richtigen Antwort erhalten Sie einen garantierten Preis.",
+      "Nach der 15. richtigen Antwort erhalten Sie einen garantierten Preis.",
+      "Sie können das Spiel auch raten, um garantierte Preise zu gewinnen.",
+      "Und Sie gewinnen das Spiel natürlich, wenn Sie alle Antworten richtig erraten haben.",
+      "Genießen Sie bitte! "
+    ]
+  },
+  "credits": {
+    "text_list": [
+      "Dies ist die Credits-Seite des Millionare-Spiels von The Helpless Gooses.",
+      "Dieses Spiel wurde von Gellert Sztankovszky basierend auf einer Teamarbeitswoche des Helpless Gooses Teams entwickelt.",
+      "Das Ziel dieser Entwicklung ist die Selbstunterhaltung und das Erlernen von Python/Programmierung.",
+      "Teilen Sie das Spiel gerne und hinterlassen Sie eine Bewertung!",
+      "Vielen Dank fürs Lesen!",
+      "https://github.com/SztGellert",
+      "Genießen!"
+    ]
+  }
+}

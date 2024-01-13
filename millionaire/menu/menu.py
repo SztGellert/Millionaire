@@ -119,8 +119,9 @@ class MenuOption(pygame.sprite.Sprite):
             self.name = text
 
         elif type == "language_option":
-            text = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu][order]
+            text = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].de, language_dictionary[util.game_language].hu][order]
             self.name = text
+
 
         elif type == "tutorial_option":
             text = language_dictionary[util.game_language].menu.settings_menu_options[-1]
@@ -238,9 +239,12 @@ class MenuOption(pygame.sprite.Sprite):
                 scores_paging += 1
 
             if self.name in [language_dictionary[util.game_language].en,
-                             language_dictionary[util.game_language].hu]:
+                             language_dictionary[util.game_language].hu,
+                             language_dictionary[util.game_language].de,]:
                 if self.name == language_dictionary[util.game_language].hu:
                     util.set_game_language(util.Language.HUNGARIAN.name)
+                elif self.name == language_dictionary[util.game_language].de:
+                    util.set_game_language(util.Language.DEUTSCH.name)
                 else:
                     util.set_game_language(util.Language.ENGLISH.name)
                 lang_selection = False
@@ -335,7 +339,7 @@ class MenuOption(pygame.sprite.Sprite):
             self.name = text
 
         elif self.type == "language_option":
-            langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu]
+            langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].de, language_dictionary[util.game_language].hu]
             text = langs[self.order]
             self.name = langs[self.order]
         elif self.type == "tutorial_option":
