@@ -1527,23 +1527,26 @@ def fastest_fingers_first():
     # start_game()
     global game_language, question_lines_easy, question_lines_medium, question_lines_hard
     game_language = util.game_language
-    global question_topics
-    question_topics = util.question_topics
-    global question_difficulty
-    question_difficulty = util.question_difficulty
-    question_lines = []
-    question_lines_easy = []
-    question_lines_medium = []
-    question_lines_hard = []
-    for line in util.open_file("questions", "r", ";",
-                               "/text_files/fastest_fingers_first/" + str(game_language).lower() + "/"):
-        question_lines.append(line)
-    random.shuffle(question_lines)
+
+    data = requests.get(
+        'https://ygzk643gpxbnmvsblbtkg764uu0arpld.lambda-url.eu-north-1.on.aws/')
+
+    if data is None:
+        return
+
+    question = {
+                 "text": data.json()[0][game_language[:2].lower()]['text'],
+                 "answers": [data.json()[0][game_language[:2].lower()]['answers'][0],
+                            data.json()[0][game_language[:2].lower()]['answers'][1],
+                            data.json()[0][game_language[:2].lower()]['answers'][2],
+                            data.json()[0][game_language[:2].lower()]['answers'][3]],
+                 "correct_order": data.json()[0][game_language[:2].lower()]['correct_order']
+    }
+
     if game_language == util.Language.ENGLISH:
         util.play_sound("start", 0)
-    question = question_lines[0][0]
-    answers = {"a": question_lines[0][1], "b": question_lines[0][2], "c": question_lines[0][3],
-               "d": question_lines[0][4]}
+    answers = {"a": question['answers'][0], "b": question['answers'][1], "c": question['answers'][2],
+               "d": question['answers'][3]}
     answer_list = list(answers.values())
     # random.shuffle(answer_list)
     # shuffled_answers = dict(zip(answers, answer_list))
@@ -1555,7 +1558,7 @@ def fastest_fingers_first():
 
     start = time.time()
 
-    correct_answer_keys = question_lines[0][5]
+    correct_answer_keys = question["correct_order"]
 
     global game_active
 
@@ -1573,7 +1576,7 @@ def fastest_fingers_first():
     selected = ""
     global type
     type = "fastest_fingers_select"
-    texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
+    texts = [question['text'], answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
     obstacle_group = pygame.sprite.Group()
     for index in range(len(sprite_group)):
         obstacle_group.add(TableElement(sprite_group[index], texts[index]))
@@ -1612,7 +1615,7 @@ def fastest_fingers_first():
 
     result_group = pygame.sprite.Group()
     for i in range(4):
-        result_group.add(FastestFingersResult(question_lines[0][5][i], answers[question_lines[0][5][i]], i))
+        result_group.add(FastestFingersResult("abcd"[int(question['correct_order'][i])], question['answers'][int(question['correct_order'][i])], i))
     result_event = 0
     result_seconds = 5
 
@@ -1693,23 +1696,28 @@ def fastest_fingers_first():
 
                     font = pygame.font.SysFont('Sans', 25)
 
-                    if len(question) > 42:
-                        text_1 = font.render(question[:42], True, (255, 255, 255))
+                    if len(question['text']) > 42:
+                        text_1 = font.render(question['text'][:42], True, (255, 255, 255))
                         text_rect_1 = text_1.get_rect(center=(1000, 48))
                         screen.blit(text_1, text_rect_1)
 
-                        text_2 = font.render(question[42:], True, (255, 255, 255))
+                        text_2 = font.render(question['text'][42:], True, (255, 255, 255))
                         text_rect_2 = text_2.get_rect(center=(1000, 68))
                         screen.blit(text_2, text_rect_2)
                     else:
-                        text = font.render(question, True, (255, 255, 255))
+                        text = font.render(question['text'], True, (255, 255, 255))
                         text_rect_1 = text.get_rect(center=(1000, 48))
                         screen.blit(text, text_rect_1)
                     pygame.display.update()
                     time.sleep(result_seconds)
 
-                    if fastest_fingers_result == correct_answer_keys:
+                    answer_dict = {"0": "a", "1": "b", "2": "c", "3": "d"}
 
+                    correct_answer_letters = ""
+                    for letter in correct_answer_keys:
+                        correct_answer_letters+=answer_dict[letter]
+
+                    if correct_answer_letters == fastest_fingers_result:
                         util.play_sound("fastest_fingers_correct", 0, general=True)
                         time.sleep(2)
                         player_in_game = "player"
