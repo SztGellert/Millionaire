@@ -664,7 +664,7 @@ def play():
     if question_difficulty == util.Difficulty.ALL.name:
         difficulty = ""
 
-    data = requests.get(
+    data = requests.post(
         'https://yi4tfqk2xmyzsgt72ojur5bk6q0mjtnw.lambda-url.eu-north-1.on.aws?topic=' + topic.lower() + '&difficulty=' + difficulty.lower())
 
     question_lines = []
