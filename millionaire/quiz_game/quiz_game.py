@@ -665,100 +665,109 @@ def play():
     if question_difficulty == util.Difficulty.ALL.name:
         difficulty = ""
 
+    exceptions = json.dumps({"easyQuestions": util.easy_question_exceptions,
+                             "mediumQuestions": util.medium_question_exceptions,
+                             "hardQuestions": util.hard_question_exceptions})
+
     data = requests.post(
-        'https://yi4tfqk2xmyzsgt72ojur5bk6q0mjtnw.lambda-url.eu-north-1.on.aws?topic=' + topic.lower() + '&difficulty=' + difficulty.lower()).json()
+        'https://yi4tfqk2xmyzsgt72ojur5bk6q0mjtnw.lambda-url.eu-north-1.on.aws?topic=' + topic.lower() + '&difficulty=' + difficulty.lower(),
+        data=exceptions,
+        headers={"Content-Type": "application/json"})
 
-    if data['exception']['resetEasyFilter']:
-        util.easy_question_exceptions = []
-    if data['exception']['resetMediumFilter']:
-        util.medium_question_exceptions = []
-    if data['exception']['resetHardFilter']:
-        util.hard_question_exceptions = []
+    if data.status_code == 200:
 
-    question_lines = []
-    data = data['questions']
+        if data.json()['exception']['resetEasyFilter']:
+            util.easy_question_exceptions = []
+        if data.json()['exception']['resetMediumFilter']:
+            util.medium_question_exceptions = []
+        if data.json()['exception']['resetHardFilter']:
+            util.hard_question_exceptions = []
 
-    for i in range(15):
-        question_lines.append(
-            [data[i][game_language[:2].lower()]['text'], data[i][game_language[:2].lower()]['answers'][0],
-             data[i][game_language[:2].lower()]['answers'][1],
-             data[i][game_language[:2].lower()]['answers'][2], data[i][game_language[:2].lower()]['answers'][3]])
+        question_lines = []
+        data = data.json()['questions']
 
-    if len(question_lines) != 15:
-        return
+        for i in range(15):
+            question_lines.append(
+                [data[i][game_language[:2].lower()]['text'], data[i][game_language[:2].lower()]['answers'][0],
+                 data[i][game_language[:2].lower()]['answers'][1],
+                 data[i][game_language[:2].lower()]['answers'][2], data[i][game_language[:2].lower()]['answers'][3]])
 
-    game_active = True
-    pygame.init()
-    global screen
-    # screen = pygame.display.set_mode((1024, 768))
-    # pygame.FULLSCREEN
-    if util.full_screen:
-        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
-    else:
-        screen = pygame.display.set_mode((1366, 768))
+        if len(question_lines) != 15:
+            return
 
-    pygame.display.set_caption(language_dictionary[util.game_language].title)
-    millioniareIcon = pygame.image.load('./data/graphics/loim.png')
-    pygame.display.set_icon(millioniareIcon)
-    global clock
-    clock = pygame.time.Clock()
-    global test_font
-    test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
-
-    global prizes_table
-    prizes_table = pygame.sprite.GroupSingle()
-    global in_game_menu_bg
-    in_game_menu_bg = pygame.image.load('./data/graphics/in_game_menu_bg.jpg').convert_alpha()
-
-    game_levels = 15
-    level = 0
-    answers = {"a": question_lines[level][1], "b": question_lines[level][2], "c": question_lines[level][3],
-               "d": question_lines[level][4]}
-    answer_list = list(answers.values())
-    random.shuffle(answer_list)
-    shuffled_answers = dict(zip(answers, answer_list))
-    global player, player_in_game
-    player = "player"
-    player_in_game = "player"
-    # DEBUG COMMENT HERE
-
-    start_game()
-    if game_language == util.Language.HUNGARIAN.name:
-        for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
-            if player.lower() == name[:-4]:
-                player_in_game = player.lower()
-        util.play_sound("dear", 0, dir="intro", timer=True)
-        util.play_sound(player_in_game, 0, dir="players", timer=True)
-        millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
-        sound = random.choice(millionaire_sounds)
-        util.play_sound(sound, 0, dir="intro", timer=True)
-
-    global game_level
-    score = 0
-    is_active = True
-    end = False
-    for i in range(game_levels):
-        game_level = i
-
-        if data[i]["difficulty"] == "easy":
-            util.easy_question_exceptions.append(data[i]["id"])
-        elif data[i]["difficulty"] == "medium":
-            util.medium_question_exceptions.append(data[i]["id"])
+        game_active = True
+        pygame.init()
+        global screen
+        # screen = pygame.display.set_mode((1024, 768))
+        # pygame.FULLSCREEN
+        if util.full_screen:
+            screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
         else:
-            util.hard_question_exceptions.append(data[i]["id"])
-        menu.update_settings_file()
+            screen = pygame.display.set_mode((1366, 768))
 
-        if i > 0 and is_active:
-            score += 1
-        if i == 14:
-            end = True
-        if i < game_levels:
-            if is_active:
-                is_active = game_loop(i, question_lines)
+        pygame.display.set_caption(language_dictionary[util.game_language].title)
+        millioniareIcon = pygame.image.load('./data/graphics/loim.png')
+        pygame.display.set_icon(millioniareIcon)
+        global clock
+        clock = pygame.time.Clock()
+        global test_font
+        test_font = pygame.font.Font(pygame.font.get_default_font(), 50)
+
+        global prizes_table
+        prizes_table = pygame.sprite.GroupSingle()
+        global in_game_menu_bg
+        in_game_menu_bg = pygame.image.load('./data/graphics/in_game_menu_bg.jpg').convert_alpha()
+
+        game_levels = 15
+        level = 0
+        answers = {"a": question_lines[level][1], "b": question_lines[level][2], "c": question_lines[level][3],
+                   "d": question_lines[level][4]}
+        answer_list = list(answers.values())
+        random.shuffle(answer_list)
+        shuffled_answers = dict(zip(answers, answer_list))
+        global player, player_in_game
+        player = "player"
+        player_in_game = "player"
+        # DEBUG COMMENT HERE
+
+        start_game()
+        if game_language == util.Language.HUNGARIAN.name:
+            for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
+                if player.lower() == name[:-4]:
+                    player_in_game = player.lower()
+            util.play_sound("dear", 0, dir="intro", timer=True)
+            util.play_sound(player_in_game, 0, dir="players", timer=True)
+            millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
+            sound = random.choice(millionaire_sounds)
+            util.play_sound(sound, 0, dir="intro", timer=True)
+
+        global game_level
+        score = 0
+        is_active = True
+        end = False
+        for i in range(game_levels):
+            game_level = i
+
+            if data[i]["difficulty"] == "easy":
+                util.easy_question_exceptions.append(data[i]["id"])
+            elif data[i]["difficulty"] == "medium":
+                util.medium_question_exceptions.append(data[i]["id"])
             else:
-                break
+                util.hard_question_exceptions.append(data[i]["id"])
+            menu.update_settings_file()
 
-    quit_quiz(score, player, question_topics, end)
+            if i > 0 and is_active:
+                score += 1
+            if i == 14:
+                end = True
+            if i < game_levels:
+                if is_active:
+                    is_active = game_loop(i, question_lines)
+                else:
+                    break
+
+        quit_quiz(score, player, question_topics, end)
+
     return
 
 
