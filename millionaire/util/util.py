@@ -62,6 +62,9 @@ difficulty_levels = [level.name for level in Difficulty]
 system_volume = True
 quizmaster_attitude = QuizMasterAttitude.NEUTRAL.name
 quizmaster_attitudes = [attitude.name for attitude in QuizMasterAttitude]
+easy_question_exceptions = []
+medium_question_exceptions = []
+hard_question_exceptions = []
 
 
 def init():
@@ -80,6 +83,9 @@ def init_settings(selected_lang: str, reset_settings=False):
     global system_volume
     global quizmaster_attitude
     global full_screen
+    global easy_question_exceptions
+    global medium_question_exceptions
+    global hard_question_exceptions
 
     if os.path.isfile("settings.json") and reset_settings == False:
         file_path = "settings.json"
@@ -89,6 +95,9 @@ def init_settings(selected_lang: str, reset_settings=False):
             game_language = data["language"]
             question_difficulty = data["difficulty"]
             quizmaster_attitude = data["quizmaster_attitude"]
+            easy_question_exceptions = data["easy_questions"]
+            medium_question_exceptions = data["medium_questions"]
+            hard_question_exceptions = data["hard_questions"]
             for lang in available_languages:
                 lang_dict = read_json_dict(lang)
                 language_dictionary.update({lang: custom_dictionary_decoder(lang_dict)})
@@ -108,7 +117,6 @@ def init_settings(selected_lang: str, reset_settings=False):
 
 
 def set_game_language(selected_lang: str):
-    print(selected_lang)
     global game_language
     for lang in available_languages:
         lang_dict = read_json_dict(selected_lang)

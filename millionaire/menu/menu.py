@@ -23,7 +23,9 @@ def select_help():
 def update_settings_file():
     filename = "settings.json"
     content = {"language": util.game_language, "topic": util.question_topics, "difficulty": util.question_difficulty,
-               "volume": util.system_volume, "quizmaster_attitude": util.quizmaster_attitude}
+               "volume": util.system_volume, "quizmaster_attitude": util.quizmaster_attitude,
+               "easy_questions": util.easy_question_exceptions, "medium_questions": util.medium_question_exceptions,
+               "hard_questions": util.hard_question_exceptions}
     with open(filename, "w", encoding="UTF-8") as outfile:
         json.dump(content, outfile)
 

@@ -8,6 +8,7 @@ import pygame
 import requests
 
 import millionaire.util.util as util
+import millionaire.menu.menu as menu
 
 languages = util.available_languages
 language_dictionary = util.language_dictionary
@@ -665,13 +666,23 @@ def play():
         difficulty = ""
 
     data = requests.post(
-        'https://yi4tfqk2xmyzsgt72ojur5bk6q0mjtnw.lambda-url.eu-north-1.on.aws?topic=' + topic.lower() + '&difficulty=' + difficulty.lower())
+        'https://yi4tfqk2xmyzsgt72ojur5bk6q0mjtnw.lambda-url.eu-north-1.on.aws?topic=' + topic.lower() + '&difficulty=' + difficulty.lower()).json()
+
+    if data['exception']['resetEasyFilter']:
+        util.easy_question_exceptions = []
+    if data['exception']['resetMediumFilter']:
+        util.medium_question_exceptions = []
+    if data['exception']['resetHardFilter']:
+        util.hard_question_exceptions = []
 
     question_lines = []
+    data = data['questions']
 
     for i in range(15):
-        question_lines.append([data.json()[i][game_language[:2].lower()]['text'], data.json()[i][game_language[:2].lower()]['answers'][0], data.json()[i][game_language[:2].lower()]['answers'][1],
-                               data.json()[i][game_language[:2].lower()]['answers'][2], data.json()[i][game_language[:2].lower()]['answers'][3]])
+        question_lines.append(
+            [data[i][game_language[:2].lower()]['text'], data[i][game_language[:2].lower()]['answers'][0],
+             data[i][game_language[:2].lower()]['answers'][1],
+             data[i][game_language[:2].lower()]['answers'][2], data[i][game_language[:2].lower()]['answers'][3]])
 
     if len(question_lines) != 15:
         return
@@ -728,6 +739,14 @@ def play():
     end = False
     for i in range(game_levels):
         game_level = i
+
+        if data[i]["difficulty"] == "easy":
+            util.easy_question_exceptions.append(data[i]["id"])
+        elif data[i]["difficulty"] == "medium":
+            util.medium_question_exceptions.append(data[i]["id"])
+        else:
+            util.hard_question_exceptions.append(data[i]["id"])
+        menu.update_settings_file()
 
         if i > 0 and is_active:
             score += 1
@@ -1535,12 +1554,12 @@ def fastest_fingers_first():
         return
 
     question = {
-                 "text": data.json()[0][game_language[:2].lower()]['text'],
-                 "answers": [data.json()[0][game_language[:2].lower()]['answers'][0],
-                            data.json()[0][game_language[:2].lower()]['answers'][1],
-                            data.json()[0][game_language[:2].lower()]['answers'][2],
-                            data.json()[0][game_language[:2].lower()]['answers'][3]],
-                 "correct_order": data.json()[0][game_language[:2].lower()]['correct_order']
+        "text": data.json()[0][game_language[:2].lower()]['text'],
+        "answers": [data.json()[0][game_language[:2].lower()]['answers'][0],
+                    data.json()[0][game_language[:2].lower()]['answers'][1],
+                    data.json()[0][game_language[:2].lower()]['answers'][2],
+                    data.json()[0][game_language[:2].lower()]['answers'][3]],
+        "correct_order": data.json()[0][game_language[:2].lower()]['correct_order']
     }
 
     if game_language == util.Language.ENGLISH:
@@ -1615,7 +1634,8 @@ def fastest_fingers_first():
 
     result_group = pygame.sprite.Group()
     for i in range(4):
-        result_group.add(FastestFingersResult("abcd"[int(question['correct_order'][i])], question['answers'][int(question['correct_order'][i])], i))
+        result_group.add(FastestFingersResult("abcd"[int(question['correct_order'][i])],
+                                              question['answers'][int(question['correct_order'][i])], i))
     result_event = 0
     result_seconds = 5
 
@@ -1715,7 +1735,7 @@ def fastest_fingers_first():
 
                     correct_answer_letters = ""
                     for letter in correct_answer_keys:
-                        correct_answer_letters+=answer_dict[letter]
+                        correct_answer_letters += answer_dict[letter]
 
                     if correct_answer_letters == fastest_fingers_result:
                         util.play_sound("fastest_fingers_correct", 0, general=True)

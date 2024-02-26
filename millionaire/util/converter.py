@@ -2,7 +2,8 @@ import json
 
 
 def export_csv_to_json(topic, difficulty, id):
-    file_path = "../../data/text_files/topics/english/" + topic + "/" + difficulty + "/" + difficulty + ".txt"
+    '''file_path = "../../data/text_files/topics/english/" + topic + "/" + difficulty + "/" + difficulty + ".txt" '''
+    file_path = "./literature_easy.txt"
     with open(file_path, "r", encoding="UTF-8") as file:
         list_of_file = []
         for line in file:
@@ -68,5 +69,7 @@ def transform_json_schema():
     with open("quiz.questions(2).json", 'a') as fout:
         json.dump(new_schema, fout, indent=4)
 
-
+'''
+export_csv_to_json("literature", "easy", 1404)
+'''
 transform_json_schema()
