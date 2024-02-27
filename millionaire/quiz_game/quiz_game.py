@@ -787,7 +787,7 @@ def start_game():
                     player = player[:-1]
                 elif event.key == pygame.K_SPACE:
                     player += " "
-                elif event.key in [337, 252, 233, 225, 369, 246, 243]:
+                elif event.key in [337, 252, 233, 225, 369, 246, 243, 237, 250]:
                     player += event.unicode
                 else:
                     for i in range(pygame.K_a, pygame.K_z + 1):
