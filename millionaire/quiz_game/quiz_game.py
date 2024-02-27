@@ -781,17 +781,24 @@ def start_game():
                 pygame.quit()
                 exit()
             if event.type == pygame.KEYDOWN:
-                if event.key not in [pygame.K_RETURN, pygame.K_SPACE, pygame.K_KP_ENTER, pygame.K_ESCAPE,
-                                     pygame.KMOD_CTRL]:
-                    player += pygame.key.name(event.key)
-                else:
+                if event.key == pygame.K_RETURN:
                     return
+                elif event.key == pygame.K_BACKSPACE:
+                    player = player[:-1]
+                elif event.key == pygame.K_SPACE:
+                    player += " "
+                elif event.key in [337, 252, 233, 225, 369, 246, 243]:
+                    player += event.unicode
+                else:
+                    for i in range(pygame.K_a, pygame.K_z + 1):
+                        if event.key == i:
+                            player += pygame.key.name(event.key)
             else:
                 pass
 
             display_ = pygame.sprite.GroupSingle()
             display_.add(TableElement('question',
-                                      f'{language_dictionary[util.game_language].quiz.player_name_prompt} {player.capitalize()}'))
+                                      f'{language_dictionary[util.game_language].quiz.player_name_prompt} {player.title()}'))
             display_.draw(screen)
 
         pygame.display.update()
