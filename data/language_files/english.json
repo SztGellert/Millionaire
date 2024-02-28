@@ -26,6 +26,12 @@
             "Default Settings",
             "Back"
         ],
+        "ingame_settings_menu_options": [
+            "Language",
+            "Disable/Enable Sound",
+            "Full screen",
+            "Back"
+        ],
         "skip_prompt": "Press any key to skip game intro...",
         "main_menu_options": [
             "Play",
@@ -100,6 +106,7 @@
         "call_seconds": " seconds\\ 30s",
         "menu": {
             "resume": "Resume",
+            "settings": "Settings",
             "out_of_game": "Out of game answer",
             "exit": "Exit"
         }

@@ -9,6 +9,7 @@ import millionaire.util.util as util
 
 language_dictionary = util.language_dictionary
 
+
 def intro():
     if util.game_language == util.Language.HUNGARIAN.name:
         util.play_sound("intro", 0, dir="intro", volume=1)
@@ -54,15 +55,21 @@ class MenuOption(pygame.sprite.Sprite):
 
             x_pos = 0
             base_height = 545
-            y_pos = base_height + ((order-8) * 45)
+            y_pos = base_height + ((order - 8) * 45)
 
             if order == 0:
                 if util.game_language[:2].lower() == "hu":
-                    text = language_dictionary[util.game_language].menu.settings_menu_options[0]+ ": " + language_dictionary[util.game_language].hu
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].hu
+                    self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
+                elif util.game_language[:2].lower() == "de":
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].de
                     self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
 
                 else:
-                    text = language_dictionary[util.game_language].menu.settings_menu_options[0]+ ": " + language_dictionary[util.game_language].en
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].en
                     self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
 
             elif order == 1:
@@ -88,13 +95,14 @@ class MenuOption(pygame.sprite.Sprite):
                 self.name = language_dictionary[util.game_language].menu.settings_menu_options[3]
 
             elif order == 4:
-                text = language_dictionary[util.game_language].menu.settings_menu_options[4] + ": " + str(util.question_difficulty)
+                text = language_dictionary[util.game_language].menu.settings_menu_options[4] + ": " + str(
+                    util.question_difficulty)
                 self.name = language_dictionary[util.game_language].menu.settings_menu_options[4]
 
             elif order == 5:
-                text = language_dictionary[util.game_language].menu.settings_menu_options[5] + ": " + str(util.quizmaster_attitude)
+                text = language_dictionary[util.game_language].menu.settings_menu_options[5] + ": " + str(
+                    util.quizmaster_attitude)
                 self.name = language_dictionary[util.game_language].menu.settings_menu_options[5]
-
 
             elif order == 6:
                 text = language_dictionary[util.game_language].menu.settings_menu_options[-2] + ": "
@@ -104,6 +112,50 @@ class MenuOption(pygame.sprite.Sprite):
                     text += language_dictionary[util.game_language].false
 
                 self.name = language_dictionary[util.game_language].menu.settings_menu_options[-2]
+            else:
+                text = language_dictionary[util.game_language].menu.settings_menu_options[-1]
+                self.name = text
+
+        elif type == "ingame_settings_menu_option":
+            self.text_x = 30
+            self.text_y = 0
+
+            x_pos = 685
+            y_pos = base_height + (order * 35)
+
+            if order == 0:
+                if util.game_language[:2].lower() == "hu":
+                    text = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].hu
+                    self.name = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0]
+                elif util.game_language[:2].lower() == "de":
+                    text = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].de
+                    self.name = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0]
+
+                else:
+                    text = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].en
+                    self.name = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0]
+
+            elif order == 1:
+                self.name = language_dictionary[util.game_language].menu.ingame_settings_menu_options[1]
+
+                text = language_dictionary[util.game_language].sounds + ": "
+                if util.system_volume:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+
+            elif order == 2:
+                text = language_dictionary[util.game_language].menu.ingame_settings_menu_options[2] + ": "
+                if util.full_screen:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+
+                self.name = language_dictionary[util.game_language].menu.ingame_settings_menu_options[2]
+
             else:
                 text = language_dictionary[util.game_language].menu.settings_menu_options[-1]
                 self.name = text
@@ -121,7 +173,18 @@ class MenuOption(pygame.sprite.Sprite):
             self.name = text
 
         elif type == "language_option":
-            text = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].de, language_dictionary[util.game_language].hu][order]
+            text = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].de,
+                    language_dictionary[util.game_language].hu][order]
+            self.name = text
+
+        elif type == "ingame_language_option":
+            self.text_x = 30
+            self.text_y = 0
+
+            x_pos = 685
+            y_pos = base_height + (order * 35)
+            text = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].de,
+                    language_dictionary[util.game_language].hu][order]
             self.name = text
 
 
@@ -155,21 +218,31 @@ class MenuOption(pygame.sprite.Sprite):
         self.is_active = False
 
     def player_input(self):
+        global options
+
         if self.rect.collidepoint((pygame.mouse.get_pos())):
+
             if self.type == "settings_menu_option":
                 self.image = pygame.image.load('./data/graphics/settings_option_marked.png').convert_alpha()
+            elif self.type == "ingame_settings_menu_option":
+                self.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
+                self.rect = self.image.get_rect(center=(685, 300 + (self.order * 35)))
             else:
                 self.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
             self.image.blit(self.text, [self.text_x, self.text_y])
         else:
             if self.type == "settings_menu_option":
                 self.image = pygame.image.load('./data/graphics/settings_option.png').convert_alpha()
+            elif self.type == "ingame_settings_menu_option":
+                self.image = pygame.image.load('./data/graphics/option.png').convert_alpha()
+                self.rect = self.image.get_rect(center=(685, 300 + (self.order * 35)))
             else:
                 self.image = pygame.image.load('./data/graphics/option.png').convert_alpha()
             self.image.blit(self.text, [self.text_x, self.text_y])
 
         if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
             time.sleep(0.2)
+
             if self.name in language_dictionary[util.game_language].menu.main_menu_options:
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[0]:
                     util.stop_sound()
@@ -182,7 +255,6 @@ class MenuOption(pygame.sprite.Sprite):
                     quiz.show_game_structure()
                     text_screen("tutorial")
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[3]:
-                    global options
                     options = True
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[4]:
                     text_screen("credits")
@@ -229,7 +301,6 @@ class MenuOption(pygame.sprite.Sprite):
                 if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-1]:
                     if self.type == "tutorial_option":
                         util.stop_sound()
-
                         global screen_active
                         screen_active = False
                     else:
@@ -242,7 +313,7 @@ class MenuOption(pygame.sprite.Sprite):
 
             if self.name in [language_dictionary[util.game_language].en,
                              language_dictionary[util.game_language].hu,
-                             language_dictionary[util.game_language].de,]:
+                             language_dictionary[util.game_language].de]:
                 if self.name == language_dictionary[util.game_language].hu:
                     util.set_game_language(util.Language.HUNGARIAN.name)
                 elif self.name == language_dictionary[util.game_language].de:
@@ -254,7 +325,7 @@ class MenuOption(pygame.sprite.Sprite):
             if self.name in language_dictionary[util.game_language].menu.settings_menu_question_topics:
                 if util.question_topics != str(
                         list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(
-                                self.name)).lower():
+                            self.name)).lower():
                     util.set_question_topics(util.Topics(
                         list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(
                             self.name)).name)
@@ -263,7 +334,9 @@ class MenuOption(pygame.sprite.Sprite):
             if self.name in language_dictionary[util.game_language].menu.question_difficulty_levels:
                 if util.difficulty_levels != self.name:
                     if self.name != language_dictionary[util.game_language].menu.question_difficulty_levels[0]:
-                        util.set_question_difficulty(util.Difficulty(language_dictionary[util.game_language].menu.question_difficulty_levels.index(self.name)).name)
+                        util.set_question_difficulty(util.Difficulty(
+                            language_dictionary[util.game_language].menu.question_difficulty_levels.index(
+                                self.name)).name)
                     else:
                         util.set_question_difficulty(util.Difficulty.ALL.name)
                 difficulties = False
@@ -281,11 +354,16 @@ class MenuOption(pygame.sprite.Sprite):
         elif self.type == "settings_menu_option":
             if self.order == 0:
                 if util.game_language[:2].lower() == "hu":
-                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + language_dictionary[util.game_language].hu
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].hu
                     self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
-
+                elif util.game_language[:2].lower() == "de":
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].de
+                    self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
                 else:
-                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + language_dictionary[util.game_language].en
+                    text = language_dictionary[util.game_language].menu.settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].en
                     self.name = language_dictionary[util.game_language].menu.settings_menu_options[0]
 
             elif self.order == 1:
@@ -296,7 +374,6 @@ class MenuOption(pygame.sprite.Sprite):
                     text += language_dictionary[util.game_language].false
                 self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
 
-
             elif self.order == 2:
                 text = language_dictionary[util.game_language].menu.settings_menu_options[2] + ": "
                 if util.full_screen:
@@ -306,15 +383,21 @@ class MenuOption(pygame.sprite.Sprite):
                 self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
 
             elif self.order == 3:
-                text = language_dictionary[util.game_language].topic + ": " + list(language_dictionary[util.game_language].menu.settings_menu_question_topics)[util.Topics[util.question_topics].value]
+                text = language_dictionary[util.game_language].topic + ": " + \
+                       list(language_dictionary[util.game_language].menu.settings_menu_question_topics)[
+                           util.Topics[util.question_topics].value]
                 self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
 
             elif self.order == 4:
-                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + list(language_dictionary[util.game_language].menu.question_difficulty_levels)[util.Difficulty[util.question_difficulty].value]
+                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + \
+                       list(language_dictionary[util.game_language].menu.question_difficulty_levels)[
+                           util.Difficulty[util.question_difficulty].value]
                 self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
 
             elif self.order == 5:
-                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + list(language_dictionary[util.game_language].menu.quizmaster_attitudes)[util.QuizMasterAttitude[util.quizmaster_attitude].value]
+                text = language_dictionary[util.game_language].menu.settings_menu_options[self.order] + ": " + \
+                       list(language_dictionary[util.game_language].menu.quizmaster_attitudes)[
+                           util.QuizMasterAttitude[util.quizmaster_attitude].value]
                 self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
 
             elif self.order == 6:
@@ -328,6 +411,43 @@ class MenuOption(pygame.sprite.Sprite):
             else:
                 text = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
                 self.name = language_dictionary[util.game_language].menu.settings_menu_options[self.order]
+
+        elif self.type == "ingame_settings_menu_option":
+            if self.order == 0:
+
+                if util.game_language[:2].lower() == "hu":
+                    text = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].hu
+                    self.name = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0]
+                elif util.game_language[:2].lower() == "de":
+                    text = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].de
+                    self.name = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0]
+                else:
+                    text = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0] + ": " + \
+                           language_dictionary[util.game_language].en
+                    self.name = language_dictionary[util.game_language].menu.ingame_settings_menu_options[0]
+
+            elif self.order == 1:
+                text = language_dictionary[util.game_language].sounds + ": "
+                if util.system_volume:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+                self.name = language_dictionary[util.game_language].menu.ingame_settings_menu_options[self.order]
+
+            elif self.order == 2:
+                text = language_dictionary[util.game_language].menu.ingame_settings_menu_options[2] + ": "
+                if util.full_screen:
+                    text += language_dictionary[util.game_language].true
+                else:
+                    text += language_dictionary[util.game_language].false
+                self.name = language_dictionary[util.game_language].menu.ingame_settings_menu_options[self.order]
+
+            else:
+                text = language_dictionary[util.game_language].menu.ingame_settings_menu_options[self.order]
+                self.name = language_dictionary[util.game_language].menu.ingame_settings_menu_options[self.order]
+
         elif self.type == "topic_option":
             text = language_dictionary[util.game_language].menu.settings_menu_question_topics[self.order]
             self.name = text
@@ -341,9 +461,20 @@ class MenuOption(pygame.sprite.Sprite):
             self.name = text
 
         elif self.type == "language_option":
-            langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].de, language_dictionary[util.game_language].hu]
+
+            langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].de,
+                     language_dictionary[util.game_language].hu]
             text = langs[self.order]
             self.name = langs[self.order]
+
+        elif self.type == "ingame_language_option":
+
+            langs = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].de,
+                     language_dictionary[util.game_language].hu]
+            text = langs[self.order]
+            self.name = langs[self.order]
+            self.rect = self.image.get_rect(center=(685, 300 + (self.order * 35)))
+
         elif self.type == "tutorial_option":
             text = language_dictionary[util.game_language].menu.settings_menu_options[-1]
             self.name = text
@@ -442,7 +573,7 @@ def main():
                 settings_menu_bg_surf = pygame.image.load('./data/graphics/settings_menu_bg_hu.png').convert_alpha()
             else:
                 settings_menu_bg_surf = pygame.image.load('./data/graphics/settings_menu_bg_en.png').convert_alpha()
-            screen.blit(settings_menu_bg_surf, (0,0))
+            screen.blit(settings_menu_bg_surf, (0, 0))
             if lang_selection:
 
                 lang_group.draw(screen)
@@ -467,7 +598,6 @@ def main():
 
                 settings_option_group.draw(screen)
                 settings_option_group.update()
-
 
         else:
             screen.fill((0, 0, 0))
@@ -505,7 +635,8 @@ def text_screen(screen_type: str):
 
     global screen_active
     screen_active = True
-    tutorial_group = sprite_group_init([language_dictionary[util.game_language].menu.settings_menu_options[-1]], "tutorial_option", 700)
+    tutorial_group = sprite_group_init([language_dictionary[util.game_language].menu.settings_menu_options[-1]],
+                                       "tutorial_option", 700)
     is_added = False
     global scores_paging
     scores_paging = 1
@@ -546,15 +677,16 @@ def text_screen(screen_type: str):
                 if len(scores_sorted) > 15 and not is_added:
                     tutorial_group.add(MenuOption("scores_paging", 0, 500))
                     is_added = True
-                if len(scores_sorted) >= scores_paging*15:
+                if len(scores_sorted) >= scores_paging * 15:
                     if scores_paging == 0:
                         scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[:15]
                         showed_text = "1 - 15"
                     else:
-                        scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[((scores_paging-1)*15):(scores_paging*15)]
-                        showed_text = str(((scores_paging-1)*15)+1) + " - " + str(scores_paging*15)
-                elif len(scores_sorted) < scores_paging*15 and len(scores_sorted) > ((scores_paging-1)*15):
-                    showed_text = str(((scores_paging - 1) * 15)+1) + " - " + str(len(scores_sorted))
+                        scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[
+                                        ((scores_paging - 1) * 15):(scores_paging * 15)]
+                        showed_text = str(((scores_paging - 1) * 15) + 1) + " - " + str(scores_paging * 15)
+                elif len(scores_sorted) < scores_paging * 15 and len(scores_sorted) > ((scores_paging - 1) * 15):
+                    showed_text = str(((scores_paging - 1) * 15) + 1) + " - " + str(len(scores_sorted))
                     scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[
                                     ((scores_paging - 1) * 15):(scores_paging * 15)]
                 else:
@@ -565,28 +697,29 @@ def text_screen(screen_type: str):
                     screen_x = 0
                     for k, v in item.items():
                         if k == "topic":
-                            v = list(language_dictionary[util.game_language].menu.settings_menu_question_topics)[util.Topics[v].value]
+                            v = list(language_dictionary[util.game_language].menu.settings_menu_question_topics)[
+                                util.Topics[v].value]
                         text = font.render(str(k) + ": " + str(v), True, (255, 148, 0))
-                        screen.blit(text, [screen_x, 0+ (i*25)])
+                        screen.blit(text, [screen_x, 0 + (i * 25)])
 
                         screen_x += 200
 
                     i += 1
                 f.close()
 
-                text = font.render(language_dictionary[util.game_language].showed + ": " + showed_text, True, (255, 148, 0))
+                text = font.render(language_dictionary[util.game_language].showed + ": " + showed_text, True,
+                                   (255, 148, 0))
                 screen.blit(text, [668, 450])
             else:
                 text = font.render(language_dictionary[util.game_language].menu.empty_scores, True, (255, 148, 0))
                 screen.blit(text, [0, 0])
 
-
         tutorial_group.draw(screen)
         tutorial_group.update()
 
-
         pygame.display.update()
         clock.tick(60)
+
 
 def sprite_group_init(sprite_group: list, sprite_group_type: str, y_height: int):
     sprit_group_instance = pygame.sprite.Group()

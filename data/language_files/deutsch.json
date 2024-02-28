@@ -26,6 +26,12 @@
       "Standardeinstellungen",
       "Zurück"
     ],
+    "ingame_settings_menu_options": [
+      "Sprache",
+      "Ton deaktivieren/aktivieren",
+      "Ganzer Bildschirm",
+      "Zurück"
+    ],
     "skip_prompt": "Drücken Sie eine beliebige Taste, um die Spieleinführung zu überspringen ...",
     "main_menu_options": [
       "Spielen",
@@ -100,6 +106,7 @@
     "call_seconds": " Sekunden\\ 30s",
     "menu": {
       "resume": "Wieder aufnehmen",
+      "settings": "Einstellungen",
       "out_of_game": "Antwort außerhalb des Spiels",
       "exit": "Ausfahrt"
     }

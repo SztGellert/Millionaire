@@ -26,6 +26,12 @@
             "Alapértelmezett beállítások",
             "Vissza"
         ],
+        "ingame_settings_menu_options": [
+            "Nyelv",
+            "Hangok ki/bekapcsolása",
+            "Teljes Képernyő",
+            "Vissza"
+        ],
         "skip_prompt": "Nyomjon meg egy gombot az intro kihagyásához..",
         "main_menu_options": [
             "Játék",
@@ -100,6 +106,7 @@
         "call_seconds": " mp\\ 30mp",
         "menu": {
             "resume": "Folytatás",
+            "settings": "Beállítások",
             "out_of_game": "Játékon kívüli válasz",
             "exit": "Kilépés"
         }

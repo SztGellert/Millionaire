@@ -1,3 +1,4 @@
+import copy
 import json
 import os
 import random
@@ -491,20 +492,20 @@ class MenuOption(pygame.sprite.Sprite):
         self.font = pygame.font.SysFont('Sans', 25)
         self.type = type
         self.text_color = (255, 255, 255)
+
         if type == "resume":
             text = language_dictionary[util.game_language].quiz.menu[order]
         elif type == "out_of_game":
             text = language_dictionary[util.game_language].quiz.menu[order]
         elif type == "exit":
             text = language_dictionary[util.game_language].quiz.menu[order]
-        elif type == "question_difficulty_option":
-            text = language_dictionary[util.game_language].menu.question_difficulty_levels[order]
+        elif type == "settings":
+            text = language_dictionary[util.game_language].quiz.menu[order]
         elif type == "quizmaster_attitude_option":
             text = language_dictionary[util.game_language].menu.quizmaster_attitudes[order]
         elif type == "language_option":
             text = [language_dictionary[util.game_language].en, language_dictionary[util.game_language].hu][order]
         else:
-            print(type)
             text = ""
 
         self.name = text
@@ -528,6 +529,7 @@ class MenuOption(pygame.sprite.Sprite):
         self.is_active = False
 
     def player_input(self):
+
         if self.rect.collidepoint((pygame.mouse.get_pos())):
             self.image = pygame.image.load('./data/graphics/option_marked.png').convert_alpha()
             self.image.blit(self.text, [30, 0])
@@ -537,14 +539,14 @@ class MenuOption(pygame.sprite.Sprite):
 
         if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
             global game_active
-
             if self.name == language_dictionary[util.game_language].quiz.menu[0]:
                 game_active = True
             if self.name == language_dictionary[util.game_language].quiz.menu[1]:
+                menu.options = True
+            if self.name == language_dictionary[util.game_language].quiz.menu[2]:
                 global out_of_game
                 out_of_game = True
                 game_active = True
-
             if self.name == language_dictionary[util.game_language].quiz.menu[-1]:
                 global exit_game
                 exit_game = True
@@ -552,6 +554,8 @@ class MenuOption(pygame.sprite.Sprite):
     def update(self):
         if self.lang != util.game_language:
             if self.type == "resume":
+                text = language_dictionary[util.game_language].quiz.menu[self.order]
+            elif self.type == "settings":
                 text = language_dictionary[util.game_language].quiz.menu[self.order]
             elif self.type == "out_of_game":
                 text = language_dictionary[util.game_language].quiz.menu[self.order]
@@ -668,7 +672,7 @@ def play():
     exceptions = json.dumps({"easyQuestions": util.easy_question_exceptions,
                              "mediumQuestions": util.medium_question_exceptions,
                              "hardQuestions": util.hard_question_exceptions})
-
+    global data
     data = requests.post(
         'https://yi4tfqk2xmyzsgt72ojur5bk6q0mjtnw.lambda-url.eu-north-1.on.aws?topic=' + topic.lower() + '&difficulty=' + difficulty.lower(),
         data=exceptions,
@@ -835,7 +839,7 @@ def game_loop(level: int, question_array: {}):
     if util.game_language == util.Language.HUNGARIAN.name and level < 14:
         play_question_prologue(level)
         play_music(level)
-
+    global question_lines
     correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[level][1])
     dbclock = pygame.time.Clock()
     DOUBLECLICKTIME = 500
@@ -916,11 +920,28 @@ def game_loop(level: int, question_array: {}):
     menu_group = pygame.sprite.Group()
     menu_group.add(MenuOption("resume", 0, 300))
     menu_group.add(MenuOption("out_of_game", 1, 300))
-    menu_group.add(MenuOption("exit", 2, 300))
+    menu_group.add(MenuOption("settings", 2, 300))
+    menu_group.add(MenuOption("exit", 3, 300))
 
     prizes_table.add(Prizes())
+
+    settings_group = []
+
+    for option in language_dictionary[util.game_language].menu.ingame_settings_menu_options:
+        settings_group.append(option)
+
+    settings_option_group = menu.sprite_group_init(settings_group,
+                                                   "ingame_settings_menu_option", 300)
+    lang_group = menu.sprite_group_init(util.available_languages, "ingame_language_option", 300)
+
     global exit_game
     exit_game = False
+    global options
+    options = False
+
+    global settings_init
+    settings_init = False
+
     out_of_game_started = False
     global prize_table_event
     prize_table_event = pygame.USEREVENT + 9
@@ -1066,7 +1087,8 @@ def game_loop(level: int, question_array: {}):
                                   prize_event, dial_event, phone_intro_event, audience_intro_event]
                     active_events = list(filter(lambda x: x > 0, event_list))
                     if len(active_events) == 0:
-                        if util.get_sound_channel_availability and util.game_language == util.Language.HUNGARIAN.name:
+
+                        if util.get_sound_channel_availability and util.game_language == util.Language.HUNGARIAN.name and random_sounds:
                             play_random_quizmaster_sound(level)
 
             if game_active:
@@ -1109,6 +1131,31 @@ def game_loop(level: int, question_array: {}):
                         game_active = False
         if game_active:
             util.continue_music()
+            global game_language
+            if game_language != util.game_language:
+                game_language = util.game_language
+                question_lines = []
+                for i in range(15):
+                    question_lines.append(
+                        [data[i][util.game_language[:2].lower()]['text'],
+                         data[i][game_language[:2].lower()]['answers'][0],
+                         data[i][game_language[:2].lower()]['answers'][1],
+                         data[i][game_language[:2].lower()]['answers'][2],
+                         data[i][game_language[:2].lower()]['answers'][3]])
+                question = question_lines[level][0]
+                answers = {"a": question_lines[level][1], "b": question_lines[level][2], "c": question_lines[level][3],
+                           "d": question_lines[level][4]}
+                answer_list = list(answers.values())
+                random.shuffle(answer_list)
+                shuffled_answers = dict(zip(answers, answer_list))
+                texts = [question, answer_list[0], answer_list[1], answer_list[2], answer_list[3]]
+                correct_answer_key = get_dictionary_key_by_value(shuffled_answers, question_lines[level][1])
+                obstacle_group = pygame.sprite.Group()
+                for index in range(len(sprite_group)):
+                    obstacle_group.add(TableElement(sprite_group[index], texts[index]))
+                obstacle_group.update(selected, correct_answer_key, type)
+                menu_group.update()
+
             if out_of_game and not out_of_game_started:
                 answer_out_of_game(level)
                 out_of_game_started = True
@@ -1237,8 +1284,16 @@ def game_loop(level: int, question_array: {}):
             screen.fill((0, 0, 0))
             screen.blit(in_game_menu_bg, (0, 0))
             util.pause_music()
-            menu_group.draw(screen)
-            menu_group.update()
+            if menu.options:
+                if menu.lang_selection:
+                    lang_group.draw(screen)
+                    lang_group.update()
+                else:
+                    settings_option_group.draw(screen)
+                    settings_option_group.update()
+            else:
+                menu_group.draw(screen)
+                menu_group.update()
 
             if exit_game: return False
 
