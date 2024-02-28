@@ -74,7 +74,6 @@ def init():
     init_settings(game_language)
 
 
-
 def init_settings(selected_lang: str, reset_settings=False):
     global game_language
     global question_topics
@@ -206,8 +205,6 @@ def get_sound_channel_availability() -> bool:
 
 
 def get_sound_length(filename, file_type="wav", dir="", general=False) -> int:
-
-
     if general:
         file_path = get_data_path() + "/sound_files/general/" + filename + "." + file_type
     elif dir != "":

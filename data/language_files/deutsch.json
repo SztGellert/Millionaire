@@ -11,11 +11,6 @@
   "next_page": "Nächste Seite",
   "showed": "Gezeigt",
   "menu": {
-    "side_title_first_part": " ♦WER WILL ",
-    "side_title_second_part": "  EIN ♦ SEIN",
-    "title_first_line": " ♦ W O W A N T S T O B E A ♦",
-    "title_second_line": "     M I L L I O N A I R E",
-    "return_prompt": "Drücken Sie ESC für das Hauptmenü.",
     "settings_menu_options": [
       "Sprache",
       "Ton deaktivieren/aktivieren",
@@ -32,7 +27,6 @@
       "Ganzer Bildschirm",
       "Zurück"
     ],
-    "skip_prompt": "Drücken Sie eine beliebige Taste, um die Spieleinführung zu überspringen ...",
     "main_menu_options": [
       "Spielen",
       "Schnellste Finger zuerst",
@@ -80,30 +74,7 @@
     ]
   },
   "quiz": {
-    "player_name_prompt": "Wie kann ich dich anrufen? ",
-    "skip_prompt": "Drücken Sie eine beliebige Taste, um die Spieleinführung zu überspringen ... ",
-    "select_answer": "Wählen Sie die richtige Antwort („a“, „b“, „c“, „d“), „t“ zum Raten außerhalb des Spiels oder „h“ für Hilfe!",
-    "selected_answer": "Deine Antwort: ",
-    "select_answer_out": "Wählen Sie die richtige Antwort ('a','b','c','d')! ",
-    "correct_answer": "Gut gemacht!",
-    "correct_answer_out": "Korrekte Antwort! ",
-    "incorrect_answer": "Falsche Antwort! ",
-    "guaranteed_prize": "Sie haben garantiert ",
-    "won_prize": "Glückwunsch!!  ",
-    "help": "helfen",
-    "audience_help": "Publikum",
-    "telephone_help": "Telefon",
-    "halving_help": "Halbierung",
-    "help_selection": "Wählen Sie Hilfe: „a“ für Publikum, „t“ für Telefon, „h“ für Halbierung!",
-    "helps_disabled": "Sie haben keine Hotlines.",
-    "audience_help_disabled": "Sie haben die Hilfe des Publikums bereits in Anspruch genommen.",
-    "halving_help_disabled": "Sie haben die Halbierung bereits genutzt.",
-    "phone_help_disabled": "Sie haben die telefonische Hilfe bereits genutzt.",
-    "phone_prompt": "Wen möchten Sie anrufen?\n\n    ",
-    "allowed_letters_error": "Fehler!  ",
-    "allowed": " erlaubt!",
-    "call_duration": "Gesprächsdauer: ",
-    "call_seconds": " Sekunden\\ 30s",
+    "player_name_prompt": "Wie kann ich Sie nennen? ",
     "menu": {
       "resume": "Wieder aufnehmen",
       "settings": "Einstellungen",
