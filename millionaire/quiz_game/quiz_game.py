@@ -785,7 +785,7 @@ def start_game():
                 pygame.quit()
                 exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
                     return
                 elif event.key == pygame.K_BACKSPACE:
                     player = player[:-1]
