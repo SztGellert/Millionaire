@@ -5,6 +5,7 @@
     "title": "Millionaire",
     "language": "Nyelv",
     "sounds": "Sounds",
+    "music": "Music",
     "topic": "Topic",
     "true": "ON",
     "false": "OFF",
@@ -14,6 +15,7 @@
         "settings_menu_options": [
             "Language",
             "Disable/Enable Sound",
+            "Disable/Enable Music",
             "Full screen",
             "Question types",
             "Question difficulty",
@@ -24,6 +26,7 @@
         "ingame_settings_menu_options": [
             "Language",
             "Disable/Enable Sound",
+            "Disable/Enable Music",
             "Full screen",
             "Back"
         ],

@@ -5,6 +5,7 @@
     "title": "Milliomos",
     "language": "Nyelv",
     "sounds": "Hangok",
+    "music": "Zene",
     "topic": "Témakör",
     "true": "BE",
     "false": "KI",
@@ -14,6 +15,7 @@
         "settings_menu_options": [
             "Nyelv",
             "Hangok ki/bekapcsolása",
+            "Zene ki/bekapcsolása",
             "Teljes Képernyő",
             "Kérdés témakörök",
             "Kérdés nehézség",
@@ -24,6 +26,7 @@
         "ingame_settings_menu_options": [
             "Nyelv",
             "Hangok ki/bekapcsolása",
+            "Zene ki/bekapcsolása",
             "Teljes Képernyő",
             "Vissza"
         ],

@@ -60,6 +60,7 @@ language_dictionary = {}
 topics = [topic.name for topic in Topics]
 difficulty_levels = [level.name for level in Difficulty]
 system_volume = True
+background_music = True
 quizmaster_attitude = QuizMasterAttitude.NEUTRAL.name
 quizmaster_attitudes = [attitude.name for attitude in QuizMasterAttitude]
 easy_question_exceptions = []
@@ -80,6 +81,7 @@ def init_settings(selected_lang: str, reset_settings=False):
     global language_dictionary
     global question_difficulty
     global system_volume
+    global background_music
     global quizmaster_attitude
     global full_screen
     global easy_question_exceptions
@@ -104,6 +106,8 @@ def init_settings(selected_lang: str, reset_settings=False):
             language_dictionary.update({game_language: custom_dictionary_decoder(lang_dict)})
             question_topics = data["topic"]
             system_volume = data["volume"]
+            background_music = data["music"]
+
     else:
         for lang in available_languages:
             lang_dict = read_json_dict(selected_lang)
@@ -113,6 +117,7 @@ def init_settings(selected_lang: str, reset_settings=False):
             question_topics = Topics.ALL.name
             quizmaster_attitude = QuizMasterAttitude.NEUTRAL.name
             system_volume = True
+            background_music = True
 
 
 def set_game_language(selected_lang: str):
@@ -224,7 +229,7 @@ def play_sound_object(file: pygame.mixer.Sound):
 
 
 def play_background_music(filename, starting_time, volume=0.08):
-    if system_volume:
+    if background_music:
         file_path = get_data_path() + "/sound_files/" + "general" + "/" + "background" + "/" + filename + ".wav"
         pygame.mixer.music.load(file_path)
         pygame.mixer.music.set_volume(volume)
@@ -265,12 +270,12 @@ def init_random_sounds() -> []:
 
 
 def pause_music():
-    if system_volume:
+    if background_music:
         pygame.mixer.music.pause()
 
 
 def continue_music():
-    if system_volume:
+    if background_music:
         pygame.mixer.music.unpause()
 
 
@@ -280,7 +285,7 @@ def stop_sound():
 
 
 def stop_music():
-    if system_volume:
+    if background_music:
         pygame.mixer.music.stop()
 
 
@@ -300,7 +305,7 @@ def custom_dictionary_decoder(dict1):
 
 def default_settings() -> bool:
     if game_language == Language.ENGLISH.name and question_topics == Topics.ALL.name \
-            and question_difficulty == Difficulty.ALL.name and system_volume == True and quizmaster_attitude == QuizMasterAttitude.NEUTRAL.name and full_screen == False:
+            and question_difficulty == Difficulty.ALL.name and system_volume and background_music and quizmaster_attitude == QuizMasterAttitude.NEUTRAL.name and not full_screen:
         return True
 
     return False
