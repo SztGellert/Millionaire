@@ -218,8 +218,9 @@ def get_sound_length(filename, file_type="wav", dir="", general=False) -> int:
 
 
 def play_sound_object(file: pygame.mixer.Sound):
-    file.set_volume(0.2)
-    file.play()
+    if system_volume:
+        file.set_volume(0.2)
+        file.play()
 
 
 def play_background_music(filename, starting_time, volume=0.08):
