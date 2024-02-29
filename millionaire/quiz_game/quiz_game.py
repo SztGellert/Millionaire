@@ -1860,29 +1860,33 @@ def fastest_fingers_first():
 def get_prize(round_number: int, correct_answer=True) -> str:
     global out_of_game
 
-    prizes = util.open_file("prizes_" + str(game_language).lower(), "r")
+    prizes = language_dictionary[util.game_language].quiz.prizes
 
     if out_of_game:
         if round_number > 0:
-            return prizes[round_number - 1][0]
+            return prizes[round_number - 1]
         else:
             if util.game_language == util.Language.HUNGARIAN.name:
                 return "0 Ft"
+            elif util.game_language == util.Language.DEUTSCH.name:
+                return "€0"
             else:
                 return "£0"
     else:
         if not correct_answer:
             if round_number > 9:
-                return prizes[9][0]
+                return prizes[9]
             elif round_number > 4:
-                return prizes[4][0]
+                return prizes[4]
             else:
                 if util.game_language == util.Language.HUNGARIAN.name:
                     return "0 Ft"
+                elif util.game_language == util.Language.DEUTSCH.name:
+                    return "€0"
                 else:
                     return "£0"
         else:
-            return prizes[round_number][0]
+            return prizes[round_number]
 
 
 def halving_before_sounds():

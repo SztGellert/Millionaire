@@ -80,7 +80,24 @@
             "settings": "Settings",
             "out_of_game": "Out of game answer",
             "exit": "Exit"
-        }
+        },
+        "prizes": [
+            "£100",
+            "£200",
+            "£300",
+            "£500",
+            "£1.000",
+            "£2.000",
+            "£4.000",
+            "£8.000",
+            "£16.000",
+            "£32.000",
+            "£64.000",
+            "£125.000",
+            "£250.000",
+            "£500.000",
+            "£1.000.000"
+        ]
     },
     "tutorial": {
         "text_list": [
@@ -89,8 +106,7 @@
             "You will get 15 questions in a random order and you have to choose the correct answer out of 4.",
             "How it works / instructions:",
             "You have to type for every question: a / b / c / d",
-            "You have 3 kinds of helps:",
-            "Audience's help Telephone help Halving the questions by the computer",
+            "Audience's help Telephone help Ha            \"You have 3 kinds of helps:\",\nlving the questions by the computer",
             "If you choose an incorrect answer you will instantly lose the game.",
             "The prize that you bring home depends on your performance.",
             "You earn guaranteed prize after the 5th correct answer. ",
