@@ -1,0 +1,197 @@
+[
+    {
+        "value": "All of the following are amino acids except:",
+        "answers": [
+            "Adenine",
+            "Leucine",
+            "Tryptophan",
+            "Tyrosine"
+        ],
+        "correct_answer": "Adenine",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 837
+    },
+    {
+        "value": "What is the most common isotope of hydrogen?",
+        "answers": [
+            "Protium",
+            "Deuterium",
+            "Tritum",
+            "Hydrogen only has one isotope!"
+        ],
+        "correct_answer": "Protium",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 838
+    },
+    {
+        "value": "Noble gases are inert because they have completed outer electron shells. Which of these elements isn't a noble gas?",
+        "answers": [
+            "Chlorine",
+            "Argon",
+            "Helium",
+            "Krypton"
+        ],
+        "correct_answer": "Chlorine",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 839
+    },
+    {
+        "value": "The element X in the atom 33^X_16 is:",
+        "answers": [
+            "S - Sulfur",
+            "O - Oxygen",
+            "As - Arsenic",
+            "In - Indium"
+        ],
+        "correct_answer": "S - Sulfur",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 840
+    },
+    {
+        "value": "The element X in the atom 108^X_47 is:",
+        "answers": [
+            "Ag - Silver",
+            "Hs - Hassium",
+            "Cu - Copper",
+            "V - Vanadium"
+        ],
+        "correct_answer": "Ag - Silver",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 841
+    },
+    {
+        "value": "How many electrons in the ion 27^Al_3+13?",
+        "answers": [
+            "10 electrons",
+            "27 electrons",
+            "13 electrons",
+            "3 electrons"
+        ],
+        "correct_answer": "10 electrons",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 842
+    },
+    {
+        "value": "An ion of 32^S_16 is found to have a charge of -2. How many electrons does this ion have?",
+        "answers": [
+            "18 electrons",
+            "32 electrons",
+            "30 electrons",
+            "16 electrons"
+        ],
+        "correct_answer": "18 electrons",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 843
+    },
+    {
+        "value": "An ion of 80^Br_35 is found to have a charge of 5+. How many electrons does this ion have?",
+        "answers": [
+            "30 electrons",
+            "35 electrons",
+            "40 electrons",
+            "75 electrons"
+        ],
+        "correct_answer": "30 electrons",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 844
+    },
+    {
+        "value": "Which one is false of the following statements?",
+        "answers": [
+            "Oxygen is a non-metal.",
+            "Approximately 2/3 of the mass of the human body is oxygen because oxygen and hydrogen make up water. This makes oxygen the most abundant element in the human body, by mass. There are more hydrogen atoms in your body than oxygen atoms, but they account for very little mass.",
+            "Oxygen was the atomic weight standard for the other elements until 1961 when it was replaced by carbon 12. The atomic weight of oxygen is 15.999, which is usually rounded up to 16.00 in chemistry calculations.",
+            "One way to purify oxygen is to ferment it from liquefied air"
+        ],
+        "correct_answer": "Oxygen is a non-metal.",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 845
+    },
+    {
+        "value": "What is amino acid?",
+        "answers": [
+            "an organic acid containing a carboxyl (-COOH) and amine (-NH2) functional group along with a side chain.",
+            "an organic compound containing carbon and hydrogen joined into straight chains, branches chains, or non-aromatic rings.",
+            "radioactive metal with element symbol Am and atomic number 95",
+            "compound in which one or more hydrogen atom in ammonia is replaced by an organic functional group"
+        ],
+        "correct_answer": "an organic acid containing a carboxyl (-COOH) and amine (-NH2) functional group along with a side chain.",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 846
+    },
+    {
+        "value": "What is antimony?",
+        "answers": [
+            "name for the element with atomic number 36 and is represented by the symbol Kr. It is a member of the metalloid group.",
+            "name for the element with atomic number 18 and is represented by the symbol Ar. It is a member of the noble gases group",
+            "is the name for the element with atomic number 85 and is represented by the symbol At. It is a member of the halogen group.",
+            "the name for the element with atomic number 13 and is represented by the symbol Al. It is a member of the metal group"
+        ],
+        "correct_answer": "name for the element with atomic number 36 and is represented by the symbol Kr. It is a member of the metalloid group.",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 847
+    },
+    {
+        "value": "Amphoteric substance is capable of..?",
+        "answers": [
+            "acting as either an acid or a base",
+            "acting as an acid",
+            "acting as a base",
+            "none"
+        ],
+        "correct_answer": "acting as either an acid or a base",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 848
+    },
+    {
+        "value": "Angstrom is ..?",
+        "answers": [
+            "the unit of length equal to 10^-10 meters",
+            "the unit of length equal to 10^-23 meters",
+            "the unit of length equal to 10^10 meters",
+            "the unit of length equal to 10^23 meters"
+        ],
+        "correct_answer": "the unit of length equal to 10^-10 meters",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 849
+    },
+    {
+        "value": "What's an aromatic compound?",
+        "answers": [
+            "an organic molecule that contains a benzene ring",
+            "an organic molecule that does not contain a benzene ring.",
+            "a functional group derived from a simple aromatic ring when one hydrogen is removed from the ring",
+            "species that can both accept and donate a proton or hydrogen ion"
+        ],
+        "correct_answer": "an organic molecule that contains a benzene ring",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 850
+    },
+    {
+        "value": "What is cadmium?",
+        "answers": [
+            "the name for the element with atomic number 48 and is represented by the symbol Cd. It is a member of the transition metals group",
+            "the name for the element with atomic number 20 and is represented by the symbol Ca. It is a member of the alkaline earth metal group",
+            "the name for the element with atomic number 6 and is represented by the symbol C. It is a member of the nonmetal group",
+            "the name for the element with atomic number 55 and is represented by the symbol Cs. It is a member of the alkali metal group"
+        ],
+        "correct_answer": "the name for the element with atomic number 48 and is represented by the symbol Cd. It is a member of the transition metals group",
+        "difficulty": "hard",
+        "topic": "chemistry",
+        "id": 851
+    }
+]

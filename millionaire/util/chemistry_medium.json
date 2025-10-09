@@ -1,0 +1,197 @@
+[
+    {
+        "value": "In a solution of saltwater (a saline solution), salt is the:",
+        "answers": [
+            "Solute",
+            "Solvent",
+            "Colloid",
+            "Sol"
+        ],
+        "correct_answer": "Solute",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 822
+    },
+    {
+        "value": "What do you call an atom that has more protons than electrons?",
+        "answers": [
+            "A cation",
+            "An isotope",
+            "A molecule",
+            "An anion"
+        ],
+        "correct_answer": "A cation",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 823
+    },
+    {
+        "value": "According to atomic theory, electrons are usually found:",
+        "answers": [
+            "outside the nucleus and often far from it - most of an atom's volume is its electron cloud",
+            "in the atomic nucleus",
+            "outside the nucleus, yet very near it because they are attracted to the protons",
+            "either in the nucleus or around it - electrons are readily found anywhere in an atom"
+        ],
+        "correct_answer": "outside the nucleus and often far from it - most of an atom's volume is its electron cloud",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 824
+    },
+    {
+        "value": "When you change the number of electrons on an atom, you produce a different:",
+        "answers": [
+            "ion",
+            "isotope",
+            "element",
+            "atomic mass"
+        ],
+        "correct_answer": "ion",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 825
+    },
+    {
+        "value": "Changing the number of neutrons of an atom changes its:",
+        "answers": [
+            "isotope",
+            "element",
+            "ion",
+            "charge"
+        ],
+        "correct_answer": "isotope",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 826
+    },
+    {
+        "value": "The atomic number of an atom is:",
+        "answers": [
+            "the number of protons",
+            "the number of electrons",
+            "the number of neutrons",
+            "the number of protons plus the number of neutrons"
+        ],
+        "correct_answer": "the number of protons",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 827
+    },
+    {
+        "value": "Which two particles would be attracted to each other?",
+        "answers": [
+            "electrons and protons",
+            "electrons and neutrons",
+            "all particles are attracted to each other",
+            "protons and neutrons"
+        ],
+        "correct_answer": "electrons and protons",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 828
+    },
+    {
+        "value": "Which particles have approximately the same size and mass as each other?",
+        "answers": [
+            "protons and neutrons",
+            "none - they are all very different in size and mass",
+            "neutrons and electrons",
+            "electrons and protons"
+        ],
+        "correct_answer": "protons and neutrons",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 829
+    },
+    {
+        "value": "A single proton has what electrical charge?",
+        "answers": [
+            "positive charge",
+            "no charge",
+            "negative charge",
+            "either a positive or negative charge"
+        ],
+        "correct_answer": "positive charge",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 830
+    },
+    {
+        "value": "The nucleus of an atom consists of:",
+        "answers": [
+            "protons and neutrons",
+            "electrons",
+            "neutrons",
+            "protons, neutrons, and electrons"
+        ],
+        "correct_answer": "protons and neutrons",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 831
+    },
+    {
+        "value": "An element is determined by the number of:",
+        "answers": [
+            "protons",
+            "neutrons",
+            "electrons",
+            "atoms"
+        ],
+        "correct_answer": "protons",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 832
+    },
+    {
+        "value": "What is the total number of protons and neutrons in the element 73Ge?",
+        "answers": [
+            "73",
+            "32",
+            "41",
+            "105"
+        ],
+        "correct_answer": "73",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 833
+    },
+    {
+        "value": "How many electrons are in an atom of 85Rb37?",
+        "answers": [
+            "37 electrons",
+            "48 electrons",
+            "85 electrons",
+            "122 electrons"
+        ],
+        "correct_answer": "37 electrons",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 834
+    },
+    {
+        "value": "What is the total number of protons and neutrons in the element 35Cl-? ",
+        "answers": [
+            "35",
+            "70",
+            "17.5",
+            "0"
+        ],
+        "correct_answer": "35",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 835
+    },
+    {
+        "value": "How many neutrons are in the isotope of zinc: 65Zn30?",
+        "answers": [
+            "35 neutrons",
+            "30 neutrons",
+            "65 neutrons",
+            "95 neutrons"
+        ],
+        "correct_answer": "35 neutrons",
+        "difficulty": "medium",
+        "topic": "chemistry",
+        "id": 836
+    }
+]

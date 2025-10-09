@@ -1,0 +1,197 @@
+[
+    {
+        "value": "In 1917 the British royal family changed its name to Windsor because their old name...",
+        "answers": [
+            "sounded too German",
+            "was adopted by a different royal family",
+            "was being used as a slur",
+            "took too long to say"
+        ],
+        "correct_answer": "sounded too German",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1171
+    },
+    {
+        "value": "After King Charles III, Prince William is next in line for the British throne. Who is after him?",
+        "answers": [
+            "Prince George",
+            "Princess Charlotte",
+            "Prince Harry",
+            "Prince Andrew"
+        ],
+        "correct_answer": "Prince George",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1172
+    },
+    {
+        "value": "The male heir to the British throne is traditionally given what title?",
+        "answers": [
+            "prince of Wales",
+            "prince of York",
+            "prince of Sussex",
+            "prince of Wessex"
+        ],
+        "correct_answer": "prince of Wales",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1173
+    },
+    {
+        "value": "Which of these objects is included in the crown jewels used in the coronation of British monarchs?",
+        "answers": [
+            "spoon",
+            "needle",
+            "scissors",
+            "hammer"
+        ],
+        "correct_answer": "spoon",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1174
+    },
+    {
+        "value": "Name the following historical figure: sometimes known by the nickname ´Scarface´..",
+        "answers": [
+            "Al Capone",
+            "Henry Ford",
+            "Babe Ruth",
+            "J.P.Morgan"
+        ],
+        "correct_answer": "Al Capone",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1175
+    },
+    {
+        "value": "Name the following historical figure: he as an American statesman, diplomat, lawyer, architect, philosopher, and Founding Father who served as the third president of the United States from 1801 to 1809. He was the primary author of the Declaration of Independence",
+        "answers": [
+            "Thomas Jefferson",
+            "George Washington",
+            "John Adams",
+            "Alexander Hamilton"
+        ],
+        "correct_answer": "Thomas Jefferson",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1176
+    },
+    {
+        "value": "Name the following historical figure: she was a Mexican painter known for her many portraits, self-portraits, and works inspired by the nature and artifacts of Mexico",
+        "answers": [
+            "Frida Kahlo",
+            "Dolores Huerta",
+            "Eva Perón",
+            "Joan Baez"
+        ],
+        "correct_answer": "Frida Kahlo",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1177
+    },
+    {
+        "value": "Name the following historical figure: she is a patron saint of France, honored as a defender of the French nation for her role in the siege of Orléans and her insistence on the coronation of Charles VII of France during the Hundred Years' War.",
+        "answers": [
+            "Joan of Arc",
+            "Catherine the Great",
+            "Queen Elizabeth I",
+            "Guinevere"
+        ],
+        "correct_answer": "Joan of Arc",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1178
+    },
+    {
+        "value": "Which of these French women was charged with the crime of wearing men's clothing?",
+        "answers": [
+            "Joan of Arc",
+            "Coco Chanel",
+            "Marie-Antoinette",
+            "Marie Curie"
+        ],
+        "correct_answer": "Joan of Arc",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1179
+    },
+    {
+        "value": "Which of the following places is famous as Napoleon I's place of exile?",
+        "answers": [
+            "Elba",
+            "Tuscany",
+            "Waterloo",
+            "Wellington"
+        ],
+        "correct_answer": "Elba",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1180
+    },
+    {
+        "value": "By 50 BCE, which famous historical figure had conquered the area today known as France?",
+        "answers": [
+            "Julius Caesar",
+            "Genghis Khan",
+            "Attila the Hun",
+            "Alexander the Great"
+        ],
+        "correct_answer": "Julius Caesar",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1181
+    },
+    {
+        "value": "Which holiday commemorates the beginning of the French Revolution?",
+        "answers": [
+            "Bastille Day",
+            "Republic Day",
+            "Christmas",
+            "Independence Day"
+        ],
+        "correct_answer": "Bastille Day",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1182
+    },
+    {
+        "value": "Which battle was Napoleon I's final defeat?",
+        "answers": [
+            "Battle of Waterloo",
+            "Battle of Verdun",
+            "Battle of Agincourt",
+            "Battle of the Bulge"
+        ],
+        "correct_answer": "Battle of Waterloo",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1183
+    },
+    {
+        "value": "Which queen's actions contributed to the unrest that led to the French Revolution?",
+        "answers": [
+            "Marie-Antoinette",
+            "Catherine the Great",
+            "Catherine de' Medici",
+            "Victoria"
+        ],
+        "correct_answer": "Marie-Antoinette",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1184
+    },
+    {
+        "value": "Which of these French landmarks was designed to be taken down after 20 years?",
+        "answers": [
+            "Eiffel Tower",
+            "Arc de Triomphe",
+            "Louvre Museum",
+            "Notre-Dame Cathedral"
+        ],
+        "correct_answer": "Eiffel Tower",
+        "difficulty": "medium",
+        "topic": "history",
+        "id": 1185
+    }
+]

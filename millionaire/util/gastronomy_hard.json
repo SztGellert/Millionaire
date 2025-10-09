@@ -1,0 +1,301 @@
+[
+    {
+        "value": "What is the name of the cooking technique in which food is sealed in a plastic pouch and cooked at a low temperature?",
+        "answers": [
+            "Sous-vide",
+            "Barbecue",
+            "Braising",
+            "Broiling"
+        ],
+        "correct_answer": "Sous-vide",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1043
+    },
+    {
+        "value": "What bread is eaten by Jews during Passover?",
+        "answers": [
+            "Matzo",
+            "Challah",
+            "Bagel",
+            "Babka"
+        ],
+        "correct_answer": "Matzo",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1044
+    },
+    {
+        "value": "In which country did the dish mafé originate?",
+        "answers": [
+            "Mali",
+            "Zimbabwe",
+            "Portugal",
+            "Thailand"
+        ],
+        "correct_answer": "Mali",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1045
+    },
+    {
+        "value": "Which among the following is the national dish of Brazil?",
+        "answers": [
+            "Feijoada completa",
+            "Moqueca baiana",
+            "Pao de queijo",
+            "Feijao tropeiro"
+        ],
+        "correct_answer": "Feijoada completa",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1046
+    },
+    {
+        "value": "Msakhan and mansaf are the most popular dishes of which country?",
+        "answers": [
+            "Jordan",
+            "Peru",
+            "Nepal",
+            "Fiji"
+        ],
+        "correct_answer": "Jordan",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1047
+    },
+    {
+        "value": "What is the consumption of insects by humans called?",
+        "answers": [
+            "Entomophagy",
+            "Entomology",
+            "Cannibalism",
+            "Macrobiotics"
+        ],
+        "correct_answer": "Entomophagy",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1048
+    },
+    {
+        "value": "Bannock is a flat unleavened bread eaten primarily in which country?",
+        "answers": [
+            "Scotland",
+            "Turkey",
+            "Latvia",
+            "France"
+        ],
+        "correct_answer": "Scotland",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1049
+    },
+    {
+        "value": "If you were eating ugali, you would most likely be in what country?",
+        "answers": [
+            "Kenya",
+            "Madagascar",
+            "Kribati",
+            "Laos"
+        ],
+        "correct_answer": "Kenya",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1050
+    },
+    {
+        "value": "Food items like fufu and the bammy come from which plant?",
+        "answers": [
+            "Cassava",
+            "Yam",
+            "Carrot",
+            "Rutabaga"
+        ],
+        "correct_answer": "Cassava",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1051
+    },
+    {
+        "value": "What is the name of the Albanian dessert made from figs and sheep's milk?",
+        "answers": [
+            "Oshaf",
+            "Shëndetlie",
+            "Tambëloriz",
+            "Trilece"
+        ],
+        "correct_answer": "Oshaf",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1052
+    },
+    {
+        "value": "Which food from the Middle East is a paste made of chickpeas, olive oil, garlic, and sesame seed?",
+        "answers": [
+            "Hummus",
+            "Mujaddara",
+            "Baba ghanoush",
+            "Kabsa"
+        ],
+        "correct_answer": "Hummus",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1053
+    },
+    {
+        "value": "What condiment did Lea & Perrins create?",
+        "answers": [
+            "Worcestershire sauce",
+            "Tonkatsu sauce",
+            "Soy sauce",
+            "Oyster sauce"
+        ],
+        "correct_answer": "Worcestershire sauce",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1054
+    },
+    {
+        "value": "What country does the word ´mocha´ come from?",
+        "answers": [
+            "Yemen",
+            "Tonga",
+            "Pakistan",
+            "Saudi Arabia"
+        ],
+        "correct_answer": "Yemen",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1055
+    },
+    {
+        "value": "From which plant is the spice saffron obtained?",
+        "answers": [
+            "Crocos sativus",
+            "Sorghum bicolor",
+            "Pimpinella anisum",
+            "Carthamus tinctorius"
+        ],
+        "correct_answer": "Crocos sativus",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1056
+    },
+    {
+        "value": "Who is known as ˝the king of chefs and the chef of kings˝ ?",
+        "answers": [
+            "Auguste Escoffier",
+            "Magnus Nilsson",
+            "Clemens Wilmenrod",
+            "Massimo Bottura"
+        ],
+        "correct_answer": "Auguste Escoffier",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1057
+    },
+    {
+        "value": "If you were eating jambalaya, you would most likely be in what country?",
+        "answers": [
+            "United States",
+            "Brazil",
+            "South Africa",
+            "Malaysia"
+        ],
+        "correct_answer": "United States",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1058
+    },
+    {
+        "value": "Which of the following is a staple food of the South Pacific?",
+        "answers": [
+            "Breadfruit",
+            "Rye",
+            "Sea buckthorn",
+            "Truffle"
+        ],
+        "correct_answer": "Breadfruit",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1059
+    },
+    {
+        "value": "Which French dish is prepared with the livers of specially fattened goose or duck?",
+        "answers": [
+            "Pâté de foie gras",
+            "Croque monsieur",
+            "Boeuf Bourguignon",
+            "Cassoulet"
+        ],
+        "correct_answer": "Pâté de foie gras",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1060
+    },
+    {
+        "value": "What is the traditional Guatemalan feast on All Saints' Day?",
+        "answers": [
+            "Fiambre",
+            "Revolcado",
+            "Hilachas",
+            "Tapado"
+        ],
+        "correct_answer": "Fiambre",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1061
+    },
+    {
+        "value": "If you were eating mole poblano, you would most likely be in what country?",
+        "answers": [
+            "Mexico",
+            "Italy",
+            "China",
+            "Tanzania"
+        ],
+        "correct_answer": "Mexico",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1062
+    },
+    {
+        "value": "What is the traditional drink of Albania?",
+        "answers": [
+            "Raki",
+            "Anijsmelk",
+            "Po cha",
+            "Bombardino"
+        ],
+        "correct_answer": "Raki",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1063
+    },
+    {
+        "value": "What is the name of the buffet-style meal that serves multiple hot and cold dishes of various foods?",
+        "answers": [
+            "Smorgasbord",
+            "Kalops",
+            "Falukorv",
+            "Kroppkakor"
+        ],
+        "correct_answer": "Smorgasbord",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1064
+    },
+    {
+        "value": "Matoke is a food staple of which country?",
+        "answers": [
+            "Uganda",
+            "Senegal",
+            "Ghana",
+            "Mali"
+        ],
+        "correct_answer": "Uganda",
+        "difficulty": "hard",
+        "topic": "gastronomy",
+        "id": 1065
+    }
+]

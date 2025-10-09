@@ -1,0 +1,1437 @@
+[
+    {
+        "id": 1654,
+        "en": {
+            "text": "Which bird does not belong to the family of real swallows?",
+            "answers": [
+                " sickle",
+                " smoke",
+                " molnar",
+                " coast"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel geh\u00f6rt nicht zur Familie der echten Schwalben?",
+            "answers": [
+                " Sichel",
+                " Rauch",
+                " Molnar",
+                " K\u00fcste"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r nem tartozik a val\u00f3di fecskef\u00e9l\u00e9k csal\u00e1dj\u00e1ba?",
+            "answers": [
+                " sarl\u00f3sfecske",
+                " f\u00fcsti fecske",
+                " moln\u00e1rfecske",
+                " partifecske"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1655,
+        "en": {
+            "text": "How many types of storks live in Hungary?",
+            "answers": [
+                " 2",
+                " 3",
+                " 1",
+                " 12"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Wie viele Arten von St\u00f6rchen leben in Ungarn?",
+            "answers": [
+                " 2",
+                " 3",
+                " 1",
+                " 12"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "H\u00e1ny fajta g\u00f3lya \u00e9l magyarorsz\u00e1gon?",
+            "answers": [
+                " 2",
+                " 3",
+                " 1",
+                " 12"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1656,
+        "en": {
+            "text": "Which bird is not migrating?",
+            "answers": [
+                " jacket",
+                " post",
+                " earskuvik",
+                " pantel"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel wandert nicht?",
+            "answers": [
+                " Jacke",
+                " Post",
+                " Earskuvik",
+                " Pantel"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r nem vonul\u00f3?",
+            "answers": [
+                " cs\u00f3ka",
+                " bar\u00e1tposz\u00e1ta",
+                " f\u00fcleskuvik",
+                " pusztai \u00f6lyv"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1657,
+        "en": {
+            "text": "What does the ash spoke look like?",
+            "answers": [
+                " Green Flood",
+                " predator",
+                " songbird",
+                " wading bird"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Wie sieht die Asche aus?",
+            "answers": [
+                " Gr\u00fcne Flut",
+                " Raubtier",
+                " Singvogel",
+                " Watvogel"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Hogy n\u00e9z ki a hamvas k\u00fcll\u0151?",
+            "answers": [
+                " z\u00f6ldk\u00fcll\u0151h\u00f6z hark\u00e1ly",
+                " ragadoz\u00f3mad\u00e1r",
+                " \u00e9nekesmad\u00e1r",
+                " g\u00e1zl\u00f3mad\u00e1r"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1658,
+        "en": {
+            "text": "What was the bird of the year in 2024?",
+            "answers": [
+                " crook",
+                " garden rust",
+                " quail",
+                " southern geze"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Was war der Vogel des Jahres im Jahr 2024?",
+            "answers": [
+                " Gauner",
+                " Gartenrost",
+                " Wachtel",
+                " S\u00fcdgeze"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Mi volt 2024-ben az \u00e9v madara?",
+            "answers": [
+                " kerecsens\u00f3lyom",
+                " kerti rozsdafark\u00fa",
+                " f\u00fcrj",
+                " d\u00e9li geze"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1659,
+        "en": {
+            "text": "What kind of flamingo rarely appears in Hungary?",
+            "answers": [
+                " rosy",
+                " Chilean",
+                " Andobo",
+                " Caribbean"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Was f\u00fcr Flamingo erscheint selten in Ungarn?",
+            "answers": [
+                " rosig",
+                " chilenisch",
+                " Andobo",
+                " Karibik"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Milyen flaming\u00f3 szokott ritk\u00e1n felt\u0171nni Magyarorsz\u00e1gon?",
+            "answers": [
+                " r\u00f3zs\u00e1s",
+                " chilei",
+                " andoki",
+                " karibi"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1660,
+        "en": {
+            "text": "In what habitat can we find water leafs?",
+            "answers": [
+                " on a mountain near water",
+                " deciduous forests",
+                " at larger lakes",
+                " on beaches"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "In welchem \u200b\u200bLebensraum k\u00f6nnen wir Wasserbl\u00e4tter finden?",
+            "answers": [
+                " auf einem Berg in der N\u00e4he von Wasser",
+                " Laubw\u00e4lder",
+                " in gr\u00f6\u00dferen Seen",
+                " an Str\u00e4nden"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Milyen \u00e9l\u0151helyen tal\u00e1lhatjuk meg a v\u00edzirig\u00f3kat?",
+            "answers": [
+                " hegyen v\u00edz k\u00f6zel\u00e9ben",
+                " lombhullat\u00f3 erd\u0151kben",
+                " nagyobb tavakn\u00e1l",
+                " tengerpartokon"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1661,
+        "en": {
+            "text": "Which bird does not belong to the order of the sparrows?",
+            "answers": [
+                " hoopoe",
+                " raven",
+                " homemade sparrow",
+                " coal -tit"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel geh\u00f6rt nicht zur Ordnung der Spatzen?",
+            "answers": [
+                " Wiedehopf",
+                " Rabe",
+                " hausgemachter Spatz",
+                " Kohle -Tit"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r nem tartozik a ver\u00e9balak\u00faak rendj\u00e9be?",
+            "answers": [
+                " b\u00fabos banka",
+                " holl\u00f3",
+                " h\u00e1zi ver\u00e9b",
+                " sz\u00e9ncinege"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1662,
+        "en": {
+            "text": "Which bird does not belong to the tit?",
+            "answers": [
+                " pendulum",
+                " coal -tit",
+                " blue abe",
+                " pine"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel geh\u00f6rt nicht zur Tit?",
+            "answers": [
+                " Pendel",
+                " Kohle -Tit",
+                " Blau Abe",
+                " Kiefer"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r nem tartozik a cinegef\u00e9l\u00e9k k\u00f6z\u00e9?",
+            "answers": [
+                " f\u00fcgg\u0151cinege",
+                " sz\u00e9ncinege",
+                " k\u00e9k cinege",
+                " fenyvescinege"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1663,
+        "en": {
+            "text": "Which prey bird is not overwintering?",
+            "answers": [
+                " honey buzzard",
+                " kestrel",
+                " eagle",
+                " carnival"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Beutevogel ist nicht \u00fcberwintern?",
+            "answers": [
+                " Honey Buzzard",
+                " Turmfalke",
+                " Adler",
+                " Karneval"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik ragadoz\u00f3mad\u00e1r nem \u00e1ttelel\u0151?",
+            "answers": [
+                " dar\u00e1zs\u00f6lyv",
+                " v\u00f6r\u00f6s v\u00e9rcse",
+                " r\u00e9tisas",
+                " karvaly"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1664,
+        "en": {
+            "text": "Which bird does not belong to the lile -shaped family?",
+            "answers": [
+                " cormorant",
+                " Dankaed",
+                " bibbic",
+                " horse -drawn"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel geh\u00f6ren nicht zur lile -feiligen Familie?",
+            "answers": [
+                " Kormoran",
+                " Dankaed",
+                " bibbisch",
+                " Pferd"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r nem tartozik a lilealak\u00faak csal\u00e1dj\u00e1ba?",
+            "answers": [
+                " nagy k\u00e1r\u00f3katona",
+                " dankasir\u00e1ly",
+                " b\u00edbic",
+                " l\u00f3cs\u00e9r"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1665,
+        "en": {
+            "text": "Which bird is lile shaped?",
+            "answers": [
+                " crook",
+                " cormorant",
+                " stem",
+                " crane"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel ist lile Form?",
+            "answers": [
+                " Gauner",
+                " Kormoran",
+                " St\u00e4ngel",
+                " Kran"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r lilealak\u00fa?",
+            "answers": [
+                " pirosl\u00e1b\u00fa cank\u00f3",
+                " kis k\u00e1r\u00f3katona",
+                " sz\u00e1rcsa",
+                " daru"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1666,
+        "en": {
+            "text": "Which bird belongs to the crane -shaped family?",
+            "answers": [
+                " guvat",
+                " baler",
+                " bust",
+                " ugar"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel geh\u00f6rt zur kranf\u00f6rmigen Familie?",
+            "answers": [
+                " Guvat",
+                " Ballenpresse",
+                " B\u00fcste",
+                " Ugar"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r tartozik a darualak\u00faak csal\u00e1dj\u00e1ba?",
+            "answers": [
+                " guvat",
+                " b\u00f6l\u00f6mbika",
+                " t\u00fazok",
+                " ugarty\u00fak"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1667,
+        "en": {
+            "text": "What was the bird of the year in 2001?",
+            "answers": [
+                " nightingale",
+                " nod",
+                " sow",
+                " black stork"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Was war der Vogel des Jahres 2001?",
+            "answers": [
+                " Nachtigall",
+                " nicken",
+                " Sau",
+                " schwarzer Storch"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "2001-ben mi volt az \u00e9v madara?",
+            "answers": [
+                " f\u00fclem\u00fcle",
+                " kis posz\u00e1ta",
+                " vet\u00e9si varj\u00fa",
+                " fekete g\u00f3lya"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1668,
+        "en": {
+            "text": "Which parrot created invasive colonies in several countries in Europe?",
+            "answers": [
+                " pipeline",
+                " Bourk parrot",
+                " jacopa",
+                " rosel slap"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Papagei hat invasive Kolonien in mehreren L\u00e4ndern in Europa geschaffen?",
+            "answers": [
+                " Pipeline",
+                " Bourk Papagei",
+                " Jacopa",
+                " Rossel Slap"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik papag\u00e1j alkotott invaz\u00edv telepeket Eur\u00f3pa t\u00f6bb orsz\u00e1g\u00e1ban?",
+            "answers": [
+                " \u00f6rv\u00f6s papag\u00e1j",
+                " bourk papag\u00e1j",
+                " j\u00e1k\u00f3papag\u00e1j",
+                " rozellapapag\u00e1j"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1669,
+        "en": {
+            "text": "Which geese -shaped bird is invasive in Europe?",
+            "answers": [
+                " nile goose",
+                " swan",
+                " teal",
+                " tummy"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher G\u00e4nsevogel ist in Europa invasiv?",
+            "answers": [
+                " Nilgans",
+                " Schwan",
+                " blaugr\u00fcn",
+                " Bauch"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik l\u00fadalak\u00fa mad\u00e1r invaz\u00edv eur\u00f3p\u00e1ban?",
+            "answers": [
+                " n\u00edlusi l\u00fad",
+                " \u00e9nekes hatty\u00fa",
+                " b\u00f6jti r\u00e9ce",
+                " kis buk\u00f3"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1670,
+        "en": {
+            "text": "Which domestic bird is invasive in America?",
+            "answers": [
+                " starling",
+                " stump",
+                " doll",
+                " magpie"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Hausvogel ist in Amerika invasiv?",
+            "answers": [
+                " Star",
+                " Stumpf",
+                " Puppe",
+                " Elster"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik hazai madarunk invaz\u00edv Amerik\u00e1ban?",
+            "answers": [
+                " sereg\u00e9ly",
+                " g\u00f3lyat\u00f6cs",
+                " dolm\u00e1nyos varj\u00fa",
+                " szarka"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1671,
+        "en": {
+            "text": "Why were the starlings installed in America?",
+            "answers": [
+                "Shakespeare IV. ",
+                " they wanted to displace another invasive breed",
+                " they escaped from private holders",
+                " they wanted to hunt"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Warum wurden die Sternen in Amerika installiert?",
+            "answers": [
+                "Shakespeare IV. ",
+                " Sie wollten eine weitere invasive Rasse verdr\u00e4ngen",
+                " Sie flohen aus privaten Inhabern",
+                " Sie wollten jagen"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Mi\u00e9rt telep\u00edtett\u00e9k be a sereg\u00e9lyeket Amerik\u00e1ba?",
+            "answers": [
+                "Shakespeare IV. Henrik c\u00edm\u0171 kir\u00e1lydr\u00e1m\u00e1j\u00e1ban szerepelt",
+                " m\u00e1sik invaz\u00edv fajt akartak kiszor\u00edtani vele",
+                " mag\u00e1ntart\u00f3kt\u00f3l sz\u00f6ktek meg",
+                " vad\u00e1szni akart\u00e1k"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1672,
+        "en": {
+            "text": "Which bird is not supplied in birds of birds?",
+            "answers": [
+                " dove",
+                " big wooden",
+                " swan",
+                " cross -bodied"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel wird nicht in V\u00f6geln von V\u00f6geln geliefert?",
+            "answers": [
+                " Taube",
+                " Gro\u00dfer Holz",
+                " Schwan",
+                " Kreuzung"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Felsoroltak k\u00f6z\u00fcl melyik madarat nem l\u00e1tj\u00e1k el a mad\u00e1rment\u0151 korh\u00e1zakban?",
+            "answers": [
+                " szirti galamb",
+                " nagy fakop\u00e1ncs",
+                " b\u00fctyk\u00f6s hatty\u00fa",
+                " keresztcs\u0151r\u0171"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1673,
+        "en": {
+            "text": "Which bird does not live in Hungary?",
+            "answers": [
+                " cliff",
+                " dove",
+                " pityer",
+                " fiery"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel lebt nicht in Ungarn?",
+            "answers": [
+                " Cliff",
+                " Taube",
+                " Schade",
+                " feurig"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r nem \u00e9l magyarorsz\u00e1gon?",
+            "answers": [
+                " szirtifecske",
+                " k\u00e9k galamb",
+                " parlagi pityer",
+                " t\u00fczesfej\u0171 kir\u00e1lyka"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1674,
+        "en": {
+            "text": "Which bird does not live in Hungary?",
+            "answers": [
+                " crown",
+                " frog",
+                " hantbird",
+                " black -naked"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel lebt nicht in Ungarn?",
+            "answers": [
+                " Krone",
+                " Frosch",
+                " Hantbird",
+                " schwarz -naked"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r nem \u00e9l magyarorsz\u00e1gon?",
+            "answers": [
+                " koron\u00e1s harasztj\u00e1r\u00f3",
+                " b\u00e9k\u00e1sz\u00f3sas",
+                " hantmad\u00e1r",
+                " feketenyak\u00fa v\u00f6cs\u00f6k"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1675,
+        "en": {
+            "text": "Which owl is active during twilight?",
+            "answers": [
+                " kuvik",
+                " uhu",
+                " ear",
+                " cat"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welche Eule ist w\u00e4hrend der D\u00e4mmerung aktiv?",
+            "answers": [
+                " Kuvik",
+                " Uhu",
+                " Ohr",
+                " Katze"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik bagoly akt\u00edv sz\u00fcrk\u00fcletkor is?",
+            "answers": [
+                " kuvik",
+                " uhu",
+                " erdei f\u00fclesbagoly",
+                " macskabagoly"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1676,
+        "en": {
+            "text": "Which owl gathers into teams in the winter?",
+            "answers": [
+                " ear",
+                " kuvik",
+                " meadow owl",
+                " cat"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welche Eule versammelt sich im Winter in Teams?",
+            "answers": [
+                " Ohr",
+                " Kuvik",
+                " Wiese Owl",
+                " Katze"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik bagoly gy\u0171lik \u00f6ssze telente csapatokba?",
+            "answers": [
+                " erdei f\u00fclesbagoly",
+                " kuvik",
+                " r\u00e9ti f\u00fclesbagoly",
+                " macskabagoly"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1677,
+        "en": {
+            "text": "Which pit -shaped bird is overwintering?",
+            "answers": [
+                " gray heron",
+                " dagger",
+                " red chip",
+                " dagger"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Grub -verdr\u00e4ngte Vogel ist \u00fcberwintern?",
+            "answers": [
+                " grauer Heron",
+                " Dolch",
+                " roter Chip",
+                " Dolch"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik g\u00f6d\u00e9nyalak\u00fa mad\u00e1r \u00e1ttelel\u0151?",
+            "answers": [
+                " sz\u00fcrke g\u00e9m",
+                " nagy k\u00f3csag",
+                " v\u00f6r\u00f6s g\u00e9m",
+                " kis k\u00f3csag"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1678,
+        "en": {
+            "text": "Which bird belongs to the bis?",
+            "answers": [
+                " spoonful",
+                " big -kind",
+                " bibbic",
+                " stump"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel geh\u00f6rt zum BIS?",
+            "answers": [
+                " L\u00f6ffel",
+                " Big -fache",
+                " bibbisch",
+                " Stumpf"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r tartozik az \u00edbiszf\u00e9l\u00e9k k\u00f6z\u00e9?",
+            "answers": [
+                " kanalasg\u00e9m",
+                " nagy goda",
+                " b\u00edbic",
+                " g\u00f3lyat\u00f6cs"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1679,
+        "en": {
+            "text": "Which bird is a woodpecker?",
+            "answers": [
+                " green spoke",
+                " chiffchaff",
+                " fox",
+                " slot"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel ist ein Specht?",
+            "answers": [
+                " Green sprach",
+                " Chiffchaff",
+                " Fuchs",
+                " Slot"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r hark\u00e1lyf\u00e9le?",
+            "answers": [
+                " z\u00f6ld k\u00fcll\u0151",
+                " fitiszf\u00fczike",
+                " r\u00f6vidkarm\u00fa fakusz",
+                " csuszka"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1680,
+        "en": {
+            "text": "Which bird is not winter migrants?",
+            "answers": [
+                " homemade",
+                " whisker",
+                " pine fin",
+                " bone -feathered"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel ist keine Wintermigranten?",
+            "answers": [
+                " hausgemacht",
+                " Whisker",
+                " Kieferflosse",
+                " Knochen -geflossen"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r nem t\u00e9li vonul\u00f3?",
+            "answers": [
+                " h\u00e1zi rozsdafark\u00fa",
+                " s\u00fcv\u00f6lt\u0151",
+                " feny\u0151pinty",
+                " csonttoll\u00fa"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1681,
+        "en": {
+            "text": "Which songbird is not all year old?",
+            "answers": [
+                " chin",
+                " chick",
+                " cherry",
+                " forest gray"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Songbird ist nicht der ganze Jahr alt?",
+            "answers": [
+                " kinn",
+                " K\u00fcken",
+                " Kirsche",
+                " Waldgrau"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik \u00e9nekesmad\u00e1r nem eg\u00e9sz \u00e9ves?",
+            "answers": [
+                " csics\u00f6rke",
+                " cs\u00edz",
+                " meggyv\u00e1g\u00f3",
+                " erdei sz\u00fcrkebegy"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1682,
+        "en": {
+            "text": "Which bird can't fly from the ground?",
+            "answers": [
+                " black -naked",
+                " pheasant",
+                " black stripper",
+                " quail"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel kann nicht aus dem Boden fliegen?",
+            "answers": [
+                " schwarz -naked",
+                " Fasan",
+                " Schwarzer Stripper",
+                " Wachtel"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r nem tud a f\u00f6ldr\u0151l felrep\u00fclni?",
+            "answers": [
+                " feketenyak\u00fa v\u00f6cs\u00f6k",
+                " f\u00e1c\u00e1n",
+                " fekete hark\u00e1ly",
+                " f\u00fcrj"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1683,
+        "en": {
+            "text": "Which catfish bird migrates? ",
+            "answers": [
+                " cubs",
+                " spokesman",
+                " big wooden",
+                " black stripper"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Welsvogel wandert? ",
+            "answers": [
+                " Cubs",
+                " Sprecher",
+                " Gro\u00dfer Holz",
+                " Schwarzer Stripper"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik hark\u00e1lyalak\u00fa mad\u00e1r vonul\u00f3? nincs ilyen",
+            "answers": [
+                " kis fakop\u00e1ncs",
+                " hamvas k\u00fcll\u0151",
+                " nagy fakop\u00e1ncs",
+                " fekete hark\u00e1ly"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1684,
+        "en": {
+            "text": "Which is Hungary's largest wooden poppy?",
+            "answers": [
+                " black stripper",
+                " big wooden",
+                " green spoke",
+                " Balkans"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welches ist Ungarns gr\u00f6\u00dftes Holzmohn?",
+            "answers": [
+                " Schwarzer Stripper",
+                " Gro\u00dfer Holz",
+                " Green sprach",
+                " Balkan"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik Magyarorsz\u00e1g legnagyobb fakop\u00e1ncsa?",
+            "answers": [
+                " fekete hark\u00e1ly",
+                " nagy fakop\u00e1ncs",
+                " z\u00f6ld k\u00fcll\u0151",
+                " balk\u00e1ni fakop\u00e1ncs"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1685,
+        "en": {
+            "text": "Which is not a permanent thrush?",
+            "answers": [
+                " vineyard",
+                " black thrush",
+                " spleen",
+                " vocal"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welches ist keine dauerhafte Drossel?",
+            "answers": [
+                " Weinberg",
+                " Schwarzes T\u00f6pfer",
+                " Milz",
+                " Gesang"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik nem \u00e1lland\u00f3 rig\u00f3?",
+            "answers": [
+                " sz\u0151l\u0151rig\u00f3",
+                " fekete rig\u00f3",
+                " l\u00e9prig\u00f3",
+                " \u00e9nekes rig\u00f3"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1686,
+        "en": {
+            "text": "Which owl can cross over the Slovak border?",
+            "answers": [
+                " dwarf",
+                " cat",
+                " meadow owl",
+                " Uralic owl"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welche Eule kann die slowakische Grenze \u00fcberqueren?",
+            "answers": [
+                " Zwerg",
+                " Katze",
+                " Wiese Owl",
+                " Uralische Eule"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik bagoly vonulhat \u00e1t telente a Szlov\u00e1k hat\u00e1rn\u00e1l?",
+            "answers": [
+                " t\u00f6rpekuvik",
+                " macskabagoly",
+                " r\u00e9ti f\u00fclesbagoly",
+                " ur\u00e1li bagoly"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1687,
+        "en": {
+            "text": "Which crow can you find in very small numbers in Budapest?",
+            "answers": [
+                " soot",
+                " snowfall",
+                " pine",
+                " doll"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welche Kr\u00e4he k\u00f6nnen Sie in sehr kleiner Anzahl in Budapest finden?",
+            "answers": [
+                " Ru\u00df",
+                " Schneefall",
+                " Kiefer",
+                " Puppe"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik varj\u00faf\u00e9le tal\u00e1lhat\u00f3 meg nagyon kis sz\u00e1mban Budapesten?",
+            "answers": [
+                " kormos varj\u00fa",
+                " havasi cs\u00f3ka",
+                " feny\u0151szajk\u00f3",
+                " dolm\u00e1nyos varj\u00fa"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1688,
+        "en": {
+            "text": "Which bird spends the coastal in the wall in cavities?",
+            "answers": [
+                " stubble",
+                " little one",
+                " comet",
+                " patchy"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel verbringt die K\u00fcste in der Mauer in Hohlr\u00e4umen?",
+            "answers": [
+                " Stoppel",
+                " Kleine",
+                " Komet",
+                " l\u00fcckenhaft"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r k\u00f6lt partfalba v\u00e1lyt \u00fcregekben?",
+            "answers": [
+                " gyurgyalag",
+                " kis lile",
+                " \u00fcst\u00f6k\u00f6s r\u00e9ce",
+                " b\u00fabos pacsirta"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1689,
+        "en": {
+            "text": "Which bird gives you an alarm if there are too many songbirds on the feeders?",
+            "answers": [
+                " forest gray",
+                " coal -tit",
+                " Tengelic",
+                " ox"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel gibt Ihnen einen Alarm, wenn zu viele Songv\u00f6gel auf den Feeders sind?",
+            "answers": [
+                " Waldgrau",
+                " Kohle -Tit",
+                " Tegelic",
+                " Ochse"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r ad ki v\u00e9szjelz\u00e9st, ha t\u00fal sok \u00e9nekesmad\u00e1r van az etet\u0151k\u00f6n?",
+            "answers": [
+                " erdei sz\u00fcrkebegy",
+                " sz\u00e9ncinege",
+                " tengelic",
+                " \u00f6k\u00f6rszem"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1690,
+        "en": {
+            "text": "Where do the bastards nest?",
+            "answers": [
+                " to aquatic plants on lakes",
+                " lakes on sandy shores",
+                " nest",
+                " coastal rock walls"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Wo nisten die Bastarde?",
+            "answers": [
+                " zu Wasserpflanzen auf Seen",
+                " Seen an sandigen Ufern",
+                " Nest",
+                " K\u00fcstenfelsmauern"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Hol f\u00e9szkelnek a fatty\u00faszerk\u0151k?",
+            "answers": [
+                " tavakon l\u00e9v\u0151 v\u00edzin\u00f6v\u00e9nyekre",
+                " tavak melletti homokos partokon",
+                " f\u00e1kra \u00e9p\u00edtett f\u00e9szken",
+                " partmenti sziklafalakon"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1691,
+        "en": {
+            "text": "Which bird stabs its prey on spiky plants and branches?",
+            "answers": [
+                " crook",
+                " honey buzzard",
+                " jajko",
+                " brown"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel sticht seine Beute f\u00fcr stachelige Pflanzen und Zweige?",
+            "answers": [
+                " Gauner",
+                " Honey Buzzard",
+                " Jajko",
+                " braun"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r sz\u00farja fel zs\u00e1km\u00e1ny\u00e1t t\u00fcsk\u00e9s n\u00f6v\u00e9nyekre, \u00e1gakra?",
+            "answers": [
+                " nagy \u0151rg\u00e9bics",
+                " dar\u00e1zs\u00f6lyv",
+                " szajk\u00f3",
+                " barna k\u00e1nya"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1692,
+        "en": {
+            "text": "Which bird does not spend in the settlement?",
+            "answers": [
+                " capitalist",
+                " cormorant",
+                " gray heron",
+                " flamingo"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel gibt nicht in der Siedlung aus?",
+            "answers": [
+                " Kapitalist",
+                " Kormoran",
+                " grauer Heron",
+                " Flamingo"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r nem k\u00f6lt telepesen?",
+            "answers": [
+                " t\u0151k\u00e9s r\u00e9ce",
+                " nagy k\u00e1r\u00f3katona",
+                " sz\u00fcrke g\u00e9m",
+                " r\u00f3zs\u00e1s flaming\u00f3"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1693,
+        "en": {
+            "text": "Which bird avoids human -populated areas?",
+            "answers": [
+                " gypsy",
+                " dove",
+                " waters",
+                " kestrel"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Welcher Vogel vermeidet menschlich gepopte Bereiche?",
+            "answers": [
+                " Zigeuner",
+                " Taube",
+                " Wasser",
+                " Turmfalke"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Melyik mad\u00e1r ker\u00fcli az emberlakta ter\u00fcleteket?",
+            "answers": [
+                " cig\u00e1nycsuk",
+                " \u00f6rv\u00f6s galamb",
+                " v\u00edzity\u00fak",
+                " v\u00f6r\u00f6s v\u00e9rcse"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    },
+    {
+        "id": 1694,
+        "en": {
+            "text": "When were the pigeons domesticated?",
+            "answers": [
+                "4-6000 years ago",
+                "1-2000 years ago",
+                " 200 years ago",
+                " 10000 years ago"
+            ],
+            "correct_answer_index": 0
+        },
+        "de": {
+            "text": "Wann wurden die Tauben domestiziert?",
+            "answers": [
+                "Vor 4-6000 Jahren",
+                "Vor 1-2000 Jahren",
+                " Vor 200 Jahren",
+                " Vor 10000 Jahren"
+            ],
+            "correct_answer_index": 0
+        },
+        "hu": {
+            "text": "Mikor h\u00e1zias\u00edtott\u00e1k a galambokat?",
+            "answers": [
+                "4-6000 \u00e9ve",
+                "1-2000 \u00e9ve",
+                " 200 \u00e9ve",
+                " 10000 \u00e9ve"
+            ],
+            "correct_answer_index": 0
+        },
+        "difficulty": "Easy",
+        "topic": "biology"
+    }
+]

@@ -1,0 +1,197 @@
+[
+    {
+        "value": "Where is it thought that the banjo originated?",
+        "answers": [
+            "Africa",
+            "New York City",
+            "Bangladesh",
+            "Coolsville"
+        ],
+        "correct_answer": "Africa",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1111
+    },
+    {
+        "value": "Which of these bands was led by a singer from Africa?",
+        "answers": [
+            "Queen",
+            "Jonas Brothers",
+            "The Who",
+            "The Beatles"
+        ],
+        "correct_answer": "Queen",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1112
+    },
+    {
+        "value": "Which of these musical movements did Ludwig van Beethoven help introduce?",
+        "answers": [
+            "Romanticism",
+            "Classicism",
+            "Lyricism",
+            "Idealism"
+        ],
+        "correct_answer": "Romanticism",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1113
+    },
+    {
+        "value": "Which of these '80s gadgets was originally marketed in the U.S. as ´Soundabout´?",
+        "answers": [
+            "Walkman",
+            "VCR",
+            "Calculator watch",
+            "Game Boy"
+        ],
+        "correct_answer": "Walkman",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1114
+    },
+    {
+        "value": "The best-selling album of all time was released in 1982. Who recorded it?",
+        "answers": [
+            "Michael Jackson",
+            "Whitney Houston",
+            "Billy Joel",
+            "Madonna"
+        ],
+        "correct_answer": "Michael Jackson",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1115
+    },
+    {
+        "value": "Which of these famous musical acts did not participate in the 1985 fundraising song “We Are the World“?",
+        "answers": [
+            "Prince",
+            "Bob Dylan",
+            "Lionel Ritchie",
+            "Cyndi Lauper"
+        ],
+        "correct_answer": "Prince",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1116
+    },
+    {
+        "value": "“Shape of You“ is by?",
+        "answers": [
+            "Ed Sheeran",
+            "Justin Bieber",
+            "Sam Smith",
+            "Shawn Mendes"
+        ],
+        "correct_answer": "Ed Sheeran",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1117
+    },
+    {
+        "value": "“Party Rock Anthem“ is a popular hit song from the 2010s..",
+        "answers": [
+            "LMFAO",
+            "One Direction",
+            "Black Eyed Peas",
+            "Fun"
+        ],
+        "correct_answer": "LMFAO",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1118
+    },
+    {
+        "value": "Who is the artist behind “Chandelier“?",
+        "answers": [
+            "Sia",
+            "Dua Lipa",
+            "Rihanna Lady",
+            "Gaga"
+        ],
+        "correct_answer": "Sia",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1119
+    },
+    {
+        "value": "“Wake Me Up!“ is a song by?",
+        "answers": [
+            "Avicii",
+            "Alan Walker",
+            "Martin Garrix",
+            "ABBA"
+        ],
+        "correct_answer": "Avicii",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1120
+    },
+    {
+        "value": "“Hello“ - hit song by?",
+        "answers": [
+            "Adele",
+            "Meghan Trainor",
+            "Billie Eilish",
+            "Sia"
+        ],
+        "correct_answer": "Adele",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1121
+    },
+    {
+        "value": "“Waka Waka (This Time for Africa)“ - who's song is it?",
+        "answers": [
+            "Shakira",
+            "Nicki Manaj",
+            "Mariah Carey",
+            "Nelly Furtado"
+        ],
+        "correct_answer": "Shakira",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1122
+    },
+    {
+        "value": "“That's What I Like“ is a song by?",
+        "answers": [
+            "Bruno Mars",
+            "The Weeknd",
+            "Post Malone",
+            "Anderson .Paak"
+        ],
+        "correct_answer": "Bruno Mars",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1123
+    },
+    {
+        "value": "“Shake It Off“ is popular a song by?",
+        "answers": [
+            "Taylor Swift",
+            "Jennifer Lopez",
+            "p!nk",
+            "Gwen Stefani"
+        ],
+        "correct_answer": "Taylor Swift",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1124
+    },
+    {
+        "value": "“Rockabye“ is a song by(e)?",
+        "answers": [
+            "Clean Bandit",
+            "Demi Lovato",
+            "the Chainsmokes",
+            "DJ Snake"
+        ],
+        "correct_answer": "Clean Bandit",
+        "difficulty": "easy",
+        "topic": "music",
+        "id": 1125
+    }
+]

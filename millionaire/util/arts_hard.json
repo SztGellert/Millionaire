@@ -1,0 +1,197 @@
+[
+    {
+        "value": "What is the positive space in an artwork?",
+        "answers": [
+            "The area taken up by the object",
+            "The area in front of an object",
+            "The area behind an object",
+            "The area outside"
+        ],
+        "correct_answer": "The area taken up by the object",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 741
+    },
+    {
+        "value": "The closer an object is the _______ it is.",
+        "answers": [
+            "Larger",
+            "Smaller",
+            "Higher",
+            "Brighter"
+        ],
+        "correct_answer": "Larger",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 742
+    },
+    {
+        "value": "n art, overlapping is _______ ?",
+        "answers": [
+            "The placement of one object in  front of another",
+            "The stacking of one object on top of another",
+            "The blending of shades",
+            "The mixing of colors"
+        ],
+        "correct_answer": "The placement of one object in  front of another",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 743
+    },
+    {
+        "value": "How does an artist use detail to make an artwork appear to have deep space?",
+        "answers": [
+            "The details are fuzzy far away",
+            "The details are always in the distance",
+            "The details are clear far away",
+            "They don't use details"
+        ],
+        "correct_answer": "The details are fuzzy far away",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 744
+    },
+    {
+        "value": "Trees and buildings should appear _______ as they go away from us.",
+        "answers": [
+            "Smaller",
+            "Larger",
+            "Same height",
+            "None"
+        ],
+        "correct_answer": "Smaller",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 745
+    },
+    {
+        "value": "What is the appearance of distance on a flat surface?",
+        "answers": [
+            "Depth",
+            "Texture",
+            "Space",
+            "None"
+        ],
+        "correct_answer": "Depth",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 746
+    },
+    {
+        "value": "The area nearest the viewer in a landscape composition is called the _______?",
+        "answers": [
+            "Foreground",
+            "Middleground",
+            "Background",
+            "Baseground"
+        ],
+        "correct_answer": "Foreground",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 747
+    },
+    {
+        "value": "Where did Fauvism originate?",
+        "answers": [
+            "France",
+            "America",
+            "Germany",
+            "None of these"
+        ],
+        "correct_answer": "France",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 748
+    },
+    {
+        "value": "Which artist was not fauvist?",
+        "answers": [
+            "Edvard Munch",
+            "Henri Matisse",
+            "André Derain",
+            "Georges Braque"
+        ],
+        "correct_answer": "Edvard Munch",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 749
+    },
+    {
+        "value": "Fauvism came to be known as the first new artistic style of the..?",
+        "answers": [
+            "20th century",
+            "19th century",
+            "18th century",
+            "17th century"
+        ],
+        "correct_answer": "20th century",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 750
+    },
+    {
+        "value": "Fauves primarily focused on which of the following elements in their paintings?",
+        "answers": [
+            "Bright, cheesy landscapes and figure paintings",
+            "Religious theme with dark colors",
+            "Geometrical patterns with dark colors",
+            "Dark abstract artworks"
+        ],
+        "correct_answer": "Bright, cheesy landscapes and figure paintings",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 751
+    },
+    {
+        "value": "In western art, as found in many artistic work, the idea of primitivism was usually borrowed from..?",
+        "answers": [
+            "Both A & B",
+            "None of these",
+            "Prehistoric people",
+            "Non-western people"
+        ],
+        "correct_answer": "Both A & B",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 752
+    },
+    {
+        "value": "Neo-primitivism was a ______ art movement.",
+        "answers": [
+            "Russian",
+            "Chinese",
+            "European",
+            "American"
+        ],
+        "correct_answer": "Russian",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 753
+    },
+    {
+        "value": "Fauvists were..",
+        "answers": [
+            "Fed up with the old ways of paintings",
+            "Trying to learn the old ways of paintings",
+            "Inspired by the old ways of paintings",
+            "None of these is true"
+        ],
+        "correct_answer": "Fed up with the old ways of paintings",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 754
+    },
+    {
+        "value": "What is the Japanese art of flower arranging called?",
+        "answers": [
+            "Ikebana",
+            "Ukiyo-e",
+            "Origami",
+            "Manga"
+        ],
+        "correct_answer": "Ikebana",
+        "difficulty": "hard",
+        "topic": "arts",
+        "id": 755
+    }
+]
