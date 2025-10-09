@@ -1,0 +1,223 @@
+[
+    {
+        "value": "Excessive secretion from the pituitary gland in the children results in?",
+        "answers": [
+            "increased height",
+            "retarded growth",
+            "weakening of bones",
+            "None of the above"
+        ],
+        "correct_answer": "increased height",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 171
+    },
+    {
+        "value": "What is the study of heredity?",
+        "answers": [
+            "Genetics",
+            "Paleontology",
+            "Macrobiology",
+            "Zoology"
+        ],
+        "correct_answer": "Genetics",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 172
+    },
+    {
+        "value": "Which is an example of viral infection?",
+        "answers": [
+            "Polio",
+            "Rheumatism hard",
+            "Stroke",
+            "Gout"
+        ],
+        "correct_answer": "Polio",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 173
+    },
+    {
+        "value": "The Przewalski's horse is native to \u2026?",
+        "answers": [
+            "Mongolia",
+            "Sweden",
+            "Alaska",
+            "Chile"
+        ],
+        "correct_answer": "Mongolia",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 174
+    },
+    {
+        "value": "When did Darwin publish \"On the Origin of Species\"?",
+        "answers": [
+            "1859",
+            "1912",
+            "1735",
+            "1788"
+        ],
+        "correct_answer": "1859",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 175
+    },
+    {
+        "value": "The shape of DNA is known as the \u2026?",
+        "answers": [
+            "Double helix",
+            "Beta hairpin",
+            "Zinc finger",
+            "Coiled-coil"
+        ],
+        "correct_answer": "Double helix",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 176
+    },
+    {
+        "value": "Where in the human body is the epiglottis?",
+        "answers": [
+            "Voice box",
+            "Ear",
+            "Stomach",
+            "Liver"
+        ],
+        "correct_answer": "Voice box",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 177
+    },
+    {
+        "value": "Mycobacterium leprae causes leprosy, Corynebacterium diphtheria causes diphtheria and Vibrio comma causes?",
+        "answers": [
+            "cholera",
+            "influenza",
+            "tetanus",
+            "typhoid"
+        ],
+        "correct_answer": "cholera",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 178
+    },
+    {
+        "value": "Ptyalin is an enzyme produced in the?",
+        "answers": [
+            "salivary glands",
+            "pituitary glands",
+            "thyroid glands",
+            "pancreas"
+        ],
+        "correct_answer": "salivary glands",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 179
+    },
+    {
+        "value": "Pollination by wind is called?",
+        "answers": [
+            "anemophily",
+            "hydrophily",
+            "zoophily",
+            "entomophily"
+        ],
+        "correct_answer": "anemophily",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 180
+    },
+    {
+        "value": "Mutation is?",
+        "answers": [
+            "a change that is inherited",
+            "a change which affects the offspring of F2 generation only",
+            "a factor responsible for plant growth",
+            "a change which affects the parents"
+        ],
+        "correct_answer": "a change that is inherited",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 181
+    },
+    {
+        "value": "Plants that grow under average temperature and moisture are called?",
+        "answers": [
+            "mesophytes",
+            "xerophytes",
+            "hydrophytes",
+            "halophytes"
+        ],
+        "correct_answer": "mesophytes",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 182
+    },
+    {
+        "value": "Mumps is a disease caused by?",
+        "answers": [
+            "virus",
+            "bacterium",
+            "fungus",
+            "None of these"
+        ],
+        "correct_answer": "virus",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 183
+    },
+    {
+        "value": "Rain water helps to increase the ____ to some extent.",
+        "answers": [
+            "calcium contents",
+            "nitrogen contents",
+            "phosphorous contents",
+            "potash contents"
+        ],
+        "correct_answer": "calcium contents",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 184
+    },
+    {
+        "value": "Number of chromosomes in Down's syndrome is?",
+        "answers": [
+            "47",
+            "48",
+            "46",
+            "49"
+        ],
+        "correct_answer": "47",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 185
+    },
+    {
+        "value": "Outer covering of virus made up of protein is?",
+        "answers": [
+            "capsid",
+            "coat",
+            "virion",
+            "viriod"
+        ],
+        "correct_answer": "capsid",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 186
+    },
+    {
+        "value": "What are methanogens?",
+        "answers": [
+            "Prokaryotes",
+            "Ethnicities",
+            "Materials",
+            "Robots"
+        ],
+        "correct_answer": "Prokaryotes",
+        "difficulty": "hard",
+        "topic": "biology",
+        "id": 187
+    }
+]

@@ -1,0 +1,197 @@
+[
+    {
+        "value": "Which of these fast-food slogans featured prominently in the 1984 presidential election?",
+        "answers": [
+            "“Where's the beef?“",
+            "“Have it your way.“",
+            "“It's finger lickin' good.“",
+            "“Think outside the bun.“"
+        ],
+        "correct_answer": "“Where's the beef?“",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1218
+    },
+    {
+        "value": "Responding to a question from an elementary-school student, Nancy Reagan came up with which of these slogans?",
+        "answers": [
+            "“Just say no“",
+            "“Friends don't let friends drive drunk“",
+            "“A mind is a terrible thing to waste“",
+            "“Take a bite out of crime“"
+        ],
+        "correct_answer": "“Just say no“",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1219
+    },
+    {
+        "value": "In 1982 Great Britain fought an undeclared war with what nation to maintain control of the Falkland Islands?",
+        "answers": [
+            "Argentina",
+            "The Soviet Union",
+            "Libya",
+            "South Africa"
+        ],
+        "correct_answer": "Argentina",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1220
+    },
+    {
+        "value": "History's worst nuclear accident, the 1986 Chernobyl meltdown, occurred in the Soviet Union where what country is now?",
+        "answers": [
+            "Ukraine",
+            "Poland",
+            "Belarus",
+            "Russia"
+        ],
+        "correct_answer": "Ukraine",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1221
+    },
+    {
+        "value": "In honor of his first full-length animated film, Walt Disney was presented with what kind of special Oscar?",
+        "answers": [
+            "A regular-sized Oscar and seven smaller ones",
+            "an Oscar with a long nose",
+            "an Oscar wearing glass slippers",
+            "a deer-shaped Oscar"
+        ],
+        "correct_answer": "A regular-sized Oscar and seven smaller ones",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1222
+    },
+    {
+        "value": "The first time a woman won the Academy Award for directing was for which movie?",
+        "answers": [
+            "The Hurt Locker",
+            "Big",
+            "The Power of the Dog",
+            "Big"
+        ],
+        "correct_answer": "The Hurt Locker",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1223
+    },
+    {
+        "value": "One of the Oscars' most memorable mix-ups, what movie was mistakenly announced as the 2016 best picture instead of the real winner, Moonlight?",
+        "answers": [
+            "La La Land",
+            "The Shape of Water",
+            "Green Book",
+            "Spotlight"
+        ],
+        "correct_answer": "La La Land",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1224
+    },
+    {
+        "value": "What actor won back-to-back best actor Oscars in 1994 and 1995?",
+        "answers": [
+            "Tom Hanks",
+            "Kevin Costner",
+            "Leonardo DiCaprio",
+            "Tom Cruise"
+        ],
+        "correct_answer": "Tom Hanks",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1225
+    },
+    {
+        "value": "In what memorable way did Marlon Brando refuse to accept his Oscar for his portrayal of Don Vito Corleone?",
+        "answers": [
+            "Having an indigenous activist refuse his award and make a speech",
+            "throwing the award into the crowd",
+            "handing the award to the person he thought should have won",
+            "reading the credits from The Godfather"
+        ],
+        "correct_answer": "Having an indigenous activist refuse his award and make a speech",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1226
+    },
+    {
+        "value": "Which of these items is named for a deadly weapon?",
+        "answers": [
+            "Stiletto heel",
+            "Fedora hat",
+            "Brogue shoes",
+            "Henley shirt"
+        ],
+        "correct_answer": "Stiletto heel",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1227
+    },
+    {
+        "value": "Which of these can be traced back to the Persian words for “waist” and “band”?",
+        "answers": [
+            "cummerbund",
+            "pashmina",
+            "jodpurs",
+            "dirndl"
+        ],
+        "correct_answer": "cummerbund",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1228
+    },
+    {
+        "value": "A milliner is someone who designs and sells?",
+        "answers": [
+            "hats",
+            "shoes",
+            "dresses",
+            "suits"
+        ],
+        "correct_answer": "hats",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1229
+    },
+    {
+        "value": "Epaulet comes from the French word for what body part?",
+        "answers": [
+            "shoulder",
+            "wrist",
+            "ankle",
+            "butt"
+        ],
+        "correct_answer": "shoulder",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1230
+    },
+    {
+        "value": "Which of the following was named for a nuclear weapons testing site?",
+        "answers": [
+            "bikini",
+            "spandex",
+            "derby",
+            "sarong"
+        ],
+        "correct_answer": "bikini",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1231
+    },
+    {
+        "value": "Which of these words comes from the name of a country?",
+        "answers": [
+            "suede",
+            "silk",
+            "gingham",
+            "fleece"
+        ],
+        "correct_answer": "suede",
+        "difficulty": "medium",
+        "topic": "general",
+        "id": 1232
+    }
+]

@@ -1,0 +1,41 @@
+Melyik madár nem tartozik a valódi fecskefélék családjába?; sarlósfecske; füsti fecske; molnárfecske; partifecske
+Hány fajta gólya él magyarországon?; 2; 3; 1; 12
+Melyik madár nem vonuló?; csóka; barátposzáta; füleskuvik; pusztai ölyv
+Hogy néz ki a hamvas küllő?; zöldküllőhöz harkály; ragadozómadár; énekesmadár; gázlómadár
+Mi volt 2024-ben az év madara?; kerecsensólyom; kerti rozsdafarkú; fürj; déli geze
+Milyen flamingó szokott ritkán feltűnni Magyarországon?; rózsás; chilei; andoki; karibi
+Milyen élőhelyen találhatjuk meg a vízirigókat?; hegyen víz közelében; lombhullató erdőkben; nagyobb tavaknál; tengerpartokon
+Melyik madár nem tartozik a verébalakúak rendjébe?; búbos banka; holló; házi veréb; széncinege
+Melyik madár nem tartozik a cinegefélék közé?; függőcinege; széncinege; kék cinege; fenyvescinege
+Melyik ragadozómadár nem áttelelő?; darázsölyv; vörös vércse; rétisas; karvaly
+Melyik madár nem tartozik a lilealakúak családjába?; nagy kárókatona; dankasirály; bíbic; lócsér
+Melyik madár lilealakú?; piroslábú cankó; kis kárókatona; szárcsa; daru
+Melyik madár tartozik a darualakúak családjába?; guvat; bölömbika; túzok; ugartyúk
+2001-ben mi volt az év madara?; fülemüle; kis poszáta; vetési varjú; fekete gólya
+Melyik papagáj alkotott invazív telepeket Európa több országában?; örvös papagáj; bourk papagáj; jákópapagáj; rozellapapagáj
+Melyik lúdalakú madár invazív európában?; nílusi lúd; énekes hattyú; böjti réce; kis bukó
+Melyik hazai madarunk invazív Amerikában?; seregély; gólyatöcs; dolmányos varjú; szarka
+Miért telepítették be a seregélyeket Amerikába?;Shakespeare IV. Henrik című királydrámájában szerepelt; másik invazív fajt akartak kiszorítani vele; magántartóktól szöktek meg; vadászni akarták
+Felsoroltak közül melyik madarat nem látják el a madármentő korházakban?; szirti galamb; nagy fakopáncs; bütykös hattyú; keresztcsőrű
+Melyik madár nem él magyarországon?; szirtifecske; kék galamb; parlagi pityer; tüzesfejű királyka
+Melyik madár nem él magyarországon?; koronás harasztjáró; békászósas; hantmadár; feketenyakú vöcsök
+Melyik bagoly aktív szürkületkor is?; kuvik; uhu; erdei fülesbagoly; macskabagoly
+Melyik bagoly gyűlik össze telente csapatokba?; erdei fülesbagoly; kuvik; réti fülesbagoly; macskabagoly
+Melyik gödényalakú madár áttelelő?; szürke gém; nagy kócsag; vörös gém; kis kócsag
+Melyik madár tartozik az íbiszfélék közé?; kanalasgém; nagy goda; bíbic; gólyatöcs
+Melyik madár harkályféle?; zöld küllő; fitiszfüzike; rövidkarmú fakusz; csuszka
+Melyik madár nem téli vonuló?; házi rozsdafarkú; süvöltő; fenyőpinty; csonttollú
+Melyik énekesmadár nem egész éves?; csicsörke; csíz; meggyvágó; erdei szürkebegy
+Melyik madár nem tud a földről felrepülni?; feketenyakú vöcsök; fácán; fekete harkály; fürj
+Melyik harkályalakú madár vonuló? nincs ilyen; kis fakopáncs; hamvas küllő; nagy fakopáncs; fekete harkály
+Melyik Magyarország legnagyobb fakopáncsa?; fekete harkály; nagy fakopáncs; zöld küllő; balkáni fakopáncs
+Melyik nem állandó rigó?; szőlőrigó; fekete rigó; léprigó; énekes rigó
+Melyik bagoly vonulhat át telente a Szlovák határnál?; törpekuvik; macskabagoly; réti fülesbagoly; uráli bagoly
+Melyik varjúféle található meg nagyon kis számban Budapesten?; kormos varjú; havasi csóka; fenyőszajkó; dolmányos varjú
+Melyik madár költ partfalba vályt üregekben?; gyurgyalag; kis lile; üstökös réce; búbos pacsirta
+Melyik madár ad ki vészjelzést, ha túl sok énekesmadár van az etetőkön?; erdei szürkebegy; széncinege; tengelic; ökörszem
+Hol fészkelnek a fattyúszerkők?; tavakon lévő vízinövényekre; tavak melletti homokos partokon; fákra épített fészken; partmenti sziklafalakon
+Melyik madár szúrja fel zsákmányát tüskés növényekre, ágakra?; nagy őrgébics; darázsölyv; szajkó; barna kánya
+Melyik madár nem költ telepesen?; tőkés réce; nagy kárókatona; szürke gém; rózsás flamingó
+Melyik madár kerüli az emberlakta területeket?; cigánycsuk; örvös galamb; vízityúk; vörös vércse
+Mikor háziasították a galambokat?;4-6000 éve;1-2000 éve; 200 éve; 10000 éve

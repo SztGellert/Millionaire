@@ -1,0 +1,197 @@
+[
+    {
+        "value": "What variation might one play in tennis?",
+        "answers": [
+            "Australian doubles",
+            "Australian rules",
+            "Australian lager",
+            "Australian crawl"
+        ],
+        "correct_answer": "Australian doubles",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1313
+    },
+    {
+        "value": "Which heavyweight boxer proclaimed “I am the greatest“ after his win over Sonny Liston?",
+        "answers": [
+            "Muhammad Ali",
+            "George Foreman",
+            "James J. Braddock",
+            "Evander Holyfield"
+        ],
+        "correct_answer": "Muhammad Ali",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1314
+    },
+    {
+        "value": "Which athlete is the most-decorated Olympian of all time, with a total haul of 28 medals, including 23 golds, of which a record 8 golds were won in a single Games?",
+        "answers": [
+            "Michael Phelps",
+            "Carl Lewis",
+            "Mark Spitz",
+            "Simone Biles"
+        ],
+        "correct_answer": "Michael Phelps",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1315
+    },
+    {
+        "value": "Who set a 100-meter world record at the 2008 Olympic Games in Beijing while running with an untied shoe?",
+        "answers": [
+            "Usain Bolt",
+            "Jackie Joyner-Kersee",
+            "Ben Johnson",
+            "Carl Lewis"
+        ],
+        "correct_answer": "Usain Bolt",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1316
+    },
+    {
+        "value": "One of the best basketball players in NBA history, who left the sport in 1994 to try his hand at professional baseball?",
+        "answers": [
+            "Michael Jordan",
+            "Kobe Bryant",
+            "Magic Johnson",
+            "Wilt Chamberlain"
+        ],
+        "correct_answer": "Michael Jordan",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1317
+    },
+    {
+        "value": "Helping Brazil beat Sweden 5-2, at 17 years old, who is the youngest person to play and win in a World Cup final?",
+        "answers": [
+            "Pelé",
+            "Diego Maradona",
+            "Lionel Messi",
+            "Christiano Ronaldo"
+        ],
+        "correct_answer": "Pelé",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1318
+    },
+    {
+        "value": "With 23 victories, who has the most singles Grand Slam wins in the open era of tennis?",
+        "answers": [
+            "Serena Williams",
+            "Pete Sammpras",
+            "Andre Agassi",
+            "Venus Williams"
+        ],
+        "correct_answer": "Serena Williams",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1319
+    },
+    {
+        "value": "In 2010, which one of these teams was not in the semifinals?",
+        "answers": [
+            "England",
+            "Spain",
+            "Netherlands",
+            "Uruguay"
+        ],
+        "correct_answer": "England",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1320
+    },
+    {
+        "value": "Starting in 2026, how many national teams will compete in the World Cup?",
+        "answers": [
+            "48",
+            "16",
+            "64",
+            "100"
+        ],
+        "correct_answer": "48",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1321
+    },
+    {
+        "value": "Which country won the World Cup in 2018?",
+        "answers": [
+            "France",
+            "USA",
+            "Croatia",
+            "South Korea"
+        ],
+        "correct_answer": "France",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1322
+    },
+    {
+        "value": "Which country hosted the 2022 World Cup?",
+        "answers": [
+            "Qatar",
+            "Mexico",
+            "England",
+            "Japan"
+        ],
+        "correct_answer": "Qatar",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1323
+    },
+    {
+        "value": "What is the name of Diego Maradona's infamous first goal against England in 1986?",
+        "answers": [
+            "Hand of God",
+            "It doesen't have a name",
+            "Scorpion",
+            "Maradona Miracle"
+        ],
+        "correct_answer": "Hand of God",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1324
+    },
+    {
+        "value": "How often does the World Cup take place?",
+        "answers": [
+            "every four years",
+            "twice a year",
+            "every two years",
+            "every year"
+        ],
+        "correct_answer": "every four years",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1325
+    },
+    {
+        "value": "Which country has won the most World Cups?",
+        "answers": [
+            "Brazil",
+            "Italy",
+            "Germany",
+            "Argentina"
+        ],
+        "correct_answer": "Brazil",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1326
+    },
+    {
+        "value": "Years later, claiming it was revenge for the Falklands War, Diego Maradona's infamous “Hand of God“ soccer play helped defeat and enrage what nation?",
+        "answers": [
+            "England",
+            "France",
+            "Spain",
+            "Brazil"
+        ],
+        "correct_answer": "England",
+        "difficulty": "easy",
+        "topic": "sports",
+        "id": 1327
+    }
+]

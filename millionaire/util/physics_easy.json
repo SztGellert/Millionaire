@@ -1,0 +1,249 @@
+[
+    {
+        "value": "Decibel is the unit used for measuring what?",
+        "answers": [
+            "loudness",
+            "pitch",
+            "temperature",
+            "amplitude"
+        ],
+        "correct_answer": "loudness",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 899
+    },
+    {
+        "value": "What instrument measures and records the relative humidity of air?",
+        "answers": [
+            "hygrometer",
+            "photometer",
+            "pH meter",
+            "thermometer"
+        ],
+        "correct_answer": "hygrometer",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 900
+    },
+    {
+        "value": "The thought experiment known as Schrödinger's cat postulates that a cat can be in two states at the same time. What are those two states?",
+        "answers": [
+            "alive and dead",
+            "kitten and adult",
+            "awake and asleep",
+            "moving and stationary"
+        ],
+        "correct_answer": "alive and dead",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 901
+    },
+    {
+        "value": "What term refers to the change of velocity with time?",
+        "answers": [
+            "Acceleration",
+            "gravity",
+            "motion",
+            "distance"
+        ],
+        "correct_answer": "Acceleration",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 902
+    },
+    {
+        "value": "What is used to measure wind speed?",
+        "answers": [
+            "anemometer",
+            "barometer",
+            "dynamometer",
+            "altimeter"
+        ],
+        "correct_answer": "anemometer",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 903
+    },
+    {
+        "value": "What is the other name of strong force?",
+        "answers": [
+            "nuclear force",
+            "magnetic force",
+            "gravitational force",
+            "electrical force"
+        ],
+        "correct_answer": "nuclear force",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 904
+    },
+    {
+        "value": "Which is the weakest force in nature?",
+        "answers": [
+            "Gravity",
+            "Electromagnetic force",
+            "Strong force",
+            "Weak force"
+        ],
+        "correct_answer": "Gravity",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 905
+    },
+    {
+        "value": "Pierre Gassendi, a French philosopher-scientist, observed gunfire from a distance in order to measure which natural phenomenon?",
+        "answers": [
+            "the speed of sound",
+            "gravity",
+            "atmospheric interference",
+            "the speed of light"
+        ],
+        "correct_answer": "the speed of sound",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 906
+    },
+    {
+        "value": "What is the unit of measurement of the electromotive force?",
+        "answers": [
+            "volt",
+            "watt",
+            "hertz",
+            "pascal"
+        ],
+        "correct_answer": "volt",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 907
+    },
+    {
+        "value": "What material emits light when exposed to radiation?",
+        "answers": [
+            "phosphor",
+            "alexandrite",
+            "chromophore",
+            "melanophore"
+        ],
+        "correct_answer": "phosphor",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 908
+    },
+    {
+        "value": "What is Newton''s first law of motion about?",
+        "answers": [
+            "inertia",
+            "work",
+            "momentum",
+            "torque"
+        ],
+        "correct_answer": "inertia",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 909
+    },
+    {
+        "value": "What is the unit of measure for cycles per second?",
+        "answers": [
+            "hertz",
+            "decibel",
+            "ampere",
+            "ohm"
+        ],
+        "correct_answer": "hertz",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 910
+    },
+    {
+        "value": "A candela is the SI unit for what?",
+        "answers": [
+            "luminous intensity",
+            "radioactivity inductance",
+            "amount of a substance",
+            "heat intensity"
+        ],
+        "correct_answer": "luminous intensity",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 911
+    },
+    {
+        "value": "What is used to split white light into different colors?",
+        "answers": [
+            "prism",
+            "mirror",
+            "thermometer",
+            "magnifying glass"
+        ],
+        "correct_answer": "prism",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 912
+    },
+    {
+        "value": "What is vaporization of dry ice an example of?",
+        "answers": [
+            "sublimation",
+            "condensation",
+            "evaporation",
+            "cavitation"
+        ],
+        "correct_answer": "sublimation",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 913
+    },
+    {
+        "value": "What is the SI unit of an electric charge?",
+        "answers": [
+            "coulomb",
+            "second",
+            "ampere",
+            "kelvin"
+        ],
+        "correct_answer": "coulomb",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 914
+    },
+    {
+        "value": "Who proposed the general theory of relativity?",
+        "answers": [
+            "Albert Einstein",
+            "Richard Feynman",
+            "Karl Schwarzschild",
+            "Hendrik Lorentz"
+        ],
+        "correct_answer": "Albert Einstein",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 915
+    },
+    {
+        "value": "Who discovered the rotating magnetic field?",
+        "answers": [
+            "Nikola Tesla",
+            "Georgy Flerov",
+            "Paul Langevin",
+            "Pierre Curie"
+        ],
+        "correct_answer": "Nikola Tesla",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 916
+    },
+    {
+        "value": "What causes the perceived pitch of the object to be higher when an object moves closer to the source?",
+        "answers": [
+            "Doppler effect",
+            "Christofilos effect",
+            "Evershed effect",
+            "Glasser effect"
+        ],
+        "correct_answer": "Doppler effect",
+        "difficulty": "easy",
+        "topic": "physics",
+        "id": 917
+    }
+]

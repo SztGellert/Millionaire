@@ -1,0 +1,197 @@
+[
+    {
+        "value": "How many factors are there in 71?",
+        "answers": [
+            "2",
+            "1",
+            "3",
+            "None of these"
+        ],
+        "correct_answer": "2",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 867
+    },
+    {
+        "value": "What is the average value of 25, 20, 23 and 22?",
+        "answers": [
+            "22.5",
+            "21.5",
+            "20",
+            "24"
+        ],
+        "correct_answer": "22.5",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 868
+    },
+    {
+        "value": "What is the sum of one digit prime numbers?",
+        "answers": [
+            "17",
+            "15",
+            "13",
+            "11"
+        ],
+        "correct_answer": "17",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 869
+    },
+    {
+        "value": "How many hours in 90 minutes?",
+        "answers": [
+            "1.5 hours",
+            "1.30 hours",
+            "1 hour",
+            "None of these"
+        ],
+        "correct_answer": "1.5 hours",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 870
+    },
+    {
+        "value": "The distance light travels in one year is approximately 5,870,000,000,000 miles. The distance light travels in 100 years is:",
+        "answers": [
+            "587 * 10^12 miles",
+            "587 * 10^8 miles",
+            "587 * 10^10 miles",
+            "587 * 10^-10 miles"
+        ],
+        "correct_answer": "587 * 10^12 miles",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 871
+    },
+    {
+        "value": "A number is divisible by 3 if the sum of its digits is divisible by ..?",
+        "answers": [
+            "3",
+            "2",
+            "1",
+            "5"
+        ],
+        "correct_answer": "3",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 872
+    },
+    {
+        "value": "If a number has an even number or zero at its unit place, the number is always divisible by …… ?",
+        "answers": [
+            "2",
+            "5",
+            "3",
+            "7"
+        ],
+        "correct_answer": "2",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 873
+    },
+    {
+        "value": "A number is divisible by 5 if its unit digit is ..?",
+        "answers": [
+            "0 or 5",
+            "10 or 0",
+            "2 or 0",
+            "None of these"
+        ],
+        "correct_answer": "0 or 5",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 874
+    },
+    {
+        "value": "Name a triangle whose two angles are equal.",
+        "answers": [
+            "Isosceles triangle",
+            "Right angle triangle",
+            "Scalene triangle",
+            "None of these"
+        ],
+        "correct_answer": "Isosceles triangle",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 875
+    },
+    {
+        "value": "How many lines can be drawn through two points?",
+        "answers": [
+            "1",
+            "2",
+            "3",
+            "Not possible"
+        ],
+        "correct_answer": "1",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 876
+    },
+    {
+        "value": "Factors of 9 are ...",
+        "answers": [
+            "None of these",
+            "1, 6 and 9",
+            "1, 2, 3 and 9",
+            "1, 2 and 3"
+        ],
+        "correct_answer": "None of these",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 877
+    },
+    {
+        "value": "When we multiply an exact number by zero what will be the exact answer?",
+        "answers": [
+            "zero",
+            "the exact number",
+            "cannot be multiplied",
+            "None of these"
+        ],
+        "correct_answer": "zero",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 878
+    },
+    {
+        "value": "How many diagonals are there in a quadrilateral?",
+        "answers": [
+            "2",
+            "3",
+            "4",
+            "No diagonals"
+        ],
+        "correct_answer": "2",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 879
+    },
+    {
+        "value": "How many parts are there in a triangle?",
+        "answers": [
+            "9",
+            "3",
+            "6 times.9",
+            "None of these"
+        ],
+        "correct_answer": "9",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 880
+    },
+    {
+        "value": "Which of these following set of numbers are factors of 24?",
+        "answers": [
+            "2, 3, 4, 6, 8",
+            "1, 5, 12, 18",
+            "4, 7, 24",
+            "3, 9, 12"
+        ],
+        "correct_answer": "2, 3, 4, 6, 8",
+        "difficulty": "medium",
+        "topic": "mathematics",
+        "id": 881
+    }
+]
