@@ -233,6 +233,7 @@ def play_background_music(filename, starting_time, volume=0.08):
         file_path = get_data_path() + "/sound_files/" + "general" + "/" + "background" + "/" + filename + ".wav"
         pygame.mixer.music.load(file_path)
         pygame.mixer.music.set_volume(volume)
+
         pygame.mixer.music.play(-1, starting_time)
 
 
