@@ -259,52 +259,46 @@ class MenuOption(pygame.sprite.Sprite):
             self.image.blit(self.text, [self.text_x, self.text_y])
 
         if pygame.mouse.get_pressed()[0] and self.rect.collidepoint((pygame.mouse.get_pos())):
-
+            time.sleep(0.2)
 
             if self.name in language_dictionary[util.game_language].menu.main_menu_options:
-                self.image = pygame.image.load('./data/graphics/option_selected.png').convert_alpha()
-
                 if self.name == language_dictionary[util.game_language].menu.main_menu_options[0]:
                     util.stop_sound()
                     quiz.play()
-                elif self.name == language_dictionary[util.game_language].menu.main_menu_options[1]:
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[1]:
                     util.stop_sound()
                     quiz.fastest_fingers_first()
-                elif self.name == language_dictionary[util.game_language].menu.main_menu_options[2]:
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[2]:
                     util.stop_sound()
                     quiz.show_game_structure()
                     text_screen("tutorial")
-                elif self.name == language_dictionary[util.game_language].menu.main_menu_options[3]:
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[3]:
                     options = True
-                elif self.name == language_dictionary[util.game_language].menu.main_menu_options[4]:
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[4]:
                     text_screen("credits")
-                elif self.name == language_dictionary[util.game_language].menu.main_menu_options[5]:
-                    scores_screen()
-                elif self.name == language_dictionary[util.game_language].menu.main_menu_options[-1]:
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[5]:
+                    text_screen("scores")
+                if self.name == language_dictionary[util.game_language].menu.main_menu_options[-1]:
                     util.stop_sound()
                     pygame.quit()
                     exit()
-                else:
-                    pass
 
-            elif self.name in language_dictionary[util.game_language].menu.settings_menu_options:
-
-                self.image = pygame.image.load('./data/graphics/settings_option_selected.png').convert_alpha()
+            if self.name in language_dictionary[util.game_language].menu.settings_menu_options:
 
                 if self.name == language_dictionary[util.game_language].menu.settings_menu_options[0]:
                     global lang_selection
                     lang_selection = True
-                elif self.name == language_dictionary[util.game_language].menu.settings_menu_options[1]:
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[1]:
                     if util.system_volume:
                         util.system_volume = False
                     else:
                         util.system_volume = True
-                elif self.name == language_dictionary[util.game_language].menu.settings_menu_options[2]:
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[2]:
                     if util.background_music:
                         util.background_music = False
                     else:
                         util.background_music = True
-                elif self.name == language_dictionary[util.game_language].menu.settings_menu_options[3]:
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[3]:
                     global screen
 
                     if util.full_screen:
@@ -313,21 +307,21 @@ class MenuOption(pygame.sprite.Sprite):
                     else:
                         util.full_screen = True
                         screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
-                elif self.name == language_dictionary[util.game_language].menu.settings_menu_options[4]:
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[4]:
                     global topics
                     topics = True
 
-                elif self.name == language_dictionary[util.game_language].menu.settings_menu_options[5]:
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[5]:
                     global difficulties
                     difficulties = True
 
-                elif self.name == language_dictionary[util.game_language].menu.settings_menu_options[6]:
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[6]:
                     global attitudes
                     attitudes = True
-                elif self.name == language_dictionary[util.game_language].menu.settings_menu_options[-2]:
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-2]:
                     util.init_settings(util.Language.ENGLISH.name, reset_settings=True)
 
-                elif self.name == language_dictionary[util.game_language].menu.settings_menu_options[-1]:
+                if self.name == language_dictionary[util.game_language].menu.settings_menu_options[-1]:
                     if self.type == "tutorial_option":
                         util.stop_sound()
                         global screen_active
@@ -335,20 +329,14 @@ class MenuOption(pygame.sprite.Sprite):
                     else:
                         options = False
                         update_settings_file()
-                else:
-                    pass
 
             elif self.name == language_dictionary[util.game_language].next_page:
-                self.image = pygame.image.load('./data/graphics/option_selected.png').convert_alpha()
-
                 global scores_paging
                 scores_paging += 1
 
-            elif self.name in [language_dictionary[util.game_language].en,
+            if self.name in [language_dictionary[util.game_language].en,
                              language_dictionary[util.game_language].hu,
                              language_dictionary[util.game_language].de]:
-                self.image = pygame.image.load('./data/graphics/option_selected.png').convert_alpha()
-
                 if self.name == language_dictionary[util.game_language].hu:
                     util.set_game_language(util.Language.HUNGARIAN.name)
                 elif self.name == language_dictionary[util.game_language].de:
@@ -357,9 +345,7 @@ class MenuOption(pygame.sprite.Sprite):
                     util.set_game_language(util.Language.ENGLISH.name)
                 lang_selection = False
 
-            elif self.name in language_dictionary[util.game_language].menu.settings_menu_question_topics:
-                self.image = pygame.image.load('./data/graphics/option_selected.png').convert_alpha()
-
+            if self.name in language_dictionary[util.game_language].menu.settings_menu_question_topics:
                 if util.question_topics != str(
                         list(language_dictionary[util.game_language].menu.settings_menu_question_topics).index(
                             self.name)).lower():
@@ -368,9 +354,7 @@ class MenuOption(pygame.sprite.Sprite):
                             self.name)).name)
                 topics = False
 
-            elif self.name in language_dictionary[util.game_language].menu.question_difficulty_levels:
-                self.image = pygame.image.load('./data/graphics/option_selected.png').convert_alpha()
-
+            if self.name in language_dictionary[util.game_language].menu.question_difficulty_levels:
                 if util.difficulty_levels != self.name:
                     if self.name != language_dictionary[util.game_language].menu.question_difficulty_levels[0]:
                         util.set_question_difficulty(util.Difficulty(
@@ -380,18 +364,11 @@ class MenuOption(pygame.sprite.Sprite):
                         util.set_question_difficulty(util.Difficulty.ALL.name)
                 difficulties = False
 
-            elif self.name in language_dictionary[util.game_language].menu.quizmaster_attitudes:
-                self.image = pygame.image.load('./data/graphics/option_selected.png').convert_alpha()
-
+            if self.name in language_dictionary[util.game_language].menu.quizmaster_attitudes:
                 if util.quizmaster_attitudes != self.name:
                     util.set_quizmaster_attitude(util.QuizMasterAttitude(
                         language_dictionary[util.game_language].menu.quizmaster_attitudes.index(self.name)).name)
                 attitudes = False
-
-            else:
-                pass
-
-            time.sleep(0.2)
 
     def update(self):
         if self.type == "main_menu_option":
@@ -674,159 +651,6 @@ def main():
             menu_option_group.update()
 
         pygame.display.update()
-        clock.tick(60)
-
-def scores_screen():
-    mytime = time.time()
-
-    newtime = mytime.__add__(200)
-    print(int((mytime-newtime) / 60))
-
-    pygame.time.set_timer(pygame.USEREVENT, 1000)
-
-    global screen
-    if util.full_screen:
-        screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
-    else:
-        screen = pygame.display.set_mode((1366, 768))
-
-    pygame.display.set_caption(language_dictionary[util.game_language].title)
-
-    millioniareIcon = pygame.image.load('./data/graphics/loim.png')
-    pygame.display.set_icon(millioniareIcon)
-
-    global clock
-    clock = pygame.time.Clock()
-
-    global screen_active
-    screen_active = True
-    tutorial_group = sprite_group_init([language_dictionary[util.game_language].menu.settings_menu_options[-1]],
-                                       "tutorial_option", 700)
-    is_added = False
-    global scores_paging
-    scores_paging = 1
-
-    BLACK = (0, 0, 0)
-    WHITE = (255, 255, 255)
-    GREEN = (0, 255, 0)
-    RED = (255, 0, 0)
-    pygame.init()
-    # Loop until the user clicks the close button.
-    done = False
-    # Used to manage how fast the screen updates
-    clock = pygame.time.Clock()
-    width = 20
-    height = 20
-    margin = 5
-    # -------- Main Program Loop -----------
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                exit()
-            if event.type == pygame.KEYDOWN or not screen_active:
-                return
-        # --- Game logic should go here
-        # --- Screen-clearing code goes here
-        # Here, we clear the screen to white. Don't put other drawing commands
-        # above this, or they will be erased with this command.
-        # If you want a background image, replace this clear with blit'ing the
-        # background image.
-        screen.fill(BLACK)
-        # --- Drawing code should go here
-        # for column (that is along the x axis) in range (0 = starting position,     100=number to go up to, width+margin =step by (increment by this number)
-        # adding the 255 makes it fill the entire row, as 255 is the size of the screen (both ways)
-        font = pygame.font.SysFont('Sans', 18)
-        bg_surf = pygame.image.load('./data/graphics/scores_bg.jpg').convert_alpha()
-
-        screen.blit(bg_surf, (0, 0))
-
-        font = pygame.font.SysFont('Sans', 18)
-
-        if os.path.isfile("scores.json"):
-            showed_text = ""
-            f = open("scores.json")
-            data = json.load(f)
-            scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)
-            if len(scores_sorted) > 15 and not is_added:
-                tutorial_group.add(MenuOption("scores_paging", 0, 500))
-                is_added = True
-            if len(scores_sorted) >= scores_paging * 15:
-                if scores_paging == 0:
-                    scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[:15]
-                    showed_text = "1 - 15"
-                else:
-                    scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[
-                                    ((scores_paging - 1) * 15):(scores_paging * 15)]
-                    showed_text = str(((scores_paging - 1) * 15) + 1) + " - " + str(scores_paging * 15)
-            elif len(scores_sorted) < scores_paging * 15 and len(scores_sorted) > ((scores_paging - 1) * 15):
-                showed_text = str(((scores_paging - 1) * 15) + 1) + " - " + str(len(scores_sorted))
-                scores_sorted = sorted(data, key=lambda d: d['score'], reverse=True)[
-                                ((scores_paging - 1) * 15):(scores_paging * 15)]
-            else:
-                scores_paging = 1
-
-            i = 0
-            screen_x = 200
-
-            for k in scores_sorted[0].keys():
-                text = font.render(str(k).upper(), True, (255, 148, 0))
-                temp_surface = pygame.Surface(text.get_size())
-                temp_surface.fill((0, 0, 0))
-                temp_surface.blit(text, (0, 0))
-                # screen.blit(temp_surface, (0, 0))
-                screen.blit(temp_surface, [screen_x, 0 + (i * 25)])
-                screen_x+= 100
-            i = 1
-
-            for item in scores_sorted:
-                screen_x = 200
-
-                for k, v in item.items():
-
-
-                    if k == "topic":
-                        v = list(language_dictionary[util.game_language].menu.settings_menu_question_topics)[
-                            util.Topics[v].value]
-
-                    text = font.render(str(v), True, (255, 148, 0))
-                    temp_surface = pygame.Surface(text.get_size())
-                    temp_surface.fill((0, 0, 0))
-                    temp_surface.blit(text, (0, 0))
-                    #screen.blit(temp_surface, (0, 0))
-                    screen.blit(temp_surface, [screen_x, 0 + (i * 25)])
-
-                    screen_x += 100
-
-                i += 1
-            f.close()
-
-            text = font.render(language_dictionary[util.game_language].showed + ": " + showed_text, True,
-                               (255, 148, 0))
-            screen.blit(text, [968, 450])
-        else:
-            text = font.render(language_dictionary[util.game_language].menu.empty_scores, True, (255, 148, 0))
-            screen.blit(text, [0, 0])
-
-        tutorial_group.draw(screen)
-        tutorial_group.update()
-
-
-        no_of_rows = 8
-        no_of_cols = 8
-
-        x0, y0 = 20, 20  # just for example
-        dx, dy = 70, 16  # just for example
-
-        #for row in range(no_of_rows):
-        #    for col in range(no_of_cols):
-        #        pygame.draw.rect(screen, 'yellow', (x0 + col * dx, y0 + row * dy, 60, 12))
-
-            # This simply draws a white rectangle to position (column)0,(row)0 and of size width(20), height(20) to the screen
-        # --- Go ahead and update the screen with what we've drawn.
-        pygame.display.flip()
-        # --- Limit to 60 frames per second
         clock.tick(60)
 
 

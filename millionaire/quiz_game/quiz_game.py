@@ -304,17 +304,16 @@ class Help(pygame.sprite.Sprite):
                 self.phone_prologue()
                 global phone_select
                 phone_select = True
+
             elif self.type in ["teacher", "chewbacca", "random"]:
-                for ob in help_group.sprites():
-                    if ob.type in ["teacher", "chewbacca", "random"]:
-                        help_group.remove(ob)
+                global dial_event
+                global intro_duration
                 if not self.is_dialed:
                     dial_event = pygame.USEREVENT + 5
                     self.is_dialed = True
                 if dial_event != 0:
                     self.phone_dial()
                     intro_duration = self.phone_intro()
-                help_types["telephone"] = False
             elif self.type == "audience":
                 global audience_intro_duration
                 global audience_intro_event
@@ -367,15 +366,14 @@ class Help(pygame.sprite.Sprite):
             elif self.type == "audience_table":
                 pass
             else:
-
                 if help_types["telephone"]:
                     self.player_input(correct_answer)
 
-                    
                     if phone_intro_event == 0 and self.is_dialed and intro_duration <= 0:
                         for ob in help_group.sprites():
                             if ob.type in ["teacher", "chewbacca", "random"]:
                                 help_group.remove(ob)
+                        print(phone_intro_event)
                         self.phone()
                         phone_select = False
                         help_types["telephone"] = False
@@ -388,7 +386,6 @@ class Help(pygame.sprite.Sprite):
                         answers.remove(correct_answer)
                         if chance == 0:
                             selected = random.choice(answers)
-
 
     def halving(self, correct_answer):
         global obstacle_group
@@ -428,7 +425,7 @@ class Help(pygame.sprite.Sprite):
     def audience_start(self):
         if util.game_language == util.Language.HUNGARIAN.name:
             util.play_sound("push_your_buttons", 0, dir="audience")
-            # time.sleep(2)
+            time.sleep(2)
 
     def phone_prologue(self):
         global player_in_game
@@ -436,13 +433,13 @@ class Help(pygame.sprite.Sprite):
             before_phone_sounds = ["if_you_want_phone_then_i_agree", "i_didnt_want_to_advise_phone", "we_dont_phone",
                                    "phone_broke", "we_dont_phone_two"]
             before_sound = random.choice(before_phone_sounds)
-            util.play_sound(before_sound, 0, dir="phone")
+            util.play_sound(before_sound, 0, dir="phone", timer=True)
 
     def phone_dial(self):
         global dial_seconds
         if util.game_language == util.Language.HUNGARIAN.name:
             dial_sound = "colleagues_are_dialing"
-            util.play_sound(dial_sound, 0, dir="phone")
+            util.play_sound(dial_sound, 0, dir="phone", timer=True)
             dial_seconds = util.get_sound_length(dial_sound, dir="phone")
 
     def phone_intro(self) -> int:
@@ -634,7 +631,7 @@ def answer_out_of_game(level):
         sound = random.choice(music_off_sounds)
         if level > 8:
             sound = "stop_at_finish"
-        util.play_sound(sound, 0, dir="out_of_game")
+        util.play_sound(sound, 0, dir="out_of_game", timer=True)
         util.stop_music()
         out_of_game_sounds = ["and_then_out_of_game", "acknowledge_it_out_of_game", "out_of_game",
                               "out_of_game_2", "out_of_game_say_letter"]
@@ -736,11 +733,8 @@ def play():
         player = "player"
         player_in_game = "player"
         # DEBUG COMMENT HERE
-        global start_time
-        start_time = time.time()
 
-        #start_game()
-        '''
+        start_game()
         if game_language == util.Language.HUNGARIAN.name:
             for name in os.listdir(util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
                 if player.lower() == name[:-4]:
@@ -750,7 +744,7 @@ def play():
             millionaire_sounds = ["millionaire", "millionaire_1", "millionaire_2"]
             sound = random.choice(millionaire_sounds)
             util.play_sound(sound, 0, dir="intro", timer=True)
-'''
+
         global game_level
         score = 0
         is_active = True
@@ -882,7 +876,7 @@ def game_loop(level: int, question_array: {}):
     halving_time = 6
     global after_halving_event
     after_halving_event = 0
-    mark_seconds = 3
+    mark_seconds = 5
     global mark_event
     mark_event = 0
 
@@ -919,7 +913,7 @@ def game_loop(level: int, question_array: {}):
     audience_intro_duration = 0
     prize_group = pygame.sprite.GroupSingle()
     if level < 14:
-        prize_seconds = 2
+        prize_seconds = 5
     else:
         prize_seconds = 45
     prize_event = 0
@@ -957,10 +951,6 @@ def game_loop(level: int, question_array: {}):
 
     random_sound_event = pygame.USEREVENT + 10
 
-    global sound_event, sound_seconds
-    sound_event = 0
-    sound_seconds = 0
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -969,12 +959,6 @@ def game_loop(level: int, question_array: {}):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     game_active = False
-            elif event.type == sound_event:
-                sound_seconds -= 1
-                if sound_seconds == 0:
-                    sound_event = 0
-
-
             elif event.type == pygame.USEREVENT and selected != "" and type == "select":
                 if audience_event != 0:
                     audience_event = 0
@@ -984,37 +968,9 @@ def game_loop(level: int, question_array: {}):
                 counter -= 1
                 if counter < 1:
                     play_select_sounds(level, selected, last_input, out_of_game)
-
                     type = "mark"
-
-                    if selected == correct_answer_key:
-
-                        play_correct_sounds(level)
-
-                    else:
-
-                        play_incorrect_sounds(level)
-
-
-
-
-
             elif event.type == mark_event:
-
-
-
                 mark_seconds -= 1
-                if mark_seconds > 1:
-                    obstacle_group.empty()
-                    if selected == correct_answer_key:
-                        obstacle_group.add(TableElement("prize", get_prize(level)))
-                    else:
-                        obstacle_group.add(TableElement("prize", get_prize(level, correct_answer=False)))
-
-
-
-
-
             elif event.type == after_halving_event:
                 halving_time -= 1
                 if halving_time < 1:
@@ -1104,13 +1060,13 @@ def game_loop(level: int, question_array: {}):
                             audience_text += "   "
 
                 elif audience_seconds == 0:
-                    util.play_sound("audience_end", 0, general=True)
+                    util.play_sound("audience_end", 0, general=True, timer=True)
                     if util.game_language == util.Language.HUNGARIAN.name:
                         audience_after_sounds = ["after_audience", "after_audience_2", "audience_false",
                                                  "you_disagree_audience", "weights_a_lot", "believe_audience",
                                                  "audience_random"]
                         after_sound = random.choice(audience_after_sounds)
-                        util.play_sound(after_sound, 0, dir="audience")
+                        util.play_sound(after_sound, 0, dir="audience", timer=True)
                     audience_seconds = -1
                 else:
                     pass
@@ -1224,25 +1180,16 @@ def game_loop(level: int, question_array: {}):
                     if mark_seconds < 1:
                         if selected == correct_answer_key:
                             if level < 14:
-                                #if mark_seconds == 0:
-                                #    print("HEY")
-                                #    play_correct_sounds(level)
-                                #
-                                    #mark_seconds = -1
-                                #if prize_seconds == 3 and len(prize_group) == 0:
-                                #    prize_seconds -= 1
-                                #    print("CORRECT?")
-                                #    if not out_of_game:
-                                #        print("CORRECTSOUND?")
-                                #        play_correct_sounds(level)
-                                    #prize_group.add(TableElement("prize", get_prize(level)))
+                                if prize_seconds == 3 and len(prize_group) == 0:
+                                    if not out_of_game:
+                                        play_correct_sounds(level)
+                                    prize_group.add(TableElement("prize", get_prize(level)))
                                 if prize_event != 0:
-                                    print(prize_seconds)
                                     if prize_seconds == 0:
                                         if out_of_game:
                                             if game_language == util.Language.HUNGARIAN.name:
-                                                util.play_sound("out_of_game_luck", 0, dir="out_of_game")
-                                            util.play_sound("claps", 0, general=True)
+                                                util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
+                                            util.play_sound("claps", 0, general=True, timer=True)
                                             return False
                                         else:
                                             return True
@@ -1255,8 +1202,8 @@ def game_loop(level: int, question_array: {}):
                                     if prize_seconds == 0:
                                         if out_of_game:
                                             if game_language == util.Language.HUNGARIAN.name:
-                                                util.play_sound("out_of_game_luck", 0, dir="out_of_game")
-                                            util.play_sound("claps", 0, general=True)
+                                                util.play_sound("out_of_game_luck", 0, dir="out_of_game", timer=True)
+                                            util.play_sound("claps", 0, general=True, timer=True)
                                             return False
 
                                         else:
@@ -1270,15 +1217,15 @@ def game_loop(level: int, question_array: {}):
                                 if prize_seconds == 0:
                                     if out_of_game:
                                         if game_language == util.Language.HUNGARIAN.name:
-                                            util.play_sound("good_to_stop", 0, dir="out_of_game")
+                                            util.play_sound("good_to_stop", 0, dir="out_of_game", timer=True)
                                         util.clear_screen()
-                                        #time.sleep(2)
+                                        time.sleep(2)
                                         if util.game_language == util.Language.HUNGARIAN.name:
                                             sorry_sounds = ["so_sorry", "terribly_sorry"]
                                             sound = random.choice(sorry_sounds)
-                                            util.play_sound(sound, 0, dir="out_of_game")
-                                        #time.sleep(1)
-                                        util.play_sound("claps", 0, general=True)
+                                            util.play_sound(sound, 0, dir="out_of_game", timer=True)
+                                        time.sleep(1)
+                                        util.play_sound("claps", 0, general=True, timer=True)
                                     return False
 
                         prize_event = pygame.USEREVENT + 8
@@ -1390,8 +1337,7 @@ def show_game_structure():
     if util.game_language == util.Language.HUNGARIAN.name:
         prize_seconds = util.get_sound_length("prizes_description", dir="intro")
     else:
-        #prize_seconds = util.get_sound_length("start")
-        prize_seconds = 0
+        prize_seconds = util.get_sound_length("start")
 
     prize = 0
     current_prize = pygame.image.load('./data/graphics/question_0_prize.png').convert_alpha()
@@ -1434,22 +1380,22 @@ def show_game_structure():
                         util.play_sound("help_modules", 0, dir="intro")
                     current_prize = pygame.image.load(
                         './data/graphics/halving_desc.png').convert_alpha()
-                    #time.sleep(1)
+                    time.sleep(1)
 
                 elif prize == 23:
                     current_prize = pygame.image.load(
                         './data/graphics/telephone_desc.png').convert_alpha()
-                    #time.sleep(1)
+                    time.sleep(1)
 
                 elif prize == 26:
                     current_prize = pygame.image.load(
                         './data/graphics/audience_desc.png').convert_alpha()
-                    #time.sleep(1)
+                    time.sleep(1)
 
                 elif prize == 30:
                     current_prize = pygame.image.load('./data/graphics/question_0_prize.png').convert_alpha()
                     if util.game_language == util.Language.HUNGARIAN.name:
-                        util.play_sound("prologue_end", 0, dir="intro")
+                        util.play_sound("prologue_end", 0, dir="intro", timer=True)
                 elif prize == 33:
                     return
 
@@ -1488,7 +1434,7 @@ def show_game_structure():
 def phone_dial():
     if util.game_language == util.Language.HUNGARIAN.name:
         dial_sound = "colleagues_are_dialing"
-        util.play_sound(dial_sound, 0, dir="phone")
+        util.play_sound(dial_sound, 0, dir="phone", timer=True)
 
 
 def play_select_sounds(level: int, selected="", last_input="", out_of_game=False):
@@ -1505,74 +1451,36 @@ def play_select_sounds(level: int, selected="", last_input="", out_of_game=False
 
 
 def play_incorrect_sounds(level: int):
-    #util.play_sound("bad_answer", 0, general=True)
-    global sound_event, sound_seconds
-    sound_event = pygame.USEREVENT + 11
-
-    sound_seconds += util.get_sound_length("bad_answer", general=True)
-    sound_seconds += util.get_sound_length("so_sorry", dir="out_of_game")
-
-
-    #global sound_seconds
-
-
-    pygame.mixer.init()
-    data_path = "./data"
-    file_path = data_path + "/sound_files/hungarian/out_of_game/" + "so_sorry" + "." + "wav"
-
-
-
-    playlist = list()
-    playlist.append(file_path)
-
-    file_path = data_path + "/sound_files/general/" + "bad_answer" + "." + "wav"
-
-    playlist.append(file_path)
-
-    pygame.mixer.music.load(playlist.pop())  # Get the first track from the playlist
-    pygame.mixer.music.queue(playlist.pop())
-    pygame.mixer.music.set_volume(1)
-    pygame.mixer.music.play()  # Play the music
-
-
-
-
-    #time.sleep(2)
-
-    #if game_language == util.Language.HUNGARIAN.name:
-    #    util.play_sound("so_sorry", 0, dir="out_of_game")
-    #    #time.sleep(1)
-    #    util.play_sound("claps", 0, general=True)
+    util.play_sound("bad_answer", 0, general=True)
+    time.sleep(2)
+    if game_language == util.Language.HUNGARIAN.name:
+        util.play_sound("so_sorry", 0, dir="out_of_game", timer=True)
+        time.sleep(1)
+        util.play_sound("claps", 0, general=True, timer=True)
 
 
 def play_correct_sounds(level: int):
     if level < 14:
-
         if level == 5:
             util.play_sound("sixth_correct_answer", 0, general=True)
         else:
             util.play_sound("correct_answer", 0, general=True)
-
         if util.game_language == util.Language.HUNGARIAN.name:
             play_prize_sound(level)
-
-        '''
         if level == 4:
             util.play_sound("won_hundred_bucks", 0, general=True)
         elif level == 9:
-            #time.sleep(3)
+            time.sleep(3)
             if util.game_language == util.Language.HUNGARIAN.name:
                 util.play_sound("now_comes_hard_part", 0, dir="random")
         else:
             util.play_sound("claps", 0, general=True)
-            
-        '''
     else:
         if util.game_language == util.Language.HUNGARIAN.name:
             util.play_sound("after_marking", 0, dir="lets_see")
-            #time.sleep(4)
+            time.sleep(4)
             util.play_sound("great_logic", 0, dir="correct")
-        #time.sleep(1)
+        time.sleep(1)
         util.play_sound("winning_theme", 0, general=True)
 
 
@@ -1654,7 +1562,7 @@ def play_question_intro(level: int):
     elif level == 8:
         sound_file = "before_nineth_question"
 
-    util.play_sound(sound_file, 0, general=True)
+    util.play_sound(sound_file, 0, general=True, timer=True)
 
 
 def play_help_sounds(help_types: {}):
@@ -1689,7 +1597,7 @@ def play_help_sounds(help_types: {}):
                           "fighting_without_helps", "but_no_more_helps"]
         sound_file = random.choice(no_help_sounds)
 
-    util.play_sound(sound_file, 0, dir="help")
+    util.play_sound(sound_file, 0, dir="help", timer=True)
 
 
 def fastest_fingers_first():
@@ -1735,7 +1643,7 @@ def fastest_fingers_first():
     shuffled_answers = answers
     if game_language == util.Language.HUNGARIAN.name:
         util.play_sound("lets_look_at_the_fastest_fingers_question", 0, dir="fastest_fingers")
-        #time.sleep(2)
+        time.sleep(2)
     util.play_sound("fastest_fingers_first", 0, general=True)
 
     start = time.time()
@@ -1765,7 +1673,7 @@ def fastest_fingers_first():
     global help_group
 
     global mark_seconds
-    mark_seconds = 3
+    mark_seconds = 5
     global mark_event
     mark_event = 0
 
@@ -1814,9 +1722,7 @@ def fastest_fingers_first():
                 counter -= 1
                 if counter < 1:
                     play_select_sounds(level, selected, last_input, out_of_game)
-                    if mark_seconds == 0:
-                        type = "mark"
-
+                    type = "mark"
             if event.type == fastest_fingers_mark_event:
                 mark_seconds -= 1
 
@@ -1870,7 +1776,7 @@ def fastest_fingers_first():
                         if os.path.isfile(
                                 "./data/sound_files/hungarian/fastest_fingers" + correct_answer_keys + ".wav"):
                             util.play_sound(correct_answer_keys, 0)
-                        #time.sleep(1)
+                        time.sleep(1)
                         util.play_sound("lets_see_who_is_correct", 0, dir="fastest_fingers")
 
                     # time.sleep(2)
@@ -1894,7 +1800,7 @@ def fastest_fingers_first():
                         text_rect_1 = text.get_rect(center=(1000, 48))
                         screen.blit(text, text_rect_1)
                     pygame.display.update()
-                    #time.sleep(result_seconds)
+                    time.sleep(result_seconds)
 
                     answer_dict = {"0": "a", "1": "b", "2": "c", "3": "d"}
 
@@ -1904,26 +1810,26 @@ def fastest_fingers_first():
 
                     if correct_answer_letters == fastest_fingers_result:
                         util.play_sound("fastest_fingers_correct", 0, general=True)
-                        #time.sleep(2)
+                        time.sleep(2)
                         player_in_game = "player"
                         if game_language == util.Language.HUNGARIAN.name:
                             for name in os.listdir(
                                     util.get_data_path() + "/sound_files/" + str(game_language).lower() + "/players"):
                                 if player.lower() == name[:-4]:
                                     player_in_game = player.lower()
-                            util.play_sound(player_in_game, 0, dir="players")
+                            util.play_sound(player_in_game, 0, dir="players", timer=True)
 
                         obstacle_group.draw(screen)
                         obstacle_group.update(selected, correct_answer_keys, type)
                         pygame.display.update()
 
                         util.play_sound("fastest_fingers_win", 0, general=True)
-                        #time.sleep(15)
+                        time.sleep(15)
 
 
                     else:
                         util.play_sound("fastest_fingers_bad", 0, general=True)
-                        #time.sleep(2)
+                        time.sleep(2)
 
                     quit_fastest_fingers()
                     return
@@ -1990,8 +1896,8 @@ def halving_before_sounds():
                                  "lets_see_which_two", "lets_take_two",
                                  "lets_take_two_1", "lets_take_two_2", "lets_take_two_3", "two_of_four"]
         sound = random.choice(before_halving_sounds)
-        util.play_sound(sound, 0, dir="halving")
-    #time.sleep(2)
+        util.play_sound(sound, 0, dir="halving", timer=True)
+    time.sleep(2)
     util.play_sound("halving", 0, general=True)
 
 
@@ -2034,7 +1940,7 @@ def play_marked_sound(choise: str, level: int, last_one="") -> int:
                     sounds.append("mark_" + choise + "_4")
 
     sound = random.choice(sounds)
-    util.play_sound(sound, 0, dir="mark")
+    util.play_sound(sound, 0, dir="mark", timer=True)
     seconds += util.get_sound_length(sound, dir="mark")
 
     sounds = []
@@ -2052,7 +1958,7 @@ def play_marked_sound(choise: str, level: int, last_one="") -> int:
             sounds.append("lets_see_" + str(i + 1))
 
     sound = random.choice(sounds)
-    util.play_sound(sound, 0, dir="lets_see")
+    util.play_sound(sound, 0, dir="lets_see", timer=True)
     seconds += util.get_sound_length(sound, dir="lets_see")
 
     return seconds
@@ -2088,7 +1994,7 @@ def get_sound_list(attitude: str) -> {}:
 
 def quit_quiz(score: int, name: str, topic, end=False):
     if not end:
-        util.play_sound("time_end_horn", 0, general=True)
+        util.play_sound("time_end_horn", 0, general=True, timer=True)
         util.stop_music()
         if game_language == util.Language.HUNGARIAN.name:
             exit_sounds = ["exit_epilogue", "delay", "what_a_game_it_was", "how_ugly_sound_it_has"]
@@ -2102,9 +2008,7 @@ def quit_quiz(score: int, name: str, topic, end=False):
 
     if score > 0:
         write_content_to_file("scores.json",
-                              {"user": name, "topic": topic, "score": score, "difficulty": util.question_difficulty,
-                               "quizmaster" : util.quizmaster_attitude,
-                               "length": time.ctime(time.time()-start_time), "time": time.ctime(time.time())})
+                              {"user": name, "topic": topic, "score": score, "time": time.ctime(time.time())})
     util.stop_sound()
 
 
